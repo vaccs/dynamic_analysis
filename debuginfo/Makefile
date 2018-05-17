@@ -1,4 +1,4 @@
-SRCS = abbrv_table.c
+SRCS = compile_unit_table.c type_table.c
 CC = gcc
 
 OBJS = $(addsuffix .o,$(basename $(SRCS)))
@@ -9,11 +9,13 @@ LIB = libdebug$(ENV).so
 
 VACCS_LIBS = ../lib/libutil-g.so
 
-TEST_OBJS = check_abbrv_table.o ../unity/src/unity.o
+TYPE_OBJS = check_type_table.o ../../unity/src/unity.o
+CUNIT_OBJS = check_compile_unit_table.o ../../unity/src/unity.o
 DWARF_OBJS = reader.o
 
 INCLUDES= -I. \
 	  -I.. \
+          -I../.. \
 	  -I../libdwarf/libdwarf
 
 LIBDIRS = -L.
@@ -29,7 +31,7 @@ DEPENDS = $(addprefix .d_, $(basename $(SRCS)))
 
 .SUFFIXES: .c
 
-#.SILENT:
+.SILENT:
 
 $(LIB): $(OBJS) $(VACCS_LIBS)
 	echo "Linking" $@
@@ -39,19 +41,23 @@ $(LIB): $(OBJS) $(VACCS_LIBS)
 .PHONY: clean
 
 clean:
-	$(RM) $(OBJS) $(TEST_OBJS)
+	$(RM) $(OBJS) $(TEST_OBJS) check_cunit check_type dwarfread
 
-check_abbrv: $(TEST_OBJS) $(LIB) $(VACCS_LIBS)
+check_cunit: $(CUNIT_OBJS) $(LIB) $(VACCS_LIBS)
 	echo "Creating executable" $@
-	$(CC) $(LIBDIRS) -o $@ $(TEST_OBJS) $(LIB) $(VACCS_LIBS) -lm
+	$(CC) $(LIBDIRS) -o $@ $(CUNIT_OBJS) $(LIB) $(VACCS_LIBS) -lm
+
+check_type: $(TYPE_OBJS) $(LIB) $(VACCS_LIBS)
+	echo "Creating executable" $@
+	$(CC) $(LIBDIRS) -o $@ $(TYPE_OBJS) $(LIB) $(VACCS_LIBS) -lm
 
 dwarfread: $(DWARF_OBJS) $(LIB) $(VACCS_LIBS)
 	echo "Creating executable" $@
-	$(CC) $(LIBDIRS) -o $@ $(DWARF_OBJS) $(LIB) $(VACCS_LIBS) -lm -ldwarf -lelf
+	$(CC) $(LIBDIRS) -o $@ $(DWA)r $(LIB) $(VACCS_LIBS) -lm -ldwarf -lelf
 
 .c.o:
-	echo "Compiling" $<
-	$(CC) -c $(CFLAGS) $<
+	echo "Compiling" $< 
+	$(CC) -c $(CFLAGS) $< -o $@
 
 #
 # The following two rules make the dependence file for the C source

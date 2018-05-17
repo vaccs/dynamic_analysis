@@ -1,0 +1,32 @@
+Compiling check_compile_unit_table.c
+check_compile_unit_table.c: In function ‘test_compile_unit_table_insert’:
+check_compile_unit_table.c:21:88: error: macro "TEST_ASSERT_EQUAL_PTR" passed 3 arguments, but takes just 2
+    TEST_ASSERT_EQUAL_PTR(&type_table,compile_unit_table_get_type_table,(cu_table,index));
+                                                                                        ^
+check_compile_unit_table.c:21:4: error: ‘TEST_ASSERT_EQUAL_PTR’ undeclared (first use in this function)
+    TEST_ASSERT_EQUAL_PTR(&type_table,compile_unit_table_get_type_table,(cu_table,index));
+    ^
+check_compile_unit_table.c:21:4: note: each undeclared identifier is reported only once for each function it appears in
+check_compile_unit_table.c:24:86: error: macro "TEST_ASSERT_EQUAL_PTR" passed 3 arguments, but takes just 2
+    TEST_ASSERT_EQUAL_PTR(&var_table,compile_unit_table_get_var_table,(cu_table,index));
+                                                                                      ^
+check_compile_unit_table.c:27:80: error: macro "TEST_ASSERT_EQUAL_PTR" passed 3 arguments, but takes just 2
+    TEST_ASSERT_EQUAL_PTR(&low_pc,compile_unit_table_get_low_pc,(cu_table,index));
+                                                                                ^
+check_compile_unit_table.c:30:82: error: macro "TEST_ASSERT_EQUAL_PTR" passed 3 arguments, but takes just 2
+    TEST_ASSERT_EQUAL_PTR(&high_pc,compile_unit_table_get_high_pc,(cu_table,index));
+                                                                                  ^
+check_compile_unit_table.c: In function ‘test_compile_unit_table_errors’:
+check_compile_unit_table.c:48:4: error: too few arguments to function ‘compile_unit_table_fini’
+    compile_unit_table_fini();
+    ^
+In file included from ./compile_unit_table.h:4:0,
+                 from check_compile_unit_table.c:4:
+./compile_unit_table.h:13:14: note: declared here
+ EXTERN(void, compile_unit_table_fini, (SymTable compile_unit_table)); 
+              ^
+../../vaccs_util/general.h:21:48: note: in definition of macro ‘EXTERN’
+ #define EXTERN(rettype, name, arglist) rettype name arglist /**< a macro for declaring global function prototypes */
+                                                ^
+Makefile:59: recipe for target 'check_compile_unit_table.o' failed
+make: *** [check_compile_unit_table.o] Error 1
