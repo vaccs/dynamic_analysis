@@ -1,0 +1,1 @@
+pin -t obj-intel64/pas_analysis.so -- ./tests/PAS_Example

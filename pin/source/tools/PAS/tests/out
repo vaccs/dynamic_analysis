@@ -1,0 +1,179 @@
+
+.debug_info
+
+COMPILE_UNIT<header overall offset = 0x00000000>:
+< 0><0x0000000b>  DW_TAG_compile_unit
+                    DW_AT_producer              "GNU C11 5.4.0 20160609 -mtune=generic -march=x86-64 -g -fstack-protector-strong"
+                    DW_AT_language              DW_LANG_C99
+                    DW_AT_name                  "PAS_Example.c"
+                    DW_AT_comp_dir              "/home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests"
+                    DW_AT_low_pc                0x00400546
+                    DW_AT_high_pc               <offset-from-lowpc>139
+                    DW_AT_stmt_list             0x00000000
+
+LOCAL_SYMBOLS:
+< 1><0x0000002d>    DW_TAG_base_type
+                      DW_AT_byte_size             0x00000008
+                      DW_AT_encoding              DW_ATE_unsigned
+                      DW_AT_name                  "long unsigned int"
+< 1><0x00000034>    DW_TAG_base_type
+                      DW_AT_byte_size             0x00000001
+                      DW_AT_encoding              DW_ATE_unsigned_char
+                      DW_AT_name                  "unsigned char"
+< 1><0x0000003b>    DW_TAG_base_type
+                      DW_AT_byte_size             0x00000002
+                      DW_AT_encoding              DW_ATE_unsigned
+                      DW_AT_name                  "short unsigned int"
+< 1><0x00000042>    DW_TAG_base_type
+                      DW_AT_byte_size             0x00000004
+                      DW_AT_encoding              DW_ATE_unsigned
+                      DW_AT_name                  "unsigned int"
+< 1><0x00000049>    DW_TAG_base_type
+                      DW_AT_byte_size             0x00000001
+                      DW_AT_encoding              DW_ATE_signed_char
+                      DW_AT_name                  "signed char"
+< 1><0x00000050>    DW_TAG_base_type
+                      DW_AT_byte_size             0x00000002
+                      DW_AT_encoding              DW_ATE_signed
+                      DW_AT_name                  "short int"
+< 1><0x00000057>    DW_TAG_base_type
+                      DW_AT_byte_size             0x00000004
+                      DW_AT_encoding              DW_ATE_signed
+                      DW_AT_name                  "int"
+< 1><0x0000005e>    DW_TAG_base_type
+                      DW_AT_byte_size             0x00000008
+                      DW_AT_encoding              DW_ATE_signed
+                      DW_AT_name                  "long int"
+< 1><0x00000065>    DW_TAG_base_type
+                      DW_AT_byte_size             0x00000008
+                      DW_AT_encoding              DW_ATE_unsigned
+                      DW_AT_name                  "sizetype"
+< 1><0x0000006c>    DW_TAG_base_type
+                      DW_AT_byte_size             0x00000001
+                      DW_AT_encoding              DW_ATE_signed_char
+                      DW_AT_name                  "char"
+< 1><0x00000073>    DW_TAG_base_type
+                      DW_AT_byte_size             0x00000008
+                      DW_AT_encoding              DW_ATE_unsigned
+                      DW_AT_name                  "long long unsigned int"
+< 1><0x0000007a>    DW_TAG_base_type
+                      DW_AT_byte_size             0x00000008
+                      DW_AT_encoding              DW_ATE_signed
+                      DW_AT_name                  "long long int"
+< 1><0x00000081>    DW_TAG_subprogram
+                      DW_AT_external              yes(1)
+                      DW_AT_name                  "bar"
+                      DW_AT_decl_file             0x00000001 /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
+                      DW_AT_decl_line             0x00000006
+                      DW_AT_low_pc                0x00400546
+                      DW_AT_high_pc               <offset-from-lowpc>101
+                      DW_AT_frame_base            len 0x0001: 9c: DW_OP_call_frame_cfa
+                      DW_AT_GNU_all_tail_call_sitesyes(1)
+                      DW_AT_sibling               <0x000000b8>
+< 2><0x0000009e>      DW_TAG_variable
+                        DW_AT_name                  "b"
+                        DW_AT_decl_file             0x00000001 /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
+                        DW_AT_decl_line             0x00000007
+                        DW_AT_type                  <0x000000b8>
+                        DW_AT_location              len 0x0002: 9140: DW_OP_fbreg -64
+< 2><0x000000aa>      DW_TAG_variable
+                        DW_AT_name                  "i"
+                        DW_AT_decl_file             0x00000001 /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
+                        DW_AT_decl_line             0x00000008
+                        DW_AT_type                  <0x00000057>
+                        DW_AT_location              len 0x0003: 91bc7f: DW_OP_fbreg -68
+< 1><0x000000b8>    DW_TAG_array_type
+                      DW_AT_type                  <0x00000057>
+                      DW_AT_sibling               <0x000000c8>
+< 2><0x000000c1>      DW_TAG_subrange_type
+                        DW_AT_type                  <0x00000065>
+                        DW_AT_upper_bound           9
+< 1><0x000000c8>    DW_TAG_subprogram
+                      DW_AT_external              yes(1)
+                      DW_AT_name                  "foo"
+                      DW_AT_decl_file             0x00000001 /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
+                      DW_AT_decl_line             0x0000000e
+                      DW_AT_low_pc                0x004005ab
+                      DW_AT_high_pc               <offset-from-lowpc>7
+                      DW_AT_frame_base            len 0x0001: 9c: DW_OP_call_frame_cfa
+                      DW_AT_GNU_all_call_sites    yes(1)
+< 1><0x000000e1>    DW_TAG_subprogram
+                      DW_AT_external              yes(1)
+                      DW_AT_name                  "main"
+                      DW_AT_decl_file             0x00000001 /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
+                      DW_AT_decl_line             0x00000012
+                      DW_AT_type                  <0x00000057>
+                      DW_AT_low_pc                0x004005b2
+                      DW_AT_high_pc               <offset-from-lowpc>31
+                      DW_AT_frame_base            len 0x0001: 9c: DW_OP_call_frame_cfa
+                      DW_AT_GNU_all_tail_call_sitesyes(1)
+< 1><0x000000fe>    DW_TAG_variable
+                      DW_AT_name                  "a"
+                      DW_AT_decl_file             0x00000001 /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
+                      DW_AT_decl_line             0x00000005
+                      DW_AT_type                  <0x000000b8>
+                      DW_AT_external              yes(1)
+                      DW_AT_location              len 0x0009: 036010600000000000: DW_OP_addr 0x00601060
+
+.debug_line: line number info for a single cu
+Source lines (from CU-DIE at .debug_info offset 0x0000000b):
+
+<pc>        [row,col] NS BB ET PE EB IS= DI= uri: "filepath"
+NS new statement, BB new basic block, ET end of text sequence
+PE prologue end, EB epilogue begin
+IA=val ISA number, DI=val discriminator value
+0x00400546  [   6, 0] NS uri: "/home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c"
+0x0040054e  [   6, 0] NS
+0x0040055d  [   9, 0] NS
+0x00400566  [  10, 0] NS DI=0x3
+0x00400572  [  11, 0] NS DI=0x3
+0x0040058a  [   9, 0] NS DI=0x3
+0x0040058e  [   9, 0] DI=0x1
+0x00400594  [  13, 0] NS
+0x004005ab  [  14, 0] NS
+0x004005af  [  16, 0] NS
+0x004005b2  [  18, 0] NS
+0x004005b6  [  19, 0] NS
+0x004005c0  [  20, 0] NS
+0x004005cf  [  21, 0] NS
+0x004005d1  [  21, 0] NS ET
+
+.debug_pubnames
+
+.debug_macinfo
+
+.debug_string
+name at offset 0x00000000, length   13 is 'long long int'
+name at offset 0x0000000e, length    4 is 'main'
+name at offset 0x00000013, length   13 is 'PAS_Example.c'
+name at offset 0x00000021, length   79 is 'GNU C11 5.4.0 20160609 -mtune=generic -march=x86-64 -g -fstack-protector-strong'
+name at offset 0x00000071, length   22 is 'long long unsigned int'
+name at offset 0x00000088, length   13 is 'unsigned char'
+name at offset 0x00000096, length   18 is 'short unsigned int'
+name at offset 0x000000a9, length   78 is '/home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests'
+name at offset 0x000000f8, length    9 is 'short int'
+name at offset 0x00000102, length    8 is 'sizetype'
+
+.debug_aranges
+
+COMPILE_UNIT<header overall offset = 0x00000000>:
+< 0><0x0000000b>  DW_TAG_compile_unit
+                    DW_AT_producer              "GNU C11 5.4.0 20160609 -mtune=generic -march=x86-64 -g -fstack-protector-strong"
+                    DW_AT_language              DW_LANG_C99
+                    DW_AT_name                  "PAS_Example.c"
+                    DW_AT_comp_dir              "/home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests"
+                    DW_AT_low_pc                0x00400546
+                    DW_AT_high_pc               <offset-from-lowpc>139
+                    DW_AT_stmt_list             0x00000000
+
+
+arange starts at 0x00400546, length of 0x0000008b, cu_die_offset = 0x0000000b
+arange end
+.debug_frame
+
+.debug_static_func
+
+.debug_static_vars
+
+.debug_weaknames
+

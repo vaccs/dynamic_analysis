@@ -1,0 +1,84 @@
+##############################################################
+#
+# This file includes all the test targets as well as all the
+# non-default build rules and test recipes.
+#
+##############################################################
+
+
+##############################################################
+#
+# Test targets
+#
+##############################################################
+
+###### Place all generic definitions here ######
+
+# This defines tests which run tools of the same name.  This is simply for convenience to avoid
+# defining the test name twice (once in TOOL_ROOTS and again in TEST_ROOTS).
+# Tests defined here should not be defined in TOOL_ROOTS and TEST_ROOTS.
+TOOL_ROOTS = vaccs_analysis
+
+TOOLS = $(TOOL_ROOTS:%=$(OBJDIR)%$(PINTOOL_SUFFIX) )
+
+# This defines the static analysis tools which will be run during the the tests. They should not
+# be defined in TEST_TOOL_ROOTS. If a test with the same name exists, it should be defined in
+# TEST_ROOTS.
+# Note: Static analysis tools are in fact executables linked with the Pin Static Analysis Library.
+# This library provides a subset of the Pin APIs which allows the tool to perform static analysis
+# of an application or dll. Pin itself is not used when this tool runs.
+SA_TOOL_ROOTS :=
+
+# This defines all the applications that will be run during the tests.
+APP_ROOTS :=
+
+# This defines any additional object files that need to be compiled.
+OBJECT_ROOTS :=
+
+# This defines any additional dlls (shared objects), other than the pintools, that need to be compiled.
+DLL_ROOTS :=
+
+# This defines any static libraries (archives), that need to be built.
+LIB_ROOTS :=
+
+###### Define the sanity subset ######
+
+# This defines the list of tests that should run in sanity. It should include all the tests listed in
+# TEST_TOOL_ROOTS and TEST_ROOTS excluding only unstable tests.
+SANITY_SUBSET := $(TEST_TOOL_ROOTS) $(TEST_ROOTS)
+
+
+##############################################################
+#
+# Test recipes
+#
+##############################################################
+
+# This section contains recipes for tests other than the default.
+# See makefile.default.rules for the default test rules.
+# All tests in this section should adhere to the naming convention: <testname>.test
+
+
+##############################################################
+#
+# Build rules
+#
+##############################################################
+#COMPONENT_INCLUDES+=/usr/include/mysql/
+
+# This section contains the build rules for all binaries that have special build rules.
+# See makefile.default.rules for the default build rules.
+all: tools
+tools: $(OBJDIR) $(TOOLS)
+test: $(OBJDIR) $(TOOL_ROOTS:%=%.test)
+
+$(OBJDIR):
+	mkdir -p $(OBJDIR)
+
+$(OBJDIR)%.o : %.cpp
+	$(CXX) -c $(CXXFLAGS) $(PIN_CXXFLAGS) ${OUTOPT}$@ $<
+
+$(TOOLS): $(OBJDIR)vaccs_analysis.o $(OBJDIR)return.o $(PIN_LIBNAMES)
+
+$(OBJDIR)vaccs_analysis$(PINTOOL_SUFFIX): $(OBJDIR)vaccs_analysis$(OBJ_SUFFIX) $(OBJDIR)return$(OBJ_SUFFIX) $(OBJDIR)global$(OBJ_SUFFIX) $(OBJDIR)malloc_free$(OBJ_SUFFIX) $(OBJDIR)InstructionInstrumentation$(OBJ_SUFFIX) $(OBJDIR)functionInvocation$(OBJ_SUFFIX) $(OBJDIR)memory_access$(OBJ_SUFFIX) $(OBJDIR)stack_operation$(OBJ_SUFFIX) $(OBJDIR)database_access_api$(OBJ_SUFFIX) $(OBJDIR)database_direct_access$(OBJ_SUFFIX) 
+	$(LINKER) $(TOOL_LDFLAGS_NOOPT) $(LINK_EXE)$@ $(^:%.h=) $(TOOL_LPATHS) $(TOOL_LIBS) $(mysql_config --libs)

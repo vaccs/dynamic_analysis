@@ -1,0 +1,34 @@
+line:0,	 id:3,	"push rax",	0x00007ffc4dfbb378,	8,	6a5c4bc8787f0000,	0000000000000000,0,	0
+line:0,	 id:5,	"push rsp",	0x00007ffc4dfbb370,	8,	0000000000000000,	0000000000000000,0,	0
+line:0,	 id:7,	"call 0x400430",	0x00007ffc4dfbb368,	8,	0000000000000000,	80b3fb4dfc7f0000,0,	0
+line:0,	 id:10,	"push 0x1",	0x00007ffc4dfbb360,	8,	80b3fb4dfc7f0000,	5004400000000000,8,	0
+line:0,	 id:13,	"push qword ptr [rip+0x200bf2]",	0x00007ffc4dfbb358,	8,	5004400000000000,	0000000000000000,8,	0
+line:0,	 id:17,	"push r15",	0x00007ffc4dfbb2a0,	8,	5004400000000000,	e005400000000000,16,	4005e0
+line:0,	 id:19,	"push r14",	0x00007ffc4dfbb298,	8,	e005400000000000,	0000000000000000,16,	4005e0
+line:0,	 id:21,	"push r13",	0x00007ffc4dfbb290,	8,	0000000000000000,	9962acb4787f0000,16,	4005e0
+line:0,	 id:23,	"push r12",	0x00007ffc4dfbb288,	8,	9962acb4787f0000,	0000000000000000,16,	4005e0
+line:0,	 id:25,	"push rbp",	0x00007ffc4dfbb280,	8,	0000000000000000,	b05a4cc8787f0000,16,	4005e0
+line:0,	 id:27,	"push rbx",	0x00007ffc4dfbb278,	8,	b05a4cc8787f0000,	0000000000000000,16,	600e18
+line:0,	 id:29,	"call 0x4003f0",	0x00007ffc4dfbb268,	8,	0000000000000000,	0000000000000000,16,	1
+line:0,	 id:38,	"push rbp",	0x00007ffc4dfbb260,	8,	0000000000000000,	0000000000000000,37,	1
+line:18,	 id:59,	"push rbp",	0x00007ffc4dfbb2a0,	8,	0000000000000000,	0000000000000000,58,	4005e0
+line:19,	 id:61,	"call 0x4005ab",	0x00007ffc4dfbb298,	8,	0000000000000000,	80b3fb4dfc7f0000,58,	7ffc4dfbb2a0
+line:14,	 id:63,	"push rbp",	0x00007ffc4dfbb290,	8,	80b3fb4dfc7f0000,	5004400000000000,62,	7ffc4dfbb2a0
+line:20,	 id:69,	"call 0x400546",	0x00007ffc4dfbb298,	8,	c005400000000000,	a0b2fb4dfc7f0000,58,	7ffc4dfbb2a0
+line:6,	 id:71,	"push rbp",	0x00007ffc4dfbb290,	8,	a0b2fb4dfc7f0000,	5004400000000000,70,	7ffc4dfbb2a0
+line:6,	 id:74,	"mov qword ptr [rbp-0x8], rax",	0x00007ffc4dfbb288,	8,	5004400000000000,	00a8fa1aad43b02d,70,	7ffc4dfbb290
+line:9,	 id:75,	"mov dword ptr [rbp-0x34], 0x0",	0x00007ffc4dfbb25c,	4,	00000000,	00000000,70,	7ffc4dfbb290
+line:9,	 id:85,	"add dword ptr [rbp-0x34], 0x1",	0x00007ffc4dfbb25c,	4,	00000000,	01000000,70,	7ffc4dfbb290
+line:9,	 id:95,	"add dword ptr [rbp-0x34], 0x1",	0x00007ffc4dfbb25c,	4,	01000000,	02000000,70,	7ffc4dfbb290
+line:9,	 id:105,	"add dword ptr [rbp-0x34], 0x1",	0x00007ffc4dfbb25c,	4,	02000000,	03000000,70,	7ffc4dfbb290
+line:9,	 id:115,	"add dword ptr [rbp-0x34], 0x1",	0x00007ffc4dfbb25c,	4,	03000000,	04000000,70,	7ffc4dfbb290
+line:9,	 id:125,	"add dword ptr [rbp-0x34], 0x1",	0x00007ffc4dfbb25c,	4,	04000000,	05000000,70,	7ffc4dfbb290
+line:9,	 id:135,	"add dword ptr [rbp-0x34], 0x1",	0x00007ffc4dfbb25c,	4,	05000000,	06000000,70,	7ffc4dfbb290
+line:9,	 id:145,	"add dword ptr [rbp-0x34], 0x1",	0x00007ffc4dfbb25c,	4,	06000000,	07000000,70,	7ffc4dfbb290
+line:9,	 id:155,	"add dword ptr [rbp-0x34], 0x1",	0x00007ffc4dfbb25c,	4,	07000000,	08000000,70,	7ffc4dfbb290
+line:9,	 id:165,	"add dword ptr [rbp-0x34], 0x1",	0x00007ffc4dfbb25c,	4,	08000000,	09000000,70,	7ffc4dfbb290
+line:9,	 id:175,	"add dword ptr [rbp-0x34], 0x1",	0x00007ffc4dfbb25c,	4,	09000000,	0a000000,70,	7ffc4dfbb290
+line:0,	 id:188,	"push rbp",	0x00007ffc4dfbb190,	8,	0000010001000100,	715c4cc8787f0000,186,	7ffc4dfbb260
+line:0,	 id:190,	"call 0x400480",	0x00007ffc4dfbb188,	8,	715c4cc8787f0000,	0000000000000000,186,	7ffc4dfbb190
+line:0,	 id:192,	"push rbp",	0x00007ffc4dfbb180,	8,	0000000000000000,	0000000000000000,191,	7ffc4dfbb190
+line:0,	 id:200,	"mov byte ptr [rip+0x200b26], 0x1",	0x0000000000601040,	1,	00,	01,186,	7ffc4dfbb260

@@ -1,0 +1,1 @@
+	g++ -fPIC -Wall -c -I/usr/include/cppconn -o obj-intel64/database_direct_access.o database_direct_access.cpp -L/usr/lib -lmysqlcppconn -lmysqlclient

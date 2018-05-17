@@ -1,0 +1,11 @@
+0,_start,0
+8,__libc_start_main@plt,0
+16,__libc_csu_init,4005e0
+30,_init,1
+37,register_tm_clones,1
+58,main,4005e0
+62,foo,7ffc4dfbb2a0
+70,bar,7ffc4dfbb2a0
+186,__do_global_dtors_aux,7ffc4dfbb260
+191,deregister_tm_clones,7ffc4dfbb190
+203,_fini,7ffc4dfbb260

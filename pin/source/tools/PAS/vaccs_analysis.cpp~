@@ -1,0 +1,143 @@
+/*
+ * This file is the source code to do dynamic analysis for the project VACCS
+ * It provides data for the address space visualization.
+ */
+#include <stdio.h>
+#include "pin.H"
+#include <sys/stat.h>
+#include <set>
+#include <string>
+#include <iostream>
+#include <stack>
+#include "return.h"
+#include "malloc_free.h"
+#include "InstructionInstrumentation.h"
+#include "global.h"
+#include "functionInvocation.h"
+
+
+/*
+ * global variables
+ */
+
+
+
+
+ADDRINT current_EBP;
+char* current_function_name;
+int current_invocation_id;
+int timestamp;
+push_transaction push_event;
+pop_transaction pop_event;
+malloc_transaction malloc_event;
+return_transaction return_event;
+
+
+
+
+
+
+
+
+/*
+ *
+ *
+ *
+ *
+ *
+ */
+//MYSQL *con;
+
+VOID Fini(INT32 code, VOID *v)
+{
+    
+}
+
+/* ===================================================================== */
+/* Print Help Message                                                    */
+/* ===================================================================== */
+   
+INT32 Usage()
+{
+    PIN_ERROR( "This Pintool prints a trace of memory addresses\n" 
+              + KNOB_BASE::StringKnobSummary() + "\n");
+    return -1;
+}
+
+/* ===================================================================== */
+/* Main                                                                  */
+/* ===================================================================== */
+void initialize(){
+		/*
+		 * Initialize Database
+		 */
+//		 con = mysql_init(NULL);
+//		 if (con == NULL){
+//			 fprintf(stderr, "%s\n", mysql_error(con));
+//			 exit(1);
+//		 }
+//		 if (mysql_real_connect(con, "localhost", "root", "Lihao0916",
+//			          NULL, 0, NULL, 0) == NULL)
+//		 {
+//			 fprintf(stderr, "%s\n", mysql_error(con));
+//			 mysql_close(con);
+//			 exit(1);
+//		 }
+//
+		 /*
+		  * Initialize Global Variables
+		  */
+		current_EBP = 0;
+		timestamp = 0;
+		current_function_name = 0;
+		current_invocation_id =0;
+
+}
+
+int main(int argc, char *argv[])
+{
+	printf("Hello, world!\n");
+	/*
+	 * Initialize Database
+	 */
+//	 MYSQL *con = mysql_init(NULL);
+//	 if (con == NULL){
+//		 fprintf(stderr, "%s\n", mysql_error(con));
+//		 exit(1);
+//	 }
+//	 if (mysql_real_connect(con, "localhost", "root", "Lihao0916",
+//		          NULL, 0, NULL, 0) == NULL)
+//	 {
+//		 fprintf(stderr, "%s\n", mysql_error(con));
+//		 mysql_close(con);
+//		 exit(1);
+//	 }
+	 /*
+	  * Pin Initialization
+	  */
+	initialize();
+	PIN_InitSymbols();
+    if( PIN_Init(argc,argv) )
+    {
+        return Usage();
+    }
+
+    //
+    IMG_AddInstrumentFunction(InstructionInstrumentation,0);
+	//IMG_AddInstrumentFunction(ReturnImage, 0);
+    //
+    IMG_AddInstrumentFunction(MallocAndFreeImage, 0);
+    IMG_AddInstrumentFunction(FunctionInvocatioinImage,0);
+
+    //INS_AddInstrumentFunction(pushInstruction, 0);
+    //
+    //IMG_AddInstrumentFunction(fopenImage, 0);
+ 
+    //IMG_AddInstrumentFunction(fopenImage, 0);
+    PIN_AddFiniFunction(Fini, 0);
+
+    // Never returns
+    PIN_StartProgram();
+    
+    return 0;
+}
