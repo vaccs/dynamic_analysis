@@ -1,0 +1,78 @@
+pin_function_invocation~!~0|_start|0
+pin_variable_access~!~0|1|"pop rsi"|0x00007ffdc17438f0|8||0|0
+pin_variable_access~!~0|3|"push rax"|0x00007ffdc17438e8|8|00007fb00ace9c6a|0000000000000000|0|0
+pin_variable_access~!~0|5|"push rsp"|0x00007ffdc17438e0|8|0000000000000000|0000000000000000|0|0
+pin_variable_access~!~0|7|"call 0x400440"|0x00007ffdc17438d8|8|0000000000000000|00007ffdc17438f0|0|0
+pin_function_invocation~!~8|__libc_start_main@plt|0
+pin_variable_access~!~0|9|"jmp qword ptr [rip+0x200bda]"|0x0000000000601020|8||8|0
+pin_variable_access~!~0|10|"push 0x1"|0x00007ffdc17438d0|8|00007ffdc17438f0|0000000000400470|8|0
+pin_variable_access~!~0|12|"push qword ptr [rip+0x200be2]"|0x0000000000601008|8||8|0
+pin_variable_access~!~0|13|"push qword ptr [rip+0x200be2]"|0x00007ffdc17438c8|8|0000000000400470|0000000000000000|8|0
+pin_variable_access~!~0|15|"jmp qword ptr [rip+0x200be4]"|0x0000000000601010|8||8|0
+pin_function_invocation~!~16|__libc_csu_init|4005c0
+pin_variable_access~!~0|17|"push r15"|0x00007ffdc1743810|8|0000000000400470|00000000004005c0|16|4005c0
+pin_variable_access~!~0|19|"push r14"|0x00007ffdc1743808|8|00000000004005c0|0000000000000000|16|4005c0
+pin_variable_access~!~0|21|"push r13"|0x00007ffdc1743800|8|0000000000000000|00007faff72d5299|16|4005c0
+pin_variable_access~!~0|23|"push r12"|0x00007ffdc17437f8|8|00007faff72d5299|0000000000000000|16|4005c0
+pin_variable_access~!~0|25|"push rbp"|0x00007ffdc17437f0|8|0000000000000000|00007fb00acf9ab0|16|4005c0
+pin_variable_access~!~0|27|"push rbx"|0x00007ffdc17437e8|8|00007fb00acf9ab0|0000000000000000|16|600e18
+pin_variable_access~!~0|29|"call 0x400400"|0x00007ffdc17437d8|8|0000000000000000|0000000000000000|16|1
+pin_function_invocation~!~30|_init|1
+pin_variable_access~!~0|31|"mov rax, qword ptr [rip+0x200bed]"|0x0000000000600ff8|8||30|1
+pin_variable_access~!~0|32|"ret "|0x00007ffdc17437d8|8||16|1
+pin_return~!~33|7ffdc17437d8|7ffdc17437e0|16
+pin_pointer_access~!~0|34|"call qword ptr [r12+rbx*8]"|0x0000000000600e10|8||16|1
+pin_pointer_access~!~0|35|"call qword ptr [r12+rbx*8]"|0x00007ffdc17437d8|8|00000000004005f1|0000000000000000|16|1
+pin_variable_access~!~0|36|"cmp qword ptr [rdi], 0x0"|0x0000000000600e20|8||16|1
+pin_function_invocation~!~37|register_tm_clones|1
+pin_variable_access~!~0|38|"push rbp"|0x00007ffdc17437d0|8|0000000000000000|7465675f6f736476|37|1
+pin_variable_access~!~0|40|"pop rbp"|0x00007ffdc17437d0|8||37|7ffdc17437d0
+pin_variable_access~!~0|42|"ret "|0x00007ffdc17437d8|8||16|1
+pin_return~!~43|7ffdc17437d8|7ffdc17437e0|16
+pin_variable_access~!~0|44|"pop rbx"|0x00007ffdc17437e8|8||16|1
+pin_variable_access~!~0|46|"pop rbp"|0x00007ffdc17437f0|8||16|1
+pin_variable_access~!~0|48|"pop r12"|0x00007ffdc17437f8|8||16|4005c0
+pin_variable_access~!~0|50|"pop r13"|0x00007ffdc1743800|8||16|4005c0
+pin_variable_access~!~0|52|"pop r14"|0x00007ffdc1743808|8||16|4005c0
+pin_variable_access~!~0|54|"pop r15"|0x00007ffdc1743810|8||16|4005c0
+pin_variable_access~!~0|56|"ret "|0x00007ffdc1743818|8||8|4005c0
+pin_return~!~57|7ffdc1743818|7ffdc1743820|8
+pin_function_invocation~!~58|main|4005c0
+pin_variable_access~!~4|59|"push rbp"|0x00007ffdc1743810|8|0000000000000000|0000000000000000|58|4005c0
+pin_variable_access~!~7|61|"call 0x400450"|0x00007ffdc17437f8|8|0000000000400470|00000000004005c0|58|7ffdc1743810
+pin_function_invocation~!~62|malloc@plt|7ffdc1743810
+pin_variable_access~!~0|63|"jmp qword ptr [rip+0x200bd2]"|0x0000000000601028|8||62|7ffdc1743810
+pin_variable_access~!~0|64|"push 0x2"|0x00007ffdc17437f0|8|00000000004005c0|0000000000000000|62|7ffdc1743810
+pin_variable_access~!~0|66|"push qword ptr [rip+0x200be2]"|0x0000000000601008|8||62|7ffdc1743810
+pin_variable_access~!~0|67|"push qword ptr [rip+0x200be2]"|0x00007ffdc17437e8|8|0000000000000000|0000000000000000|62|7ffdc1743810
+pin_variable_access~!~0|69|"jmp qword ptr [rip+0x200be4]"|0x0000000000601010|8||62|7ffdc1743810
+pin_variable_access~!~7|71|"mov qword ptr [rbp-0x8], rax"|0x00007ffdc1743808|8|0000000000000000|000000000139e010|62|7ffdc1743810
+pin_variable_access~!~9|72|"mov dword ptr [rip+0x200abe], 0x1"|0x0000000000601044|4|00000000|00000001|62|7ffdc1743810
+pin_variable_access~!~10|73|"mov dword ptr [rbp-0xc], 0x2"|0x00007ffdc1743804|4|00007ffd|00000002|62|7ffdc1743810
+pin_variable_access~!~11|74|"mov rdx, qword ptr [rbp-0x8]"|0x00007ffdc1743808|8||62|7ffdc1743810
+pin_variable_access~!~11|75|"call 0x400430"|0x00007ffdc17437f8|8|0000000000400578|00007ffdc1743810|62|7ffdc1743810
+pin_function_invocation~!~76|printf@plt|7ffdc1743810
+pin_variable_access~!~0|77|"jmp qword ptr [rip+0x200be2]"|0x0000000000601018|8||76|7ffdc1743810
+pin_variable_access~!~0|78|"push 0x0"|0x00007ffdc17437f0|8|00007ffdc1743810|0000000000000000|76|7ffdc1743810
+pin_variable_access~!~0|80|"push qword ptr [rip+0x200be2]"|0x0000000000601008|8||76|7ffdc1743810
+pin_variable_access~!~0|81|"push qword ptr [rip+0x200be2]"|0x00007ffdc17437e8|8|0000000000000000|0000000000000000|76|7ffdc1743810
+pin_variable_access~!~0|83|"jmp qword ptr [rip+0x200be4]"|0x0000000000601010|8||76|7ffdc1743810
+pin_variable_access~!~12|85|"leave "|0x00007ffdc1743810|8||76|7ffdc1743810
+pin_variable_access~!~12|86|"ret "|0x00007ffdc1743818|8||62|4005c0
+pin_return~!~87|7ffdc1743818|7ffdc1743820|62
+pin_function_invocation~!~88|__do_global_dtors_aux|7ffdc17437d0
+pin_variable_access~!~0|89|"cmp byte ptr [rip+0x200b19], 0x0"|0x0000000000601040|1||88|7ffdc17437d0
+pin_variable_access~!~0|90|"push rbp"|0x00007ffdc1743700|8|0001000100010000|00007fb00acf9c71|88|7ffdc17437d0
+pin_variable_access~!~0|92|"call 0x4004a0"|0x00007ffdc17436f8|8|00007fb00acf9c71|0000000000400470|88|7ffdc1743700
+pin_function_invocation~!~93|deregister_tm_clones|7ffdc1743700
+pin_variable_access~!~0|94|"push rbp"|0x00007ffdc17436f0|8|0000000000400470|0000000000000000|93|7ffdc1743700
+pin_variable_access~!~0|96|"pop rbp"|0x00007ffdc17436f0|8||93|7ffdc17436f0
+pin_variable_access~!~0|98|"ret "|0x00007ffdc17436f8|8||88|7ffdc1743700
+pin_return~!~99|7ffdc17436f8|7ffdc1743700|88
+pin_variable_access~!~0|100|"pop rbp"|0x00007ffdc1743700|8||88|7ffdc1743700
+pin_variable_access~!~0|102|"mov byte ptr [rip+0x200b06], 0x1"|0x0000000000601040|1|00|01|88|7ffdc17437d0
+pin_variable_access~!~0|103|"ret "|0x00007ffdc1743708|8||62|7ffdc17437d0
+pin_return~!~104|7ffdc1743708|7ffdc1743710|62
+pin_function_invocation~!~105|_fini|7ffdc17437d0
+pin_variable_access~!~0|106|"ret "|0x00007ffdc1743708|8||62|7ffdc17437d0
+pin_return~!~107|7ffdc1743708|7ffdc1743710|62

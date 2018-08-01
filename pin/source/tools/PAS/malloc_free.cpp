@@ -16,9 +16,11 @@
 VOID freeBefore(CHAR * name, ADDRINT size)
 {
 
+   printf("Enter freeBefore\n");
 	printf("%s(%ld)\n",name,size);
-	std::cout<<"function "<<current_function_name<<"  Frame pointer was "<<hex<<current_EBP<<std::endl;
+	//std::cout<<"function "<<current_function_name<<"  Frame pointer was "<<hex<<current_EBP<<std::endl;
 
+   printf("Exit freeBefore\n");
 
 }
 VOID mallocBefore(CHAR * name, ADDRINT size)

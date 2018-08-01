@@ -39,7 +39,7 @@ OBJECT_ROOTS :=
 DLL_ROOTS :=
 
 # This defines any static libraries (archives), that need to be built.
-LIB_ROOTS :=
+LIB_ROOTS := 
 
 ###### Define the sanity subset ######
 
@@ -64,21 +64,63 @@ SANITY_SUBSET := $(TEST_TOOL_ROOTS) $(TEST_ROOTS)
 # Build rules
 #
 ##############################################################
-#COMPONENT_INCLUDES+=/usr/include/mysql/
+VACCS_DIR = ../../../../vaccs_pin_cpp
+VACCS_ODIR = $(VACCS_DIR)/libs
+#COMPONENT_INCLUDES+=
 
 # This section contains the build rules for all binaries that have special build rules.
 # See makefile.default.rules for the default build rules.
+#
+#
+
+
+VACCS_OBJS = util/general.o \
+   util/c_string_utils.o \
+   io/vaccs_record.o \
+   io/arch_record.o \
+   io/asm_record.o \
+   io/binary_record.o \
+   io/ccode_record.o \
+   io/cmd_line_record.o \
+   io/func_inv_record.o \
+   io/output_record.o \
+   io/register_record.o \
+   io/return_record.o \
+   io/return_addr_record.o \
+   io/sd_clear_record.o \
+   io/sd_czero_record.o \
+   io/sd_lock_record.o \
+   io/sd_set_record.o \
+   io/sd_unlock_record.o \
+   io/section_record.o \
+   io/var_access_record.o \
+   io/vaccs_record_factory.o \
+   io/vaccs_record_reader.o \
+   tables/symbol_table.o \
+   tables/cu_table.o \
+   tables/type_table.o \
+   tables/var_table.o \
+   tables/symbol_table_factory.o\
+   vaccs_read/vaccs_dw_reader.o 
+
+VOBJS = $(addprefix $(VACCS_ODIR)/, $(VACCS_OBJS))
+
+TOOL_CXXFLAGS += -I$(VACCS_ODIR)
+
 all: tools
 tools: $(OBJDIR) $(TOOLS)
 test: $(OBJDIR) $(TOOL_ROOTS:%=%.test)
 
-$(OBJDIR):
-	mkdir -p $(OBJDIR)
+#$(OBJDIR):
+#mkdir -p $(OBJDIR)
 
-$(OBJDIR)%.o : %.cpp
-	$(CXX) -c $(CXXFLAGS) $(PIN_CXXFLAGS) ${OUTOPT}$@ $<
+#$(OBJDIR)%.o : %.cpp
+#$(CXX) -c $(CXXFLAGS) $(PIN_CXXFLAGS) ${OUTOPT}$@ $<
+
 
 $(TOOLS): $(OBJDIR)pas_analysis.o $(OBJDIR)return.o $(PIN_LIBNAMES)
 
+
 $(OBJDIR)pas_analysis$(PINTOOL_SUFFIX):  $(OBJDIR)return$(OBJ_SUFFIX) $(OBJDIR)global$(OBJ_SUFFIX) $(OBJDIR)malloc_free$(OBJ_SUFFIX) $(OBJDIR)InstructionInstrumentation$(OBJ_SUFFIX) $(OBJDIR)functionInvocation$(OBJ_SUFFIX) $(OBJDIR)memory_access$(OBJ_SUFFIX) $(OBJDIR)stack_operation$(OBJ_SUFFIX) $(OBJDIR)database_access_api$(OBJ_SUFFIX) 
-	$(LINKER) $(TOOL_LDFLAGS_NOOPT) $(LINK_EXE)$@ $(^:%.h=) $(TOOL_LPATHS) $(TOOL_LIBS) 
+	make -C $(VACCS_DIR)
+	$(LINKER) $(TOOL_LDFLAGS_NOOPT) $(LINK_EXE)$@ $(^:%.h=) $(VOBJS) $(TOOL_LPATHS) $(TOOL_LIBS) 

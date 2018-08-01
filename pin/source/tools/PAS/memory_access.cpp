@@ -9,6 +9,10 @@
 #include  <iomanip>
 #include <fstream>
 #include "global.h"
+#include <vaccs_read/vaccs_dw_reader.h>
+
+extern vaccs_dw_reader *vdr;
+
 /* ===================================================================== */
 /* Instrumentation the memory operation to record the memory accesses     */
 /* ===================================================================== */
@@ -63,6 +67,12 @@ VOID BeforeMemRead(VOID* assembly,ADDRINT ip, VOID * addr,const CONTEXT * ctxt,U
     std::cout<<"line number "<<dec<<*line<<std::endl;
     current_EBP = (ADDRINT)PIN_GetContextReg( ctxt, REG_GBP);
     char* location = (char*) malloc(size);
+    std::pair<std::string,var_record*> vpair =
+       vdr->get_cutab()->translate_address_to_variable((Generic)ip,(Generic)addr);
+    if (vrec == NULL)
+       printf("address %ld is not a program variable\n",addr);
+    else
+       printf("address %ld translates to variable %s\n",addr,vpair.first);
     printf("value before read :");
     if(is_indirect(assembly_code)) {
     	 ou_read_indirect<<"line:"<<dec<<*line<<",\t id:"<<id<<","<<assembly_code<<","<<hex<<addr<<","<<dec<<size<<",";

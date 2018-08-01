@@ -1,0 +1,3 @@
+source config
+$VACCS_ROOT/execs/dwwrite/dwrite $1
+$PIN_ROOT/pin -t $PIN_ROOT/source/tools/PAS/obj-intel64/pas_analysis.so -- $@

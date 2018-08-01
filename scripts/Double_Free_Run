@@ -1,2 +1,0 @@
-source config
-$PIN_ROOT/pin -t $PIN_ROOT/source/tools/HeapMonitor/obj-intel64/HeapMonitor.so -- $@

@@ -1,11 +1,1 @@
-line:0,	 id:34,"call qword ptr [r12+rbx*8]",0x0000000000600e10,8,2005400000000000,16,1
-line:11,	 id:81,"mov eax, dword ptr [rbp+rax*4-0x30]",0x00007ffc4dfbb260,4,00000000,70,7ffc4dfbb290
-line:11,	 id:91,"mov eax, dword ptr [rbp+rax*4-0x30]",0x00007ffc4dfbb264,4,01000000,70,7ffc4dfbb290
-line:11,	 id:101,"mov eax, dword ptr [rbp+rax*4-0x30]",0x00007ffc4dfbb268,4,02000000,70,7ffc4dfbb290
-line:11,	 id:111,"mov eax, dword ptr [rbp+rax*4-0x30]",0x00007ffc4dfbb26c,4,03000000,70,7ffc4dfbb290
-line:11,	 id:121,"mov eax, dword ptr [rbp+rax*4-0x30]",0x00007ffc4dfbb270,4,04000000,70,7ffc4dfbb290
-line:11,	 id:131,"mov eax, dword ptr [rbp+rax*4-0x30]",0x00007ffc4dfbb274,4,05000000,70,7ffc4dfbb290
-line:11,	 id:141,"mov eax, dword ptr [rbp+rax*4-0x30]",0x00007ffc4dfbb278,4,06000000,70,7ffc4dfbb290
-line:11,	 id:151,"mov eax, dword ptr [rbp+rax*4-0x30]",0x00007ffc4dfbb27c,4,07000000,70,7ffc4dfbb290
-line:11,	 id:161,"mov eax, dword ptr [rbp+rax*4-0x30]",0x00007ffc4dfbb280,4,08000000,70,7ffc4dfbb290
-line:11,	 id:171,"mov eax, dword ptr [rbp+rax*4-0x30]",0x00007ffc4dfbb284,4,09000000,70,7ffc4dfbb290
+line:0,	 id:34,"call qword ptr [r12+rbx*8]",0x0000000000600e10,8,4005400000000000,16,1

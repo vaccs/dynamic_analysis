@@ -1,0 +1,399 @@
+g++ -Wall -Werror -Wno-unknown-pragmas -D__PIN__=1 -DPIN_CRT=1 -fno-stack-protector -fno-exceptions -funwind-tables -fasynchronous-unwind-tables -fno-rtti -DTARGET_IA32E -DHOST_IA32E -fPIC -DTARGET_LINUX -fabi-version=2  -I../../../source/include/pin -I../../../source/include/pin/gen -I. -isystem /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include -isystem /home/carr/vaccs/dynamic_analysis/pin/extras/libstdc++/include -isystem /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include -isystem /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/arch-x86_64 -isystem /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/kernel/uapi -isystem /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/kernel/uapi/asm-x86  -I../../../extras/components/include -I../../../extras/xed-intel64/include/xed -I../../../source/tools/InstLib -O3 -fomit-frame-pointer -fno-strict-aliasing  -std=c++11 -Ivaccs_pin_cpp/libs  -c -o obj-intel64/pas_analysis.o pas_analysis.cpp
+In file included from vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:13:0,
+                 from vaccs_pin_cpp/libs/read/dw_reader.h:14,
+                 from pas_analysis.cpp:18:
+vaccs_pin_cpp/libs/libelfin/dwarf/data.hh:14:14: error: ‘int8_t’ in namespace ‘std’ does not name a type
+ typedef std::int8_t sbyte;
+              ^
+vaccs_pin_cpp/libs/libelfin/dwarf/data.hh:15:14: error: ‘uint8_t’ in namespace ‘std’ does not name a type
+ typedef std::uint8_t ubyte;
+              ^
+vaccs_pin_cpp/libs/libelfin/dwarf/data.hh:16:14: error: ‘uint16_t’ in namespace ‘std’ does not name a type
+ typedef std::uint16_t uhalf;
+              ^
+vaccs_pin_cpp/libs/libelfin/dwarf/data.hh:17:14: error: ‘uint32_t’ in namespace ‘std’ does not name a type
+ typedef std::uint32_t uword;
+              ^
+vaccs_pin_cpp/libs/libelfin/dwarf/data.hh:20:14: error: ‘uint64_t’ in namespace ‘std’ does not name a type
+ typedef std::uint64_t section_offset;
+              ^
+vaccs_pin_cpp/libs/libelfin/dwarf/data.hh:21:14: error: ‘uint64_t’ in namespace ‘std’ does not name a type
+ typedef std::uint64_t section_length;
+              ^
+vaccs_pin_cpp/libs/libelfin/dwarf/data.hh:25:14: error: ‘uint64_t’ in namespace ‘std’ does not name a type
+ typedef std::uint64_t taddr;
+              ^
+vaccs_pin_cpp/libs/libelfin/dwarf/data.hh:102:1: error: elaborated-type-specifier for a scoped enum must not use the ‘class’ keyword [-Werror]
+ enum class DW_CHILDREN : ubyte
+ ^
+vaccs_pin_cpp/libs/libelfin/dwarf/data.hh:102:12: error: use of enum ‘DW_CHILDREN’ without previous declaration
+ enum class DW_CHILDREN : ubyte
+            ^
+vaccs_pin_cpp/libs/libelfin/dwarf/data.hh:102:24: error: expected unqualified-id before ‘:’ token
+ enum class DW_CHILDREN : ubyte
+                        ^
+vaccs_pin_cpp/libs/libelfin/dwarf/data.hh:109:11: error: ‘std::string dwarf::to_string’ redeclared as different kind of symbol
+ to_string(DW_CHILDREN v);
+           ^
+vaccs_pin_cpp/libs/libelfin/dwarf/data.hh:99:1: note: previous declaration ‘std::string dwarf::to_string(dwarf::DW_TAG)’
+ to_string(DW_TAG v);
+ ^
+vaccs_pin_cpp/libs/libelfin/dwarf/data.hh:109:11: error: ‘DW_CHILDREN’ was not declared in this scope
+ to_string(DW_CHILDREN v);
+           ^
+vaccs_pin_cpp/libs/libelfin/dwarf/data.hh:260:1: error: elaborated-type-specifier for a scoped enum must not use the ‘class’ keyword [-Werror]
+ enum class DW_OP : ubyte
+ ^
+vaccs_pin_cpp/libs/libelfin/dwarf/data.hh:260:12: error: use of enum ‘DW_OP’ without previous declaration
+ enum class DW_OP : ubyte
+            ^
+vaccs_pin_cpp/libs/libelfin/dwarf/data.hh:260:18: error: expected unqualified-id before ‘:’ token
+ enum class DW_OP : ubyte
+                  ^
+vaccs_pin_cpp/libs/libelfin/dwarf/data.hh:345:11: error: ‘std::string dwarf::to_string’ redeclared as different kind of symbol
+ to_string(DW_OP v);
+           ^
+vaccs_pin_cpp/libs/libelfin/dwarf/data.hh:257:1: note: previous declaration ‘std::string dwarf::to_string(dwarf::DW_FORM)’
+ to_string(DW_FORM v);
+ ^
+vaccs_pin_cpp/libs/libelfin/dwarf/data.hh:345:11: error: ‘DW_OP’ was not declared in this scope
+ to_string(DW_OP v);
+           ^
+In file included from vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:14:0,
+                 from vaccs_pin_cpp/libs/read/dw_reader.h:14,
+                 from pas_analysis.cpp:18:
+vaccs_pin_cpp/libs/libelfin/dwarf/small_vector.hh: In member function ‘void dwarf::small_vector<T, Min>::push_back(T&&)’:
+vaccs_pin_cpp/libs/libelfin/dwarf/small_vector.hh:173:29: error: ‘move’ is not a member of ‘std’
+                 new (end) T(std::move(x));
+                             ^
+In file included from vaccs_pin_cpp/libs/read/dw_reader.h:14:0,
+                 from pas_analysis.cpp:18:
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh: At global scope:
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:115:35: error: ‘shared_ptr’ in namespace ‘std’ does not name a template type
+         explicit dwarf(const std::shared_ptr<loader> &l);
+                                   ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:115:45: error: expected ‘,’ or ‘...’ before ‘<’ token
+         explicit dwarf(const std::shared_ptr<loader> &l);
+                                             ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:166:14: error: ‘shared_ptr’ in namespace ‘std’ does not name a template type
+         std::shared_ptr<section> get_section(section_type type) const;
+              ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:170:14: error: ‘shared_ptr’ in namespace ‘std’ does not name a template type
+         std::shared_ptr<impl> m;
+              ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh: In member function ‘bool dwarf::dwarf::operator==(const dwarf::dwarf&) const’:
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:130:24: error: ‘m’ was not declared in this scope
+                 return m == o.m;
+                        ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:130:31: error: ‘const class dwarf::dwarf’ has no member named ‘m’
+                 return m == o.m;
+                               ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh: In member function ‘bool dwarf::dwarf::operator!=(const dwarf::dwarf&) const’:
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:135:24: error: ‘m’ was not declared in this scope
+                 return m != o.m;
+                        ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:135:31: error: ‘const class dwarf::dwarf’ has no member named ‘m’
+                 return m != o.m;
+                               ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh: In member function ‘bool dwarf::dwarf::valid() const’:
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:144:26: error: ‘m’ was not declared in this scope
+                 return !!m;
+                          ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh: At global scope:
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:230:9: error: ‘section_offset’ does not name a type
+         section_offset get_section_offset() const;
+         ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:242:20: error: ‘shared_ptr’ in namespace ‘std’ does not name a template type
+         const std::shared_ptr<section> &data() const;
+                    ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:248:29: error: expected ‘;’ at end of member declaration
+         const abbrev_entry &get_abbrev(std::uint64_t acode) const;
+                             ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:248:54: error: expected ‘)’ before ‘acode’
+         const abbrev_entry &get_abbrev(std::uint64_t acode) const;
+                                                      ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:253:14: error: ‘shared_ptr’ in namespace ‘std’ does not name a template type
+         std::shared_ptr<impl> m;
+              ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:248:45: error: non-static reference ‘const dwarf::abbrev_entry& dwarf::unit::get_abbrev’ in class without a constructor [-Werror=uninitialized]
+         const abbrev_entry &get_abbrev(std::uint64_t acode) const;
+                                             ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh: In member function ‘bool dwarf::unit::operator==(const dwarf::unit&) const’:
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:204:24: error: ‘m’ was not declared in this scope
+                 return m == o.m;
+                        ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:204:31: error: ‘const class dwarf::unit’ has no member named ‘m’
+                 return m == o.m;
+                               ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh: In member function ‘bool dwarf::unit::operator!=(const dwarf::unit&) const’:
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:209:24: error: ‘m’ was not declared in this scope
+                 return m != o.m;
+                        ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:209:31: error: ‘const class dwarf::unit’ has no member named ‘m’
+                 return m != o.m;
+                               ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh: In member function ‘bool dwarf::unit::valid() const’:
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:218:26: error: ‘m’ was not declared in this scope
+                 return !!m;
+                          ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh: At global scope:
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:275:45: error: ‘section_offset’ has not been declared
+         compilation_unit(const dwarf &file, section_offset offset);
+                                             ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:303:38: error: ‘section_offset’ has not been declared
+         type_unit(const dwarf &file, section_offset offset);
+                                      ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:367:9: error: ‘section_offset’ does not name a type
+         section_offset get_unit_offset() const
+         ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:375:9: error: ‘section_offset’ does not name a type
+         section_offset get_section_offset() const;
+         ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:435:9: error: ‘section_offset’ does not name a type
+         section_offset offset;
+         ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:439:22: error: ‘section_offset’ was not declared in this scope
+         small_vector<section_offset, 6> attrs;
+                      ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:439:39: error: template argument 1 is invalid
+         small_vector<section_offset, 6> attrs;
+                                       ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:442:9: error: ‘section_offset’ does not name a type
+         section_offset next;
+         ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:449:19: error: ‘section_offset’ has not been declared
+         void read(section_offset off);
+                   ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:501:34: error: ‘section_offset’ has not been declared
+         iterator(const unit *cu, section_offset off);
+                                  ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh: In member function ‘bool dwarf::die::iterator::operator!=(const dwarf::die::iterator&) const’:
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:493:26: error: ‘const class dwarf::die’ has no member named ‘next’
+                 return d.next != o.d.next || d.cu != o.d.cu;
+                          ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:493:38: error: ‘const class dwarf::die’ has no member named ‘next’
+                 return d.next != o.d.next || d.cu != o.d.cu;
+                                      ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh: At global scope:
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:591:9: error: ‘section_offset’ does not name a type
+         section_offset get_unit_offset() const
+         ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:599:9: error: ‘section_offset’ does not name a type
+         section_offset get_section_offset() const;
+         ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:621:9: error: ‘taddr’ does not name a type
+         taddr as_address() const;
+         ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:702:9: error: ‘section_offset’ does not name a type
+         section_offset as_sec_offset() const;
+         ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:708:51: error: ‘section_offset’ has not been declared
+               DW_AT name, DW_FORM form, type typ, section_offset offset);
+                                                   ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:715:9: error: ‘section_offset’ does not name a type
+         section_offset offset;
+         ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:754:49: error: ‘taddr’ has not been declared
+         expr_result evaluate(expr_context *ctx, taddr argument) const;
+                                                 ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:767:60: error: ‘initializer_list’ in namespace ‘std’ does not name a template type
+         expr_result evaluate(expr_context *ctx, const std::initializer_list<taddr> &arguments) const;
+                                                            ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:767:76: error: expected ‘,’ or ‘...’ before ‘<’ token
+         expr_result evaluate(expr_context *ctx, const std::initializer_list<taddr> &arguments) const;
+                                                                            ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:767:21: error: ‘dwarf::expr_result dwarf::expr::evaluate(dwarf::expr_context*, int) const’ cannot be overloaded
+         expr_result evaluate(expr_context *ctx, const std::initializer_list<taddr> &arguments) const;
+                     ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:754:21: error: with ‘dwarf::expr_result dwarf::expr::evaluate(dwarf::expr_context*, int) const’
+         expr_result evaluate(expr_context *ctx, taddr argument) const;
+                     ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:772:14: error: ‘section_offset’ has not been declared
+              section_offset offset, section_length len);
+              ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:772:37: error: ‘section_length’ has not been declared
+              section_offset offset, section_length len);
+                                     ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:777:9: error: ‘section_offset’ does not name a type
+         section_offset offset;
+         ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:778:9: error: ‘section_length’ does not name a type
+         section_length len;
+         ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:797:17: error: ‘taddr’ does not name a type
+         virtual taddr reg(unsigned regnum)
+                 ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:805:17: error: ‘taddr’ does not name a type
+         virtual taddr deref_size(taddr address, unsigned size)
+                 ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:813:17: error: ‘taddr’ does not name a type
+         virtual taddr xderef_size(taddr address, taddr asid, unsigned size)
+                 ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:821:17: error: ‘taddr’ does not name a type
+         virtual taddr form_tls_address(taddr address)
+                 ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:884:9: error: ‘taddr’ does not name a type
+         taddr value;
+         ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:919:30: error: ‘shared_ptr’ in namespace ‘std’ does not name a template type
+         rangelist(const std::shared_ptr<section> &sec, section_offset off,
+                              ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:919:40: error: expected ‘,’ or ‘...’ before ‘<’ token
+         rangelist(const std::shared_ptr<section> &sec, section_offset off,
+                                        ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:926:30: error: ‘initializer_list’ in namespace ‘std’ does not name a template type
+         rangelist(const std::initializer_list<std::pair<taddr, taddr> > &ranges);
+                              ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:926:46: error: expected ‘,’ or ‘...’ before ‘<’ token
+         rangelist(const std::initializer_list<std::pair<taddr, taddr> > &ranges);
+                                              ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:926:9: error: ‘dwarf::rangelist::rangelist(int)’ cannot be overloaded
+         rangelist(const std::initializer_list<std::pair<taddr, taddr> > &ranges);
+         ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:919:9: error: with ‘dwarf::rangelist::rangelist(int)’
+         rangelist(const std::shared_ptr<section> &sec, section_offset off,
+         ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:963:23: error: ‘taddr’ has not been declared
+         bool contains(taddr addr) const;
+                       ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:966:21: error: ‘taddr’ was not declared in this scope
+         std::vector<taddr> synthetic;
+                     ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:966:26: error: template argument 1 is invalid
+         std::vector<taddr> synthetic;
+                          ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:966:26: error: template argument 2 is invalid
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:967:14: error: ‘shared_ptr’ in namespace ‘std’ does not name a template type
+         std::shared_ptr<section> sec;
+              ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:968:9: error: ‘taddr’ does not name a type
+         taddr base_addr;
+         ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:977:9: error: ‘taddr’ does not name a type
+         taddr low, high;
+         ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:982:23: error: ‘taddr’ has not been declared
+         bool contains(taddr addr) const
+                       ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh: In member function ‘bool dwarf::rangelist::entry::contains(int) const’:
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:984:24: error: ‘low’ was not declared in this scope
+                 return low <= addr && addr < high;
+                        ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:984:46: error: ‘high’ was not declared in this scope
+                 return low <= addr && addr < high;
+                                              ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh: At global scope:
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:1004:29: error: ‘shared_ptr’ in namespace ‘std’ does not name a template type
+         iterator(const std::shared_ptr<section> &sec, taddr base_addr);
+                             ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:1004:39: error: expected ‘,’ or ‘...’ before ‘<’ token
+         iterator(const std::shared_ptr<section> &sec, taddr base_addr);
+                                       ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:1049:14: error: ‘shared_ptr’ in namespace ‘std’ does not name a template type
+         std::shared_ptr<section> sec;
+              ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:1050:9: error: ‘taddr’ does not name a type
+         taddr base_addr;
+         ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:1051:9: error: ‘section_offset’ does not name a type
+         section_offset pos;
+         ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh: In constructor ‘dwarf::rangelist::iterator::iterator()’:
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:997:22: error: class ‘dwarf::rangelist::iterator’ does not have any field named ‘sec’
+         iterator() : sec(nullptr), base_addr(0), pos(0) { }
+                      ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:997:36: error: class ‘dwarf::rangelist::iterator’ does not have any field named ‘base_addr’
+         iterator() : sec(nullptr), base_addr(0), pos(0) { }
+                                    ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:997:50: error: class ‘dwarf::rangelist::iterator’ does not have any field named ‘pos’
+         iterator() : sec(nullptr), base_addr(0), pos(0) { }
+                                                  ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh: In member function ‘bool dwarf::rangelist::iterator::operator==(const dwarf::rangelist::iterator&) const’:
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:1033:24: error: ‘sec’ was not declared in this scope
+                 return sec == o.sec && pos == o.pos;
+                        ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:1033:33: error: ‘const class dwarf::rangelist::iterator’ has no member named ‘sec’
+                 return sec == o.sec && pos == o.pos;
+                                 ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:1033:40: error: ‘pos’ was not declared in this scope
+                 return sec == o.sec && pos == o.pos;
+                                        ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:1033:49: error: ‘const class dwarf::rangelist::iterator’ has no member named ‘pos’
+                 return sec == o.sec && pos == o.pos;
+                                                 ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh: At global scope:
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:1080:31: error: ‘shared_ptr’ in namespace ‘std’ does not name a template type
+         line_table(const std::shared_ptr<section> &sec, section_offset offset,
+                               ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:1080:41: error: expected ‘,’ or ‘...’ before ‘<’ token
+         line_table(const std::shared_ptr<section> &sec, section_offset offset,
+                                         ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:1131:31: error: ‘taddr’ has not been declared
+         iterator find_address(taddr addr) const;
+                               ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:1144:14: error: ‘shared_ptr’ in namespace ‘std’ does not name a template type
+         std::shared_ptr<impl> m;
+              ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh: In member function ‘bool dwarf::line_table::valid() const’:
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:1103:26: error: ‘m’ was not declared in this scope
+                 return !!m;
+                          ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh: At global scope:
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:1185:9: error: ‘taddr’ does not name a type
+         taddr address;
+         ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:1286:43: error: ‘section_offset’ has not been declared
+         iterator(const line_table *table, section_offset pos);
+                                           ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:1341:9: error: ‘section_offset’ does not name a type
+         section_offset pos;
+         ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh: In member function ‘bool dwarf::line_table::iterator::operator==(const dwarf::line_table::iterator&) const’:
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:1315:26: error: ‘const class dwarf::line_table::iterator’ has no member named ‘pos’
+                 return o.pos == pos && o.table == table;
+                          ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:1315:33: error: ‘pos’ was not declared in this scope
+                 return o.pos == pos && o.table == table;
+                                 ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh: At global scope:
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:1373:70: error: ‘taddr’ has not been declared
+ expr_result at_data_member_location(const die &d, expr_context *ctx, taddr base, taddr pc);
+                                                                      ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:1373:82: error: ‘taddr’ has not been declared
+ expr_result at_data_member_location(const die &d, expr_context *ctx, taddr base, taddr pc);
+                                                                                  ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:1381:1: error: ‘taddr’ does not name a type
+ taddr at_entry_pc(const die &d);
+ ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:1387:1: error: ‘taddr’ does not name a type
+ taddr at_high_pc(const die &d);
+ ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:1394:1: error: ‘taddr’ does not name a type
+ taddr at_low_pc(const die &d);
+ ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:1444:32: error: ‘initializer_list’ in namespace ‘std’ does not name a template type
+                     const std::initializer_list<DW_TAG> &accept);
+                                ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:1444:48: error: expected ‘,’ or ‘...’ before ‘<’ token
+                     const std::initializer_list<DW_TAG> &accept);
+                                                ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:1478:14: error: ‘shared_ptr’ in namespace ‘std’ does not name a template type
+         std::shared_ptr<impl> m;
+              ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:1524:14: error: ‘shared_ptr’ in namespace ‘std’ does not name a template type
+         std::shared_ptr<elf_loader<Elf> > create_loader(const Elf &f)
+              ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh: In member function ‘std::hash<dwarf::unit>::result_type std::hash<dwarf::unit>::operator()(std::hash<dwarf::unit>::argument_type) const’:
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:1545:48: error: ‘const class dwarf::unit’ has no member named ‘m’
+                         return hash<decltype(a.m)>()(a.m);
+                                                ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:1545:48: error: ‘const class dwarf::unit’ has no member named ‘m’
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:1545:50: error: template argument 1 is invalid
+                         return hash<decltype(a.m)>()(a.m);
+                                                  ^
+vaccs_pin_cpp/libs/libelfin/dwarf/dwarf++.hh:1545:56: error: ‘const class dwarf::unit’ has no member named ‘m’
+                         return hash<decltype(a.m)>()(a.m);
+                                                        ^
+cc1plus: all warnings being treated as errors
+../../../source/tools/Config/makefile.default.rules:196: recipe for target 'obj-intel64/pas_analysis.o' failed
+make: *** [obj-intel64/pas_analysis.o] Error 1

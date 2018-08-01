@@ -1,8 +1,0 @@
-*.[oa]
-junk*
-*~
-build/
-cscope.files
-TAGS
-.d_*
-.*.swp

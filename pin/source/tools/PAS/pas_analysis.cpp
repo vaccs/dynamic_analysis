@@ -15,6 +15,7 @@
 #include "InstructionInstrumentation.h"
 #include "global.h"
 #include "functionInvocation.h"
+#include <vaccs_read/vaccs_dw_reader.h>
 
 /*call stack*/
 std::stack<function_invocation_transaction> invocation_stack;
@@ -31,7 +32,6 @@ std::ofstream ou_read_indirect;
 std::ofstream ou_write_indirect;
 std::ofstream ou_register;
 std::ofstream pas_output;
-
 
 
 /*
@@ -97,6 +97,8 @@ void setup_output_files(char* filename){
 	else{
 		application_name = filename_string.substr(index+1,filename_string.size()-index-1);
 	}
+
+
 	application_name.append(".csv");
 	cout<<application_name<<std::endl;
 	pas_output.open(application_name.c_str());
@@ -111,6 +113,7 @@ void setup_output_files(char* filename){
 	ou_write_indirect.open("write_indirect.csv");
 	ou_return.open("return.csv");
 	ou_register.open("register.csv");
+
 }
 void finalize_outputfiles(){
 	printf("saving files\n");
@@ -139,6 +142,8 @@ void initialize(){
 		//file output initialization
 
 }
+
+
 VOID Fini(INT32 code, VOID *v)
 {
 
@@ -157,6 +162,18 @@ int main(int argc, char *argv[])
 	  */
 	initialize();
 	setup_output_files(argv[6]);
+
+   /*
+    * read dwarf information from executable
+    */
+   std::string vfn(argv[6]);
+   vfn.append(".vdw");
+	vaccs_dw_reader *vdr;
+	vdr = new vaccs_dw_reader();
+	vdr->add_file_name(vfn);
+
+	vdr->read_vaccs_dw_info();
+ 
 	PIN_InitSymbols();
     if( PIN_Init(argc,argv) )
     {

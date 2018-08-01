@@ -1,0 +1,2 @@
+source config
+$PIN_ROOT/pin -injection child -t $PIN_ROOT/source/tools/MemTrace/obj-intel64/memtrace_simple.so -- $@
