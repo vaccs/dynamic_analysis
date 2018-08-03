@@ -18,6 +18,8 @@
 #include <tables/symbol_table.h>
 #include <tables/symbol_table_factory.h>
 
+#include <pin.H>
+
 /**
  * Class: cu_record
  *
@@ -137,14 +139,30 @@ public:
 	bool pc_in_range(Generic pc);
 
 	/**
-	 * Translate a memory access by an instruction in this compilation unit to a variable name
+	 * Translate a memory access to a variable name
 	 *
+	 * @param ctxt a pin process context
 	 * @param inst_addr the address of the instruction making the memory access
 	 * @param mem_addr the memory address being accessed
-	 * @return the variable record of the variable being accessed if possible to determine, otherwise
-	 * 			nullptr
+	 * @return a key,var_record* pair that matches the given address, or default_var_pai
 	 */
-	var_record* translate_address_to_variable(Generic inst_addr, Generic mem_addr);
+	std::pair<std::string,var_record*> translate_address_to_variable(const CONTEXT *ctxt,Generic inst_addr, Generic mem_addr);
+
+	/**
+	 * Translate an instruction address to a function containing the address
+	 *
+	 * @param inst_addr the address of the instruction making the memory access
+	 * @return a key,var_record* pair that matches the given address, or default_var_pai
+	 */
+	std::pair<std::string,var_record*> translate_address_to_function(Generic inst_addr);
+
+	/**
+	 * Get the scope name of a var_record
+	 *
+	 * @param vrec a variable record
+	 * @return a string containing the name of the scope (function name or *G*)
+	 */
+	std::string get_scope(var_record *vrec);
 
 	/**
 	 * Write a compilation unit record to a file
@@ -175,12 +193,36 @@ public:
 	/**
 	 * Translate a memory access to a variable name
 	 *
+	 * @param ctxt a pin process context
 	 * @param inst_addr the address of the instruction making the memory access
 	 * @param mem_addr the memory address being accessed
-	 * @return the variable record of the variable being accessed if possible to determine, otherwise
-	 * 			nullptr
+	 * @return a key,var_record* pair that matches the given address, or default_var_pai
 	 */
-	var_record* translate_address_to_variable(Generic inst_addr, Generic mem_addr);
+	std::pair<std::string,var_record*> translate_address_to_variable(const CONTEXT *ctxt,Generic inst_addr, Generic mem_addr);
+
+	/**
+	 * Translate an instruction address to a function containing the address
+	 *
+	 * @param inst_addr the address of the instruction making the memory access
+	 * @return a key,var_record* pair that matches the given address, or default_var_pai
+	 */
+	std::pair<std::string,var_record*> translate_address_to_function(Generic inst_addr);
+
+	/**
+	 * Get the scope name of a var_record
+	 *
+	 * @param vrec a variable record
+	 * @return a string containing the name of the scope (function name or *G*)
+	 */
+	std::string get_scope(var_record *vrec);
+
+	/**
+ 	 * Get the type record of a type given the dwarf index
+ 	 *
+ 	 * @param dw_index a dwarf index for a type (string)
+ 	 * @return a pointer to a type_record for the give dwarf index
+ 	 */
+	type_record *get_type_record(std::string dw_index);
 
 	/**
 	 * Write the compilation unit table to a file

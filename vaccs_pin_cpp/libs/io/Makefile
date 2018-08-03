@@ -12,13 +12,27 @@ CXX = g++
 
 OBJS = $(addsuffix .o,$(basename $(SRCS)))
 
+PINDIR = /home/carr/vaccs/dynamic_analysis/pin
 ENV = -g
 
 INCLUDES=  \
-			 -I..
+	-I.. \
+    -I$(PINDIR)/source/include/pin \
+    -I$(PINDIR)/source/include/pin/gen \
+    -I$(PINDIR)/extras/components/include \
+    -I$(PINDIR)/extras/xed-intel64/include/xed \
+    -I$(PINDIR)/source/tools/InstLib
 
 CFLAGS	= $(INCLUDES) $(ENV) -fPIC
-CXXFLAGS	= $(INCLUDES) $(ENV) -fPIC -fabi-version=2
+CXXFLAGS	= $(INCLUDES) $(ENV) -Werror -Wall -Wno-unknown-pragmas \
+	 -D__PIN__=1 -DPIN_CRT=1 -fno-stack-protector -fno-exceptions -funwind-tables \
+	 -fasynchronous-unwind-tables -fno-rtti -DTARGET_IA32E -DHOST_IA32E -fPIC -DTARGET_LINUX \
+	 -fabi-version=2 -isystem /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include \
+	 -isystem /home/carr/vaccs/dynamic_analysis/pin/extras/libstdc++/include \
+	 -isystem /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include \
+	 -isystem /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/arch-x86_64 \
+	 -isystem /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/kernel/uapi \
+	 -isystem /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/kernel/uapi/asm-x86
 
 RM = /bin/rm -f
 
@@ -50,7 +64,7 @@ clean:
 
 .d_%: %.cpp
 	echo  "Updating dependences for" $< "..."
-	$(CPP) -MM -MT '$(basename $<).o' $(INCLUDES) -MF $@ $<
+	$(CPP) $(CXXFLAGS) -MM -MT '$(basename $<).o' -MF $@ $<
 
 include $(DEPENDS)
 

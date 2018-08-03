@@ -13,9 +13,14 @@
 #include <string>
 
 #include <tables/symbol_table.h>
+#include <tables/type_table.h>
 
+#include <pin.H>
 
-const std::string void_type = "void";
+class var_record;
+
+extern const std::string void_type;
+extern const std::pair<std::string,var_record*> default_var_pair;
 
 class var_table;
 /**
@@ -38,7 +43,7 @@ private:
 	Generic decl_line; /* the line of the file on which this is defined */
 	Generic low_pc; /* the lowest pc of a subroutine variable */
 	Generic high_pc; /* the highest pc of a subroutine variable */
-	Generic location; /* either an offset from the frame pointer (is_local || is_param) or a global address */
+	Generic location; /* an expression storing how to compute the address of the variable*/
 
 public:
 
@@ -118,7 +123,7 @@ public:
 	/**
 	 * Add the declartion line to the object using a builder pattern
 	 *
-	 * @param decl_line the declaration line of this variable
+	 * @param decl_line the declartion line of this variable
 	 * @return the object
 	 */
 	var_record* add_decl_line(Generic decl_line) {
@@ -258,22 +263,49 @@ public:
 	bool pc_in_range(Generic pc);
 
 	/**
-	 * Find the variable declared in this procedure that has the given address. If there is no
-	 * local variable, then check the global symbol table for a global variable
+	 * Find the variable declared in this procedure that has the given address.
 	 *
+	 * @param ctxt a pin process context
 	 * @param mem_addr the memory address for some variable
-	 * @return a pointer to the var_record of a variable having the given address, nullptr if no such
+	 * @param ttab the type table for this compilation unit
+	 * @return a name/var_record pair of a variable having the given address, default_var_pair if no such
 	 * 			variable
 	 */
-	var_record *find_address(Generic mem_addr);
+	std::pair<std::string,var_record*> find_address_in_subprog(const CONTEXT *ctxt, Generic mem_addr,type_table *ttab);
 
 	/**
-	 * Write a var table record to a file
+	 * Determine if this variable is at the specified address
 	 *
-	 * @param fn the file name for the cu
-	 * @param fp a file pointer
+	 * @param ctxt a pin process context
+	 * @param mem_addr the prospective memory address
+	 * @return true if the variable is at the prospective address, otherwise false
 	 */
-	virtual void write(std::string fn,FILE *fp);
+	bool is_at_address(const CONTEXT *ctxt, Generic mem_addr, type_record *trec);
+
+	/**
+	 * Get the scope name of a var_record for a local variable 
+ 	 *
+ 	 * @param vrec a variable record
+ 	 * @return a true if this variable is in this subprogram's scope, otherwise false
+ 	 */
+	 bool get_scope(var_record *vrec);
+
+	/**
+ 	 * Get the value at an address based on a particular type
+ 	 *
+ 	 * @param trec a type record indicating the type of the value stored at the address
+ 	 * @param addr a memory address
+ 	 * @return a string containg the value stored at the address
+  	 */
+	std::string read_value(type_record *trec, Generic addr);
+
+   /**
+	* Write a var table record to a file
+	*
+	* @param fn the file name for the cu
+	* @param fp a file pointer
+	*/
+   virtual void write(std::string fn,FILE *fp);
 
 };
 
@@ -287,12 +319,13 @@ public:
 
 	var_record* get(std::string str) { return (var_record*) symbol_table::get(str); }
 
-	/**
-	 * Write the var table to a file
-	 *
-	 * @param fp a file pointer
-	 */
-	virtual void write(FILE *fp);
+   /**
+	* Write the var table to a file
+	*
+	* @param fp a file pointer
+	*/
+   virtual void write(FILE *fp);
+
 };
 
 #endif

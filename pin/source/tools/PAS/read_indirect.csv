@@ -1,1 +1,12 @@
-line:0,	 id:34,"call qword ptr [r12+rbx*8]",0x0000000000600e10,8,4005400000000000,16,1
+line:0,	 id:105,"call qword ptr [r12+rbx*8]",0x0000000000600e10,8,2005400000000000,43,1
+line:11,	 id:240,"mov eax, dword ptr [rbp-0x34]",0x00007ffc2bd23ecc,4,00000000,214,7ffc2bd23f00
+line:11,	 id:243,"mov eax, dword ptr [rbp+rax*4-0x30]",0x00007ffc2bd23ed0,4,00000000,214,7ffc2bd23f00
+line:11,	 id:267,"mov eax, dword ptr [rbp+rax*4-0x30]",0x00007ffc2bd23ed4,4,01000000,214,7ffc2bd23f00
+line:11,	 id:291,"mov eax, dword ptr [rbp+rax*4-0x30]",0x00007ffc2bd23ed8,4,02000000,214,7ffc2bd23f00
+line:11,	 id:315,"mov eax, dword ptr [rbp+rax*4-0x30]",0x00007ffc2bd23edc,4,03000000,214,7ffc2bd23f00
+line:11,	 id:339,"mov eax, dword ptr [rbp+rax*4-0x30]",0x00007ffc2bd23ee0,4,04000000,214,7ffc2bd23f00
+line:11,	 id:363,"mov eax, dword ptr [rbp+rax*4-0x30]",0x00007ffc2bd23ee4,4,05000000,214,7ffc2bd23f00
+line:11,	 id:387,"mov eax, dword ptr [rbp+rax*4-0x30]",0x00007ffc2bd23ee8,4,06000000,214,7ffc2bd23f00
+line:11,	 id:411,"mov eax, dword ptr [rbp+rax*4-0x30]",0x00007ffc2bd23eec,4,07000000,214,7ffc2bd23f00
+line:11,	 id:435,"mov eax, dword ptr [rbp+rax*4-0x30]",0x00007ffc2bd23ef0,4,08000000,214,7ffc2bd23f00
+line:11,	 id:459,"mov eax, dword ptr [rbp+rax*4-0x30]",0x00007ffc2bd23ef4,4,09000000,214,7ffc2bd23f00

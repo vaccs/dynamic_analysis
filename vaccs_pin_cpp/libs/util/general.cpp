@@ -38,9 +38,9 @@ void die_with_message(char* format, ...)
 
   va_start(arg_list, format);
     {
-       fprintf(stderr, "Abnormal termination:  ");
-       vfprintf(stderr, format, arg_list);
-       fprintf(stderr, "\n");
+       printf( "Abnormal termination:  ");
+       vprintf(format, arg_list);
+       printf("\n");
     }
   va_end(arg_list);
 

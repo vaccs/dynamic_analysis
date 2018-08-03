@@ -117,7 +117,7 @@ typedef bool Boolean;   /* BOOLEAN DATATYPE             */
 typedef	enum { false, true } Boolean;	/* BOOLEAN DATATYPE		*/
 #endif
 #define	NOT(x)	((Boolean) !(x))	/* negate an int or bool	*/
-#define	BOOL(x)	((Boolean)((x) ? 1 : 0))/* convert an int to a boolean	*/
+#define	BOOLEAN(x)	((Boolean)((x) ? 1 : 0))/* convert an int to a boolean	*/
 
 #ifdef __x86_64__
 typedef	unsigned long	Generic;		/* GENERIC DATATYPE		*/

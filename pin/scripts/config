@@ -1,3 +1,2 @@
-DYN_ROOT=/home/carr/vaccs/dynamic_analysis
-PIN_ROOT=$DYN_ROOT/pin
-VACCS_ROOT=$DYN_ROOT/vaccs_pin_cpp
+PIN_ROOT=/home/carr/vaccs/dynamic_analysis/pin
+VACCS_ROOT=/home/carr/vaccs/vaccs_pin_cpp
