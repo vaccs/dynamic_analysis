@@ -12,6 +12,11 @@
 
 #ifndef GLOBAL_H_
 #define GLOBAL_H_
+
+#define NOCSOURCE "__NOCSOURCE__"
+#define NOASMSOURCE "__NOASMSOURCE__"
+#define NOFUNCNAME "__NOFUNCTIONNAME__"
+
 // file output variables
 
 extern std::ofstream ou_function_invocation;

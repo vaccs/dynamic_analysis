@@ -1,0 +1,178 @@
+pin_function_invocation~!~0|_start|0
+pin_variable_access~!~0|4|"pop rsi"rsp|0x00007ffc2bd23ff0|8||0|0
+pin_variable_access~!~0|11|"push rax"RCE__|0x00007ffc2bd23fe8|8|00007f8875b33c6a|0000000000000000|0|0
+pin_variable_access~!~0|15|"push rsp" |0x00007ffc2bd23fe0|8|0000000000000000|0000000000000000|0|0
+pin_variable_access~!~0|22|"call 0x400430"|0x00007ffc2bd23fd8|8|0000000000000000|00007ffc2bd23ff0|0|0
+pin_function_invocation~!~28|__libc_start_main@plt|0
+pin_variable_access~!~0|29|"jmp qword ptr [rip+0x200bea]"|0x0000000000601020|8||28|0
+pin_variable_access~!~0|31|"push 0x1"10|0x00007ffc2bd23fd0|8|00007ffc2bd23ff0|0000000000400450|28|0
+pin_variable_access~!~0|36|"push qword ptr [rip+0x200bf2]"|0x0000000000601008|8||28|0
+pin_variable_access~!~0|37|"push qword ptr [rip+0x200bf2]"|0x00007ffc2bd23fc8|8|0000000000400450|0000000000000000|28|0
+pin_variable_access~!~0|41|"jmp qword ptr [rip+0x200bf4]"|0x0000000000601010|8||28|0
+pin_function_invocation~!~43|__libc_csu_init|4005e0
+pin_variable_access~!~0|44|"push r15"RCE__|0x00007ffc2bd23f10|8|0000000000400450|00000000004005e0|43|4005e0
+pin_variable_access~!~0|48|"push r14"RCE__|0x00007ffc2bd23f08|8|00000000004005e0|0000000000000000|43|4005e0
+pin_variable_access~!~0|53|"push r13"x8|0x00007ffc2bd23f00|8|0000000000000000|00007f88620d8299|43|4005e0
+pin_variable_access~!~0|57|"push r12"E__|0x00007ffc2bd23ef8|8|00007f88620d8299|0000000000000000|43|4005e0
+pin_variable_access~!~0|62|"push rbp"rax|0x00007ffc2bd23ef0|8|0000000000000000|00007f8875b43ab0|43|4005e0
+pin_variable_access~!~0|67|"push rbx"x8|0x00007ffc2bd23ee8|8|00007f8875b43ab0|0000000000000000|43|600e18
+pin_variable_access~!~0|79|"call 0x4003f0"|0x00007ffc2bd23ed8|8|0000000000000000|0000000000000000|43|1
+pin_function_invocation~!~85|_init|1
+pin_variable_access~!~0|88|"mov rax, qword ptr [rip+0x200bfd]"|0x0000000000600ff8|8||85|1
+pin_variable_access~!~0|94|"ret "|0x00007ffc2bd23ed8|8||43|1
+pin_return~!~95|7ffc2bd23ed8|7ffc2bd23ee0|43
+pin_pointer_access~!~0|105|"call qword ptr [r12+rbx*8]"|0x0000000000600e10|8||43|1
+pin_pointer_access~!~0|106|"call qword ptr [r12+rbx*8]"|0x00007ffc2bd23ed8|8|0000000000400611|0000000000000000|43|1
+pin_variable_access~!~0|112|"cmp qword ptr [rdi], 0x0"|0x0000000000600e20|8||43|1
+pin_function_invocation~!~116|register_tm_clones|1
+pin_variable_access~!~0|118|"push rbp"|0x00007ffc2bd23ed0|8|0000000000000000|0000000000000000|116|1
+pin_variable_access~!~0|134|"pop rbp"|0x00007ffc2bd23ed0|8||116|7ffc2bd23ed0
+pin_variable_access~!~0|139|"ret "|0x00007ffc2bd23ed8|8||43|1
+pin_return~!~140|7ffc2bd23ed8|7ffc2bd23ee0|43
+pin_variable_access~!~0|149|"pop rbx"|0x00007ffc2bd23ee8|8||43|1
+pin_variable_access~!~0|153|"pop rbp"|0x00007ffc2bd23ef0|8||43|1
+pin_variable_access~!~0|157|"pop r12"|0x00007ffc2bd23ef8|8||43|4005e0
+pin_variable_access~!~0|161|"pop r13"|0x00007ffc2bd23f00|8||43|4005e0
+pin_variable_access~!~0|165|"pop r14"|0x00007ffc2bd23f08|8||43|4005e0
+pin_variable_access~!~0|169|"pop r15"|0x00007ffc2bd23f10|8||43|4005e0
+pin_variable_access~!~0|174|"ret "|0x00007ffc2bd23f18|8||28|4005e0
+pin_return~!~175|7ffc2bd23f18|7ffc2bd23f20|28
+pin_function_invocation~!~178|main|4005e0
+pin_variable_access~!~18|180|"push rbp"|0x00007ffc2bd23f10|8|0000000000000000|0000000000000000|178|4005e0
+pin_variable_access~!~19|186|"call 0x4005ab"|0x00007ffc2bd23f08|8|0000000000000000|00007ffc2bd23ff0|178|7ffc2bd23f10
+pin_function_invocation~!~192|foo|7ffc2bd23f10
+pin_variable_access~!~14|193|"push rbp"|0x00007ffc2bd23f00|8|00007ffc2bd23ff0|0000000000400450|192|7ffc2bd23f10
+pin_variable_access~!~16|198|"pop rbp"|0x00007ffc2bd23f00|8||192|7ffc2bd23f00
+pin_variable_access~!~16|203|"ret "|0x00007ffc2bd23f08|8||178|7ffc2bd23f10
+pin_return~!~204|7ffc2bd23f08|7ffc2bd23f10|178
+pin_variable_access~!~20|208|"call 0x400546"|0x00007ffc2bd23f08|8|00000000004005c0|00007ffc2bd23f10|178|7ffc2bd23f10
+pin_function_invocation~!~214|bar|7ffc2bd23f10
+pin_variable_access~!~6|215|"push rbp"|0x00007ffc2bd23f00|8|00007ffc2bd23f10|0000000000400450|214|7ffc2bd23f10
+pin_variable_access~!~6|222|"mov rax, qword ptr fs:[0x28]"|0x00007f8862061728|8||214|7ffc2bd23f00
+pin_variable_access~!~6|224|"mov qword ptr [rbp-0x8], rax"|0x00007ffc2bd23ef8|8|0000000000400450|9cc70b3f93443a00|214|7ffc2bd23f00
+pin_variable_access~!~9|228|"mov dword ptr [rbp-0x34], 0x0"|0x00007ffc2bd23ecc|4|00000000|00000000|214|7ffc2bd23f00
+pin_variable_access~!~9|231|"cmp dword ptr [rbp-0x34], 0x9"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_variable_access~!~10|233|"mov eax, dword ptr [rbp-0x34]"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_variable_access~!~10|236|"mov edx, dword ptr [rbp-0x34]"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_pointer_access~!~10|238|"mov dword ptr [rbp+rax*4-0x30], edx"|0x00007ffc2bd23ed0|4|00000001|00000000|214|7ffc2bd23f00
+pin_pointer_access~!~11|240|"mov eax, dword ptr [rbp-0x34]"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_pointer_access~!~11|243|"mov eax, dword ptr [rbp+rax*4-0x30]"|0x00007ffc2bd23ed0|4||214|7ffc2bd23f00
+pin_variable_access~!~11|246|"mov eax, dword ptr [rbp-0x34]"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_pointer_access~!~11|249|"mov dword ptr [rax*4+0x601060], edx"|0x0000000000601060|4|00000000|00000001|214|7ffc2bd23f00
+pin_variable_access~!~9|251|"add dword ptr [rbp-0x34], 0x1"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_variable_access~!~9|252|"add dword ptr [rbp-0x34], 0x1"|0x00007ffc2bd23ecc|4|00000000|00000001|214|7ffc2bd23f00
+pin_variable_access~!~9|255|"cmp dword ptr [rbp-0x34], 0x9"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_variable_access~!~10|257|"mov eax, dword ptr [rbp-0x34]"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_variable_access~!~10|260|"mov edx, dword ptr [rbp-0x34]"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_pointer_access~!~10|262|"mov dword ptr [rbp+rax*4-0x30], edx"|0x00007ffc2bd23ed4|4|00000000|00000001|214|7ffc2bd23f00
+pin_variable_access~!~11|264|"mov eax, dword ptr [rbp-0x34]"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_pointer_access~!~11|267|"mov eax, dword ptr [rbp+rax*4-0x30]"|0x00007ffc2bd23ed4|4||214|7ffc2bd23f00
+pin_variable_access~!~11|270|"mov eax, dword ptr [rbp-0x34]"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_pointer_access~!~11|273|"mov dword ptr [rax*4+0x601060], edx"|0x0000000000601064|4|00000000|00000002|214|7ffc2bd23f00
+pin_variable_access~!~9|275|"add dword ptr [rbp-0x34], 0x1"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_variable_access~!~9|276|"add dword ptr [rbp-0x34], 0x1"|0x00007ffc2bd23ecc|4|00000001|00000002|214|7ffc2bd23f00
+pin_variable_access~!~9|279|"cmp dword ptr [rbp-0x34], 0x9"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_variable_access~!~10|281|"mov eax, dword ptr [rbp-0x34]"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_variable_access~!~10|284|"mov edx, dword ptr [rbp-0x34]"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_pointer_access~!~10|286|"mov dword ptr [rbp+rax*4-0x30], edx"|0x00007ffc2bd23ed8|4|0040062d|00000002|214|7ffc2bd23f00
+pin_variable_access~!~11|288|"mov eax, dword ptr [rbp-0x34]"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_pointer_access~!~11|291|"mov eax, dword ptr [rbp+rax*4-0x30]"|0x00007ffc2bd23ed8|4||214|7ffc2bd23f00
+pin_variable_access~!~11|294|"mov eax, dword ptr [rbp-0x34]"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_pointer_access~!~11|297|"mov dword ptr [rax*4+0x601060], edx"|0x0000000000601068|4|00000000|00000003|214|7ffc2bd23f00
+pin_variable_access~!~9|299|"add dword ptr [rbp-0x34], 0x1"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_variable_access~!~9|300|"add dword ptr [rbp-0x34], 0x1"|0x00007ffc2bd23ecc|4|00000002|00000003|214|7ffc2bd23f00
+pin_variable_access~!~9|303|"cmp dword ptr [rbp-0x34], 0x9"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_variable_access~!~10|305|"mov eax, dword ptr [rbp-0x34]"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_variable_access~!~10|308|"mov edx, dword ptr [rbp-0x34]"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_pointer_access~!~10|310|"mov dword ptr [rbp+rax*4-0x30], edx"|0x00007ffc2bd23edc|4|00000000|00000003|214|7ffc2bd23f00
+pin_variable_access~!~11|312|"mov eax, dword ptr [rbp-0x34]"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_pointer_access~!~11|315|"mov eax, dword ptr [rbp+rax*4-0x30]"|0x00007ffc2bd23edc|4||214|7ffc2bd23f00
+pin_variable_access~!~11|318|"mov eax, dword ptr [rbp-0x34]"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_pointer_access~!~11|321|"mov dword ptr [rax*4+0x601060], edx"|0x000000000060106c|4|00000000|00000004|214|7ffc2bd23f00
+pin_variable_access~!~9|323|"add dword ptr [rbp-0x34], 0x1"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_variable_access~!~9|324|"add dword ptr [rbp-0x34], 0x1"|0x00007ffc2bd23ecc|4|00000003|00000004|214|7ffc2bd23f00
+pin_variable_access~!~9|327|"cmp dword ptr [rbp-0x34], 0x9"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_variable_access~!~10|329|"mov eax, dword ptr [rbp-0x34]"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_variable_access~!~10|332|"mov edx, dword ptr [rbp-0x34]"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_pointer_access~!~10|334|"mov dword ptr [rbp+rax*4-0x30], edx"|0x00007ffc2bd23ee0|4|00000000|00000004|214|7ffc2bd23f00
+pin_variable_access~!~11|336|"mov eax, dword ptr [rbp-0x34]"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_pointer_access~!~11|339|"mov eax, dword ptr [rbp+rax*4-0x30]"|0x00007ffc2bd23ee0|4||214|7ffc2bd23f00
+pin_variable_access~!~11|342|"mov eax, dword ptr [rbp-0x34]"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_pointer_access~!~11|345|"mov dword ptr [rax*4+0x601060], edx"|0x0000000000601070|4|00000000|00000005|214|7ffc2bd23f00
+pin_variable_access~!~9|347|"add dword ptr [rbp-0x34], 0x1"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_variable_access~!~9|348|"add dword ptr [rbp-0x34], 0x1"|0x00007ffc2bd23ecc|4|00000004|00000005|214|7ffc2bd23f00
+pin_variable_access~!~9|351|"cmp dword ptr [rbp-0x34], 0x9"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_variable_access~!~10|353|"mov eax, dword ptr [rbp-0x34]"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_variable_access~!~10|356|"mov edx, dword ptr [rbp-0x34]"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_pointer_access~!~10|358|"mov dword ptr [rbp+rax*4-0x30], edx"|0x00007ffc2bd23ee4|4|00000000|00000005|214|7ffc2bd23f00
+pin_variable_access~!~11|360|"mov eax, dword ptr [rbp-0x34]"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_pointer_access~!~11|363|"mov eax, dword ptr [rbp+rax*4-0x30]"|0x00007ffc2bd23ee4|4||214|7ffc2bd23f00
+pin_variable_access~!~11|366|"mov eax, dword ptr [rbp-0x34]"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_pointer_access~!~11|369|"mov dword ptr [rax*4+0x601060], edx"|0x0000000000601074|4|00000000|00000006|214|7ffc2bd23f00
+pin_variable_access~!~9|371|"add dword ptr [rbp-0x34], 0x1"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_variable_access~!~9|372|"add dword ptr [rbp-0x34], 0x1"|0x00007ffc2bd23ecc|4|00000005|00000006|214|7ffc2bd23f00
+pin_variable_access~!~9|375|"cmp dword ptr [rbp-0x34], 0x9"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_variable_access~!~10|377|"mov eax, dword ptr [rbp-0x34]"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_variable_access~!~10|380|"mov edx, dword ptr [rbp-0x34]"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_pointer_access~!~10|382|"mov dword ptr [rbp+rax*4-0x30], edx"|0x00007ffc2bd23ee8|4|00000000|00000006|214|7ffc2bd23f00
+pin_variable_access~!~11|384|"mov eax, dword ptr [rbp-0x34]"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_pointer_access~!~11|387|"mov eax, dword ptr [rbp+rax*4-0x30]"|0x00007ffc2bd23ee8|4||214|7ffc2bd23f00
+pin_variable_access~!~11|390|"mov eax, dword ptr [rbp-0x34]"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_pointer_access~!~11|393|"mov dword ptr [rax*4+0x601060], edx"|0x0000000000601078|4|00000000|00000007|214|7ffc2bd23f00
+pin_variable_access~!~9|395|"add dword ptr [rbp-0x34], 0x1"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_variable_access~!~9|396|"add dword ptr [rbp-0x34], 0x1"|0x00007ffc2bd23ecc|4|00000006|00000007|214|7ffc2bd23f00
+pin_variable_access~!~9|399|"cmp dword ptr [rbp-0x34], 0x9"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_variable_access~!~10|401|"mov eax, dword ptr [rbp-0x34]"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_variable_access~!~10|404|"mov edx, dword ptr [rbp-0x34]"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_pointer_access~!~10|406|"mov dword ptr [rbp+rax*4-0x30], edx"|0x00007ffc2bd23eec|4|00000000|00000007|214|7ffc2bd23f00
+pin_variable_access~!~11|408|"mov eax, dword ptr [rbp-0x34]"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_pointer_access~!~11|411|"mov eax, dword ptr [rbp+rax*4-0x30]"|0x00007ffc2bd23eec|4||214|7ffc2bd23f00
+pin_variable_access~!~11|414|"mov eax, dword ptr [rbp-0x34]"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_pointer_access~!~11|417|"mov dword ptr [rax*4+0x601060], edx"|0x000000000060107c|4|00000000|00000008|214|7ffc2bd23f00
+pin_variable_access~!~9|419|"add dword ptr [rbp-0x34], 0x1"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_variable_access~!~9|420|"add dword ptr [rbp-0x34], 0x1"|0x00007ffc2bd23ecc|4|00000007|00000008|214|7ffc2bd23f00
+pin_variable_access~!~9|423|"cmp dword ptr [rbp-0x34], 0x9"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_variable_access~!~10|425|"mov eax, dword ptr [rbp-0x34]"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_variable_access~!~10|428|"mov edx, dword ptr [rbp-0x34]"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_pointer_access~!~10|430|"mov dword ptr [rbp+rax*4-0x30], edx"|0x00007ffc2bd23ef0|4|004005e0|00000008|214|7ffc2bd23f00
+pin_variable_access~!~11|432|"mov eax, dword ptr [rbp-0x34]"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_pointer_access~!~11|435|"mov eax, dword ptr [rbp+rax*4-0x30]"|0x00007ffc2bd23ef0|4||214|7ffc2bd23f00
+pin_variable_access~!~11|438|"mov eax, dword ptr [rbp-0x34]"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_pointer_access~!~11|441|"mov dword ptr [rax*4+0x601060], edx"|0x0000000000601080|4|00000000|00000009|214|7ffc2bd23f00
+pin_variable_access~!~9|443|"add dword ptr [rbp-0x34], 0x1"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_variable_access~!~9|444|"add dword ptr [rbp-0x34], 0x1"|0x00007ffc2bd23ecc|4|00000008|00000009|214|7ffc2bd23f00
+pin_variable_access~!~9|447|"cmp dword ptr [rbp-0x34], 0x9"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_variable_access~!~10|449|"mov eax, dword ptr [rbp-0x34]"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_variable_access~!~10|452|"mov edx, dword ptr [rbp-0x34]"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_pointer_access~!~10|454|"mov dword ptr [rbp+rax*4-0x30], edx"|0x00007ffc2bd23ef4|4|00000000|00000009|214|7ffc2bd23f00
+pin_variable_access~!~11|456|"mov eax, dword ptr [rbp-0x34]"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_pointer_access~!~11|459|"mov eax, dword ptr [rbp+rax*4-0x30]"|0x00007ffc2bd23ef4|4||214|7ffc2bd23f00
+pin_variable_access~!~11|462|"mov eax, dword ptr [rbp-0x34]"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_pointer_access~!~11|465|"mov dword ptr [rax*4+0x601060], edx"|0x0000000000601084|4|00000000|0000000a|214|7ffc2bd23f00
+pin_variable_access~!~9|467|"add dword ptr [rbp-0x34], 0x1"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_variable_access~!~9|468|"add dword ptr [rbp-0x34], 0x1"|0x00007ffc2bd23ecc|4|00000009|0000000a|214|7ffc2bd23f00
+pin_variable_access~!~9|471|"cmp dword ptr [rbp-0x34], 0x9"|0x00007ffc2bd23ecc|4||214|7ffc2bd23f00
+pin_variable_access~!~13|474|"mov rax, qword ptr [rbp-0x8]"|0x00007ffc2bd23ef8|8||214|7ffc2bd23f00
+pin_variable_access~!~13|476|"xor rax, qword ptr fs:[0x28]"|0x00007f8862061728|8||214|7ffc2bd23f00
+pin_variable_access~!~13|479|"leave "|0x00007ffc2bd23f00|8||214|7ffc2bd23f00
+pin_variable_access~!~13|483|"ret "|0x00007ffc2bd23f08|8||178|7ffc2bd23f10
+pin_return~!~484|7ffc2bd23f08|7ffc2bd23f10|178
+pin_variable_access~!~21|488|"pop rbp"|0x00007ffc2bd23f10|8||178|7ffc2bd23f10
+pin_variable_access~!~21|493|"ret "|0x00007ffc2bd23f18|8||28|4005e0
+pin_return~!~494|7ffc2bd23f18|7ffc2bd23f20|28
+pin_function_invocation~!~497|__do_global_dtors_aux|7ffc2bd23ed0
+pin_variable_access~!~0|498|"cmp byte ptr [rip+0x200b39], 0x0"|0x0000000000601040|1||497|7ffc2bd23ed0
+pin_variable_access~!~0|501|"push rbp"|0x00007ffc2bd23e00|8|0001000100010000|00007f8875b43c71|497|7ffc2bd23ed0
+pin_variable_access~!~0|506|"call 0x400480"|0x00007ffc2bd23df8|8|00007f8875b43c71|0000000000000000|497|7ffc2bd23e00
+pin_function_invocation~!~512|deregister_tm_clones|7ffc2bd23e00
+pin_variable_access~!~0|514|"push rbp"|0x00007ffc2bd23df0|8|0000000000000000|00007ffc2bd23ff0|512|7ffc2bd23e00
+pin_variable_access~!~0|522|"pop rbp"|0x00007ffc2bd23df0|8||512|7ffc2bd23df0
+pin_variable_access~!~0|527|"ret "|0x00007ffc2bd23df8|8||497|7ffc2bd23e00
+pin_return~!~528|7ffc2bd23df8|7ffc2bd23e00|497
+pin_variable_access~!~0|531|"pop rbp"|0x00007ffc2bd23e00|8||497|7ffc2bd23e00
+pin_variable_access~!~0|535|"mov byte ptr [rip+0x200b26], 0x1"|0x0000000000601040|1|00|01|497|7ffc2bd23ed0
+pin_variable_access~!~0|538|"ret "|0x00007ffc2bd23e08|8||28|7ffc2bd23ed0
+pin_return~!~539|7ffc2bd23e08|7ffc2bd23e10|28
+pin_function_invocation~!~542|_fini|7ffc2bd23ed0
+pin_variable_access~!~0|548|"ret "|0x00007ffc2bd23e08|8||28|7ffc2bd23ed0
+pin_return~!~549|7ffc2bd23e08|7ffc2bd23e10|28

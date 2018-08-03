@@ -9,8 +9,20 @@
 #include "database_access_api.h"
 #include<iostream>
 #include <fstream>
+#include <cstring>
+
+#include <io/vaccs_record_factory.h>
+#include <io/vaccs_record.h>
+#include <io/func_inv_record.h>
+#include <io/return_record.h>
+#include <vaccs_read/vaccs_dw_reader.h>
+
+extern vaccs_dw_reader *vdr;
+extern FILE *vfp;
+
 function_invocation_transaction function_invocation_event;
-VOID functionInvocationBefore(void* function_name,const CONTEXT* ctxt){
+VOID functionInvocationBefore(void* function_name,const CONTEXT* ctxt,
+      ADDRINT ip){
 	char* name = (char*) function_name;
 	current_function_name = name;
 	if(strcmp(name,".plt")==0) return;
@@ -31,11 +43,58 @@ VOID functionInvocationBefore(void* function_name,const CONTEXT* ctxt){
 	std::cout<<"Invocation ID:"<<current_invocation_id<<"function "<<name<<" was called. Frame pointer was "<<hex<<EBP<<std::endl;
 
 	//current_EBP = EBP;
+
+   // There is no call to main, so we have to detect when it is entered
+
+   if (!strncmp((char *)function_name,"main",4)) {
+
+      INT32 column,line;
+      std::string fileName;
+
+	   PIN_LockClient();
+	   PIN_GetSourceLocation(ip,&column,&line,&fileName);
+	   PIN_UnlockClient();
+
+
+      vaccs_record_factory factory;
+ 
+      cout << "Call to function" << endl;
+      cout << '\t' << "Event num: " << dec << id << endl;
+      cout << '\t' << "Function name: " << (char *)function_name << endl;
+      cout << '\t' << "Func line: " << line << endl;
+      cout << '\t' << "Inv line: 0" << endl;
+      cout << '\t' << "Func file: " << fileName << endl;
+      cout << '\t' << "Inv file: " << NOFUNCNAME << endl;
+      cout << '\t' << "Callee address: 0x" << hex << ip << endl << endl;
+      func_inv_record *frec = (func_inv_record*)factory.make_vaccs_record(VACCS_FUNCTION_INV);
+      cout << "frec = 0x" << frec << endl;
+      frec = frec->add_event_num(timestamp++)
+         ->add_func_name((char *)function_name)
+         ->add_func_line_num(line)
+         ->add_inv_line_num(0)
+         ->add_c_func_file(fileName.c_str())
+         ->add_c_inv_file(NOFUNCNAME)
+         ->add_address(ip);
+
+      cout << "Built frec" << endl;
+      frec->write(vfp);
+      cout << "Wrote frec" << endl;
+      delete frec;
+   }
 }
 VOID functionInvocationAfter(void* function_name,const CONTEXT* ctxt){
 
 	invocation_stack.pop();
-	//char* name = (char*) function_name;
+
+   vaccs_record_factory factory;
+
+   return_record *rrec = (return_record*)factory.make_vaccs_record(VACCS_RETURN);
+   rrec = rrec->add_event_num(timestamp++);
+
+   rrec->write(vfp);
+
+   delete rrec;
+ 	//char* name = (char*) function_name;
 	//ou_function_invocation<<"quit "<<name<<std::endl;
 	//ou_function_invocation<<"after pop stack size:"<<invocation_stack.size()<<std::endl;
 }
@@ -52,7 +111,7 @@ VOID FunctionInvocatioinImage(IMG img, VOID *v)
 
 					RTN_InsertCall(rtn, IPOINT_BEFORE, (AFUNPTR)functionInvocationBefore,
 
-							IARG_PTR, RTN_Name(rtn).c_str(), IARG_CONTEXT,
+							IARG_PTR, RTN_Name(rtn).c_str(), IARG_CONTEXT, IARG_INST_PTR,
 					                       IARG_END);
 					RTN_InsertCall(rtn, IPOINT_AFTER, (AFUNPTR)functionInvocationAfter,
 
