@@ -16,6 +16,8 @@
 
 #include <sstream>
 
+#include <iostream>
+
 
 /**
  * The constructor. We use a builder pattern, so there are no parameters
@@ -61,7 +63,7 @@ type_record* type_record::add_upper_bound(Generic upper_bound, bool compute_name
  * @param fp a file pointer
  */
 void type_record::write(std::string key,FILE *fp) {
-	printf("Begin type_record::write()\n");
+	DEBUGL( std::cout << "Begin type_record::write()\n");
 	assert(fwrite(&id, sizeof(id), 1, fp) == 1);
 	size_t length = key.length();
 	assert(fwrite(&length, sizeof(length), 1, fp) == 1);
@@ -81,7 +83,7 @@ void type_record::write(std::string key,FILE *fp) {
 		length = 0;
 		assert(fwrite(&length, sizeof(length), 1, fp) == 1);
 	}
-	printf("End type_record::write()\n");
+	DEBUGL( std::cout << "End type_record::write()\n");
 }
 
 type_table::~type_table() {}
@@ -91,7 +93,7 @@ type_table::~type_table() {}
  * @param fp a file pointer
  */
 void type_table::write(FILE *fp) {
-	printf("Begin type_table::write()\n");
+	DEBUGL(std::cout << "Begin type_table::write()\n");
 	assert(fwrite(&id, sizeof(id), 1, fp) == 1);
 
 	size_t num = size();
@@ -101,6 +103,6 @@ void type_table::write(FILE *fp) {
 		type_record* trec = (type_record*)it->second;
 		trec->write(it->first,fp);
 	}
-	printf("End type_table::write()\n");
+	DEBUGL(std:: cout << "End type_table::write()\n");
 
 }

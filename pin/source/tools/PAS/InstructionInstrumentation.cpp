@@ -12,47 +12,49 @@
 #include "global.h"
 #include <iostream>
 #include <string>
+#include <util/general.h>
 #include <io/vaccs_record_factory.h>
 #include <io/asm_record.h>
 
 extern FILE *vfp;
+using namespace std;
 
 /* ===================================================================== */
 /* Write a vaccs asm record for each line of assembly                    */
 /* ===================================================================== */
 VOID EmitAssembly(INS ins, VOID *v){
-   std::string assembly = INS_Disassemble(ins);
+   string assembly = INS_Disassemble(ins);
    ADDRINT ip = INS_Address(ins);
 
    INT32	column;
 	INT32	line;
-	std::string 	fileName;
+	string 	fileName;
 
 	PIN_LockClient();
 	PIN_GetSourceLocation(ip,&column,&line,&fileName);
 	PIN_UnlockClient();
 
-   std::string asmFileName;
+   string asmFileName;
    if (line == 0) {  // there is no corresponding source
       fileName = NOCSOURCE;
       asmFileName = NOASMSOURCE;
    }
    else {
       asmFileName = fileName;
-      std::string key = ".c";
-      std::string rpl = ".s";
-      std::size_t pos = asmFileName.rfind(key);
-      if (pos != std::string::npos)
+      string key = ".c";
+      string rpl = ".s";
+      size_t pos = asmFileName.rfind(key);
+      if (pos != string::npos)
          asmFileName.replace(pos,key.length(),rpl);
    }
    vaccs_record_factory factory;
    
-   cout << "ASM Record" << endl;
-   cout << '\t' << "ASM line #: " << ip << endl;
-   cout << '\t' << "C line #: " << line << endl;
-   cout << '\t' << "ASM file: " << asmFileName << endl;
-   cout << '\t' << "C file: " << fileName << endl;
-   cout << '\t' << "Instruction: " << assembly << endl << endl; 
+   DEBUGL(cout << "ASM Record" << endl);
+   DEBUGL(cout << '\t' << "ASM line #: " << ip << endl);
+   DEBUGL(cout << '\t' << "C line #: " << line << endl);
+   DEBUGL(cout << '\t' << "ASM file: " << asmFileName << endl);
+   DEBUGL(cout << '\t' << "C file: " << fileName << endl);
+   DEBUGL(cout << '\t' << "Instruction: " << assembly << endl << endl); 
   
    asm_record *arec = (asm_record*)factory.make_vaccs_record(VACCS_ASM);
    arec->add_asm_line_num(ip)

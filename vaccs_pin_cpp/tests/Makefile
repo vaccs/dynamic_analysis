@@ -1,8 +1,6 @@
 # $Id: Makefile,v 1.2 1997/03/27 20:19:38 carr Exp $
 
-DIRS = \
-	   libs \
-		tests
+DIRS = test_vio
 
 .SILENT:
 

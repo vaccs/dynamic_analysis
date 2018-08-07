@@ -9,6 +9,9 @@
 #include <fstream>
 #include "global.h"
 #include "database_access_api.h"
+#include <util/general.h>
+
+using namespace std;
 /* ===================================================================== */
 /* Instrumentation malloc and free calls to record the arguments         */
 /* ===================================================================== */
@@ -16,20 +19,20 @@
 VOID freeBefore(CHAR * name, ADDRINT size)
 {
 
-   printf("Enter freeBefore\n");
-	printf("%s(%ld)\n",name,size);
-	//std::cout<<"function "<<current_function_name<<"  Frame pointer was "<<hex<<current_EBP<<std::endl;
+   DEBUGL(cout << "Enter freeBefore\n");
+	DEBUGL(cout << name << "(" << size << ")" << endl);
+	//DEBUGL(cout<<"function "<<current_function_name<<"  Frame pointer was "<<hex<<current_EBP<<endl);
 
-   printf("Exit freeBefore\n");
+   DEBUGL(cout << "Exit freeBefore\n");
 
 }
 VOID mallocBefore(CHAR * name, ADDRINT size)
 {
-	std::cout<<"enter"<<std::endl;
-	printf("%s(%ld)\n",name,size);
-	std::cout<<"exit"<<std::endl;
+	DEBUGL(cout<<"enter"<<endl);
+	DEBUGL(cout << name << "(" << size << ")" << endl);
+	DEBUGL(cout<<"exit"<<endl);
 	if(invocation_stack.empty()) return;
-	std::cout<<"function "<<invocation_stack.top().function_name<<"  Frame pointer was "<<hex<<invocation_stack.top().frame_pointer<<std::endl;
+	DEBUGL(cout<<"function "<<invocation_stack.top().function_name<<"  Frame pointer was "<<hex<<invocation_stack.top().frame_pointer<<endl);
 
 	malloc_event.id = timestamp++;
 
@@ -40,8 +43,8 @@ VOID mallocBefore(CHAR * name, ADDRINT size)
 
 	malloc_event.allocated_size = (int) size;
 
-	ou_malloc << malloc_event.id << "," << malloc_event.frame_pointer << "," << malloc_event.id_function_invocation_happened_in<<
-			"," << malloc_event.allocated_size << std::endl;
+	//ou_malloc << malloc_event.id << "," << malloc_event.frame_pointer << "," << malloc_event.id_function_invocation_happened_in<<
+			//"," << malloc_event.allocated_size << endl;
 
 
 
@@ -50,8 +53,8 @@ VOID mallocBefore(CHAR * name, ADDRINT size)
 VOID fopenAfter(ADDRINT ret)
 {
 
-	printf(" returns %ld\n",ret);
-	std::cout<<"function "<<current_function_name<<"  Frame pointer was "<<hex<<current_EBP<<std::endl;
+	DEBUGL(cout << " returns 0x" << hex << ret << dec << endl;);
+	DEBUGL(cout<<"function "<<current_function_name<<"  Frame pointer was "<<hex<<current_EBP<<endl);
 	malloc_event.heap_address = ret;
 	store_malloc_transaction(malloc_event);
 
@@ -67,7 +70,7 @@ VOID MallocAndFreeImage(IMG img, VOID *v)
     //
     //  Find the malloc() function.
 	//if(Is_System_Image(img)) return;
-	//std::cout<<"enter"<<std::endl;
+	//DEBUGL(cout<<"enter"<<endl);
     RTN mallocRtn = RTN_FindByName(img, "malloc");
     if (RTN_Valid(mallocRtn))
     {
@@ -97,5 +100,5 @@ VOID MallocAndFreeImage(IMG img, VOID *v)
                        IARG_END);
         RTN_Close(freeRtn);
     }
-    //std::cout<<"exit"<<std::endl;
+    //DEBUGL(cout<<"exit"<<endl);
 }

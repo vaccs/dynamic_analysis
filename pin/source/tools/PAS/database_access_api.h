@@ -4,7 +4,6 @@
  *  Created on: Aug 26, 2016
  *      Author: haoli
  */
-#include "vaccs_analysis.h"
 #include "global.h"
 
 #ifndef DATABASE_ACCESS_API_H_

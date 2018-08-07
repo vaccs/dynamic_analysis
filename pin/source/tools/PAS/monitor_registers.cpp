@@ -7,6 +7,7 @@
 #include "monitor_registers.h"
 #include <iostream>
 #include "global.h"
+#include <util/general.h>
 #include <vaccs_read/vaccs_dw_reader.h>
 #include <io/vaccs_record_factory.h>
 #include <io/vaccs_record.h>
@@ -19,7 +20,7 @@ using namespace std;
 VOID AfterRegMod(ADDRINT ip, CONTEXT *ctxt, REG reg) {
 	INT32	column;
 	INT32	line;
-	std::string 	fileName;
+	string 	fileName;
 
 	PIN_LockClient();
 	PIN_GetSourceLocation(ip,&column,&line,&fileName);
@@ -29,7 +30,7 @@ VOID AfterRegMod(ADDRINT ip, CONTEXT *ctxt, REG reg) {
       fileName = NOCSOURCE;
 
    vaccs_record_factory factory;
-   std::string reg_name = REG_StringShort(reg);
+   string reg_name = REG_StringShort(reg);
    PIN_REGISTER value;
    PIN_GetContextRegval(ctxt,reg,(UINT8*)&value);
    Generic regval;
@@ -51,12 +52,12 @@ VOID AfterRegMod(ADDRINT ip, CONTEXT *ctxt, REG reg) {
    }
 
    register_record *rrec = (register_record*)factory.make_vaccs_record(VACCS_REGISTER);
-   cout << "Register Record" << endl;
-   cout << '\t' << "Event num: " << dec << timestamp << endl;
-   cout << '\t' << "Line #: " << line << endl;
-   cout << '\t' << "File: " << fileName << endl;
-   cout << '\t' << "Register: " << reg_name << endl;
-   cout << '\t' << "Value: 0x" << hex << regval << dec << endl;
+   DEBUGL(cout << "Register Record" << endl)
+   DEBUGL(cout << '\t' << "Event num: " << dec << timestamp << endl)
+   DEBUGL(cout << '\t' << "Line #: " << line << endl)
+   DEBUGL(cout << '\t' << "File: " << fileName << endl)
+   DEBUGL(cout << '\t' << "Register: " << reg_name << endl)
+   DEBUGL(cout << '\t' << "Value: 0x" << hex << regval << dec << endl)
    rrec = rrec->add_event_num(timestamp++)
       ->add_c_line_num(line)
       ->add_c_file_name(fileName.c_str())

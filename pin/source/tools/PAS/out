@@ -27,6 +27,150 @@ Line 18: int main(){
 Line 19: 	foo();
 Line 20:         bar();
 Line 21: }
+Section name: 
+	Type: 1
+	Address: 0x0
+	Size: 0
+Section name: .interp
+	Type: 5
+	Address: 0x400238
+	Size: 28
+Section name: .note.ABI-tag
+	Type: 5
+	Address: 0x400254
+	Size: 32
+Section name: .note.gnu.build-id
+	Type: 5
+	Address: 0x400274
+	Size: 36
+Section name: .gnu.hash
+	Type: 5
+	Address: 0x400298
+	Size: 28
+Section name: .dynsym
+	Type: 16
+	Address: 0x4002b8
+	Size: 96
+Section name: .dynstr
+	Type: 20
+	Address: 0x400318
+	Size: 83
+Section name: .gnu.version
+	Type: 5
+	Address: 0x40036c
+	Size: 8
+Section name: .gnu.version_r
+	Type: 5
+	Address: 0x400378
+	Size: 48
+Section name: .rela.dyn
+	Type: 2
+	Address: 0x4003a8
+	Size: 24
+Section name: .rela.plt
+	Type: 2
+	Address: 0x4003c0
+	Size: 48
+Section name: .init
+	Type: 4
+	Address: 0x4003f0
+	Size: 26
+Section name: .plt
+	Type: 4
+	Address: 0x400410
+	Size: 48
+Section name: .plt.got
+	Type: 4
+	Address: 0x400440
+	Size: 8
+Section name: .text
+	Type: 4
+	Address: 0x400450
+	Size: 514
+Section name: .fini
+	Type: 4
+	Address: 0x400654
+	Size: 9
+Section name: .rodata
+	Type: 5
+	Address: 0x400660
+	Size: 4
+Section name: .eh_frame_hdr
+	Type: 5
+	Address: 0x400664
+	Size: 68
+Section name: .eh_frame
+	Type: 5
+	Address: 0x4006a8
+	Size: 308
+Section name: .init_array
+	Type: 5
+	Address: 0x600e10
+	Size: 8
+Section name: .fini_array
+	Type: 5
+	Address: 0x600e18
+	Size: 8
+Section name: .jcr
+	Type: 5
+	Address: 0x600e20
+	Size: 8
+Section name: .dynamic
+	Type: 6
+	Address: 0x600e28
+	Size: 464
+Section name: .got
+	Type: 8
+	Address: 0x600ff8
+	Size: 8
+Section name: .got.plt
+	Type: 5
+	Address: 0x601000
+	Size: 40
+Section name: .data
+	Type: 5
+	Address: 0x601028
+	Size: 16
+Section name: .bss
+	Type: 18
+	Address: 0x601040
+	Size: 72
+Section name: .comment
+	Type: 17
+	Address: 0x0
+	Size: 52
+Section name: .debug_aranges
+	Type: 17
+	Address: 0x0
+	Size: 48
+Section name: .debug_info
+	Type: 17
+	Address: 0x0
+	Size: 274
+Section name: .debug_abbrev
+	Type: 17
+	Address: 0x0
+	Size: 162
+Section name: .debug_line
+	Type: 17
+	Address: 0x0
+	Size: 96
+Section name: .debug_str
+	Type: 17
+	Address: 0x0
+	Size: 267
+Section name: .shstrtab
+	Type: 21
+	Address: 0x0
+	Size: 332
+Section name: .symtab
+	Type: 15
+	Address: 0x0
+	Size: 1800
+Section name: .strtab
+	Type: 19
+	Address: 0x0
+	Size: 556
 ASM Record
 	ASM line #: 4195312
 	C line #: 0
@@ -1416,7 +1560,7 @@ enter
 malloc(72)
 exit
 Enter freeBefore
-free(140224069217656)
+free(140704290999672)
 Exit freeBefore
 enter
 malloc(57)
@@ -1476,12 +1620,12 @@ Register Record
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: r9
-	Value: 0x7f8875b43ab0
-400455: R 0x00007ffc2bd23ff0 8
+	Value: 0x7ff845271ab0
+400455: R 0x00007fff298cdcb0 8
 
 line number 0
 value before read :1 0 0 0 0 0 0 0 Invocation ID:0 function _start was called. Frame pointer was 0
-Before pop: SP = 7ffc2bd23ff0
+Before pop: SP = 7fff298cdcb0
 Register Record
 	Event num: 6
 	Line #: 0
@@ -1493,56 +1637,54 @@ Register Record
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsp
-	Value: 0x7ffc2bd23ff8
-After pop: SP = 7ffc2bd23ff8
+	Value: 0x7fff298cdcb8
+After pop: SP = 7fff298cdcb8
 Register Record
 	Event num: 8
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rdx
-	Value: 0x7ffc2bd23ff8
+	Value: 0x7fff298cdcb8
 Register Record
 	Event num: 9
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsp
-	Value: 0x7ffc2bd23ff0
+	Value: 0x7fff298cdcb0
 Register Record
 	Event num: 10
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rflags
-	Value: 0x206
-40045d: W 0x00007ffc2bd23fe8 8
-value before write :6a 3c b3 75 88 7f 0 0 
-Before push: SP = 7ffc2bd23ff0
+	Value: 0x202
+40045d: W 0x00007fff298cdca8 8
+value before write :6a 1c 26 45 f8 7f 0 0 
+Before push: SP = 7fff298cdcb0
 Register Record
 	Event num: 13
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsp
-	Value: 0x7ffc2bd23fe8
+	Value: 0x7fff298cdca8
 value after write :0 0 0 0 0 0 0 0 
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 6295648, mem_addr: 140721043685344, size: 36
-address 0x7ffc2bd23fe0 is not a program variable
-After push: SP = 7ffc2bd23fe8
-40045e: W 0x00007ffc2bd23fe0 8
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x601060mem_addr: 0x7fff298cdca0size: 36address 0x7fff298cdca0 is not a program variable
+After push: SP = 7fff298cdca8
+40045e: W 0x00007fff298cdca0 8
 value before write :0 0 0 0 0 0 0 0 
-Before push: SP = 7ffc2bd23fe8
+Before push: SP = 7fff298cdca8
 Register Record
 	Event num: 17
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsp
-	Value: 0x7ffc2bd23fe0
+	Value: 0x7fff298cdca0
 value after write :0 0 0 0 0 0 0 0 
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 6295648, mem_addr: 140721043685336, size: 36
-address 0x7ffc2bd23fd8 is not a program variable
-After push: SP = 7ffc2bd23fe0
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x601060mem_addr: 0x7fff298cdc98size: 36address 0x7fff298cdc98 is not a program variable
+After push: SP = 7fff298cdca0
 Register Record
 	Event num: 19
 	Line #: 0
@@ -1561,7 +1703,7 @@ Register Record
 	File: __NOCSOURCE__
 	Register: rdi
 	Value: 0x4005b2
-400474: W 0x00007ffc2bd23fd8 8
+400474: W 0x00007fff298cdc98 8
 value before write :0 0 0 0 0 0 0 0 
 Enter before_function_direct_call
 Call to function
@@ -1573,7 +1715,7 @@ Call to function
 	Inv file: __NOCSOURCE__
 	Callee address: 0x400430
 
-frec = 0x0x00007f8861f78080
+frec = 0x0x00007ff8316a8040
 Built frec
 Wrote frec
 Exit before_function_direct_call
@@ -1588,12 +1730,11 @@ Register Record
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsp
-	Value: 0x7ffc2bd23fd8
-value after write :f0 3f d2 2b fc 7f 0 0 
+	Value: 0x7fff298cdc98
+value after write :b0 dc 8c 29 ff 7f 0 0 
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 6295648, mem_addr: 140721043685328, size: 36
-address 0x7ffc2bd23fd0 is not a program variable
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x601060mem_addr: 0x7fff298cdc90size: 36address 0x7fff298cdc90 is not a program variable
 Enter after_function_call
 function return
 Exit after_function_call
@@ -1609,21 +1750,20 @@ Register Record
 	File: __NOCSOURCE__
 	Register: rip
 	Value: 0x400436
-400436: W 0x00007ffc2bd23fd0 8
-value before write :f0 3f d2 2b fc 7f 0 0 
-Before push: SP = 7ffc2bd23fd8
+400436: W 0x00007fff298cdc90 8
+value before write :b0 dc 8c 29 ff 7f 0 0 
+Before push: SP = 7fff298cdc98
 Register Record
 	Event num: 33
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsp
-	Value: 0x7ffc2bd23fd0
+	Value: 0x7fff298cdc90
 value after write :50 4 40 0 0 0 0 0 
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 6295648, mem_addr: 140721043685320, size: 36
-address 0x7ffc2bd23fc8 is not a program variable
-After push: SP = 7ffc2bd23fd0
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x601060mem_addr: 0x7fff298cdc88size: 36address 0x7fff298cdc88 is not a program variable
+After push: SP = 7fff298cdc90
 Register Record
 	Event num: 35
 	Line #: 0
@@ -1633,154 +1773,147 @@ Register Record
 400410: R 0x0000000000601008 8
 
 line number 0
-value before read :68 a1 d5 75 88 7f 0 0 Invocation ID:28 function .plt was called. Frame pointer was 0
-400410: W 0x00007ffc2bd23fc8 8
+value before read :68 81 48 45 f8 7f 0 0 Invocation ID:28 function .plt was called. Frame pointer was 0
+400410: W 0x00007fff298cdc88 8
 value before write :50 4 40 0 0 0 0 0 
-Before push: SP = 7ffc2bd23fd0
+Before push: SP = 7fff298cdc90
 Register Record
 	Event num: 39
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsp
-	Value: 0x7ffc2bd23fc8
+	Value: 0x7fff298cdc88
 value after write :0 0 0 0 0 0 0 0 
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 6295648, mem_addr: 140721043685312, size: 36
-address 0x7ffc2bd23fc0 is not a program variable
-After push: SP = 7ffc2bd23fc8
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x601060mem_addr: 0x7fff298cdc80size: 36address 0x7fff298cdc80 is not a program variable
+After push: SP = 7fff298cdc88
 400416: R 0x0000000000601010 8
 
 line number 0
-value before read :70 a8 b4 75 88 7f 0 0 Invocation ID:28 function .plt was called. Frame pointer was 0
+value before read :70 88 27 45 f8 7f 0 0 Invocation ID:28 function .plt was called. Frame pointer was 0
 Register Record
 	Event num: 42
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rip
-	Value: 0x7f8875b4a870
+	Value: 0x7ff845278870
 after push stack size:3
 Invocation ID:43function __libc_csu_init was called. Frame pointer was 4005e0
-4005e0: W 0x00007ffc2bd23f10 8
+4005e0: W 0x00007fff298cdbd0 8
 value before write :50 4 40 0 0 0 0 0 
-Before push: SP = 7ffc2bd23f18
+Before push: SP = 7fff298cdbd8
 Register Record
 	Event num: 46
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsp
-	Value: 0x7ffc2bd23f10
+	Value: 0x7fff298cdbd0
 value after write :e0 5 40 0 0 0 0 0 
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 6295648, mem_addr: 140721043685128, size: 36
-address 0x7ffc2bd23f08 is not a program variable
-After push: SP = 7ffc2bd23f10
-4005e2: W 0x00007ffc2bd23f08 8
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x601060mem_addr: 0x7fff298cdbc8size: 36address 0x7fff298cdbc8 is not a program variable
+After push: SP = 7fff298cdbd0
+4005e2: W 0x00007fff298cdbc8 8
 value before write :e0 5 40 0 0 0 0 0 
-Before push: SP = 7ffc2bd23f10
+Before push: SP = 7fff298cdbd0
 Register Record
 	Event num: 50
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsp
-	Value: 0x7ffc2bd23f08
+	Value: 0x7fff298cdbc8
 value after write :0 0 0 0 0 0 0 0 
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 6295648, mem_addr: 140721043685120, size: 36
-address 0x7ffc2bd23f00 is not a program variable
-After push: SP = 7ffc2bd23f08
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x601060mem_addr: 0x7fff298cdbc0size: 36address 0x7fff298cdbc0 is not a program variable
+After push: SP = 7fff298cdbc8
 Register Record
 	Event num: 52
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: r15d
 	Value: 0x1
-4005e7: W 0x00007ffc2bd23f00 8
+4005e7: W 0x00007fff298cdbc0 8
 value before write :0 0 0 0 0 0 0 0 
-Before push: SP = 7ffc2bd23f08
+Before push: SP = 7fff298cdbc8
 Register Record
 	Event num: 55
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsp
-	Value: 0x7ffc2bd23f00
-value after write :99 82 d 62 88 7f 0 0 
+	Value: 0x7fff298cdbc0
+value after write :99 82 80 31 f8 7f 0 0 
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 6295648, mem_addr: 140721043685112, size: 36
-address 0x7ffc2bd23ef8 is not a program variable
-After push: SP = 7ffc2bd23f00
-4005e9: W 0x00007ffc2bd23ef8 8
-value before write :99 82 d 62 88 7f 0 0 
-Before push: SP = 7ffc2bd23f00
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x601060mem_addr: 0x7fff298cdbb8size: 36address 0x7fff298cdbb8 is not a program variable
+After push: SP = 7fff298cdbc0
+4005e9: W 0x00007fff298cdbb8 8
+value before write :99 82 80 31 f8 7f 0 0 
+Before push: SP = 7fff298cdbc0
 Register Record
 	Event num: 59
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsp
-	Value: 0x7ffc2bd23ef8
+	Value: 0x7fff298cdbb8
 value after write :0 0 0 0 0 0 0 0 
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 6295648, mem_addr: 140721043685104, size: 36
-address 0x7ffc2bd23ef0 is not a program variable
-After push: SP = 7ffc2bd23ef8
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x601060mem_addr: 0x7fff298cdbb0size: 36address 0x7fff298cdbb0 is not a program variable
+After push: SP = 7fff298cdbb8
 Register Record
 	Event num: 61
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: r12
 	Value: 0x600e10
-4005f2: W 0x00007ffc2bd23ef0 8
+4005f2: W 0x00007fff298cdbb0 8
 value before write :0 0 0 0 0 0 0 0 
-Before push: SP = 7ffc2bd23ef8
+Before push: SP = 7fff298cdbb8
 Register Record
 	Event num: 64
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsp
-	Value: 0x7ffc2bd23ef0
-value after write :b0 3a b4 75 88 7f 0 0 
+	Value: 0x7fff298cdbb0
+value after write :b0 1a 27 45 f8 7f 0 0 
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 6295648, mem_addr: 140721043685096, size: 36
-address 0x7ffc2bd23ee8 is not a program variable
-After push: SP = 7ffc2bd23ef0
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x601060mem_addr: 0x7fff298cdba8size: 36address 0x7fff298cdba8 is not a program variable
+After push: SP = 7fff298cdbb0
 Register Record
 	Event num: 66
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rbp
 	Value: 0x600e18
-4005fa: W 0x00007ffc2bd23ee8 8
-value before write :b0 3a b4 75 88 7f 0 0 
-Before push: SP = 7ffc2bd23ef0
+4005fa: W 0x00007fff298cdba8 8
+value before write :b0 1a 27 45 f8 7f 0 0 
+Before push: SP = 7fff298cdbb0
 Register Record
 	Event num: 69
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsp
-	Value: 0x7ffc2bd23ee8
+	Value: 0x7fff298cdba8
 value after write :0 0 0 0 0 0 0 0 
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 6295648, mem_addr: 140721043685088, size: 36
-address 0x7ffc2bd23ee0 is not a program variable
-After push: SP = 7ffc2bd23ee8
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x601060mem_addr: 0x7fff298cdba0size: 36address 0x7fff298cdba0 is not a program variable
+After push: SP = 7fff298cdba8
 Register Record
 	Event num: 71
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: r14
-	Value: 0x7ffc2bd23ff8
+	Value: 0x7fff298cdcb8
 Register Record
 	Event num: 72
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: r13
-	Value: 0x7ffc2bd24008
+	Value: 0x7fff298cdcc8
 Register Record
 	Event num: 73
 	Line #: 0
@@ -1798,13 +1931,13 @@ Register Record
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsp
-	Value: 0x7ffc2bd23ee0
+	Value: 0x7fff298cdba0
 Register Record
 	Event num: 76
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rflags
-	Value: 0x202
+	Value: 0x206
 Register Record
 	Event num: 77
 	Line #: 0
@@ -1817,7 +1950,7 @@ Register Record
 	File: __NOCSOURCE__
 	Register: rflags
 	Value: 0x202
-40060c: W 0x00007ffc2bd23ed8 8
+40060c: W 0x00007fff298cdb98 8
 value before write :0 0 0 0 0 0 0 0 
 Enter before_function_direct_call
 Call to function
@@ -1829,7 +1962,7 @@ Call to function
 	Inv file: __NOCSOURCE__
 	Callee address: 0x4003f0
 
-frec = 0x0x00007f8861f78700
+frec = 0x0x00007ff8316a86c0
 Built frec
 Wrote frec
 Exit before_function_direct_call
@@ -1844,12 +1977,11 @@ Register Record
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsp
-	Value: 0x7ffc2bd23ed8
+	Value: 0x7fff298cdb98
 value after write :0 0 0 0 0 0 0 0 
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 6295648, mem_addr: 140721043685072, size: 36
-address 0x7ffc2bd23ed0 is not a program variable
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x601060mem_addr: 0x7fff298cdb90size: 36address 0x7fff298cdb90 is not a program variable
 Enter after_function_call
 function return
 Exit after_function_call
@@ -1860,13 +1992,13 @@ Register Record
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsp
-	Value: 0x7ffc2bd23ed0
+	Value: 0x7fff298cdb90
 Register Record
 	Event num: 87
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rflags
-	Value: 0x202
+	Value: 0x206
 4003f4: R 0x0000000000600ff8 8
 
 line number 0
@@ -1888,18 +2020,18 @@ Register Record
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsp
-	Value: 0x7ffc2bd23ed8
+	Value: 0x7fff298cdb98
 Register Record
 	Event num: 92
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rflags
-	Value: 0x206
-400409: R 0x00007ffc2bd23ed8 8
+	Value: 0x202
+400409: R 0x00007fff298cdb98 8
 
 line number 0
 value before read :11 6 40 0 0 0 0 0 Invocation ID:85 function _init was called. Frame pointer was 1
-Before return: SP = 7ffc2bd23ed8
+Before return: SP = 7fff298cdb98
 Register Record
 	Event num: 96
 	Line #: 0
@@ -1911,8 +2043,8 @@ Register Record
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsp
-	Value: 0x7ffc2bd23ee0
-After return : SP = 7ffc2bd23ee0
+	Value: 0x7fff298cdba0
+After return : SP = 7fff298cdba0
 Register Record
 	Event num: 98
 	Line #: 0
@@ -1942,13 +2074,13 @@ Register Record
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rdx
-	Value: 0x7ffc2bd24008
+	Value: 0x7fff298cdcc8
 Register Record
 	Event num: 103
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsi
-	Value: 0x7ffc2bd23ff8
+	Value: 0x7fff298cdcb8
 Register Record
 	Event num: 104
 	Line #: 0
@@ -1959,7 +2091,7 @@ Register Record
 
 line number 0
 value before read :20 5 40 0 0 0 0 0 Invocation ID:85 function _init was called. Frame pointer was 1
-400629: W 0x00007ffc2bd23ed8 8
+400629: W 0x00007fff298cdb98 8
 value before write :11 6 40 0 0 0 0 0 
 Enter before_function_indirect_call
 Exit before_function_indirect_call
@@ -1974,12 +2106,11 @@ Register Record
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsp
-	Value: 0x7ffc2bd23ed8
+	Value: 0x7fff298cdb98
 value after write :0 0 0 0 0 0 0 0 
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 6295648, mem_addr: 140721043685072, size: 36
-address 0x7ffc2bd23ed0 is not a program variable
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x601060mem_addr: 0x7fff298cdb90size: 36address 0x7fff298cdb90 is not a program variable
 Enter after_function_call
 function return
 Exit after_function_call
@@ -2019,21 +2150,20 @@ Register Record
 	File: __NOCSOURCE__
 	Register: esi
 	Value: 0x601038
-4004c5: W 0x00007ffc2bd23ed0 8
+4004c5: W 0x00007fff298cdb90 8
 value before write :0 0 0 0 0 0 0 0 
-Before push: SP = 7ffc2bd23ed8
+Before push: SP = 7fff298cdb98
 Register Record
 	Event num: 120
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsp
-	Value: 0x7ffc2bd23ed0
+	Value: 0x7fff298cdb90
 value after write :0 0 0 0 0 0 0 0 
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 6295648, mem_addr: 140721043685064, size: 36
-address 0x7ffc2bd23ec8 is not a program variable
-After push: SP = 7ffc2bd23ed0
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x601060mem_addr: 0x7fff298cdb88size: 36address 0x7fff298cdb88 is not a program variable
+After push: SP = 7fff298cdb90
 Register Record
 	Event num: 122
 	Line #: 0
@@ -2063,7 +2193,7 @@ Register Record
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rbp
-	Value: 0x7ffc2bd23ed0
+	Value: 0x7fff298cdb90
 Register Record
 	Event num: 127
 	Line #: 0
@@ -2106,11 +2236,11 @@ Register Record
 	File: __NOCSOURCE__
 	Register: rflags
 	Value: 0x246
-4004f8: R 0x00007ffc2bd23ed0 8
+4004f8: R 0x00007fff298cdb90 8
 
 line number 0
-value before read :1 0 0 0 0 0 0 0 Invocation ID:116 function register_tm_clones was called. Frame pointer was 7ffc2bd23ed0
-Before pop: SP = 7ffc2bd23ed0
+value before read :1 0 0 0 0 0 0 0 Invocation ID:116 function register_tm_clones was called. Frame pointer was 7fff298cdb90
+Before pop: SP = 7fff298cdb90
 Register Record
 	Event num: 136
 	Line #: 0
@@ -2122,13 +2252,13 @@ Register Record
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsp
-	Value: 0x7ffc2bd23ed8
-After pop: SP = 7ffc2bd23ed8
-4004f9: R 0x00007ffc2bd23ed8 8
+	Value: 0x7fff298cdb98
+After pop: SP = 7fff298cdb98
+4004f9: R 0x00007fff298cdb98 8
 
 line number 0
 value before read :2d 6 40 0 0 0 0 0 Invocation ID:116 function register_tm_clones was called. Frame pointer was 1
-Before return: SP = 7ffc2bd23ed8
+Before return: SP = 7fff298cdb98
 Register Record
 	Event num: 141
 	Line #: 0
@@ -2140,8 +2270,8 @@ Register Record
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsp
-	Value: 0x7ffc2bd23ee0
-After return : SP = 7ffc2bd23ee0
+	Value: 0x7fff298cdba0
+After return : SP = 7fff298cdba0
 Register Record
 	Event num: 143
 	Line #: 0
@@ -2171,18 +2301,18 @@ Register Record
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsp
-	Value: 0x7ffc2bd23ee8
+	Value: 0x7fff298cdba8
 Register Record
 	Event num: 148
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rflags
-	Value: 0x206
-40063a: R 0x00007ffc2bd23ee8 8
+	Value: 0x202
+40063a: R 0x00007fff298cdba8 8
 
 line number 0
 value before read :0 0 0 0 0 0 0 0 Invocation ID:116 function register_tm_clones was called. Frame pointer was 1
-Before pop: SP = 7ffc2bd23ee8
+Before pop: SP = 7fff298cdba8
 Register Record
 	Event num: 151
 	Line #: 0
@@ -2194,13 +2324,13 @@ Register Record
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsp
-	Value: 0x7ffc2bd23ef0
-After pop: SP = 7ffc2bd23ef0
-40063b: R 0x00007ffc2bd23ef0 8
+	Value: 0x7fff298cdbb0
+After pop: SP = 7fff298cdbb0
+40063b: R 0x00007fff298cdbb0 8
 
 line number 0
 value before read :e0 5 40 0 0 0 0 0 Invocation ID:116 function register_tm_clones was called. Frame pointer was 1
-Before pop: SP = 7ffc2bd23ef0
+Before pop: SP = 7fff298cdbb0
 Register Record
 	Event num: 155
 	Line #: 0
@@ -2212,13 +2342,13 @@ Register Record
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsp
-	Value: 0x7ffc2bd23ef8
-After pop: SP = 7ffc2bd23ef8
-40063c: R 0x00007ffc2bd23ef8 8
+	Value: 0x7fff298cdbb8
+After pop: SP = 7fff298cdbb8
+40063c: R 0x00007fff298cdbb8 8
 
 line number 0
 value before read :50 4 40 0 0 0 0 0 Invocation ID:116 function register_tm_clones was called. Frame pointer was 4005e0
-Before pop: SP = 7ffc2bd23ef8
+Before pop: SP = 7fff298cdbb8
 Register Record
 	Event num: 159
 	Line #: 0
@@ -2230,31 +2360,31 @@ Register Record
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsp
-	Value: 0x7ffc2bd23f00
-After pop: SP = 7ffc2bd23f00
-40063e: R 0x00007ffc2bd23f00 8
+	Value: 0x7fff298cdbc0
+After pop: SP = 7fff298cdbc0
+40063e: R 0x00007fff298cdbc0 8
 
 line number 0
-value before read :f0 3f d2 2b fc 7f 0 0 Invocation ID:116 function register_tm_clones was called. Frame pointer was 4005e0
-Before pop: SP = 7ffc2bd23f00
+value before read :b0 dc 8c 29 ff 7f 0 0 Invocation ID:116 function register_tm_clones was called. Frame pointer was 4005e0
+Before pop: SP = 7fff298cdbc0
 Register Record
 	Event num: 163
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: r13
-	Value: 0x7ffc2bd23ff0
+	Value: 0x7fff298cdcb0
 Register Record
 	Event num: 164
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsp
-	Value: 0x7ffc2bd23f08
-After pop: SP = 7ffc2bd23f08
-400640: R 0x00007ffc2bd23f08 8
+	Value: 0x7fff298cdbc8
+After pop: SP = 7fff298cdbc8
+400640: R 0x00007fff298cdbc8 8
 
 line number 0
 value before read :0 0 0 0 0 0 0 0 Invocation ID:116 function register_tm_clones was called. Frame pointer was 4005e0
-Before pop: SP = 7ffc2bd23f08
+Before pop: SP = 7fff298cdbc8
 Register Record
 	Event num: 167
 	Line #: 0
@@ -2266,13 +2396,13 @@ Register Record
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsp
-	Value: 0x7ffc2bd23f10
-After pop: SP = 7ffc2bd23f10
-400642: R 0x00007ffc2bd23f10 8
+	Value: 0x7fff298cdbd0
+After pop: SP = 7fff298cdbd0
+400642: R 0x00007fff298cdbd0 8
 
 line number 0
 value before read :0 0 0 0 0 0 0 0 Invocation ID:116 function register_tm_clones was called. Frame pointer was 4005e0
-Before pop: SP = 7ffc2bd23f10
+Before pop: SP = 7fff298cdbd0
 Register Record
 	Event num: 171
 	Line #: 0
@@ -2284,26 +2414,26 @@ Register Record
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsp
-	Value: 0x7ffc2bd23f18
-After pop: SP = 7ffc2bd23f18
-400644: R 0x00007ffc2bd23f18 8
+	Value: 0x7fff298cdbd8
+After pop: SP = 7fff298cdbd8
+400644: R 0x00007fff298cdbd8 8
 
 line number 0
-value before read :bf e7 b 62 88 7f 0 0 Invocation ID:116 function register_tm_clones was called. Frame pointer was 4005e0
-Before return: SP = 7ffc2bd23f18
+value before read :bf e7 7e 31 f8 7f 0 0 Invocation ID:116 function register_tm_clones was called. Frame pointer was 4005e0
+Before return: SP = 7fff298cdbd8
 Register Record
 	Event num: 176
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rip
-	Value: 0x7f88620be7bf
+	Value: 0x7ff8317ee7bf
 Register Record
 	Event num: 177
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsp
-	Value: 0x7ffc2bd23f20
-After return : SP = 7ffc2bd23f20
+	Value: 0x7fff298cdbe0
+After return : SP = 7fff298cdbe0
 after push stack size:3
 Invocation ID:178function main was called. Frame pointer was 4005e0
 Call to function
@@ -2315,18 +2445,25 @@ Call to function
 	Inv file: __NOFUNCTIONNAME__
 	Callee address: 0x4005b2
 
-frec = 0x0x00007f8861f78c40
+frec = 0x0x00007ff8316a8bc0
+Getting frame pointer for main
+Address being read: 0x4005e0
+Address being read: 0x4005e8
+Return address
+	Function name: main
+	Dynamic link: 0x41ff894156415741
+	Return address: 0x81e258d4c544155
 Built frec
 Wrote frec
-4005b2: W 0x00007ffc2bd23f10 8
+4005b2: W 0x00007fff298cdbd0 8
 value before write :0 0 0 0 0 0 0 0 
-Before push: SP = 7ffc2bd23f18
+Before push: SP = 7fff298cdbd8
 Register Record
 	Event num: 182
 	Line #: 18
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rsp
-	Value: 0x7ffc2bd23f10
+	Value: 0x7fff298cdbd0
 value after write :0 0 0 0 0 0 0 0 
 In var_record::pc_in_range
 In var_record::pc_in_range
@@ -2334,23 +2471,22 @@ In var_record::pc_in_range
 In var_record::find_address_in_subprog
 Leave var_record::find_addres_in_subprog
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 6295648, mem_addr: 140721043685128, size: 36
-address 0x7ffc2bd23f08 is not a program variable
-After push: SP = 7ffc2bd23f10
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x601060mem_addr: 0x7fff298cdbc8size: 36address 0x7fff298cdbc8 is not a program variable
+After push: SP = 7fff298cdbd0
 Register Record
 	Event num: 184
 	Line #: 18
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rbp
-	Value: 0x7ffc2bd23f10
+	Value: 0x7fff298cdbd0
 Register Record
 	Event num: 185
 	Line #: 19
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: eax
 	Value: 0x0
-4005bb: W 0x00007ffc2bd23f08 8
+4005bb: W 0x00007fff298cdbc8 8
 value before write :0 0 0 0 0 0 0 0 
 Enter before_function_direct_call
 In var_record::pc_in_range
@@ -2364,9 +2500,16 @@ Call to function
 	Inv file: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Callee address: 0x4005ab
 
-frec = 0x0x00007f8861f78c80
+frec = 0x0x00007ff8316a8c00
 Built frec
 Wrote frec
+Getting frame pointer for foo
+Address being read: 0x7fff298cdbd0
+Address being read: 0x7fff298cdbd8
+Return address
+	Function name: foo
+	Dynamic link: 0x4005e0
+	Return address: 0x7ff8317ee830
 Exit before_function_direct_call
 Register Record
 	Event num: 188
@@ -2379,70 +2522,68 @@ Register Record
 	Line #: 19
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rsp
-	Value: 0x7ffc2bd23f08
-value after write :f0 3f d2 2b fc 7f 0 0 
+	Value: 0x7fff298cdbc8
+value after write :b0 dc 8c 29 ff 7f 0 0 
 In var_record::pc_in_range
 In var_record::pc_in_range
 In var_record::pc_in_range
 In var_record::find_address_in_subprog
 Leave var_record::find_addres_in_subprog
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 6295648, mem_addr: 140721043685120, size: 36
-address 0x7ffc2bd23f00 is not a program variable
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x601060mem_addr: 0x7fff298cdbc0size: 36address 0x7fff298cdbc0 is not a program variable
 Enter after_function_call
 function return
 Exit after_function_call
 after push stack size:4
-Invocation ID:c0function foo was called. Frame pointer was 7ffc2bd23f10
-4005ab: W 0x00007ffc2bd23f00 8
-value before write :f0 3f d2 2b fc 7f 0 0 
-Before push: SP = 7ffc2bd23f08
+Invocation ID:c0function foo was called. Frame pointer was 7fff298cdbd0
+4005ab: W 0x00007fff298cdbc0 8
+value before write :b0 dc 8c 29 ff 7f 0 0 
+Before push: SP = 7fff298cdbc8
 Register Record
 	Event num: 195
 	Line #: 14
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rsp
-	Value: 0x7ffc2bd23f00
+	Value: 0x7fff298cdbc0
 value after write :50 4 40 0 0 0 0 0 
 In var_record::pc_in_range
 In var_record::pc_in_range
 In var_record::find_address_in_subprog
 Leave var_record::find_addres_in_subprog
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 6295648, mem_addr: 140721043685112, size: 36
-address 0x7ffc2bd23ef8 is not a program variable
-After push: SP = 7ffc2bd23f00
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x601060mem_addr: 0x7fff298cdbb8size: 36address 0x7fff298cdbb8 is not a program variable
+After push: SP = 7fff298cdbc0
 Register Record
 	Event num: 197
 	Line #: 14
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rbp
-	Value: 0x7ffc2bd23f00
-4005b0: R 0x00007ffc2bd23f00 8
+	Value: 0x7fff298cdbc0
+4005b0: R 0x00007fff298cdbc0 8
 
 line number 16
-value before read :10 3f d2 2b fc 7f 0 0 Invocation ID:192 function foo was called. Frame pointer was 7ffc2bd23f00
-Before pop: SP = 7ffc2bd23f00
+value before read :d0 db 8c 29 ff 7f 0 0 Invocation ID:192 function foo was called. Frame pointer was 7fff298cdbc0
+Before pop: SP = 7fff298cdbc0
 Register Record
 	Event num: 200
 	Line #: 16
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rbp
-	Value: 0x7ffc2bd23f10
+	Value: 0x7fff298cdbd0
 Register Record
 	Event num: 201
 	Line #: 16
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rsp
-	Value: 0x7ffc2bd23f08
-After pop: SP = 7ffc2bd23f08
-4005b1: R 0x00007ffc2bd23f08 8
+	Value: 0x7fff298cdbc8
+After pop: SP = 7fff298cdbc8
+4005b1: R 0x00007fff298cdbc8 8
 
 line number 16
-value before read :c0 5 40 0 0 0 0 0 Invocation ID:192 function foo was called. Frame pointer was 7ffc2bd23f10
-Before return: SP = 7ffc2bd23f08
+value before read :c0 5 40 0 0 0 0 0 Invocation ID:192 function foo was called. Frame pointer was 7fff298cdbd0
+Before return: SP = 7fff298cdbc8
 Register Record
 	Event num: 205
 	Line #: 16
@@ -2454,15 +2595,15 @@ Register Record
 	Line #: 16
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rsp
-	Value: 0x7ffc2bd23f10
-After return : SP = 7ffc2bd23f10
+	Value: 0x7fff298cdbd0
+After return : SP = 7fff298cdbd0
 Register Record
 	Event num: 207
 	Line #: 20
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: eax
 	Value: 0x0
-4005c5: W 0x00007ffc2bd23f08 8
+4005c5: W 0x00007fff298cdbc8 8
 value before write :c0 5 40 0 0 0 0 0 
 Enter before_function_direct_call
 In var_record::pc_in_range
@@ -2475,9 +2616,16 @@ Call to function
 	Inv file: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Callee address: 0x400546
 
-frec = 0x0x00007f8861f78d40
+frec = 0x0x00007ff8316a8cc0
 Built frec
 Wrote frec
+Getting frame pointer for bar
+Address being read: 0x7fff298cdbd0
+Address being read: 0x7fff298cdbd8
+Return address
+	Function name: bar
+	Dynamic link: 0x4005e0
+	Return address: 0x7ff8317ee830
 Exit before_function_direct_call
 Register Record
 	Event num: 210
@@ -2490,94 +2638,89 @@ Register Record
 	Line #: 20
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rsp
-	Value: 0x7ffc2bd23f08
-value after write :10 3f d2 2b fc 7f 0 0 
+	Value: 0x7fff298cdbc8
+value after write :d0 db 8c 29 ff 7f 0 0 
 In var_record::pc_in_range
 In var_record::pc_in_range
 In var_record::pc_in_range
 In var_record::find_address_in_subprog
 Leave var_record::find_addres_in_subprog
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 6295648, mem_addr: 140721043685120, size: 36
-address 0x7ffc2bd23f00 is not a program variable
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x601060mem_addr: 0x7fff298cdbc0size: 36address 0x7fff298cdbc0 is not a program variable
 Enter after_function_call
 function return
 Exit after_function_call
 after push stack size:4
-Invocation ID:d6function bar was called. Frame pointer was 7ffc2bd23f10
-400546: W 0x00007ffc2bd23f00 8
-value before write :10 3f d2 2b fc 7f 0 0 
-Before push: SP = 7ffc2bd23f08
+Invocation ID:d6function bar was called. Frame pointer was 7fff298cdbd0
+400546: W 0x00007fff298cdbc0 8
+value before write :d0 db 8c 29 ff 7f 0 0 
+Before push: SP = 7fff298cdbc8
 Register Record
 	Event num: 217
 	Line #: 6
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rsp
-	Value: 0x7ffc2bd23f00
+	Value: 0x7fff298cdbc0
 value after write :50 4 40 0 0 0 0 0 
 In var_record::pc_in_range
 In var_record::find_address_in_subprog
 Checking variable b
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 140721043685088, mem_addr: 140721043685112, size: 36
-Leave var_record::find_addres_in_subprog
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x7fff298cdba0mem_addr: 0x7fff298cdbb8size: 36Leave var_record::find_addres_in_subprog
 Write to variable b
 	Event num: 218
 	C file name: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Scope: bar
-	Address: 0x7ffc2bd23ef8
+	Address: 0x7fff298cdbb8
 	Type: int[9]
 	Value: 80
 
-After push: SP = 7ffc2bd23f00
+After push: SP = 7fff298cdbc0
 Register Record
 	Event num: 219
 	Line #: 6
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rbp
-	Value: 0x7ffc2bd23f00
+	Value: 0x7fff298cdbc0
 Register Record
 	Event num: 220
 	Line #: 6
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rsp
-	Value: 0x7ffc2bd23ec0
+	Value: 0x7fff298cdb80
 Register Record
 	Event num: 221
 	Line #: 6
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rflags
-	Value: 0x206
-40054e: R 0x00007f8862061728 8
+	Value: 0x202
+40054e: R 0x00007ff831791728 8
 
 line number 6
-value before read :0 3a 44 93 3f b c7 9c Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :0 20 d0 f8 c6 dd f2 57 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 223
 	Line #: 6
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rax
-	Value: 0x9cc70b3f93443a00
-400557: W 0x00007ffc2bd23ef8 8
+	Value: 0x57f2ddc6f8d02000
+400557: W 0x00007fff298cdbb8 8
 value before write :50 4 40 0 0 0 0 0 
-value after write :0 3a 44 93 3f b c7 9c 
+value after write :0 20 d0 f8 c6 dd f2 57 
 In var_record::pc_in_range
 In var_record::find_address_in_subprog
 Checking variable b
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 140721043685072, mem_addr: 140721043685112, size: 36
-Checking variable i
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x7fff298cdb90mem_addr: 0x7fff298cdbb8size: 36Checking variable i
 Enter is_at_address
-trec = 0x00007f8875adecf0
-var_addr: 140721043685068, mem_addr: 140721043685112, size: 4
-Leave var_record::find_addres_in_subprog
+trec = 0x0x00007ff84520ccf0
+var_addr: 0x7fff298cdb8cmem_addr: 0x7fff298cdbb8size: 4Leave var_record::find_addres_in_subprog
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 6295648, mem_addr: 140721043685112, size: 36
-address 0x7ffc2bd23ef8 is not a program variable
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x601060mem_addr: 0x7fff298cdbb8size: 36address 0x7fff298cdbb8 is not a program variable
 Register Record
 	Event num: 226
 	Line #: 6
@@ -2590,25 +2733,23 @@ Register Record
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rflags
 	Value: 0x246
-40055d: W 0x00007ffc2bd23ecc 4
+40055d: W 0x00007fff298cdb8c 4
 value before write :0 0 0 0 
 value after write :0 0 0 0 
 In var_record::pc_in_range
 In var_record::find_address_in_subprog
 Checking variable b
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 140721043685072, mem_addr: 140721043685068, size: 36
-Checking variable i
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x7fff298cdb90mem_addr: 0x7fff298cdb8csize: 36Checking variable i
 Enter is_at_address
-trec = 0x00007f8875adecf0
-var_addr: 140721043685068, mem_addr: 140721043685068, size: 4
-Leave var_record::find_addres_in_subprog
+trec = 0x0x00007ff84520ccf0
+var_addr: 0x7fff298cdb8cmem_addr: 0x7fff298cdb8csize: 4Leave var_record::find_addres_in_subprog
 Write to variable i
 	Event num: 229
 	C file name: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Scope: bar
-	Address: 0x7ffc2bd23ecc
+	Address: 0x7fff298cdb8c
 	Type: int
 	Value: 0
 
@@ -2618,20 +2759,20 @@ Register Record
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rip
 	Value: 0x40058e
-40058e: R 0x00007ffc2bd23ecc 4
+40058e: R 0x00007fff298cdb8c 4
 
 line number 9
-value before read :0 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :0 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 232
 	Line #: 9
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rflags
 	Value: 0x293
-400566: R 0x00007ffc2bd23ecc 4
+400566: R 0x00007fff298cdb8c 4
 
 line number 10
-value before read :0 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :0 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 234
 	Line #: 10
@@ -2644,38 +2785,37 @@ Register Record
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rax
 	Value: 0x0
-40056b: R 0x00007ffc2bd23ecc 4
+40056b: R 0x00007fff298cdb8c 4
 
 line number 10
-value before read :0 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :0 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 237
 	Line #: 10
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: edx
 	Value: 0x0
-40056e: W 0x00007ffc2bd23ed0 4
+40056e: W 0x00007fff298cdb90 4
 value before write :1 0 0 0 
 value after write :0 0 0 0 
 In var_record::pc_in_range
 In var_record::find_address_in_subprog
 Checking variable b
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 140721043685072, mem_addr: 140721043685072, size: 36
-Leave var_record::find_addres_in_subprog
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x7fff298cdb90mem_addr: 0x7fff298cdb90size: 36Leave var_record::find_addres_in_subprog
 Write to variable b
 	Event num: 239
 	C file name: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Scope: bar
-	Address: 0x7ffc2bd23ed0
+	Address: 0x7fff298cdb90
 	Type: int[9]
 	Value: 0
 
-400572: R 0x00007ffc2bd23ecc 4
+400572: R 0x00007fff298cdb8c 4
 
 line number 11
-value before read :0 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :0 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 241
 	Line #: 11
@@ -2688,10 +2828,10 @@ Register Record
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rax
 	Value: 0x0
-400577: R 0x00007ffc2bd23ed0 4
+400577: R 0x00007fff298cdb90 4
 
 line number 11
-value before read :0 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :0 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 244
 	Line #: 11
@@ -2704,10 +2844,10 @@ Register Record
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: edx
 	Value: 0x1
-40057e: R 0x00007ffc2bd23ecc 4
+40057e: R 0x00007fff298cdb8c 4
 
 line number 11
-value before read :0 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :0 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 247
 	Line #: 11
@@ -2727,17 +2867,14 @@ In var_record::pc_in_range
 In var_record::find_address_in_subprog
 Checking variable b
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 140721043685072, mem_addr: 6295648, size: 36
-Checking variable i
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x7fff298cdb90mem_addr: 0x601060size: 36Checking variable i
 Enter is_at_address
-trec = 0x00007f8875adecf0
-var_addr: 140721043685068, mem_addr: 6295648, size: 4
-Leave var_record::find_addres_in_subprog
+trec = 0x0x00007ff84520ccf0
+var_addr: 0x7fff298cdb8cmem_addr: 0x601060size: 4Leave var_record::find_addres_in_subprog
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 6295648, mem_addr: 6295648, size: 36
-Write to variable a
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x601060mem_addr: 0x601060size: 36Write to variable a
 	Event num: 250
 	C file name: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Scope: *G*
@@ -2745,11 +2882,11 @@ Write to variable a
 	Type: int[9]
 	Value: 1
 
-40058a: R 0x00007ffc2bd23ecc 4
+40058a: R 0x00007fff298cdb8c 4
 
 line number 9
-value before read :0 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
-40058a: W 0x00007ffc2bd23ecc 4
+value before read :0 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
+40058a: W 0x00007fff298cdb8c 4
 value before write :0 0 0 0 
 Register Record
 	Event num: 253
@@ -2762,35 +2899,33 @@ In var_record::pc_in_range
 In var_record::find_address_in_subprog
 Checking variable b
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 140721043685072, mem_addr: 140721043685068, size: 36
-Checking variable i
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x7fff298cdb90mem_addr: 0x7fff298cdb8csize: 36Checking variable i
 Enter is_at_address
-trec = 0x00007f8875adecf0
-var_addr: 140721043685068, mem_addr: 140721043685068, size: 4
-Leave var_record::find_addres_in_subprog
+trec = 0x0x00007ff84520ccf0
+var_addr: 0x7fff298cdb8cmem_addr: 0x7fff298cdb8csize: 4Leave var_record::find_addres_in_subprog
 Write to variable i
 	Event num: 254
 	C file name: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Scope: bar
-	Address: 0x7ffc2bd23ecc
+	Address: 0x7fff298cdb8c
 	Type: int
 	Value: 1
 
-40058e: R 0x00007ffc2bd23ecc 4
+40058e: R 0x00007fff298cdb8c 4
 
 line number 9
-value before read :1 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :1 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 256
 	Line #: 9
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rflags
 	Value: 0x293
-400566: R 0x00007ffc2bd23ecc 4
+400566: R 0x00007fff298cdb8c 4
 
 line number 10
-value before read :1 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :1 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 258
 	Line #: 10
@@ -2803,38 +2938,37 @@ Register Record
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rax
 	Value: 0x1
-40056b: R 0x00007ffc2bd23ecc 4
+40056b: R 0x00007fff298cdb8c 4
 
 line number 10
-value before read :1 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :1 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 261
 	Line #: 10
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: edx
 	Value: 0x1
-40056e: W 0x00007ffc2bd23ed4 4
+40056e: W 0x00007fff298cdb94 4
 value before write :0 0 0 0 
 value after write :1 0 0 0 
 In var_record::pc_in_range
 In var_record::find_address_in_subprog
 Checking variable b
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 140721043685072, mem_addr: 140721043685076, size: 36
-Leave var_record::find_addres_in_subprog
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x7fff298cdb90mem_addr: 0x7fff298cdb94size: 36Leave var_record::find_addres_in_subprog
 Write to variable b
 	Event num: 263
 	C file name: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Scope: bar
-	Address: 0x7ffc2bd23ed4
+	Address: 0x7fff298cdb94
 	Type: int[9]
 	Value: 1
 
-400572: R 0x00007ffc2bd23ecc 4
+400572: R 0x00007fff298cdb8c 4
 
 line number 11
-value before read :1 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :1 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 265
 	Line #: 11
@@ -2847,10 +2981,10 @@ Register Record
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rax
 	Value: 0x1
-400577: R 0x00007ffc2bd23ed4 4
+400577: R 0x00007fff298cdb94 4
 
 line number 11
-value before read :1 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :1 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 268
 	Line #: 11
@@ -2863,10 +2997,10 @@ Register Record
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: edx
 	Value: 0x2
-40057e: R 0x00007ffc2bd23ecc 4
+40057e: R 0x00007fff298cdb8c 4
 
 line number 11
-value before read :1 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :1 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 271
 	Line #: 11
@@ -2886,17 +3020,14 @@ In var_record::pc_in_range
 In var_record::find_address_in_subprog
 Checking variable b
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 140721043685072, mem_addr: 6295652, size: 36
-Checking variable i
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x7fff298cdb90mem_addr: 0x601064size: 36Checking variable i
 Enter is_at_address
-trec = 0x00007f8875adecf0
-var_addr: 140721043685068, mem_addr: 6295652, size: 4
-Leave var_record::find_addres_in_subprog
+trec = 0x0x00007ff84520ccf0
+var_addr: 0x7fff298cdb8cmem_addr: 0x601064size: 4Leave var_record::find_addres_in_subprog
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 6295648, mem_addr: 6295652, size: 36
-Write to variable a
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x601060mem_addr: 0x601064size: 36Write to variable a
 	Event num: 274
 	C file name: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Scope: *G*
@@ -2904,11 +3035,11 @@ Write to variable a
 	Type: int[9]
 	Value: 2
 
-40058a: R 0x00007ffc2bd23ecc 4
+40058a: R 0x00007fff298cdb8c 4
 
 line number 9
-value before read :1 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
-40058a: W 0x00007ffc2bd23ecc 4
+value before read :1 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
+40058a: W 0x00007fff298cdb8c 4
 value before write :1 0 0 0 
 Register Record
 	Event num: 277
@@ -2921,35 +3052,33 @@ In var_record::pc_in_range
 In var_record::find_address_in_subprog
 Checking variable b
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 140721043685072, mem_addr: 140721043685068, size: 36
-Checking variable i
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x7fff298cdb90mem_addr: 0x7fff298cdb8csize: 36Checking variable i
 Enter is_at_address
-trec = 0x00007f8875adecf0
-var_addr: 140721043685068, mem_addr: 140721043685068, size: 4
-Leave var_record::find_addres_in_subprog
+trec = 0x0x00007ff84520ccf0
+var_addr: 0x7fff298cdb8cmem_addr: 0x7fff298cdb8csize: 4Leave var_record::find_addres_in_subprog
 Write to variable i
 	Event num: 278
 	C file name: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Scope: bar
-	Address: 0x7ffc2bd23ecc
+	Address: 0x7fff298cdb8c
 	Type: int
 	Value: 2
 
-40058e: R 0x00007ffc2bd23ecc 4
+40058e: R 0x00007fff298cdb8c 4
 
 line number 9
-value before read :2 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :2 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 280
 	Line #: 9
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rflags
 	Value: 0x297
-400566: R 0x00007ffc2bd23ecc 4
+400566: R 0x00007fff298cdb8c 4
 
 line number 10
-value before read :2 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :2 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 282
 	Line #: 10
@@ -2962,38 +3091,37 @@ Register Record
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rax
 	Value: 0x2
-40056b: R 0x00007ffc2bd23ecc 4
+40056b: R 0x00007fff298cdb8c 4
 
 line number 10
-value before read :2 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :2 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 285
 	Line #: 10
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: edx
 	Value: 0x2
-40056e: W 0x00007ffc2bd23ed8 4
+40056e: W 0x00007fff298cdb98 4
 value before write :2d 6 40 0 
 value after write :2 0 0 0 
 In var_record::pc_in_range
 In var_record::find_address_in_subprog
 Checking variable b
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 140721043685072, mem_addr: 140721043685080, size: 36
-Leave var_record::find_addres_in_subprog
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x7fff298cdb90mem_addr: 0x7fff298cdb98size: 36Leave var_record::find_addres_in_subprog
 Write to variable b
 	Event num: 287
 	C file name: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Scope: bar
-	Address: 0x7ffc2bd23ed8
+	Address: 0x7fff298cdb98
 	Type: int[9]
 	Value: 2
 
-400572: R 0x00007ffc2bd23ecc 4
+400572: R 0x00007fff298cdb8c 4
 
 line number 11
-value before read :2 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :2 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 289
 	Line #: 11
@@ -3006,10 +3134,10 @@ Register Record
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rax
 	Value: 0x2
-400577: R 0x00007ffc2bd23ed8 4
+400577: R 0x00007fff298cdb98 4
 
 line number 11
-value before read :2 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :2 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 292
 	Line #: 11
@@ -3022,10 +3150,10 @@ Register Record
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: edx
 	Value: 0x3
-40057e: R 0x00007ffc2bd23ecc 4
+40057e: R 0x00007fff298cdb8c 4
 
 line number 11
-value before read :2 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :2 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 295
 	Line #: 11
@@ -3045,17 +3173,14 @@ In var_record::pc_in_range
 In var_record::find_address_in_subprog
 Checking variable b
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 140721043685072, mem_addr: 6295656, size: 36
-Checking variable i
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x7fff298cdb90mem_addr: 0x601068size: 36Checking variable i
 Enter is_at_address
-trec = 0x00007f8875adecf0
-var_addr: 140721043685068, mem_addr: 6295656, size: 4
-Leave var_record::find_addres_in_subprog
+trec = 0x0x00007ff84520ccf0
+var_addr: 0x7fff298cdb8cmem_addr: 0x601068size: 4Leave var_record::find_addres_in_subprog
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 6295648, mem_addr: 6295656, size: 36
-Write to variable a
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x601060mem_addr: 0x601068size: 36Write to variable a
 	Event num: 298
 	C file name: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Scope: *G*
@@ -3063,11 +3188,11 @@ Write to variable a
 	Type: int[9]
 	Value: 3
 
-40058a: R 0x00007ffc2bd23ecc 4
+40058a: R 0x00007fff298cdb8c 4
 
 line number 9
-value before read :2 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
-40058a: W 0x00007ffc2bd23ecc 4
+value before read :2 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
+40058a: W 0x00007fff298cdb8c 4
 value before write :2 0 0 0 
 Register Record
 	Event num: 301
@@ -3080,35 +3205,33 @@ In var_record::pc_in_range
 In var_record::find_address_in_subprog
 Checking variable b
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 140721043685072, mem_addr: 140721043685068, size: 36
-Checking variable i
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x7fff298cdb90mem_addr: 0x7fff298cdb8csize: 36Checking variable i
 Enter is_at_address
-trec = 0x00007f8875adecf0
-var_addr: 140721043685068, mem_addr: 140721043685068, size: 4
-Leave var_record::find_addres_in_subprog
+trec = 0x0x00007ff84520ccf0
+var_addr: 0x7fff298cdb8cmem_addr: 0x7fff298cdb8csize: 4Leave var_record::find_addres_in_subprog
 Write to variable i
 	Event num: 302
 	C file name: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Scope: bar
-	Address: 0x7ffc2bd23ecc
+	Address: 0x7fff298cdb8c
 	Type: int
 	Value: 3
 
-40058e: R 0x00007ffc2bd23ecc 4
+40058e: R 0x00007fff298cdb8c 4
 
 line number 9
-value before read :3 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :3 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 304
 	Line #: 9
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rflags
 	Value: 0x297
-400566: R 0x00007ffc2bd23ecc 4
+400566: R 0x00007fff298cdb8c 4
 
 line number 10
-value before read :3 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :3 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 306
 	Line #: 10
@@ -3121,38 +3244,37 @@ Register Record
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rax
 	Value: 0x3
-40056b: R 0x00007ffc2bd23ecc 4
+40056b: R 0x00007fff298cdb8c 4
 
 line number 10
-value before read :3 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :3 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 309
 	Line #: 10
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: edx
 	Value: 0x3
-40056e: W 0x00007ffc2bd23edc 4
+40056e: W 0x00007fff298cdb9c 4
 value before write :0 0 0 0 
 value after write :3 0 0 0 
 In var_record::pc_in_range
 In var_record::find_address_in_subprog
 Checking variable b
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 140721043685072, mem_addr: 140721043685084, size: 36
-Leave var_record::find_addres_in_subprog
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x7fff298cdb90mem_addr: 0x7fff298cdb9csize: 36Leave var_record::find_addres_in_subprog
 Write to variable b
 	Event num: 311
 	C file name: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Scope: bar
-	Address: 0x7ffc2bd23edc
+	Address: 0x7fff298cdb9c
 	Type: int[9]
 	Value: 3
 
-400572: R 0x00007ffc2bd23ecc 4
+400572: R 0x00007fff298cdb8c 4
 
 line number 11
-value before read :3 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :3 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 313
 	Line #: 11
@@ -3165,10 +3287,10 @@ Register Record
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rax
 	Value: 0x3
-400577: R 0x00007ffc2bd23edc 4
+400577: R 0x00007fff298cdb9c 4
 
 line number 11
-value before read :3 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :3 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 316
 	Line #: 11
@@ -3181,10 +3303,10 @@ Register Record
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: edx
 	Value: 0x4
-40057e: R 0x00007ffc2bd23ecc 4
+40057e: R 0x00007fff298cdb8c 4
 
 line number 11
-value before read :3 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :3 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 319
 	Line #: 11
@@ -3204,17 +3326,14 @@ In var_record::pc_in_range
 In var_record::find_address_in_subprog
 Checking variable b
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 140721043685072, mem_addr: 6295660, size: 36
-Checking variable i
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x7fff298cdb90mem_addr: 0x60106csize: 36Checking variable i
 Enter is_at_address
-trec = 0x00007f8875adecf0
-var_addr: 140721043685068, mem_addr: 6295660, size: 4
-Leave var_record::find_addres_in_subprog
+trec = 0x0x00007ff84520ccf0
+var_addr: 0x7fff298cdb8cmem_addr: 0x60106csize: 4Leave var_record::find_addres_in_subprog
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 6295648, mem_addr: 6295660, size: 36
-Write to variable a
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x601060mem_addr: 0x60106csize: 36Write to variable a
 	Event num: 322
 	C file name: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Scope: *G*
@@ -3222,11 +3341,11 @@ Write to variable a
 	Type: int[9]
 	Value: 4
 
-40058a: R 0x00007ffc2bd23ecc 4
+40058a: R 0x00007fff298cdb8c 4
 
 line number 9
-value before read :3 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
-40058a: W 0x00007ffc2bd23ecc 4
+value before read :3 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
+40058a: W 0x00007fff298cdb8c 4
 value before write :3 0 0 0 
 Register Record
 	Event num: 325
@@ -3239,35 +3358,33 @@ In var_record::pc_in_range
 In var_record::find_address_in_subprog
 Checking variable b
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 140721043685072, mem_addr: 140721043685068, size: 36
-Checking variable i
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x7fff298cdb90mem_addr: 0x7fff298cdb8csize: 36Checking variable i
 Enter is_at_address
-trec = 0x00007f8875adecf0
-var_addr: 140721043685068, mem_addr: 140721043685068, size: 4
-Leave var_record::find_addres_in_subprog
+trec = 0x0x00007ff84520ccf0
+var_addr: 0x7fff298cdb8cmem_addr: 0x7fff298cdb8csize: 4Leave var_record::find_addres_in_subprog
 Write to variable i
 	Event num: 326
 	C file name: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Scope: bar
-	Address: 0x7ffc2bd23ecc
+	Address: 0x7fff298cdb8c
 	Type: int
 	Value: 4
 
-40058e: R 0x00007ffc2bd23ecc 4
+40058e: R 0x00007fff298cdb8c 4
 
 line number 9
-value before read :4 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :4 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 328
 	Line #: 9
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rflags
 	Value: 0x293
-400566: R 0x00007ffc2bd23ecc 4
+400566: R 0x00007fff298cdb8c 4
 
 line number 10
-value before read :4 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :4 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 330
 	Line #: 10
@@ -3280,38 +3397,37 @@ Register Record
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rax
 	Value: 0x4
-40056b: R 0x00007ffc2bd23ecc 4
+40056b: R 0x00007fff298cdb8c 4
 
 line number 10
-value before read :4 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :4 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 333
 	Line #: 10
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: edx
 	Value: 0x4
-40056e: W 0x00007ffc2bd23ee0 4
+40056e: W 0x00007fff298cdba0 4
 value before write :0 0 0 0 
 value after write :4 0 0 0 
 In var_record::pc_in_range
 In var_record::find_address_in_subprog
 Checking variable b
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 140721043685072, mem_addr: 140721043685088, size: 36
-Leave var_record::find_addres_in_subprog
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x7fff298cdb90mem_addr: 0x7fff298cdba0size: 36Leave var_record::find_addres_in_subprog
 Write to variable b
 	Event num: 335
 	C file name: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Scope: bar
-	Address: 0x7ffc2bd23ee0
+	Address: 0x7fff298cdba0
 	Type: int[9]
 	Value: 4
 
-400572: R 0x00007ffc2bd23ecc 4
+400572: R 0x00007fff298cdb8c 4
 
 line number 11
-value before read :4 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :4 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 337
 	Line #: 11
@@ -3324,10 +3440,10 @@ Register Record
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rax
 	Value: 0x4
-400577: R 0x00007ffc2bd23ee0 4
+400577: R 0x00007fff298cdba0 4
 
 line number 11
-value before read :4 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :4 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 340
 	Line #: 11
@@ -3340,10 +3456,10 @@ Register Record
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: edx
 	Value: 0x5
-40057e: R 0x00007ffc2bd23ecc 4
+40057e: R 0x00007fff298cdb8c 4
 
 line number 11
-value before read :4 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :4 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 343
 	Line #: 11
@@ -3363,17 +3479,14 @@ In var_record::pc_in_range
 In var_record::find_address_in_subprog
 Checking variable b
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 140721043685072, mem_addr: 6295664, size: 36
-Checking variable i
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x7fff298cdb90mem_addr: 0x601070size: 36Checking variable i
 Enter is_at_address
-trec = 0x00007f8875adecf0
-var_addr: 140721043685068, mem_addr: 6295664, size: 4
-Leave var_record::find_addres_in_subprog
+trec = 0x0x00007ff84520ccf0
+var_addr: 0x7fff298cdb8cmem_addr: 0x601070size: 4Leave var_record::find_addres_in_subprog
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 6295648, mem_addr: 6295664, size: 36
-Write to variable a
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x601060mem_addr: 0x601070size: 36Write to variable a
 	Event num: 346
 	C file name: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Scope: *G*
@@ -3381,11 +3494,11 @@ Write to variable a
 	Type: int[9]
 	Value: 5
 
-40058a: R 0x00007ffc2bd23ecc 4
+40058a: R 0x00007fff298cdb8c 4
 
 line number 9
-value before read :4 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
-40058a: W 0x00007ffc2bd23ecc 4
+value before read :4 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
+40058a: W 0x00007fff298cdb8c 4
 value before write :4 0 0 0 
 Register Record
 	Event num: 349
@@ -3398,35 +3511,33 @@ In var_record::pc_in_range
 In var_record::find_address_in_subprog
 Checking variable b
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 140721043685072, mem_addr: 140721043685068, size: 36
-Checking variable i
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x7fff298cdb90mem_addr: 0x7fff298cdb8csize: 36Checking variable i
 Enter is_at_address
-trec = 0x00007f8875adecf0
-var_addr: 140721043685068, mem_addr: 140721043685068, size: 4
-Leave var_record::find_addres_in_subprog
+trec = 0x0x00007ff84520ccf0
+var_addr: 0x7fff298cdb8cmem_addr: 0x7fff298cdb8csize: 4Leave var_record::find_addres_in_subprog
 Write to variable i
 	Event num: 350
 	C file name: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Scope: bar
-	Address: 0x7ffc2bd23ecc
+	Address: 0x7fff298cdb8c
 	Type: int
 	Value: 5
 
-40058e: R 0x00007ffc2bd23ecc 4
+40058e: R 0x00007fff298cdb8c 4
 
 line number 9
-value before read :5 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :5 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 352
 	Line #: 9
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rflags
 	Value: 0x297
-400566: R 0x00007ffc2bd23ecc 4
+400566: R 0x00007fff298cdb8c 4
 
 line number 10
-value before read :5 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :5 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 354
 	Line #: 10
@@ -3439,38 +3550,37 @@ Register Record
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rax
 	Value: 0x5
-40056b: R 0x00007ffc2bd23ecc 4
+40056b: R 0x00007fff298cdb8c 4
 
 line number 10
-value before read :5 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :5 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 357
 	Line #: 10
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: edx
 	Value: 0x5
-40056e: W 0x00007ffc2bd23ee4 4
+40056e: W 0x00007fff298cdba4 4
 value before write :0 0 0 0 
 value after write :5 0 0 0 
 In var_record::pc_in_range
 In var_record::find_address_in_subprog
 Checking variable b
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 140721043685072, mem_addr: 140721043685092, size: 36
-Leave var_record::find_addres_in_subprog
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x7fff298cdb90mem_addr: 0x7fff298cdba4size: 36Leave var_record::find_addres_in_subprog
 Write to variable b
 	Event num: 359
 	C file name: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Scope: bar
-	Address: 0x7ffc2bd23ee4
+	Address: 0x7fff298cdba4
 	Type: int[9]
 	Value: 5
 
-400572: R 0x00007ffc2bd23ecc 4
+400572: R 0x00007fff298cdb8c 4
 
 line number 11
-value before read :5 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :5 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 361
 	Line #: 11
@@ -3483,10 +3593,10 @@ Register Record
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rax
 	Value: 0x5
-400577: R 0x00007ffc2bd23ee4 4
+400577: R 0x00007fff298cdba4 4
 
 line number 11
-value before read :5 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :5 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 364
 	Line #: 11
@@ -3499,10 +3609,10 @@ Register Record
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: edx
 	Value: 0x6
-40057e: R 0x00007ffc2bd23ecc 4
+40057e: R 0x00007fff298cdb8c 4
 
 line number 11
-value before read :5 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :5 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 367
 	Line #: 11
@@ -3522,17 +3632,14 @@ In var_record::pc_in_range
 In var_record::find_address_in_subprog
 Checking variable b
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 140721043685072, mem_addr: 6295668, size: 36
-Checking variable i
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x7fff298cdb90mem_addr: 0x601074size: 36Checking variable i
 Enter is_at_address
-trec = 0x00007f8875adecf0
-var_addr: 140721043685068, mem_addr: 6295668, size: 4
-Leave var_record::find_addres_in_subprog
+trec = 0x0x00007ff84520ccf0
+var_addr: 0x7fff298cdb8cmem_addr: 0x601074size: 4Leave var_record::find_addres_in_subprog
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 6295648, mem_addr: 6295668, size: 36
-Write to variable a
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x601060mem_addr: 0x601074size: 36Write to variable a
 	Event num: 370
 	C file name: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Scope: *G*
@@ -3540,11 +3647,11 @@ Write to variable a
 	Type: int[9]
 	Value: 6
 
-40058a: R 0x00007ffc2bd23ecc 4
+40058a: R 0x00007fff298cdb8c 4
 
 line number 9
-value before read :5 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
-40058a: W 0x00007ffc2bd23ecc 4
+value before read :5 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
+40058a: W 0x00007fff298cdb8c 4
 value before write :5 0 0 0 
 Register Record
 	Event num: 373
@@ -3557,35 +3664,33 @@ In var_record::pc_in_range
 In var_record::find_address_in_subprog
 Checking variable b
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 140721043685072, mem_addr: 140721043685068, size: 36
-Checking variable i
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x7fff298cdb90mem_addr: 0x7fff298cdb8csize: 36Checking variable i
 Enter is_at_address
-trec = 0x00007f8875adecf0
-var_addr: 140721043685068, mem_addr: 140721043685068, size: 4
-Leave var_record::find_addres_in_subprog
+trec = 0x0x00007ff84520ccf0
+var_addr: 0x7fff298cdb8cmem_addr: 0x7fff298cdb8csize: 4Leave var_record::find_addres_in_subprog
 Write to variable i
 	Event num: 374
 	C file name: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Scope: bar
-	Address: 0x7ffc2bd23ecc
+	Address: 0x7fff298cdb8c
 	Type: int
 	Value: 6
 
-40058e: R 0x00007ffc2bd23ecc 4
+40058e: R 0x00007fff298cdb8c 4
 
 line number 9
-value before read :6 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :6 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 376
 	Line #: 9
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rflags
 	Value: 0x293
-400566: R 0x00007ffc2bd23ecc 4
+400566: R 0x00007fff298cdb8c 4
 
 line number 10
-value before read :6 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :6 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 378
 	Line #: 10
@@ -3598,38 +3703,37 @@ Register Record
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rax
 	Value: 0x6
-40056b: R 0x00007ffc2bd23ecc 4
+40056b: R 0x00007fff298cdb8c 4
 
 line number 10
-value before read :6 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :6 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 381
 	Line #: 10
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: edx
 	Value: 0x6
-40056e: W 0x00007ffc2bd23ee8 4
+40056e: W 0x00007fff298cdba8 4
 value before write :0 0 0 0 
 value after write :6 0 0 0 
 In var_record::pc_in_range
 In var_record::find_address_in_subprog
 Checking variable b
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 140721043685072, mem_addr: 140721043685096, size: 36
-Leave var_record::find_addres_in_subprog
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x7fff298cdb90mem_addr: 0x7fff298cdba8size: 36Leave var_record::find_addres_in_subprog
 Write to variable b
 	Event num: 383
 	C file name: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Scope: bar
-	Address: 0x7ffc2bd23ee8
+	Address: 0x7fff298cdba8
 	Type: int[9]
 	Value: 6
 
-400572: R 0x00007ffc2bd23ecc 4
+400572: R 0x00007fff298cdb8c 4
 
 line number 11
-value before read :6 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :6 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 385
 	Line #: 11
@@ -3642,10 +3746,10 @@ Register Record
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rax
 	Value: 0x6
-400577: R 0x00007ffc2bd23ee8 4
+400577: R 0x00007fff298cdba8 4
 
 line number 11
-value before read :6 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :6 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 388
 	Line #: 11
@@ -3658,10 +3762,10 @@ Register Record
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: edx
 	Value: 0x7
-40057e: R 0x00007ffc2bd23ecc 4
+40057e: R 0x00007fff298cdb8c 4
 
 line number 11
-value before read :6 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :6 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 391
 	Line #: 11
@@ -3681,17 +3785,14 @@ In var_record::pc_in_range
 In var_record::find_address_in_subprog
 Checking variable b
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 140721043685072, mem_addr: 6295672, size: 36
-Checking variable i
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x7fff298cdb90mem_addr: 0x601078size: 36Checking variable i
 Enter is_at_address
-trec = 0x00007f8875adecf0
-var_addr: 140721043685068, mem_addr: 6295672, size: 4
-Leave var_record::find_addres_in_subprog
+trec = 0x0x00007ff84520ccf0
+var_addr: 0x7fff298cdb8cmem_addr: 0x601078size: 4Leave var_record::find_addres_in_subprog
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 6295648, mem_addr: 6295672, size: 36
-Write to variable a
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x601060mem_addr: 0x601078size: 36Write to variable a
 	Event num: 394
 	C file name: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Scope: *G*
@@ -3699,11 +3800,11 @@ Write to variable a
 	Type: int[9]
 	Value: 7
 
-40058a: R 0x00007ffc2bd23ecc 4
+40058a: R 0x00007fff298cdb8c 4
 
 line number 9
-value before read :6 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
-40058a: W 0x00007ffc2bd23ecc 4
+value before read :6 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
+40058a: W 0x00007fff298cdb8c 4
 value before write :6 0 0 0 
 Register Record
 	Event num: 397
@@ -3716,35 +3817,33 @@ In var_record::pc_in_range
 In var_record::find_address_in_subprog
 Checking variable b
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 140721043685072, mem_addr: 140721043685068, size: 36
-Checking variable i
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x7fff298cdb90mem_addr: 0x7fff298cdb8csize: 36Checking variable i
 Enter is_at_address
-trec = 0x00007f8875adecf0
-var_addr: 140721043685068, mem_addr: 140721043685068, size: 4
-Leave var_record::find_addres_in_subprog
+trec = 0x0x00007ff84520ccf0
+var_addr: 0x7fff298cdb8cmem_addr: 0x7fff298cdb8csize: 4Leave var_record::find_addres_in_subprog
 Write to variable i
 	Event num: 398
 	C file name: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Scope: bar
-	Address: 0x7ffc2bd23ecc
+	Address: 0x7fff298cdb8c
 	Type: int
 	Value: 7
 
-40058e: R 0x00007ffc2bd23ecc 4
+40058e: R 0x00007fff298cdb8c 4
 
 line number 9
-value before read :7 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :7 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 400
 	Line #: 9
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rflags
 	Value: 0x293
-400566: R 0x00007ffc2bd23ecc 4
+400566: R 0x00007fff298cdb8c 4
 
 line number 10
-value before read :7 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :7 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 402
 	Line #: 10
@@ -3757,38 +3856,37 @@ Register Record
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rax
 	Value: 0x7
-40056b: R 0x00007ffc2bd23ecc 4
+40056b: R 0x00007fff298cdb8c 4
 
 line number 10
-value before read :7 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :7 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 405
 	Line #: 10
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: edx
 	Value: 0x7
-40056e: W 0x00007ffc2bd23eec 4
+40056e: W 0x00007fff298cdbac 4
 value before write :0 0 0 0 
 value after write :7 0 0 0 
 In var_record::pc_in_range
 In var_record::find_address_in_subprog
 Checking variable b
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 140721043685072, mem_addr: 140721043685100, size: 36
-Leave var_record::find_addres_in_subprog
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x7fff298cdb90mem_addr: 0x7fff298cdbacsize: 36Leave var_record::find_addres_in_subprog
 Write to variable b
 	Event num: 407
 	C file name: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Scope: bar
-	Address: 0x7ffc2bd23eec
+	Address: 0x7fff298cdbac
 	Type: int[9]
 	Value: 7
 
-400572: R 0x00007ffc2bd23ecc 4
+400572: R 0x00007fff298cdb8c 4
 
 line number 11
-value before read :7 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :7 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 409
 	Line #: 11
@@ -3801,10 +3899,10 @@ Register Record
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rax
 	Value: 0x7
-400577: R 0x00007ffc2bd23eec 4
+400577: R 0x00007fff298cdbac 4
 
 line number 11
-value before read :7 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :7 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 412
 	Line #: 11
@@ -3817,10 +3915,10 @@ Register Record
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: edx
 	Value: 0x8
-40057e: R 0x00007ffc2bd23ecc 4
+40057e: R 0x00007fff298cdb8c 4
 
 line number 11
-value before read :7 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :7 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 415
 	Line #: 11
@@ -3840,17 +3938,14 @@ In var_record::pc_in_range
 In var_record::find_address_in_subprog
 Checking variable b
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 140721043685072, mem_addr: 6295676, size: 36
-Checking variable i
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x7fff298cdb90mem_addr: 0x60107csize: 36Checking variable i
 Enter is_at_address
-trec = 0x00007f8875adecf0
-var_addr: 140721043685068, mem_addr: 6295676, size: 4
-Leave var_record::find_addres_in_subprog
+trec = 0x0x00007ff84520ccf0
+var_addr: 0x7fff298cdb8cmem_addr: 0x60107csize: 4Leave var_record::find_addres_in_subprog
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 6295648, mem_addr: 6295676, size: 36
-Write to variable a
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x601060mem_addr: 0x60107csize: 36Write to variable a
 	Event num: 418
 	C file name: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Scope: *G*
@@ -3858,11 +3953,11 @@ Write to variable a
 	Type: int[9]
 	Value: 8
 
-40058a: R 0x00007ffc2bd23ecc 4
+40058a: R 0x00007fff298cdb8c 4
 
 line number 9
-value before read :7 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
-40058a: W 0x00007ffc2bd23ecc 4
+value before read :7 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
+40058a: W 0x00007fff298cdb8c 4
 value before write :7 0 0 0 
 Register Record
 	Event num: 421
@@ -3875,35 +3970,33 @@ In var_record::pc_in_range
 In var_record::find_address_in_subprog
 Checking variable b
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 140721043685072, mem_addr: 140721043685068, size: 36
-Checking variable i
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x7fff298cdb90mem_addr: 0x7fff298cdb8csize: 36Checking variable i
 Enter is_at_address
-trec = 0x00007f8875adecf0
-var_addr: 140721043685068, mem_addr: 140721043685068, size: 4
-Leave var_record::find_addres_in_subprog
+trec = 0x0x00007ff84520ccf0
+var_addr: 0x7fff298cdb8cmem_addr: 0x7fff298cdb8csize: 4Leave var_record::find_addres_in_subprog
 Write to variable i
 	Event num: 422
 	C file name: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Scope: bar
-	Address: 0x7ffc2bd23ecc
+	Address: 0x7fff298cdb8c
 	Type: int
 	Value: 8
 
-40058e: R 0x00007ffc2bd23ecc 4
+40058e: R 0x00007fff298cdb8c 4
 
 line number 9
-value before read :8 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :8 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 424
 	Line #: 9
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rflags
 	Value: 0x297
-400566: R 0x00007ffc2bd23ecc 4
+400566: R 0x00007fff298cdb8c 4
 
 line number 10
-value before read :8 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :8 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 426
 	Line #: 10
@@ -3916,38 +4009,37 @@ Register Record
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rax
 	Value: 0x8
-40056b: R 0x00007ffc2bd23ecc 4
+40056b: R 0x00007fff298cdb8c 4
 
 line number 10
-value before read :8 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :8 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 429
 	Line #: 10
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: edx
 	Value: 0x8
-40056e: W 0x00007ffc2bd23ef0 4
+40056e: W 0x00007fff298cdbb0 4
 value before write :e0 5 40 0 
 value after write :8 0 0 0 
 In var_record::pc_in_range
 In var_record::find_address_in_subprog
 Checking variable b
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 140721043685072, mem_addr: 140721043685104, size: 36
-Leave var_record::find_addres_in_subprog
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x7fff298cdb90mem_addr: 0x7fff298cdbb0size: 36Leave var_record::find_addres_in_subprog
 Write to variable b
 	Event num: 431
 	C file name: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Scope: bar
-	Address: 0x7ffc2bd23ef0
+	Address: 0x7fff298cdbb0
 	Type: int[9]
 	Value: 8
 
-400572: R 0x00007ffc2bd23ecc 4
+400572: R 0x00007fff298cdb8c 4
 
 line number 11
-value before read :8 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :8 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 433
 	Line #: 11
@@ -3960,10 +4052,10 @@ Register Record
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rax
 	Value: 0x8
-400577: R 0x00007ffc2bd23ef0 4
+400577: R 0x00007fff298cdbb0 4
 
 line number 11
-value before read :8 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :8 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 436
 	Line #: 11
@@ -3976,10 +4068,10 @@ Register Record
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: edx
 	Value: 0x9
-40057e: R 0x00007ffc2bd23ecc 4
+40057e: R 0x00007fff298cdb8c 4
 
 line number 11
-value before read :8 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :8 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 439
 	Line #: 11
@@ -3999,17 +4091,14 @@ In var_record::pc_in_range
 In var_record::find_address_in_subprog
 Checking variable b
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 140721043685072, mem_addr: 6295680, size: 36
-Checking variable i
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x7fff298cdb90mem_addr: 0x601080size: 36Checking variable i
 Enter is_at_address
-trec = 0x00007f8875adecf0
-var_addr: 140721043685068, mem_addr: 6295680, size: 4
-Leave var_record::find_addres_in_subprog
+trec = 0x0x00007ff84520ccf0
+var_addr: 0x7fff298cdb8cmem_addr: 0x601080size: 4Leave var_record::find_addres_in_subprog
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 6295648, mem_addr: 6295680, size: 36
-Write to variable a
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x601060mem_addr: 0x601080size: 36Write to variable a
 	Event num: 442
 	C file name: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Scope: *G*
@@ -4017,11 +4106,11 @@ Write to variable a
 	Type: int[9]
 	Value: 9
 
-40058a: R 0x00007ffc2bd23ecc 4
+40058a: R 0x00007fff298cdb8c 4
 
 line number 9
-value before read :8 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
-40058a: W 0x00007ffc2bd23ecc 4
+value before read :8 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
+40058a: W 0x00007fff298cdb8c 4
 value before write :8 0 0 0 
 Register Record
 	Event num: 445
@@ -4034,35 +4123,33 @@ In var_record::pc_in_range
 In var_record::find_address_in_subprog
 Checking variable b
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 140721043685072, mem_addr: 140721043685068, size: 36
-Checking variable i
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x7fff298cdb90mem_addr: 0x7fff298cdb8csize: 36Checking variable i
 Enter is_at_address
-trec = 0x00007f8875adecf0
-var_addr: 140721043685068, mem_addr: 140721043685068, size: 4
-Leave var_record::find_addres_in_subprog
+trec = 0x0x00007ff84520ccf0
+var_addr: 0x7fff298cdb8cmem_addr: 0x7fff298cdb8csize: 4Leave var_record::find_addres_in_subprog
 Write to variable i
 	Event num: 446
 	C file name: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Scope: bar
-	Address: 0x7ffc2bd23ecc
+	Address: 0x7fff298cdb8c
 	Type: int
 	Value: 9
 
-40058e: R 0x00007ffc2bd23ecc 4
+40058e: R 0x00007fff298cdb8c 4
 
 line number 9
-value before read :9 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :9 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 448
 	Line #: 9
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rflags
 	Value: 0x246
-400566: R 0x00007ffc2bd23ecc 4
+400566: R 0x00007fff298cdb8c 4
 
 line number 10
-value before read :9 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :9 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 450
 	Line #: 10
@@ -4075,38 +4162,35 @@ Register Record
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rax
 	Value: 0x9
-40056b: R 0x00007ffc2bd23ecc 4
+40056b: R 0x00007fff298cdb8c 4
 
 line number 10
-value before read :9 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :9 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 453
 	Line #: 10
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: edx
 	Value: 0x9
-40056e: W 0x00007ffc2bd23ef4 4
+40056e: W 0x00007fff298cdbb4 4
 value before write :0 0 0 0 
 value after write :9 0 0 0 
 In var_record::pc_in_range
 In var_record::find_address_in_subprog
 Checking variable b
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 140721043685072, mem_addr: 140721043685108, size: 36
-Checking variable i
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x7fff298cdb90mem_addr: 0x7fff298cdbb4size: 36Checking variable i
 Enter is_at_address
-trec = 0x00007f8875adecf0
-var_addr: 140721043685068, mem_addr: 140721043685108, size: 4
-Leave var_record::find_addres_in_subprog
+trec = 0x0x00007ff84520ccf0
+var_addr: 0x7fff298cdb8cmem_addr: 0x7fff298cdbb4size: 4Leave var_record::find_addres_in_subprog
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 6295648, mem_addr: 140721043685108, size: 36
-address 0x7ffc2bd23ef4 is not a program variable
-400572: R 0x00007ffc2bd23ecc 4
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x601060mem_addr: 0x7fff298cdbb4size: 36address 0x7fff298cdbb4 is not a program variable
+400572: R 0x00007fff298cdb8c 4
 
 line number 11
-value before read :9 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :9 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 457
 	Line #: 11
@@ -4119,10 +4203,10 @@ Register Record
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rax
 	Value: 0x9
-400577: R 0x00007ffc2bd23ef4 4
+400577: R 0x00007fff298cdbb4 4
 
 line number 11
-value before read :9 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :9 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 460
 	Line #: 11
@@ -4135,10 +4219,10 @@ Register Record
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: edx
 	Value: 0xa
-40057e: R 0x00007ffc2bd23ecc 4
+40057e: R 0x00007fff298cdb8c 4
 
 line number 11
-value before read :9 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :9 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 463
 	Line #: 11
@@ -4158,22 +4242,19 @@ In var_record::pc_in_range
 In var_record::find_address_in_subprog
 Checking variable b
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 140721043685072, mem_addr: 6295684, size: 36
-Checking variable i
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x7fff298cdb90mem_addr: 0x601084size: 36Checking variable i
 Enter is_at_address
-trec = 0x00007f8875adecf0
-var_addr: 140721043685068, mem_addr: 6295684, size: 4
-Leave var_record::find_addres_in_subprog
+trec = 0x0x00007ff84520ccf0
+var_addr: 0x7fff298cdb8cmem_addr: 0x601084size: 4Leave var_record::find_addres_in_subprog
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 6295648, mem_addr: 6295684, size: 36
-address 0x601084 is not a program variable
-40058a: R 0x00007ffc2bd23ecc 4
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x601060mem_addr: 0x601084size: 36address 0x601084 is not a program variable
+40058a: R 0x00007fff298cdb8c 4
 
 line number 9
-value before read :9 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
-40058a: W 0x00007ffc2bd23ecc 4
+value before read :9 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
+40058a: W 0x00007fff298cdb8c 4
 value before write :9 0 0 0 
 Register Record
 	Event num: 469
@@ -4186,25 +4267,23 @@ In var_record::pc_in_range
 In var_record::find_address_in_subprog
 Checking variable b
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 140721043685072, mem_addr: 140721043685068, size: 36
-Checking variable i
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x7fff298cdb90mem_addr: 0x7fff298cdb8csize: 36Checking variable i
 Enter is_at_address
-trec = 0x00007f8875adecf0
-var_addr: 140721043685068, mem_addr: 140721043685068, size: 4
-Leave var_record::find_addres_in_subprog
+trec = 0x0x00007ff84520ccf0
+var_addr: 0x7fff298cdb8cmem_addr: 0x7fff298cdb8csize: 4Leave var_record::find_addres_in_subprog
 Write to variable i
 	Event num: 470
 	C file name: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Scope: bar
-	Address: 0x7ffc2bd23ecc
+	Address: 0x7fff298cdb8c
 	Type: int
 	Value: 10
 
-40058e: R 0x00007ffc2bd23ecc 4
+40058e: R 0x00007fff298cdb8c 4
 
 line number 9
-value before read :a 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :a 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 472
 	Line #: 9
@@ -4217,20 +4296,20 @@ Register Record
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rip
 	Value: 0x400594
-400595: R 0x00007ffc2bd23ef8 8
+400595: R 0x00007fff298cdbb8 8
 
 line number 13
-value before read :0 3a 44 93 3f b c7 9c Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :0 20 d0 f8 c6 dd f2 57 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 475
 	Line #: 13
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rax
-	Value: 0x9cc70b3f93443a00
-400599: R 0x00007f8862061728 8
+	Value: 0x57f2ddc6f8d02000
+400599: R 0x00007ff831791728 8
 
 line number 13
-value before read :0 3a 44 93 3f b c7 9c Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :0 20 d0 f8 c6 dd f2 57 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 477
 	Line #: 13
@@ -4243,27 +4322,27 @@ Register Record
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rflags
 	Value: 0x246
-4005a9: R 0x00007ffc2bd23f00 8
+4005a9: R 0x00007fff298cdbc0 8
 
 line number 13
-value before read :10 3f d2 2b fc 7f 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f00
+value before read :d0 db 8c 29 ff 7f 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbc0
 Register Record
 	Event num: 480
 	Line #: 13
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rbp
-	Value: 0x7ffc2bd23f10
+	Value: 0x7fff298cdbd0
 Register Record
 	Event num: 481
 	Line #: 13
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rsp
-	Value: 0x7ffc2bd23f08
-4005aa: R 0x00007ffc2bd23f08 8
+	Value: 0x7fff298cdbc8
+4005aa: R 0x00007fff298cdbc8 8
 
 line number 13
-value before read :ca 5 40 0 0 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f10
-Before return: SP = 7ffc2bd23f08
+value before read :ca 5 40 0 0 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbd0
+Before return: SP = 7fff298cdbc8
 Register Record
 	Event num: 485
 	Line #: 13
@@ -4275,19 +4354,19 @@ Register Record
 	Line #: 13
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rsp
-	Value: 0x7ffc2bd23f10
-After return : SP = 7ffc2bd23f10
+	Value: 0x7fff298cdbd0
+After return : SP = 7fff298cdbd0
 Register Record
 	Event num: 487
 	Line #: 20
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: eax
 	Value: 0x0
-4005cf: R 0x00007ffc2bd23f10 8
+4005cf: R 0x00007fff298cdbd0 8
 
 line number 21
-value before read :e0 5 40 0 0 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7ffc2bd23f10
-Before pop: SP = 7ffc2bd23f10
+value before read :e0 5 40 0 0 0 0 0 Invocation ID:214 function bar was called. Frame pointer was 7fff298cdbd0
+Before pop: SP = 7fff298cdbd0
 Register Record
 	Event num: 490
 	Line #: 21
@@ -4299,32 +4378,32 @@ Register Record
 	Line #: 21
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rsp
-	Value: 0x7ffc2bd23f18
-After pop: SP = 7ffc2bd23f18
-4005d0: R 0x00007ffc2bd23f18 8
+	Value: 0x7fff298cdbd8
+After pop: SP = 7fff298cdbd8
+4005d0: R 0x00007fff298cdbd8 8
 
 line number 21
-value before read :30 e8 b 62 88 7f 0 0 Invocation ID:214 function bar was called. Frame pointer was 4005e0
-Before return: SP = 7ffc2bd23f18
+value before read :30 e8 7e 31 f8 7f 0 0 Invocation ID:214 function bar was called. Frame pointer was 4005e0
+Before return: SP = 7fff298cdbd8
 Register Record
 	Event num: 495
 	Line #: 21
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rip
-	Value: 0x7f88620be830
+	Value: 0x7ff8317ee830
 Register Record
 	Event num: 496
 	Line #: 21
 	File: /home/carr/Downloads/pin-3.6-97554-g31f0a167d-gcc-linux/source/tools/PAS/tests/PAS_Example.c
 	Register: rsp
-	Value: 0x7ffc2bd23f20
-After return : SP = 7ffc2bd23f20
+	Value: 0x7fff298cdbe0
+After return : SP = 7fff298cdbe0
 after push stack size:3
-Invocation ID:497function __do_global_dtors_aux was called. Frame pointer was 7ffc2bd23ed0
+Invocation ID:497function __do_global_dtors_aux was called. Frame pointer was 7fff298cdb90
 400500: R 0x0000000000601040 1
 
 line number 0
-value before read :0 Invocation ID:497 function __do_global_dtors_aux was called. Frame pointer was 7ffc2bd23ed0
+value before read :0 Invocation ID:497 function __do_global_dtors_aux was called. Frame pointer was 7fff298cdb90
 Register Record
 	Event num: 499
 	Line #: 0
@@ -4337,29 +4416,28 @@ Register Record
 	File: __NOCSOURCE__
 	Register: rip
 	Value: 0x400509
-400509: W 0x00007ffc2bd23e00 8
+400509: W 0x00007fff298cdac0 8
 value before write :0 0 1 0 1 0 1 0 
-Before push: SP = 7ffc2bd23e08
+Before push: SP = 7fff298cdac8
 Register Record
 	Event num: 503
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsp
-	Value: 0x7ffc2bd23e00
-value after write :71 3c b4 75 88 7f 0 0 
+	Value: 0x7fff298cdac0
+value after write :71 1c 27 45 f8 7f 0 0 
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 6295648, mem_addr: 140721043684856, size: 36
-address 0x7ffc2bd23df8 is not a program variable
-After push: SP = 7ffc2bd23e00
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x601060mem_addr: 0x7fff298cdab8size: 36address 0x7fff298cdab8 is not a program variable
+After push: SP = 7fff298cdac0
 Register Record
 	Event num: 505
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rbp
-	Value: 0x7ffc2bd23e00
-40050d: W 0x00007ffc2bd23df8 8
-value before write :71 3c b4 75 88 7f 0 0 
+	Value: 0x7fff298cdac0
+40050d: W 0x00007fff298cdab8 8
+value before write :71 1c 27 45 f8 7f 0 0 
 Enter before_function_direct_call
 Call to function
 	Event num: 507
@@ -4370,7 +4448,7 @@ Call to function
 	Inv file: __NOCSOURCE__
 	Callee address: 0x400480
 
-frec = 0x0x00007f8861eef280
+frec = 0x0x00007ff831658200
 Built frec
 Wrote frec
 Exit before_function_direct_call
@@ -4385,38 +4463,36 @@ Register Record
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsp
-	Value: 0x7ffc2bd23df8
+	Value: 0x7fff298cdab8
 value after write :0 0 0 0 0 0 0 0 
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 6295648, mem_addr: 140721043684848, size: 36
-address 0x7ffc2bd23df0 is not a program variable
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x601060mem_addr: 0x7fff298cdab0size: 36address 0x7fff298cdab0 is not a program variable
 Enter after_function_call
 function return
 Exit after_function_call
 after push stack size:4
-Invocation ID:200function deregister_tm_clones was called. Frame pointer was 7ffc2bd23e00
+Invocation ID:200function deregister_tm_clones was called. Frame pointer was 7fff298cdac0
 Register Record
 	Event num: 513
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: eax
 	Value: 0x60103f
-400485: W 0x00007ffc2bd23df0 8
+400485: W 0x00007fff298cdab0 8
 value before write :0 0 0 0 0 0 0 0 
-Before push: SP = 7ffc2bd23df8
+Before push: SP = 7fff298cdab8
 Register Record
 	Event num: 516
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsp
-	Value: 0x7ffc2bd23df0
-value after write :f0 3f d2 2b fc 7f 0 0 
+	Value: 0x7fff298cdab0
+value after write :b0 dc 8c 29 ff 7f 0 0 
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 6295648, mem_addr: 140721043684840, size: 36
-address 0x7ffc2bd23de8 is not a program variable
-After push: SP = 7ffc2bd23df0
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x601060mem_addr: 0x7fff298cdaa8size: 36address 0x7fff298cdaa8 is not a program variable
+After push: SP = 7fff298cdab0
 Register Record
 	Event num: 518
 	Line #: 0
@@ -4440,30 +4516,30 @@ Register Record
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rbp
-	Value: 0x7ffc2bd23df0
-4004b0: R 0x00007ffc2bd23df0 8
+	Value: 0x7fff298cdab0
+4004b0: R 0x00007fff298cdab0 8
 
 line number 0
-value before read :0 3e d2 2b fc 7f 0 0 Invocation ID:512 function deregister_tm_clones was called. Frame pointer was 7ffc2bd23df0
-Before pop: SP = 7ffc2bd23df0
+value before read :c0 da 8c 29 ff 7f 0 0 Invocation ID:512 function deregister_tm_clones was called. Frame pointer was 7fff298cdab0
+Before pop: SP = 7fff298cdab0
 Register Record
 	Event num: 524
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rbp
-	Value: 0x7ffc2bd23e00
+	Value: 0x7fff298cdac0
 Register Record
 	Event num: 525
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsp
-	Value: 0x7ffc2bd23df8
-After pop: SP = 7ffc2bd23df8
-4004b1: R 0x00007ffc2bd23df8 8
+	Value: 0x7fff298cdab8
+After pop: SP = 7fff298cdab8
+4004b1: R 0x00007fff298cdab8 8
 
 line number 0
-value before read :12 5 40 0 0 0 0 0 Invocation ID:512 function deregister_tm_clones was called. Frame pointer was 7ffc2bd23e00
-Before return: SP = 7ffc2bd23df8
+value before read :12 5 40 0 0 0 0 0 Invocation ID:512 function deregister_tm_clones was called. Frame pointer was 7fff298cdac0
+Before return: SP = 7fff298cdab8
 Register Record
 	Event num: 529
 	Line #: 0
@@ -4475,59 +4551,58 @@ Register Record
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsp
-	Value: 0x7ffc2bd23e00
-After return : SP = 7ffc2bd23e00
-400512: R 0x00007ffc2bd23e00 8
+	Value: 0x7fff298cdac0
+After return : SP = 7fff298cdac0
+400512: R 0x00007fff298cdac0 8
 
 line number 0
-value before read :d0 3e d2 2b fc 7f 0 0 Invocation ID:512 function deregister_tm_clones was called. Frame pointer was 7ffc2bd23e00
-Before pop: SP = 7ffc2bd23e00
+value before read :90 db 8c 29 ff 7f 0 0 Invocation ID:512 function deregister_tm_clones was called. Frame pointer was 7fff298cdac0
+Before pop: SP = 7fff298cdac0
 Register Record
 	Event num: 533
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rbp
-	Value: 0x7ffc2bd23ed0
+	Value: 0x7fff298cdb90
 Register Record
 	Event num: 534
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsp
-	Value: 0x7ffc2bd23e08
-After pop: SP = 7ffc2bd23e08
+	Value: 0x7fff298cdac8
+After pop: SP = 7fff298cdac8
 400513: W 0x0000000000601040 1
 value before write :0 
 value after write :1 
 Enter is_at_address
-trec = 0x00007f8875adeeb0
-var_addr: 6295648, mem_addr: 6295616, size: 36
-address 0x601040 is not a program variable
-40051a: R 0x00007ffc2bd23e08 8
+trec = 0x0x00007ff84520ceb0
+var_addr: 0x601060mem_addr: 0x601040size: 36address 0x601040 is not a program variable
+40051a: R 0x00007fff298cdac8 8
 
 line number 0
-value before read :e7 3d b4 75 88 7f 0 0 Invocation ID:512 function deregister_tm_clones was called. Frame pointer was 7ffc2bd23ed0
-Before return: SP = 7ffc2bd23e08
+value before read :e7 1d 27 45 f8 7f 0 0 Invocation ID:512 function deregister_tm_clones was called. Frame pointer was 7fff298cdb90
+Before return: SP = 7fff298cdac8
 Register Record
 	Event num: 540
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rip
-	Value: 0x7f8875b43de7
+	Value: 0x7ff845271de7
 Register Record
 	Event num: 541
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsp
-	Value: 0x7ffc2bd23e10
-After return : SP = 7ffc2bd23e10
+	Value: 0x7fff298cdad0
+After return : SP = 7fff298cdad0
 after push stack size:3
-Invocation ID:542function _fini was called. Frame pointer was 7ffc2bd23ed0
+Invocation ID:542function _fini was called. Frame pointer was 7fff298cdb90
 Register Record
 	Event num: 543
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsp
-	Value: 0x7ffc2bd23e00
+	Value: 0x7fff298cdac0
 Register Record
 	Event num: 544
 	Line #: 0
@@ -4539,29 +4614,29 @@ Register Record
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsp
-	Value: 0x7ffc2bd23e08
+	Value: 0x7fff298cdac8
 Register Record
 	Event num: 546
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rflags
 	Value: 0x202
-40065c: R 0x00007ffc2bd23e08 8
+40065c: R 0x00007fff298cdac8 8
 
 line number 0
-value before read :5 3e b4 75 88 7f 0 0 Invocation ID:542 function _fini was called. Frame pointer was 7ffc2bd23ed0
-Before return: SP = 7ffc2bd23e08
+value before read :5 1e 27 45 f8 7f 0 0 Invocation ID:542 function _fini was called. Frame pointer was 7fff298cdb90
+Before return: SP = 7fff298cdac8
 Register Record
 	Event num: 550
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rip
-	Value: 0x7f8875b43e05
+	Value: 0x7ff845271e05
 Register Record
 	Event num: 551
 	Line #: 0
 	File: __NOCSOURCE__
 	Register: rsp
-	Value: 0x7ffc2bd23e10
-After return : SP = 7ffc2bd23e10
+	Value: 0x7fff298cdad0
+After return : SP = 7fff298cdad0
 saving files

@@ -189,4 +189,12 @@ EXTERN(void, die_with_message, (char *format, ...));
 /* The routine prints a message based upon the input and terminates the	*/
 /* environment abnormally.						*/
 
+
+#ifndef NDEBUG
+#define DEBUGL(L) L;
+#else
+#define DEBUGL(L) ;
+#endif
+
+
 #endif  /* general_h */

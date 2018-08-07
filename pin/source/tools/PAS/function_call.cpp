@@ -1,25 +1,25 @@
 /*
- * memory_access.cpp
+ * function_call.cpp
  *
- *  Created on: Jul 20, 2016
- *      Author: haoli
  */
 #include "function_call.h"
 #include <cstdio>
 #include <iostream>
 #include "global.h"
+#include <util/general.h>
 #include <io/vaccs_record_factory.h>
 #include <io/vaccs_record.h>
 #include <io/func_inv_record.h>
 #include <io/return_record.h>
+#include <io/return_addr_record.h>
 #include <vaccs_read/vaccs_dw_reader.h>
 
 extern vaccs_dw_reader *vdr;
 extern FILE *vfp;
 using namespace std;
 
-VOID before_function_direct_call(ADDRINT ip, ADDRINT callee_address) {
-   cout << "Enter before_function_direct_call" << endl;
+VOID before_function_direct_call(ADDRINT ip, CONTEXT *ctxt, ADDRINT callee_address) {
+   DEBUGL(cout << "Enter before_function_direct_call" << endl);
 	INT32	column, callee_column;
 	INT32	line, callee_line;
 	std::string 	fileName, callee_file_name, callee_name;
@@ -40,16 +40,16 @@ VOID before_function_direct_call(ADDRINT ip, ADDRINT callee_address) {
 
    vaccs_record_factory factory;
  
-   cout << "Call to function" << endl;
-   cout << '\t' << "Event num: " << dec << timestamp << endl;
-   cout << '\t' << "Function name: " << callee_name << endl;
-   cout << '\t' << "Func line: " << callee_line << endl;
-   cout << '\t' << "Inv line: " << line << endl;
-   cout << '\t' << "Func file: " << callee_file_name << endl;
-   cout << '\t' << "Inv file: " << fileName << endl;
-   cout << '\t' << "Callee address: 0x" << hex << callee_address << endl << endl;
+   DEBUGL(cout << "Call to function" << endl);
+   DEBUGL(cout << '\t' << "Event num: " << dec << timestamp << endl);
+   DEBUGL(cout << '\t' << "Function name: " << callee_name << endl);
+   DEBUGL(cout << '\t' << "Func line: " << callee_line << endl);
+   DEBUGL(cout << '\t' << "Inv line: " << line << endl);
+   DEBUGL(cout << '\t' << "Func file: " << callee_file_name << endl);
+   DEBUGL(cout << '\t' << "Inv file: " << fileName << endl);
+   DEBUGL(cout << '\t' << "Callee address: 0x" << hex << callee_address << endl << endl);
    func_inv_record *frec = (func_inv_record*)factory.make_vaccs_record(VACCS_FUNCTION_INV);
-   cout << "frec = 0x" << frec << endl;
+   DEBUGL(cout << "frec = 0x" << frec << endl);
    frec = frec->add_event_num(timestamp++)
       ->add_func_name(callee_name.c_str())
       ->add_func_line_num(callee_line)
@@ -58,30 +58,52 @@ VOID before_function_direct_call(ADDRINT ip, ADDRINT callee_address) {
       ->add_c_inv_file(fileName.c_str())
       ->add_address(callee_address);
 
-   cout << "Built frec" << endl;
+   DEBUGL(cout << "Built frec" << endl);
    frec->write(vfp);
-   cout << "Wrote frec" << endl;
    delete frec;
-   cout << "Exit before_function_direct_call" << endl;
+   DEBUGL(cout << "Wrote frec" << endl);
+
+
+   if (callee_line != 0) { // if there is no C line, then we can't access memory
+      DEBUGL(cout << "Getting frame pointer for " << callee_name << endl);
+      ADDRINT frame_ptr = (ADDRINT)PIN_GetContextReg( ctxt, REG_GBP);
+      ADDRINT dynamic_link = read_memory_as_address(frame_ptr+OLD_FRAME_PTR_OFFSET);
+      ADDRINT return_address = read_memory_as_address(frame_ptr+RETURN_ADDRESS_OFFSET);
+ 
+      DEBUGL(cout << "Return address" << endl);
+      DEBUGL(cout << '\t' << "Function name: " << callee_name << endl);
+      DEBUGL(cout << '\t' << "Dynamic link: 0x" << hex << dynamic_link << endl);
+      DEBUGL(cout << '\t' << "Return address: 0x" << hex << return_address << endl);
+      return_addr_record *rarec = ((return_addr_record*)factory
+         .make_vaccs_record(VACCS_RETURN_ADDR))
+         ->add_dynamic_link(dynamic_link)
+         ->add_return_address(return_address)
+         ->add_c_func_name(callee_name.c_str());
+   
+      rarec->write(vfp);
+      delete rarec;
+   }
+
+   DEBUGL(cout << "Exit before_function_direct_call" << endl);
 }
 
-VOID before_function_indirect_call(ADDRINT ip, ADDRINT callee_address,BOOL taken) {
-   cout << "Enter before_function_indirect_call" << endl;
+VOID before_function_indirect_call(ADDRINT ip, CONTEXT *ctxt, ADDRINT callee_address,BOOL taken) {
+   DEBUGL(cout << "Enter before_function_indirect_call" << endl);
    if (taken)
-      before_function_direct_call(ip,callee_address);
+      before_function_direct_call(ip,ctxt,callee_address);
 
-   cout << "Exit before_function_indirect_call" << endl;
+   DEBUGL(cout << "Exit before_function_indirect_call" << endl);
 }
 
 VOID after_function_call(void) {
-   cout << "Enter after_function_call" << endl;
-   cout << "function return" << endl;
+   DEBUGL(cout << "Enter after_function_call" << endl);
+   DEBUGL(cout << "function return" << endl);
    vaccs_record_factory factory;
    return_record *rrec = (return_record*)factory.make_vaccs_record(VACCS_RETURN);
    rrec = rrec->add_event_num(timestamp++);
    rrec->write(vfp);
    delete rrec;
-   cout << "Exit after_function_call" << endl;
+   DEBUGL(cout << "Exit after_function_call" << endl);
 }
 
 // Is called for every instruction and instruments all of them that have 
@@ -91,16 +113,18 @@ VOID monitor_function_calls(INS ins, VOID *v)
 
    if (INS_IsCall(ins)) {
       if (INS_IsDirectBranchOrCall(ins)) {
-         cout << "Direct call: " << INS_Disassemble(ins) << endl;
+         DEBUGL(cout << "Direct call: " << INS_Disassemble(ins) << endl);
          ADDRINT target = INS_DirectBranchOrCallTargetAddress(ins);
          INS_InsertPredicatedCall(ins,IPOINT_BEFORE,AFUNPTR(before_function_direct_call),
                                  IARG_INST_PTR,
+                                 IARG_CONTEXT,
                                  IARG_ADDRINT, target,
                                  IARG_END);
       } else {
-         cout << "Indirect call: " << INS_Disassemble(ins) << endl;
+         DEBUGL(cout << "Indirect call: " << INS_Disassemble(ins) << endl);
          INS_InsertCall(ins, IPOINT_BEFORE, AFUNPTR(before_function_indirect_call),
                         IARG_INST_PTR,
+                        IARG_CONTEXT,
                         IARG_BRANCH_TARGET_ADDR,
                         IARG_END);
       }

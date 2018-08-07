@@ -4,7 +4,7 @@
  *  Created on: Jul 20, 2016
  *      Author: haoli
  */
-#include "../PAS/vaccs_analysis.h"
+//#include "../PAS/vaccs_analysis.h"
 #include "pin.H"
 #ifndef STACK_OPERATION_H_
 #define STACK_OPERATION_H_

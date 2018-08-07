@@ -17,20 +17,30 @@
 #define NOASMSOURCE "__NOASMSOURCE__"
 #define NOFUNCNAME "__NOFUNCTIONNAME__"
 
+#define OLD_FRAME_PTR_OFFSET 0
+#ifdef __x86_64
+#define RETURN_ADDRESS_OFFSET 8
+#else
+#define RETURN_ADDRESS_OFFSET 4
+#endif 
+
+
+ADDRINT read_memory_as_address(ADDRINT addr); 
+
 // file output variables
 
-extern std::ofstream ou_function_invocation;
-extern std::ofstream ou_malloc;
-extern std::ofstream ou_free;
-extern std::ofstream ou_push;
-extern std::ofstream ou_pop;
-extern std::ofstream ou_read_direct;
-extern std::ofstream ou_write_direct;
-extern std::ofstream ou_read_indirect;
-extern std::ofstream ou_write_indirect;
-extern std::ofstream ou_return;
-extern std::ofstream ou_register;
-extern std::ofstream pas_output;
+//extern std::ofstream ou_function_invocation;
+//extern std::ofstream ou_malloc;
+//extern std::ofstream ou_free;
+//extern std::ofstream ou_push;
+//extern std::ofstream ou_pop;
+//extern std::ofstream ou_read_direct;
+//extern std::ofstream ou_write_direct;
+//extern std::ofstream ou_read_indirect;
+//extern std::ofstream ou_write_indirect;
+//extern std::ofstream ou_return;
+//extern std::ofstream ou_register;
+//extern std::ofstream pas_output;
 
 
 

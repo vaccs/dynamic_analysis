@@ -11,14 +11,18 @@
 #include <fstream>
 #include <cstring>
 
+#include <util/general.h>
 #include <io/vaccs_record_factory.h>
 #include <io/vaccs_record.h>
 #include <io/func_inv_record.h>
 #include <io/return_record.h>
+#include <io/return_addr_record.h>
 #include <vaccs_read/vaccs_dw_reader.h>
 
 extern vaccs_dw_reader *vdr;
 extern FILE *vfp;
+
+using namespace std;
 
 function_invocation_transaction function_invocation_event;
 VOID functionInvocationBefore(void* function_name,const CONTEXT* ctxt,
@@ -36,11 +40,11 @@ VOID functionInvocationBefore(void* function_name,const CONTEXT* ctxt,
 	function_invocation_event.id = id;
 	store_function_invocation_transaction(function_invocation_event);
 	invocation_stack.push(function_invocation_event);
-	std::cout<<"after push stack size:"<<invocation_stack.size()<<std::endl;
+	DEBUGL(cout<<"after push stack size:"<<invocation_stack.size()<<endl);
 	function_invocation_event.function_name = (char*)function_name;
-	ou_function_invocation<<dec<<function_invocation_event.id<<","<<function_invocation_event.function_name<<","<<hex<<EBP<<std::endl;
-	pas_output<<"pin_function_invocation~!~"<<dec<<function_invocation_event.id<<"|"<<function_invocation_event.function_name<<"|"<<hex<<EBP<<std::endl;
-	std::cout<<"Invocation ID:"<<current_invocation_id<<"function "<<name<<" was called. Frame pointer was "<<hex<<EBP<<std::endl;
+	//ou_function_invocation<<dec<<function_invocation_event.id<<","<<function_invocation_event.function_name<<","<<hex<<EBP<<endl;
+	//pas_output<<"pin_function_invocation~!~"<<dec<<function_invocation_event.id<<"|"<<function_invocation_event.function_name<<"|"<<hex<<EBP<<endl;
+	DEBUGL(cout<<"Invocation ID:"<<current_invocation_id<<"function "<<name<<" was called. Frame pointer was "<<hex<<EBP<<endl);
 
 	//current_EBP = EBP;
 
@@ -49,7 +53,7 @@ VOID functionInvocationBefore(void* function_name,const CONTEXT* ctxt,
    if (!strncmp((char *)function_name,"main",4)) {
 
       INT32 column,line;
-      std::string fileName;
+      string fileName;
 
 	   PIN_LockClient();
 	   PIN_GetSourceLocation(ip,&column,&line,&fileName);
@@ -58,16 +62,16 @@ VOID functionInvocationBefore(void* function_name,const CONTEXT* ctxt,
 
       vaccs_record_factory factory;
  
-      cout << "Call to function" << endl;
-      cout << '\t' << "Event num: " << dec << id << endl;
-      cout << '\t' << "Function name: " << (char *)function_name << endl;
-      cout << '\t' << "Func line: " << line << endl;
-      cout << '\t' << "Inv line: 0" << endl;
-      cout << '\t' << "Func file: " << fileName << endl;
-      cout << '\t' << "Inv file: " << NOFUNCNAME << endl;
-      cout << '\t' << "Callee address: 0x" << hex << ip << endl << endl;
+      DEBUGL(cout << "Call to function" << endl);
+      DEBUGL(cout << '\t' << "Event num: " << dec << id << endl);
+      DEBUGL(cout << '\t' << "Function name: " << (char *)function_name << endl);
+      DEBUGL(cout << '\t' << "Func line: " << line << endl);
+      DEBUGL(cout << '\t' << "Inv line: 0" << endl);
+      DEBUGL(cout << '\t' << "Func file: " << fileName << endl);
+      DEBUGL(cout << '\t' << "Inv file: " << NOFUNCNAME << endl);
+      DEBUGL(cout << '\t' << "Callee address: 0x" << hex << ip << endl << endl);
       func_inv_record *frec = (func_inv_record*)factory.make_vaccs_record(VACCS_FUNCTION_INV);
-      cout << "frec = 0x" << frec << endl;
+      DEBUGL(cout << "frec = 0x" << frec << endl);
       frec = frec->add_event_num(timestamp++)
          ->add_func_name((char *)function_name)
          ->add_func_line_num(line)
@@ -75,10 +79,25 @@ VOID functionInvocationBefore(void* function_name,const CONTEXT* ctxt,
          ->add_c_func_file(fileName.c_str())
          ->add_c_inv_file(NOFUNCNAME)
          ->add_address(ip);
+      DEBUGL(cout << "Getting frame pointer for main" << endl);
+      ADDRINT dynamic_link = read_memory_as_address(EBP+OLD_FRAME_PTR_OFFSET);
+      ADDRINT return_address = read_memory_as_address(EBP+RETURN_ADDRESS_OFFSET);
+ 
+   DEBUGL(cout << "Return address" << endl);
+   DEBUGL(cout << '\t' << "Function name: main" << endl);
+   DEBUGL(cout << '\t' << "Dynamic link: 0x" << hex << dynamic_link << endl);
+   DEBUGL(cout << '\t' << "Return address: 0x" << hex << return_address << endl);
+       return_addr_record *rarec = ((return_addr_record*)factory
+         .make_vaccs_record(VACCS_RETURN_ADDR))
+         ->add_dynamic_link(dynamic_link)
+         ->add_return_address(return_address)
+         ->add_c_func_name("main");
 
-      cout << "Built frec" << endl;
+
+      DEBUGL(cout << "Built frec" << endl);
       frec->write(vfp);
-      cout << "Wrote frec" << endl;
+      rarec->write(vfp);
+      DEBUGL(cout << "Wrote frec" << endl);
       delete frec;
    }
 }
@@ -95,8 +114,8 @@ VOID functionInvocationAfter(void* function_name,const CONTEXT* ctxt){
 
    delete rrec;
  	//char* name = (char*) function_name;
-	//ou_function_invocation<<"quit "<<name<<std::endl;
-	//ou_function_invocation<<"after pop stack size:"<<invocation_stack.size()<<std::endl;
+	//ou_function_invocation<<"quit "<<name<<endl;
+	//ou_function_invocation<<"after pop stack size:"<<invocation_stack.size()<<endl;
 }
 VOID FunctionInvocatioinImage(IMG img, VOID *v)
 {

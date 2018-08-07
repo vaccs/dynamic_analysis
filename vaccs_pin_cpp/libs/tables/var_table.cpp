@@ -71,7 +71,7 @@ void var_record::write(std::string key,FILE *fp) {
  * @return true if the pc is found in this subprogram, otherwise false.
  */
 bool var_record::pc_in_range(Generic pc) {
-	cout << "In var_record::pc_in_range" << endl;
+	DEBUGL(cout << "In var_record::pc_in_range" << endl);
 	return (pc >= low_pc && pc < high_pc);
 }
 
@@ -86,7 +86,7 @@ bool var_record::pc_in_range(Generic pc) {
  */
 std::pair<std::string,var_record*> var_record::find_address_in_subprog(const CONTEXT *ctxt,Generic mem_addr,type_table *ttab) {
 	std::pair<std::string,var_record*> vpair = default_var_pair;
-	cout << "In var_record::find_address_in_subprog" << endl;
+	DEBUGL(cout << "In var_record::find_address_in_subprog" << endl);
 
 	if (is_subprog)
 		for (std::map<std::string,symbol_table_record*>::iterator it = local_var_table->begin();
@@ -94,7 +94,7 @@ std::pair<std::string,var_record*> var_record::find_address_in_subprog(const CON
 				it++) {
 			var_record* tvrec = (var_record*)it->second;
 			type_record *trec = ttab->get(tvrec->get_type());
-			cout << "Checking variable " << it->first << endl;
+			DEBUGL(cout << "Checking variable " << it->first << endl);
 			if (!tvrec->get_is_subprog() && tvrec->is_at_address(ctxt,mem_addr,trec)) {
 				vpair.first = it->first;
 				vpair.second = tvrec;
@@ -102,7 +102,7 @@ std::pair<std::string,var_record*> var_record::find_address_in_subprog(const CON
 			}
 		}
 
-	cout << "Leave var_record::find_addres_in_subprog" << endl;
+	DEBUGL(cout << "Leave var_record::find_addres_in_subprog" << endl);
 	return vpair;
 
 }
@@ -115,8 +115,8 @@ std::pair<std::string,var_record*> var_record::find_address_in_subprog(const CON
  * @return true if the variable is at the prospective address, otherwise false
  */
 bool var_record::is_at_address(const CONTEXT *ctxt,Generic mem_addr, type_record *trec) {
-	printf("Enter is_at_address\n");
-	cout << "trec = " << hex << trec << endl;
+	DEBUGL(cout << "Enter is_at_address\n");
+	DEBUGL(cout << "trec = 0x" << hex << trec << endl);
 	Generic var_addr;
 
 	if (is_local || is_param) {
@@ -124,7 +124,7 @@ bool var_record::is_at_address(const CONTEXT *ctxt,Generic mem_addr, type_record
 	} else
 	    var_addr = location; // location is the actual address
 
-	printf("var_addr: %ld, mem_addr: %ld, size: %ld\n",var_addr, mem_addr, trec->get_size());
+	DEBUGL(cout << "var_addr: 0x" << hex << var_addr << "mem_addr: 0x" << mem_addr << "size: " << dec <<  trec->get_size());
 	if (trec->get_is_array()) { // is this an access to some element of an array
 		return (mem_addr >= var_addr) && (mem_addr < var_addr + trec->get_size());
 	} else
