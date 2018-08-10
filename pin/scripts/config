@@ -1,2 +1,2 @@
 PIN_ROOT=/home/carr/vaccs/dynamic_analysis/pin
-VACCS_ROOT=/home/carr/vaccs/vaccs_pin_cpp
+DWARF_ROOT=/home/carr/vaccs/vaccs_dwarf

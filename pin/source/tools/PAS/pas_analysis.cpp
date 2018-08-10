@@ -2,7 +2,10 @@
  * This file is the source code to do dynamic analysis for the project VACCS
  * It provides data for the address space visualization.
  */
-#include <stdio.h>
+#include <cstdio>
+#include <cstdlib>
+#include <unistd.h>
+#include <fcntl.h>
 #include <sys/utsname.h>
 #include "pin.H"
 #include <sys/stat.h>
@@ -24,9 +27,10 @@
 #include <io/binary_record.h>
 #include <io/ccode_record.h>
 #include <io/cmd_line_record.h>
+#include <io/output_record.h>
 
-vaccs_dw_reader *vdr;
-FILE *vfp;
+vaccs_dw_reader *vdr = NULL;
+NATIVE_FD vaccs_fd = -1;
 using namespace std;
 
 /*call stack*/
@@ -90,34 +94,16 @@ INT32 Usage()
     return -1;
 }
 
-#include <unistd.h>
 /* ===================================================================== */
 /* Main                                                                  */
 /* ===================================================================== */
 void setup_output_files(char* filename){
-	string filename_string = std::string(filename);
-	int index = -1;
-	for(unsigned int i=0;i<filename_string.size();i++){
-		if(filename[i]=='/'){
-			index = i;
-		}
-	}
-	string application_name;
-	if(index == -1){
-		application_name = string(filename_string);
-	}
-	else{
-		application_name = filename_string.substr(index+1,filename_string.size()-index-1);
-	}
-
    string vfn(filename);
    vfn.append(".vaccs");
-  	vfp = fopen(vfn.c_str(), "w");
-	assert(vfp != NULL);
+  	assert(OS_OpenFD(vfn.c_str(), OS_FILE_OPEN_TYPE_CREATE | OS_FILE_OPEN_TYPE_WRITE,
+            OS_FILE_PERMISSION_TYPE_WRITE | OS_FILE_OPEN_TYPE_READ,
+            &vaccs_fd).generic_err == OS_RETURN_CODE_NO_ERROR);
 
-
-	application_name.append(".csv");
-	DEBUGL(cout<<application_name<<endl);
 	//pas_output.open(application_name.c_str());
 	//ou_function_invocation.open("function_invocation.csv");
 	//ou_malloc.open("malloc.csv");
@@ -132,8 +118,8 @@ void setup_output_files(char* filename){
 	//ou_register.open("register.csv");
 
 }
+
 void finalize_outputfiles(){
-	printf("saving files\n");
 	//ou_function_invocation.close();
 	//ou_malloc.close();
 	//ou_free.close();
@@ -146,8 +132,10 @@ void finalize_outputfiles(){
 	//ou_return.close();
 	//ou_register.close();
 	//pas_output.close();
-   fclose(vfp);
+
+   OS_CloseFD(vaccs_fd);
 }
+
 void initialize(){
 
 		 /*
@@ -166,10 +154,6 @@ VOID Fini(INT32 code, VOID *v)
 {
 
 	finalize_outputfiles();
-//	while(!invocation_stack.empty()){
-//		DEBUGL(cout<<invocation_stack.top().function_name<<std::endl);
-//		invocation_stack.pop();
-//	}
 }
 
 void emit_arch() {
@@ -178,25 +162,25 @@ void emit_arch() {
 	arch_record *rec;
 
 #ifdef __x86_64
-   DEBUGL(cout << "Architecture: x86_64" << endl);
+   DEBUGL(LOG("Architecture: x86_64\n"));
 	rec = ((arch_record*)factory.make_vaccs_record(VACCS_ARCH))->add_arch_type(VACCS_ARCH_X86_64);
 #else
-   DEBUGL(cout << "Architecture: ia32" << endl);
+   DEBUGL(LOG("Architecture: ia32\n"));
 	rec = ((arch_record*)factory.make_vaccs_record(VACCS_ARCH))->add_arch_type(VACCS_ARCH_I386);
 #endif
 
-	rec->write(vfp);
+	rec->write(vaccs_fd);
 
    delete rec;
 
 }
 
 void emit_binary(string binary) {
-   DEBUGL(cout << "Binary: " << binary << endl);
+   DEBUGL(LOG("Binary: " + binary + "\n"));
 	vaccs_record_factory factory;
    binary_record *brec = ((binary_record*)factory.make_vaccs_record(VACCS_BINARY))
          ->add_bin_file_name(binary.c_str());
-   brec->write(vfp);
+   brec->write(vaccs_fd);
 
    delete brec;
 }
@@ -206,13 +190,13 @@ void emit_cmd_line(int argc, int file_index, char **argv) {
 	for (int i = file_index; i < argc; i++)
 		cmd_line.append(argv[i]).append(" ");
 
-	printf("Command line = %s\n",cmd_line.c_str());
+	DEBUGL(LOG("Command line = " + cmd_line + "\n"));
 
 	vaccs_record_factory factory;
 	cmd_line_record *rec = ((cmd_line_record*)factory.make_vaccs_record(VACCS_CMD_LINE))
 			->add_cmd_line(cmd_line.c_str());
 
-	rec->write(vfp);
+	rec->write(vaccs_fd);
 
    delete rec;
 }
@@ -221,21 +205,21 @@ void emit_c_code(vaccs_dw_reader *vdr) {
 	cu_table *cutab = vdr->get_cutab();
 	vaccs_record_factory factory;
 
-	printf("C source code\n");
-	printf("-------------\n");
+	DEBUGL(LOG("C source code\n"));
+	DEBUGL(LOG("-------------\n"));
 	for (map<std::string,symbol_table_record*>::iterator it = cutab->begin(); it != cutab->end(); it++) {
-		printf("Found a file %s\n", it->first.c_str());
+		DEBUGL(LOG("Found a file " +  it->first + "\n"));
 		ifstream cfile(it->first.c_str(), std::ifstream::in);
 		string ccode;
 		ccode_record *rec;
 		int i = 1;
 		while (getline(cfile,ccode)) {
-			printf("Line %d: %s\n",i,ccode.c_str());
+			DEBUGL(LOG("Line " + decstr(i) + ": " + ccode + "\n"));
 			rec = ((ccode_record*)factory.make_vaccs_record(VACCS_CCODE))->add_c_file_name(it->first.c_str())
 					->add_c_line_num(i)
 					->add_c_start_pos(0)
 					->add_c_src_line(ccode.c_str());
-			rec->write(vfp);
+			rec->write(vaccs_fd);
 
          delete rec;
 
@@ -243,6 +227,7 @@ void emit_c_code(vaccs_dw_reader *vdr) {
 		}
 		cfile.close();
 	}
+
 }
 
 int main(int argc, char *argv[])

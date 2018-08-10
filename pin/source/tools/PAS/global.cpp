@@ -38,7 +38,7 @@ void get_registers(const CONTEXT * ctxt,int id){
 
 ADDRINT read_memory_as_address(ADDRINT addr) {
    ADDRINT buf;
-   DEBUGL(cout << "Address being read: 0x" << hex << addr << endl);
+   DEBUGL(LOG("Address being read: 0x" + hexstr(addr) + "\n"));
 
    if (addr != 0)
       bcopy((void *)addr,&buf,sizeof(ADDRINT));
@@ -49,7 +49,9 @@ ADDRINT read_memory_as_address(ADDRINT addr) {
 
 void print_global_context(){
 	if(current_function_name!=0)
-		DEBUGL(cout<<"Invocation ID:"<<dec<<current_invocation_id<<" function "<<current_function_name<<" was called. Frame pointer was "<<hex<<current_EBP<<std::endl);
+		DEBUGL(LOG("Invocation ID:"+decstr(current_invocation_id)+ "function "+
+               current_function_name +" was called. Frame pointer was "+
+               hexstr(current_EBP)+"\n"));
 }
 char* process_string_for_csv(char* string){
 	int length = strlen(string);

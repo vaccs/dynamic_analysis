@@ -19,20 +19,23 @@ using namespace std;
 VOID freeBefore(CHAR * name, ADDRINT size)
 {
 
-   DEBUGL(cout << "Enter freeBefore\n");
-	DEBUGL(cout << name << "(" << size << ")" << endl);
-	//DEBUGL(cout<<"function "<<current_function_name<<"  Frame pointer was "<<hex<<current_EBP<<endl);
+   DEBUGL(LOG("Enter freeBefore\n"));
+   DEBUGL(string sname(name));
+	DEBUGL(LOG(sname + "(" + decstr(size) + ")" + "\n"));
 
-   DEBUGL(cout << "Exit freeBefore\n");
+   DEBUGL(LOG("Exit freeBefore\n"));
 
 }
 VOID mallocBefore(CHAR * name, ADDRINT size)
 {
-	DEBUGL(cout<<"enter"<<endl);
-	DEBUGL(cout << name << "(" << size << ")" << endl);
-	DEBUGL(cout<<"exit"<<endl);
+	DEBUGL(LOG("enter\n"));
+   DEBUGL(string sname(name));
+	DEBUGL(LOG(sname + "(" + decstr(size) + ")" + "\n"));
 	if(invocation_stack.empty()) return;
-	DEBUGL(cout<<"function "<<invocation_stack.top().function_name<<"  Frame pointer was "<<hex<<invocation_stack.top().frame_pointer<<endl);
+   DEBUGL(sname = invocation_stack.top().function_name);
+	DEBUGL(LOG("function "+ sname +
+         "  Frame pointer was "+hexstr(invocation_stack.top().frame_pointer)+
+         "\n"));
 
 	malloc_event.id = timestamp++;
 
@@ -43,8 +46,9 @@ VOID mallocBefore(CHAR * name, ADDRINT size)
 
 	malloc_event.allocated_size = (int) size;
 
+	DEBUGL(LOG("exit\n"));
 	//ou_malloc << malloc_event.id << "," << malloc_event.frame_pointer << "," << malloc_event.id_function_invocation_happened_in<<
-			//"," << malloc_event.allocated_size << endl;
+			//"," << malloc_event.allocated_size + "\n");
 
 
 
@@ -53,8 +57,10 @@ VOID mallocBefore(CHAR * name, ADDRINT size)
 VOID fopenAfter(ADDRINT ret)
 {
 
-	DEBUGL(cout << " returns 0x" << hex << ret << dec << endl;);
-	DEBUGL(cout<<"function "<<current_function_name<<"  Frame pointer was "<<hex<<current_EBP<<endl);
+	DEBUGL(LOG(" returns 0x" + hexstr(ret) + "\n"));
+   DEBUGL(string sname = invocation_stack.top().function_name);
+	DEBUGL(LOG("function "+sname+"  Frame pointer was "+
+            hexstr(current_EBP)+"\n"));
 	malloc_event.heap_address = ret;
 	store_malloc_transaction(malloc_event);
 
@@ -70,7 +76,6 @@ VOID MallocAndFreeImage(IMG img, VOID *v)
     //
     //  Find the malloc() function.
 	//if(Is_System_Image(img)) return;
-	//DEBUGL(cout<<"enter"<<endl);
     RTN mallocRtn = RTN_FindByName(img, "malloc");
     if (RTN_Valid(mallocRtn))
     {
@@ -100,5 +105,4 @@ VOID MallocAndFreeImage(IMG img, VOID *v)
                        IARG_END);
         RTN_Close(freeRtn);
     }
-    //DEBUGL(cout<<"exit"<<endl);
 }

@@ -191,9 +191,9 @@ EXTERN(void, die_with_message, (char *format, ...));
 
 
 #ifndef NDEBUG
-#define DEBUGL(L) L;
+#define DEBUGL(L) L
 #else
-#define DEBUGL(L) ;
+#define DEBUGL(L)
 #endif
 
 

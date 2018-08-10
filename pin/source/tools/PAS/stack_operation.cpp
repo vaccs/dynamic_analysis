@@ -21,7 +21,7 @@ using namespace std;
 VOID beforePush(VOID *assembly,const CONTEXT * ctxt){
 	//char* assembly_code = (char*) assembly;
 	ADDRINT BeforeSP = (ADDRINT)PIN_GetContextReg( ctxt, REG_STACK_PTR);
-	DEBUGL(cout << "Before push: SP = " << hex << BeforeSP << dec << endl);
+	DEBUGL(LOG("Before push: SP = " + hexstr(BeforeSP) + "\n"));
 	push_event.frame_pointer = current_EBP;
 	push_event.id_function_invocation_happened_in = current_invocation_id;
 	push_event.id = timestamp++;
@@ -34,7 +34,7 @@ VOID beforePush(VOID *assembly,const CONTEXT * ctxt){
 VOID afterPush(const CONTEXT * ctxt){
 	ADDRINT AfterSP = (ADDRINT)PIN_GetContextReg( ctxt, REG_STACK_PTR);
 	//ADDRINT EBP = (ADDRINT)PIN_GetContextReg( ctxt, REG_GBP);
-	DEBUGL(cout << "After push: SP = " << hex << AfterSP << dec << endl);
+	DEBUGL(LOG("After push: SP = " + hexstr(AfterSP) + "\n"));
 	push_event.sp_after = AfterSP;
 	store_push_transaction(push_event);
 	//ou_push << hex <<push_event.sp_after<<","<<dec<<push_event.id_function_invocation_happened_in<<","<<hex<<EBP<<endl;
@@ -50,7 +50,7 @@ VOID StackOperationInstruction(INS ins, VOID *v){
 	string function_name = RTN_Name(INS_Rtn(ins));
 	char* assembly_code = (char*) malloc(strlen(INS_Disassemble(ins).c_str())+1);
 	strcpy(assembly_code,INS_Disassemble(ins).c_str());
-	DEBUGL(cout<<assembly_code<<endl);
+	DEBUGL(LOG(INS_Disassemble(ins)+"\n"));
 	if(op.compare(push)==0){
 		INS_InsertCall( ins, IPOINT_BEFORE, (AFUNPTR)beforePush,
 									IARG_PTR,assembly_code,
@@ -76,7 +76,7 @@ VOID StackOperationInstruction(INS ins, VOID *v){
 VOID beforePop(VOID *assembly,const CONTEXT * ctxt){
 	//char* assembly_code = (char*) assembly;
 	ADDRINT BeforeSP = (ADDRINT)PIN_GetContextReg( ctxt, REG_STACK_PTR);
-	DEBUGL(cout << "Before pop: SP = " << hex << BeforeSP << dec << endl);
+	DEBUGL(LOG("Before pop: SP = " + hexstr(BeforeSP) + "\n"));
 	pop_event.frame_pointer = current_EBP;
 	pop_event.id = timestamp++;
 	get_registers(ctxt,pop_event.id);
@@ -86,7 +86,7 @@ VOID beforePop(VOID *assembly,const CONTEXT * ctxt){
 }
 VOID afterPop(const CONTEXT * ctxt){
 	ADDRINT AfterSP = (ADDRINT)PIN_GetContextReg( ctxt, REG_STACK_PTR);
-   DEBUGL(cout << "After pop: SP = " << hex << AfterSP << dec << endl);
+   DEBUGL(LOG("After pop: SP = " + hexstr(AfterSP) + "\n"));
    pop_event.sp_after = AfterSP;
    store_pop_transaction(pop_event);
    //ou_pop<<hex<<pop_event.sp_after<<","<<dec<<pop_event.id_function_invocation_happened_in<<endl;

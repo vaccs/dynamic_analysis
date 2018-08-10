@@ -10,6 +10,8 @@
 
 #include <util/general.h>
 #include <io/vaccs_record.h>
+#include <types.h>
+#include <pin.H>
 
 
 /**
@@ -46,14 +48,14 @@ class arch_record : public vaccs_record {
        * @param fp the file pointer for the output file
        * @param rec the analysis record to be written to the file
        */
-      virtual void write(FILE *fp);
+      virtual void write(NATIVE_FD fp);
 
       /**
        * Read an analysis record to a file
        *
        * @param fp the file pointer for the output file
        */
-      virtual vaccs_record *read(FILE *fp);
+      virtual vaccs_record *read(NATIVE_FD fp);
 };
 
 #endif /* arch_record_h */

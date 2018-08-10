@@ -13,10 +13,6 @@
 #include <io/vaccs_record.h>
 #include <io/register_record.h>
 
-extern vaccs_dw_reader *vdr;
-extern FILE *vfp;
-using namespace std;
-
 VOID AfterRegMod(ADDRINT ip, CONTEXT *ctxt, REG reg) {
 	INT32	column;
 	INT32	line;
@@ -52,19 +48,19 @@ VOID AfterRegMod(ADDRINT ip, CONTEXT *ctxt, REG reg) {
    }
 
    register_record *rrec = (register_record*)factory.make_vaccs_record(VACCS_REGISTER);
-   DEBUGL(cout << "Register Record" << endl)
-   DEBUGL(cout << '\t' << "Event num: " << dec << timestamp << endl)
-   DEBUGL(cout << '\t' << "Line #: " << line << endl)
-   DEBUGL(cout << '\t' << "File: " << fileName << endl)
-   DEBUGL(cout << '\t' << "Register: " << reg_name << endl)
-   DEBUGL(cout << '\t' << "Value: 0x" << hex << regval << dec << endl)
+   DEBUGL(LOG("Register Record\n"));
+   DEBUGL(LOG("\tEvent num: " + decstr(timestamp) + "\n"));
+   DEBUGL(LOG("\tLine #: " + decstr(line) + "\n"));
+   DEBUGL(LOG("\tFile: " + fileName + "\n"));
+   DEBUGL(LOG("\tRegister: " + reg_name + "\n"));
+   DEBUGL(LOG("\tValue: 0x" + hexstr(regval) + "\n"));
    rrec = rrec->add_event_num(timestamp++)
       ->add_c_line_num(line)
       ->add_c_file_name(fileName.c_str())
       ->add_register_name(reg_name.c_str())
       ->add_value(regval);
 
-   rrec->write(vfp);
+   rrec->write(vaccs_fd);
 }
 
 // Is called for every instruction and instruments all of them that have 

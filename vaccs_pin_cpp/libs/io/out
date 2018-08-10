@@ -1,0 +1,140 @@
+Compiling asm_record.cpp
+asm_record.cpp: In member function ‘virtual vaccs_record* asm_record::read(NATIVE_FD)’:
+asm_record.cpp:75:63: error: invalid conversion from ‘NATIVE_FD {aka long unsigned int}’ to ‘VOID* {aka void*}’ [-fpermissive]
+  USIZE size =  sizeof(vaccs_line_num_t); OS_ReadFD(fp,&size,fp);
+                                                               ^
+In file included from /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/os-apis.h:27:0,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/stdio.h:58,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include/stdio.h:33,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/malloc.h:27,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/string.h:34,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include/string.h:37,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/stdlib.h:34,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include/stdlib.h:48,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include/stl/_cstdlib.h:26,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include/cstdlib:33,
+                 from asm_record.cpp:8:
+/home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/os-apis/file.h:147:16: note:   initializing argument 3 of ‘OS_RETURN_CODE OS_ReadFD(NATIVE_FD, USIZE*, VOID*)’
+ OS_RETURN_CODE OS_ReadFD(NATIVE_FD fd, USIZE *count, VOID *buffer);
+                ^
+asm_record.cpp:76:57: error: invalid conversion from ‘NATIVE_FD {aka long unsigned int}’ to ‘VOID* {aka void*}’ [-fpermissive]
+  size =  sizeof(vaccs_line_num_t); OS_ReadFD(fp,&size,fp);
+                                                         ^
+In file included from /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/os-apis.h:27:0,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/stdio.h:58,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include/stdio.h:33,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/malloc.h:27,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/string.h:34,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include/string.h:37,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/stdlib.h:34,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include/stdlib.h:48,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include/stl/_cstdlib.h:26,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include/cstdlib:33,
+                 from asm_record.cpp:8:
+/home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/os-apis/file.h:147:16: note:   initializing argument 3 of ‘OS_RETURN_CODE OS_ReadFD(NATIVE_FD, USIZE*, VOID*)’
+ OS_RETURN_CODE OS_ReadFD(NATIVE_FD fd, USIZE *count, VOID *buffer);
+                ^
+asm_record.cpp:79:47: error: invalid conversion from ‘NATIVE_FD {aka long unsigned int}’ to ‘VOID* {aka void*}’ [-fpermissive]
+  size =  sizeof(length); OS_ReadFD(fp,&size,fp);
+                                               ^
+In file included from /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/os-apis.h:27:0,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/stdio.h:58,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include/stdio.h:33,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/malloc.h:27,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/string.h:34,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include/string.h:37,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/stdlib.h:34,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include/stdlib.h:48,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include/stl/_cstdlib.h:26,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include/cstdlib:33,
+                 from asm_record.cpp:8:
+/home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/os-apis/file.h:147:16: note:   initializing argument 3 of ‘OS_RETURN_CODE OS_ReadFD(NATIVE_FD, USIZE*, VOID*)’
+ OS_RETURN_CODE OS_ReadFD(NATIVE_FD fd, USIZE *count, VOID *buffer);
+                ^
+asm_record.cpp:82:39: error: invalid conversion from ‘NATIVE_FD {aka long unsigned int}’ to ‘VOID* {aka void*}’ [-fpermissive]
+  size =  length; OS_ReadFD(fp,&size,fp);
+                                       ^
+In file included from /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/os-apis.h:27:0,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/stdio.h:58,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include/stdio.h:33,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/malloc.h:27,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/string.h:34,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include/string.h:37,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/stdlib.h:34,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include/stdlib.h:48,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include/stl/_cstdlib.h:26,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include/cstdlib:33,
+                 from asm_record.cpp:8:
+/home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/os-apis/file.h:147:16: note:   initializing argument 3 of ‘OS_RETURN_CODE OS_ReadFD(NATIVE_FD, USIZE*, VOID*)’
+ OS_RETURN_CODE OS_ReadFD(NATIVE_FD fd, USIZE *count, VOID *buffer);
+                ^
+asm_record.cpp:85:47: error: invalid conversion from ‘NATIVE_FD {aka long unsigned int}’ to ‘VOID* {aka void*}’ [-fpermissive]
+  size =  sizeof(length); OS_ReadFD(fp,&size,fp);
+                                               ^
+In file included from /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/os-apis.h:27:0,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/stdio.h:58,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include/stdio.h:33,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/malloc.h:27,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/string.h:34,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include/string.h:37,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/stdlib.h:34,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include/stdlib.h:48,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include/stl/_cstdlib.h:26,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include/cstdlib:33,
+                 from asm_record.cpp:8:
+/home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/os-apis/file.h:147:16: note:   initializing argument 3 of ‘OS_RETURN_CODE OS_ReadFD(NATIVE_FD, USIZE*, VOID*)’
+ OS_RETURN_CODE OS_ReadFD(NATIVE_FD fd, USIZE *count, VOID *buffer);
+                ^
+asm_record.cpp:88:39: error: invalid conversion from ‘NATIVE_FD {aka long unsigned int}’ to ‘VOID* {aka void*}’ [-fpermissive]
+  size =  length; OS_ReadFD(fp,&size,fp);
+                                       ^
+In file included from /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/os-apis.h:27:0,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/stdio.h:58,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include/stdio.h:33,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/malloc.h:27,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/string.h:34,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include/string.h:37,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/stdlib.h:34,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include/stdlib.h:48,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include/stl/_cstdlib.h:26,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include/cstdlib:33,
+                 from asm_record.cpp:8:
+/home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/os-apis/file.h:147:16: note:   initializing argument 3 of ‘OS_RETURN_CODE OS_ReadFD(NATIVE_FD, USIZE*, VOID*)’
+ OS_RETURN_CODE OS_ReadFD(NATIVE_FD fd, USIZE *count, VOID *buffer);
+                ^
+asm_record.cpp:91:47: error: invalid conversion from ‘NATIVE_FD {aka long unsigned int}’ to ‘VOID* {aka void*}’ [-fpermissive]
+  size =  sizeof(length); OS_ReadFD(fp,&size,fp);
+                                               ^
+In file included from /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/os-apis.h:27:0,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/stdio.h:58,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include/stdio.h:33,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/malloc.h:27,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/string.h:34,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include/string.h:37,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/stdlib.h:34,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include/stdlib.h:48,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include/stl/_cstdlib.h:26,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include/cstdlib:33,
+                 from asm_record.cpp:8:
+/home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/os-apis/file.h:147:16: note:   initializing argument 3 of ‘OS_RETURN_CODE OS_ReadFD(NATIVE_FD, USIZE*, VOID*)’
+ OS_RETURN_CODE OS_ReadFD(NATIVE_FD fd, USIZE *count, VOID *buffer);
+                ^
+asm_record.cpp:94:39: error: invalid conversion from ‘NATIVE_FD {aka long unsigned int}’ to ‘VOID* {aka void*}’ [-fpermissive]
+  size =  length; OS_ReadFD(fp,&size,fp);
+                                       ^
+In file included from /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/os-apis.h:27:0,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/stdio.h:58,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include/stdio.h:33,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/malloc.h:27,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/string.h:34,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include/string.h:37,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/stdlib.h:34,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include/stdlib.h:48,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include/stl/_cstdlib.h:26,
+                 from /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include/cstdlib:33,
+                 from asm_record.cpp:8:
+/home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/os-apis/file.h:147:16: note:   initializing argument 3 of ‘OS_RETURN_CODE OS_ReadFD(NATIVE_FD, USIZE*, VOID*)’
+ OS_RETURN_CODE OS_ReadFD(NATIVE_FD fd, USIZE *count, VOID *buffer);
+                ^
+Makefile:58: recipe for target 'asm_record.o' failed
+make: *** [asm_record.o] Error 1

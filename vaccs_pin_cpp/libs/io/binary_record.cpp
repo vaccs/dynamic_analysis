@@ -34,13 +34,13 @@ binary_record::~binary_record() {
  *
  * @param fp a file pointer for the analysis file
  */
-void binary_record::write(FILE *fp) {
+void binary_record::write(NATIVE_FD fp) {
 	vaccs_id_t id = VACCS_BINARY;
-	assert(fwrite(&id, sizeof(id), 1, fp) == 1);
+	USIZE size =  sizeof(id); assert(OS_WriteFD(fp,&id,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 	size_t length;
 	assert((length = strnlen(bin_file_name,PATH_MAX+1)) <= PATH_MAX);
-	assert(fwrite(&length, sizeof(length), 1, fp) == 1);
-	assert(fwrite(bin_file_name, length, 1, fp) == 1);
+	size =  sizeof(length); assert(OS_WriteFD(fp,&length,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
+	size =  length; assert(OS_WriteFD(fp,bin_file_name,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 }
 
 /**
@@ -48,13 +48,13 @@ void binary_record::write(FILE *fp) {
  *
  * @param fp a file pointer for the analysis file
  */
-vaccs_record *binary_record::read(FILE *fp) {
+vaccs_record *binary_record::read(NATIVE_FD fp) {
 
 	size_t length;
-	assert(fread(&length, sizeof(length), 1, fp) == 1);
+	USIZE size =  sizeof(length); assert(OS_ReadFD(fp,&size,&length).generic_err == OS_RETURN_CODE_NO_ERROR);
 	assert(length <= PATH_MAX);
 	assert((bin_file_name = (char *)malloc(length+1)) != NULL);
-	assert(fread(bin_file_name, length, 1, fp) == 1);
+	size =  length; assert(OS_ReadFD(fp,&size,bin_file_name).generic_err == OS_RETURN_CODE_NO_ERROR);
 	bin_file_name[length] = '\0';
 
 	return this;

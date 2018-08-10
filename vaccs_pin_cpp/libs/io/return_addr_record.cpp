@@ -37,18 +37,18 @@ return_addr_record::~return_addr_record() {
  *
  * @param fp a file pointer for the analysis file
  */
-void return_addr_record::write(FILE *fp) {
+void return_addr_record::write(NATIVE_FD fd) {
 	vaccs_id_t id = VACCS_RETURN_ADDR;
-	assert(fwrite(&id, sizeof(id), 1, fp) == 1);
+	USIZE size =  sizeof(id); assert(OS_WriteFD(fd,&id,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 
-	assert(fwrite(&dynamic_link, sizeof(dynamic_link), 1, fp) == 1);
-	assert(fwrite(&return_address, sizeof(return_address), 1, fp) == 1);
+	size =  sizeof(dynamic_link); assert(OS_WriteFD(fd,&dynamic_link,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
+	size =  sizeof(return_address); assert(OS_WriteFD(fd,&return_address,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 
 	size_t length;
 	assert(
 			(length = strnlen(c_func_name,VACCS_MAX_VARIABLE_LENGTH+1)) <= VACCS_MAX_VARIABLE_LENGTH);
-	assert(fwrite(&length, sizeof(length), 1, fp) == 1);
-	assert(fwrite(c_func_name, length, 1, fp) == 1);
+	size =  sizeof(length); assert(OS_WriteFD(fd,&length,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
+	size =  length; assert(OS_WriteFD(fd,c_func_name,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 }
 
 /**
@@ -57,15 +57,15 @@ void return_addr_record::write(FILE *fp) {
  * @param fp a file pointer for the analysis file
  * @return a return address record
  */
-vaccs_record *return_addr_record::read(FILE *fp) {
-	assert(fread(&dynamic_link, sizeof(dynamic_link), 1, fp) == 1);
-	assert(fread(&return_address, sizeof(return_address), 1, fp) == 1);
+vaccs_record *return_addr_record::read(NATIVE_FD fd) {
+	USIZE size =  sizeof(dynamic_link); assert(OS_ReadFD(fd,&size,&dynamic_link).generic_err == OS_RETURN_CODE_NO_ERROR);
+	size =  sizeof(return_address); assert(OS_ReadFD(fd,&size,&return_address).generic_err == OS_RETURN_CODE_NO_ERROR);
 
 	size_t length;
-	assert(fread(&length, sizeof(length), 1, fp) == 1);
+	size =  sizeof(length); assert(OS_ReadFD(fd,&size,&length).generic_err == OS_RETURN_CODE_NO_ERROR);
 	assert(length <= VACCS_MAX_VARIABLE_LENGTH);
 	assert((c_func_name = (char *)malloc(length+1)) != NULL);
-	assert(fread(c_func_name, length, 1, fp) == 1);
+	size =  length; assert(OS_ReadFD(fd,&size,c_func_name).generic_err == OS_RETURN_CODE_NO_ERROR);
 	c_func_name[length] = '\0';
 
 	return this;

@@ -34,14 +34,14 @@ cmd_line_record::~cmd_line_record() {
  *
  * @param fp a file pointer for the analysis file
  */
-void cmd_line_record::write(FILE *fp) {
+void cmd_line_record::write(NATIVE_FD fp) {
 	vaccs_id_t id = VACCS_CMD_LINE;
-	assert(fwrite(&id, sizeof(id), 1, fp) == 1);
+	USIZE size =  sizeof(id); assert(OS_WriteFD(fp,&id,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 
 	size_t length;
 	assert((length = strnlen(cmd_line,PATH_MAX+1)) <= PATH_MAX);
-	assert(fwrite(&length, sizeof(length), 1, fp) == 1);
-	assert(fwrite(cmd_line, length, 1, fp) == 1);
+	size =  sizeof(length); assert(OS_WriteFD(fp,&length,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
+	size =  length; assert(OS_WriteFD(fp,cmd_line,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 }
 
 /**
@@ -50,13 +50,13 @@ void cmd_line_record::write(FILE *fp) {
  * @param fp a file pointer for the analysis file
  * @param p a pointer to an analysis record
  */
-vaccs_record *cmd_line_record::read(FILE *fp) {
+vaccs_record *cmd_line_record::read(NATIVE_FD fp) {
 
 	size_t length;
-	assert(fread(&length, sizeof(length), 1, fp) == 1);
+	USIZE size =  sizeof(length); assert(OS_ReadFD(fp,&size,&length).generic_err == OS_RETURN_CODE_NO_ERROR);
 	assert(length <= PATH_MAX);
 	assert((cmd_line = (char *)malloc(length+1)) != NULL);
-	assert(fread(cmd_line, length, 1, fp) == 1);
+	size =  length; assert(OS_ReadFD(fp,&size,cmd_line).generic_err == OS_RETURN_CODE_NO_ERROR);
 	cmd_line[length] = '\0';
 
 	return this;

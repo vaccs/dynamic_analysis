@@ -15,6 +15,8 @@
 
 #include <util/c_string_utils.h>
 
+#include <pin.H>
+
 /**
  * Constructor
  */
@@ -41,25 +43,25 @@ asm_record::~asm_record() {
  * @param fp a file pointer for the analysis file
  * @param asm_ptr a pointer to an assembly record
  */
-void asm_record::write(FILE *fp) {
+void asm_record::write(NATIVE_FD fp) {
 	vaccs_id_t id = VACCS_ASM;
-	assert(fwrite(&id, sizeof(id), 1, fp) == 1);
-	assert(fwrite(&asm_line_num, sizeof(vaccs_line_num_t), 1, fp) == 1);
-	assert(fwrite(&c_line_num, sizeof(vaccs_line_num_t), 1, fp) == 1);
+	USIZE size =  sizeof(id); assert(OS_WriteFD(fp,&id,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
+	size =  sizeof(vaccs_line_num_t); assert(OS_WriteFD(fp,&asm_line_num,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
+	size =  sizeof(vaccs_line_num_t); assert(OS_WriteFD(fp,&c_line_num,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 
 	size_t length;
 	assert((length = strnlen(asm_file_name,PATH_MAX+1)) <= PATH_MAX);
-	assert(fwrite(&length, sizeof(length), 1, fp) == 1);
-	assert(fwrite(asm_file_name, length, 1, fp) == 1);
+	size =  sizeof(length); assert(OS_WriteFD(fp,&length,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
+	size =  length; assert(OS_WriteFD(fp,asm_file_name,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 
 	assert((length = strnlen(c_file_name,PATH_MAX+1)) <= PATH_MAX);
-	assert(fwrite(&length, sizeof(length), 1, fp) == 1);
-	assert(fwrite(c_file_name, length, 1, fp) == 1);
+	size =  sizeof(length); assert(OS_WriteFD(fp,&length,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
+	size =  length; assert(OS_WriteFD(fp,c_file_name,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 
 	assert(
 			(length = strnlen(asm_inst,VACCS_MAX_SRC_LINE_LENGTH+1)) <= VACCS_MAX_SRC_LINE_LENGTH);
-	assert(fwrite(&length, sizeof(length), 1, fp) == 1);
-	assert(fwrite(asm_inst, length, 1, fp) == 1);
+	size =  sizeof(length); assert(OS_WriteFD(fp,&length,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
+	size =  length; assert(OS_WriteFD(fp,asm_inst,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 }
 
 /**
@@ -68,28 +70,28 @@ void asm_record::write(FILE *fp) {
  * @param fp a file pointer for the analysis file
  * @param p a pointer to an analysis record
  */
-vaccs_record *asm_record::read(FILE *fp) {
+vaccs_record *asm_record::read(NATIVE_FD fp) {
 
-	assert(fread(&asm_line_num, sizeof(vaccs_line_num_t), 1, fp) == 1);
-	assert(fread(&c_line_num, sizeof(vaccs_line_num_t), 1, fp) == 1);
+	USIZE size =  sizeof(vaccs_line_num_t); assert(OS_ReadFD(fp,&size,&asm_line_num).generic_err == OS_RETURN_CODE_NO_ERROR);
+	size =  sizeof(vaccs_line_num_t); assert(OS_ReadFD(fp,&size,&c_line_num).generic_err == OS_RETURN_CODE_NO_ERROR);
 
 	size_t length;
-	assert(fread(&length, sizeof(length), 1, fp) == 1);
+	size =  sizeof(length); assert(OS_ReadFD(fp,&size,&length).generic_err == OS_RETURN_CODE_NO_ERROR);
 	assert(length <= PATH_MAX);
 	assert((asm_file_name = (char *)malloc(length+1)) != NULL);
-	assert(fread(asm_file_name, length, 1, fp) == 1);
+	size =  length; assert(OS_ReadFD(fp,&size,asm_file_name).generic_err == OS_RETURN_CODE_NO_ERROR);
 	asm_file_name[length] = '\0';
 
-	assert(fread(&length, sizeof(length), 1, fp) == 1);
+	size =  sizeof(length); assert(OS_ReadFD(fp,&size,&length).generic_err == OS_RETURN_CODE_NO_ERROR);
 	assert(length <= PATH_MAX);
 	assert((c_file_name = (char *)malloc(length+1)) != NULL);
-	assert(fread(c_file_name, length, 1, fp) == 1);
+	size =  length; assert(OS_ReadFD(fp,&size,c_file_name).generic_err == OS_RETURN_CODE_NO_ERROR);
 	c_file_name[length] = '\0';
 
-	assert(fread(&length, sizeof(length), 1, fp) == 1);
+	size =  sizeof(length); assert(OS_ReadFD(fp,&size,&length).generic_err == OS_RETURN_CODE_NO_ERROR);
 	assert(length <= VACCS_MAX_SRC_LINE_LENGTH);
 	assert((asm_inst = (char *)malloc(length+1)) != NULL);
-	assert(fread(asm_inst, length, 1, fp) == 1);
+	size =  length; assert(OS_ReadFD(fp,&size,asm_inst).generic_err == OS_RETURN_CODE_NO_ERROR);
 	asm_inst[length] = '\0';
 
 	return this;

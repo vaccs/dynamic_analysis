@@ -16,7 +16,7 @@ using namespace std;
 VOID AfterReturn( const CONTEXT * ctxt)
 {
     ADDRINT AfterSP = (ADDRINT)PIN_GetContextReg( ctxt, REG_STACK_PTR );
-    DEBUGL(cout << "After return : SP = " << hex << AfterSP << dec << endl);
+    DEBUGL(LOG("After return : SP = " + hexstr(AfterSP) + "\n"));
     return_event.sp_after = AfterSP;
     store_return_transaction(return_event);
     //ou_return<<","<< hex<< return_event.sp_after<< "," <<dec << return_event.id_function_invocation_happened_in<<endl;
@@ -26,7 +26,7 @@ VOID AfterReturn( const CONTEXT * ctxt)
 VOID BeforeReturn(CONTEXT * ctxt)
 {
     ADDRINT BeforeSP = (ADDRINT)PIN_GetContextReg( ctxt, REG_STACK_PTR);
-    DEBUGL(cout << "Before return: SP = " << hex << BeforeSP << dec << endl);
+    DEBUGL(LOG("Before return: SP = " + hexstr(BeforeSP) + "\n"));
     return_event.id = timestamp++;
     return_event.id_function_invocation_happened_in = invocation_stack.top().id;
     return_event.sp_before = BeforeSP;

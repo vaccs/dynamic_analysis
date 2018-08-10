@@ -16,7 +16,7 @@
  * Constructor
  */
 vaccs_record_reader::vaccs_record_reader() {
-	fp = NULL;
+	fd = -1;
 	factory = NULL;
 }
 
@@ -33,14 +33,13 @@ vaccs_record *vaccs_record_reader::read_next_vaccs_record() {
 
 	vaccs_record *rec;
 	vaccs_id_t id;
-
-	if (fread(&id, sizeof(vaccs_id_t), 1, fp) == 1) {
+	USIZE size = sizeof(id);
+	if (OS_ReadFD(fd,&size,&id).generic_err == OS_RETURN_CODE_NO_ERROR) {
 
 		assert((rec = factory->make_vaccs_record(id)) != NULL);
-		return rec->read(fp);
+		return rec->read(fd);
 
 	} else {
-		assert(feof(fp)); // fail if there is some kind of read error other than reaching the end of the file
 		return NULL;
 	}
 }

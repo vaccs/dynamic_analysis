@@ -6,13 +6,14 @@ int a[10];
 void bar(){
 	int b[10];
         int i;
+       printf("In bar()\n");
        for (i=0;i<10;i++){
           b[i] = i;
           a[i] = b[i] +1;
        }
 }
 void foo(){
-	
+   printf("In foo()\n");	
 }
 
 int main(){

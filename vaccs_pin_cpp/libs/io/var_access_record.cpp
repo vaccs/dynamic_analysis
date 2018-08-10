@@ -47,40 +47,40 @@ var_access_record::~var_access_record() {
  *
  * @param fp a file pointer for the analysis file
  */
-void var_access_record::write(FILE *fp) {
+void var_access_record::write(NATIVE_FD fd) {
 	vaccs_id_t id = VACCS_VAR_ACCESS;
-	assert(fwrite(&id, sizeof(id), 1, fp) == 1);
-	assert(fwrite(&event_num, sizeof(event_num), 1, fp) == 1);
-	assert(fwrite(&c_line_num, sizeof(c_line_num), 1, fp) == 1);
+	USIZE size =  sizeof(id); assert(OS_WriteFD(fd,&id,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
+	size =  sizeof(event_num); assert(OS_WriteFD(fd,&event_num,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
+	size =  sizeof(c_line_num); assert(OS_WriteFD(fd,&c_line_num,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 
 	size_t length;
 	assert((length = strnlen(c_file_name,PATH_MAX+1)) <= PATH_MAX);
-	assert(fwrite(&length, sizeof(length), 1, fp) == 1);
-	assert(fwrite(c_file_name, length, 1, fp) == 1);
+	size =  sizeof(length); assert(OS_WriteFD(fd,&length,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
+	size =  length; assert(OS_WriteFD(fd,c_file_name,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 
 	assert(
 			(length = strnlen(scope,VACCS_MAX_VARIABLE_LENGTH+1)) <= VACCS_MAX_VARIABLE_LENGTH);
-	assert(fwrite(&length, sizeof(length), 1, fp) == 1);
-	assert(fwrite(scope, length, 1, fp) == 1);
+	size =  sizeof(length); assert(OS_WriteFD(fd,&length,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
+	size =  length; assert(OS_WriteFD(fd,scope,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 
-	assert(fwrite(&address, sizeof(address), 1, fp) == 1);
+	size =  sizeof(address); assert(OS_WriteFD(fd,&address,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 
 	assert(
 			(length = strnlen(type,VACCS_MAX_VARIABLE_LENGTH+1)) <= VACCS_MAX_VARIABLE_LENGTH);
-	assert(fwrite(&length, sizeof(length), 1, fp) == 1);
-	assert(fwrite(type, length, 1, fp) == 1);
+	size =  sizeof(length); assert(OS_WriteFD(fd,&length,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
+	size =  length; assert(OS_WriteFD(fd,type,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 
 	assert(
 			(length = strnlen(name,VACCS_MAX_VARIABLE_LENGTH+1)) <= VACCS_MAX_VARIABLE_LENGTH);
-	assert(fwrite(&length, sizeof(length), 1, fp) == 1);
-	assert(fwrite(name, length, 1, fp) == 1);
+	size =  sizeof(length); assert(OS_WriteFD(fd,&length,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
+	size =  length; assert(OS_WriteFD(fd,name,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 
-	assert(fwrite(&points_to, sizeof(points_to), 1, fp) == 1);
+	size =  sizeof(points_to); assert(OS_WriteFD(fd,&points_to,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 
 	assert(
 			(length = strnlen(value,VACCS_MAX_VALUE_LENGTH+1)) <= VACCS_MAX_VARIABLE_LENGTH);
-	assert(fwrite(&length, sizeof(length), 1, fp) == 1);
-	assert(fwrite(value, length, 1, fp) == 1);
+	size =  sizeof(length); assert(OS_WriteFD(fd,&length,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
+	size =  length; assert(OS_WriteFD(fd,value,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 }
 
 /**
@@ -89,44 +89,44 @@ void var_access_record::write(FILE *fp) {
  * @param fp a file pointer for the analysis file
  * @return an var_access record
  */
-vaccs_record *var_access_record::read(FILE *fp) {
+vaccs_record *var_access_record::read(NATIVE_FD fd) {
 
-	assert(fread(&event_num, sizeof(event_num), 1, fp) == 1);
-	assert(fread(&c_line_num, sizeof(c_line_num), 1, fp) == 1);
+	USIZE size =  sizeof(event_num); assert(OS_ReadFD(fd,&size,&event_num).generic_err == OS_RETURN_CODE_NO_ERROR);
+	size =  sizeof(c_line_num); assert(OS_ReadFD(fd,&size,&c_line_num).generic_err == OS_RETURN_CODE_NO_ERROR);
 
 	size_t length;
-	assert(fread(&length, sizeof(length), 1, fp) == 1);
+	size =  sizeof(length); assert(OS_ReadFD(fd,&size,&length).generic_err == OS_RETURN_CODE_NO_ERROR);
 	assert(length <= PATH_MAX);
 	assert((c_file_name = (char *)malloc(length+1)) != NULL);
-	assert(fread(c_file_name, length, 1, fp) == 1);
+	size =  length; assert(OS_ReadFD(fd,&size,c_file_name).generic_err == OS_RETURN_CODE_NO_ERROR);
 	c_file_name[length] = '\0';
 
-	assert(fread(&length, sizeof(length), 1, fp) == 1);
+	size =  sizeof(length); assert(OS_ReadFD(fd,&size,&length).generic_err == OS_RETURN_CODE_NO_ERROR);
 	assert(length <= VACCS_MAX_VARIABLE_LENGTH);
 	assert((scope = (char *)malloc(length+1)) != NULL);
-	assert(fread(scope, length, 1, fp) == 1);
+	size =  length; assert(OS_ReadFD(fd,&size,scope).generic_err == OS_RETURN_CODE_NO_ERROR);
 	scope[length] = '\0';
 
-	assert(fread(&address, sizeof(address), 1, fp) == 1);
+	size =  sizeof(address); assert(OS_ReadFD(fd,&size,&address).generic_err == OS_RETURN_CODE_NO_ERROR);
 
-	assert(fread(&length, sizeof(length), 1, fp) == 1);
+	size =  sizeof(length); assert(OS_ReadFD(fd,&size,&length).generic_err == OS_RETURN_CODE_NO_ERROR);
 	assert(length <= VACCS_MAX_VARIABLE_LENGTH);
 	assert((type = (char *)malloc(length+1)) != NULL);
-	assert(fread(type, length, 1, fp) == 1);
+	size =  length; assert(OS_ReadFD(fd,&size,type).generic_err == OS_RETURN_CODE_NO_ERROR);
 	type[length] = '\0';
 
-	assert(fread(&length, sizeof(length), 1, fp) == 1);
+	size =  sizeof(length); assert(OS_ReadFD(fd,&size,&length).generic_err == OS_RETURN_CODE_NO_ERROR);
 	assert(length <= VACCS_MAX_VARIABLE_LENGTH);
 	assert((name = (char *)malloc(length+1)) != NULL);
-	assert(fread(name, length, 1, fp) == 1);
+	size =  length; assert(OS_ReadFD(fd,&size,name).generic_err == OS_RETURN_CODE_NO_ERROR);
 	name[length] = '\0';
 
-	assert(fread(&points_to, sizeof(points_to), 1, fp) == 1);
+	size =  sizeof(points_to); assert(OS_ReadFD(fd,&size,&points_to).generic_err == OS_RETURN_CODE_NO_ERROR);
 
-	assert(fread(&length, sizeof(length), 1, fp) == 1);
+	size =  sizeof(length); assert(OS_ReadFD(fd,&size,&length).generic_err == OS_RETURN_CODE_NO_ERROR);
 	assert(length <= VACCS_MAX_VALUE_LENGTH);
 	assert((value = (char *)malloc(length+1)) != NULL);
-	assert(fread(value, length, 1, fp) == 1);
+	size =  length; assert(OS_ReadFD(fd,&size,value).generic_err == OS_RETURN_CODE_NO_ERROR);
 	value[length] = '\0';
 
 	return this;

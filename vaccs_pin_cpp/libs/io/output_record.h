@@ -12,6 +12,8 @@
 #include <util/c_string_utils.h>
 #include <io/vaccs_record.h>
 
+#include <pin.H>
+
 /**
  * Class: output_record
  *
@@ -70,14 +72,14 @@ public:
 	 * @param fp the file pointer for the output file
 	 * @param rec the analysis record to be written to the file
 	 */
-	virtual void write(FILE *fp);
+	virtual void write(NATIVE_FD fd);
 
 	/**
 	 * Read an analysis record to a file
 	 *
 	 * @param fp the file pointer for the output file
 	 */
-	virtual vaccs_record *read(FILE *fp);
+	virtual vaccs_record *read(NATIVE_FD fd);
 };
 
 #endif /* output_record_h */

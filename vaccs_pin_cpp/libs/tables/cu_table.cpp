@@ -119,7 +119,7 @@ std::string cu_record::get_scope(var_record *vrec) {
  * @param fp a file pointer
  */
 void cu_record::write(std::string key,FILE *fp) {
-	DEBUGL(cout << "Begin cu_record::write()\n");
+	DEBUGL(LOG("Begin cu_record::write()\n"));
 
 	assert(fwrite(&id, sizeof(id), 1, fp) == 1);
 	size_t length = key.length();
@@ -131,7 +131,7 @@ void cu_record::write(std::string key,FILE *fp) {
 	ttab->write(fp);
 	vtab->write(fp);
 
-	DEBUGL(cout << "End cu_record::write()\n");
+	DEBUGL(LOG("End cu_record::write()\n"));
 
 }
 
@@ -245,7 +245,7 @@ type_record *cu_table::get_type_record(std::string dw_index) {
  * @param fp a file pointer
  */
 void cu_table::write(FILE *fp) {
-	DEBUGL( cout << "Begin cu_table::write()\n");
+	DEBUGL(LOG("Begin cu_table::write()\n"));
 	assert(fwrite(&id, sizeof(id), 1, fp) == 1);
 
 	size_t num = size();
@@ -255,7 +255,7 @@ void cu_table::write(FILE *fp) {
 		cu_record* curec = (cu_record*)it->second;
 		curec->write(it->first,fp);
 	}
-	DEBUGL(cout << "End cu_table::write()\n");
+	DEBUGL(LOG("End cu_table::write()\n"));
 }
 
 

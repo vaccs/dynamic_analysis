@@ -7,6 +7,7 @@
 #include "functionInvocation.h"
 #include "global.h"
 #include "database_access_api.h"
+#include <unistd.h>
 #include<iostream>
 #include <fstream>
 #include <cstring>
@@ -19,16 +20,13 @@
 #include <io/return_addr_record.h>
 #include <vaccs_read/vaccs_dw_reader.h>
 
-extern vaccs_dw_reader *vdr;
-extern FILE *vfp;
-
-using namespace std;
-
 function_invocation_transaction function_invocation_event;
 VOID functionInvocationBefore(void* function_name,const CONTEXT* ctxt,
       ADDRINT ip){
 	char* name = (char*) function_name;
 	current_function_name = name;
+   DEBUGL(string sname(name));
+   DEBUGL(LOG( "Function Call to " + sname +"\n"));
 	if(strcmp(name,".plt")==0) return;
 	if(strcmp(name,"frame_dummy")==0) return;
 
@@ -40,11 +38,12 @@ VOID functionInvocationBefore(void* function_name,const CONTEXT* ctxt,
 	function_invocation_event.id = id;
 	store_function_invocation_transaction(function_invocation_event);
 	invocation_stack.push(function_invocation_event);
-	DEBUGL(cout<<"after push stack size:"<<invocation_stack.size()<<endl);
+	DEBUGL(LOG("after push stack size:"+decstr(invocation_stack.size())+"\n"));
 	function_invocation_event.function_name = (char*)function_name;
 	//ou_function_invocation<<dec<<function_invocation_event.id<<","<<function_invocation_event.function_name<<","<<hex<<EBP<<endl;
 	//pas_output<<"pin_function_invocation~!~"<<dec<<function_invocation_event.id<<"|"<<function_invocation_event.function_name<<"|"<<hex<<EBP<<endl;
-	DEBUGL(cout<<"Invocation ID:"<<current_invocation_id<<"function "<<name<<" was called. Frame pointer was "<<hex<<EBP<<endl);
+	DEBUGL(LOG("Invocation ID:"+decstr(current_invocation_id)+"function "+name+" was called. Frame pointer was "+
+            hexstr(EBP)+"\n"));
 
 	//current_EBP = EBP;
 
@@ -62,16 +61,18 @@ VOID functionInvocationBefore(void* function_name,const CONTEXT* ctxt,
 
       vaccs_record_factory factory;
  
-      DEBUGL(cout << "Call to function" << endl);
-      DEBUGL(cout << '\t' << "Event num: " << dec << id << endl);
-      DEBUGL(cout << '\t' << "Function name: " << (char *)function_name << endl);
-      DEBUGL(cout << '\t' << "Func line: " << line << endl);
-      DEBUGL(cout << '\t' << "Inv line: 0" << endl);
-      DEBUGL(cout << '\t' << "Func file: " << fileName << endl);
-      DEBUGL(cout << '\t' << "Inv file: " << NOFUNCNAME << endl);
-      DEBUGL(cout << '\t' << "Callee address: 0x" << hex << ip << endl << endl);
+      DEBUGL(LOG( "Call to function\n"));
+      DEBUGL(LOG( "\tEvent num: " + decstr(id) +"\n"));
+      DEBUGL(string sfname((char *)function_name));
+      DEBUGL(LOG( "\tFunction name: " + sfname +"\n"));
+      DEBUGL(LOG( "\tFunc line: " + decstr(line) +"\n"));
+      DEBUGL(LOG( "\tInv line: 0\n"));
+      DEBUGL(LOG( "\tFunc file: " + fileName +"\n"));
+      DEBUGL(sfname = NOFUNCNAME);
+      DEBUGL(LOG( "\tInv file: " + sfname +"\n"));
+      DEBUGL(LOG( "\tCallee address: 0x" + hexstr(ip) + "\n\n"));
       func_inv_record *frec = (func_inv_record*)factory.make_vaccs_record(VACCS_FUNCTION_INV);
-      DEBUGL(cout << "frec = 0x" << frec << endl);
+      DEBUGL(LOG( "frec = 0x" + hexstr(frec) +"\n"));
       frec = frec->add_event_num(timestamp++)
          ->add_func_name((char *)function_name)
          ->add_func_line_num(line)
@@ -79,40 +80,41 @@ VOID functionInvocationBefore(void* function_name,const CONTEXT* ctxt,
          ->add_c_func_file(fileName.c_str())
          ->add_c_inv_file(NOFUNCNAME)
          ->add_address(ip);
-      DEBUGL(cout << "Getting frame pointer for main" << endl);
+      DEBUGL(LOG( "Getting frame pointer for main\n"));
       ADDRINT dynamic_link = read_memory_as_address(EBP+OLD_FRAME_PTR_OFFSET);
       ADDRINT return_address = read_memory_as_address(EBP+RETURN_ADDRESS_OFFSET);
  
-   DEBUGL(cout << "Return address" << endl);
-   DEBUGL(cout << '\t' << "Function name: main" << endl);
-   DEBUGL(cout << '\t' << "Dynamic link: 0x" << hex << dynamic_link << endl);
-   DEBUGL(cout << '\t' << "Return address: 0x" << hex << return_address << endl);
-       return_addr_record *rarec = ((return_addr_record*)factory
+      DEBUGL(LOG( "Return address\n"));
+      DEBUGL(LOG( "\tFunction name: main\n"));
+      DEBUGL(LOG( "\tDynamic link: 0x" + hexstr(dynamic_link) +"\n"));
+      DEBUGL(LOG( "\tReturn address: 0x" + hexstr(return_address) +"\n"));
+      return_addr_record *rarec = ((return_addr_record*)factory
          .make_vaccs_record(VACCS_RETURN_ADDR))
          ->add_dynamic_link(dynamic_link)
          ->add_return_address(return_address)
          ->add_c_func_name("main");
 
 
-      DEBUGL(cout << "Built frec" << endl);
-      frec->write(vfp);
-      rarec->write(vfp);
-      DEBUGL(cout << "Wrote frec" << endl);
+      DEBUGL(LOG( "Built frec\n"));
+      frec->write(vaccs_fd);
+      rarec->write(vaccs_fd);
+      DEBUGL(LOG( "Wrote frec\n"));
       delete frec;
    }
 }
 VOID functionInvocationAfter(void* function_name,const CONTEXT* ctxt){
 
+   // This may have been a library call to print to stdout
+   // Restore the original stdout
+   // Check to see if there is anything in the pipe that is connected to stdout
+   // If so, read it, print to stdout
+   // Then reset stdout to the pipe
+   //
+  string fstr((char *)function_name);
+
+ 
 	invocation_stack.pop();
 
-   vaccs_record_factory factory;
-
-   return_record *rrec = (return_record*)factory.make_vaccs_record(VACCS_RETURN);
-   rrec = rrec->add_event_num(timestamp++);
-
-   rrec->write(vfp);
-
-   delete rrec;
  	//char* name = (char*) function_name;
 	//ou_function_invocation<<"quit "<<name<<endl;
 	//ou_function_invocation<<"after pop stack size:"<<invocation_stack.size()<<endl;

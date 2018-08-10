@@ -1200,12 +1200,12 @@ TEST_CASE("test_vaccs_several_records(void)") {
 	REQUIRE((vrr = (new vaccs_record_reader())->add_factory(&factory)->add_fp(fp)) != nullptr);
 
 	REQUIRE((rec = vrr->read_next_vaccs_record()) != nullptr);
-	REQUIRE(((section_record*)rec)->get_id() == VACCS_ARCH);
+	REQUIRE(((arch_record*)rec)->get_id() == VACCS_ARCH);
 	REQUIRE(((arch_record*)rec)->get_arch_type() == VACCS_ARCH_X86_64);
 
 	REQUIRE((rec = vrr->read_next_vaccs_record()) != nullptr);
 	REQUIRE(rec != NULL);
-	REQUIRE(((section_record*)rec)->get_id() == VACCS_ASM);
+	REQUIRE(((arch_record*)rec)->get_id() == VACCS_ASM);
 	REQUIRE(((asm_record*)rec)->get_asm_line_num() == 10);
 	REQUIRE(((asm_record*)rec)->get_c_line_num() == 2);
 	REQUIRE(strncmp(((asm_record*)rec)->get_asm_file_name(),"/home/carr/test.s",PATH_MAX) == 0);
@@ -1214,7 +1214,7 @@ TEST_CASE("test_vaccs_several_records(void)") {
 
 	REQUIRE((rec = vrr->read_next_vaccs_record()) != nullptr);
 	REQUIRE(rec != NULL);
-	REQUIRE(((section_record*)rec)->get_id() == VACCS_ASM);
+	REQUIRE(((asm_record*)rec)->get_id() == VACCS_ASM);
 	REQUIRE(((asm_record*)rec)->get_asm_line_num() == 11);
 	REQUIRE(((asm_record*)rec)->get_c_line_num() == 3);
 	REQUIRE(
@@ -1225,7 +1225,7 @@ TEST_CASE("test_vaccs_several_records(void)") {
 
 	REQUIRE((rec = vrr->read_next_vaccs_record()) != nullptr);
 	REQUIRE(rec != NULL);
-	REQUIRE(((section_record*)rec)->get_id() == VACCS_ASM);
+	REQUIRE(((asm_record*)rec)->get_id() == VACCS_ASM);
 	REQUIRE(((asm_record*)rec)->get_asm_line_num() == 12);
 	REQUIRE(((asm_record*)rec)->get_c_line_num() == 3);
 	REQUIRE(
@@ -1237,7 +1237,7 @@ TEST_CASE("test_vaccs_several_records(void)") {
 
 	REQUIRE((rec = vrr->read_next_vaccs_record()) != nullptr);
 	REQUIRE(rec != NULL);
-	REQUIRE(((section_record*)rec)->get_id() == VACCS_ASM);
+	REQUIRE(((asm_record*)rec)->get_id() == VACCS_ASM);
 	REQUIRE(((asm_record*)rec)->get_asm_line_num() == 13);
 	REQUIRE(((asm_record*)rec)->get_c_line_num() == 3);
 	REQUIRE(
@@ -1249,13 +1249,13 @@ TEST_CASE("test_vaccs_several_records(void)") {
 
 	REQUIRE((rec = vrr->read_next_vaccs_record()) != nullptr);
 	REQUIRE(rec != NULL);
-	REQUIRE(((section_record*)rec)->get_id() == VACCS_BINARY);
+	REQUIRE(((binary_record*)rec)->get_id() == VACCS_BINARY);
 	REQUIRE(
 			strncmp(((binary_record*)rec)->get_bin_file_name(),"/home/carr/test",PATH_MAX) == 0);
 
 	REQUIRE((rec = vrr->read_next_vaccs_record()) != nullptr);
 	REQUIRE(rec != NULL);
-	REQUIRE(((section_record*)rec)->get_id() == VACCS_CCODE);
+	REQUIRE(((ccode_record*)rec)->get_id() == VACCS_CCODE);
 	REQUIRE(((ccode_record*)rec)->get_c_line_num() == 2);
 	REQUIRE(((ccode_record*)rec)->get_c_start_pos() == 1);
 	REQUIRE(
@@ -1265,7 +1265,7 @@ TEST_CASE("test_vaccs_several_records(void)") {
 
 	REQUIRE((rec = vrr->read_next_vaccs_record()) != nullptr);
 	REQUIRE(rec != NULL);
-	REQUIRE(((section_record*)rec)->get_id() == VACCS_CCODE);
+	REQUIRE(((ccode_record*)rec)->get_id() == VACCS_CCODE);
 	REQUIRE(((ccode_record*)rec)->get_c_line_num() == 3);
 	REQUIRE(((ccode_record*)rec)->get_c_start_pos() == 1);
 	REQUIRE(
@@ -1275,7 +1275,7 @@ TEST_CASE("test_vaccs_several_records(void)") {
 
 	REQUIRE((rec = vrr->read_next_vaccs_record()) != nullptr);
 	REQUIRE(rec != NULL);
-	REQUIRE(((section_record*)rec)->get_id() == VACCS_FUNCTION_INV);
+	REQUIRE(((func_inv_record*)rec)->get_id() == VACCS_FUNCTION_INV);
 	REQUIRE(((func_inv_record*)rec)->get_event_num() == 10);
 	REQUIRE(((func_inv_record*)rec)->get_func_line_num() == 15);
 	REQUIRE(((func_inv_record*)rec)->get_inv_line_num() == 37);
@@ -1287,7 +1287,7 @@ TEST_CASE("test_vaccs_several_records(void)") {
 
 	REQUIRE((rec = vrr->read_next_vaccs_record()) != nullptr);
 	REQUIRE(rec != NULL);
-	REQUIRE(((section_record*)rec)->get_id() == VACCS_CMD_LINE);
+	REQUIRE(((cmd_line_record*)rec)->get_id() == VACCS_CMD_LINE);
 	REQUIRE(
 			strncmp(((cmd_line_record*)rec)->get_cmd_line(),"/home/carr/test",PATH_MAX) == 0);
 

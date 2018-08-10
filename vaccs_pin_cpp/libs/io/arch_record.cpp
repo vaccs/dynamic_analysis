@@ -12,6 +12,7 @@
 
 #include <io/vaccs_record.h>
 #include <io/arch_record.h>
+#include <pin.H>
 
 /**
  * Constructor
@@ -25,10 +26,12 @@ arch_record::arch_record() :
  *
  * @param fp a file pointer for the analysis file
  */
-void arch_record::write(FILE *fp) {
+void arch_record::write(NATIVE_FD fp) {
 	vaccs_id_t id = VACCS_ARCH;
-	assert(fwrite(&id, sizeof(id), 1, fp) == 1);
-	assert(fwrite(&arch_type, sizeof(arch_type), 1, fp) == 1);
+	USIZE size = sizeof(id);
+	assert(OS_WriteFD(fp,&id,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
+	size = sizeof(arch_type);
+	assert(OS_WriteFD(fp, &arch_type, &size).generic_err == OS_RETURN_CODE_NO_ERROR);
 }
 
 /**
@@ -37,8 +40,9 @@ void arch_record::write(FILE *fp) {
  * @param fp a file pointer for the analysis file
  * @return an architecture record
  */
-vaccs_record *arch_record::read(FILE *fp) {
-	assert(fread(&arch_type, sizeof(vaccs_arch_t), 1, fp) == 1);
+vaccs_record *arch_record::read(NATIVE_FD fp) {
+	USIZE size = sizeof(vaccs_arch_t);
+	assert(OS_ReadFD(fp, &size, &arch_type).generic_err == OS_RETURN_CODE_NO_ERROR);
 	return this;
 }
 

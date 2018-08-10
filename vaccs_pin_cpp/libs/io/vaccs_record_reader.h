@@ -12,6 +12,7 @@
 #include <io/vaccs_record_reader.h>
 #include <io/vaccs_record.h>
 #include <io/vaccs_record_factory.h>
+#include <pin.H>
 
 /**
  * Class: vaccs_record_reader
@@ -21,7 +22,7 @@
 class vaccs_record_reader {
 
 private:
-	FILE *fp;
+	NATIVE_FD fd;
 	vaccs_record_factory *factory;
 
 public:
@@ -40,8 +41,8 @@ public:
 	 *
 	 * @return the object
 	 */
-	vaccs_record_reader *add_fp(FILE *fp) {
-		this->fp = fp;
+	vaccs_record_reader *add_fp(NATIVE_FD fd) {
+		this->fd = fd;
 		return this;
 	}
 
@@ -50,8 +51,8 @@ public:
 	 *
 	 * @return the architecture type
 	 */
-	FILE *get_fp() {
-		return fp;
+	NATIVE_FD get_fd() {
+		return fd;
 	}
 
 	/**
@@ -60,7 +61,7 @@ public:
 	 * @return the object
 	 */
 	vaccs_record_reader *add_factory(vaccs_record_factory *factory) {
-		this->fp = fp;
+		this->factory = factory;
 		return this;
 	}
 

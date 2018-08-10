@@ -12,6 +12,8 @@
 
 #include <util/c_string_utils.h>
 
+#include <pin.H>
+
 class cmd_line_record: public vaccs_record {
 
 private:
@@ -35,14 +37,14 @@ public:
 	 * @param fp the file pointer for the output file
 	 * @param rec the analysis record to be written to the file
 	 */
-	virtual void write(FILE *fp);
+	virtual void write(NATIVE_FD fp);
 
 	/**
 	 * Read an analysis record to a file
 	 *
 	 * @param fp the file pointer for the output file
 	 */
-	virtual vaccs_record *read(FILE *fp);
+	virtual vaccs_record *read(NATIVE_FD fp);
 };
 
 #endif /* LIBS_IO_CMD_LINE_RECORD_H_ */

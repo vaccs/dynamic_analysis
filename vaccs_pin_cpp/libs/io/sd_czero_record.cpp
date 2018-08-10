@@ -38,16 +38,16 @@ sd_czero_record::~sd_czero_record() {
  *
  * @param fp a file pointer for the analysis file
  */
-void sd_czero_record::write(FILE *fp) {
+void sd_czero_record::write(NATIVE_FD fd) {
 	vaccs_id_t id = VACCS_SD_CZERO;
-	assert(fwrite(&id, sizeof(id), 1, fp) == 1);
-	assert(fwrite(&event_num, sizeof(event_num), 1, fp) == 1);
-	assert(fwrite(&c_line_num, sizeof(c_line_num), 1, fp) == 1);
+	USIZE size =  sizeof(id); assert(OS_WriteFD(fd,&id,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
+	size =  sizeof(event_num); assert(OS_WriteFD(fd,&event_num,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
+	size =  sizeof(c_line_num); assert(OS_WriteFD(fd,&c_line_num,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 
 	size_t length;
 	assert((length = strnlen(c_file_name,PATH_MAX+1)) <= PATH_MAX);
-	assert(fwrite(&length, sizeof(length), 1, fp) == 1);
-	assert(fwrite(c_file_name, length, 1, fp) == 1);
+	size =  sizeof(length); assert(OS_WriteFD(fd,&length,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
+	size =  length; assert(OS_WriteFD(fd,c_file_name,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 }
 
 /**
@@ -56,15 +56,15 @@ void sd_czero_record::write(FILE *fp) {
  * @param fp a file pointer for the analysis file
  * @return an czero record
  */
-vaccs_record *sd_czero_record::read(FILE *fp) {
-	assert(fread(&event_num, sizeof(event_num), 1, fp) == 1);
-	assert(fread(&c_line_num, sizeof(c_line_num), 1, fp) == 1);
+vaccs_record *sd_czero_record::read(NATIVE_FD fd) {
+	USIZE size =  sizeof(event_num); assert(OS_ReadFD(fd,&size,&event_num).generic_err == OS_RETURN_CODE_NO_ERROR);
+	size =  sizeof(c_line_num); assert(OS_ReadFD(fd,&size,&c_line_num).generic_err == OS_RETURN_CODE_NO_ERROR);
 
 	size_t length;
-	assert(fread(&length, sizeof(length), 1, fp) == 1);
+	size =  sizeof(length); assert(OS_ReadFD(fd,&size,&length).generic_err == OS_RETURN_CODE_NO_ERROR);
 	assert(length <= PATH_MAX);
 	assert((c_file_name = (char *)malloc(length+1)) != NULL);
-	assert(fread(c_file_name, length, 1, fp) == 1);
+	size =  length; assert(OS_ReadFD(fd,&size,c_file_name).generic_err == OS_RETURN_CODE_NO_ERROR);
 	c_file_name[length] = '\0';
 
 	return this;

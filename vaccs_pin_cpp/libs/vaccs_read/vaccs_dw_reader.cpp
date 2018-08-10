@@ -9,6 +9,7 @@
 
 #include <cstdio>
 #include <cstdlib>
+#include <iostream>
 #include <cerrno>
 #include <fcntl.h>
 #include <inttypes.h>
@@ -131,7 +132,7 @@ void vaccs_dw_reader::read_var_table() {
 		for (unsigned long i = 0; i < size; i++)
 			read_var_record();
 	} else {
-		printf("Malformed vaccs dw file (must be a Var Table): %s, %d\n",file_name.c_str(),id);
+		LOG("Malformed vaccs dw file (must be a Var Table): " + file_name + ", Id = " + decstr(id) + "\n");
 	}
 
 
@@ -207,7 +208,7 @@ void vaccs_dw_reader::read_type_table() {
 		for (unsigned long i = 0; i < size; i++)
 			read_type_record();
 	} else {
-		printf("Malformed vaccs dw file (must be a Type Table): %s, %d\n",file_name.c_str(),id);
+		LOG("Malformed vaccs dw file (must be a Type Table): " + file_name + ", Id = " + decstr(id) + "\n");
 	}
 
 }
@@ -265,7 +266,7 @@ void vaccs_dw_reader::read_vaccs_dw_info(void) {
 		for (unsigned long i = 0; i < size; i++)
 			read_cu_record();
 	} else {
-		printf("Malformed vaccs dw file (must start with a CU Table): %s, %d\n",file_name.c_str(),id);
+		LOG("Malformed vaccs dw file (must start with a CU Table): " + file_name + ", Id = " + decstr(id) + "\n");
 	}
 
 

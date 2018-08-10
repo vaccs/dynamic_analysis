@@ -4,6 +4,9 @@
  */
 #include "function_call.h"
 #include <cstdio>
+#include <cstdlib>
+#include <cerrno>
+#include <unistd.h>
 #include <iostream>
 #include "global.h"
 #include <util/general.h>
@@ -12,14 +15,11 @@
 #include <io/func_inv_record.h>
 #include <io/return_record.h>
 #include <io/return_addr_record.h>
+#include <io/output_record.h>
 #include <vaccs_read/vaccs_dw_reader.h>
 
-extern vaccs_dw_reader *vdr;
-extern FILE *vfp;
-using namespace std;
-
 VOID before_function_direct_call(ADDRINT ip, CONTEXT *ctxt, ADDRINT callee_address) {
-   DEBUGL(cout << "Enter before_function_direct_call" << endl);
+   DEBUGL(LOG("Enter before_function_direct_call\n"));
 	INT32	column, callee_column;
 	INT32	line, callee_line;
 	std::string 	fileName, callee_file_name, callee_name;
@@ -40,16 +40,16 @@ VOID before_function_direct_call(ADDRINT ip, CONTEXT *ctxt, ADDRINT callee_addre
 
    vaccs_record_factory factory;
  
-   DEBUGL(cout << "Call to function" << endl);
-   DEBUGL(cout << '\t' << "Event num: " << dec << timestamp << endl);
-   DEBUGL(cout << '\t' << "Function name: " << callee_name << endl);
-   DEBUGL(cout << '\t' << "Func line: " << callee_line << endl);
-   DEBUGL(cout << '\t' << "Inv line: " << line << endl);
-   DEBUGL(cout << '\t' << "Func file: " << callee_file_name << endl);
-   DEBUGL(cout << '\t' << "Inv file: " << fileName << endl);
-   DEBUGL(cout << '\t' << "Callee address: 0x" << hex << callee_address << endl << endl);
+   DEBUGL(LOG("Call to function\n"));
+   DEBUGL(LOG("\tEvent num: " + decstr(timestamp) + "\n"));
+   DEBUGL(LOG("\tFunction name: " + callee_name + "\n"));
+   DEBUGL(LOG("\tFunc line: " + decstr(callee_line) + "\n"));
+   DEBUGL(LOG("\tInv line: " + decstr(line) + "\n"));
+   DEBUGL(LOG("\tFunc file: " + callee_file_name + "\n"));
+   DEBUGL(LOG("\tInv file: " + fileName + "\n"));
+   DEBUGL(LOG("\tCallee address: 0x" + hexstr(callee_address) + "\n\n"));
    func_inv_record *frec = (func_inv_record*)factory.make_vaccs_record(VACCS_FUNCTION_INV);
-   DEBUGL(cout << "frec = 0x" << frec << endl);
+   DEBUGL(LOG("frec = 0x" + hexstr(frec) + "\n"));
    frec = frec->add_event_num(timestamp++)
       ->add_func_name(callee_name.c_str())
       ->add_func_line_num(callee_line)
@@ -58,52 +58,54 @@ VOID before_function_direct_call(ADDRINT ip, CONTEXT *ctxt, ADDRINT callee_addre
       ->add_c_inv_file(fileName.c_str())
       ->add_address(callee_address);
 
-   DEBUGL(cout << "Built frec" << endl);
-   frec->write(vfp);
+   DEBUGL(LOG("Built frec\n"));
+   frec->write(vaccs_fd);
    delete frec;
-   DEBUGL(cout << "Wrote frec" << endl);
+   DEBUGL(LOG("Wrote frec\n"));
 
 
    if (callee_line != 0) { // if there is no C line, then we can't access memory
-      DEBUGL(cout << "Getting frame pointer for " << callee_name << endl);
+      DEBUGL(LOG("Getting frame pointer for " + callee_name + "\n"));
       ADDRINT frame_ptr = (ADDRINT)PIN_GetContextReg( ctxt, REG_GBP);
       ADDRINT dynamic_link = read_memory_as_address(frame_ptr+OLD_FRAME_PTR_OFFSET);
       ADDRINT return_address = read_memory_as_address(frame_ptr+RETURN_ADDRESS_OFFSET);
  
-      DEBUGL(cout << "Return address" << endl);
-      DEBUGL(cout << '\t' << "Function name: " << callee_name << endl);
-      DEBUGL(cout << '\t' << "Dynamic link: 0x" << hex << dynamic_link << endl);
-      DEBUGL(cout << '\t' << "Return address: 0x" << hex << return_address << endl);
+      DEBUGL(LOG("Return address\n"));
+      DEBUGL(LOG("\tFunction name: " + callee_name + "\n"));
+      DEBUGL(LOG("\tDynamic link: 0x" + hexstr(dynamic_link) + "\n"));
+      DEBUGL(LOG("\tReturn address: 0x" + hexstr(return_address) + "\n"));
       return_addr_record *rarec = ((return_addr_record*)factory
          .make_vaccs_record(VACCS_RETURN_ADDR))
          ->add_dynamic_link(dynamic_link)
          ->add_return_address(return_address)
          ->add_c_func_name(callee_name.c_str());
    
-      rarec->write(vfp);
+      rarec->write(vaccs_fd);
       delete rarec;
    }
 
-   DEBUGL(cout << "Exit before_function_direct_call" << endl);
+   DEBUGL(LOG("Exit before_function_direct_call\n"));
 }
 
 VOID before_function_indirect_call(ADDRINT ip, CONTEXT *ctxt, ADDRINT callee_address,BOOL taken) {
-   DEBUGL(cout << "Enter before_function_indirect_call" << endl);
+   DEBUGL(LOG("Enter before_function_indirect_call\n"));
    if (taken)
       before_function_direct_call(ip,ctxt,callee_address);
 
-   DEBUGL(cout << "Exit before_function_indirect_call" << endl);
+   DEBUGL(LOG("Exit before_function_indirect_call\n"));
 }
 
 VOID after_function_call(void) {
-   DEBUGL(cout << "Enter after_function_call" << endl);
-   DEBUGL(cout << "function return" << endl);
+   DEBUGL(LOG("Enter after_function_call\n"));
+
    vaccs_record_factory factory;
    return_record *rrec = (return_record*)factory.make_vaccs_record(VACCS_RETURN);
    rrec = rrec->add_event_num(timestamp++);
-   rrec->write(vfp);
+   rrec->write(vaccs_fd);
    delete rrec;
-   DEBUGL(cout << "Exit after_function_call" << endl);
+
+   DEBUGL(LOG("function return\n"));
+   DEBUGL(LOG("Exit after_function_call\n"));
 }
 
 // Is called for every instruction and instruments all of them that have 
@@ -113,7 +115,7 @@ VOID monitor_function_calls(INS ins, VOID *v)
 
    if (INS_IsCall(ins)) {
       if (INS_IsDirectBranchOrCall(ins)) {
-         DEBUGL(cout << "Direct call: " << INS_Disassemble(ins) << endl);
+         DEBUGL(LOG("Direct call: " + INS_Disassemble(ins) + "\n"));
          ADDRINT target = INS_DirectBranchOrCallTargetAddress(ins);
          INS_InsertPredicatedCall(ins,IPOINT_BEFORE,AFUNPTR(before_function_direct_call),
                                  IARG_INST_PTR,
@@ -121,7 +123,7 @@ VOID monitor_function_calls(INS ins, VOID *v)
                                  IARG_ADDRINT, target,
                                  IARG_END);
       } else {
-         DEBUGL(cout << "Indirect call: " << INS_Disassemble(ins) << endl);
+         DEBUGL(LOG("Indirect call: " + INS_Disassemble(ins) + "\n"));
          INS_InsertCall(ins, IPOINT_BEFORE, AFUNPTR(before_function_indirect_call),
                         IARG_INST_PTR,
                         IARG_CONTEXT,

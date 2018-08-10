@@ -50,7 +50,7 @@ clean:
 
 .cpp.o: 
 		echo "Compiling" $<
-		$(CXX) -c $(CFLAGS) $<
+		$(CXX) -c $(CXXFLAGS) $<
 
 .d_%: %.c 
 	echo  "Updating dependences for" $< "..."

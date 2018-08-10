@@ -15,6 +15,8 @@
 
 #include <util/general.h>
 
+#include <pin.H>
+
 /***************************************************************
  * Constants used by the analysis routines
  ***************************************************************/
@@ -89,7 +91,7 @@ public:
 	 * @param fp the file pointer for the output file
 	 * @param rec the analysis record to be written to the file
 	 */
-	virtual void write(FILE *fp) = 0;
+	virtual void write(NATIVE_FD fp) = 0;
 
 	/**
 	 * Read an analysis record from a file
@@ -97,7 +99,7 @@ public:
 	 * @param fp the file pointer for the input file
 	 * @return a pointer to an analysis record read from the file.
 	 */
-	virtual vaccs_record *read(FILE *fp) = 0;
+	virtual vaccs_record *read(NATIVE_FD fp) = 0;
 
 	/**
 	 * Set the id of this record

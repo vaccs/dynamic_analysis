@@ -14,8 +14,11 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <iostream>
 
 #include <util/general.h>
+
+#include <pin.H>
 
    /* Find the maximum of two integers. */
 int max(int a, int b)
@@ -38,9 +41,9 @@ void die_with_message(char* format, ...)
 
   va_start(arg_list, format);
     {
-       printf( "Abnormal termination:  ");
+       std::cerr << "Abnormal termination:  ";
        vprintf(format, arg_list);
-       printf("\n");
+       std::cerr << std::endl;
     }
   va_end(arg_list);
 

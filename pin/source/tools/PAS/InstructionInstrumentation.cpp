@@ -16,9 +16,6 @@
 #include <io/vaccs_record_factory.h>
 #include <io/asm_record.h>
 
-extern FILE *vfp;
-using namespace std;
-
 /* ===================================================================== */
 /* Write a vaccs asm record for each line of assembly                    */
 /* ===================================================================== */
@@ -49,12 +46,12 @@ VOID EmitAssembly(INS ins, VOID *v){
    }
    vaccs_record_factory factory;
    
-   DEBUGL(cout << "ASM Record" << endl);
-   DEBUGL(cout << '\t' << "ASM line #: " << ip << endl);
-   DEBUGL(cout << '\t' << "C line #: " << line << endl);
-   DEBUGL(cout << '\t' << "ASM file: " << asmFileName << endl);
-   DEBUGL(cout << '\t' << "C file: " << fileName << endl);
-   DEBUGL(cout << '\t' << "Instruction: " << assembly << endl << endl); 
+   DEBUGL(LOG("ASM Record\n"));
+   DEBUGL(LOG("\tASM line #: " + decstr(ip) + "\n"));
+   DEBUGL(LOG("\tC line #: " + decstr(line) + "\n"));
+   DEBUGL(LOG("\tASM file: " + asmFileName + "\n"));
+   DEBUGL(LOG("\tC file: " + fileName + "\n"));
+   DEBUGL(LOG("\tInstruction: " + assembly + "\n\n")); 
   
    asm_record *arec = (asm_record*)factory.make_vaccs_record(VACCS_ASM);
    arec->add_asm_line_num(ip)
@@ -63,7 +60,7 @@ VOID EmitAssembly(INS ins, VOID *v){
       ->add_c_file_name(fileName.c_str())
       ->add_asm_inst(assembly.c_str());
 
-   arec->write(vfp);
+   arec->write(vaccs_fd);
    delete arec;
 }
 

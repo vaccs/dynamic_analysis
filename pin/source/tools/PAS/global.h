@@ -4,14 +4,15 @@
  *  Created on: Jul 20, 2016
  *      Author: haoli
  */
+#ifndef GLOBAL_H_
+#define GLOBAL_H_
+
 #include<stack>
 #include<string>
 #include<set>
 #include<iostream>
 #include "pin.H"
-
-#ifndef GLOBAL_H_
-#define GLOBAL_H_
+#include <vaccs_read/vaccs_dw_reader.h>
 
 #define NOCSOURCE "__NOCSOURCE__"
 #define NOASMSOURCE "__NOASMSOURCE__"
@@ -268,4 +269,8 @@ extern return_transaction return_event;
 extern std::stack<function_invocation_transaction> invocation_stack;
 extern function_invocation_transaction function_invocation_event;
 extern std::vector<std::string> assembly_codes;
+extern vaccs_dw_reader *vdr;
+extern NATIVE_FD vaccs_fd;
+using namespace std;
+
 #endif /* GLOBAL_H_ */

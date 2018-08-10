@@ -25,11 +25,11 @@ return_record::return_record() :
  *
  * @param fp a file pointer for the analysis file
  */
-void return_record::write(FILE *fp) {
+void return_record::write(NATIVE_FD fd) {
 	vaccs_id_t id = VACCS_RETURN;
-	assert(fwrite(&id, sizeof(id), 1, fp) == 1);
+	USIZE size =  sizeof(id); assert(OS_WriteFD(fd,&id,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 
-	assert(fwrite(&event_num, sizeof(event_num), 1, fp) == 1);
+	size =  sizeof(event_num); assert(OS_WriteFD(fd,&event_num,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 }
 
 /**
@@ -38,8 +38,8 @@ void return_record::write(FILE *fp) {
  * @param fp a file pointer for the analysis file
  * @return a return record
  */
-vaccs_record *return_record::read(FILE *fp) {
-	assert(fread(&event_num, sizeof(event_num), 1, fp) == 1);
+vaccs_record *return_record::read(NATIVE_FD fd) {
+	USIZE size =  sizeof(event_num); assert(OS_ReadFD(fd,&size,&event_num).generic_err == OS_RETURN_CODE_NO_ERROR);
 
 	return this;
 }

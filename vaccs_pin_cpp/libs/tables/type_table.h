@@ -14,6 +14,8 @@
 
 #include <tables/symbol_table.h>
 
+#include <pin.H>
+
 /**
  * Class: type_record
  *

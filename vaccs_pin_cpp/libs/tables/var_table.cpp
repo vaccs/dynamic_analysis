@@ -71,7 +71,7 @@ void var_record::write(std::string key,FILE *fp) {
  * @return true if the pc is found in this subprogram, otherwise false.
  */
 bool var_record::pc_in_range(Generic pc) {
-	DEBUGL(cout << "In var_record::pc_in_range" << endl);
+	DEBUGL(LOG("In var_record::pc_in_range\n"));
 	return (pc >= low_pc && pc < high_pc);
 }
 
@@ -86,7 +86,7 @@ bool var_record::pc_in_range(Generic pc) {
  */
 std::pair<std::string,var_record*> var_record::find_address_in_subprog(const CONTEXT *ctxt,Generic mem_addr,type_table *ttab) {
 	std::pair<std::string,var_record*> vpair = default_var_pair;
-	DEBUGL(cout << "In var_record::find_address_in_subprog" << endl);
+	DEBUGL(LOG("In var_record::find_address_in_subprog\n"));
 
 	if (is_subprog)
 		for (std::map<std::string,symbol_table_record*>::iterator it = local_var_table->begin();
@@ -94,7 +94,7 @@ std::pair<std::string,var_record*> var_record::find_address_in_subprog(const CON
 				it++) {
 			var_record* tvrec = (var_record*)it->second;
 			type_record *trec = ttab->get(tvrec->get_type());
-			DEBUGL(cout << "Checking variable " << it->first << endl);
+			DEBUGL(LOG("Checking variable "+ it->first +"\n"));
 			if (!tvrec->get_is_subprog() && tvrec->is_at_address(ctxt,mem_addr,trec)) {
 				vpair.first = it->first;
 				vpair.second = tvrec;
@@ -102,7 +102,7 @@ std::pair<std::string,var_record*> var_record::find_address_in_subprog(const CON
 			}
 		}
 
-	DEBUGL(cout << "Leave var_record::find_addres_in_subprog" << endl);
+	DEBUGL(LOG("Leave var_record::find_address_in_subprog\n"));
 	return vpair;
 
 }
@@ -115,8 +115,8 @@ std::pair<std::string,var_record*> var_record::find_address_in_subprog(const CON
  * @return true if the variable is at the prospective address, otherwise false
  */
 bool var_record::is_at_address(const CONTEXT *ctxt,Generic mem_addr, type_record *trec) {
-	DEBUGL(cout << "Enter is_at_address\n");
-	DEBUGL(cout << "trec = 0x" << hex << trec << endl);
+	DEBUGL(LOG("Enter is_at_address\n"));
+	DEBUGL(LOG("trec = 0x" + hexstr(trec) + "\n"));
 	Generic var_addr;
 
 	if (is_local || is_param) {
@@ -124,7 +124,7 @@ bool var_record::is_at_address(const CONTEXT *ctxt,Generic mem_addr, type_record
 	} else
 	    var_addr = location; // location is the actual address
 
-	DEBUGL(cout << "var_addr: 0x" << hex << var_addr << "mem_addr: 0x" << mem_addr << "size: " << dec <<  trec->get_size());
+	DEBUGL(LOG("var_addr: 0x" +hexstr(var_addr) + " mem_addr: 0x" + hexstr(mem_addr) +  " size: " + decstr(trec->get_size())+ "\n"));
 	if (trec->get_is_array()) { // is this an access to some element of an array
 		return (mem_addr >= var_addr) && (mem_addr < var_addr + trec->get_size());
 	} else
@@ -162,73 +162,90 @@ std::string var_record::read_value(type_record *trec, Generic addr) {
 	std::string value;
 	std::string type_name = *(trec->get_name());
 
+	DEBUGL(LOG("In var_recod::read_value\n"));
+	DEBUGL(LOG("Type is " + type_name + "\n"));
+	DEBUGL(LOG("Reading " + decstr(trec->get_size()) + " bytes at address: " + hexstr(addr) + "\n"));
+
+	ostringstream convert;
+
 	if (type_name.find("*") != std::string::npos) {
-		// interpret data as a pointer
-		std::stringstream address;
-		address << (void const *)addr;
-		value = address.str();
+		Generic *ptr = (Generic*)addr;
+		convert << *ptr;
+		value = convert.str();
 	} else {
 
-		char *buf = (char *)malloc(trec->get_size()+1);
-		bcopy((void *)addr,buf,trec->get_size());	
-		buf[trec->get_size()] = '\0';
-
-		ostringstream convert;
-
-		if (type_name.find("long long") != std::string::npos) { 
+		if (type_name.find("long long") != std::string::npos) {
 			// interpret data as long long
-			
-			if (type_name.find("unsigned") != std::string::npos)
-				convert << (unsigned long long)*buf;
-			else
-				convert << (long long)*buf;
+
+			if (type_name.find("unsigned") != std::string::npos) {
+				unsigned long long *ptr =(unsigned long long *)addr;
+				convert << *ptr;
+			}else {
+				long long *ptr = (long long *)addr;
+				convert << *ptr;
+			}
 
 			value = convert.str();
-		
+
 		} else if (type_name.find("long") != std::string::npos) {
 			// interpret data as long
-			
-			if (type_name.find("unsigned") != std::string::npos)
-				convert << (unsigned long)*buf;
-			else
-				convert << (long)*buf;
 
+			if (type_name.find("unsigned") != std::string::npos) {
+				unsigned long *ptr = (unsigned long *)addr;
+				convert << *ptr;
+			}
+			else {
+				long *ptr = (long *)addr;
+				convert << *ptr;
+			}
 
 			value = convert.str();
-		
+
 		} else if (type_name.find("short") != std::string::npos) {
 			// interpret data as short
-		
-			if (type_name.find("unsigned") != std::string::npos)
-				convert << (unsigned short)*buf;
-			else
-				convert << (short)*buf;
+
+			if (type_name.find("unsigned") != std::string::npos) {
+				unsigned short *ptr = (unsigned short *)addr;
+				convert << *ptr;
+			}
+			else {
+				short *ptr = (short *)addr;
+				convert << *ptr;
+			}
 
 			value = convert.str();
-		
+
 		} else if (type_name.find("char") != std::string::npos) {
 			// interpret data as a char
-		
-			if (type_name.find("unsigned") != std::string::npos)
-				convert << (unsigned char)*buf;
-			else
-				convert << (char)*buf;
+
+			if (type_name.find("unsigned") != std::string::npos) {
+				unsigned char *ptr = (unsigned char *)addr;
+				convert << *ptr;
+			}
+			else {
+				char *ptr = (char *)addr;
+				convert << *ptr;
+			}
 
 			value = convert.str();
 
 		} else if (type_name.find("int") != std::string::npos) {
 			// interpret data as an int
-		
-			if (type_name.find("unsigned") != std::string::npos)
-				convert << (unsigned int)*buf;
-			else
-				convert << (int)*buf;
-	
+
+			if (type_name.find("unsigned") != std::string::npos) {
+				unsigned int *ptr = (unsigned int *)addr;
+				convert << *ptr;
+			}
+			else {
+				int *ptr = (int *)addr;
+				convert << *ptr;
+			}
+
 			value = convert.str();
 
-		} else { 
-			// interpret data as a character array	
-			value = buf;
+		} else {
+			LOG("Type not supported: " + type_name);
+			PIN_ExitProcess(-1);
 		}
 	}
 
