@@ -34,6 +34,22 @@ symbol_table *symbol_table_factory::make_symbol_table(int type){
 	return table;
 }
 
+symbol_table *symbol_table_factory::copy_symbol_table(int type, symbol_table *stab) {
+
+	symbol_table *tab;
+	switch (type) {
+	case VAR_TABLE:
+		tab = new var_table((var_table *)stab);
+		break;
+	default:
+		tab = NULL;
+	}
+
+	return tab;
+
+}
+
+
 symbol_table_record *symbol_table_record_factory::make_symbol_table_record(int type) {
 
 	symbol_table_record *rec;
@@ -54,3 +70,19 @@ symbol_table_record *symbol_table_record_factory::make_symbol_table_record(int t
 
 	return rec;
 }
+
+symbol_table_record *symbol_table_record_factory::copy_symbol_table_record(int type, symbol_table_record *srec) {
+
+	symbol_table_record *rec;
+	switch (type) {
+	case VAR_RECORD:
+		rec = new var_record((var_record *)srec);
+		break;
+	default:
+		rec = NULL;
+	}
+
+	return rec;
+
+}
+

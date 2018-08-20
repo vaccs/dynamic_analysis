@@ -14,6 +14,8 @@
 #include <map>
 #include <string>
 
+#include <pin.H>
+
 #define CU_TABLE 0
 #define TYPE_TABLE 1
 #define VAR_TABLE 2
@@ -31,7 +33,7 @@ protected:
       symbol_table_record(int id);
       virtual ~symbol_table_record();
 
-      virtual void write(std::string key,FILE *fp)= 0;
+      virtual void write(std::string key,NATIVE_FD fd)= 0;
 };
 
 class symbol_table : public std::map<std::string, symbol_table_record *> {
@@ -47,7 +49,7 @@ protected:
 
       bool put(std::string str,symbol_table_record *sym_rec);
 
-      virtual void write(FILE *fp) = 0;
+      virtual void write(NATIVE_FD fd) = 0;
 };
 
 

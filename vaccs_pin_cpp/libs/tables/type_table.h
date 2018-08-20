@@ -13,8 +13,11 @@
 #include <string>
 
 #include <tables/symbol_table.h>
+#include <tables/var_table.h>
 
 #include <pin.H>
+
+class var_table;
 
 /**
  * Class: type_record
@@ -26,11 +29,14 @@
 class type_record: public symbol_table_record {
 
 private:
-	Generic size; /* the # of bytes for a type */
+	Generic type_size; /* the # of bytes for a type */
 	std::string *name; /* the name of the type */
 	bool is_array; /* is the type an array? */
+	bool is_pointer; /* is the type a pointer? */
+	bool is_struct; /* is the type a struct? */
 	std::string *base_type; /* the dwarf index of the base type for an array */
 	Generic upper_bound; /* the upper bound for the array type */
+	var_table *member_tab; /* the members of a c struct */
 
 public:
 	/**
@@ -46,11 +52,11 @@ public:
 	/**
 	 * Add the type size to the object using a builder pattern
 	 *
-	 * @param size the size of this type
+	 * @param type_size the size of this type
 	 * @return the object
 	 */
-	type_record* add_size(Generic size) {
-		this->size = size;
+	type_record* add_size(Generic type_size) {
+		this->type_size = type_size;
 		return this;
 	}
 
@@ -66,12 +72,32 @@ public:
 	}
 
 	/**
+	 * Add the is_pointer filed to the object using a builder pattern
+	 *
+	 * @return the object
+	 */
+	type_record* add_is_pointer() {
+		this->is_pointer = true;
+		return this;
+	}
+
+	/**
 	 * Add the is_array filed to the object using a builder pattern
 	 *
 	 * @return the object
 	 */
 	type_record* add_is_array() {
 		this->is_array = true;
+		return this;
+	}
+
+	/**
+	 * Add the is_struct field to the object using a builder pattern
+	 *
+	 * @return the object
+	 */
+	type_record* add_is_struct() {
+		this->is_struct = true;
 		return this;
 	}
 
@@ -95,12 +121,23 @@ public:
 	type_record* add_upper_bound(Generic upper_bound,bool compute_name_and_size);
 
 	/**
+	 * Add a table for structure members
+	 *
+	 * @param memtab a table of structure members
+	 * @return the object
+	 */
+	type_record *add_member_table(var_table *memtab) {
+		this->member_tab = memtab;
+		return this;
+	}
+
+	/**
 	 * Get the size from the object
 	 *
 	 * @return the size
 	 */
 	Generic get_size() {
-		return size;
+		return type_size;
 	}
 
 	/**
@@ -122,6 +159,24 @@ public:
 	}
 
 	/**
+	 * Is this a pointer type?
+	 *
+	 * @return true if this is a pointer type; otherwise, false
+	 */
+	bool get_is_pointer() {
+		return is_pointer;
+	}
+
+	/**
+	 * Is this a struct type?
+	 *
+	 * @return true if this is a struct type; otherwise, false
+	 */
+	bool get_is_struct() {
+		return is_struct;
+	}
+
+	/**
 	 * Get the base type from the object
 	 *
 	 * @return the base type
@@ -140,12 +195,19 @@ public:
 	}
 
 	/**
+	 * Get the structure member table
+	 */
+	var_table *get_member_table() {
+		return member_tab;
+	}
+
+	/**
 	 * Write a type table record to a file
 	 *
 	 * @param fn the file name for the cu
 	 * @param fp a file pointer
 	 */
-	virtual void write(std::string fn,FILE *fp);
+	virtual void write(std::string fn,NATIVE_FD fd);
 };
 
 /**
@@ -169,7 +231,7 @@ public:
 	 *
 	 * @param fp a file pointer
 	 */
-	virtual void write(FILE *fp);
+	virtual void write(NATIVE_FD fd);
 };
 
 #endif

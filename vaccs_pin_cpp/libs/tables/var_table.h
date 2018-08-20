@@ -37,6 +37,7 @@ private:
 	std::string type; /* the dwarf index for this type */
 	bool is_subprog; /* is this variable a subprogram? */
 	var_table *local_var_table; /* the local variable declared inside a subprogram */
+	var_table *member_table; /* the member of a structure */
 	bool is_local; /* is this variable local? */
 	bool is_param; /* is this variable a formal parameter */
 	std::string decl_file; /* the name of the file in which this is defined */
@@ -44,6 +45,7 @@ private:
 	Generic low_pc; /* the lowest pc of a subroutine variable */
 	Generic high_pc; /* the highest pc of a subroutine variable */
 	Generic location; /* an expression storing how to compute the address of the variable*/
+	bool first_access; /* is this the first access of this variable in the program? */
 
 public:
 
@@ -51,6 +53,13 @@ public:
 	 * The constructor. We use a builder pattern, so there are no parameters
 	 */
 	var_record();
+
+	/**
+	 * A copy constructor
+	 *
+	 * @param vrec a var_record to copy
+	 */
+	var_record(var_record *vrec);
 
 	/**
 	 * The destructor
@@ -86,6 +95,17 @@ public:
 	 */
 	var_record* add_local_var_table(var_table *local_var_table) {
 		this->local_var_table = local_var_table;
+		return this;
+	}
+
+	/**
+	 * Add the member table to the object using a builder pattern
+	 *
+	 * @param member_table the table of structure members
+	 * @return the object
+	 */
+	var_record* add_member_table(var_table *member_table) {
+		this->member_table = member_table;
 		return this;
 	}
 
@@ -165,6 +185,15 @@ public:
 	}
 
 	/**
+	 * Set the first_access field to false
+	 *
+	 * @return the object
+	 */
+	void clear_first_access() {
+		this->first_access = false;
+	}
+
+	/**
 	 * Get the variable type die offset
 	 *
 	 * @return a pointer to a string containing the die offset for the variable type
@@ -189,6 +218,15 @@ public:
 	 */
 	var_table *get_local_var_table() {
 		return local_var_table;
+	}
+
+	/**
+	 * Get the member table for a subprogram
+	 *
+	 * @return the member table for structure members
+	 */
+	var_table *get_member_table() {
+		return member_table;
 	}
 
 	/**
@@ -254,6 +292,14 @@ public:
 		return location;
 	}
 
+	/* Get the first access field
+	 *
+	 * @return true if this is the first access to this variable
+	 */
+	bool is_first_access() {
+		return first_access;
+	}
+
 	/**
 	 * Check if a pc is in this compilation unit
 	 *
@@ -278,9 +324,17 @@ public:
 	 *
 	 * @param ctxt a pin process context
 	 * @param mem_addr the prospective memory address
+	 * @param trec the type record for this variable
 	 * @return true if the variable is at the prospective address, otherwise false
 	 */
 	bool is_at_address(const CONTEXT *ctxt, Generic mem_addr, type_record *trec);
+
+	/**
+	 * Get the base address of this variable in a given execution context
+	 * @param ctxt a pin process context
+	 * @return the base address of this variable in a given execution context
+	 */
+	Generic get_base_address(const CONTEXT *ctxt);
 
 	/**
 	 * Get the scope name of a var_record for a local variable 
@@ -299,13 +353,29 @@ public:
   	 */
 	std::string read_value(type_record *trec, Generic addr);
 
+	/**
+	 * Propagate local information about variables to the structure members
+	 *
+	 * @param ttab a type table
+	 * @param is_local is the variable declared locally
+	 * @param is_param is the variable a formal parameter
+	 */
+	void propagate_local_info(type_table *ttab,Generic location,bool is_local, bool is_param);
+
+	/**
+	 * Create member tables for structure variables
+	 *
+	 * @param type_table a type table
+	 */
+	void create_member_tables(type_table *ttab);
+
    /**
 	* Write a var table record to a file
 	*
 	* @param fn the file name for the cu
 	* @param fp a file pointer
 	*/
-   virtual void write(std::string fn,FILE *fp);
+   virtual void write(std::string fn,NATIVE_FD fd);
 
 };
 
@@ -315,16 +385,40 @@ public:
 	var_table() :
 			symbol_table(VAR_TABLE) {
 	}
+
+	/**
+	 * Copy constructor (deep copy)
+	 *
+	 * @param vtab a variable table to copy
+	 */
+	var_table(var_table *vtab);
+
 	virtual ~var_table();
 
 	var_record* get(std::string str) { return (var_record*) symbol_table::get(str); }
+
+	/**
+	 * Propagate local information about variables to the structure members
+	 *
+	 * @param ttab a type table
+	 * @param is_local is the variable declared locally
+	 * @param is_param is the variable a formal parameter
+	 */
+	void propagate_local_info(type_table *ttab,Generic location,bool is_local, bool is_param);
+
+	/**
+	 * Create member tables for structure variables
+	 *
+	 * @param type_table a type table
+	 */
+	void create_member_tables(type_table *ttab);
 
    /**
 	* Write the var table to a file
 	*
 	* @param fp a file pointer
 	*/
-   virtual void write(FILE *fp);
+   virtual void write(NATIVE_FD fd);
 
 };
 

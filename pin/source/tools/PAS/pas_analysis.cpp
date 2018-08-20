@@ -4,8 +4,10 @@
  */
 #include <cstdio>
 #include <cstdlib>
+#include <cassert>
 #include <unistd.h>
 #include <fcntl.h>
+#include <sys/types.h>
 #include <sys/utsname.h>
 #include "pin.H"
 #include <sys/stat.h>
@@ -31,6 +33,7 @@
 
 vaccs_dw_reader *vdr = NULL;
 NATIVE_FD vaccs_fd = -1;
+int vaccs_stdout = -1;
 using namespace std;
 
 /*call stack*/
@@ -101,9 +104,13 @@ void setup_output_files(char* filename){
    string vfn(filename);
    vfn.append(".vaccs");
   	assert(OS_OpenFD(vfn.c_str(), OS_FILE_OPEN_TYPE_CREATE | OS_FILE_OPEN_TYPE_WRITE,
-            OS_FILE_PERMISSION_TYPE_WRITE | OS_FILE_OPEN_TYPE_READ,
+            OS_FILE_PERMISSION_TYPE_WRITE | OS_FILE_PERMISSION_TYPE_READ,
             &vaccs_fd).generic_err == OS_RETURN_CODE_NO_ERROR);
 
+   string stdout_fn("/tmp/vaccs.stdout");
+
+   assert((vaccs_stdout = open(stdout_fn.c_str(),O_CREAT | O_RDONLY | O_NONBLOCK,
+            S_IRUSR | S_IWUSR)) != -1);
 	//pas_output.open(application_name.c_str());
 	//ou_function_invocation.open("function_invocation.csv");
 	//ou_malloc.open("malloc.csv");
@@ -134,6 +141,7 @@ void finalize_outputfiles(){
 	//pas_output.close();
 
    OS_CloseFD(vaccs_fd);
+   close(vaccs_stdout);
 }
 
 void initialize(){
@@ -234,7 +242,9 @@ int main(int argc, char *argv[])
 {
 
 
-	 /*
+   DEBUGL(LOG("Begin pas_analysis\n"));
+
+    /*
 	  * Pin Initialization
 	  */
 	initialize();

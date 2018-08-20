@@ -114,22 +114,31 @@ std::string cu_record::get_scope(var_record *vrec) {
 }
 
 /**
+ * Create the member tables from the type declarations for local variables that are structures.
+ *
+ */
+void cu_record::create_member_tables() {
+
+	vtab->create_member_tables(ttab);
+}
+
+/**
  * Write a compilation unit record to a file
  *
  * @param fp a file pointer
  */
-void cu_record::write(std::string key,FILE *fp) {
+void cu_record::write(std::string key,NATIVE_FD fd) {
 	DEBUGL(LOG("Begin cu_record::write()\n"));
 
-	assert(fwrite(&id, sizeof(id), 1, fp) == 1);
+	USIZE size =  sizeof(id); assert(OS_WriteFD(fd,&id,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 	size_t length = key.length();
-	assert(fwrite(&length, sizeof(length), 1, fp) == 1);
-	assert(fwrite(key.c_str(), length, 1, fp) == 1);
-	assert(fwrite(&low_pc, sizeof(low_pc), 1, fp) == 1);
-	assert(fwrite(&high_pc, sizeof(high_pc), 1, fp) == 1);
+	size =  sizeof(length); assert(OS_WriteFD(fd,&length,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
+	size =  length; assert(OS_WriteFD(fd,key.c_str(),&size).generic_err == OS_RETURN_CODE_NO_ERROR);
+	size =  sizeof(low_pc); assert(OS_WriteFD(fd,&low_pc,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
+	size =  sizeof(high_pc); assert(OS_WriteFD(fd,&high_pc,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 
-	ttab->write(fp);
-	vtab->write(fp);
+	ttab->write(fd);
+	vtab->write(fd);
 
 	DEBUGL(LOG("End cu_record::write()\n"));
 
@@ -238,22 +247,56 @@ type_record *cu_table::get_type_record(std::string dw_index) {
 	return trec;
 }
 
+/**
+ * Get the type table containing a type given the dwarf index
+ *
+ * @param dw_index a dwarf index for a type (string)
+ * @return a pointer to a type_table containing the give dwarf index
+ */
+type_table *cu_table::get_type_table(std::string dw_index) {
+	type_table *ttab = NULL;
+	for (std::map<std::string,symbol_table_record*>::iterator it = begin();
+			ttab == NULL && it != end();
+			it++) {
+		cu_record* curec = (cu_record*)it->second;
+		type_record *ttrec = curec->get_type_table()->get(dw_index);
+		if (ttrec != NULL)
+		   ttab = curec->get_type_table();
+	}
+
+	return ttab;
+}
+
+/**
+ * Create the member tables from the type declarations for structures.
+ *
+ */
+void cu_table::create_member_tables() {
+
+
+
+	// Create member tables for local variables
+	for (std::map<std::string,symbol_table_record*>::iterator it = begin(); it != end(); it++) {
+		cu_record* curec = (cu_record*)it->second;
+		curec->create_member_tables();
+	}
+}
 
 /**
  * Write the compilation unit table to a file
  *
  * @param fp a file pointer
  */
-void cu_table::write(FILE *fp) {
+void cu_table::write(NATIVE_FD fd) {
 	DEBUGL(LOG("Begin cu_table::write()\n"));
-	assert(fwrite(&id, sizeof(id), 1, fp) == 1);
+	USIZE dsize =  sizeof(id); assert(OS_WriteFD(fd,&id,&dsize).generic_err == OS_RETURN_CODE_NO_ERROR);
 
 	size_t num = size();
-	assert(fwrite(&num,sizeof(size_t), 1, fp) == 1);
+	dsize = sizeof(size_t); assert(OS_WriteFD(fd,&num,&dsize).generic_err == OS_RETURN_CODE_NO_ERROR);
 
 	for (std::map<std::string,symbol_table_record*>::iterator it = begin(); it != end(); it++) {
 		cu_record* curec = (cu_record*)it->second;
-		curec->write(it->first,fp);
+		curec->write(it->first,fd);
 	}
 	DEBUGL(LOG("End cu_table::write()\n"));
 }

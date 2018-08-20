@@ -14,6 +14,12 @@
 #include <io/vaccs_record_factory.h>
 #include <io/vaccs_record.h>
 #include <io/var_access_record.h>
+#include <tables/var_table.h>
+#include <string>
+#include <map> 
+void write_element_record(cu_table *cutab, pair<string,var_record*> vpair, const CONTEXT *ctxt,
+     ADDRINT addr, INT32 line, string fileName, string var_prefix,
+     string scope, int event_num);
 
 /* ===================================================================== */
 /* Instrumentation the memory operation to record the memory accesses     */
@@ -172,9 +178,185 @@ VOID BeforeMemWrite(VOID* assembly,ADDRINT  ip, VOID *addr,const CONTEXT *ctxt, 
 
 
 }
+void write_variable_access_record(string variable,
+      Generic event_num,
+      INT32 line,
+      string fileName,
+      string scope,
+      ADDRINT addr,
+      string type_name,
+      string value) {
+
+   vaccs_record_factory factory;
+   var_access_record *varec;
+
+   DEBUGL(LOG( "Write to variable " + variable + "\n"));
+   DEBUGL(LOG( "\tEvent num: " + decstr(event_num) + "\n"));
+   DEBUGL(LOG( "\tC file name: " + fileName + "\n"));
+   DEBUGL(LOG( "\tScope: " + scope + "\n"));
+   DEBUGL(LOG( "\tAddress: 0x" + hexstr((Generic)addr) + "\n"));
+   DEBUGL(LOG( "\tType: " + type_name + "\n"));
+   DEBUGL(LOG( "\tValue: " + value + "\n\n"));
+   varec = (var_access_record*)factory.make_vaccs_record(VACCS_VAR_ACCESS);
+   varec = varec->add_event_num(event_num)
+      ->add_c_line_num(line)
+      ->add_c_file_name(fileName.c_str())
+      ->add_scope(scope.c_str())
+      ->add_address((Generic)addr)
+      ->add_name(variable.c_str())
+      ->add_type(type_name.c_str())
+      ->add_value(value.c_str());
+   varec->write(vaccs_fd);
+   delete varec;
+ }
+
+void write_array_element_record(cu_table *cutab, 
+     pair<string,var_record*> vpair, 
+     const CONTEXT *ctxt,
+     ADDRINT addr,
+     INT32 line,
+     string fileName,
+     string var_prefix,
+     string scope,
+     int event_num) {
+
+   DEBUGL(LOG( "Write to array element for " + vpair.first + "\nprefix = "+var_prefix + "\n"));
+   type_table *ttab =cutab->get_type_table(vpair.second->get_type());
+   type_record *trec = ttab->get(vpair.second->get_type());
+   Generic element_size = ttab->get(*trec->get_base_type())->get_size();
+   symbol_table_record_factory factory;
+  
+   if (vpair.second->is_first_access()) {
+
+      //
+      // On first access write out the entire array so the visualization has the inital values
+      //
+      vpair.second->clear_first_access();
+
+      write_variable_access_record(var_prefix + vpair.first, event_num, line, fileName, scope,
+            addr, *trec->get_name(), "<multielement>");
+      
+      for (unsigned int i = 0; i <= trec->get_upper_bound(); i++) {
+         string base_type = *ttab->get(vpair.second->get_type())->get_base_type();
+         var_record *varec = (var_record*)factory.make_symbol_table_record(VAR_RECORD);
+   	   varec = varec->add_decl_file(fileName)
+			   ->add_decl_line(vpair.second->get_decl_line())
+            ->add_type(base_type)
+			   ->add_location(vpair.second->get_location() + (element_size * i));         
+
+         if (vpair.second->get_is_local())
+            varec = varec->add_is_local();
+         else if (vpair.second->get_is_param())
+            varec = varec->add_is_param();
+
+         pair<string,var_record*> nvpair(vpair.first + ":[" + decstr(i) + "]",varec);
+
+         write_element_record(cutab,nvpair,ctxt,addr+(element_size * i),line,fileName,
+            var_prefix,scope,event_num);
+
+         delete varec;
+      }
+    } else {
+         int index = (addr - vpair.second->get_base_address(ctxt))/element_size;
+         DEBUGL(LOG("Computed index = "+decstr(index) + "\n"));
+         var_record *varec = (var_record*)factory.make_symbol_table_record(VAR_RECORD);
+         string base_type = *ttab->get(vpair.second->get_type())->get_base_type();
+   	   varec = varec->add_decl_file(fileName)
+			   ->add_decl_line(vpair.second->get_decl_line())
+            ->add_type(base_type)
+			   ->add_location(vpair.second->get_location() + (element_size * index));         
+
+         if (vpair.second->get_is_local())
+            varec = varec->add_is_local();
+         else if (vpair.second->get_is_param())
+            varec = varec->add_is_param();
+
+         pair<string,var_record*> mvpair(vpair.first + ":[" + decstr(index) + "]",varec);
+
+         write_element_record(cutab,mvpair,ctxt,addr,line,fileName,
+           var_prefix,scope,event_num);
+    } 
+}
+
+void write_struct_record(cu_table *cutab, 
+     pair<string,var_record*> vpair, 
+     const CONTEXT *ctxt,
+     ADDRINT addr,
+     INT32 line,
+     string fileName,
+     string var_prefix,
+     string scope,
+     int event_num) {
+
+   DEBUGL(LOG( "Write to structure element for " + vpair.first + " at address " + hexstr(addr)));
+   DEBUGL(LOG("\nprefix = " + var_prefix + "\n"));
+   type_table *ttab =cutab->get_type_table(vpair.second->get_type());
+   type_record *trec = ttab->get(vpair.second->get_type());
+	var_table *memtab = vpair.second->get_member_table();
+   if (vpair.second->is_first_access()) {
+
+      //
+      // On first access write out the entire structure so the visualization has the inital values
+      //
+
+      vpair.second->clear_first_access();
+
+      write_variable_access_record(var_prefix + vpair.first, event_num, line, fileName, scope,
+            addr, *trec->get_name(), "<multielement>");
+
+
+      Generic member_address = addr;
+		for (std::map<std::string,symbol_table_record*>::iterator it = memtab->begin();
+				it != memtab->end();
+				it++) {
+         pair<string,var_record*> mpair(it->first,(var_record*)it->second);
+			write_element_record(cutab,mpair,ctxt,member_address,line,fileName,
+               *trec->get_name() + ":",scope,event_num);
+         member_address += ttab->get(mpair.second->get_type())->get_size();
+      }
+   } else {
+
+		for (std::map<std::string,symbol_table_record*>::iterator it = memtab->begin();
+					it != memtab->end();
+					it++) {
+         pair<string,var_record*> mpair(it->first,(var_record *)it->second);
+			type_record *mtrec = ttab->get(mpair.second->get_type());
+
+         if (mpair.second->is_at_address(ctxt, addr , mtrec)) {
+            write_element_record(cutab,mpair,ctxt,addr,line,fileName,
+               *trec->get_name() + ":",scope,event_num);
+            break;
+         }
+      }
+   }
+}
+
+void write_element_record(cu_table *cutab, 
+     pair<string,var_record*> vpair, 
+     const CONTEXT *ctxt,
+     ADDRINT addr,
+     INT32 line,
+     string fileName,
+     string var_prefix,
+     string scope,
+     int event_num) {
+
+   DEBUGL(LOG( "Write to an address " + vpair.first + "\nprefix = " + var_prefix+"\n"));
+   type_table *ttab =cutab->get_type_table(vpair.second->get_type());
+   type_record *trec = ttab->get(vpair.second->get_type());
+   if (trec->get_is_array())
+      write_array_element_record(cutab,vpair,ctxt,addr,line,fileName, var_prefix,scope,
+            event_num);
+   else if (trec->get_is_struct())
+      write_struct_record(cutab,vpair,ctxt,addr,line,fileName,var_prefix,scope,
+            event_num);
+   else 
+      write_variable_access_record(var_prefix+vpair.first, event_num, line, fileName, scope,
+            addr, *trec->get_name(), vpair.second->read_value(trec,addr));
+}
+
 VOID AfterMemWrite(VOID* assembly, ADDRINT ip, VOID *addr,const CONTEXT *ctxt, UINT32 size)
 {
-    int id = timestamp++;
 	 //int invocation_id = invocation_stack.top().id;
 	 char* assembly_code = (char*) assembly;
 	char* location = (char*) malloc(size);
@@ -227,32 +409,9 @@ VOID AfterMemWrite(VOID* assembly, ADDRINT ip, VOID *addr,const CONTEXT *ctxt, U
       DEBUGL(LOG("address 0x" + hexstr((Generic)addr) + 
                " is not a program variable" + "\n"));
    } else {
-      vaccs_record_factory factory;
-      var_access_record *varec;
-      string scope = vdr->get_cutab()->get_scope(vpair.second).c_str(); 
-      type_record *trec = vdr->get_cutab()->get_type_record(vpair.second->get_type());
-      string value = vpair.second->read_value(trec,(Generic)addr);
-      DEBUGL(LOG( "Write to variable " + vpair.first + "\n"));
-      DEBUGL(LOG( "\tEvent num: " + decstr(id) + "\n"));
-      DEBUGL(LOG( "\tC file name: " + fileName + "\n"));
-      DEBUGL(LOG( "\tScope: " + scope + "\n"));
-      DEBUGL(LOG( "\tAddress: 0x" + hexstr((Generic)addr) + "\n"));
-      DEBUGL(LOG( "\tType: " + *trec->get_name() + "\n"));
-      DEBUGL(LOG( "\tValue: " + value + "\n\n"));
-      varec = (var_access_record*)factory.make_vaccs_record(VACCS_VAR_ACCESS);
-      varec = varec->add_event_num(id)
-         ->add_c_line_num(line)
-         ->add_c_file_name(fileName.c_str())
-         ->add_scope(scope.c_str())
-         ->add_address((Generic)addr)
-         ->add_name(vpair.first.c_str())
-         ->add_type(trec->get_name()->c_str())
-         ->add_value(value.c_str());
-      //if (trec->get_is_pointer())
-         //varec->add_points_to("0x"+value);
-      varec->write(vaccs_fd);
-      delete varec;
-   }
+      write_element_record(vdr->get_cutab(),vpair,ctxt,(Generic)addr,line,fileName,"",
+            vdr->get_cutab()->get_scope(vpair.second),timestamp++);
+  }
 
 }
 

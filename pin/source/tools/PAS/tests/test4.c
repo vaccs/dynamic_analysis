@@ -2,14 +2,17 @@
 #include <stdlib.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include "vaccs_printf.h"
 int a;
 int main() {
 
    int b;
    int *p = &b;
 
+   vaccs_printf("start program\n");
    
    a = 1;
    b = 2;
-   printf("a = %d, b = %d, *p = %d\n",a, b, *p);
+   vaccs_printf("a = %d, b = %d\n",a, b);
+   vaccs_printf("p = %ld, *p = %d\n",p, *p);
 }

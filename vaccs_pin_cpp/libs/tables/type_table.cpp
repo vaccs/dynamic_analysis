@@ -9,6 +9,7 @@
  ******************************************************************************/
 
 #include <util/general.h>
+#include <tables/var_table.h>
 #include <tables/type_table.h>
 
 #include <cassert>
@@ -24,11 +25,14 @@
  */
 type_record::type_record() :
 		symbol_table_record(TYPE_RECORD) {
-	size = -1;
+	type_size = -1;
 	name = NULL;
 	is_array = false;
+	is_pointer = false;
+	is_struct = false;
 	upper_bound = -1;
 	base_type = NULL;
+	member_tab = NULL;
 }
 
 type_record::~type_record() {}
@@ -50,7 +54,7 @@ type_record* type_record::add_upper_bound(Generic upper_bound, bool compute_name
 		this->name->append(convert.str());
 
 		this->name->append("]");
-		this->size *= upper_bound;
+		this->type_size *= (upper_bound+1);
 	}
 
 	return this;
@@ -62,27 +66,33 @@ type_record* type_record::add_upper_bound(Generic upper_bound, bool compute_name
  * @param fn the file name for the cu
  * @param fp a file pointer
  */
-void type_record::write(std::string key,FILE *fp) {
+void type_record::write(std::string key,NATIVE_FD fd) {
 	DEBUGL(LOG("Begin type_record::write()\n"));
-	assert(fwrite(&id, sizeof(id), 1, fp) == 1);
+	USIZE size =  sizeof(id); assert(OS_WriteFD(fd,&id,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 	size_t length = key.length();
-	assert(fwrite(&length, sizeof(length), 1, fp) == 1);
-	assert(fwrite(key.c_str(), length, 1, fp) == 1);
-	assert(fwrite(&size,sizeof(size),1,fp) == 1);
+	size =  sizeof(length); assert(OS_WriteFD(fd,&length,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
+	size =  length; assert(OS_WriteFD(fd,key.c_str(),&size).generic_err == OS_RETURN_CODE_NO_ERROR);
+	size = sizeof(type_size); assert(OS_WriteFD(fd,&type_size,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 	length = strlen(name->c_str());
-	assert(fwrite(&length, sizeof(length), 1, fp) == 1);
-	assert(fwrite(name->c_str(), length, 1, fp) == 1);
-	assert(fwrite(&is_array, sizeof(is_array), 1, fp) == 1);
-	assert(fwrite(&upper_bound, sizeof(upper_bound), 1, fp) == 1);
+	size =  sizeof(length); assert(OS_WriteFD(fd,&length,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
+	size =  length; assert(OS_WriteFD(fd,name->c_str(),&size).generic_err == OS_RETURN_CODE_NO_ERROR);
+	size =  sizeof(is_array); assert(OS_WriteFD(fd,&is_array,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
+	size =  sizeof(upper_bound); assert(OS_WriteFD(fd,&upper_bound,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
+	size = sizeof(is_pointer); assert(OS_WriteFD(fd,&is_pointer,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
+	size = sizeof(is_struct); assert(OS_WriteFD(fd,&is_struct,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 
 	if (base_type != NULL) {
 		length = base_type->length();
-		assert(fwrite(&length, sizeof(length), 1, fp) == 1);
-		assert(fwrite(base_type->c_str(), length, 1, fp) == 1);
+		size =  sizeof(length); assert(OS_WriteFD(fd,&length,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
+		size =  length; assert(OS_WriteFD(fd,base_type->c_str(),&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 	} else {
 		length = 0;
-		assert(fwrite(&length, sizeof(length), 1, fp) == 1);
+		size =  sizeof(length); assert(OS_WriteFD(fd,&length,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 	}
+
+	if (member_tab != NULL)
+		member_tab->write(fd);
+
 	DEBUGL(LOG("End type_record::write()\n"));
 }
 
@@ -92,16 +102,16 @@ type_table::~type_table() {}
  *
  * @param fp a file pointer
  */
-void type_table::write(FILE *fp) {
+void type_table::write(NATIVE_FD fd) {
 	DEBUGL(LOG("Begin type_table::write()\n"));
-	assert(fwrite(&id, sizeof(id), 1, fp) == 1);
+	USIZE dsize =  sizeof(id); assert(OS_WriteFD(fd,&id,&dsize).generic_err == OS_RETURN_CODE_NO_ERROR);
 
 	size_t num = size();
-	assert(fwrite(&num,sizeof(size_t), 1, fp) == 1);
+	dsize = sizeof(num); assert(OS_WriteFD(fd,&num,&dsize).generic_err == OS_RETURN_CODE_NO_ERROR);
 
 	for (std::map<std::string,symbol_table_record*>::iterator it = begin(); it != end(); it++) {
 		type_record* trec = (type_record*)it->second;
-		trec->write(it->first,fp);
+		trec->write(it->first,fd);
 	}
 	DEBUGL(LOG("End type_table::write()\n"));
 

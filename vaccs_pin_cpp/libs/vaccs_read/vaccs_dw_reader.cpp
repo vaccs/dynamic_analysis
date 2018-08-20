@@ -20,11 +20,13 @@
 #include <sys/types.h>
 #include <unistd.h>
 
+#include <pin.H>
+
 /**
  * Constructor
  */
 vaccs_dw_reader::vaccs_dw_reader() {
-	fp = NULL;
+	fd = -1;
 	cutab = NULL;
 	current_cu_rec = NULL;
 	var_table_stack.push((var_table*)table_factory.make_symbol_table(VAR_TABLE));
@@ -42,50 +44,51 @@ vaccs_dw_reader::~vaccs_dw_reader() {
  */
 void vaccs_dw_reader::read_var_record() {
 	int id;
-	assert(fread(&id, sizeof(id), 1, fp) == 1 && id == VAR_RECORD);
+	USIZE size = sizeof(id);
+	assert(OS_ReadFD(fd, &size, &id).generic_err == OS_RETURN_CODE_NO_ERROR && id == VAR_RECORD);
 
 	size_t length;;
-	assert(fread(&length, sizeof(length), 1, fp) == 1);
+	size =  sizeof(length); assert(OS_ReadFD(fd,&size,&length).generic_err == OS_RETURN_CODE_NO_ERROR);
 
 	char *key;
 	assert((key = (char *)malloc(length+1)) != NULL);
-	assert(fread(key, length, 1, fp) == 1);
+	size =  length; assert(OS_ReadFD(fd,&size,key).generic_err == OS_RETURN_CODE_NO_ERROR);
 	key[length] = '\0';
 
 	bool is_local;
-	assert(fread(&is_local, sizeof(is_local), 1, fp) == 1);
+	size =  sizeof(is_local); assert(OS_ReadFD(fd,&size,&is_local).generic_err == OS_RETURN_CODE_NO_ERROR);
 
 	bool is_param;
-	assert(fread(&is_param, sizeof(is_param), 1, fp) == 1);
+	size =  sizeof(is_param); assert(OS_ReadFD(fd,&size,&is_param).generic_err == OS_RETURN_CODE_NO_ERROR);
 
-	assert(fread(&length, sizeof(length), 1, fp) == 1);
+	size =  sizeof(length); assert(OS_ReadFD(fd,&size,&length).generic_err == OS_RETURN_CODE_NO_ERROR);
 
 	char *fn;
 	assert((fn = (char *)malloc(length+1)) != NULL);
-	assert(fread(fn, length, 1, fp) == 1);
+	size =  length; assert(OS_ReadFD(fd,&size,fn).generic_err == OS_RETURN_CODE_NO_ERROR);
 	fn[length] = '\0';
 
 	Generic decl_line;
-	assert(fread(&decl_line,sizeof(decl_line),1,fp) == 1);
+	size = sizeof(decl_line); assert(OS_ReadFD(fd, &size, &decl_line).generic_err == OS_RETURN_CODE_NO_ERROR);
 
 	Generic low_pc;
-	assert(fread(&low_pc, sizeof(low_pc), 1, fp) == 1);
+	size =  sizeof(low_pc); assert(OS_ReadFD(fd,&size,&low_pc).generic_err == OS_RETURN_CODE_NO_ERROR);
 
 	Generic high_pc;
-	assert(fread(&high_pc, sizeof(high_pc), 1, fp) == 1);
+	size =  sizeof(high_pc); assert(OS_ReadFD(fd,&size,&high_pc).generic_err == OS_RETURN_CODE_NO_ERROR);
 
 	Generic location;
-	assert(fread(&location, sizeof(location), 1, fp) == 1);
+	size =  sizeof(location); assert(OS_ReadFD(fd,&size,&location).generic_err == OS_RETURN_CODE_NO_ERROR);
 
-	assert(fread(&length, sizeof(length), 1, fp) == 1);
+	size =  sizeof(length); assert(OS_ReadFD(fd,&size,&length).generic_err == OS_RETURN_CODE_NO_ERROR);
 
 	char *type;
 	assert((type = (char *)malloc(length+1)) != NULL);
-	assert(fread(type, length, 1, fp) == 1);
+	size =  length; assert(OS_ReadFD(fd,&size,type).generic_err == OS_RETURN_CODE_NO_ERROR);
 	type[length] = '\0';
 
 	bool is_subprog;
-	assert(fread(&is_subprog,sizeof(is_subprog),1,fp) == 1);
+	size = sizeof(is_subprog); assert(OS_ReadFD(fd, &size, &is_subprog).generic_err == OS_RETURN_CODE_NO_ERROR);
 
 	std::string name(key);
 	std::string stype(type);
@@ -125,11 +128,13 @@ void vaccs_dw_reader::read_var_record() {
  */
 void vaccs_dw_reader::read_var_table() {
 	int id;
-	if (fread(&id, sizeof(int), 1, fp) == 1 &&
+	USIZE size = sizeof(int);
+	if (OS_ReadFD(fd, &size, &id).generic_err == OS_RETURN_CODE_NO_ERROR &&
 			id == VAR_TABLE) {
-		size_t size;
-		assert(fread(&size,sizeof(size),1,fp) == 1 && size >= 0);
-		for (unsigned long i = 0; i < size; i++)
+		size_t num_vrecs;
+		size = sizeof(num_vrecs);
+		assert(OS_ReadFD(fd,&size,&num_vrecs).generic_err == OS_RETURN_CODE_NO_ERROR && num_vrecs >= 0);
+		for (unsigned long i = 0; i < num_vrecs; i++)
 			read_var_record();
 	} else {
 		LOG("Malformed vaccs dw file (must be a Var Table): " + file_name + ", Id = " + decstr(id) + "\n");
@@ -143,38 +148,45 @@ void vaccs_dw_reader::read_var_table() {
  */
 void vaccs_dw_reader::read_type_record() {
 	int id;
-	assert(fread(&id, sizeof(id), 1, fp) == 1 && id == TYPE_RECORD);
+	USIZE size = sizeof(id);
+	assert(OS_ReadFD(fd,&size,&id).generic_err == OS_RETURN_CODE_NO_ERROR && id == TYPE_RECORD);
 
 	size_t length;;
-	assert(fread(&length, sizeof(length), 1, fp) == 1);
+	size =  sizeof(length); assert(OS_ReadFD(fd,&size,&length).generic_err == OS_RETURN_CODE_NO_ERROR);
 
 	char *key;
 	assert((key = (char *)malloc(length+1)) != NULL);
-	assert(fread(key, length, 1, fp) == 1);
+	size =  length; assert(OS_ReadFD(fd,&size,key).generic_err == OS_RETURN_CODE_NO_ERROR);
 	key[length] = '\0';
 
-	Generic size;
-	assert(fread(&size,sizeof(size),1,fp) == 1);
+	Generic type_size;
+	size = sizeof(type_size); assert(OS_ReadFD(fd,&size,&type_size).generic_err == OS_RETURN_CODE_NO_ERROR);
 
-	assert(fread(&length, sizeof(length), 1, fp) == 1);
+	size =  sizeof(length); assert(OS_ReadFD(fd,&size,&length).generic_err == OS_RETURN_CODE_NO_ERROR);
 
 	char *name;
 	assert((name = (char *)malloc(length+1)) != NULL);
-	assert(fread(name, length, 1, fp) == 1);
+	size =  length; assert(OS_ReadFD(fd,&size,name).generic_err == OS_RETURN_CODE_NO_ERROR);
 	name[length] = '\0';
 
 	bool is_array;
-	assert(fread(&is_array, sizeof(is_array), 1, fp) == 1);
+	size =  sizeof(is_array); assert(OS_ReadFD(fd,&size,&is_array).generic_err == OS_RETURN_CODE_NO_ERROR);
 
 	Generic upper_bound;
-	assert(fread(&upper_bound, sizeof(upper_bound), 1, fp) == 1);
+	size =  sizeof(upper_bound); assert(OS_ReadFD(fd,&size,&upper_bound).generic_err == OS_RETURN_CODE_NO_ERROR);
 
-	assert(fread(&length, sizeof(length), 1, fp) == 1);
+	bool is_pointer;
+	size =  sizeof(is_pointer); assert(OS_ReadFD(fd,&size,&is_pointer).generic_err == OS_RETURN_CODE_NO_ERROR);
+
+	bool is_struct;
+	size =  sizeof(is_struct); assert(OS_ReadFD(fd,&size,&is_struct).generic_err == OS_RETURN_CODE_NO_ERROR);
+
+	size =  sizeof(length); assert(OS_ReadFD(fd,&size,&length).generic_err == OS_RETURN_CODE_NO_ERROR);
 
 	char *base_type;
 	if (length > 0) {
 		assert((base_type = (char *)malloc(length+1)) != NULL);
-		assert(fread(base_type, length, 1, fp) == 1);
+		size =  length; assert(OS_ReadFD(fd,&size,base_type).generic_err == OS_RETURN_CODE_NO_ERROR);
 		base_type[length] = '\0';
 	} else {
 		base_type = NULL;
@@ -183,17 +195,30 @@ void vaccs_dw_reader::read_type_record() {
 	std::string type(key);
 	type_record *trec = (type_record*)record_factory.make_symbol_table_record(TYPE_RECORD);
 
+	trec = trec->add_size(type_size)->add_name(name);
+
 	if (is_array)
-		current_cu_rec->get_type_table()->put(type,
-				trec->add_size(size)
-					->add_name(name)
-					->add_is_array()
-					->add_upper_bound(upper_bound,false)
-					->add_base_type(base_type));
-	else
-		current_cu_rec->get_type_table()->put(type,
-						trec->add_size(size)
-							->add_name(name));
+		trec = trec->add_is_array()
+			->add_upper_bound(upper_bound,false)
+			->add_base_type(base_type);
+
+	if (is_pointer)
+		trec = trec->add_is_pointer()
+			->add_base_type(base_type);
+	current_cu_rec->get_type_table()->put(type,trec);
+	if (is_struct) {
+
+		DEBUGL(cerr << "Reading member table for structure for type: " + type + "\n");
+		trec = trec->add_is_struct();
+		var_table *memtab = (var_table*)table_factory.make_symbol_table(VAR_TABLE);
+		trec = trec->add_member_table(memtab);
+		var_table_stack.push(memtab);
+		read_var_table();
+		var_table_stack.pop();
+
+	}
+
+
 }
 
 /**
@@ -201,11 +226,13 @@ void vaccs_dw_reader::read_type_record() {
  */
 void vaccs_dw_reader::read_type_table() {
 	int id;
-	if (fread(&id, sizeof(int), 1, fp) == 1 &&
+	USIZE size = sizeof(int);
+	if (OS_ReadFD(fd,&size,&id).generic_err == OS_RETURN_CODE_NO_ERROR &&
 			id == TYPE_TABLE) {
-		size_t size;
-		assert(fread(&size,sizeof(size),1,fp) == 1 && size >= 0);
-		for (unsigned long i = 0; i < size; i++)
+		size_t num_trecs;
+		size = sizeof(num_trecs);
+		assert(OS_ReadFD(fd,&size,&num_trecs).generic_err == OS_RETURN_CODE_NO_ERROR && num_trecs >= 0);
+		for (unsigned long i = 0; i < num_trecs; i++)
 			read_type_record();
 	} else {
 		LOG("Malformed vaccs dw file (must be a Type Table): " + file_name + ", Id = " + decstr(id) + "\n");
@@ -222,20 +249,22 @@ void vaccs_dw_reader::read_type_table() {
 void vaccs_dw_reader::read_cu_record() {
 
 	int id;
-	assert(fread(&id, sizeof(id), 1, fp) == 1 && id == CU_RECORD);
+	USIZE size = sizeof(id);
+	assert(OS_ReadFD(fd,&size,&id).generic_err == OS_RETURN_CODE_NO_ERROR && id == CU_RECORD);
 	size_t length;
-	assert(fread(&length, sizeof(length), 1, fp) == 1 && length >= 0);
+	size = sizeof(length);
+	assert(OS_ReadFD(fd,&size,&length).generic_err == OS_RETURN_CODE_NO_ERROR && length >= 0);
 
 	char *key;
 	assert((key = (char *)malloc(length+1)) != NULL);
-	assert(fread(key, length, 1, fp) == 1);
+	size =  length; assert(OS_ReadFD(fd,&size,key).generic_err == OS_RETURN_CODE_NO_ERROR);
 	key[length] = '\0';
 
 	Generic low_pc;
-	assert(fread(&low_pc, sizeof(low_pc), 1, fp) == 1);
+	size =  sizeof(low_pc); assert(OS_ReadFD(fd,&size,&low_pc).generic_err == OS_RETURN_CODE_NO_ERROR);
 
 	Generic high_pc;
-	assert(fread(&high_pc, sizeof(high_pc), 1, fp) == 1);
+	size =  sizeof(high_pc); assert(OS_ReadFD(fd,&size,&high_pc).generic_err == OS_RETURN_CODE_NO_ERROR);
 
 
 	std::string path(key);
@@ -255,16 +284,25 @@ void vaccs_dw_reader::read_cu_record() {
  */
 void vaccs_dw_reader::read_vaccs_dw_info(void) {
 
-	assert((fp= fopen(file_name.c_str(), "r")) != NULL);
+	DEBUGL(cerr << "Reading vaccs dwarf info\n");
+	assert((OS_OpenFD(file_name.c_str(), OS_FILE_OPEN_TYPE_READ, OS_FILE_PERMISSION_TYPE_READ, &fd)).generic_err
+			== OS_RETURN_CODE_NO_ERROR);
 
 	int id;
-	if (fread(&id, sizeof(int), 1, fp) == 1 &&
+	USIZE size = sizeof(int);
+	if (OS_ReadFD(fd, &size, &id).generic_err == OS_RETURN_CODE_NO_ERROR &&
 			id == CU_TABLE) {
 		cutab =  (cu_table*)table_factory.make_symbol_table(CU_TABLE);
-		size_t size;
-		assert(fread(&size,sizeof(size),1,fp) == 1 && size >= 0);
-		for (unsigned long i = 0; i < size; i++)
+		size_t num_curecs;
+		size = sizeof(num_curecs);
+		assert(OS_ReadFD(fd,&size,&num_curecs).generic_err == OS_RETURN_CODE_NO_ERROR && num_curecs >= 0);
+		for (unsigned long i = 0; i < num_curecs; i++)
 			read_cu_record();
+
+		DEBUGL(cerr << "Creating Member Tables\n");
+		cutab->create_member_tables();
+		DEBUGL(cerr << "Done Creating Member Tables\n");
+
 	} else {
 		LOG("Malformed vaccs dw file (must start with a CU Table): " + file_name + ", Id = " + decstr(id) + "\n");
 	}

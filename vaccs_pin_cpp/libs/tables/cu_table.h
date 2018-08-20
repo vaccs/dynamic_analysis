@@ -165,12 +165,18 @@ public:
 	std::string get_scope(var_record *vrec);
 
 	/**
+	 * Create the member tables from the type declarations for local variables that are structures.
+	 *
+	 */
+	void create_member_tables();
+
+	/**
 	 * Write a compilation unit record to a file
 	 *
 	 * @param fn the file name for the cu
 	 * @param fp a file pointer
 	 */
-	virtual void write(std::string fn,FILE *fp);
+	virtual void write(std::string fn,NATIVE_FD fd);
 
 };
 
@@ -225,11 +231,24 @@ public:
 	type_record *get_type_record(std::string dw_index);
 
 	/**
+ 	 * Get the type table containing a type given the dwarf index
+ 	 *
+ 	 * @param dw_index a dwarf index for a type (string)
+ 	 * @return a pointer to a type table containing the give dwarf index
+ 	 */
+	type_table *get_type_table(std::string dw_index);
+
+	/**
+	 * Create the member tables from the type declarations for structures.
+	 *
+	 */
+	void create_member_tables();
+	/**
 	 * Write the compilation unit table to a file
 	 *
 	 * @param fp a file pointer
 	 */
-	virtual void write(FILE *fp);
+	virtual void write(NATIVE_FD fd);
 };
 
 #endif

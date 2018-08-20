@@ -18,6 +18,8 @@
 #include <io/output_record.h>
 #include <vaccs_read/vaccs_dw_reader.h>
 
+extern NATIVE_FD vaccs_stdout;
+
 VOID before_function_direct_call(ADDRINT ip, CONTEXT *ctxt, ADDRINT callee_address) {
    DEBUGL(LOG("Enter before_function_direct_call\n"));
 	INT32	column, callee_column;
@@ -99,6 +101,25 @@ VOID after_function_call(void) {
    DEBUGL(LOG("Enter after_function_call\n"));
 
    vaccs_record_factory factory;
+   char stdout_buff[VACCS_MAX_OUTPUT_LENGTH+1];
+
+   USIZE num_bytes = VACCS_MAX_OUTPUT_LENGTH;
+   
+   OS_ReadFD(vaccs_stdout,&num_bytes,stdout_buff);
+
+   if (num_bytes != 0) {
+      stdout_buff[num_bytes] = '\0';
+      string bufs(stdout_buff);
+      DEBUGL(LOG("output has been found: " + bufs + "\n"));
+      output_record *orec = (output_record*)factory.make_vaccs_record(VACCS_OUTPUT);
+      orec = orec->add_event_num(timestamp++)
+            ->add_output(stdout_buff);
+      orec->write(vaccs_fd);
+      delete orec;
+   }
+   else {
+      DEBUGL(LOG("No output found\n"));
+   }
    return_record *rrec = (return_record*)factory.make_vaccs_record(VACCS_RETURN);
    rrec = rrec->add_event_num(timestamp++);
    rrec->write(vaccs_fd);
@@ -106,6 +127,7 @@ VOID after_function_call(void) {
 
    DEBUGL(LOG("function return\n"));
    DEBUGL(LOG("Exit after_function_call\n"));
+
 }
 
 // Is called for every instruction and instruments all of them that have 

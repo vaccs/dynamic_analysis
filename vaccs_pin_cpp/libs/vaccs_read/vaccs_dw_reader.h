@@ -12,13 +12,13 @@
 #include <stack>
 
 #include <tables/cu_table.h>
-#include <tables/type_table.h>
 #include <tables/var_table.h>
+#include <tables/type_table.h>
 
 class vaccs_dw_reader {
 
 private:
-	FILE *fp;
+	NATIVE_FD fd;
 	std::string file_name; /* the name of the executable containing DWARF info */
 	cu_table *cutab;		/* the compile unit DWARF info */
 	cu_record *current_cu_rec; /* the DWARF information for the current compilation unit */
