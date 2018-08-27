@@ -103,7 +103,7 @@ INT32 Usage()
 void setup_output_files(char* filename){
    string vfn(filename);
    vfn.append(".vaccs");
-  	assert(OS_OpenFD(vfn.c_str(), OS_FILE_OPEN_TYPE_CREATE | OS_FILE_OPEN_TYPE_WRITE,
+  	assert(OS_OpenFD(vfn.c_str(), OS_FILE_OPEN_TYPE_CREATE | OS_FILE_OPEN_TYPE_WRITE | OS_FILE_OPEN_TYPE_TRUNCATE,
             OS_FILE_PERMISSION_TYPE_WRITE | OS_FILE_PERMISSION_TYPE_READ,
             &vaccs_fd).generic_err == OS_RETURN_CODE_NO_ERROR);
 

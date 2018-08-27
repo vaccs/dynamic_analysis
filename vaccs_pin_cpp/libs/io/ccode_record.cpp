@@ -53,10 +53,7 @@ void ccode_record::write(NATIVE_FD fp) {
 	assert((length = strnlen(c_src_line,VACCS_MAX_SRC_LINE_LENGTH+1)) <= VACCS_MAX_SRC_LINE_LENGTH);
 	size =  sizeof(length); assert(OS_WriteFD(fp,&length,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 
-	if (length == 0) {
-		size = 1; char eol = '\n'; assert(OS_WriteFD(fp,&eol,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
-	}
-	else {
+	if (length != 0) {
 		size =  length; assert(OS_WriteFD(fp,c_src_line,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 	}
 }

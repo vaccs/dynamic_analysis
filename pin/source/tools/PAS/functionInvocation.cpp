@@ -70,9 +70,9 @@ VOID functionInvocationBefore(void* function_name,const CONTEXT* ctxt,
       DEBUGL(LOG( "\tFunc file: " + fileName +"\n"));
       DEBUGL(sfname = NOFUNCNAME);
       DEBUGL(LOG( "\tInv file: " + sfname +"\n"));
-      DEBUGL(LOG( "\tCallee address: 0x" + hexstr(ip) + "\n\n"));
+      DEBUGL(LOG( "\tCallee address: 0" + hexstr(ip) + "\n\n"));
       func_inv_record *frec = (func_inv_record*)factory.make_vaccs_record(VACCS_FUNCTION_INV);
-      DEBUGL(LOG( "frec = 0x" + hexstr(frec) +"\n"));
+      DEBUGL(LOG( "frec = 0" + hexstr(frec) +"\n"));
       frec = frec->add_event_num(timestamp++)
          ->add_func_name((char *)function_name)
          ->add_func_line_num(line)

@@ -25,73 +25,73 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  Section name: .dynsym
  	Type: 16
  	Address: 0x0x0004002b8
- 	Size: 216
- 	Record: |.dynsym|16|0x4002b8|216
+ 	Size: 96
+ 	Record: |.dynsym|16|0x4002b8|96
  Section name: .dynstr
  	Type: 20
- 	Address: 0x0x000400390
- 	Size: 149
- 	Record: |.dynstr|20|0x400390|149
+ 	Address: 0x0x000400318
+ 	Size: 63
+ 	Record: |.dynstr|20|0x400318|63
  Section name: .gnu.version
  	Type: 5
- 	Address: 0x0x000400426
- 	Size: 18
- 	Record: |.gnu.version|5|0x400426|18
+ 	Address: 0x0x000400358
+ 	Size: 8
+ 	Record: |.gnu.version|5|0x400358|8
  Section name: .gnu.version_r
  	Type: 5
- 	Address: 0x0x000400438
- 	Size: 64
- 	Record: |.gnu.version_r|5|0x400438|64
+ 	Address: 0x0x000400360
+ 	Size: 32
+ 	Record: |.gnu.version_r|5|0x400360|32
  Section name: .rela.dyn
  	Type: 2
- 	Address: 0x0x000400478
+ 	Address: 0x0x000400380
  	Size: 24
- 	Record: |.rela.dyn|2|0x400478|24
+ 	Record: |.rela.dyn|2|0x400380|24
  Section name: .rela.plt
  	Type: 2
- 	Address: 0x0x000400490
- 	Size: 168
- 	Record: |.rela.plt|2|0x400490|168
+ 	Address: 0x0x000400398
+ 	Size: 48
+ 	Record: |.rela.plt|2|0x400398|48
  Section name: .init
  	Type: 4
- 	Address: 0x0x000400538
+ 	Address: 0x0x0004003c8
  	Size: 26
- 	Record: |.init|4|0x400538|26
+ 	Record: |.init|4|0x4003c8|26
  Section name: .plt
  	Type: 4
- 	Address: 0x0x000400560
- 	Size: 128
- 	Record: |.plt|4|0x400560|128
+ 	Address: 0x0x0004003f0
+ 	Size: 48
+ 	Record: |.plt|4|0x4003f0|48
  Section name: .plt.got
  	Type: 4
- 	Address: 0x0x0004005e0
+ 	Address: 0x0x000400420
  	Size: 8
- 	Record: |.plt.got|4|0x4005e0|8
+ 	Record: |.plt.got|4|0x400420|8
  Section name: .text
  	Type: 4
- 	Address: 0x0x0004005f0
- 	Size: 946
- 	Record: |.text|4|0x4005f0|946
+ 	Address: 0x0x000400430
+ 	Size: 434
+ 	Record: |.text|4|0x400430|434
  Section name: .fini
  	Type: 4
- 	Address: 0x0x0004009a4
+ 	Address: 0x0x0004005e4
  	Size: 9
- 	Record: |.fini|4|0x4009a4|9
+ 	Record: |.fini|4|0x4005e4|9
  Section name: .rodata
  	Type: 5
- 	Address: 0x0x0004009b0
- 	Size: 253
- 	Record: |.rodata|5|0x4009b0|253
+ 	Address: 0x0x0004005f0
+ 	Size: 29
+ 	Record: |.rodata|5|0x4005f0|29
  Section name: .eh_frame_hdr
  	Type: 5
- 	Address: 0x0x000400ab0
- 	Size: 60
- 	Record: |.eh_frame_hdr|5|0x400ab0|60
+ 	Address: 0x0x000400610
+ 	Size: 52
+ 	Record: |.eh_frame_hdr|5|0x400610|52
  Section name: .eh_frame
  	Type: 5
- 	Address: 0x0x000400af0
- 	Size: 284
- 	Record: |.eh_frame|5|0x400af0|284
+ 	Address: 0x0x000400648
+ 	Size: 244
+ 	Record: |.eh_frame|5|0x400648|244
  Section name: .init_array
  	Type: 5
  	Address: 0x0x000600e10
@@ -120,18 +120,18 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  Section name: .got.plt
  	Type: 5
  	Address: 0x0x000601000
- 	Size: 80
- 	Record: |.got.plt|5|0x601000|80
+ 	Size: 40
+ 	Record: |.got.plt|5|0x601000|40
  Section name: .data
  	Type: 5
- 	Address: 0x0x000601050
- 	Size: 20
- 	Record: |.data|5|0x601050|20
+ 	Address: 0x0x000601028
+ 	Size: 16
+ 	Record: |.data|5|0x601028|16
  Section name: .bss
  	Type: 18
- 	Address: 0x0x000601064
- 	Size: 12
- 	Record: |.bss|18|0x601064|12
+ 	Address: 0x0x000601038
+ 	Size: 8
+ 	Record: |.bss|18|0x601038|8
  Section name: .comment
  	Type: 17
  	Address: 0x0x000000000
@@ -155,13 +155,13 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  Section name: .debug_line
  	Type: 17
  	Address: 0x0x000000000
- 	Size: 67
- 	Record: |.debug_line|17|0x0|67
+ 	Size: 64
+ 	Record: |.debug_line|17|0x0|64
  Section name: .debug_str
  	Type: 17
  	Address: 0x0x000000000
- 	Size: 243
- 	Record: |.debug_str|17|0x0|243
+ 	Size: 239
+ 	Record: |.debug_str|17|0x0|239
  Section name: .shstrtab
  	Type: 21
  	Address: 0x0x000000000
@@ -170,15 +170,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  Section name: .symtab
  	Type: 15
  	Address: 0x0x000000000
- 	Size: 1968
- 	Record: |.symtab|15|0x0|1968
+ 	Size: 1752
+ 	Record: |.symtab|15|0x0|1752
  Section name: .strtab
  	Type: 19
  	Address: 0x0x000000000
- 	Size: 729
- 	Record: |.strtab|19|0x0|729
+ 	Size: 534
+ 	Record: |.strtab|19|0x0|534
  ASM Record
- 	ASM line #: 4195640
+ 	ASM line #: 4195272
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -186,15 +186,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  sub rsp, 0x8
  ASM Record
- 	ASM line #: 4195644
+ 	ASM line #: 4195276
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: mov rax, qword ptr [rip+0x200ab5]
+ 	Instruction: mov rax, qword ptr [rip+0x200c25]
 
- mov rax, qword ptr [rip+0x200ab5]
+ mov rax, qword ptr [rip+0x200c25]
  ASM Record
- 	ASM line #: 4195651
+ 	ASM line #: 4195283
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -202,24 +202,24 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  test rax, rax
  ASM Record
- 	ASM line #: 4195654
+ 	ASM line #: 4195286
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jz 0x40054d
+ 	Instruction: jz 0x4003dd
 
- jz 0x40054d
+ jz 0x4003dd
  ASM Record
- 	ASM line #: 4195656
+ 	ASM line #: 4195288
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: call 0x4005e0
+ 	Instruction: call 0x400420
 
- Direct call: call 0x4005e0
- call 0x4005e0
+ Direct call: call 0x400420
+ call 0x400420
  ASM Record
- 	ASM line #: 4195661
+ 	ASM line #: 4195293
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -227,7 +227,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  add rsp, 0x8
  ASM Record
- 	ASM line #: 4195665
+ 	ASM line #: 4195297
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -235,23 +235,23 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  ret 
  ASM Record
- 	ASM line #: 4195680
+ 	ASM line #: 4195312
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: push qword ptr [rip+0x200aa2]
+ 	Instruction: push qword ptr [rip+0x200c12]
 
- push qword ptr [rip+0x200aa2]
+ push qword ptr [rip+0x200c12]
  ASM Record
- 	ASM line #: 4195686
+ 	ASM line #: 4195318
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jmp qword ptr [rip+0x200aa4]
+ 	Instruction: jmp qword ptr [rip+0x200c14]
 
- jmp qword ptr [rip+0x200aa4]
+ jmp qword ptr [rip+0x200c14]
  ASM Record
- 	ASM line #: 4195692
+ 	ASM line #: 4195324
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -259,15 +259,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  nop dword ptr [rax], eax
  ASM Record
- 	ASM line #: 4195696
+ 	ASM line #: 4195328
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jmp qword ptr [rip+0x200aa2]
+ 	Instruction: jmp qword ptr [rip+0x200c12]
 
- jmp qword ptr [rip+0x200aa2]
+ jmp qword ptr [rip+0x200c12]
  ASM Record
- 	ASM line #: 4195702
+ 	ASM line #: 4195334
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -275,23 +275,23 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  push 0x0
  ASM Record
- 	ASM line #: 4195707
+ 	ASM line #: 4195339
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jmp 0x400560
+ 	Instruction: jmp 0x4003f0
 
- jmp 0x400560
+ jmp 0x4003f0
  ASM Record
- 	ASM line #: 4195712
+ 	ASM line #: 4195344
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jmp qword ptr [rip+0x200a9a]
+ 	Instruction: jmp qword ptr [rip+0x200c0a]
 
- jmp qword ptr [rip+0x200a9a]
+ jmp qword ptr [rip+0x200c0a]
  ASM Record
- 	ASM line #: 4195718
+ 	ASM line #: 4195350
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -299,143 +299,23 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  push 0x1
  ASM Record
- 	ASM line #: 4195723
+ 	ASM line #: 4195355
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jmp 0x400560
+ 	Instruction: jmp 0x4003f0
 
- jmp 0x400560
+ jmp 0x4003f0
  ASM Record
- 	ASM line #: 4195728
+ 	ASM line #: 4195360
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jmp qword ptr [rip+0x200a92]
+ 	Instruction: jmp qword ptr [rip+0x200bd2]
 
- jmp qword ptr [rip+0x200a92]
+ jmp qword ptr [rip+0x200bd2]
  ASM Record
- 	ASM line #: 4195734
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: push 0x2
-
- push 0x2
- ASM Record
- 	ASM line #: 4195739
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: jmp 0x400560
-
- jmp 0x400560
- ASM Record
- 	ASM line #: 4195744
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: jmp qword ptr [rip+0x200a8a]
-
- jmp qword ptr [rip+0x200a8a]
- ASM Record
- 	ASM line #: 4195750
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: push 0x3
-
- push 0x3
- ASM Record
- 	ASM line #: 4195755
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: jmp 0x400560
-
- jmp 0x400560
- ASM Record
- 	ASM line #: 4195760
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: jmp qword ptr [rip+0x200a82]
-
- jmp qword ptr [rip+0x200a82]
- ASM Record
- 	ASM line #: 4195766
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: push 0x4
-
- push 0x4
- ASM Record
- 	ASM line #: 4195771
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: jmp 0x400560
-
- jmp 0x400560
- ASM Record
- 	ASM line #: 4195776
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: jmp qword ptr [rip+0x200a7a]
-
- jmp qword ptr [rip+0x200a7a]
- ASM Record
- 	ASM line #: 4195782
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: push 0x5
-
- push 0x5
- ASM Record
- 	ASM line #: 4195787
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: jmp 0x400560
-
- jmp 0x400560
- ASM Record
- 	ASM line #: 4195792
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: jmp qword ptr [rip+0x200a72]
-
- jmp qword ptr [rip+0x200a72]
- ASM Record
- 	ASM line #: 4195798
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: push 0x6
-
- push 0x6
- ASM Record
- 	ASM line #: 4195803
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: jmp 0x400560
-
- jmp 0x400560
- ASM Record
- 	ASM line #: 4195808
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: jmp qword ptr [rip+0x200a12]
-
- jmp qword ptr [rip+0x200a12]
- ASM Record
- 	ASM line #: 4195814
+ 	ASM line #: 4195366
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -443,7 +323,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  data16 nop 
  ASM Record
- 	ASM line #: 4195824
+ 	ASM line #: 4195376
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -451,7 +331,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  xor ebp, ebp
  ASM Record
- 	ASM line #: 4195826
+ 	ASM line #: 4195378
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -459,7 +339,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  mov r9, rdx
  ASM Record
- 	ASM line #: 4195829
+ 	ASM line #: 4195381
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -467,7 +347,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  pop rsi
  ASM Record
- 	ASM line #: 4195830
+ 	ASM line #: 4195382
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -475,7 +355,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  mov rdx, rsp
  ASM Record
- 	ASM line #: 4195833
+ 	ASM line #: 4195385
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -483,7 +363,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  and rsp, 0xfffffffffffffff0
  ASM Record
- 	ASM line #: 4195837
+ 	ASM line #: 4195389
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -491,7 +371,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  push rax
  ASM Record
- 	ASM line #: 4195838
+ 	ASM line #: 4195390
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -499,40 +379,40 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  push rsp
  ASM Record
- 	ASM line #: 4195839
+ 	ASM line #: 4195391
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: mov r8, 0x4009a0
+ 	Instruction: mov r8, 0x4005e0
 
- mov r8, 0x4009a0
+ mov r8, 0x4005e0
  ASM Record
- 	ASM line #: 4195846
+ 	ASM line #: 4195398
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: mov rcx, 0x400930
+ 	Instruction: mov rcx, 0x400570
 
- mov rcx, 0x400930
+ mov rcx, 0x400570
  ASM Record
- 	ASM line #: 4195853
+ 	ASM line #: 4195405
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: mov rdi, 0x4006e6
+ 	Instruction: mov rdi, 0x400526
 
- mov rdi, 0x4006e6
+ mov rdi, 0x400526
  ASM Record
- 	ASM line #: 4195860
+ 	ASM line #: 4195412
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: call 0x4005a0
+ 	Instruction: call 0x400410
 
- Direct call: call 0x4005a0
- call 0x4005a0
+ Direct call: call 0x400410
+ call 0x400410
  ASM Record
- 	ASM line #: 4195865
+ 	ASM line #: 4195417
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -540,15 +420,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  hlt 
  ASM Record
- 	ASM line #: 4195872
+ 	ASM line #: 4195424
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: mov eax, 0x60106f
+ 	Instruction: mov eax, 0x60103f
 
- mov eax, 0x60106f
+ mov eax, 0x60103f
  ASM Record
- 	ASM line #: 4195877
+ 	ASM line #: 4195429
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -556,15 +436,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  push rbp
  ASM Record
- 	ASM line #: 4195878
+ 	ASM line #: 4195430
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: sub rax, 0x601068
+ 	Instruction: sub rax, 0x601038
 
- sub rax, 0x601068
+ sub rax, 0x601038
  ASM Record
- 	ASM line #: 4195884
+ 	ASM line #: 4195436
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -572,7 +452,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  cmp rax, 0xe
  ASM Record
- 	ASM line #: 4195888
+ 	ASM line #: 4195440
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -580,15 +460,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  mov rbp, rsp
  ASM Record
- 	ASM line #: 4195891
+ 	ASM line #: 4195443
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jbe 0x400650
+ 	Instruction: jbe 0x400490
 
- jbe 0x400650
+ jbe 0x400490
  ASM Record
- 	ASM line #: 4195893
+ 	ASM line #: 4195445
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -596,7 +476,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  mov eax, 0x0
  ASM Record
- 	ASM line #: 4195898
+ 	ASM line #: 4195450
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -604,15 +484,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  test rax, rax
  ASM Record
- 	ASM line #: 4195901
+ 	ASM line #: 4195453
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jz 0x400650
+ 	Instruction: jz 0x400490
 
- jz 0x400650
+ jz 0x400490
  ASM Record
- 	ASM line #: 4195903
+ 	ASM line #: 4195455
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -620,15 +500,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  pop rbp
  ASM Record
- 	ASM line #: 4195904
+ 	ASM line #: 4195456
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: mov edi, 0x601068
+ 	Instruction: mov edi, 0x601038
 
- mov edi, 0x601068
+ mov edi, 0x601038
  ASM Record
- 	ASM line #: 4195909
+ 	ASM line #: 4195461
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -636,7 +516,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  jmp rax
  ASM Record
- 	ASM line #: 4195911
+ 	ASM line #: 4195463
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -644,7 +524,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  nop word ptr [rax+rax*1], ax
  ASM Record
- 	ASM line #: 4195920
+ 	ASM line #: 4195472
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -652,7 +532,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  pop rbp
  ASM Record
- 	ASM line #: 4195921
+ 	ASM line #: 4195473
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -660,7 +540,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  ret 
  ASM Record
- 	ASM line #: 4195922
+ 	ASM line #: 4195474
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -668,7 +548,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  nop dword ptr [rax], eax
  ASM Record
- 	ASM line #: 4195926
+ 	ASM line #: 4195478
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -676,15 +556,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  nop word ptr [rax+rax*1], ax
  ASM Record
- 	ASM line #: 4195936
+ 	ASM line #: 4195488
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: mov esi, 0x601068
+ 	Instruction: mov esi, 0x601038
 
- mov esi, 0x601068
+ mov esi, 0x601038
  ASM Record
- 	ASM line #: 4195941
+ 	ASM line #: 4195493
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -692,15 +572,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  push rbp
  ASM Record
- 	ASM line #: 4195942
+ 	ASM line #: 4195494
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: sub rsi, 0x601068
+ 	Instruction: sub rsi, 0x601038
 
- sub rsi, 0x601068
+ sub rsi, 0x601038
  ASM Record
- 	ASM line #: 4195949
+ 	ASM line #: 4195501
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -708,7 +588,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  sar rsi, 0x3
  ASM Record
- 	ASM line #: 4195953
+ 	ASM line #: 4195505
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -716,7 +596,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  mov rbp, rsp
  ASM Record
- 	ASM line #: 4195956
+ 	ASM line #: 4195508
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -724,7 +604,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  mov rax, rsi
  ASM Record
- 	ASM line #: 4195959
+ 	ASM line #: 4195511
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -732,7 +612,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  shr rax, 0x3f
  ASM Record
- 	ASM line #: 4195963
+ 	ASM line #: 4195515
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -740,7 +620,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  add rsi, rax
  ASM Record
- 	ASM line #: 4195966
+ 	ASM line #: 4195518
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -748,15 +628,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  sar rsi, 0x1
  ASM Record
- 	ASM line #: 4195969
+ 	ASM line #: 4195521
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jz 0x400698
+ 	Instruction: jz 0x4004d8
 
- jz 0x400698
+ jz 0x4004d8
  ASM Record
- 	ASM line #: 4195971
+ 	ASM line #: 4195523
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -764,7 +644,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  mov eax, 0x0
  ASM Record
- 	ASM line #: 4195976
+ 	ASM line #: 4195528
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -772,15 +652,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  test rax, rax
  ASM Record
- 	ASM line #: 4195979
+ 	ASM line #: 4195531
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jz 0x400698
+ 	Instruction: jz 0x4004d8
 
- jz 0x400698
+ jz 0x4004d8
  ASM Record
- 	ASM line #: 4195981
+ 	ASM line #: 4195533
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -788,15 +668,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  pop rbp
  ASM Record
- 	ASM line #: 4195982
+ 	ASM line #: 4195534
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: mov edi, 0x601068
+ 	Instruction: mov edi, 0x601038
 
- mov edi, 0x601068
+ mov edi, 0x601038
  ASM Record
- 	ASM line #: 4195987
+ 	ASM line #: 4195539
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -804,7 +684,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  jmp rax
  ASM Record
- 	ASM line #: 4195989
+ 	ASM line #: 4195541
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -812,7 +692,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  nop dword ptr [rax], eax
  ASM Record
- 	ASM line #: 4195992
+ 	ASM line #: 4195544
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -820,7 +700,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  pop rbp
  ASM Record
- 	ASM line #: 4195993
+ 	ASM line #: 4195545
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -828,7 +708,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  ret 
  ASM Record
- 	ASM line #: 4195994
+ 	ASM line #: 4195546
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -836,23 +716,23 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  nop word ptr [rax+rax*1], ax
  ASM Record
- 	ASM line #: 4196000
+ 	ASM line #: 4195552
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: cmp byte ptr [rip+0x2009bd], 0x0
+ 	Instruction: cmp byte ptr [rip+0x200b51], 0x0
 
- cmp byte ptr [rip+0x2009bd], 0x0
+ cmp byte ptr [rip+0x200b51], 0x0
  ASM Record
- 	ASM line #: 4196007
+ 	ASM line #: 4195559
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jnz 0x4006ba
+ 	Instruction: jnz 0x4004fa
 
- jnz 0x4006ba
+ jnz 0x4004fa
  ASM Record
- 	ASM line #: 4196009
+ 	ASM line #: 4195561
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -860,7 +740,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  push rbp
  ASM Record
- 	ASM line #: 4196010
+ 	ASM line #: 4195562
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -868,16 +748,16 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  mov rbp, rsp
  ASM Record
- 	ASM line #: 4196013
+ 	ASM line #: 4195565
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: call 0x400620
+ 	Instruction: call 0x400460
 
- Direct call: call 0x400620
- call 0x400620
+ Direct call: call 0x400460
+ call 0x400460
  ASM Record
- 	ASM line #: 4196018
+ 	ASM line #: 4195570
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -885,15 +765,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  pop rbp
  ASM Record
- 	ASM line #: 4196019
+ 	ASM line #: 4195571
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: mov byte ptr [rip+0x2009aa], 0x1
+ 	Instruction: mov byte ptr [rip+0x200b3e], 0x1
 
- mov byte ptr [rip+0x2009aa], 0x1
+ mov byte ptr [rip+0x200b3e], 0x1
  ASM Record
- 	ASM line #: 4196026
+ 	ASM line #: 4195578
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -901,7 +781,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  ret 
  ASM Record
- 	ASM line #: 4196032
+ 	ASM line #: 4195584
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -909,7 +789,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  mov edi, 0x600e20
  ASM Record
- 	ASM line #: 4196037
+ 	ASM line #: 4195589
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -917,23 +797,23 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  cmp qword ptr [rdi], 0x0
  ASM Record
- 	ASM line #: 4196041
+ 	ASM line #: 4195593
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jnz 0x4006d0
+ 	Instruction: jnz 0x400510
 
- jnz 0x4006d0
+ jnz 0x400510
  ASM Record
- 	ASM line #: 4196043
+ 	ASM line #: 4195595
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jmp 0x400660
+ 	Instruction: jmp 0x4004a0
 
- jmp 0x400660
+ jmp 0x4004a0
  ASM Record
- 	ASM line #: 4196045
+ 	ASM line #: 4195597
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -941,7 +821,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  nop dword ptr [rax], eax
  ASM Record
- 	ASM line #: 4196048
+ 	ASM line #: 4195600
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -949,7 +829,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  mov eax, 0x0
  ASM Record
- 	ASM line #: 4196053
+ 	ASM line #: 4195605
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -957,15 +837,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  test rax, rax
  ASM Record
- 	ASM line #: 4196056
+ 	ASM line #: 4195608
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jz 0x4006cb
+ 	Instruction: jz 0x40050b
 
- jz 0x4006cb
+ jz 0x40050b
  ASM Record
- 	ASM line #: 4196058
+ 	ASM line #: 4195610
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -973,7 +853,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  push rbp
  ASM Record
- 	ASM line #: 4196059
+ 	ASM line #: 4195611
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -981,7 +861,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  mov rbp, rsp
  ASM Record
- 	ASM line #: 4196062
+ 	ASM line #: 4195614
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -990,7 +870,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  Indirect call: call rax
  call rax
  ASM Record
- 	ASM line #: 4196064
+ 	ASM line #: 4195616
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -998,947 +878,160 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  pop rbp
  ASM Record
- 	ASM line #: 4196065
+ 	ASM line #: 4195617
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jmp 0x400660
+ 	Instruction: jmp 0x4004a0
 
- jmp 0x400660
+ jmp 0x4004a0
  ASM Record
- 	ASM line #: 4196070
- 	C line #: 7
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
+ 	ASM line #: 4195622
+ 	C line #: 6
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Instruction: push rbp
 
  push rbp
  ASM Record
- 	ASM line #: 4196071
- 	C line #: 7
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
+ 	ASM line #: 4195623
+ 	C line #: 6
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Instruction: mov rbp, rsp
 
  mov rbp, rsp
  ASM Record
- 	ASM line #: 4196074
- 	C line #: 7
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Instruction: sub rsp, 0x20
+ 	ASM line #: 4195626
+ 	C line #: 6
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
+ 	Instruction: sub rsp, 0x10
 
- sub rsp, 0x20
+ sub rsp, 0x10
  ASM Record
- 	ASM line #: 4196078
- 	C line #: 7
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Instruction: mov rax, qword ptr fs:[0x28]
+ 	ASM line #: 4195630
+ 	C line #: 9
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
+ 	Instruction: lea rax, ptr [rbp-0xc]
 
- mov rax, qword ptr fs:[0x28]
+ lea rax, ptr [rbp-0xc]
  ASM Record
- 	ASM line #: 4196087
- 	C line #: 7
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
+ 	ASM line #: 4195634
+ 	C line #: 9
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Instruction: mov qword ptr [rbp-0x8], rax
 
  mov qword ptr [rbp-0x8], rax
  ASM Record
- 	ASM line #: 4196091
- 	C line #: 7
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Instruction: xor eax, eax
-
- xor eax, eax
- ASM Record
- 	ASM line #: 4196093
- 	C line #: 10
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Instruction: lea rax, ptr [rbp-0x14]
-
- lea rax, ptr [rbp-0x14]
- ASM Record
- 	ASM line #: 4196097
- 	C line #: 10
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Instruction: mov qword ptr [rbp-0x10], rax
-
- mov qword ptr [rbp-0x10], rax
- ASM Record
- 	ASM line #: 4196101
+ 	ASM line #: 4195638
  	C line #: 12
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Instruction: mov edi, 0x4009b4
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
+ 	Instruction: mov dword ptr [rip+0x200afc], 0x1
 
- mov edi, 0x4009b4
+ mov dword ptr [rip+0x200afc], 0x1
  ASM Record
- 	ASM line #: 4196106
- 	C line #: 12
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Instruction: mov eax, 0x0
+ 	ASM line #: 4195648
+ 	C line #: 13
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
+ 	Instruction: mov dword ptr [rbp-0xc], 0x2
 
- mov eax, 0x0
+ mov dword ptr [rbp-0xc], 0x2
  ASM Record
- 	ASM line #: 4196111
- 	C line #: 12
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Instruction: call 0x400776
-
- Direct call: call 0x400776
- call 0x400776
- ASM Record
- 	ASM line #: 4196116
+ 	ASM line #: 4195655
  	C line #: 14
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Instruction: mov dword ptr [rip+0x20094a], 0x1
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
+ 	Instruction: mov rax, qword ptr [rbp-0x8]
 
- mov dword ptr [rip+0x20094a], 0x1
+ mov rax, qword ptr [rbp-0x8]
  ASM Record
- 	ASM line #: 4196126
- 	C line #: 15
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Instruction: mov dword ptr [rbp-0x14], 0x2
+ 	ASM line #: 4195659
+ 	C line #: 14
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
+ 	Instruction: mov ecx, dword ptr [rax]
 
- mov dword ptr [rbp-0x14], 0x2
+ mov ecx, dword ptr [rax]
  ASM Record
- 	ASM line #: 4196133
- 	C line #: 16
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Instruction: mov edx, dword ptr [rbp-0x14]
+ 	ASM line #: 4195661
+ 	C line #: 14
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
+ 	Instruction: mov edx, dword ptr [rbp-0xc]
 
- mov edx, dword ptr [rbp-0x14]
+ mov edx, dword ptr [rbp-0xc]
  ASM Record
- 	ASM line #: 4196136
- 	C line #: 16
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Instruction: mov eax, dword ptr [rip+0x20093a]
+ 	ASM line #: 4195664
+ 	C line #: 14
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
+ 	Instruction: mov eax, dword ptr [rip+0x200ae6]
 
- mov eax, dword ptr [rip+0x20093a]
+ mov eax, dword ptr [rip+0x200ae6]
  ASM Record
- 	ASM line #: 4196142
- 	C line #: 16
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
+ 	ASM line #: 4195670
+ 	C line #: 14
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Instruction: mov esi, eax
 
  mov esi, eax
  ASM Record
- 	ASM line #: 4196144
- 	C line #: 16
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Instruction: mov edi, 0x4009c3
+ 	ASM line #: 4195672
+ 	C line #: 14
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
+ 	Instruction: mov edi, 0x4005f4
 
- mov edi, 0x4009c3
+ mov edi, 0x4005f4
  ASM Record
- 	ASM line #: 4196149
- 	C line #: 16
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
+ 	ASM line #: 4195677
+ 	C line #: 14
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Instruction: mov eax, 0x0
 
  mov eax, 0x0
  ASM Record
- 	ASM line #: 4196154
- 	C line #: 16
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Instruction: call 0x400776
+ 	ASM line #: 4195682
+ 	C line #: 14
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
+ 	Instruction: call 0x400400
 
- Direct call: call 0x400776
- call 0x400776
+ Direct call: call 0x400400
+ call 0x400400
  ASM Record
- 	ASM line #: 4196159
- 	C line #: 17
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Instruction: mov rax, qword ptr [rbp-0x10]
-
- mov rax, qword ptr [rbp-0x10]
- ASM Record
- 	ASM line #: 4196163
- 	C line #: 17
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Instruction: mov edx, dword ptr [rax]
-
- mov edx, dword ptr [rax]
- ASM Record
- 	ASM line #: 4196165
- 	C line #: 17
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Instruction: mov rax, qword ptr [rbp-0x10]
-
- mov rax, qword ptr [rbp-0x10]
- ASM Record
- 	ASM line #: 4196169
- 	C line #: 17
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Instruction: mov rsi, rax
-
- mov rsi, rax
- ASM Record
- 	ASM line #: 4196172
- 	C line #: 17
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Instruction: mov edi, 0x4009d3
-
- mov edi, 0x4009d3
- ASM Record
- 	ASM line #: 4196177
- 	C line #: 17
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
+ 	ASM line #: 4195687
+ 	C line #: 14
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Instruction: mov eax, 0x0
 
  mov eax, 0x0
  ASM Record
- 	ASM line #: 4196182
- 	C line #: 17
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Instruction: call 0x400776
-
- Direct call: call 0x400776
- call 0x400776
- ASM Record
- 	ASM line #: 4196187
- 	C line #: 17
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Instruction: mov eax, 0x0
-
- mov eax, 0x0
- ASM Record
- 	ASM line #: 4196192
- 	C line #: 18
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Instruction: mov rcx, qword ptr [rbp-0x8]
-
- mov rcx, qword ptr [rbp-0x8]
- ASM Record
- 	ASM line #: 4196196
- 	C line #: 18
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Instruction: xor rcx, qword ptr fs:[0x28]
-
- xor rcx, qword ptr fs:[0x28]
- ASM Record
- 	ASM line #: 4196205
- 	C line #: 18
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Instruction: jz 0x400774
-
- jz 0x400774
- ASM Record
- 	ASM line #: 4196207
- 	C line #: 18
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Instruction: call 0x400580
-
- Direct call: call 0x400580
- call 0x400580
- ASM Record
- 	ASM line #: 4196212
- 	C line #: 18
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
+ 	ASM line #: 4195692
+ 	C line #: 15
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Instruction: leave 
 
  leave 
  ASM Record
- 	ASM line #: 4196213
- 	C line #: 18
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
+ 	ASM line #: 4195693
+ 	C line #: 15
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Instruction: ret 
 
  ret 
  ASM Record
- 	ASM line #: 4196214
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: push rbx
-
- push rbx
- ASM Record
- 	ASM line #: 4196215
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: sub rsp, 0x1e0
-
- sub rsp, 0x1e0
- ASM Record
- 	ASM line #: 4196222
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov rbx, rdi
-
- mov rbx, rdi
- ASM Record
- 	ASM line #: 4196225
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov qword ptr [rsp+0x138], rsi
-
- mov qword ptr [rsp+0x138], rsi
- ASM Record
- 	ASM line #: 4196233
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov qword ptr [rsp+0x140], rdx
-
- mov qword ptr [rsp+0x140], rdx
- ASM Record
- 	ASM line #: 4196241
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov qword ptr [rsp+0x148], rcx
-
- mov qword ptr [rsp+0x148], rcx
- ASM Record
- 	ASM line #: 4196249
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov qword ptr [rsp+0x150], r8
-
- mov qword ptr [rsp+0x150], r8
- ASM Record
- 	ASM line #: 4196257
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov qword ptr [rsp+0x158], r9
-
- mov qword ptr [rsp+0x158], r9
- ASM Record
- 	ASM line #: 4196265
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: test al, al
-
- test al, al
- ASM Record
- 	ASM line #: 4196267
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: jz 0x4007ed
-
- jz 0x4007ed
- ASM Record
- 	ASM line #: 4196269
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: movaps xmmword ptr [rsp+0x160], xmm0
-
- movaps xmmword ptr [rsp+0x160], xmm0
- ASM Record
- 	ASM line #: 4196277
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: movaps xmmword ptr [rsp+0x170], xmm1
-
- movaps xmmword ptr [rsp+0x170], xmm1
- ASM Record
- 	ASM line #: 4196285
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: movaps xmmword ptr [rsp+0x180], xmm2
-
- movaps xmmword ptr [rsp+0x180], xmm2
- ASM Record
- 	ASM line #: 4196293
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: movaps xmmword ptr [rsp+0x190], xmm3
-
- movaps xmmword ptr [rsp+0x190], xmm3
- ASM Record
- 	ASM line #: 4196301
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: movaps xmmword ptr [rsp+0x1a0], xmm4
-
- movaps xmmword ptr [rsp+0x1a0], xmm4
- ASM Record
- 	ASM line #: 4196309
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: movaps xmmword ptr [rsp+0x1b0], xmm5
-
- movaps xmmword ptr [rsp+0x1b0], xmm5
- ASM Record
- 	ASM line #: 4196317
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: movaps xmmword ptr [rsp+0x1c0], xmm6
-
- movaps xmmword ptr [rsp+0x1c0], xmm6
- ASM Record
- 	ASM line #: 4196325
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: movaps xmmword ptr [rsp+0x1d0], xmm7
-
- movaps xmmword ptr [rsp+0x1d0], xmm7
- ASM Record
- 	ASM line #: 4196333
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov rax, qword ptr fs:[0x28]
-
- mov rax, qword ptr fs:[0x28]
- ASM Record
- 	ASM line #: 4196342
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov qword ptr [rsp+0x128], rax
-
- mov qword ptr [rsp+0x128], rax
- ASM Record
- 	ASM line #: 4196350
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: xor eax, eax
-
- xor eax, eax
- ASM Record
- 	ASM line #: 4196352
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov dword ptr [rsp+0x8], 0x8
-
- mov dword ptr [rsp+0x8], 0x8
- ASM Record
- 	ASM line #: 4196360
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov dword ptr [rsp+0xc], 0x30
-
- mov dword ptr [rsp+0xc], 0x30
- ASM Record
- 	ASM line #: 4196368
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: lea rax, ptr [rsp+0x1f0]
-
- lea rax, ptr [rsp+0x1f0]
- ASM Record
- 	ASM line #: 4196376
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov qword ptr [rsp+0x10], rax
-
- mov qword ptr [rsp+0x10], rax
- ASM Record
- 	ASM line #: 4196381
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: lea rax, ptr [rsp+0x130]
-
- lea rax, ptr [rsp+0x130]
- ASM Record
- 	ASM line #: 4196389
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov qword ptr [rsp+0x18], rax
-
- mov qword ptr [rsp+0x18], rax
- ASM Record
- 	ASM line #: 4196394
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: cmp dword ptr [rip+0x20082f], 0xffffffff
-
- cmp dword ptr [rip+0x20082f], 0xffffffff
- ASM Record
- 	ASM line #: 4196401
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: jnz 0x40086b
-
- jnz 0x40086b
- ASM Record
- 	ASM line #: 4196403
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov esi, 0x1
-
- mov esi, 0x1
- ASM Record
- 	ASM line #: 4196408
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov edi, 0x4009e5
-
- mov edi, 0x4009e5
- ASM Record
- 	ASM line #: 4196413
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov eax, 0x0
-
- mov eax, 0x0
- ASM Record
- 	ASM line #: 4196418
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: call 0x4005d0
-
- Direct call: call 0x4005d0
- call 0x4005d0
- ASM Record
- 	ASM line #: 4196423
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov dword ptr [rip+0x200813], eax
-
- mov dword ptr [rip+0x200813], eax
- ASM Record
- 	ASM line #: 4196429
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: cmp eax, 0xffffffff
-
- cmp eax, 0xffffffff
- ASM Record
- 	ASM line #: 4196432
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: jnz 0x40086b
-
- jnz 0x40086b
- ASM Record
- 	ASM line #: 4196434
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov ecx, 0x400aa0
-
- mov ecx, 0x400aa0
- ASM Record
- 	ASM line #: 4196439
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov edx, 0x13
-
- mov edx, 0x13
- ASM Record
- 	ASM line #: 4196444
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov esi, 0x4009f7
-
- mov esi, 0x4009f7
- ASM Record
- 	ASM line #: 4196449
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov edi, 0x400a10
-
- mov edi, 0x400a10
- ASM Record
- 	ASM line #: 4196454
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: call 0x400590
-
- Direct call: call 0x400590
- call 0x400590
- ASM Record
- 	ASM line #: 4196459
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: lea r9, ptr [rsp+0x8]
-
- lea r9, ptr [rsp+0x8]
- ASM Record
- 	ASM line #: 4196464
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov r8, rbx
-
- mov r8, rbx
- ASM Record
- 	ASM line #: 4196467
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov ecx, 0xff
-
- mov ecx, 0xff
- ASM Record
- 	ASM line #: 4196472
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov edx, 0x1
-
- mov edx, 0x1
- ASM Record
- 	ASM line #: 4196477
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov esi, 0xff
-
- mov esi, 0xff
- ASM Record
- 	ASM line #: 4196482
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: lea rdi, ptr [rsp+0x20]
-
- lea rdi, ptr [rsp+0x20]
- ASM Record
- 	ASM line #: 4196487
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: call 0x4005b0
-
- Direct call: call 0x4005b0
- call 0x4005b0
- ASM Record
- 	ASM line #: 4196492
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov ebx, eax
-
- mov ebx, eax
- ASM Record
- 	ASM line #: 4196494
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: cmp eax, 0xfe
-
- cmp eax, 0xfe
- ASM Record
- 	ASM line #: 4196499
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: jbe 0x4008ae
-
- jbe 0x4008ae
- ASM Record
- 	ASM line #: 4196501
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov ecx, 0x400aa0
-
- mov ecx, 0x400aa0
- ASM Record
- 	ASM line #: 4196506
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov edx, 0x19
-
- mov edx, 0x19
- ASM Record
- 	ASM line #: 4196511
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov esi, 0x4009f7
-
- mov esi, 0x4009f7
- ASM Record
- 	ASM line #: 4196516
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov edi, 0x400a40
-
- mov edi, 0x400a40
- ASM Record
- 	ASM line #: 4196521
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: call 0x400590
-
- Direct call: call 0x400590
- call 0x400590
- ASM Record
- 	ASM line #: 4196526
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: lea rdx, ptr [rsp+0x20]
-
- lea rdx, ptr [rsp+0x20]
- ASM Record
- 	ASM line #: 4196531
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov esi, 0x400a06
-
- mov esi, 0x400a06
- ASM Record
- 	ASM line #: 4196536
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov edi, 0x1
-
- mov edi, 0x1
- ASM Record
- 	ASM line #: 4196541
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov eax, 0x0
-
- mov eax, 0x0
- ASM Record
- 	ASM line #: 4196546
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: call 0x4005c0
-
- Direct call: call 0x4005c0
- call 0x4005c0
- ASM Record
- 	ASM line #: 4196551
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov edi, dword ptr [rip+0x200793]
-
- mov edi, dword ptr [rip+0x200793]
- ASM Record
- 	ASM line #: 4196557
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: cmp edi, 0xffffffff
-
- cmp edi, 0xffffffff
- ASM Record
- 	ASM line #: 4196560
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: jz 0x400900
-
- jz 0x400900
- ASM Record
- 	ASM line #: 4196562
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: movsxd rbx, ebx
-
- movsxd rbx, ebx
- ASM Record
- 	ASM line #: 4196565
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov rdx, rbx
-
- mov rdx, rbx
- ASM Record
- 	ASM line #: 4196568
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: lea rsi, ptr [rsp+0x20]
-
- lea rsi, ptr [rsp+0x20]
- ASM Record
- 	ASM line #: 4196573
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: call 0x400570
-
- Direct call: call 0x400570
- call 0x400570
- ASM Record
- 	ASM line #: 4196578
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: cmp rax, rbx
-
- cmp rax, rbx
- ASM Record
- 	ASM line #: 4196581
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: jz 0x400900
-
- jz 0x400900
- ASM Record
- 	ASM line #: 4196583
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov ecx, 0x400aa0
-
- mov ecx, 0x400aa0
- ASM Record
- 	ASM line #: 4196588
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov edx, 0x1f
-
- mov edx, 0x1f
- ASM Record
- 	ASM line #: 4196593
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov esi, 0x4009f7
-
- mov esi, 0x4009f7
- ASM Record
- 	ASM line #: 4196598
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov edi, 0x400a68
-
- mov edi, 0x400a68
- ASM Record
- 	ASM line #: 4196603
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: call 0x400590
-
- Direct call: call 0x400590
- call 0x400590
- ASM Record
- 	ASM line #: 4196608
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov rax, qword ptr [rsp+0x128]
-
- mov rax, qword ptr [rsp+0x128]
- ASM Record
- 	ASM line #: 4196616
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: xor rax, qword ptr fs:[0x28]
-
- xor rax, qword ptr fs:[0x28]
- ASM Record
- 	ASM line #: 4196625
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: jz 0x400918
-
- jz 0x400918
- ASM Record
- 	ASM line #: 4196627
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: call 0x400580
-
- Direct call: call 0x400580
- call 0x400580
- ASM Record
- 	ASM line #: 4196632
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: add rsp, 0x1e0
-
- add rsp, 0x1e0
- ASM Record
- 	ASM line #: 4196639
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: pop rbx
-
- pop rbx
- ASM Record
- 	ASM line #: 4196640
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: ret 
-
- ret 
- ASM Record
- 	ASM line #: 4196656
+ 	ASM line #: 4195696
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1946,7 +1039,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  push r15
  ASM Record
- 	ASM line #: 4196658
+ 	ASM line #: 4195698
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1954,7 +1047,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  push r14
  ASM Record
- 	ASM line #: 4196660
+ 	ASM line #: 4195700
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1962,7 +1055,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  mov r15d, edi
  ASM Record
- 	ASM line #: 4196663
+ 	ASM line #: 4195703
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1970,7 +1063,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  push r13
  ASM Record
- 	ASM line #: 4196665
+ 	ASM line #: 4195705
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1978,15 +1071,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  push r12
  ASM Record
- 	ASM line #: 4196667
+ 	ASM line #: 4195707
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: lea r12, ptr [rip+0x2004ce]
+ 	Instruction: lea r12, ptr [rip+0x20088e]
 
- lea r12, ptr [rip+0x2004ce]
+ lea r12, ptr [rip+0x20088e]
  ASM Record
- 	ASM line #: 4196674
+ 	ASM line #: 4195714
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1994,15 +1087,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  push rbp
  ASM Record
- 	ASM line #: 4196675
+ 	ASM line #: 4195715
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: lea rbp, ptr [rip+0x2004ce]
+ 	Instruction: lea rbp, ptr [rip+0x20088e]
 
- lea rbp, ptr [rip+0x2004ce]
+ lea rbp, ptr [rip+0x20088e]
  ASM Record
- 	ASM line #: 4196682
+ 	ASM line #: 4195722
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -2010,7 +1103,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  push rbx
  ASM Record
- 	ASM line #: 4196683
+ 	ASM line #: 4195723
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -2018,7 +1111,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  mov r14, rsi
  ASM Record
- 	ASM line #: 4196686
+ 	ASM line #: 4195726
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -2026,7 +1119,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  mov r13, rdx
  ASM Record
- 	ASM line #: 4196689
+ 	ASM line #: 4195729
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -2034,7 +1127,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  sub rbp, r12
  ASM Record
- 	ASM line #: 4196692
+ 	ASM line #: 4195732
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -2042,7 +1135,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  sub rsp, 0x8
  ASM Record
- 	ASM line #: 4196696
+ 	ASM line #: 4195736
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -2050,16 +1143,16 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  sar rbp, 0x3
  ASM Record
- 	ASM line #: 4196700
+ 	ASM line #: 4195740
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: call 0x400538
+ 	Instruction: call 0x4003c8
 
- Direct call: call 0x400538
- call 0x400538
+ Direct call: call 0x4003c8
+ call 0x4003c8
  ASM Record
- 	ASM line #: 4196705
+ 	ASM line #: 4195745
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -2067,15 +1160,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  test rbp, rbp
  ASM Record
- 	ASM line #: 4196708
+ 	ASM line #: 4195748
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jz 0x400986
+ 	Instruction: jz 0x4005c6
 
- jz 0x400986
+ jz 0x4005c6
  ASM Record
- 	ASM line #: 4196710
+ 	ASM line #: 4195750
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -2083,7 +1176,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  xor ebx, ebx
  ASM Record
- 	ASM line #: 4196712
+ 	ASM line #: 4195752
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -2091,7 +1184,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  nop dword ptr [rax+rax*1], eax
  ASM Record
- 	ASM line #: 4196720
+ 	ASM line #: 4195760
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -2099,7 +1192,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  mov rdx, r13
  ASM Record
- 	ASM line #: 4196723
+ 	ASM line #: 4195763
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -2107,7 +1200,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  mov rsi, r14
  ASM Record
- 	ASM line #: 4196726
+ 	ASM line #: 4195766
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -2115,7 +1208,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  mov edi, r15d
  ASM Record
- 	ASM line #: 4196729
+ 	ASM line #: 4195769
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -2124,7 +1217,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  Indirect call: call qword ptr [r12+rbx*8]
  call qword ptr [r12+rbx*8]
  ASM Record
- 	ASM line #: 4196733
+ 	ASM line #: 4195773
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -2132,7 +1225,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  add rbx, 0x1
  ASM Record
- 	ASM line #: 4196737
+ 	ASM line #: 4195777
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -2140,15 +1233,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  cmp rbx, rbp
  ASM Record
- 	ASM line #: 4196740
+ 	ASM line #: 4195780
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jnz 0x400970
+ 	Instruction: jnz 0x4005b0
 
- jnz 0x400970
+ jnz 0x4005b0
  ASM Record
- 	ASM line #: 4196742
+ 	ASM line #: 4195782
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -2156,7 +1249,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  add rsp, 0x8
  ASM Record
- 	ASM line #: 4196746
+ 	ASM line #: 4195786
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -2164,7 +1257,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  pop rbx
  ASM Record
- 	ASM line #: 4196747
+ 	ASM line #: 4195787
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -2172,7 +1265,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  pop rbp
  ASM Record
- 	ASM line #: 4196748
+ 	ASM line #: 4195788
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -2180,7 +1273,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  pop r12
  ASM Record
- 	ASM line #: 4196750
+ 	ASM line #: 4195790
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -2188,7 +1281,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  pop r13
  ASM Record
- 	ASM line #: 4196752
+ 	ASM line #: 4195792
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -2196,7 +1289,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  pop r14
  ASM Record
- 	ASM line #: 4196754
+ 	ASM line #: 4195794
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -2204,7 +1297,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  pop r15
  ASM Record
- 	ASM line #: 4196756
+ 	ASM line #: 4195796
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -2212,7 +1305,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  ret 
  ASM Record
- 	ASM line #: 4196768
+ 	ASM line #: 4195808
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -2220,7 +1313,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  ret 
  ASM Record
- 	ASM line #: 4196772
+ 	ASM line #: 4195812
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -2228,7 +1321,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  sub rsp, 0x8
  ASM Record
- 	ASM line #: 4196776
+ 	ASM line #: 4195816
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -2236,7 +1329,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  add rsp, 0x8
  ASM Record
- 	ASM line #: 4196780
+ 	ASM line #: 4195820
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -2256,13 +1349,18 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  enter
  malloc(320)
  enter
- malloc(24)
+ malloc(32)
  enter
  malloc(15)
  enter
  malloc(72)
  Enter freeBefore
- free(140281409146232)
+ free(139957923712384)
+ Exit freeBefore
+ enter
+ malloc(15)
+ Enter freeBefore
+ free(139957923712472)
  Exit freeBefore
  enter
  malloc(57)
@@ -2280,7 +1378,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  enter
  malloc(56)
  enter
- malloc(120)
+ malloc(72)
  enter
  malloc(72)
  enter
@@ -2311,11 +1409,11 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: r9
- 	Value: 0x0x7f95cf6e1ab0
- 0x0004005f5R 0x7ffeafd4aa30 8
+ 	Value: 0x0x7f4a7e321ab0
+ 0x000400435R 0x7ffd19c62940 8
  line number 0
  value before read : 0x1  0x0  0x0  0x0  0x0  0x0  0x0  0x0  Invocation ID:0function _start was called. Frame pointer was 0x000000000
- Before pop: SP = 0x7ffeafd4aa30
+ Before pop: SP = 0x7ffd19c62940
  Register Record
  	Event num: 6
  	Line #: 0
@@ -2327,79 +1425,79 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7ffeafd4aa38
- After pop: SP = 0x7ffeafd4aa38
+ 	Value: 0x0x7ffd19c62948
+ After pop: SP = 0x7ffd19c62948
  Register Record
  	Event num: 8
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rdx
- 	Value: 0x0x7ffeafd4aa38
+ 	Value: 0x0x7ffd19c62948
  Register Record
  	Event num: 9
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7ffeafd4aa30
+ 	Value: 0x0x7ffd19c62940
  Register Record
  	Event num: 10
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rflags
- 	Value: 0x0x000000206
- 0x0004005fd: W 0x7ffeafd4aa28 8
- value before write : 0x6a  0x1c  0x6d  0xcf  0x95  0x7f  0x0  0x0  
- Before push: SP = 0x7ffeafd4aa30
+ 	Value: 0x0x000000202
+ 0x00040043d: W 0x7ffd19c62938 8
+ value before write : 0x6a  0x1c  0x31  0x7e  0x4a  0x7f  0x0  0x0  
+ Before push: SP = 0x7ffd19c62940
  Register Record
  	Event num: 13
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7ffeafd4aa28
+ 	Value: 0x0x7ffd19c62938
  value after write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  Enter is_at_address
- trec = 0x7f95cf67be00
+ trec = 0x7f4a7e2bbe00
 type name = int
  Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4aa20 size: 4
- address 0x0x7ffeafd4aa20 is not a program variable
- After push: SP = 0x7ffeafd4aa28
- 0x0004005fe: W 0x7ffeafd4aa20 8
+ var_addr: 0x00060103c mem_addr: 0x7ffd19c62930 size: 4
+ address 0x0x7ffd19c62930 is not a program variable
+ After push: SP = 0x7ffd19c62938
+ 0x00040043e: W 0x7ffd19c62930 8
  value before write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- Before push: SP = 0x7ffeafd4aa28
+ Before push: SP = 0x7ffd19c62938
  Register Record
  	Event num: 16
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7ffeafd4aa20
+ 	Value: 0x0x7ffd19c62930
  value after write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  Enter is_at_address
- trec = 0x7f95cf67be00
+ trec = 0x7f4a7e2bbe00
 type name = int
  Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4aa18 size: 4
- address 0x0x7ffeafd4aa18 is not a program variable
- After push: SP = 0x7ffeafd4aa20
+ var_addr: 0x00060103c mem_addr: 0x7ffd19c62928 size: 4
+ address 0x0x7ffd19c62928 is not a program variable
+ After push: SP = 0x7ffd19c62930
  Register Record
  	Event num: 17
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: r8
- 	Value: 0x0x0004009a0
+ 	Value: 0x0x0004005e0
  Register Record
  	Event num: 18
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rcx
- 	Value: 0x0x000400930
+ 	Value: 0x0x000400570
  Register Record
  	Event num: 19
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rdi
- 	Value: 0x0x0004006e6
- 0x000400614: W 0x7ffeafd4aa18 8
+ 	Value: 0x0x000400526
+ 0x000400454: W 0x7ffd19c62928 8
  value before write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  Enter before_function_direct_call
  Call to function
@@ -2409,9 +1507,9 @@ type name = int
  	Inv line: 0
  	Func file: __NOCSOURCE__
  	Inv file: __NOCSOURCE__
- 	Callee address: 0x0x0004005a0
+ 	Callee address: 0x0x000400410
 
- frec = 0x0x7f95bbb0de00
+ frec = 0x0x7f4a6a747d40
  Built frec
  Wrote frec
  Exit before_function_direct_call
@@ -2420,20 +1518,20 @@ type name = int
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
- 	Value: 0x0x0004005a0
+ 	Value: 0x0x000400410
  Register Record
  	Event num: 23
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7ffeafd4aa18
- value after write : 0x30  0xaa  0xd4  0xaf  0xfe  0x7f  0x0  0x0  
+ 	Value: 0x0x7ffd19c62928
+ value after write : 0x40  0x29  0xc6  0x19  0xfd  0x7f  0x0  0x0  
  Enter is_at_address
- trec = 0x7f95cf67be00
+ trec = 0x7f4a7e2bbe00
 type name = int
  Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4aa10 size: 4
- address 0x0x7ffeafd4aa10 is not a program variable
+ var_addr: 0x00060103c mem_addr: 0x7ffd19c62920 size: 4
+ address 0x0x7ffd19c62920 is not a program variable
  Enter after_function_call
  No output found
  function return
@@ -2441,203 +1539,203 @@ type name = int
  Function Call to __libc_start_main@plt
  after push stack size:2
  Invocation ID:25function __libc_start_main@plt was called. Frame pointer was 0x000000000
- 0x0004005a0R 0x000601030 8
+ 0x000400410R 0x000601020 8
  line number 0
- value before read : 0xa6  0x5  0x40  0x0  0x0  0x0  0x0  0x0  Invocation ID:25function __libc_start_main@plt was called. Frame pointer was 0x000000000
+ value before read : 0x16  0x4  0x40  0x0  0x0  0x0  0x0  0x0  Invocation ID:25function __libc_start_main@plt was called. Frame pointer was 0x000000000
  Register Record
  	Event num: 27
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
- 	Value: 0x0x0004005a6
- 0x0004005a6: W 0x7ffeafd4aa10 8
- value before write : 0x30  0xaa  0xd4  0xaf  0xfe  0x7f  0x0  0x0  
- Before push: SP = 0x7ffeafd4aa18
+ 	Value: 0x0x000400416
+ 0x000400416: W 0x7ffd19c62920 8
+ value before write : 0x40  0x29  0xc6  0x19  0xfd  0x7f  0x0  0x0  
+ Before push: SP = 0x7ffd19c62928
  Register Record
  	Event num: 30
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7ffeafd4aa10
- value after write : 0xf0  0x5  0x40  0x0  0x0  0x0  0x0  0x0  
+ 	Value: 0x0x7ffd19c62920
+ value after write : 0x30  0x4  0x40  0x0  0x0  0x0  0x0  0x0  
  Enter is_at_address
- trec = 0x7f95cf67be00
+ trec = 0x7f4a7e2bbe00
 type name = int
  Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4aa08 size: 4
- address 0x0x7ffeafd4aa08 is not a program variable
- After push: SP = 0x7ffeafd4aa10
+ var_addr: 0x00060103c mem_addr: 0x7ffd19c62918 size: 4
+ address 0x0x7ffd19c62918 is not a program variable
+ After push: SP = 0x7ffd19c62920
  Register Record
  	Event num: 31
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
- 	Value: 0x0x000400560
+ 	Value: 0x0x0004003f0
  Function Call to .plt
- 0x000400560R 0x000601008 8
+ 0x0004003f0R 0x000601008 8
  line number 0
- value before read : 0x68  0x81  0x8f  0xcf  0x95  0x7f  0x0  0x0  Invocation ID:25function .plt was called. Frame pointer was 0x000000000
- 0x000400560: W 0x7ffeafd4aa08 8
- value before write : 0xf0  0x5  0x40  0x0  0x0  0x0  0x0  0x0  
- Before push: SP = 0x7ffeafd4aa10
+ value before read : 0x68  0x81  0x53  0x7e  0x4a  0x7f  0x0  0x0  Invocation ID:25function .plt was called. Frame pointer was 0x000000000
+ 0x0004003f0: W 0x7ffd19c62918 8
+ value before write : 0x30  0x4  0x40  0x0  0x0  0x0  0x0  0x0  
+ Before push: SP = 0x7ffd19c62920
  Register Record
  	Event num: 35
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7ffeafd4aa08
+ 	Value: 0x0x7ffd19c62918
  value after write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  Enter is_at_address
- trec = 0x7f95cf67be00
+ trec = 0x7f4a7e2bbe00
 type name = int
  Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4aa00 size: 4
- address 0x0x7ffeafd4aa00 is not a program variable
- After push: SP = 0x7ffeafd4aa08
- 0x000400566R 0x000601010 8
+ var_addr: 0x00060103c mem_addr: 0x7ffd19c62910 size: 4
+ address 0x0x7ffd19c62910 is not a program variable
+ After push: SP = 0x7ffd19c62918
+ 0x0004003f6R 0x000601010 8
  line number 0
- value before read : 0x70  0x88  0x6e  0xcf  0x95  0x7f  0x0  0x0  Invocation ID:25function .plt was called. Frame pointer was 0x000000000
+ value before read : 0x70  0x88  0x32  0x7e  0x4a  0x7f  0x0  0x0  Invocation ID:25function .plt was called. Frame pointer was 0x000000000
  Register Record
  	Event num: 37
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
- 	Value: 0x0x7f95cf6e8870
+ 	Value: 0x0x7f4a7e328870
  Function Call to __libc_csu_init
  after push stack size:3
- Invocation ID:38function __libc_csu_init was called. Frame pointer was 0x000400930
- 0x000400930: W 0x7ffeafd4a950 8
- value before write : 0xf0  0x5  0x40  0x0  0x0  0x0  0x0  0x0  
- Before push: SP = 0x7ffeafd4a958
+ Invocation ID:38function __libc_csu_init was called. Frame pointer was 0x000400570
+ 0x000400570: W 0x7ffd19c62860 8
+ value before write : 0x30  0x4  0x40  0x0  0x0  0x0  0x0  0x0  
+ Before push: SP = 0x7ffd19c62868
  Register Record
  	Event num: 41
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7ffeafd4a950
- value after write : 0x30  0x9  0x40  0x0  0x0  0x0  0x0  0x0  
+ 	Value: 0x0x7ffd19c62860
+ value after write : 0x70  0x5  0x40  0x0  0x0  0x0  0x0  0x0  
  Enter is_at_address
- trec = 0x7f95cf67be00
+ trec = 0x7f4a7e2bbe00
 type name = int
  Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a948 size: 4
- address 0x0x7ffeafd4a948 is not a program variable
- After push: SP = 0x7ffeafd4a950
- 0x000400932: W 0x7ffeafd4a948 8
- value before write : 0x30  0x9  0x40  0x0  0x0  0x0  0x0  0x0  
- Before push: SP = 0x7ffeafd4a950
+ var_addr: 0x00060103c mem_addr: 0x7ffd19c62858 size: 4
+ address 0x0x7ffd19c62858 is not a program variable
+ After push: SP = 0x7ffd19c62860
+ 0x000400572: W 0x7ffd19c62858 8
+ value before write : 0x70  0x5  0x40  0x0  0x0  0x0  0x0  0x0  
+ Before push: SP = 0x7ffd19c62860
  Register Record
  	Event num: 44
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7ffeafd4a948
+ 	Value: 0x0x7ffd19c62858
  value after write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  Enter is_at_address
- trec = 0x7f95cf67be00
+ trec = 0x7f4a7e2bbe00
 type name = int
  Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a940 size: 4
- address 0x0x7ffeafd4a940 is not a program variable
- After push: SP = 0x7ffeafd4a948
+ var_addr: 0x00060103c mem_addr: 0x7ffd19c62850 size: 4
+ address 0x0x7ffd19c62850 is not a program variable
+ After push: SP = 0x7ffd19c62858
  Register Record
  	Event num: 45
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: r15d
  	Value: 0x0x000000001
- 0x000400937: W 0x7ffeafd4a940 8
+ 0x000400577: W 0x7ffd19c62850 8
  value before write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- Before push: SP = 0x7ffeafd4a948
+ Before push: SP = 0x7ffd19c62858
  Register Record
  	Event num: 48
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7ffeafd4a940
- value after write : 0x99  0x42  0xc5  0xbb  0x95  0x7f  0x0  0x0  
+ 	Value: 0x0x7ffd19c62850
+ value after write : 0x99  0x12  0x8a  0x6a  0x4a  0x7f  0x0  0x0  
  Enter is_at_address
- trec = 0x7f95cf67be00
+ trec = 0x7f4a7e2bbe00
 type name = int
  Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a938 size: 4
- address 0x0x7ffeafd4a938 is not a program variable
- After push: SP = 0x7ffeafd4a940
- 0x000400939: W 0x7ffeafd4a938 8
- value before write : 0x99  0x42  0xc5  0xbb  0x95  0x7f  0x0  0x0  
- Before push: SP = 0x7ffeafd4a940
+ var_addr: 0x00060103c mem_addr: 0x7ffd19c62848 size: 4
+ address 0x0x7ffd19c62848 is not a program variable
+ After push: SP = 0x7ffd19c62850
+ 0x000400579: W 0x7ffd19c62848 8
+ value before write : 0x99  0x12  0x8a  0x6a  0x4a  0x7f  0x0  0x0  
+ Before push: SP = 0x7ffd19c62850
  Register Record
  	Event num: 51
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7ffeafd4a938
+ 	Value: 0x0x7ffd19c62848
  value after write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  Enter is_at_address
- trec = 0x7f95cf67be00
+ trec = 0x7f4a7e2bbe00
 type name = int
  Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a930 size: 4
- address 0x0x7ffeafd4a930 is not a program variable
- After push: SP = 0x7ffeafd4a938
+ var_addr: 0x00060103c mem_addr: 0x7ffd19c62840 size: 4
+ address 0x0x7ffd19c62840 is not a program variable
+ After push: SP = 0x7ffd19c62848
  Register Record
  	Event num: 52
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: r12
  	Value: 0x0x000600e10
- 0x000400942: W 0x7ffeafd4a930 8
+ 0x000400582: W 0x7ffd19c62840 8
  value before write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- Before push: SP = 0x7ffeafd4a938
+ Before push: SP = 0x7ffd19c62848
  Register Record
  	Event num: 55
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7ffeafd4a930
- value after write : 0xb0  0x1a  0x6e  0xcf  0x95  0x7f  0x0  0x0  
+ 	Value: 0x0x7ffd19c62840
+ value after write : 0xb0  0x1a  0x32  0x7e  0x4a  0x7f  0x0  0x0  
  Enter is_at_address
- trec = 0x7f95cf67be00
+ trec = 0x7f4a7e2bbe00
 type name = int
  Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a928 size: 4
- address 0x0x7ffeafd4a928 is not a program variable
- After push: SP = 0x7ffeafd4a930
+ var_addr: 0x00060103c mem_addr: 0x7ffd19c62838 size: 4
+ address 0x0x7ffd19c62838 is not a program variable
+ After push: SP = 0x7ffd19c62840
  Register Record
  	Event num: 56
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rbp
  	Value: 0x0x000600e18
- 0x00040094a: W 0x7ffeafd4a928 8
- value before write : 0xb0  0x1a  0x6e  0xcf  0x95  0x7f  0x0  0x0  
- Before push: SP = 0x7ffeafd4a930
+ 0x00040058a: W 0x7ffd19c62838 8
+ value before write : 0xb0  0x1a  0x32  0x7e  0x4a  0x7f  0x0  0x0  
+ Before push: SP = 0x7ffd19c62840
  Register Record
  	Event num: 59
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7ffeafd4a928
+ 	Value: 0x0x7ffd19c62838
  value after write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  Enter is_at_address
- trec = 0x7f95cf67be00
+ trec = 0x7f4a7e2bbe00
 type name = int
  Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a920 size: 4
- address 0x0x7ffeafd4a920 is not a program variable
- After push: SP = 0x7ffeafd4a928
+ var_addr: 0x00060103c mem_addr: 0x7ffd19c62830 size: 4
+ address 0x0x7ffd19c62830 is not a program variable
+ After push: SP = 0x7ffd19c62838
  Register Record
  	Event num: 60
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: r14
- 	Value: 0x0x7ffeafd4aa38
+ 	Value: 0x0x7ffd19c62948
  Register Record
  	Event num: 61
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: r13
- 	Value: 0x0x7ffeafd4aa48
+ 	Value: 0x0x7ffd19c62958
  Register Record
  	Event num: 62
  	Line #: 0
@@ -2655,13 +1753,13 @@ type name = int
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7ffeafd4a920
+ 	Value: 0x0x7ffd19c62830
  Register Record
  	Event num: 65
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rflags
- 	Value: 0x0x000000202
+ 	Value: 0x0x000000206
  Register Record
  	Event num: 66
  	Line #: 0
@@ -2674,7 +1772,7 @@ type name = int
  	File: __NOCSOURCE__
  	Register: rflags
  	Value: 0x0x000000202
- 0x00040095c: W 0x7ffeafd4a918 8
+ 0x00040059c: W 0x7ffd19c62828 8
  value before write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  Enter before_function_direct_call
  Call to function
@@ -2684,9 +1782,9 @@ type name = int
  	Inv line: 0
  	Func file: __NOCSOURCE__
  	Inv file: __NOCSOURCE__
- 	Callee address: 0x0x000400538
+ 	Callee address: 0x0x0004003c8
 
- frec = 0x0x7f95bbb0d980
+ frec = 0x0x7f4a6a747980
  Built frec
  Wrote frec
  Exit before_function_direct_call
@@ -2695,20 +1793,20 @@ type name = int
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
- 	Value: 0x0x000400538
+ 	Value: 0x0x0004003c8
  Register Record
  	Event num: 71
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7ffeafd4a918
+ 	Value: 0x0x7ffd19c62828
  value after write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  Enter is_at_address
- trec = 0x7f95cf67be00
+ trec = 0x7f4a7e2bbe00
 type name = int
  Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a910 size: 4
- address 0x0x7ffeafd4a910 is not a program variable
+ var_addr: 0x00060103c mem_addr: 0x7ffd19c62820 size: 4
+ address 0x0x7ffd19c62820 is not a program variable
  Enter after_function_call
  No output found
  function return
@@ -2721,14 +1819,14 @@ type name = int
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7ffeafd4a910
+ 	Value: 0x0x7ffd19c62820
  Register Record
  	Event num: 75
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rflags
  	Value: 0x0x000000202
- 0x00040053cR 0x000600ff8 8
+ 0x0004003ccR 0x000600ff8 8
  line number 0
  value before read : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  Invocation ID:73function _init was called. Frame pointer was 0x000000001
  Register Record
@@ -2748,30 +1846,30 @@ type name = int
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7ffeafd4a918
+ 	Value: 0x0x7ffd19c62828
  Register Record
  	Event num: 80
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rflags
  	Value: 0x0x000000206
- 0x000400551R 0x7ffeafd4a918 8
+ 0x0004003e1R 0x7ffd19c62828 8
  line number 0
- value before read : 0x61  0x9  0x40  0x0  0x0  0x0  0x0  0x0  Invocation ID:73function _init was called. Frame pointer was 0x000000001
- Before return: SP = 0x7ffeafd4a918
+ value before read : 0xa1  0x5  0x40  0x0  0x0  0x0  0x0  0x0  Invocation ID:73function _init was called. Frame pointer was 0x000000001
+ Before return: SP = 0x7ffd19c62828
  Register Record
  	Event num: 83
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
- 	Value: 0x0x000400961
+ 	Value: 0x0x0004005a1
  Register Record
  	Event num: 84
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7ffeafd4a920
- After return : SP = 0x7ffeafd4a920
+ 	Value: 0x0x7ffd19c62830
+ After return : SP = 0x7ffd19c62830
  Register Record
  	Event num: 85
  	Line #: 0
@@ -2783,7 +1881,7 @@ type name = int
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
- 	Value: 0x0x000400966
+ 	Value: 0x0x0004005a6
  Register Record
  	Event num: 87
  	Line #: 0
@@ -2801,24 +1899,24 @@ type name = int
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rdx
- 	Value: 0x0x7ffeafd4aa48
+ 	Value: 0x0x7ffd19c62958
  Register Record
  	Event num: 90
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsi
- 	Value: 0x0x7ffeafd4aa38
+ 	Value: 0x0x7ffd19c62948
  Register Record
  	Event num: 91
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: edi
  	Value: 0x0x000000001
- 0x000400979R 0x000600e10 8
+ 0x0004005b9R 0x000600e10 8
  line number 0
- value before read : 0xc0  0x6  0x40  0x0  0x0  0x0  0x0  0x0  Invocation ID:73function _init was called. Frame pointer was 0x000000001
- 0x000400979: W 0x7ffeafd4a918 8
- value before write : 0x61  0x9  0x40  0x0  0x0  0x0  0x0  0x0  
+ value before read : 0x0  0x5  0x40  0x0  0x0  0x0  0x0  0x0  Invocation ID:73function _init was called. Frame pointer was 0x000000001
+ 0x0004005b9: W 0x7ffd19c62828 8
+ value before write : 0xa1  0x5  0x40  0x0  0x0  0x0  0x0  0x0  
  Enter before_function_indirect_call
  Exit before_function_indirect_call
  Register Record
@@ -2826,20 +1924,20 @@ type name = int
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
- 	Value: 0x0x0004006c0
+ 	Value: 0x0x000400500
  Register Record
  	Event num: 95
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7ffeafd4a918
+ 	Value: 0x0x7ffd19c62828
  value after write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  Enter is_at_address
- trec = 0x7f95cf67be00
+ trec = 0x7f4a7e2bbe00
 type name = int
  Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a910 size: 4
- address 0x0x7ffeafd4a910 is not a program variable
+ var_addr: 0x00060103c mem_addr: 0x7ffd19c62820 size: 4
+ address 0x0x7ffd19c62820 is not a program variable
  Enter after_function_call
  No output found
  function return
@@ -2851,7 +1949,7 @@ type name = int
  	File: __NOCSOURCE__
  	Register: edi
  	Value: 0x0x000600e20
- 0x0004006c5R 0x000600e20 8
+ 0x000400505R 0x000600e20 8
  line number 0
  value before read : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  Invocation ID:73function frame_dummy was called. Frame pointer was 0x000000001
  Register Record
@@ -2865,13 +1963,13 @@ type name = int
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
- 	Value: 0x0x0004006cb
+ 	Value: 0x0x00040050b
  Register Record
  	Event num: 101
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
- 	Value: 0x0x000400660
+ 	Value: 0x0x0004004a0
  Function Call to register_tm_clones
  after push stack size:4
  Invocation ID:102function register_tm_clones was called. Frame pointer was 0x000000001
@@ -2880,24 +1978,24 @@ type name = int
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: esi
- 	Value: 0x0x000601068
- 0x000400665: W 0x7ffeafd4a910 8
+ 	Value: 0x0x000601038
+ 0x0004004a5: W 0x7ffd19c62820 8
  value before write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- Before push: SP = 0x7ffeafd4a918
+ Before push: SP = 0x7ffd19c62828
  Register Record
  	Event num: 106
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7ffeafd4a910
- value after write : 0x76  0x64  0x73  0x6f  0x5f  0x67  0x65  0x74  
+ 	Value: 0x0x7ffd19c62820
+ value after write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  Enter is_at_address
- trec = 0x7f95cf67be00
+ trec = 0x7f4a7e2bbe00
 type name = int
  Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a908 size: 4
- address 0x0x7ffeafd4a908 is not a program variable
- After push: SP = 0x7ffeafd4a910
+ var_addr: 0x00060103c mem_addr: 0x7ffd19c62818 size: 4
+ address 0x0x7ffd19c62818 is not a program variable
+ After push: SP = 0x7ffd19c62820
  Register Record
  	Event num: 107
  	Line #: 0
@@ -2927,7 +2025,7 @@ type name = int
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rbp
- 	Value: 0x0x7ffeafd4a910
+ 	Value: 0x0x7ffd19c62820
  Register Record
  	Event num: 112
  	Line #: 0
@@ -2970,10 +2068,10 @@ type name = int
  	File: __NOCSOURCE__
  	Register: rflags
  	Value: 0x0x000000246
- 0x000400698R 0x7ffeafd4a910 8
+ 0x0004004d8R 0x7ffd19c62820 8
  line number 0
- value before read : 0x1  0x0  0x0  0x0  0x0  0x0  0x0  0x0  Invocation ID:102function register_tm_clones was called. Frame pointer was 0x7ffeafd4a910
- Before pop: SP = 0x7ffeafd4a910
+ value before read : 0x1  0x0  0x0  0x0  0x0  0x0  0x0  0x0  Invocation ID:102function register_tm_clones was called. Frame pointer was 0x7ffd19c62820
+ Before pop: SP = 0x7ffd19c62820
  Register Record
  	Event num: 121
  	Line #: 0
@@ -2985,25 +2083,25 @@ type name = int
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7ffeafd4a918
- After pop: SP = 0x7ffeafd4a918
- 0x000400699R 0x7ffeafd4a918 8
+ 	Value: 0x0x7ffd19c62828
+ After pop: SP = 0x7ffd19c62828
+ 0x0004004d9R 0x7ffd19c62828 8
  line number 0
- value before read : 0x7d  0x9  0x40  0x0  0x0  0x0  0x0  0x0  Invocation ID:102function register_tm_clones was called. Frame pointer was 0x000000001
- Before return: SP = 0x7ffeafd4a918
+ value before read : 0xbd  0x5  0x40  0x0  0x0  0x0  0x0  0x0  Invocation ID:102function register_tm_clones was called. Frame pointer was 0x000000001
+ Before return: SP = 0x7ffd19c62828
  Register Record
  	Event num: 125
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
- 	Value: 0x0x00040097d
+ 	Value: 0x0x0004005bd
  Register Record
  	Event num: 126
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7ffeafd4a920
- After return : SP = 0x7ffeafd4a920
+ 	Value: 0x0x7ffd19c62830
+ After return : SP = 0x7ffd19c62830
  Register Record
  	Event num: 127
  	Line #: 0
@@ -3027,23 +2125,23 @@ type name = int
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
- 	Value: 0x0x000400986
+ 	Value: 0x0x0004005c6
  Register Record
  	Event num: 131
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7ffeafd4a928
+ 	Value: 0x0x7ffd19c62838
  Register Record
  	Event num: 132
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rflags
- 	Value: 0x0x000000206
- 0x00040098aR 0x7ffeafd4a928 8
+ 	Value: 0x0x000000202
+ 0x0004005caR 0x7ffd19c62838 8
  line number 0
  value before read : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  Invocation ID:102function register_tm_clones was called. Frame pointer was 0x000000001
- Before pop: SP = 0x7ffeafd4a928
+ Before pop: SP = 0x7ffd19c62838
  Register Record
  	Event num: 135
  	Line #: 0
@@ -3055,63 +2153,63 @@ type name = int
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7ffeafd4a930
- After pop: SP = 0x7ffeafd4a930
- 0x00040098bR 0x7ffeafd4a930 8
+ 	Value: 0x0x7ffd19c62840
+ After pop: SP = 0x7ffd19c62840
+ 0x0004005cbR 0x7ffd19c62840 8
  line number 0
- value before read : 0x30  0x9  0x40  0x0  0x0  0x0  0x0  0x0  Invocation ID:102function register_tm_clones was called. Frame pointer was 0x000000001
- Before pop: SP = 0x7ffeafd4a930
+ value before read : 0x70  0x5  0x40  0x0  0x0  0x0  0x0  0x0  Invocation ID:102function register_tm_clones was called. Frame pointer was 0x000000001
+ Before pop: SP = 0x7ffd19c62840
  Register Record
  	Event num: 139
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rbp
- 	Value: 0x0x000400930
+ 	Value: 0x0x000400570
  Register Record
  	Event num: 140
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7ffeafd4a938
- After pop: SP = 0x7ffeafd4a938
- 0x00040098cR 0x7ffeafd4a938 8
+ 	Value: 0x0x7ffd19c62848
+ After pop: SP = 0x7ffd19c62848
+ 0x0004005ccR 0x7ffd19c62848 8
  line number 0
- value before read : 0xf0  0x5  0x40  0x0  0x0  0x0  0x0  0x0  Invocation ID:102function register_tm_clones was called. Frame pointer was 0x000400930
- Before pop: SP = 0x7ffeafd4a938
+ value before read : 0x30  0x4  0x40  0x0  0x0  0x0  0x0  0x0  Invocation ID:102function register_tm_clones was called. Frame pointer was 0x000400570
+ Before pop: SP = 0x7ffd19c62848
  Register Record
  	Event num: 143
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: r12
- 	Value: 0x0x0004005f0
+ 	Value: 0x0x000400430
  Register Record
  	Event num: 144
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7ffeafd4a940
- After pop: SP = 0x7ffeafd4a940
- 0x00040098eR 0x7ffeafd4a940 8
+ 	Value: 0x0x7ffd19c62850
+ After pop: SP = 0x7ffd19c62850
+ 0x0004005ceR 0x7ffd19c62850 8
  line number 0
- value before read : 0x30  0xaa  0xd4  0xaf  0xfe  0x7f  0x0  0x0  Invocation ID:102function register_tm_clones was called. Frame pointer was 0x000400930
- Before pop: SP = 0x7ffeafd4a940
+ value before read : 0x40  0x29  0xc6  0x19  0xfd  0x7f  0x0  0x0  Invocation ID:102function register_tm_clones was called. Frame pointer was 0x000400570
+ Before pop: SP = 0x7ffd19c62850
  Register Record
  	Event num: 147
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: r13
- 	Value: 0x0x7ffeafd4aa30
+ 	Value: 0x0x7ffd19c62940
  Register Record
  	Event num: 148
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7ffeafd4a948
- After pop: SP = 0x7ffeafd4a948
- 0x000400990R 0x7ffeafd4a948 8
+ 	Value: 0x0x7ffd19c62858
+ After pop: SP = 0x7ffd19c62858
+ 0x0004005d0R 0x7ffd19c62858 8
  line number 0
- value before read : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  Invocation ID:102function register_tm_clones was called. Frame pointer was 0x000400930
- Before pop: SP = 0x7ffeafd4a948
+ value before read : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  Invocation ID:102function register_tm_clones was called. Frame pointer was 0x000400570
+ Before pop: SP = 0x7ffd19c62858
  Register Record
  	Event num: 151
  	Line #: 0
@@ -3123,12 +2221,12 @@ type name = int
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7ffeafd4a950
- After pop: SP = 0x7ffeafd4a950
- 0x000400992R 0x7ffeafd4a950 8
+ 	Value: 0x0x7ffd19c62860
+ After pop: SP = 0x7ffd19c62860
+ 0x0004005d2R 0x7ffd19c62860 8
  line number 0
- value before read : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  Invocation ID:102function register_tm_clones was called. Frame pointer was 0x000400930
- Before pop: SP = 0x7ffeafd4a950
+ value before read : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  Invocation ID:102function register_tm_clones was called. Frame pointer was 0x000400570
+ Before pop: SP = 0x7ffd19c62860
  Register Record
  	Event num: 155
  	Line #: 0
@@ -3140,2662 +2238,658 @@ type name = int
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7ffeafd4a958
- After pop: SP = 0x7ffeafd4a958
- 0x000400994R 0x7ffeafd4a958 8
+ 	Value: 0x0x7ffd19c62868
+ After pop: SP = 0x7ffd19c62868
+ 0x0004005d4R 0x7ffd19c62868 8
  line number 0
- value before read : 0xbf  0xa7  0xc3  0xbb  0x95  0x7f  0x0  0x0  Invocation ID:102function register_tm_clones was called. Frame pointer was 0x000400930
- Before return: SP = 0x7ffeafd4a958
+ value before read : 0xbf  0x77  0x88  0x6a  0x4a  0x7f  0x0  0x0  Invocation ID:102function register_tm_clones was called. Frame pointer was 0x000400570
+ Before return: SP = 0x7ffd19c62868
  Register Record
  	Event num: 159
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
- 	Value: 0x0x7f95bbc3a7bf
+ 	Value: 0x0x7f4a6a8877bf
  Register Record
  	Event num: 160
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7ffeafd4a960
- After return : SP = 0x7ffeafd4a960
+ 	Value: 0x0x7ffd19c62870
+ After return : SP = 0x7ffd19c62870
  Function Call to main
  after push stack size:3
- Invocation ID:161function main was called. Frame pointer was 0x000400930
+ Invocation ID:161function main was called. Frame pointer was 0x000400570
  Call to function
  	Event num: 161
  	Function name: main
- 	Func line: 7
+ 	Func line: 6
  	Inv line: 0
- 	Func file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
+ 	Func file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Inv file: __NOFUNCTIONNAME__
- 	Callee address: 0x0x0004006e6
+ 	Callee address: 00x000400526
 
- frec = 0x0x7f95bbb0d4c0
+ frec = 00x7f4a6a7474c0
  Getting frame pointer for main
- Address being read: 0x0x000400930
- Address being read: 0x0x000400938
+ Address being read: 0x0x000400570
+ Address being read: 0x0x000400578
  Return address
  	Function name: main
  	Dynamic link: 0x0x41ff894156415741
- 	Return address: 0x0x4ce258d4c544155
+ 	Return address: 0x0x88e258d4c544155
  Built frec
  Wrote frec
- 0x0004006e6: W 0x7ffeafd4a950 8
+ 0x000400526: W 0x7ffd19c62860 8
  value before write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- Before push: SP = 0x7ffeafd4a958
+ Before push: SP = 0x7ffd19c62868
  Register Record
  	Event num: 165
- 	Line #: 7
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
+ 	Line #: 6
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Register: rsp
- 	Value: 0x0x7ffeafd4a950
+ 	Value: 0x0x7ffd19c62860
  value after write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  In var_record::pc_in_range
  In var_record::find_address_in_subprog
  Checking variable b
  Enter is_at_address
- trec = 0x7f95cf67be00
+ trec = 0x7f4a7e2bbe00
 type name = int
  Getting base address for a local or param
- var_addr: 0x00040091c mem_addr: 0x7ffeafd4a948 size: 4
+ var_addr: 0x000400564 mem_addr: 0x7ffd19c62858 size: 4
  Checking variable p
  Enter is_at_address
- trec = 0x7f95cf67bbc0
+ trec = 0x7f4a7e2bbbc0
 type name = *int
  Getting base address for a local or param
- var_addr: 0x000400920 mem_addr: 0x7ffeafd4a948 size: 8
+ var_addr: 0x000400568 mem_addr: 0x7ffd19c62858 size: 8
  Leave var_record::find_address_in_subprog
  Enter is_at_address
- trec = 0x7f95cf67be00
+ trec = 0x7f4a7e2bbe00
 type name = int
  Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a948 size: 4
- address 0x0x7ffeafd4a948 is not a program variable
- After push: SP = 0x7ffeafd4a950
+ var_addr: 0x00060103c mem_addr: 0x7ffd19c62858 size: 4
+ address 0x0x7ffd19c62858 is not a program variable
+ After push: SP = 0x7ffd19c62860
  Register Record
  	Event num: 166
- 	Line #: 7
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
+ 	Line #: 6
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Register: rbp
- 	Value: 0x0x7ffeafd4a950
+ 	Value: 0x0x7ffd19c62860
  Register Record
  	Event num: 167
- 	Line #: 7
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
+ 	Line #: 6
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Register: rsp
- 	Value: 0x0x7ffeafd4a930
+ 	Value: 0x0x7ffd19c62850
  Register Record
  	Event num: 168
- 	Line #: 7
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
+ 	Line #: 6
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Register: rflags
  	Value: 0x0x000000206
- 0x0004006eeR 0x7f95bbbde728 8
- line number 7
- value before read : 0x0  0xd8  0x9  0xa8  0x63  0xb3  0x94  0x7e  Invocation ID:161function main was called. Frame pointer was 0x7ffeafd4a950
  Register Record
- 	Event num: 170
- 	Line #: 7
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
+ 	Event num: 169
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Register: rax
- 	Value: 0x0x7e94b363a809d800
- 0x0004006f7: W 0x7ffeafd4a948 8
+ 	Value: 0x0x7ffd19c62854
+ 0x000400532: W 0x7ffd19c62858 8
  value before write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- value after write : 0x0  0xd8  0x9  0xa8  0x63  0xb3  0x94  0x7e  
+ value after write : 0x54  0x28  0xc6  0x19  0xfd  0x7f  0x0  0x0  
  In var_record::pc_in_range
  In var_record::find_address_in_subprog
  Checking variable b
  Enter is_at_address
- trec = 0x7f95cf67be00
+ trec = 0x7f4a7e2bbe00
 type name = int
  Getting base address for a local or param
- var_addr: 0x7ffeafd4a93c mem_addr: 0x7ffeafd4a948 size: 4
+ var_addr: 0x7ffd19c62854 mem_addr: 0x7ffd19c62858 size: 4
  Checking variable p
  Enter is_at_address
- trec = 0x7f95cf67bbc0
+ trec = 0x7f4a7e2bbbc0
 type name = *int
  Getting base address for a local or param
- var_addr: 0x7ffeafd4a940 mem_addr: 0x7ffeafd4a948 size: 8
- Leave var_record::find_address_in_subprog
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a948 size: 4
- address 0x0x7ffeafd4a948 is not a program variable
- Register Record
- 	Event num: 172
- 	Line #: 7
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Register: eax
- 	Value: 0x0x000000000
- Register Record
- 	Event num: 173
- 	Line #: 7
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Register: rflags
- 	Value: 0x0x000000246
- Register Record
- 	Event num: 174
- 	Line #: 10
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Register: rax
- 	Value: 0x0x7ffeafd4a93c
- 0x000400701: W 0x7ffeafd4a940 8
- value before write : 0x30  0xaa  0xd4  0xaf  0xfe  0x7f  0x0  0x0  
- value after write : 0x3c  0xa9  0xd4  0xaf  0xfe  0x7f  0x0  0x0  
- In var_record::pc_in_range
- In var_record::find_address_in_subprog
- Checking variable b
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a local or param
- var_addr: 0x7ffeafd4a93c mem_addr: 0x7ffeafd4a940 size: 4
- Checking variable p
- Enter is_at_address
- trec = 0x7f95cf67bbc0
-type name = *int
- Getting base address for a local or param
- var_addr: 0x7ffeafd4a940 mem_addr: 0x7ffeafd4a940 size: 8
+ var_addr: 0x7ffd19c62858 mem_addr: 0x7ffd19c62858 size: 8
  Leave var_record::find_address_in_subprog
  Write to an address p
 prefix = 
  In var_recod::read_value
  Type is *int
- Reading 8 bytes at address: 0x7ffeafd4a940
+ Reading 8 bytes at address: 0x7ffd19c62858
  Write to variable p
- 	Event num: 176
- 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
+ 	Event num: 171
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Scope: main
- 	Address: 0x0x7ffeafd4a940
+ 	Address: 0x0x7ffd19c62858
  	Type: *int
- 	Value: 140731848370492
+ 	Value: 140725035870292
 
- Register Record
- 	Event num: 177
- 	Line #: 12
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Register: edi
- 	Value: 0x0x0004009b4
- Register Record
- 	Event num: 178
- 	Line #: 12
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Register: eax
- 	Value: 0x0x000000000
- 0x00040070f: W 0x7ffeafd4a928 8
- value before write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- Enter before_function_direct_call
- Call to function
- 	Event num: 180
- 	Function name: __NOFUNCTIONNAME__
- 	Func line: 0
- 	Inv line: 12
- 	Func file: __NOCSOURCE__
- 	Inv file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Callee address: 0x0x000400776
-
- frec = 0x0x7f95bbb0d4c0
- Built frec
- Wrote frec
- Exit before_function_direct_call
- Register Record
- 	Event num: 181
- 	Line #: 12
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Register: rip
- 	Value: 0x0x000400776
- Register Record
- 	Event num: 182
- 	Line #: 12
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Register: rsp
- 	Value: 0x0x7ffeafd4a928
- value after write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- In var_record::pc_in_range
- In var_record::find_address_in_subprog
- Checking variable b
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a local or param
- var_addr: 0x7ffeafd4a93c mem_addr: 0x7ffeafd4a920 size: 4
- Checking variable p
- Enter is_at_address
- trec = 0x7f95cf67bbc0
-type name = *int
- Getting base address for a local or param
- var_addr: 0x7ffeafd4a940 mem_addr: 0x7ffeafd4a920 size: 8
- Leave var_record::find_address_in_subprog
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a920 size: 4
- address 0x0x7ffeafd4a920 is not a program variable
- Enter after_function_call
- No output found
- function return
- Exit after_function_call
- Function Call to vaccs_printf
- after push stack size:4
- Invocation ID:184function vaccs_printf was called. Frame pointer was 0x7ffeafd4a950
- 0x000400776: W 0x7ffeafd4a920 8
- value before write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- Before push: SP = 0x7ffeafd4a928
- Register Record
- 	Event num: 187
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7ffeafd4a920
- value after write : 0x7d  0x9  0x40  0x0  0x0  0x0  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a918 size: 4
- address 0x0x7ffeafd4a918 is not a program variable
- After push: SP = 0x7ffeafd4a920
- Register Record
- 	Event num: 188
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7ffeafd4a740
- Register Record
- 	Event num: 189
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rflags
- 	Value: 0x0x000000202
- Register Record
- 	Event num: 190
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rbx
- 	Value: 0x0x0004009b4
- 0x000400781: W 0x7ffeafd4a878 8
- value before write : 0x23  0x89  0x6e  0xcf  0x95  0x7f  0x0  0x0  
- value after write : 0x38  0xaa  0xd4  0xaf  0xfe  0x7f  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a878 size: 4
- address 0x0x7ffeafd4a878 is not a program variable
- 0x000400789: W 0x7ffeafd4a880 8
- value before write : 0x0  0x0  0x0  0x0  0x0  0xff  0x0  0x0  
- value after write : 0x48  0xaa  0xd4  0xaf  0xfe  0x7f  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a880 size: 4
- address 0x0x7ffeafd4a880 is not a program variable
- 0x000400791: W 0x7ffeafd4a888 8
- value before write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- value after write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a888 size: 4
- address 0x0x7ffeafd4a888 is not a program variable
- 0x000400799: W 0x7ffeafd4a890 8
- value before write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- value after write : 0xa0  0x9  0x40  0x0  0x0  0x0  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a890 size: 4
- address 0x0x7ffeafd4a890 is not a program variable
- 0x0004007a1: W 0x7ffeafd4a898 8
- value before write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- value after write : 0xb0  0x1a  0x6e  0xcf  0x95  0x7f  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a898 size: 4
- address 0x0x7ffeafd4a898 is not a program variable
- Register Record
- 	Event num: 196
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rflags
- 	Value: 0x0x000000246
- 0x0004007edR 0x7f95bbbde728 8
- line number 0
- value before read : 0x0  0xd8  0x9  0xa8  0x63  0xb3  0x94  0x7e  Invocation ID:184function vaccs_printf was called. Frame pointer was 0x7ffeafd4a950
- Register Record
- 	Event num: 198
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rax
- 	Value: 0x0x7e94b363a809d800
- 0x0004007f6: W 0x7ffeafd4a868 8
- value before write : 0x10  0xa4  0xc2  0xbb  0x95  0x7f  0x0  0x0  
- value after write : 0x0  0xd8  0x9  0xa8  0x63  0xb3  0x94  0x7e  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a868 size: 4
- address 0x0x7ffeafd4a868 is not a program variable
- Register Record
- 	Event num: 200
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: eax
- 	Value: 0x0x000000000
- Register Record
- 	Event num: 201
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rflags
- 	Value: 0x0x000000246
- 0x000400800: W 0x7ffeafd4a748 4
- value before write : 0x68  0x81  0x8f  0xcf  
- value after write : 0x8  0x0  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a748 size: 4
- address 0x0x7ffeafd4a748 is not a program variable
- 0x000400808: W 0x7ffeafd4a74c 4
- value before write : 0x95  0x7f  0x0  0x0  
- value after write : 0x30  0x0  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a74c size: 4
- address 0x0x7ffeafd4a74c is not a program variable
- Register Record
- 	Event num: 204
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rax
- 	Value: 0x0x7ffeafd4a930
- 0x000400818: W 0x7ffeafd4a750 8
- value before write : 0x26  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- value after write : 0x30  0xa9  0xd4  0xaf  0xfe  0x7f  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a750 size: 4
- address 0x0x7ffeafd4a750 is not a program variable
- Register Record
- 	Event num: 206
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rax
- 	Value: 0x0x7ffeafd4a870
- 0x000400825: W 0x7ffeafd4a758 8
- value before write : 0x80  0xa8  0xd4  0xaf  0xfe  0x7f  0x0  0x0  
- value after write : 0x70  0xa8  0xd4  0xaf  0xfe  0x7f  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a758 size: 4
- address 0x0x7ffeafd4a758 is not a program variable
- 0x00040082aR 0x000601060 4
- line number 0
- value before read : 0xff  0xff  0xff  0xff  Invocation ID:184function vaccs_printf was called. Frame pointer was 0x7ffeafd4a950
- Register Record
- 	Event num: 209
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rflags
- 	Value: 0x0x000000246
- Register Record
- 	Event num: 210
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x000400833
- Register Record
- 	Event num: 211
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: esi
- 	Value: 0x0x000000001
- Register Record
- 	Event num: 212
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: edi
- 	Value: 0x0x0004009e5
- Register Record
- 	Event num: 213
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: eax
- 	Value: 0x0x000000000
- 0x000400842: W 0x7ffeafd4a738 8
- value before write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- Enter before_function_direct_call
- Call to function
- 	Event num: 215
- 	Function name: __NOFUNCTIONNAME__
- 	Func line: 0
- 	Inv line: 0
- 	Func file: __NOCSOURCE__
- 	Inv file: __NOCSOURCE__
- 	Callee address: 0x0x0004005d0
-
- frec = 0x0x7f95bbb0d480
- Built frec
- Wrote frec
- Exit before_function_direct_call
- Register Record
- 	Event num: 216
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x0004005d0
- Register Record
- 	Event num: 217
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7ffeafd4a738
- value after write : 0x1  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a730 size: 4
- address 0x0x7ffeafd4a730 is not a program variable
- Enter after_function_call
- No output found
- function return
- Exit after_function_call
- Function Call to open@plt
- after push stack size:5
- Invocation ID:219function open@plt was called. Frame pointer was 0x7ffeafd4a950
- 0x0004005d0R 0x000601048 8
- line number 0
- value before read : 0xd6  0x5  0x40  0x0  0x0  0x0  0x0  0x0  Invocation ID:219function open@plt was called. Frame pointer was 0x7ffeafd4a950
- Register Record
- 	Event num: 221
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x0004005d6
- 0x0004005d6: W 0x7ffeafd4a730 8
- value before write : 0x1  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- Before push: SP = 0x7ffeafd4a738
- Register Record
- 	Event num: 224
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7ffeafd4a730
- value after write : 0x50  0xe5  0x0  0xbc  0x95  0x7f  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a728 size: 4
- address 0x0x7ffeafd4a728 is not a program variable
- After push: SP = 0x7ffeafd4a730
- Register Record
- 	Event num: 225
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x000400560
- Function Call to .plt
- 0x000400560R 0x000601008 8
- line number 0
- value before read : 0x68  0x81  0x8f  0xcf  0x95  0x7f  0x0  0x0  Invocation ID:219function .plt was called. Frame pointer was 0x7ffeafd4a950
- 0x000400560: W 0x7ffeafd4a728 8
- value before write : 0x50  0xe5  0x0  0xbc  0x95  0x7f  0x0  0x0  
- Before push: SP = 0x7ffeafd4a730
- Register Record
- 	Event num: 229
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7ffeafd4a728
- value after write : 0x1  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a720 size: 4
- address 0x0x7ffeafd4a720 is not a program variable
- After push: SP = 0x7ffeafd4a728
- 0x000400566R 0x000601010 8
- line number 0
- value before read : 0x70  0x88  0x6e  0xcf  0x95  0x7f  0x0  0x0  Invocation ID:219function .plt was called. Frame pointer was 0x7ffeafd4a950
- Register Record
- 	Event num: 231
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x7f95cf6e8870
- 0x000400847: W 0x000601060 4
- value before write : 0xff  0xff  0xff  0xff  
- value after write : 0x4  0x0  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x000601060 size: 4
- address 0x0x000601060 is not a program variable
- Register Record
- 	Event num: 233
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rflags
- 	Value: 0x0x000000217
- Register Record
- 	Event num: 234
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: r9
- 	Value: 0x0x7ffeafd4a748
- Register Record
- 	Event num: 235
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: r8
- 	Value: 0x0x0004009b4
- Register Record
- 	Event num: 236
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: ecx
- 	Value: 0x0x0000000ff
- Register Record
- 	Event num: 237
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: edx
- 	Value: 0x0x000000001
- Register Record
- 	Event num: 238
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: esi
- 	Value: 0x0x0000000ff
- Register Record
- 	Event num: 239
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rdi
- 	Value: 0x0x7ffeafd4a760
- 0x000400887: W 0x7ffeafd4a738 8
- value before write : 0x47  0x8  0x40  0x0  0x0  0x0  0x0  0x0  
- Enter before_function_direct_call
- Call to function
- 	Event num: 241
- 	Function name: __NOFUNCTIONNAME__
- 	Func line: 0
- 	Inv line: 0
- 	Func file: __NOCSOURCE__
- 	Inv file: __NOCSOURCE__
- 	Callee address: 0x0x0004005b0
-
- frec = 0x0x7f95bbab6740
- Built frec
- Wrote frec
- Exit before_function_direct_call
- Register Record
- 	Event num: 242
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x0004005b0
- Register Record
- 	Event num: 243
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7ffeafd4a738
- value after write : 0x6  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a730 size: 4
- address 0x0x7ffeafd4a730 is not a program variable
- Enter after_function_call
- No output found
- function return
- Exit after_function_call
- Function Call to __vsnprintf_chk@plt
- after push stack size:6
- Invocation ID:245function __vsnprintf_chk@plt was called. Frame pointer was 0x7ffeafd4a950
- 0x0004005b0R 0x000601038 8
- line number 0
- value before read : 0xb6  0x5  0x40  0x0  0x0  0x0  0x0  0x0  Invocation ID:245function __vsnprintf_chk@plt was called. Frame pointer was 0x7ffeafd4a950
- Register Record
- 	Event num: 247
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x0004005b6
- 0x0004005b6: W 0x7ffeafd4a730 8
- value before write : 0x6  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- Before push: SP = 0x7ffeafd4a738
- Register Record
- 	Event num: 250
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7ffeafd4a730
- value after write : 0x68  0x81  0x8f  0xcf  0x95  0x7f  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a728 size: 4
- address 0x0x7ffeafd4a728 is not a program variable
- After push: SP = 0x7ffeafd4a730
- Register Record
- 	Event num: 251
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x000400560
- Function Call to .plt
- 0x000400560R 0x000601008 8
- line number 0
- value before read : 0x68  0x81  0x8f  0xcf  0x95  0x7f  0x0  0x0  Invocation ID:245function .plt was called. Frame pointer was 0x7ffeafd4a950
- 0x000400560: W 0x7ffeafd4a728 8
- value before write : 0x68  0x81  0x8f  0xcf  0x95  0x7f  0x0  0x0  
- Before push: SP = 0x7ffeafd4a730
- Register Record
- 	Event num: 255
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7ffeafd4a728
- value after write : 0xb4  0x9  0x40  0x0  0x0  0x0  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a720 size: 4
- address 0x0x7ffeafd4a720 is not a program variable
- After push: SP = 0x7ffeafd4a728
- 0x000400566R 0x000601010 8
- line number 0
- value before read : 0x70  0x88  0x6e  0xcf  0x95  0x7f  0x0  0x0  Invocation ID:245function .plt was called. Frame pointer was 0x7ffeafd4a950
- Register Record
- 	Event num: 257
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x7f95cf6e8870
- Register Record
- 	Event num: 258
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: ebx
- 	Value: 0x0x00000000e
- Register Record
- 	Event num: 259
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rflags
- 	Value: 0x0x000000283
- Register Record
- 	Event num: 260
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rdx
- 	Value: 0x0x7ffeafd4a760
- Register Record
- 	Event num: 261
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: esi
- 	Value: 0x0x000400a06
- Register Record
- 	Event num: 262
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: edi
- 	Value: 0x0x000000001
- Register Record
- 	Event num: 263
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: eax
- 	Value: 0x0x000000000
- 0x0004008c2: W 0x7ffeafd4a738 8
- value before write : 0x8c  0x8  0x40  0x0  0x0  0x0  0x0  0x0  
- Enter before_function_direct_call
- Call to function
- 	Event num: 265
- 	Function name: __NOFUNCTIONNAME__
- 	Func line: 0
- 	Inv line: 0
- 	Func file: __NOCSOURCE__
- 	Inv file: __NOCSOURCE__
- 	Callee address: 0x0x0004005c0
-
- frec = 0x0x7f95bbab66c0
- Built frec
- Wrote frec
- Exit before_function_direct_call
- Register Record
- 	Event num: 266
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x0004005c0
- Register Record
- 	Event num: 267
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7ffeafd4a738
- value after write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a730 size: 4
- address 0x0x7ffeafd4a730 is not a program variable
- Enter after_function_call
- No output found
- function return
- Exit after_function_call
- Function Call to __printf_chk@plt
- after push stack size:7
- Invocation ID:269function __printf_chk@plt was called. Frame pointer was 0x7ffeafd4a950
- 0x0004005c0R 0x000601040 8
- line number 0
- value before read : 0xc6  0x5  0x40  0x0  0x0  0x0  0x0  0x0  Invocation ID:269function __printf_chk@plt was called. Frame pointer was 0x7ffeafd4a950
- Register Record
- 	Event num: 271
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x0004005c6
- 0x0004005c6: W 0x7ffeafd4a730 8
- value before write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- Before push: SP = 0x7ffeafd4a738
- Register Record
- 	Event num: 274
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7ffeafd4a730
- value after write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a728 size: 4
- address 0x0x7ffeafd4a728 is not a program variable
- After push: SP = 0x7ffeafd4a730
- Register Record
- 	Event num: 275
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x000400560
- Function Call to .plt
- 0x000400560R 0x000601008 8
- line number 0
- value before read : 0x68  0x81  0x8f  0xcf  0x95  0x7f  0x0  0x0  Invocation ID:269function .plt was called. Frame pointer was 0x7ffeafd4a950
- 0x000400560: W 0x7ffeafd4a728 8
- value before write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- Before push: SP = 0x7ffeafd4a730
- Register Record
- 	Event num: 279
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7ffeafd4a728
- value after write : 0x30  0xaa  0xd4  0xaf  0xfe  0x7f  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a720 size: 4
- address 0x0x7ffeafd4a720 is not a program variable
- After push: SP = 0x7ffeafd4a728
- 0x000400566R 0x000601010 8
- line number 0
- value before read : 0x70  0x88  0x6e  0xcf  0x95  0x7f  0x0  0x0  Invocation ID:269function .plt was called. Frame pointer was 0x7ffeafd4a950
- Register Record
- 	Event num: 281
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x7f95cf6e8870
- enter
- malloc(1024)
- function __vsnprintf_chk@plt  Frame pointer was 0x7ffeafd4a950
- exit
- 0x0004008c7R 0x000601060 4
- line number 0
- value before read : 0x4  0x0  0x0  0x0  Invocation ID:269function .plt was called. Frame pointer was 0x7ffeafd4a950
- Register Record
- 	Event num: 284
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: edi
- 	Value: 0x0x000000004
- Register Record
- 	Event num: 285
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rflags
- 	Value: 0x0x000000217
- Register Record
- 	Event num: 286
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x0004008d2
- Register Record
- 	Event num: 287
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rbx
- 	Value: 0x0x00000000e
- Register Record
- 	Event num: 288
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rdx
- 	Value: 0x0x00000000e
- Register Record
- 	Event num: 289
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsi
- 	Value: 0x0x7ffeafd4a760
- 0x0004008dd: W 0x7ffeafd4a738 8
- value before write : 0xc7  0x8  0x40  0x0  0x0  0x0  0x0  0x0  
- Enter before_function_direct_call
- Call to function
- 	Event num: 291
- 	Function name: __NOFUNCTIONNAME__
- 	Func line: 0
- 	Inv line: 0
- 	Func file: __NOCSOURCE__
- 	Inv file: __NOCSOURCE__
- 	Callee address: 0x0x000400570
-
- frec = 0x0x7f95bba0c840
- Built frec
- Wrote frec
- Exit before_function_direct_call
- Register Record
- 	Event num: 292
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x000400570
- Register Record
- 	Event num: 293
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7ffeafd4a738
- value after write : 0xf0  0x5  0x40  0x0  0x0  0x0  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a730 size: 4
- address 0x0x7ffeafd4a730 is not a program variable
- Enter after_function_call
- No output found
- function return
- Exit after_function_call
- Function Call to write@plt
- after push stack size:8
- Invocation ID:295function write@plt was called. Frame pointer was 0x7ffeafd4a950
- 0x000400570R 0x000601018 8
- line number 0
- value before read : 0x76  0x5  0x40  0x0  0x0  0x0  0x0  0x0  Invocation ID:295function write@plt was called. Frame pointer was 0x7ffeafd4a950
- Register Record
- 	Event num: 297
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x000400576
- 0x000400576: W 0x7ffeafd4a730 8
- value before write : 0xf0  0x5  0x40  0x0  0x0  0x0  0x0  0x0  
- Before push: SP = 0x7ffeafd4a738
- Register Record
- 	Event num: 300
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7ffeafd4a730
- value after write : 0x50  0xa9  0xd4  0xaf  0xfe  0x7f  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a728 size: 4
- address 0x0x7ffeafd4a728 is not a program variable
- After push: SP = 0x7ffeafd4a730
- Register Record
- 	Event num: 301
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x000400560
- Function Call to .plt
- 0x000400560R 0x000601008 8
- line number 0
- value before read : 0x68  0x81  0x8f  0xcf  0x95  0x7f  0x0  0x0  Invocation ID:295function .plt was called. Frame pointer was 0x7ffeafd4a950
- 0x000400560: W 0x7ffeafd4a728 8
- value before write : 0x50  0xa9  0xd4  0xaf  0xfe  0x7f  0x0  0x0  
- Before push: SP = 0x7ffeafd4a730
- Register Record
- 	Event num: 305
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7ffeafd4a728
- value after write : 0xe  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a720 size: 4
- address 0x0x7ffeafd4a720 is not a program variable
- After push: SP = 0x7ffeafd4a728
- 0x000400566R 0x000601010 8
- line number 0
- value before read : 0x70  0x88  0x6e  0xcf  0x95  0x7f  0x0  0x0  Invocation ID:295function .plt was called. Frame pointer was 0x7ffeafd4a950
- Register Record
- 	Event num: 307
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x7f95cf6e8870
- Register Record
- 	Event num: 308
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rflags
- 	Value: 0x0x000000246
- 0x000400900R 0x7ffeafd4a868 8
- line number 0
- value before read : 0x0  0xd8  0x9  0xa8  0x63  0xb3  0x94  0x7e  Invocation ID:295function .plt was called. Frame pointer was 0x7ffeafd4a950
- Register Record
- 	Event num: 310
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rax
- 	Value: 0x0x7e94b363a809d800
- 0x000400908R 0x7f95bbbde728 8
- line number 0
- value before read : 0x0  0xd8  0x9  0xa8  0x63  0xb3  0x94  0x7e  Invocation ID:295function .plt was called. Frame pointer was 0x7ffeafd4a950
- Register Record
- 	Event num: 312
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rax
- 	Value: 0x0x000000000
- Register Record
- 	Event num: 313
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rflags
- 	Value: 0x0x000000246
- Register Record
- 	Event num: 314
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7ffeafd4a920
- Register Record
- 	Event num: 315
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rflags
- 	Value: 0x0x000000202
- 0x00040091fR 0x7ffeafd4a920 8
- line number 0
- value before read : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  Invocation ID:295function .plt was called. Frame pointer was 0x7ffeafd4a950
- Before pop: SP = 0x7ffeafd4a920
- Register Record
- 	Event num: 318
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rbx
- 	Value: 0x0x000000000
- Register Record
- 	Event num: 319
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7ffeafd4a928
- After pop: SP = 0x7ffeafd4a928
- 0x000400920R 0x7ffeafd4a928 8
- line number 0
- value before read : 0x14  0x7  0x40  0x0  0x0  0x0  0x0  0x0  Invocation ID:295function .plt was called. Frame pointer was 0x7ffeafd4a950
- Before return: SP = 0x7ffeafd4a928
- Register Record
- 	Event num: 322
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x000400714
- Register Record
- 	Event num: 323
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7ffeafd4a930
- After return : SP = 0x7ffeafd4a930
- 0x000400714: W 0x000601068 4
+ 0x000400536: W 0x00060103c 4
  value before write : 0x0  0x0  0x0  0x0  
  value after write : 0x1  0x0  0x0  0x0  
  In var_record::pc_in_range
  In var_record::find_address_in_subprog
  Checking variable b
  Enter is_at_address
- trec = 0x7f95cf67be00
+ trec = 0x7f4a7e2bbe00
 type name = int
  Getting base address for a local or param
- var_addr: 0x7ffeafd4a93c mem_addr: 0x000601068 size: 4
+ var_addr: 0x7ffd19c62854 mem_addr: 0x00060103c size: 4
  Checking variable p
  Enter is_at_address
- trec = 0x7f95cf67bbc0
+ trec = 0x7f4a7e2bbbc0
 type name = *int
  Getting base address for a local or param
- var_addr: 0x7ffeafd4a940 mem_addr: 0x000601068 size: 8
+ var_addr: 0x7ffd19c62858 mem_addr: 0x00060103c size: 8
  Leave var_record::find_address_in_subprog
  Enter is_at_address
- trec = 0x7f95cf67be00
+ trec = 0x7f4a7e2bbe00
 type name = int
  Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x000601068 size: 4
+ var_addr: 0x00060103c mem_addr: 0x00060103c size: 4
  Write to an address a
 prefix = 
  In var_recod::read_value
  Type is int
- Reading 4 bytes at address: 0x000601068
+ Reading 4 bytes at address: 0x00060103c
  Write to variable a
- 	Event num: 325
- 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
+ 	Event num: 173
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Scope: *G*
- 	Address: 0x0x000601068
+ 	Address: 0x0x00060103c
  	Type: int
  	Value: 1
 
- 0x00040071e: W 0x7ffeafd4a93c 4
- value before write : 0x0  0x0  0x0  0x0  
+ 0x000400540: W 0x7ffd19c62854 4
+ value before write : 0xfd  0x7f  0x0  0x0  
  value after write : 0x2  0x0  0x0  0x0  
  In var_record::pc_in_range
  In var_record::find_address_in_subprog
  Checking variable b
  Enter is_at_address
- trec = 0x7f95cf67be00
+ trec = 0x7f4a7e2bbe00
 type name = int
  Getting base address for a local or param
- var_addr: 0x7ffeafd4a93c mem_addr: 0x7ffeafd4a93c size: 4
+ var_addr: 0x7ffd19c62854 mem_addr: 0x7ffd19c62854 size: 4
  Leave var_record::find_address_in_subprog
  Write to an address b
 prefix = 
  In var_recod::read_value
  Type is int
- Reading 4 bytes at address: 0x7ffeafd4a93c
+ Reading 4 bytes at address: 0x7ffd19c62854
  Write to variable b
- 	Event num: 327
- 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
+ 	Event num: 175
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Scope: main
- 	Address: 0x0x7ffeafd4a93c
+ 	Address: 0x0x7ffd19c62854
  	Type: int
  	Value: 2
 
- 0x000400725R 0x7ffeafd4a93c 4
- line number 16
- value before read : 0x2  0x0  0x0  0x0  Invocation ID:295function .plt was called. Frame pointer was 0x7ffeafd4a950
+ 0x000400547R 0x7ffd19c62858 8
+ line number 14
+ value before read : 0x54  0x28  0xc6  0x19  0xfd  0x7f  0x0  0x0  Invocation ID:161function main was called. Frame pointer was 0x7ffd19c62860
  Register Record
- 	Event num: 329
- 	Line #: 16
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
+ 	Event num: 177
+ 	Line #: 14
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
+ 	Register: rax
+ 	Value: 0x0x7ffd19c62854
+ 0x00040054bR 0x7ffd19c62854 4
+ line number 14
+ value before read : 0x2  0x0  0x0  0x0  Invocation ID:161function main was called. Frame pointer was 0x7ffd19c62860
+ Register Record
+ 	Event num: 179
+ 	Line #: 14
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
+ 	Register: ecx
+ 	Value: 0x0x000000002
+ 0x00040054dR 0x7ffd19c62854 4
+ line number 14
+ value before read : 0x2  0x0  0x0  0x0  Invocation ID:161function main was called. Frame pointer was 0x7ffd19c62860
+ Register Record
+ 	Event num: 181
+ 	Line #: 14
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Register: edx
  	Value: 0x0x000000002
- 0x000400728R 0x000601068 4
- line number 16
- value before read : 0x1  0x0  0x0  0x0  Invocation ID:295function .plt was called. Frame pointer was 0x7ffeafd4a950
+ 0x000400550R 0x00060103c 4
+ line number 14
+ value before read : 0x1  0x0  0x0  0x0  Invocation ID:161function main was called. Frame pointer was 0x7ffd19c62860
  Register Record
- 	Event num: 331
- 	Line #: 16
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
+ 	Event num: 183
+ 	Line #: 14
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Register: eax
  	Value: 0x0x000000001
  Register Record
- 	Event num: 332
- 	Line #: 16
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
+ 	Event num: 184
+ 	Line #: 14
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Register: esi
  	Value: 0x0x000000001
  Register Record
- 	Event num: 333
- 	Line #: 16
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
+ 	Event num: 185
+ 	Line #: 14
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Register: edi
- 	Value: 0x0x0004009c3
+ 	Value: 0x0x0004005f4
  Register Record
- 	Event num: 334
- 	Line #: 16
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
+ 	Event num: 186
+ 	Line #: 14
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Register: eax
  	Value: 0x0x000000000
- 0x00040073a: W 0x7ffeafd4a928 8
- value before write : 0x14  0x7  0x40  0x0  0x0  0x0  0x0  0x0  
+ 0x000400562: W 0x7ffd19c62848 8
+ value before write : 0x30  0x4  0x40  0x0  0x0  0x0  0x0  0x0  
  Enter before_function_direct_call
  Call to function
- 	Event num: 336
+ 	Event num: 188
  	Function name: __NOFUNCTIONNAME__
  	Func line: 0
- 	Inv line: 16
+ 	Inv line: 14
  	Func file: __NOCSOURCE__
- 	Inv file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Callee address: 0x0x000400776
+ 	Inv file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
+ 	Callee address: 0x0x000400400
 
- frec = 0x0x7f95bba0cf00
+ frec = 0x0x7f4a6a7474c0
  Built frec
  Wrote frec
  Exit before_function_direct_call
  Register Record
- 	Event num: 337
- 	Line #: 16
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
+ 	Event num: 189
+ 	Line #: 14
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Register: rip
- 	Value: 0x0x000400776
+ 	Value: 0x0x000400400
  Register Record
- 	Event num: 338
- 	Line #: 16
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
+ 	Event num: 190
+ 	Line #: 14
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Register: rsp
- 	Value: 0x0x7ffeafd4a928
- value after write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
+ 	Value: 0x0x7ffd19c62848
+ value after write : 0x70  0x5  0x40  0x0  0x0  0x0  0x0  0x0  
  In var_record::pc_in_range
  In var_record::find_address_in_subprog
  Checking variable b
  Enter is_at_address
- trec = 0x7f95cf67be00
+ trec = 0x7f4a7e2bbe00
 type name = int
  Getting base address for a local or param
- var_addr: 0x7ffeafd4a93c mem_addr: 0x7ffeafd4a920 size: 4
+ var_addr: 0x7ffd19c62854 mem_addr: 0x7ffd19c62840 size: 4
  Checking variable p
  Enter is_at_address
- trec = 0x7f95cf67bbc0
+ trec = 0x7f4a7e2bbbc0
 type name = *int
  Getting base address for a local or param
- var_addr: 0x7ffeafd4a940 mem_addr: 0x7ffeafd4a920 size: 8
+ var_addr: 0x7ffd19c62858 mem_addr: 0x7ffd19c62840 size: 8
  Leave var_record::find_address_in_subprog
  Enter is_at_address
- trec = 0x7f95cf67be00
+ trec = 0x7f4a7e2bbe00
 type name = int
  Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a920 size: 4
- address 0x0x7ffeafd4a920 is not a program variable
+ var_addr: 0x00060103c mem_addr: 0x7ffd19c62840 size: 4
+ address 0x0x7ffd19c62840 is not a program variable
  Enter after_function_call
- output has been found: start program
-
+ No output found
  function return
  Exit after_function_call
- Function Call to vaccs_printf
- after push stack size:8
- Invocation ID:341function vaccs_printf was called. Frame pointer was 0x7ffeafd4a950
- 0x000400776: W 0x7ffeafd4a920 8
+ Function Call to printf@plt
+ after push stack size:4
+ Invocation ID:192function printf@plt was called. Frame pointer was 0x7ffd19c62860
+ 0x000400400R 0x000601018 8
+ line number 0
+ value before read : 0x6  0x4  0x40  0x0  0x0  0x0  0x0  0x0  Invocation ID:192function printf@plt was called. Frame pointer was 0x7ffd19c62860
+ Register Record
+ 	Event num: 194
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rip
+ 	Value: 0x0x000400406
+ 0x000400406: W 0x7ffd19c62840 8
+ value before write : 0x70  0x5  0x40  0x0  0x0  0x0  0x0  0x0  
+ Before push: SP = 0x7ffd19c62848
+ Register Record
+ 	Event num: 197
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rsp
+ 	Value: 0x0x7ffd19c62840
+ value after write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
+ Enter is_at_address
+ trec = 0x7f4a7e2bbe00
+type name = int
+ Getting base address for a global
+ var_addr: 0x00060103c mem_addr: 0x7ffd19c62838 size: 4
+ address 0x0x7ffd19c62838 is not a program variable
+ After push: SP = 0x7ffd19c62840
+ Register Record
+ 	Event num: 198
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rip
+ 	Value: 0x0x0004003f0
+ Function Call to .plt
+ 0x0004003f0R 0x000601008 8
+ line number 0
+ value before read : 0x68  0x81  0x53  0x7e  0x4a  0x7f  0x0  0x0  Invocation ID:192function .plt was called. Frame pointer was 0x7ffd19c62860
+ 0x0004003f0: W 0x7ffd19c62838 8
  value before write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- Before push: SP = 0x7ffeafd4a928
+ Before push: SP = 0x7ffd19c62840
  Register Record
- 	Event num: 344
+ 	Event num: 202
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7ffeafd4a920
- value after write : 0x7d  0x9  0x40  0x0  0x0  0x0  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a918 size: 4
- address 0x0x7ffeafd4a918 is not a program variable
- After push: SP = 0x7ffeafd4a920
- Register Record
- 	Event num: 345
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7ffeafd4a740
- Register Record
- 	Event num: 346
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rflags
- 	Value: 0x0x000000202
- Register Record
- 	Event num: 347
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rbx
- 	Value: 0x0x0004009c3
- 0x000400781: W 0x7ffeafd4a878 8
- value before write : 0x38  0xaa  0xd4  0xaf  0xfe  0x7f  0x0  0x0  
- value after write : 0x1  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a878 size: 4
- address 0x0x7ffeafd4a878 is not a program variable
- 0x000400789: W 0x7ffeafd4a880 8
- value before write : 0x48  0xaa  0xd4  0xaf  0xfe  0x7f  0x0  0x0  
- value after write : 0x2  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a880 size: 4
- address 0x0x7ffeafd4a880 is not a program variable
- 0x000400791: W 0x7ffeafd4a888 8
- value before write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- value after write : 0xf1  0xff  0xff  0x7f  0x0  0x0  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a888 size: 4
- address 0x0x7ffeafd4a888 is not a program variable
- 0x000400799: W 0x7ffeafd4a890 8
- value before write : 0xa0  0x9  0x40  0x0  0x0  0x0  0x0  0x0  
+ 	Value: 0x0x7ffd19c62838
  value after write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  Enter is_at_address
- trec = 0x7f95cf67be00
+ trec = 0x7f4a7e2bbe00
 type name = int
  Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a890 size: 4
- address 0x0x7ffeafd4a890 is not a program variable
- 0x0004007a1: W 0x7ffeafd4a898 8
- value before write : 0xb0  0x1a  0x6e  0xcf  0x95  0x7f  0x0  0x0  
- value after write : 0xe  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a898 size: 4
- address 0x0x7ffeafd4a898 is not a program variable
- Register Record
- 	Event num: 353
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rflags
- 	Value: 0x0x000000246
- 0x0004007edR 0x7f95bbbde728 8
+ var_addr: 0x00060103c mem_addr: 0x7ffd19c62830 size: 4
+ address 0x0x7ffd19c62830 is not a program variable
+ After push: SP = 0x7ffd19c62838
+ 0x0004003f6R 0x000601010 8
  line number 0
- value before read : 0x0  0xd8  0x9  0xa8  0x63  0xb3  0x94  0x7e  Invocation ID:341function vaccs_printf was called. Frame pointer was 0x7ffeafd4a950
+ value before read : 0x70  0x88  0x32  0x7e  0x4a  0x7f  0x0  0x0  Invocation ID:192function .plt was called. Frame pointer was 0x7ffd19c62860
  Register Record
- 	Event num: 355
+ 	Event num: 204
  	Line #: 0
  	File: __NOCSOURCE__
- 	Register: rax
- 	Value: 0x0x7e94b363a809d800
- 0x0004007f6: W 0x7ffeafd4a868 8
- value before write : 0x0  0xd8  0x9  0xa8  0x63  0xb3  0x94  0x7e  
- value after write : 0x0  0xd8  0x9  0xa8  0x63  0xb3  0x94  0x7e  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a868 size: 4
- address 0x0x7ffeafd4a868 is not a program variable
+ 	Register: rip
+ 	Value: 0x0x7f4a7e328870
+ enter
+ malloc(1024)
+ function main  Frame pointer was 0x7ffd19c62860
+ exit
  Register Record
- 	Event num: 357
- 	Line #: 0
- 	File: __NOCSOURCE__
+ 	Event num: 206
+ 	Line #: 14
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Register: eax
  	Value: 0x0x000000000
- Register Record
- 	Event num: 358
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rflags
- 	Value: 0x0x000000246
- 0x000400800: W 0x7ffeafd4a748 4
- value before write : 0x8  0x0  0x0  0x0  
- value after write : 0x8  0x0  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a748 size: 4
- address 0x0x7ffeafd4a748 is not a program variable
- 0x000400808: W 0x7ffeafd4a74c 4
- value before write : 0x30  0x0  0x0  0x0  
- value after write : 0x30  0x0  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a74c size: 4
- address 0x0x7ffeafd4a74c is not a program variable
- Register Record
- 	Event num: 361
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rax
- 	Value: 0x0x7ffeafd4a930
- 0x000400818: W 0x7ffeafd4a750 8
- value before write : 0x30  0xa9  0xd4  0xaf  0xfe  0x7f  0x0  0x0  
- value after write : 0x30  0xa9  0xd4  0xaf  0xfe  0x7f  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a750 size: 4
- address 0x0x7ffeafd4a750 is not a program variable
- Register Record
- 	Event num: 363
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rax
- 	Value: 0x0x7ffeafd4a870
- 0x000400825: W 0x7ffeafd4a758 8
- value before write : 0x70  0xa8  0xd4  0xaf  0xfe  0x7f  0x0  0x0  
- value after write : 0x70  0xa8  0xd4  0xaf  0xfe  0x7f  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a758 size: 4
- address 0x0x7ffeafd4a758 is not a program variable
- 0x00040082aR 0x000601060 4
- line number 0
- value before read : 0x4  0x0  0x0  0x0  Invocation ID:341function vaccs_printf was called. Frame pointer was 0x7ffeafd4a950
- Register Record
- 	Event num: 366
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rflags
- 	Value: 0x0x000000217
- Register Record
- 	Event num: 367
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: r9
- 	Value: 0x0x7ffeafd4a748
- Register Record
- 	Event num: 368
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: r8
- 	Value: 0x0x0004009c3
- Register Record
- 	Event num: 369
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: ecx
- 	Value: 0x0x0000000ff
- Register Record
- 	Event num: 370
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: edx
- 	Value: 0x0x000000001
- Register Record
- 	Event num: 371
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: esi
- 	Value: 0x0x0000000ff
- Register Record
- 	Event num: 372
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rdi
- 	Value: 0x0x7ffeafd4a760
- 0x000400887: W 0x7ffeafd4a738 8
- value before write : 0xe2  0x8  0x40  0x0  0x0  0x0  0x0  0x0  
- Enter before_function_direct_call
- Call to function
- 	Event num: 374
- 	Function name: __NOFUNCTIONNAME__
- 	Func line: 0
- 	Inv line: 0
- 	Func file: __NOCSOURCE__
- 	Inv file: __NOCSOURCE__
- 	Callee address: 0x0x0004005b0
-
- frec = 0x0x7f95bba0cf00
- Built frec
- Wrote frec
- Exit before_function_direct_call
- Register Record
- 	Event num: 375
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x0004005b0
- Register Record
- 	Event num: 376
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7ffeafd4a738
- value after write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a730 size: 4
- address 0x0x7ffeafd4a730 is not a program variable
- Enter after_function_call
- No output found
- function return
- Exit after_function_call
- Function Call to __vsnprintf_chk@plt
- after push stack size:9
- Invocation ID:378function __vsnprintf_chk@plt was called. Frame pointer was 0x7ffeafd4a950
- 0x0004005b0R 0x000601038 8
- line number 0
- value before read : 0x0  0x8  0xd3  0xbb  0x95  0x7f  0x0  0x0  Invocation ID:378function __vsnprintf_chk@plt was called. Frame pointer was 0x7ffeafd4a950
- Register Record
- 	Event num: 380
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x7f95bbd30800
- Register Record
- 	Event num: 381
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: ebx
- 	Value: 0x0x00000000d
- Register Record
- 	Event num: 382
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rflags
- 	Value: 0x0x000000297
- Register Record
- 	Event num: 383
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rdx
- 	Value: 0x0x7ffeafd4a760
- Register Record
- 	Event num: 384
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: esi
- 	Value: 0x0x000400a06
- Register Record
- 	Event num: 385
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: edi
- 	Value: 0x0x000000001
- Register Record
- 	Event num: 386
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: eax
- 	Value: 0x0x000000000
- 0x0004008c2: W 0x7ffeafd4a738 8
- value before write : 0x8c  0x8  0x40  0x0  0x0  0x0  0x0  0x0  
- Enter before_function_direct_call
- Call to function
- 	Event num: 388
- 	Function name: __NOFUNCTIONNAME__
- 	Func line: 0
- 	Inv line: 0
- 	Func file: __NOCSOURCE__
- 	Inv file: __NOCSOURCE__
- 	Callee address: 0x0x0004005c0
-
- frec = 0x0x7f95bba0c940
- Built frec
- Wrote frec
- Exit before_function_direct_call
- Register Record
- 	Event num: 389
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x0004005c0
- Register Record
- 	Event num: 390
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7ffeafd4a738
- value after write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a730 size: 4
- address 0x0x7ffeafd4a730 is not a program variable
- Enter after_function_call
- No output found
- function return
- Exit after_function_call
- Function Call to __printf_chk@plt
- after push stack size:10
- Invocation ID:392function __printf_chk@plt was called. Frame pointer was 0x7ffeafd4a950
- 0x0004005c0R 0x000601040 8
- line number 0
- value before read : 0xe0  0x8  0xd3  0xbb  0x95  0x7f  0x0  0x0  Invocation ID:392function __printf_chk@plt was called. Frame pointer was 0x7ffeafd4a950
- Register Record
- 	Event num: 394
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x7f95bbd308e0
- 0x0004008c7R 0x000601060 4
- line number 0
- value before read : 0x4  0x0  0x0  0x0  Invocation ID:392function __printf_chk@plt was called. Frame pointer was 0x7ffeafd4a950
- Register Record
- 	Event num: 396
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: edi
- 	Value: 0x0x000000004
- Register Record
- 	Event num: 397
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rflags
- 	Value: 0x0x000000217
- Register Record
- 	Event num: 398
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x0004008d2
- Register Record
- 	Event num: 399
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rbx
- 	Value: 0x0x00000000d
- Register Record
- 	Event num: 400
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rdx
- 	Value: 0x0x00000000d
- Register Record
- 	Event num: 401
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsi
- 	Value: 0x0x7ffeafd4a760
- 0x0004008dd: W 0x7ffeafd4a738 8
- value before write : 0xc7  0x8  0x40  0x0  0x0  0x0  0x0  0x0  
- Enter before_function_direct_call
- Call to function
- 	Event num: 403
- 	Function name: __NOFUNCTIONNAME__
- 	Func line: 0
- 	Inv line: 0
- 	Func file: __NOCSOURCE__
- 	Inv file: __NOCSOURCE__
- 	Callee address: 0x0x000400570
-
- frec = 0x0x7f95bba0c840
- Built frec
- Wrote frec
- Exit before_function_direct_call
- Register Record
- 	Event num: 404
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x000400570
- Register Record
- 	Event num: 405
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7ffeafd4a738
- value after write : 0xf0  0x5  0x40  0x0  0x0  0x0  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a730 size: 4
- address 0x0x7ffeafd4a730 is not a program variable
- Enter after_function_call
- No output found
- function return
- Exit after_function_call
- Function Call to write@plt
- after push stack size:11
- Invocation ID:407function write@plt was called. Frame pointer was 0x7ffeafd4a950
- 0x000400570R 0x000601018 8
- line number 0
- value before read : 0xb0  0x12  0xd1  0xbb  0x95  0x7f  0x0  0x0  Invocation ID:407function write@plt was called. Frame pointer was 0x7ffeafd4a950
- Register Record
- 	Event num: 409
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x7f95bbd112b0
- Register Record
- 	Event num: 410
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rflags
- 	Value: 0x0x000000246
- 0x000400900R 0x7ffeafd4a868 8
- line number 0
- value before read : 0x0  0xd8  0x9  0xa8  0x63  0xb3  0x94  0x7e  Invocation ID:407function write@plt was called. Frame pointer was 0x7ffeafd4a950
- Register Record
- 	Event num: 412
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rax
- 	Value: 0x0x7e94b363a809d800
- 0x000400908R 0x7f95bbbde728 8
- line number 0
- value before read : 0x0  0xd8  0x9  0xa8  0x63  0xb3  0x94  0x7e  Invocation ID:407function write@plt was called. Frame pointer was 0x7ffeafd4a950
- Register Record
- 	Event num: 414
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rax
- 	Value: 0x0x000000000
- Register Record
- 	Event num: 415
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rflags
- 	Value: 0x0x000000246
- Register Record
- 	Event num: 416
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7ffeafd4a920
- Register Record
- 	Event num: 417
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rflags
- 	Value: 0x0x000000202
- 0x00040091fR 0x7ffeafd4a920 8
- line number 0
- value before read : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  Invocation ID:407function write@plt was called. Frame pointer was 0x7ffeafd4a950
- Before pop: SP = 0x7ffeafd4a920
- Register Record
- 	Event num: 420
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rbx
- 	Value: 0x0x000000000
- Register Record
- 	Event num: 421
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7ffeafd4a928
- After pop: SP = 0x7ffeafd4a928
- 0x000400920R 0x7ffeafd4a928 8
- line number 0
- value before read : 0x3f  0x7  0x40  0x0  0x0  0x0  0x0  0x0  Invocation ID:407function write@plt was called. Frame pointer was 0x7ffeafd4a950
- Before return: SP = 0x7ffeafd4a928
- Register Record
- 	Event num: 424
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x00040073f
- Register Record
- 	Event num: 425
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7ffeafd4a930
- After return : SP = 0x7ffeafd4a930
- 0x00040073fR 0x7ffeafd4a940 8
- line number 17
- value before read : 0x3c  0xa9  0xd4  0xaf  0xfe  0x7f  0x0  0x0  Invocation ID:407function write@plt was called. Frame pointer was 0x7ffeafd4a950
- Register Record
- 	Event num: 427
- 	Line #: 17
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Register: rax
- 	Value: 0x0x7ffeafd4a93c
- 0x000400743R 0x7ffeafd4a93c 4
- line number 17
- value before read : 0x2  0x0  0x0  0x0  Invocation ID:407function write@plt was called. Frame pointer was 0x7ffeafd4a950
- Register Record
- 	Event num: 429
- 	Line #: 17
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Register: edx
- 	Value: 0x0x000000002
- 0x000400745R 0x7ffeafd4a940 8
- line number 17
- value before read : 0x3c  0xa9  0xd4  0xaf  0xfe  0x7f  0x0  0x0  Invocation ID:407function write@plt was called. Frame pointer was 0x7ffeafd4a950
- Register Record
- 	Event num: 431
- 	Line #: 17
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Register: rax
- 	Value: 0x0x7ffeafd4a93c
- Register Record
- 	Event num: 432
- 	Line #: 17
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Register: rsi
- 	Value: 0x0x7ffeafd4a93c
- Register Record
- 	Event num: 433
- 	Line #: 17
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Register: edi
- 	Value: 0x0x0004009d3
- Register Record
- 	Event num: 434
- 	Line #: 17
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Register: eax
- 	Value: 0x0x000000000
- 0x000400756: W 0x7ffeafd4a928 8
- value before write : 0x3f  0x7  0x40  0x0  0x0  0x0  0x0  0x0  
- Enter before_function_direct_call
- Call to function
- 	Event num: 436
- 	Function name: __NOFUNCTIONNAME__
- 	Func line: 0
- 	Inv line: 17
- 	Func file: __NOCSOURCE__
- 	Inv file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Callee address: 0x0x000400776
-
- frec = 0x0x7f95bba0c7c0
- Built frec
- Wrote frec
- Exit before_function_direct_call
- Register Record
- 	Event num: 437
- 	Line #: 17
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Register: rip
- 	Value: 0x0x000400776
- Register Record
- 	Event num: 438
- 	Line #: 17
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Register: rsp
- 	Value: 0x0x7ffeafd4a928
- value after write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- In var_record::pc_in_range
- In var_record::find_address_in_subprog
- Checking variable b
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a local or param
- var_addr: 0x7ffeafd4a93c mem_addr: 0x7ffeafd4a920 size: 4
- Checking variable p
- Enter is_at_address
- trec = 0x7f95cf67bbc0
-type name = *int
- Getting base address for a local or param
- var_addr: 0x7ffeafd4a940 mem_addr: 0x7ffeafd4a920 size: 8
- Leave var_record::find_address_in_subprog
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a920 size: 4
- address 0x0x7ffeafd4a920 is not a program variable
- Enter after_function_call
- output has been found: a = 1, b = 2
-
- function return
- Exit after_function_call
- Function Call to vaccs_printf
- after push stack size:11
- Invocation ID:441function vaccs_printf was called. Frame pointer was 0x7ffeafd4a950
- 0x000400776: W 0x7ffeafd4a920 8
- value before write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- Before push: SP = 0x7ffeafd4a928
- Register Record
- 	Event num: 444
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7ffeafd4a920
- value after write : 0x7d  0x9  0x40  0x0  0x0  0x0  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a918 size: 4
- address 0x0x7ffeafd4a918 is not a program variable
- After push: SP = 0x7ffeafd4a920
- Register Record
- 	Event num: 445
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7ffeafd4a740
- Register Record
- 	Event num: 446
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rflags
- 	Value: 0x0x000000202
- Register Record
- 	Event num: 447
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rbx
- 	Value: 0x0x0004009d3
- 0x000400781: W 0x7ffeafd4a878 8
- value before write : 0x1  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- value after write : 0x3c  0xa9  0xd4  0xaf  0xfe  0x7f  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a878 size: 4
- address 0x0x7ffeafd4a878 is not a program variable
- 0x000400789: W 0x7ffeafd4a880 8
- value before write : 0x2  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- value after write : 0x2  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a880 size: 4
- address 0x0x7ffeafd4a880 is not a program variable
- 0x000400791: W 0x7ffeafd4a888 8
- value before write : 0xf1  0xff  0xff  0x7f  0x0  0x0  0x0  0x0  
- value after write : 0xf2  0xff  0xff  0x7f  0x0  0x0  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a888 size: 4
- address 0x0x7ffeafd4a888 is not a program variable
- 0x000400799: W 0x7ffeafd4a890 8
- value before write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- value after write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a890 size: 4
- address 0x0x7ffeafd4a890 is not a program variable
- 0x0004007a1: W 0x7ffeafd4a898 8
- value before write : 0xe  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- value after write : 0xd  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a898 size: 4
- address 0x0x7ffeafd4a898 is not a program variable
- Register Record
- 	Event num: 453
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rflags
- 	Value: 0x0x000000246
- 0x0004007edR 0x7f95bbbde728 8
- line number 0
- value before read : 0x0  0xd8  0x9  0xa8  0x63  0xb3  0x94  0x7e  Invocation ID:441function vaccs_printf was called. Frame pointer was 0x7ffeafd4a950
- Register Record
- 	Event num: 455
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rax
- 	Value: 0x0x7e94b363a809d800
- 0x0004007f6: W 0x7ffeafd4a868 8
- value before write : 0x0  0xd8  0x9  0xa8  0x63  0xb3  0x94  0x7e  
- value after write : 0x0  0xd8  0x9  0xa8  0x63  0xb3  0x94  0x7e  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a868 size: 4
- address 0x0x7ffeafd4a868 is not a program variable
- Register Record
- 	Event num: 457
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: eax
- 	Value: 0x0x000000000
- Register Record
- 	Event num: 458
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rflags
- 	Value: 0x0x000000246
- 0x000400800: W 0x7ffeafd4a748 4
- value before write : 0x18  0x0  0x0  0x0  
- value after write : 0x8  0x0  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a748 size: 4
- address 0x0x7ffeafd4a748 is not a program variable
- 0x000400808: W 0x7ffeafd4a74c 4
- value before write : 0x30  0x0  0x0  0x0  
- value after write : 0x30  0x0  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a74c size: 4
- address 0x0x7ffeafd4a74c is not a program variable
- Register Record
- 	Event num: 461
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rax
- 	Value: 0x0x7ffeafd4a930
- 0x000400818: W 0x7ffeafd4a750 8
- value before write : 0x30  0xa9  0xd4  0xaf  0xfe  0x7f  0x0  0x0  
- value after write : 0x30  0xa9  0xd4  0xaf  0xfe  0x7f  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a750 size: 4
- address 0x0x7ffeafd4a750 is not a program variable
- Register Record
- 	Event num: 463
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rax
- 	Value: 0x0x7ffeafd4a870
- 0x000400825: W 0x7ffeafd4a758 8
- value before write : 0x70  0xa8  0xd4  0xaf  0xfe  0x7f  0x0  0x0  
- value after write : 0x70  0xa8  0xd4  0xaf  0xfe  0x7f  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a758 size: 4
- address 0x0x7ffeafd4a758 is not a program variable
- 0x00040082aR 0x000601060 4
- line number 0
- value before read : 0x4  0x0  0x0  0x0  Invocation ID:441function vaccs_printf was called. Frame pointer was 0x7ffeafd4a950
- Register Record
- 	Event num: 466
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rflags
- 	Value: 0x0x000000217
- Register Record
- 	Event num: 467
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: r9
- 	Value: 0x0x7ffeafd4a748
- Register Record
- 	Event num: 468
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: r8
- 	Value: 0x0x0004009d3
- Register Record
- 	Event num: 469
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: ecx
- 	Value: 0x0x0000000ff
- Register Record
- 	Event num: 470
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: edx
- 	Value: 0x0x000000001
- Register Record
- 	Event num: 471
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: esi
- 	Value: 0x0x0000000ff
- Register Record
- 	Event num: 472
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rdi
- 	Value: 0x0x7ffeafd4a760
- 0x000400887: W 0x7ffeafd4a738 8
- value before write : 0xe2  0x8  0x40  0x0  0x0  0x0  0x0  0x0  
- Enter before_function_direct_call
- Call to function
- 	Event num: 474
- 	Function name: __NOFUNCTIONNAME__
- 	Func line: 0
- 	Inv line: 0
- 	Func file: __NOCSOURCE__
- 	Inv file: __NOCSOURCE__
- 	Callee address: 0x0x0004005b0
-
- frec = 0x0x7f95bba0c7c0
- Built frec
- Wrote frec
- Exit before_function_direct_call
- Register Record
- 	Event num: 475
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x0004005b0
- Register Record
- 	Event num: 476
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7ffeafd4a738
- value after write : 0xf0  0x5  0x40  0x0  0x0  0x0  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a730 size: 4
- address 0x0x7ffeafd4a730 is not a program variable
- Enter after_function_call
- No output found
- function return
- Exit after_function_call
- Function Call to __vsnprintf_chk@plt
- after push stack size:12
- Invocation ID:478function __vsnprintf_chk@plt was called. Frame pointer was 0x7ffeafd4a950
- 0x0004005b0R 0x000601038 8
- line number 0
- value before read : 0x0  0x8  0xd3  0xbb  0x95  0x7f  0x0  0x0  Invocation ID:478function __vsnprintf_chk@plt was called. Frame pointer was 0x7ffeafd4a950
- Register Record
- 	Event num: 480
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x7f95bbd30800
- Register Record
- 	Event num: 481
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: ebx
- 	Value: 0x0x00000001c
- Register Record
- 	Event num: 482
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rflags
- 	Value: 0x0x000000297
- Register Record
- 	Event num: 483
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rdx
- 	Value: 0x0x7ffeafd4a760
- Register Record
- 	Event num: 484
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: esi
- 	Value: 0x0x000400a06
- Register Record
- 	Event num: 485
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: edi
- 	Value: 0x0x000000001
- Register Record
- 	Event num: 486
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: eax
- 	Value: 0x0x000000000
- 0x0004008c2: W 0x7ffeafd4a738 8
- value before write : 0x8c  0x8  0x40  0x0  0x0  0x0  0x0  0x0  
- Enter before_function_direct_call
- Call to function
- 	Event num: 488
- 	Function name: __NOFUNCTIONNAME__
- 	Func line: 0
- 	Inv line: 0
- 	Func file: __NOCSOURCE__
- 	Inv file: __NOCSOURCE__
- 	Callee address: 0x0x0004005c0
-
- frec = 0x0x7f95bba0c780
- Built frec
- Wrote frec
- Exit before_function_direct_call
- Register Record
- 	Event num: 489
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x0004005c0
- Register Record
- 	Event num: 490
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7ffeafd4a738
- value after write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a730 size: 4
- address 0x0x7ffeafd4a730 is not a program variable
- Enter after_function_call
- No output found
- function return
- Exit after_function_call
- Function Call to __printf_chk@plt
- after push stack size:13
- Invocation ID:492function __printf_chk@plt was called. Frame pointer was 0x7ffeafd4a950
- 0x0004005c0R 0x000601040 8
- line number 0
- value before read : 0xe0  0x8  0xd3  0xbb  0x95  0x7f  0x0  0x0  Invocation ID:492function __printf_chk@plt was called. Frame pointer was 0x7ffeafd4a950
- Register Record
- 	Event num: 494
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x7f95bbd308e0
- 0x0004008c7R 0x000601060 4
- line number 0
- value before read : 0x4  0x0  0x0  0x0  Invocation ID:492function __printf_chk@plt was called. Frame pointer was 0x7ffeafd4a950
- Register Record
- 	Event num: 496
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: edi
- 	Value: 0x0x000000004
- Register Record
- 	Event num: 497
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rflags
- 	Value: 0x0x000000217
- Register Record
- 	Event num: 498
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x0004008d2
- Register Record
- 	Event num: 499
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rbx
- 	Value: 0x0x00000001c
- Register Record
- 	Event num: 500
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rdx
- 	Value: 0x0x00000001c
- Register Record
- 	Event num: 501
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsi
- 	Value: 0x0x7ffeafd4a760
- 0x0004008dd: W 0x7ffeafd4a738 8
- value before write : 0xc7  0x8  0x40  0x0  0x0  0x0  0x0  0x0  
- Enter before_function_direct_call
- Call to function
- 	Event num: 503
- 	Function name: __NOFUNCTIONNAME__
- 	Func line: 0
- 	Inv line: 0
- 	Func file: __NOCSOURCE__
- 	Inv file: __NOCSOURCE__
- 	Callee address: 0x0x000400570
-
- frec = 0x0x7f95bba0c780
- Built frec
- Wrote frec
- Exit before_function_direct_call
- Register Record
- 	Event num: 504
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x000400570
- Register Record
- 	Event num: 505
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7ffeafd4a738
- value after write : 0xf0  0x5  0x40  0x0  0x0  0x0  0x0  0x0  
- Enter is_at_address
- trec = 0x7f95cf67be00
-type name = int
- Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a730 size: 4
- address 0x0x7ffeafd4a730 is not a program variable
- Enter after_function_call
- No output found
- function return
- Exit after_function_call
- Function Call to write@plt
- after push stack size:14
- Invocation ID:507function write@plt was called. Frame pointer was 0x7ffeafd4a950
- 0x000400570R 0x000601018 8
- line number 0
- value before read : 0xb0  0x12  0xd1  0xbb  0x95  0x7f  0x0  0x0  Invocation ID:507function write@plt was called. Frame pointer was 0x7ffeafd4a950
- Register Record
- 	Event num: 509
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x7f95bbd112b0
- Register Record
- 	Event num: 510
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rflags
- 	Value: 0x0x000000246
- 0x000400900R 0x7ffeafd4a868 8
- line number 0
- value before read : 0x0  0xd8  0x9  0xa8  0x63  0xb3  0x94  0x7e  Invocation ID:507function write@plt was called. Frame pointer was 0x7ffeafd4a950
- Register Record
- 	Event num: 512
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rax
- 	Value: 0x0x7e94b363a809d800
- 0x000400908R 0x7f95bbbde728 8
- line number 0
- value before read : 0x0  0xd8  0x9  0xa8  0x63  0xb3  0x94  0x7e  Invocation ID:507function write@plt was called. Frame pointer was 0x7ffeafd4a950
- Register Record
- 	Event num: 514
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rax
- 	Value: 0x0x000000000
- Register Record
- 	Event num: 515
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rflags
- 	Value: 0x0x000000246
- Register Record
- 	Event num: 516
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7ffeafd4a920
- Register Record
- 	Event num: 517
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rflags
- 	Value: 0x0x000000202
- 0x00040091fR 0x7ffeafd4a920 8
- line number 0
- value before read : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  Invocation ID:507function write@plt was called. Frame pointer was 0x7ffeafd4a950
- Before pop: SP = 0x7ffeafd4a920
- Register Record
- 	Event num: 520
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rbx
- 	Value: 0x0x000000000
- Register Record
- 	Event num: 521
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7ffeafd4a928
- After pop: SP = 0x7ffeafd4a928
- 0x000400920R 0x7ffeafd4a928 8
- line number 0
- value before read : 0x5b  0x7  0x40  0x0  0x0  0x0  0x0  0x0  Invocation ID:507function write@plt was called. Frame pointer was 0x7ffeafd4a950
- Before return: SP = 0x7ffeafd4a928
- Register Record
- 	Event num: 524
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x00040075b
- Register Record
- 	Event num: 525
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7ffeafd4a930
- After return : SP = 0x7ffeafd4a930
- Register Record
- 	Event num: 526
- 	Line #: 17
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Register: eax
- 	Value: 0x0x000000000
- 0x000400760R 0x7ffeafd4a948 8
- line number 18
- value before read : 0x0  0xd8  0x9  0xa8  0x63  0xb3  0x94  0x7e  Invocation ID:507function write@plt was called. Frame pointer was 0x7ffeafd4a950
- Register Record
- 	Event num: 528
- 	Line #: 18
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Register: rcx
- 	Value: 0x0x7e94b363a809d800
- 0x000400764R 0x7f95bbbde728 8
- line number 18
- value before read : 0x0  0xd8  0x9  0xa8  0x63  0xb3  0x94  0x7e  Invocation ID:507function write@plt was called. Frame pointer was 0x7ffeafd4a950
- Register Record
- 	Event num: 530
- 	Line #: 18
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Register: rcx
- 	Value: 0x0x000000000
- Register Record
- 	Event num: 531
- 	Line #: 18
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
- 	Register: rflags
- 	Value: 0x0x000000246
- 0x000400774R 0x7ffeafd4a950 8
- line number 18
- value before read : 0x30  0x9  0x40  0x0  0x0  0x0  0x0  0x0  Invocation ID:507function write@plt was called. Frame pointer was 0x7ffeafd4a950
- Register Record
- 	Event num: 533
- 	Line #: 18
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
+ 0x00040056cR 0x7ffd19c62860 8
+ line number 15
+ value before read : 0x70  0x5  0x40  0x0  0x0  0x0  0x0  0x0  Invocation ID:192function .plt was called. Frame pointer was 0x7ffd19c62860
+ Register Record
+ 	Event num: 208
+ 	Line #: 15
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Register: rbp
- 	Value: 0x0x000400930
+ 	Value: 0x0x000400570
  Register Record
- 	Event num: 534
- 	Line #: 18
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
+ 	Event num: 209
+ 	Line #: 15
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Register: rsp
- 	Value: 0x0x7ffeafd4a958
- 0x000400775R 0x7ffeafd4a958 8
- line number 18
- value before read : 0x30  0xa8  0xc3  0xbb  0x95  0x7f  0x0  0x0  Invocation ID:507function write@plt was called. Frame pointer was 0x000400930
- Before return: SP = 0x7ffeafd4a958
+ 	Value: 0x0x7ffd19c62868
+ 0x00040056dR 0x7ffd19c62868 8
+ line number 15
+ value before read : 0x30  0x78  0x88  0x6a  0x4a  0x7f  0x0  0x0  Invocation ID:192function .plt was called. Frame pointer was 0x000400570
+ Before return: SP = 0x7ffd19c62868
  Register Record
- 	Event num: 537
- 	Line #: 18
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
+ 	Event num: 212
+ 	Line #: 15
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Register: rip
- 	Value: 0x0x7f95bbc3a830
+ 	Value: 0x0x7f4a6a887830
  Register Record
- 	Event num: 538
- 	Line #: 18
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test4.c
+ 	Event num: 213
+ 	Line #: 15
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Register: rsp
- 	Value: 0x0x7ffeafd4a960
- After return : SP = 0x7ffeafd4a960
+ 	Value: 0x0x7ffd19c62870
+ After return : SP = 0x7ffd19c62870
  Function Call to __do_global_dtors_aux
- after push stack size:13
- Invocation ID:539function __do_global_dtors_aux was called. Frame pointer was 0x7ffeafd4a910
- 0x0004006a0R 0x000601064 1
+ after push stack size:4
+ Invocation ID:214function __do_global_dtors_aux was called. Frame pointer was 0x7ffd19c62820
+ 0x0004004e0R 0x000601038 1
  line number 0
- value before read : 0x0  Invocation ID:539function __do_global_dtors_aux was called. Frame pointer was 0x7ffeafd4a910
+ value before read : 0x0  Invocation ID:214function __do_global_dtors_aux was called. Frame pointer was 0x7ffd19c62820
  Register Record
- 	Event num: 541
+ 	Event num: 216
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rflags
  	Value: 0x0x000000246
  Register Record
- 	Event num: 542
+ 	Event num: 217
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
- 	Value: 0x0x0004006a9
- 0x0004006a9: W 0x7ffeafd4a840 8
+ 	Value: 0x0x0004004e9
+ 0x0004004e9: W 0x7ffd19c62750 8
  value before write : 0x0  0x0  0x1  0x0  0x1  0x0  0x1  0x0  
- Before push: SP = 0x7ffeafd4a848
+ Before push: SP = 0x7ffd19c62758
  Register Record
- 	Event num: 545
+ 	Event num: 220
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7ffeafd4a840
- value after write : 0x71  0x1c  0x6e  0xcf  0x95  0x7f  0x0  0x0  
+ 	Value: 0x0x7ffd19c62750
+ value after write : 0x71  0x1c  0x32  0x7e  0x4a  0x7f  0x0  0x0  
  Enter is_at_address
- trec = 0x7f95cf67be00
+ trec = 0x7f4a7e2bbe00
 type name = int
  Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a838 size: 4
- address 0x0x7ffeafd4a838 is not a program variable
- After push: SP = 0x7ffeafd4a840
+ var_addr: 0x00060103c mem_addr: 0x7ffd19c62748 size: 4
+ address 0x0x7ffd19c62748 is not a program variable
+ After push: SP = 0x7ffd19c62750
  Register Record
- 	Event num: 546
+ 	Event num: 221
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rbp
- 	Value: 0x0x7ffeafd4a840
- 0x0004006ad: W 0x7ffeafd4a838 8
- value before write : 0x71  0x1c  0x6e  0xcf  0x95  0x7f  0x0  0x0  
+ 	Value: 0x0x7ffd19c62750
+ 0x0004004ed: W 0x7ffd19c62748 8
+ value before write : 0x71  0x1c  0x32  0x7e  0x4a  0x7f  0x0  0x0  
  Enter before_function_direct_call
  Call to function
- 	Event num: 548
+ 	Event num: 223
  	Function name: __NOFUNCTIONNAME__
  	Func line: 0
  	Inv line: 0
  	Func file: __NOCSOURCE__
  	Inv file: __NOCSOURCE__
- 	Callee address: 0x0x000400620
+ 	Callee address: 0x0x000400460
 
- frec = 0x0x7f95bb9c1540
+ frec = 0x0x7f4a6a663540
  Built frec
  Wrote frec
  Exit before_function_direct_call
  Register Record
- 	Event num: 549
+ 	Event num: 224
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
- 	Value: 0x0x000400620
+ 	Value: 0x0x000400460
  Register Record
- 	Event num: 550
+ 	Event num: 225
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7ffeafd4a838
- value after write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
+ 	Value: 0x0x7ffd19c62748
+ value after write : 0x30  0x4  0x40  0x0  0x0  0x0  0x0  0x0  
  Enter is_at_address
- trec = 0x7f95cf67be00
+ trec = 0x7f4a7e2bbe00
 type name = int
  Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a830 size: 4
- address 0x0x7ffeafd4a830 is not a program variable
+ var_addr: 0x00060103c mem_addr: 0x7ffd19c62740 size: 4
+ address 0x0x7ffd19c62740 is not a program variable
  Enter after_function_call
- output has been found: p = 140731848370492, *p = 2
-
+ No output found
  function return
  Exit after_function_call
  Function Call to deregister_tm_clones
- after push stack size:14
- Invocation ID:553function deregister_tm_clones was called. Frame pointer was 0x7ffeafd4a840
+ after push stack size:5
+ Invocation ID:227function deregister_tm_clones was called. Frame pointer was 0x7ffd19c62750
  Register Record
- 	Event num: 554
+ 	Event num: 228
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: eax
- 	Value: 0x0x00060106f
- 0x000400625: W 0x7ffeafd4a830 8
- value before write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- Before push: SP = 0x7ffeafd4a838
+ 	Value: 0x0x00060103f
+ 0x000400465: W 0x7ffd19c62740 8
+ value before write : 0x30  0x4  0x40  0x0  0x0  0x0  0x0  0x0  
+ Before push: SP = 0x7ffd19c62748
  Register Record
- 	Event num: 557
+ 	Event num: 231
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7ffeafd4a830
- value after write : 0x30  0xaa  0xd4  0xaf  0xfe  0x7f  0x0  0x0  
+ 	Value: 0x0x7ffd19c62740
+ value after write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  Enter is_at_address
- trec = 0x7f95cf67be00
+ trec = 0x7f4a7e2bbe00
 type name = int
  Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x7ffeafd4a828 size: 4
- address 0x0x7ffeafd4a828 is not a program variable
- After push: SP = 0x7ffeafd4a830
+ var_addr: 0x00060103c mem_addr: 0x7ffd19c62738 size: 4
+ address 0x0x7ffd19c62738 is not a program variable
+ After push: SP = 0x7ffd19c62740
  Register Record
- 	Event num: 558
+ 	Event num: 232
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rax
  	Value: 0x0x000000007
  Register Record
- 	Event num: 559
+ 	Event num: 233
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rflags
  	Value: 0x0x000000202
  Register Record
- 	Event num: 560
+ 	Event num: 234
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rflags
  	Value: 0x0x000000297
  Register Record
- 	Event num: 561
+ 	Event num: 235
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rbp
- 	Value: 0x0x7ffeafd4a830
- 0x000400650R 0x7ffeafd4a830 8
+ 	Value: 0x0x7ffd19c62740
+ 0x000400490R 0x7ffd19c62740 8
  line number 0
- value before read : 0x40  0xa8  0xd4  0xaf  0xfe  0x7f  0x0  0x0  Invocation ID:553function deregister_tm_clones was called. Frame pointer was 0x7ffeafd4a830
- Before pop: SP = 0x7ffeafd4a830
+ value before read : 0x50  0x27  0xc6  0x19  0xfd  0x7f  0x0  0x0  Invocation ID:227function deregister_tm_clones was called. Frame pointer was 0x7ffd19c62740
+ Before pop: SP = 0x7ffd19c62740
  Register Record
- 	Event num: 564
+ 	Event num: 238
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rbp
- 	Value: 0x0x7ffeafd4a840
+ 	Value: 0x0x7ffd19c62750
  Register Record
- 	Event num: 565
+ 	Event num: 239
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7ffeafd4a838
- After pop: SP = 0x7ffeafd4a838
- 0x000400651R 0x7ffeafd4a838 8
+ 	Value: 0x0x7ffd19c62748
+ After pop: SP = 0x7ffd19c62748
+ 0x000400491R 0x7ffd19c62748 8
  line number 0
- value before read : 0xb2  0x6  0x40  0x0  0x0  0x0  0x0  0x0  Invocation ID:553function deregister_tm_clones was called. Frame pointer was 0x7ffeafd4a840
- Before return: SP = 0x7ffeafd4a838
+ value before read : 0xf2  0x4  0x40  0x0  0x0  0x0  0x0  0x0  Invocation ID:227function deregister_tm_clones was called. Frame pointer was 0x7ffd19c62750
+ Before return: SP = 0x7ffd19c62748
  Register Record
- 	Event num: 568
+ 	Event num: 242
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
- 	Value: 0x0x0004006b2
+ 	Value: 0x0x0004004f2
  Register Record
- 	Event num: 569
+ 	Event num: 243
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7ffeafd4a840
- After return : SP = 0x7ffeafd4a840
- 0x0004006b2R 0x7ffeafd4a840 8
+ 	Value: 0x0x7ffd19c62750
+ After return : SP = 0x7ffd19c62750
+ 0x0004004f2R 0x7ffd19c62750 8
  line number 0
- value before read : 0x10  0xa9  0xd4  0xaf  0xfe  0x7f  0x0  0x0  Invocation ID:553function deregister_tm_clones was called. Frame pointer was 0x7ffeafd4a840
- Before pop: SP = 0x7ffeafd4a840
+ value before read : 0x20  0x28  0xc6  0x19  0xfd  0x7f  0x0  0x0  Invocation ID:227function deregister_tm_clones was called. Frame pointer was 0x7ffd19c62750
+ Before pop: SP = 0x7ffd19c62750
  Register Record
- 	Event num: 572
+ 	Event num: 246
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rbp
- 	Value: 0x0x7ffeafd4a910
+ 	Value: 0x0x7ffd19c62820
  Register Record
- 	Event num: 573
+ 	Event num: 247
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7ffeafd4a848
- After pop: SP = 0x7ffeafd4a848
- 0x0004006b3: W 0x000601064 1
+ 	Value: 0x0x7ffd19c62758
+ After pop: SP = 0x7ffd19c62758
+ 0x0004004f3: W 0x000601038 1
  value before write : 0x0  
  value after write : 0x1  
  Enter is_at_address
- trec = 0x7f95cf67be00
+ trec = 0x7f4a7e2bbe00
 type name = int
  Getting base address for a global
- var_addr: 0x000601068 mem_addr: 0x000601064 size: 4
- address 0x0x000601064 is not a program variable
- 0x0004006baR 0x7ffeafd4a848 8
+ var_addr: 0x00060103c mem_addr: 0x000601038 size: 4
+ address 0x0x000601038 is not a program variable
+ 0x0004004faR 0x7ffd19c62758 8
  line number 0
- value before read : 0xe7  0x1d  0x6e  0xcf  0x95  0x7f  0x0  0x0  Invocation ID:553function deregister_tm_clones was called. Frame pointer was 0x7ffeafd4a910
- Before return: SP = 0x7ffeafd4a848
+ value before read : 0xe7  0x1d  0x32  0x7e  0x4a  0x7f  0x0  0x0  Invocation ID:227function deregister_tm_clones was called. Frame pointer was 0x7ffd19c62820
+ Before return: SP = 0x7ffd19c62758
  Register Record
- 	Event num: 577
+ 	Event num: 251
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
- 	Value: 0x0x7f95cf6e1de7
+ 	Value: 0x0x7f4a7e321de7
  Register Record
- 	Event num: 578
+ 	Event num: 252
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7ffeafd4a850
- After return : SP = 0x7ffeafd4a850
+ 	Value: 0x0x7ffd19c62760
+ After return : SP = 0x7ffd19c62760
  Function Call to _fini
- after push stack size:13
- Invocation ID:579function _fini was called. Frame pointer was 0x7ffeafd4a910
+ after push stack size:4
+ Invocation ID:253function _fini was called. Frame pointer was 0x7ffd19c62820
  Register Record
- 	Event num: 580
+ 	Event num: 254
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7ffeafd4a840
+ 	Value: 0x0x7ffd19c62750
  Register Record
- 	Event num: 581
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rflags
- 	Value: 0x0x000000202
- Register Record
- 	Event num: 582
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7ffeafd4a848
- Register Record
- 	Event num: 583
+ 	Event num: 255
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rflags
  	Value: 0x0x000000206
- 0x0004009acR 0x7ffeafd4a848 8
- line number 0
- value before read : 0x5  0x1e  0x6e  0xcf  0x95  0x7f  0x0  0x0  Invocation ID:579function _fini was called. Frame pointer was 0x7ffeafd4a910
- Before return: SP = 0x7ffeafd4a848
  Register Record
- 	Event num: 586
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x7f95cf6e1e05
- Register Record
- 	Event num: 587
+ 	Event num: 256
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7ffeafd4a850
- After return : SP = 0x7ffeafd4a850
+ 	Value: 0x0x7ffd19c62758
+ Register Record
+ 	Event num: 257
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rflags
+ 	Value: 0x0x000000202
+ 0x0004005ecR 0x7ffd19c62758 8
+ line number 0
+ value before read : 0x5  0x1e  0x32  0x7e  0x4a  0x7f  0x0  0x0  Invocation ID:253function _fini was called. Frame pointer was 0x7ffd19c62820
+ Before return: SP = 0x7ffd19c62758
+ Register Record
+ 	Event num: 260
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rip
+ 	Value: 0x0x7f4a7e321e05
+ Register Record
+ 	Event num: 261
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rsp
+ 	Value: 0x0x7ffd19c62760
+ After return : SP = 0x7ffd19c62760
