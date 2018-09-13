@@ -47,6 +47,15 @@ private:
 	Generic location; /* an expression storing how to compute the address of the variable*/
 	bool first_access; /* is this the first access of this variable in the program? */
 
+	/**
+ 	 * Get a single value at an address based on a particular type
+ 	 *
+ 	 * @param trec a type record indicating the type of the value stored at the address
+ 	 * @param addr a memory address
+ 	 * @return a string containg the value stored at the address
+  	 */
+	std::string read_singleton_value(type_record *trec, Generic addr);
+
 public:
 
 	/**
@@ -347,11 +356,12 @@ public:
 	/**
  	 * Get the value at an address based on a particular type
  	 *
+ 	 * @param ttab a type table
  	 * @param trec a type record indicating the type of the value stored at the address
  	 * @param addr a memory address
  	 * @return a string containg the value stored at the address
   	 */
-	std::string read_value(type_record *trec, Generic addr);
+	std::string read_value(type_table *ttab,type_record *trec, Generic addr);
 
 	/**
 	 * Propagate local information about variables to the structure members

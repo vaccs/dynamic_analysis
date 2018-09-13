@@ -21,8 +21,10 @@
 #define OLD_FRAME_PTR_OFFSET 0
 #ifdef __x86_64
 #define RETURN_ADDRESS_OFFSET 8
+#define STACK_BASE 0xffff800000000000
 #else
 #define RETURN_ADDRESS_OFFSET 4
+#define STACK_BASE 0xC0000000
 #endif 
 
 

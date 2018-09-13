@@ -98,35 +98,6 @@ VOID before_function_indirect_call(ADDRINT ip, CONTEXT *ctxt, ADDRINT callee_add
 }
 
 VOID after_function_call(void) {
-   DEBUGL(LOG("Enter after_function_call\n"));
-
-   vaccs_record_factory factory;
-   char stdout_buff[VACCS_MAX_OUTPUT_LENGTH+1];
-
-   USIZE num_bytes = VACCS_MAX_OUTPUT_LENGTH;
-   
-   OS_ReadFD(vaccs_stdout,&num_bytes,stdout_buff);
-
-   if (num_bytes != 0) {
-      stdout_buff[num_bytes] = '\0';
-      string bufs(stdout_buff);
-      DEBUGL(LOG("output has been found: " + bufs + "\n"));
-      output_record *orec = (output_record*)factory.make_vaccs_record(VACCS_OUTPUT);
-      orec = orec->add_event_num(timestamp++)
-            ->add_output(stdout_buff);
-      orec->write(vaccs_fd);
-      delete orec;
-   }
-   else {
-      DEBUGL(LOG("No output found\n"));
-   }
-   return_record *rrec = (return_record*)factory.make_vaccs_record(VACCS_RETURN);
-   rrec = rrec->add_event_num(timestamp++);
-   rrec->write(vaccs_fd);
-   delete rrec;
-
-   DEBUGL(LOG("function return\n"));
-   DEBUGL(LOG("Exit after_function_call\n"));
 
 }
 
@@ -138,24 +109,23 @@ VOID monitor_function_calls(INS ins, VOID *v)
    if (INS_IsCall(ins)) {
       if (INS_IsDirectBranchOrCall(ins)) {
          DEBUGL(LOG("Direct call: " + INS_Disassemble(ins) + "\n"));
-         ADDRINT target = INS_DirectBranchOrCallTargetAddress(ins);
-         INS_InsertPredicatedCall(ins,IPOINT_BEFORE,AFUNPTR(before_function_direct_call),
-                                 IARG_INST_PTR,
-                                 IARG_CONTEXT,
-                                 IARG_ADDRINT, target,
-                                 IARG_END);
-      } else {
-         DEBUGL(LOG("Indirect call: " + INS_Disassemble(ins) + "\n"));
-         INS_InsertCall(ins, IPOINT_BEFORE, AFUNPTR(before_function_indirect_call),
-                        IARG_INST_PTR,
-                        IARG_CONTEXT,
-                        IARG_BRANCH_TARGET_ADDR,
-                        IARG_END);
+         //ADDRINT target = INS_DirectBranchOrCallTargetAddress(ins);
+         //INS_InsertPredicatedCall(ins,IPOINT_BEFORE,AFUNPTR(before_function_direct_call),
+                                 //IARG_INST_PTR,
+                                 //IARG_CONTEXT,
+                                 //IARG_ADDRINT, target,
+                                 //IARG_END);
+      //} else {
+         //DEBUGL(LOG("Indirect call: " + INS_Disassemble(ins) + "\n"));
+         //INS_InsertCall(ins, IPOINT_BEFORE, AFUNPTR(before_function_indirect_call),
+                        //IARG_INST_PTR,
+                        //IARG_CONTEXT,
+                        //IARG_BRANCH_TARGET_ADDR,
+                        //IARG_END);
+	 IPOINT where = IPOINT_AFTER;
+	 if (!INS_HasFallThrough(ins))
+	    where = IPOINT_TAKEN_BRANCH;
+	 INS_InsertPredicatedCall(ins, where, (AFUNPTR)after_function_call, IARG_END);
       }
-	   IPOINT where = IPOINT_AFTER;
-	   if (!INS_HasFallThrough(ins))
-	      where = IPOINT_TAKEN_BRANCH;
-	   INS_InsertPredicatedCall(ins, where, (AFUNPTR)after_function_call,
-		                        IARG_END);
    }
 }

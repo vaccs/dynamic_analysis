@@ -203,7 +203,6 @@ bool var_record::get_scope(var_record *vrec) {
 
 	return is_in_scope;
 }
-
 /**
  * Get the value at an address based on a particular type
  *
@@ -211,7 +210,121 @@ bool var_record::get_scope(var_record *vrec) {
  * @param addr a memory address
  * @return a string containg the value stored at the address
  */
-std::string var_record::read_value(type_record *trec, Generic addr) {
+std::string var_record::read_singleton_value(type_record *trec, Generic addr) {
+	std::string value;
+	std::string type_name = *(trec->get_name());
+
+	DEBUGL(LOG("In var_record::read_singleton_value\n"));
+	DEBUGL(LOG("Type is " + type_name + "\n"));
+	DEBUGL(LOG("Reading " + decstr(trec->get_size()) + " bytes at address: " + hexstr(addr) + "\n"));
+
+	ostringstream convert;
+	if (addr == 0)
+		value = "<null>";
+	else if (trec->get_is_pointer() || trec->get_is_array()) {
+
+		// this address has already been dereferenced once, so now its value is just the
+		// address itself
+
+		convert << addr;
+		value = convert.str();
+	} else if (type_name.find("long long") != std::string::npos) {
+		// interpret data as long long
+
+		if (type_name.find("unsigned") != std::string::npos) {
+			unsigned long long *ptr =(unsigned long long *)addr;
+			convert << *ptr;
+		}else {
+			long long *ptr = (long long *)addr;
+			convert << *ptr;
+		}
+
+		value = convert.str();
+
+	} else if (type_name.find("long") != std::string::npos) {
+		// interpret data as long
+
+		if (type_name.find("unsigned") != std::string::npos) {
+			unsigned long *ptr = (unsigned long *)addr;
+			convert << *ptr;
+		}
+		else {
+			long *ptr = (long *)addr;
+			convert << *ptr;
+		}
+
+		value = convert.str();
+
+	} else if (type_name.find("short") != std::string::npos) {
+		// interpret data as short
+
+		if (type_name.find("unsigned") != std::string::npos) {
+			unsigned short *ptr = (unsigned short *)addr;
+			convert << *ptr;
+		}
+		else {
+			short *ptr = (short *)addr;
+			convert << *ptr;
+		}
+
+		value = convert.str();
+
+	} else if (type_name.find("char") != std::string::npos) {
+		// interpret data as a char
+
+		if (type_name.find("unsigned") != std::string::npos) {
+			unsigned char *ptr = (unsigned char *)addr;
+			convert << *ptr;
+		}
+		else {
+			char *ptr = (char *)addr;
+			convert << *ptr;
+		}
+
+		value = convert.str();
+
+	} else if (type_name.find("int") != std::string::npos) {
+		// interpret data as an int
+
+		if (type_name.find("unsigned") != std::string::npos) {
+			unsigned int *ptr = (unsigned int *)addr;
+			convert << *ptr;
+		}
+		else {
+			int *ptr = (int *)addr;
+			convert << *ptr;
+		}
+
+		value = convert.str();
+
+	} else {
+		LOG("Type not supported: " + type_name + "\n");
+		PIN_ExitProcess(-1);
+	}
+	return value;
+
+}
+
+string read_c_string(Generic addr) {
+	string value;
+	char *ptr = (char *) addr;
+	value = "";
+	for (int i = 0; *ptr != '\0' && i < 10; i++)
+		value += *ptr;
+
+	if (*ptr != '\0')
+		value += "...";
+
+	return value;
+}
+/**
+ * Get the value at an address based on a particular type
+ *
+ * @param trec a type record indicating the type of the value stored at the address
+ * @param addr a memory address
+ * @return a string containg the value stored at the address
+ */
+std::string var_record::read_value(type_table *ttab, type_record *trec, Generic addr) {
 	std::string value;
 	std::string type_name = *(trec->get_name());
 
@@ -219,99 +332,34 @@ std::string var_record::read_value(type_record *trec, Generic addr) {
 	DEBUGL(LOG("Type is " + type_name + "\n"));
 	DEBUGL(LOG("Reading " + decstr(trec->get_size()) + " bytes at address: " + hexstr(addr) + "\n"));
 
-	ostringstream convert;
+	if (addr == 0)
+		value = "<null>";
+	else if (trec->get_is_pointer()) {
+		type_record *btrec = ttab->get(*trec->get_base_type());
+		string bt_name = *btrec->get_name();
 
-	if (type_name.find("*") != std::string::npos) {
-		if (type_name.find("char") != std::string::npos) {
-			char *ptr = (char *)addr;
-			value = "";
-			for (int i = 0; *ptr != '\0' && i < 10; i++)
-				value += *ptr;
+		// handle a char* as a string
 
-			if (*ptr != '\0')
-				value += "...";
-
+		if (!btrec->get_is_pointer() && !btrec->get_is_array() && bt_name.find("char") != std::string::npos) {
+			value = read_c_string(addr);
 		} else {
-			Generic *ptr = (Generic*)addr;
-			convert << *ptr;
-			value = convert.str();
+			Generic ptr = *(Generic*)addr;
+			value = read_singleton_value(btrec,ptr);
 		}
-	} else {
+	} else if (trec->get_is_array()) {
+		type_record *btrec = ttab->get(*trec->get_base_type());
+		string bt_name = *btrec->get_name();
 
-		if (type_name.find("long long") != std::string::npos) {
-			// interpret data as long long
+		// read a char array as a string
 
-			if (type_name.find("unsigned") != std::string::npos) {
-				unsigned long long *ptr =(unsigned long long *)addr;
-				convert << *ptr;
-			}else {
-				long long *ptr = (long long *)addr;
-				convert << *ptr;
-			}
-
-			value = convert.str();
-
-		} else if (type_name.find("long") != std::string::npos) {
-			// interpret data as long
-
-			if (type_name.find("unsigned") != std::string::npos) {
-				unsigned long *ptr = (unsigned long *)addr;
-				convert << *ptr;
-			}
-			else {
-				long *ptr = (long *)addr;
-				convert << *ptr;
-			}
-
-			value = convert.str();
-
-		} else if (type_name.find("short") != std::string::npos) {
-			// interpret data as short
-
-			if (type_name.find("unsigned") != std::string::npos) {
-				unsigned short *ptr = (unsigned short *)addr;
-				convert << *ptr;
-			}
-			else {
-				short *ptr = (short *)addr;
-				convert << *ptr;
-			}
-
-			value = convert.str();
-
-		} else if (type_name.find("char") != std::string::npos) {
-			// interpret data as a char
-
-			if (type_name.find("unsigned") != std::string::npos) {
-				unsigned char *ptr = (unsigned char *)addr;
-				convert << *ptr;
-			}
-			else {
-				char *ptr = (char *)addr;
-				convert << *ptr;
-			}
-
-			value = convert.str();
-
-		} else if (type_name.find("int") != std::string::npos) {
-			// interpret data as an int
-
-			if (type_name.find("unsigned") != std::string::npos) {
-				unsigned int *ptr = (unsigned int *)addr;
-				convert << *ptr;
-			}
-			else {
-				int *ptr = (int *)addr;
-				convert << *ptr;
-			}
-
-			value = convert.str();
-
+		if (!btrec->get_is_pointer() && !btrec->get_is_array() && bt_name.find("char") != std::string::npos) {
+			value = read_c_string(addr);
 		} else {
-			LOG("Type not supported: " + type_name + "\n");
-			PIN_ExitProcess(-1);
+			Generic ptr = *(Generic*)addr;
+			value = read_singleton_value(btrec,ptr);
 		}
-	}
+	} else
+		value = read_singleton_value(trec,addr);
 
 	return value;
 }

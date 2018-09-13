@@ -37,6 +37,7 @@ cu_record::~cu_record() {}
  * @return true if the pc is found in this compilation unit, otherwise false.
  */
 bool cu_record::pc_in_range(Generic pc) {
+	DEBUGL(LOG("Check if pc = "+hexstr(pc)+" is between "+hexstr(low_pc)+" and "+hexstr(high_pc)+"\n"));
 	return (pc >= low_pc && pc < high_pc);
 }
 
@@ -72,11 +73,15 @@ std::pair<std::string,var_record*> cu_record::translate_address_to_function(Gene
 std::pair<std::string,var_record*> cu_record::translate_address_to_variable(const CONTEXT *ctxt,Generic inst_addr, Generic mem_addr) {
 	std::pair<std::string,var_record*> vpair = default_var_pair;
 
+	DEBUGL(LOG("In cu_record::translate_address_to_variable\n"));
+
 	// look for the subprogram with that contains the given instruction
 	// then look for a
 	for (std::map<std::string,symbol_table_record*>::iterator it = vtab->begin(); it != vtab->end(); it++) {
 		std::pair<std::string,var_record*> tvpair(it->first,(var_record*)it->second);
+			DEBUGL(LOG("Checking if " + it->first + " is a subprogram\n"));
 			if (tvpair.second->get_is_subprog() && tvpair.second->pc_in_range(inst_addr)) {
+				DEBUGL(LOG("Checking subprogram "+it->first+" for the address " + hexstr(mem_addr)));
 				vpair = tvpair.second->find_address_in_subprog(ctxt,mem_addr,ttab);
 				break;
 			}
@@ -157,10 +162,13 @@ cu_table::~cu_table() {}
 std::pair<std::string,var_record*> cu_table::translate_address_to_variable(const CONTEXT *ctxt,Generic inst_addr, Generic mem_addr) {
 	std::pair<std::string,var_record*> vpair = default_var_pair;
 
+	DEBUGL(LOG("In cu_table::translate_address_to_variable\n"));
 	// Look for a local variable with the given address
 	for (std::map<std::string,symbol_table_record*>::iterator it = begin(); it != end(); it++) {
 		cu_record* curec = (cu_record*)it->second;
+		DEBUGL(LOG("Checking cu "+it->first+"\n"));
 		if (curec->pc_in_range(inst_addr)) {
+			DEBUGL(LOG("Found the CU for this instruction"));
 			vpair = curec->translate_address_to_variable(ctxt,inst_addr,mem_addr);
 			break;
 		}
@@ -177,6 +185,7 @@ std::pair<std::string,var_record*> cu_table::translate_address_to_variable(const
 				it++) {
 			var_record *tvrec = (var_record*)it->second;
 			type_record *ttrec = curec->get_type_table()->get(tvrec->get_type());
+			DEBUGL(LOG("Checking global variable "+it->first+" if at address "+hexstr(mem_addr)));
 			if (!tvrec->get_is_subprog() && tvrec->is_at_address(ctxt,mem_addr,ttrec)) {
 				vpair.first = it->first;
 				vpair.second = tvrec;

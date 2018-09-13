@@ -57,8 +57,9 @@ VOID mallocBefore(CHAR * name, ADDRINT size)
 VOID fopenAfter(ADDRINT ret)
 {
 
-	DEBUGL(LOG(" returns 0x" + hexstr(ret) + "\n"));
-   DEBUGL(string sname = invocation_stack.top().function_name);
+	DEBUGL(LOG(" returns " + hexstr(ret) + "\n"));
+	if (invocation_stack.empty()) return;
+	DEBUGL(string sname = invocation_stack.top().function_name);
 	DEBUGL(LOG("function "+sname+"  Frame pointer was "+
             hexstr(current_EBP)+"\n"));
 	malloc_event.heap_address = ret;

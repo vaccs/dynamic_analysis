@@ -26,7 +26,7 @@ var_access_record::var_access_record() :
 	scope = NULL;
 	address = -1;
 	name = NULL;
-	points_to = -1;
+	points_to = 0;
 	value = NULL;
 	type = NULL;
 }
@@ -70,15 +70,13 @@ void var_access_record::write(NATIVE_FD fd) {
 	size =  sizeof(length); assert(OS_WriteFD(fd,&length,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 	size =  length; assert(OS_WriteFD(fd,type,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 
-	assert(
-			(length = strnlen(name,VACCS_MAX_VARIABLE_LENGTH+1)) <= VACCS_MAX_VARIABLE_LENGTH);
+	assert((length = strnlen(name,VACCS_MAX_VARIABLE_LENGTH+1)) <= VACCS_MAX_VARIABLE_LENGTH);
 	size =  sizeof(length); assert(OS_WriteFD(fd,&length,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 	size =  length; assert(OS_WriteFD(fd,name,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 
 	size =  sizeof(points_to); assert(OS_WriteFD(fd,&points_to,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 
-	assert(
-			(length = strnlen(value,VACCS_MAX_VALUE_LENGTH+1)) <= VACCS_MAX_VARIABLE_LENGTH);
+	assert((length = strnlen(value,VACCS_MAX_VALUE_LENGTH+1)) <= VACCS_MAX_VARIABLE_LENGTH);
 	size =  sizeof(length); assert(OS_WriteFD(fd,&length,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 	size =  length; assert(OS_WriteFD(fd,value,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 }

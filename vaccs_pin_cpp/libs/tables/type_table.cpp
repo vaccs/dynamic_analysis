@@ -30,6 +30,8 @@ type_record::type_record() :
 	is_array = false;
 	is_pointer = false;
 	is_struct = false;
+	is_typedef = false;
+	is_const = false;
 	upper_bound = -1;
 	base_type = NULL;
 	member_tab = NULL;

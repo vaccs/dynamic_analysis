@@ -34,6 +34,8 @@ private:
 	bool is_array; /* is the type an array? */
 	bool is_pointer; /* is the type a pointer? */
 	bool is_struct; /* is the type a struct? */
+	bool is_typedef; /* is this type a typedef? */
+	bool is_const; /* is this type const? */
 	std::string *base_type; /* the dwarf index of the base type for an array */
 	Generic upper_bound; /* the upper bound for the array type */
 	var_table *member_tab; /* the members of a c struct */
@@ -98,6 +100,26 @@ public:
 	 */
 	type_record* add_is_struct() {
 		this->is_struct = true;
+		return this;
+	}
+
+	/**
+	 * Add the is_typedef field to the object using a builder pattern
+	 *
+	 * @return the object
+	 */
+	type_record* add_is_typedef() {
+		this->is_typedef = true;
+		return this;
+	}
+
+	/**
+	 * Add the is_const field to the object using a builder pattern
+	 *
+	 * @return the object
+	 */
+	type_record* add_is_const() {
+		this->is_const = true;
 		return this;
 	}
 
@@ -174,6 +196,24 @@ public:
 	 */
 	bool get_is_struct() {
 		return is_struct;
+	}
+
+	/**
+	 * Is this a typedef type?
+	 *
+	 * @return true if this is a typedef type; otherwise, false
+	 */
+	bool get_is_typedef() {
+		return is_typedef;
+	}
+
+	/**
+	 * Is this a const type?
+	 *
+	 * @return true if this is a const type; otherwise, false
+	 */
+	bool get_is_const() {
+		return is_const;
 	}
 
 	/**

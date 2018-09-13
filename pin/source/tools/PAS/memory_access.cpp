@@ -206,6 +206,9 @@ void write_variable_access_record(string variable,
       ->add_name(variable.c_str())
       ->add_type(type_name.c_str())
       ->add_value(value.c_str());
+
+   if (type_name.find("*") != string::npos)
+	   varec = varec->add_points_to(addr);
    varec->write(vaccs_fd);
    delete varec;
  }
@@ -240,9 +243,9 @@ void write_array_element_record(cu_table *cutab,
          string base_type = *ttab->get(vpair.second->get_type())->get_base_type();
          var_record *varec = (var_record*)factory.make_symbol_table_record(VAR_RECORD);
    	   varec = varec->add_decl_file(fileName)
-			   ->add_decl_line(vpair.second->get_decl_line())
-            ->add_type(base_type)
-			   ->add_location(vpair.second->get_location() + (element_size * i));         
+	   	->add_decl_line(vpair.second->get_decl_line())
+           	->add_type(base_type)
+		->add_location(vpair.second->get_location() + (element_size * i));         
 
          if (vpair.second->get_is_local())
             varec = varec->add_is_local();
@@ -262,9 +265,9 @@ void write_array_element_record(cu_table *cutab,
          var_record *varec = (var_record*)factory.make_symbol_table_record(VAR_RECORD);
          string base_type = *ttab->get(vpair.second->get_type())->get_base_type();
    	   varec = varec->add_decl_file(fileName)
-			   ->add_decl_line(vpair.second->get_decl_line())
-            ->add_type(base_type)
-			   ->add_location(vpair.second->get_location() + (element_size * index));         
+	   	->add_decl_line(vpair.second->get_decl_line())
+            	->add_type(base_type)
+		->add_location(vpair.second->get_location() + (element_size * index));         
 
          if (vpair.second->get_is_local())
             varec = varec->add_is_local();
@@ -352,7 +355,7 @@ void write_element_record(cu_table *cutab,
             event_num);
    else 
       write_variable_access_record(var_prefix+vpair.first, event_num, line, fileName, scope,
-            addr, *trec->get_name(), vpair.second->read_value(trec,addr));
+            addr, *trec->get_name(), vpair.second->read_value(ttab,trec,addr));
 }
 
 VOID AfterMemWrite(VOID* assembly, ADDRINT ip, VOID *addr,const CONTEXT *ctxt, UINT32 size)
@@ -406,7 +409,7 @@ VOID AfterMemWrite(VOID* assembly, ADDRINT ip, VOID *addr,const CONTEXT *ctxt, U
    pair<string,var_record*> vpair =
       vdr->get_cutab()->translate_address_to_variable(ctxt,(Generic)ip,(Generic)addr);
    if (vpair == default_var_pair) {
-      DEBUGL(LOG("address 0x" + hexstr((Generic)addr) + 
+      DEBUGL(LOG("address " + hexstr((Generic)addr) + 
                " is not a program variable" + "\n"));
    } else {
       write_element_record(vdr->get_cutab(),vpair,ctxt,(Generic)addr,line,fileName,"",

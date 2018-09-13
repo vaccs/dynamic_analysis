@@ -181,6 +181,12 @@ void vaccs_dw_reader::read_type_record() {
 	bool is_struct;
 	size =  sizeof(is_struct); assert(OS_ReadFD(fd,&size,&is_struct).generic_err == OS_RETURN_CODE_NO_ERROR);
 
+	bool is_typedef;
+	size =  sizeof(is_struct); assert(OS_ReadFD(fd,&size,&is_typedef).generic_err == OS_RETURN_CODE_NO_ERROR);
+
+	bool is_const;
+	size =  sizeof(is_struct); assert(OS_ReadFD(fd,&size,&is_const).generic_err == OS_RETURN_CODE_NO_ERROR);
+
 	size =  sizeof(length); assert(OS_ReadFD(fd,&size,&length).generic_err == OS_RETURN_CODE_NO_ERROR);
 
 	char *base_type;
@@ -205,6 +211,13 @@ void vaccs_dw_reader::read_type_record() {
 	if (is_pointer)
 		trec = trec->add_is_pointer()
 			->add_base_type(base_type);
+
+	if (is_typedef)
+		trec = trec->add_is_typedef();
+
+	if (is_const)
+		trec = trec->add_is_const();
+
 	current_cu_rec->get_type_table()->put(type,trec);
 	if (is_struct) {
 
