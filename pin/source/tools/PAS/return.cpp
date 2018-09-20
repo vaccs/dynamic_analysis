@@ -10,6 +10,10 @@
 #include "global.h"
 #include "database_access_api.h"
 #include <util/general.h>
+#include <io/vaccs_record_factory.h>
+#include <io/vaccs_record.h>
+#include <io/return_record.h>
+
 
 using namespace std;
 
@@ -34,6 +38,20 @@ VOID BeforeReturn(CONTEXT * ctxt)
     //ou_return << dec << return_event.id  <<","<<hex << return_event.sp_before;
     //pas_output<<"pin_return~!~" << dec << return_event.id  <<"|"<<hex << return_event.sp_before;
 }
+
+VOID BeforeHalt(CONTEXT * ctxt)
+{
+    vaccs_record_factory factory;
+
+    return_record *rrec = (return_record*)factory.make_vaccs_record(VACCS_RETURN);
+    rrec = rrec->add_event_num(timestamp++);
+    rrec->write(vaccs_fd);
+    delete rrec;
+
+    DEBUGL(LOG("Halt\n"));
+    DEBUGL(LOG("exit BeforeHalt\n"));
+}
+
 /*
  * Instrumentation routines
  */
@@ -66,7 +84,11 @@ VOID ReturnImage(IMG img, VOID *v)
                                    IARG_CONTEXT, IARG_END);
                     INS_InsertCall( ins, IPOINT_TAKEN_BRANCH, (AFUNPTR)AfterReturn,
                                    IARG_CONTEXT, IARG_END);
-                }
+                } else if (INS_IsHalt(ins)) {
+		    cerr << "Instrument a halt instruction\n";
+                    INS_InsertCall( ins, IPOINT_BEFORE, (AFUNPTR)BeforeHalt,
+                                   IARG_CONTEXT, IARG_END);
+		}
             }
             // Close the RTN.
             RTN_Close( rtn );

@@ -21,10 +21,10 @@
 #define OLD_FRAME_PTR_OFFSET 0
 #ifdef __x86_64
 #define RETURN_ADDRESS_OFFSET 8
-#define STACK_BASE 0xffff800000000000
+#define BASE_ADDRESS 0x555555554000
 #else
 #define RETURN_ADDRESS_OFFSET 4
-#define STACK_BASE 0xC0000000
+#define BASE_ADDRESS 0x0
 #endif 
 
 
@@ -49,6 +49,11 @@ ADDRINT read_memory_as_address(ADDRINT addr);
 
 
 extern ADDRINT current_EBP;
+
+// The three variables declared below are also declared as external in general.h
+extern Generic text_base_address;
+extern Generic stack_base_address;
+extern Generic data_base_address;
 extern char* current_function_name;
 extern int current_invocation_id;
 extern int timestamp;

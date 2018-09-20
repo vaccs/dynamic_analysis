@@ -22,6 +22,7 @@
 #include <io/output_record.h>
 
 extern NATIVE_FD vaccs_stdout;
+Generic stack_base_address = 0;
 
 function_invocation_transaction function_invocation_event;
 VOID functionInvocationBefore(void* function_name,const CONTEXT* ctxt,
@@ -32,7 +33,7 @@ VOID functionInvocationBefore(void* function_name,const CONTEXT* ctxt,
 
     DEBUGL(string sname(name));
     DEBUGL(LOG( "Function Call to " + sname +"\n"));
-    if(strcmp(name,".plt")==0) return;
+    //if(strcmp(name,".plt")==0) return;
     if(strcmp(name,"frame_dummy")==0) return;
 
     int id = timestamp++;
@@ -40,6 +41,12 @@ VOID functionInvocationBefore(void* function_name,const CONTEXT* ctxt,
     get_registers(ctxt,id);
     ADDRINT EBP = (ADDRINT)PIN_GetContextReg( ctxt, REG_GBP);
     ADDRINT ESP = (ADDRINT)PIN_GetContextReg( ctxt, REG_STACK_PTR);
+
+    if (!strncmp(name,"_start",6)) {
+	DEBUGL(LOG("Base SP = "+hexstr(ESP)+"\n"));
+	stack_base_address = (Generic)ESP;
+    }
+
     function_invocation_event.frame_pointer = EBP;
     function_invocation_event.id = id;
     store_function_invocation_transaction(function_invocation_event);
@@ -67,7 +74,7 @@ VOID functionInvocationBefore(void* function_name,const CONTEXT* ctxt,
     INT32 inv_column = 0, inv_line = 0;
     string inv_fileName = NOFUNCNAME;
 
-    if (EBP >= ESP && EBP < STACK_BASE) {
+    if (EBP >= ESP && EBP < stack_base_address) {
 	dynamic_link = read_memory_as_address(EBP+OLD_FRAME_PTR_OFFSET);
 	return_address = read_memory_as_address(EBP+RETURN_ADDRESS_OFFSET);
 	PIN_LockClient();
@@ -82,7 +89,7 @@ VOID functionInvocationBefore(void* function_name,const CONTEXT* ctxt,
     DEBUGL(LOG( "\tInv line: " + decstr(inv_line) + "\n"));
     DEBUGL(LOG( "\tFunc file: " + fileName +"\n"));
     DEBUGL(LOG( "\tInv file: " + inv_fileName +"\n"));
-    DEBUGL(LOG( "\tCallee address: " + hexstr(ip) + "\n\n"));
+    DEBUGL(LOG( "\tCallee stack address: " + hexstr(ESP) + "\n\n"));
     func_inv_record *frec = (func_inv_record*)factory.make_vaccs_record(VACCS_FUNCTION_INV);
     frec = frec->add_event_num(timestamp++)
 	->add_func_name(name)
@@ -90,7 +97,7 @@ VOID functionInvocationBefore(void* function_name,const CONTEXT* ctxt,
 	->add_inv_line_num(inv_line)
 	->add_c_func_file(fileName.c_str())
 	->add_c_inv_file(inv_fileName.c_str())
-	->add_address(ip);
+	->add_address((Generic)ESP);
     frec->write(vaccs_fd);
     delete frec;
 
@@ -165,17 +172,19 @@ VOID FunctionInvocatioinImage(IMG img, VOID *v)
     //  Find the malloc() function.
 	if(Is_System_Image(img)) return;
 	for(SEC sec = IMG_SecHead(img);SEC_Valid(sec);sec = SEC_Next(sec)){
-	    for(RTN rtn = SEC_RtnHead(sec);RTN_Valid(rtn);rtn = RTN_Next(rtn)){
-		RTN_Open(rtn);
+	    if (SEC_Name(sec).find(".plt") == string::npos) // ignore dynamically linked libc routines
+		for(RTN rtn = SEC_RtnHead(sec);RTN_Valid(rtn);rtn = RTN_Next(rtn)){
+		    RTN_Open(rtn);
 
-		RTN_InsertCall(rtn, IPOINT_BEFORE, (AFUNPTR)functionInvocationBefore,
-				IARG_PTR, RTN_Name(rtn).c_str(), IARG_CONTEXT, IARG_INST_PTR,
-		                IARG_END);
-		RTN_InsertCall(rtn, IPOINT_AFTER, (AFUNPTR)functionInvocationAfter,
-				IARG_PTR, RTN_Name(rtn).c_str(), IARG_CONTEXT,
-				IARG_END);
- 		RTN_Close(rtn);
-	    }
+		    cerr << "Instrumenting call to routine " << RTN_Name(rtn) << endl;
+		    RTN_InsertCall(rtn, IPOINT_BEFORE, (AFUNPTR)functionInvocationBefore,
+				    IARG_PTR, RTN_Name(rtn).c_str(), IARG_CONTEXT, IARG_INST_PTR,
+				    IARG_END);
+		    RTN_InsertCall(rtn, IPOINT_AFTER, (AFUNPTR)functionInvocationAfter,
+				    IARG_PTR, RTN_Name(rtn).c_str(), IARG_CONTEXT,
+				    IARG_END);
+		    RTN_Close(rtn);
+		}
 	}
 
 }

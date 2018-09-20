@@ -1,172 +1,172 @@
 Pin: pin-3.6-97554-31f0a167d
 Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  Section header:
- 	|Section Name|Type|Address|Size
+ 	|Type|Address|Size|Section Name
  Section name: .interp
  	Type: 5
- 	Address: 0x0x555555554238
+ 	Address: 0x555555554238
  	Size: 28
- 	Record: |.interp|5|0x555555554238|28
+ 	Record: |5|0x555555554238|28|.interp
  Section name: .note.ABI-tag
  	Type: 5
- 	Address: 0x0x555555554254
+ 	Address: 0x555555554254
  	Size: 32
- 	Record: |.note.ABI-tag|5|0x555555554254|32
+ 	Record: |5|0x555555554254|32|.note.ABI-tag
  Section name: .note.gnu.build-id
  	Type: 5
- 	Address: 0x0x555555554274
+ 	Address: 0x555555554274
  	Size: 36
- 	Record: |.note.gnu.build-id|5|0x555555554274|36
+ 	Record: |5|0x555555554274|36|.note.gnu.build-id
  Section name: .gnu.hash
  	Type: 5
- 	Address: 0x0x555555554298
+ 	Address: 0x555555554298
  	Size: 28
- 	Record: |.gnu.hash|5|0x555555554298|28
+ 	Record: |5|0x555555554298|28|.gnu.hash
  Section name: .dynsym
  	Type: 16
- 	Address: 0x0x5555555542b8
+ 	Address: 0x5555555542b8
  	Size: 168
- 	Record: |.dynsym|16|0x5555555542b8|168
+ 	Record: |16|0x5555555542b8|168|.dynsym
  Section name: .dynstr
  	Type: 20
- 	Address: 0x0x555555554360
+ 	Address: 0x555555554360
  	Size: 132
- 	Record: |.dynstr|20|0x555555554360|132
+ 	Record: |20|0x555555554360|132|.dynstr
  Section name: .gnu.version
  	Type: 5
- 	Address: 0x0x5555555543e4
+ 	Address: 0x5555555543e4
  	Size: 14
- 	Record: |.gnu.version|5|0x5555555543e4|14
+ 	Record: |5|0x5555555543e4|14|.gnu.version
  Section name: .gnu.version_r
  	Type: 5
- 	Address: 0x0x5555555543f8
+ 	Address: 0x5555555543f8
  	Size: 32
- 	Record: |.gnu.version_r|5|0x5555555543f8|32
+ 	Record: |5|0x5555555543f8|32|.gnu.version_r
  Section name: .rela.dyn
  	Type: 2
- 	Address: 0x0x555555554418
+ 	Address: 0x555555554418
  	Size: 192
- 	Record: |.rela.dyn|2|0x555555554418|192
+ 	Record: |2|0x555555554418|192|.rela.dyn
  Section name: .rela.plt
  	Type: 2
- 	Address: 0x0x5555555544d8
+ 	Address: 0x5555555544d8
  	Size: 24
- 	Record: |.rela.plt|2|0x5555555544d8|24
+ 	Record: |2|0x5555555544d8|24|.rela.plt
  Section name: .init
  	Type: 4
- 	Address: 0x0x5555555544f0
+ 	Address: 0x5555555544f0
  	Size: 23
- 	Record: |.init|4|0x5555555544f0|23
+ 	Record: |4|0x5555555544f0|23|.init
  Section name: .plt
  	Type: 4
- 	Address: 0x0x555555554510
+ 	Address: 0x555555554510
  	Size: 32
- 	Record: |.plt|4|0x555555554510|32
+ 	Record: |4|0x555555554510|32|.plt
  Section name: .plt.got
  	Type: 4
- 	Address: 0x0x555555554530
+ 	Address: 0x555555554530
  	Size: 8
- 	Record: |.plt.got|4|0x555555554530|8
+ 	Record: |4|0x555555554530|8|.plt.got
  Section name: .text
  	Type: 4
- 	Address: 0x0x555555554540
+ 	Address: 0x555555554540
  	Size: 466
- 	Record: |.text|4|0x555555554540|466
+ 	Record: |4|0x555555554540|466|.text
  Section name: .fini
  	Type: 4
- 	Address: 0x0x555555554714
+ 	Address: 0x555555554714
  	Size: 9
- 	Record: |.fini|4|0x555555554714|9
+ 	Record: |4|0x555555554714|9|.fini
  Section name: .rodata
  	Type: 5
- 	Address: 0x0x555555554720
- 	Size: 29
- 	Record: |.rodata|5|0x555555554720|29
+ 	Address: 0x555555554720
+ 	Size: 41
+ 	Record: |5|0x555555554720|41|.rodata
  Section name: .eh_frame_hdr
  	Type: 5
- 	Address: 0x0x555555554740
+ 	Address: 0x55555555474c
  	Size: 60
- 	Record: |.eh_frame_hdr|5|0x555555554740|60
+ 	Record: |5|0x55555555474c|60|.eh_frame_hdr
  Section name: .eh_frame
  	Type: 5
- 	Address: 0x0x555555554780
+ 	Address: 0x555555554788
  	Size: 264
- 	Record: |.eh_frame|5|0x555555554780|264
+ 	Record: |5|0x555555554788|264|.eh_frame
  Section name: .init_array
  	Type: 5
- 	Address: 0x0x555555754db8
+ 	Address: 0x555555754db8
  	Size: 8
- 	Record: |.init_array|5|0x555555754db8|8
+ 	Record: |5|0x555555754db8|8|.init_array
  Section name: .fini_array
  	Type: 5
- 	Address: 0x0x555555754dc0
+ 	Address: 0x555555754dc0
  	Size: 8
- 	Record: |.fini_array|5|0x555555754dc0|8
+ 	Record: |5|0x555555754dc0|8|.fini_array
  Section name: .dynamic
  	Type: 6
- 	Address: 0x0x555555754dc8
+ 	Address: 0x555555754dc8
  	Size: 496
- 	Record: |.dynamic|6|0x555555754dc8|496
+ 	Record: |6|0x555555754dc8|496|.dynamic
  Section name: .got
  	Type: 8
- 	Address: 0x0x555555754fb8
+ 	Address: 0x555555754fb8
  	Size: 72
- 	Record: |.got|8|0x555555754fb8|72
+ 	Record: |8|0x555555754fb8|72|.got
  Section name: .data
  	Type: 5
- 	Address: 0x0x555555755000
- 	Size: 16
- 	Record: |.data|5|0x555555755000|16
+ 	Address: 0x555555755000
+ 	Size: 20
+ 	Record: |5|0x555555755000|20|.data
  Section name: .bss
  	Type: 18
- 	Address: 0x0x555555755010
- 	Size: 8
- 	Record: |.bss|18|0x555555755010|8
+ 	Address: 0x555555755014
+ 	Size: 12
+ 	Record: |18|0x555555755014|12|.bss
  Section name: .comment
  	Type: 17
- 	Address: 0x0x000000000
+ 	Address: 0x000000000
  	Size: 36
- 	Record: |.comment|17|0x0|36
+ 	Record: |17|0x0|36|.comment
  Section name: .debug_aranges
  	Type: 17
- 	Address: 0x0x000000000
+ 	Address: 0x000000000
  	Size: 48
- 	Record: |.debug_aranges|17|0x0|48
+ 	Record: |17|0x0|48|.debug_aranges
  Section name: .debug_info
  	Type: 17
- 	Address: 0x0x000000000
- 	Size: 851
- 	Record: |.debug_info|17|0x0|851
+ 	Address: 0x000000000
+ 	Size: 870
+ 	Record: |17|0x0|870|.debug_info
  Section name: .debug_abbrev
  	Type: 17
- 	Address: 0x0x000000000
+ 	Address: 0x000000000
  	Size: 258
- 	Record: |.debug_abbrev|17|0x0|258
+ 	Record: |17|0x0|258|.debug_abbrev
  Section name: .debug_line
  	Type: 17
- 	Address: 0x0x000000000
+ 	Address: 0x000000000
  	Size: 214
- 	Record: |.debug_line|17|0x0|214
+ 	Record: |17|0x0|214|.debug_line
  Section name: .debug_str
  	Type: 17
- 	Address: 0x0x000000000
+ 	Address: 0x000000000
  	Size: 681
- 	Record: |.debug_str|17|0x0|681
+ 	Record: |17|0x0|681|.debug_str
  Section name: .symtab
  	Type: 15
- 	Address: 0x0x000000000
- 	Size: 1656
- 	Record: |.symtab|15|0x0|1656
+ 	Address: 0x000000000
+ 	Size: 1680
+ 	Record: |15|0x0|1680|.symtab
  Section name: .strtab
  	Type: 19
- 	Address: 0x0x000000000
+ 	Address: 0x000000000
  	Size: 517
- 	Record: |.strtab|19|0x0|517
+ 	Record: |19|0x0|517|.strtab
  Section name: .shstrtab
  	Type: 21
- 	Address: 0x0x000000000
+ 	Address: 0x000000000
  	Size: 318
- 	Record: |.shstrtab|21|0x0|318
+ 	Record: |21|0x0|318|.shstrtab
  ASM Record
  	ASM line #: 93824992232688
  	C line #: 0
@@ -388,9 +388,9 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: lea rdi, ptr [rip+0x200a99]
+ 	Instruction: lea rdi, ptr [rip+0x200aa1]
 
- lea rdi, ptr [rip+0x200a99]
+ lea rdi, ptr [rip+0x200aa1]
  ASM Record
  	ASM line #: 93824992232823
  	C line #: 0
@@ -404,9 +404,9 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: lea rax, ptr [rip+0x200a91]
+ 	Instruction: lea rax, ptr [rip+0x200a99]
 
- lea rax, ptr [rip+0x200a91]
+ lea rax, ptr [rip+0x200a99]
  ASM Record
  	ASM line #: 93824992232831
  	C line #: 0
@@ -516,17 +516,17 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: lea rdi, ptr [rip+0x200a59]
+ 	Instruction: lea rdi, ptr [rip+0x200a61]
 
- lea rdi, ptr [rip+0x200a59]
+ lea rdi, ptr [rip+0x200a61]
  ASM Record
  	ASM line #: 93824992232887
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: lea rsi, ptr [rip+0x200a52]
+ 	Instruction: lea rsi, ptr [rip+0x200a5a]
 
- lea rsi, ptr [rip+0x200a52]
+ lea rsi, ptr [rip+0x200a5a]
  ASM Record
  	ASM line #: 93824992232894
  	C line #: 0
@@ -684,9 +684,9 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: cmp byte ptr [rip+0x200a09], 0x0
+ 	Instruction: cmp byte ptr [rip+0x200a0d], 0x0
 
- cmp byte ptr [rip+0x200a09], 0x0
+ cmp byte ptr [rip+0x200a0d], 0x0
  ASM Record
  	ASM line #: 93824992232967
  	C line #: 0
@@ -758,9 +758,9 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: mov byte ptr [rip+0x2009e1], 0x1
+ 	Instruction: mov byte ptr [rip+0x2009e5], 0x1
 
- mov byte ptr [rip+0x2009e1], 0x1
+ mov byte ptr [rip+0x2009e5], 0x1
  ASM Record
  	ASM line #: 93824992233007
  	C line #: 0
@@ -827,7 +827,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  jmp 0x5555555545b0
  ASM Record
  	ASM line #: 93824992233034
- 	C line #: 3
+ 	C line #: 4
  	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.s
  	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Instruction: push rbp
@@ -835,7 +835,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  push rbp
  ASM Record
  	ASM line #: 93824992233035
- 	C line #: 3
+ 	C line #: 4
  	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.s
  	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Instruction: mov rbp, rsp
@@ -843,7 +843,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  mov rbp, rsp
  ASM Record
  	ASM line #: 93824992233038
- 	C line #: 3
+ 	C line #: 4
  	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.s
  	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Instruction: sub rsp, 0x10
@@ -851,7 +851,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  sub rsp, 0x10
  ASM Record
  	ASM line #: 93824992233042
- 	C line #: 6
+ 	C line #: 7
  	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.s
  	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Instruction: lea rax, ptr [rbp-0xc]
@@ -859,7 +859,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  lea rax, ptr [rbp-0xc]
  ASM Record
  	ASM line #: 93824992233046
- 	C line #: 6
+ 	C line #: 7
  	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.s
  	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Instruction: mov qword ptr [rbp-0x8], rax
@@ -867,15 +867,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  mov qword ptr [rbp-0x8], rax
  ASM Record
  	ASM line #: 93824992233050
- 	C line #: 9
+ 	C line #: 10
  	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.s
  	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- 	Instruction: mov dword ptr [rip+0x2009b0], 0x1
+ 	Instruction: mov dword ptr [rip+0x2009b4], 0x1
 
- mov dword ptr [rip+0x2009b0], 0x1
+ mov dword ptr [rip+0x2009b4], 0x1
  ASM Record
  	ASM line #: 93824992233060
- 	C line #: 10
+ 	C line #: 11
  	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.s
  	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Instruction: mov dword ptr [rbp-0xc], 0x2
@@ -883,63 +883,79 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  mov dword ptr [rbp-0xc], 0x2
  ASM Record
  	ASM line #: 93824992233067
- 	C line #: 11
+ 	C line #: 12
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
+ 	Instruction: mov esi, dword ptr [rip+0x20099f]
+
+ mov esi, dword ptr [rip+0x20099f]
+ ASM Record
+ 	ASM line #: 93824992233073
+ 	C line #: 12
  	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.s
  	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Instruction: mov rax, qword ptr [rbp-0x8]
 
  mov rax, qword ptr [rbp-0x8]
  ASM Record
- 	ASM line #: 93824992233071
- 	C line #: 11
+ 	ASM line #: 93824992233077
+ 	C line #: 12
  	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.s
  	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Instruction: mov ecx, dword ptr [rax]
 
  mov ecx, dword ptr [rax]
  ASM Record
- 	ASM line #: 93824992233073
- 	C line #: 11
+ 	ASM line #: 93824992233079
+ 	C line #: 12
  	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.s
  	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Instruction: mov edx, dword ptr [rbp-0xc]
 
  mov edx, dword ptr [rbp-0xc]
  ASM Record
- 	ASM line #: 93824992233076
- 	C line #: 11
+ 	ASM line #: 93824992233082
+ 	C line #: 12
  	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.s
  	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- 	Instruction: mov eax, dword ptr [rip+0x20099a]
+ 	Instruction: mov eax, dword ptr [rip+0x200998]
 
- mov eax, dword ptr [rip+0x20099a]
+ mov eax, dword ptr [rip+0x200998]
  ASM Record
- 	ASM line #: 93824992233082
- 	C line #: 11
+ 	ASM line #: 93824992233088
+ 	C line #: 12
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
+ 	Instruction: mov r8d, esi
+
+ mov r8d, esi
+ ASM Record
+ 	ASM line #: 93824992233091
+ 	C line #: 12
  	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.s
  	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Instruction: mov esi, eax
 
  mov esi, eax
  ASM Record
- 	ASM line #: 93824992233084
- 	C line #: 11
+ 	ASM line #: 93824992233093
+ 	C line #: 12
  	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.s
  	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- 	Instruction: lea rdi, ptr [rip+0xa1]
+ 	Instruction: lea rdi, ptr [rip+0x9c]
 
- lea rdi, ptr [rip+0xa1]
+ lea rdi, ptr [rip+0x9c]
  ASM Record
- 	ASM line #: 93824992233091
- 	C line #: 11
+ 	ASM line #: 93824992233100
+ 	C line #: 12
  	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.s
  	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Instruction: mov eax, 0x0
 
  mov eax, 0x0
  ASM Record
- 	ASM line #: 93824992233096
- 	C line #: 11
+ 	ASM line #: 93824992233105
+ 	C line #: 12
  	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.s
  	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Instruction: call 0x555555554520
@@ -947,24 +963,24 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  Direct call: call 0x555555554520
  call 0x555555554520
  ASM Record
- 	ASM line #: 93824992233101
- 	C line #: 11
+ 	ASM line #: 93824992233110
+ 	C line #: 12
  	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.s
  	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Instruction: mov eax, 0x0
 
  mov eax, 0x0
  ASM Record
- 	ASM line #: 93824992233106
- 	C line #: 12
+ 	ASM line #: 93824992233115
+ 	C line #: 13
  	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.s
  	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Instruction: leave 
 
  leave 
  ASM Record
- 	ASM line #: 93824992233107
- 	C line #: 12
+ 	ASM line #: 93824992233116
+ 	C line #: 13
  	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.s
  	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Instruction: ret 
@@ -1298,38 +1314,39 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
   returns 0x7ffff7ffedd0
  enter
  malloc(1178)
-  returns 0x7fffe4732000
+  returns 0x7fffe4730000
  enter
  malloc(32)
-  returns 0x7fffe47324a0
+  returns 0x7fffe47304a0
  enter
  malloc(40)
-  returns 0x7fffe47324c0
+  returns 0x7fffe47304c0
  enter
  malloc(56)
-  returns 0x7fffe47324f0
+  returns 0x7fffe47304f0
  enter
  malloc(72)
-  returns 0x7fffe4732530
+  returns 0x7fffe4730530
  enter
  malloc(72)
-  returns 0x7fffe4732580
+  returns 0x7fffe4730580
  enter
  malloc(768)
-  returns 0x7fffe47325d0
+  returns 0x7fffe47305d0
  enter
  malloc(144)
-  returns 0x7fffe47328d0
+  returns 0x7fffe47308d0
  enter
  malloc(1040)
-  returns 0x7fffe4732960
+  returns 0x7fffe4730960
  enter
  malloc(4232)
-  returns 0x7fffe4732d70
+  returns 0x7fffe4730d70
  enter
  malloc(272)
-  returns 0x7fffe4733e00
+  returns 0x7fffe4731e00
  Function Call to _start
+ Base SP = 0x7fffffffdcd0
  after push stack size:1
  Invocation ID:0function _start was called.
  Frame pointer was 0x000000000
@@ -1341,7 +1358,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  	Inv line: 0
  	Func file: 
  	Inv file: __NOFUNCTIONNAME__
- 	Callee address: 0x555555554540
+ 	Callee stack address: 0x7fffffffdcd0
 
  Return address
  	Function name: main
@@ -1412,12 +1429,17 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  value after write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  In cu_table::translate_address_to_variable
  Checking cu /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- Check if pc = 0x55555555454d is between 0x00000064a and 0x000000694
+ In cu_record::pc_in_range: check if pc = 0x55555555454d is between 0x55555555464a and 0x55555555469d
  Checking global variable a if at address 0x7fffffffdcc0 Enter is_at_address
  trec = 0x7ffff7d7f240
 type name = int
- Getting base address for a global
- var_addr: 0x000201014 mem_addr: 0x7fffffffdcc0 size: 4
+ Base address for a global is: 0x555555755018
+ var_addr: 0x555555755018 mem_addr: 0x7fffffffdcc0 size: 4
+ Checking global variable c if at address 0x7fffffffdcc0 Enter is_at_address
+ trec = 0x7ffff7d7f240
+type name = int
+ Base address for a global is: 0x555555755010
+ var_addr: 0x555555755010 mem_addr: 0x7fffffffdcc0 size: 4
  Checking global variable main if at address 0x7fffffffdcc0 address 0x7fffffffdcc0 is not a program variable
  After push: SP = 0x7fffffffdcc8
  0x55555555454e: W 0x7fffffffdcc0 8
@@ -1432,12 +1454,17 @@ type name = int
  value after write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  In cu_table::translate_address_to_variable
  Checking cu /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- Check if pc = 0x55555555454e is between 0x00000064a and 0x000000694
+ In cu_record::pc_in_range: check if pc = 0x55555555454e is between 0x55555555464a and 0x55555555469d
  Checking global variable a if at address 0x7fffffffdcb8 Enter is_at_address
  trec = 0x7ffff7d7f240
 type name = int
- Getting base address for a global
- var_addr: 0x000201014 mem_addr: 0x7fffffffdcb8 size: 4
+ Base address for a global is: 0x555555755018
+ var_addr: 0x555555755018 mem_addr: 0x7fffffffdcb8 size: 4
+ Checking global variable c if at address 0x7fffffffdcb8 Enter is_at_address
+ trec = 0x7ffff7d7f240
+type name = int
+ Base address for a global is: 0x555555755010
+ var_addr: 0x555555755010 mem_addr: 0x7fffffffdcb8 size: 4
  Checking global variable main if at address 0x7fffffffdcb8 address 0x7fffffffdcb8 is not a program variable
  After push: SP = 0x7fffffffdcc0
  Enter AfterRegMod Checking values Register Record
@@ -1460,7 +1487,7 @@ type name = int
  	Value: 0x0x55555555464a
  0x555555554564R 0x555555754fe0 8
  line number 0
- value before read : 0xb0  0x7a  0x34  0xe4  0xff  0x7f  0x0  0x0  Invocation ID:0function _start was called. Frame pointer was 0x000000000
+ value before read : 0xb0  0x5a  0x34  0xe4  0xff  0x7f  0x0  0x0  Invocation ID:0function _start was called. Frame pointer was 0x000000000
  0x555555554564: W 0x7fffffffdcb8 8
  value before write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  Enter AfterRegMod Checking values Register Record
@@ -1468,7 +1495,7 @@ type name = int
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
- 	Value: 0x0x7fffe4347ab0
+ 	Value: 0x0x7fffe4345ab0
  Enter AfterRegMod Checking values Register Record
  	Event num: 24
  	Line #: 0
@@ -1478,12 +1505,17 @@ type name = int
  value after write : 0xd0  0xdc  0xff  0xff  0xff  0x7f  0x0  0x0  
  In cu_table::translate_address_to_variable
  Checking cu /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- Check if pc = 0x555555554564 is between 0x00000064a and 0x000000694
+ In cu_record::pc_in_range: check if pc = 0x555555554564 is between 0x55555555464a and 0x55555555469d
  Checking global variable a if at address 0x7fffffffdcb0 Enter is_at_address
  trec = 0x7ffff7d7f240
 type name = int
- Getting base address for a global
- var_addr: 0x000201014 mem_addr: 0x7fffffffdcb0 size: 4
+ Base address for a global is: 0x555555755018
+ var_addr: 0x555555755018 mem_addr: 0x7fffffffdcb0 size: 4
+ Checking global variable c if at address 0x7fffffffdcb0 Enter is_at_address
+ trec = 0x7ffff7d7f240
+type name = int
+ Base address for a global is: 0x555555755010
+ var_addr: 0x555555755010 mem_addr: 0x7fffffffdcb0 size: 4
  Checking global variable main if at address 0x7fffffffdcb0 address 0x7fffffffdcb0 is not a program variable
  Function Call to __libc_csu_init
  after push stack size:2
@@ -1497,7 +1529,7 @@ type name = int
  	Inv line: 0
  	Func file: 
  	Inv file: __NOFUNCTIONNAME__
- 	Callee address: 0x5555555546a0
+ 	Callee stack address: 0x7fffffffdbf8
 
  Return address
  	Function name: main
@@ -1515,12 +1547,17 @@ type name = int
  value after write : 0x40  0x45  0x55  0x55  0x55  0x55  0x0  0x0  
  In cu_table::translate_address_to_variable
  Checking cu /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- Check if pc = 0x5555555546a0 is between 0x00000064a and 0x000000694
+ In cu_record::pc_in_range: check if pc = 0x5555555546a0 is between 0x55555555464a and 0x55555555469d
  Checking global variable a if at address 0x7fffffffdbe8 Enter is_at_address
  trec = 0x7ffff7d7f240
 type name = int
- Getting base address for a global
- var_addr: 0x000201014 mem_addr: 0x7fffffffdbe8 size: 4
+ Base address for a global is: 0x555555755018
+ var_addr: 0x555555755018 mem_addr: 0x7fffffffdbe8 size: 4
+ Checking global variable c if at address 0x7fffffffdbe8 Enter is_at_address
+ trec = 0x7ffff7d7f240
+type name = int
+ Base address for a global is: 0x555555755010
+ var_addr: 0x555555755010 mem_addr: 0x7fffffffdbe8 size: 4
  Checking global variable main if at address 0x7fffffffdbe8 address 0x7fffffffdbe8 is not a program variable
  After push: SP = 0x7fffffffdbf0
  0x5555555546a2: W 0x7fffffffdbe8 8
@@ -1535,12 +1572,17 @@ type name = int
  value after write : 0xa0  0x46  0x55  0x55  0x55  0x55  0x0  0x0  
  In cu_table::translate_address_to_variable
  Checking cu /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- Check if pc = 0x5555555546a2 is between 0x00000064a and 0x000000694
+ In cu_record::pc_in_range: check if pc = 0x5555555546a2 is between 0x55555555464a and 0x55555555469d
  Checking global variable a if at address 0x7fffffffdbe0 Enter is_at_address
  trec = 0x7ffff7d7f240
 type name = int
- Getting base address for a global
- var_addr: 0x000201014 mem_addr: 0x7fffffffdbe0 size: 4
+ Base address for a global is: 0x555555755018
+ var_addr: 0x555555755018 mem_addr: 0x7fffffffdbe0 size: 4
+ Checking global variable c if at address 0x7fffffffdbe0 Enter is_at_address
+ trec = 0x7ffff7d7f240
+type name = int
+ Base address for a global is: 0x555555755010
+ var_addr: 0x555555755010 mem_addr: 0x7fffffffdbe0 size: 4
  Checking global variable main if at address 0x7fffffffdbe0 address 0x7fffffffdbe0 is not a program variable
  After push: SP = 0x7fffffffdbe8
  Enter AfterRegMod Checking values Register Record
@@ -1561,12 +1603,17 @@ type name = int
  value after write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  In cu_table::translate_address_to_variable
  Checking cu /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- Check if pc = 0x5555555546a7 is between 0x00000064a and 0x000000694
+ In cu_record::pc_in_range: check if pc = 0x5555555546a7 is between 0x55555555464a and 0x55555555469d
  Checking global variable a if at address 0x7fffffffdbd8 Enter is_at_address
  trec = 0x7ffff7d7f240
 type name = int
- Getting base address for a global
- var_addr: 0x000201014 mem_addr: 0x7fffffffdbd8 size: 4
+ Base address for a global is: 0x555555755018
+ var_addr: 0x555555755018 mem_addr: 0x7fffffffdbd8 size: 4
+ Checking global variable c if at address 0x7fffffffdbd8 Enter is_at_address
+ trec = 0x7ffff7d7f240
+type name = int
+ Base address for a global is: 0x555555755010
+ var_addr: 0x555555755010 mem_addr: 0x7fffffffdbd8 size: 4
  Checking global variable main if at address 0x7fffffffdbd8 address 0x7fffffffdbd8 is not a program variable
  After push: SP = 0x7fffffffdbe0
  0x5555555546a9: W 0x7fffffffdbd8 8
@@ -1581,12 +1628,17 @@ type name = int
  value after write : 0x70  0xe1  0xff  0xf7  0x0  0x0  0x0  0x0  
  In cu_table::translate_address_to_variable
  Checking cu /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- Check if pc = 0x5555555546a9 is between 0x00000064a and 0x000000694
+ In cu_record::pc_in_range: check if pc = 0x5555555546a9 is between 0x55555555464a and 0x55555555469d
  Checking global variable a if at address 0x7fffffffdbd0 Enter is_at_address
  trec = 0x7ffff7d7f240
 type name = int
- Getting base address for a global
- var_addr: 0x000201014 mem_addr: 0x7fffffffdbd0 size: 4
+ Base address for a global is: 0x555555755018
+ var_addr: 0x555555755018 mem_addr: 0x7fffffffdbd0 size: 4
+ Checking global variable c if at address 0x7fffffffdbd0 Enter is_at_address
+ trec = 0x7ffff7d7f240
+type name = int
+ Base address for a global is: 0x555555755010
+ var_addr: 0x555555755010 mem_addr: 0x7fffffffdbd0 size: 4
  Checking global variable main if at address 0x7fffffffdbd0 address 0x7fffffffdbd0 is not a program variable
  After push: SP = 0x7fffffffdbd8
  Enter AfterRegMod Checking values Register Record
@@ -1604,15 +1656,20 @@ type name = int
  	File: __NOCSOURCE__
  	Register: rsp
  	Value: 0x0x7fffffffdbd0
- value after write : 0x89  0x94  0x36  0xe4  0xff  0x7f  0x0  0x0  
+ value after write : 0x89  0x74  0x36  0xe4  0xff  0x7f  0x0  0x0  
  In cu_table::translate_address_to_variable
  Checking cu /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- Check if pc = 0x5555555546b2 is between 0x00000064a and 0x000000694
+ In cu_record::pc_in_range: check if pc = 0x5555555546b2 is between 0x55555555464a and 0x55555555469d
  Checking global variable a if at address 0x7fffffffdbc8 Enter is_at_address
  trec = 0x7ffff7d7f240
 type name = int
- Getting base address for a global
- var_addr: 0x000201014 mem_addr: 0x7fffffffdbc8 size: 4
+ Base address for a global is: 0x555555755018
+ var_addr: 0x555555755018 mem_addr: 0x7fffffffdbc8 size: 4
+ Checking global variable c if at address 0x7fffffffdbc8 Enter is_at_address
+ trec = 0x7ffff7d7f240
+type name = int
+ Base address for a global is: 0x555555755010
+ var_addr: 0x555555755010 mem_addr: 0x7fffffffdbc8 size: 4
  Checking global variable main if at address 0x7fffffffdbc8 address 0x7fffffffdbc8 is not a program variable
  After push: SP = 0x7fffffffdbd0
  Enter AfterRegMod Checking values Register Record
@@ -1622,7 +1679,7 @@ type name = int
  	Register: rbp
  	Value: 0x0x555555754dc0
  0x5555555546ba: W 0x7fffffffdbc8 8
- value before write : 0x89  0x94  0x36  0xe4  0xff  0x7f  0x0  0x0  
+ value before write : 0x89  0x74  0x36  0xe4  0xff  0x7f  0x0  0x0  
  Before push: SP = 0x7fffffffdbd0
  Enter AfterRegMod Checking values Register Record
  	Event num: 47
@@ -1633,12 +1690,17 @@ type name = int
  value after write : 0xa0  0x59  0xde  0xf7  0xff  0x7f  0x0  0x0  
  In cu_table::translate_address_to_variable
  Checking cu /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- Check if pc = 0x5555555546ba is between 0x00000064a and 0x000000694
+ In cu_record::pc_in_range: check if pc = 0x5555555546ba is between 0x55555555464a and 0x55555555469d
  Checking global variable a if at address 0x7fffffffdbc0 Enter is_at_address
  trec = 0x7ffff7d7f240
 type name = int
- Getting base address for a global
- var_addr: 0x000201014 mem_addr: 0x7fffffffdbc0 size: 4
+ Base address for a global is: 0x555555755018
+ var_addr: 0x555555755018 mem_addr: 0x7fffffffdbc0 size: 4
+ Checking global variable c if at address 0x7fffffffdbc0 Enter is_at_address
+ trec = 0x7ffff7d7f240
+type name = int
+ Base address for a global is: 0x555555755010
+ var_addr: 0x555555755010 mem_addr: 0x7fffffffdbc0 size: 4
  Checking global variable main if at address 0x7fffffffdbc0 address 0x7fffffffdbc0 is not a program variable
  After push: SP = 0x7fffffffdbc8
  Enter AfterRegMod Checking values Register Record
@@ -1690,7 +1752,7 @@ type name = int
  	Register: rflags
  	Value: 0x0x000000202
  0x5555555546cc: W 0x7fffffffdbb8 8
- value before write : 0x28  0x66  0x71  0xe4  0xff  0x7f  0x0  0x0  
+ value before write : 0x28  0x46  0x71  0xe4  0xff  0x7f  0x0  0x0  
  Enter AfterRegMod Checking values Register Record
  	Event num: 57
  	Line #: 0
@@ -1706,12 +1768,17 @@ type name = int
  value after write : 0xc2  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  In cu_table::translate_address_to_variable
  Checking cu /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- Check if pc = 0x5555555546cc is between 0x00000064a and 0x000000694
+ In cu_record::pc_in_range: check if pc = 0x5555555546cc is between 0x55555555464a and 0x55555555469d
  Checking global variable a if at address 0x7fffffffdbb0 Enter is_at_address
  trec = 0x7ffff7d7f240
 type name = int
- Getting base address for a global
- var_addr: 0x000201014 mem_addr: 0x7fffffffdbb0 size: 4
+ Base address for a global is: 0x555555755018
+ var_addr: 0x555555755018 mem_addr: 0x7fffffffdbb0 size: 4
+ Checking global variable c if at address 0x7fffffffdbb0 Enter is_at_address
+ trec = 0x7ffff7d7f240
+type name = int
+ Base address for a global is: 0x555555755010
+ var_addr: 0x555555755010 mem_addr: 0x7fffffffdbb0 size: 4
  Checking global variable main if at address 0x7fffffffdbb0 address 0x7fffffffdbb0 is not a program variable
  Function Call to _init
  after push stack size:3
@@ -1725,7 +1792,7 @@ type name = int
  	Inv line: 0
  	Func file: 
  	Inv file: __NOFUNCTIONNAME__
- 	Callee address: 0x5555555544f0
+ 	Callee stack address: 0x7fffffffdbb8
 
  Return address
  	Function name: main
@@ -1847,12 +1914,17 @@ type name = int
  value after write : 0xc2  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  In cu_table::translate_address_to_variable
  Checking cu /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- Check if pc = 0x5555555546e9 is between 0x00000064a and 0x000000694
+ In cu_record::pc_in_range: check if pc = 0x5555555546e9 is between 0x55555555464a and 0x55555555469d
  Checking global variable a if at address 0x7fffffffdbb0 Enter is_at_address
  trec = 0x7ffff7d7f240
 type name = int
- Getting base address for a global
- var_addr: 0x000201014 mem_addr: 0x7fffffffdbb0 size: 4
+ Base address for a global is: 0x555555755018
+ var_addr: 0x555555755018 mem_addr: 0x7fffffffdbb0 size: 4
+ Checking global variable c if at address 0x7fffffffdbb0 Enter is_at_address
+ trec = 0x7ffff7d7f240
+type name = int
+ Base address for a global is: 0x555555755010
+ var_addr: 0x555555755010 mem_addr: 0x7fffffffdbb0 size: 4
  Checking global variable main if at address 0x7fffffffdbb0 address 0x7fffffffdbb0 is not a program variable
  Function Call to frame_dummy
  0x555555554640: W 0x7fffffffdbb0 8
@@ -1867,12 +1939,17 @@ type name = int
  value after write : 0xff  0xb6  0xf0  0x0  0x0  0x0  0x0  0x0  
  In cu_table::translate_address_to_variable
  Checking cu /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- Check if pc = 0x555555554640 is between 0x00000064a and 0x000000694
+ In cu_record::pc_in_range: check if pc = 0x555555554640 is between 0x55555555464a and 0x55555555469d
  Checking global variable a if at address 0x7fffffffdba8 Enter is_at_address
  trec = 0x7ffff7d7f240
 type name = int
- Getting base address for a global
- var_addr: 0x000201014 mem_addr: 0x7fffffffdba8 size: 4
+ Base address for a global is: 0x555555755018
+ var_addr: 0x555555755018 mem_addr: 0x7fffffffdba8 size: 4
+ Checking global variable c if at address 0x7fffffffdba8 Enter is_at_address
+ trec = 0x7ffff7d7f240
+type name = int
+ Base address for a global is: 0x555555755010
+ var_addr: 0x555555755010 mem_addr: 0x7fffffffdba8 size: 4
  Checking global variable main if at address 0x7fffffffdba8 address 0x7fffffffdba8 is not a program variable
  After push: SP = 0x7fffffffdbb0
  Enter AfterRegMod Checking values Register Record
@@ -1916,7 +1993,7 @@ type name = int
  	Inv line: 0
  	Func file: 
  	Inv file: __NOFUNCTIONNAME__
- 	Callee address: 0x5555555545b0
+ 	Callee stack address: 0x7fffffffdbb8
 
  Return address
  	Function name: main
@@ -1927,13 +2004,13 @@ type name = int
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rdi
- 	Value: 0x0x555555755010
+ 	Value: 0x0x555555755018
  Enter AfterRegMod Checking values Register Record
  	Event num: 95
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsi
- 	Value: 0x0x555555755010
+ 	Value: 0x0x555555755018
  0x5555555545be: W 0x7fffffffdbb0 8
  value before write : 0x1  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  Before push: SP = 0x7fffffffdbb8
@@ -1946,12 +2023,17 @@ type name = int
  value after write : 0xff  0xb6  0xf0  0x0  0x0  0x0  0x0  0x0  
  In cu_table::translate_address_to_variable
  Checking cu /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- Check if pc = 0x5555555545be is between 0x00000064a and 0x000000694
+ In cu_record::pc_in_range: check if pc = 0x5555555545be is between 0x55555555464a and 0x55555555469d
  Checking global variable a if at address 0x7fffffffdba8 Enter is_at_address
  trec = 0x7ffff7d7f240
 type name = int
- Getting base address for a global
- var_addr: 0x000201014 mem_addr: 0x7fffffffdba8 size: 4
+ Base address for a global is: 0x555555755018
+ var_addr: 0x555555755018 mem_addr: 0x7fffffffdba8 size: 4
+ Checking global variable c if at address 0x7fffffffdba8 Enter is_at_address
+ trec = 0x7ffff7d7f240
+type name = int
+ Base address for a global is: 0x555555755010
+ var_addr: 0x555555755010 mem_addr: 0x7fffffffdba8 size: 4
  Checking global variable main if at address 0x7fffffffdba8 address 0x7fffffffdba8 is not a program variable
  After push: SP = 0x7fffffffdbb0
  Enter AfterRegMod Checking values Register Record
@@ -2148,14 +2230,14 @@ type name = int
  Exit functionInvocationAfter
  0x555555554704R 0x7fffffffdbf8 8
  line number 0
- value before read : 0x28  0x7b  0x34  0xe4  0xff  0x7f  0x0  0x0  Invocation ID:92function register_tm_clones was called. Frame pointer was 0x5555555546a0
+ value before read : 0x28  0x5b  0x34  0xe4  0xff  0x7f  0x0  0x0  Invocation ID:92function register_tm_clones was called. Frame pointer was 0x5555555546a0
  Before return: SP = 0x7fffffffdbf8
  Enter AfterRegMod Checking values Register Record
  	Event num: 143
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
- 	Value: 0x0x7fffe4347b28
+ 	Value: 0x0x7fffe4345b28
  Enter AfterRegMod Checking values Register Record
  	Event num: 144
  	Line #: 0
@@ -2171,11 +2253,11 @@ type name = int
  Call to function
  	Event num: 145
  	Function name: main
- 	Func line: 3
+ 	Func line: 4
  	Inv line: 0
  	Func file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Inv file: __NOFUNCTIONNAME__
- 	Callee address: 0x55555555464a
+ 	Callee stack address: 0x7fffffffdbf8
 
  Return address
  	Function name: main
@@ -2186,36 +2268,60 @@ type name = int
  Before push: SP = 0x7fffffffdbf8
  Enter AfterRegMod Checking values Register Record
  	Event num: 149
- 	Line #: 3
+ 	Line #: 4
  	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Register: rsp
  	Value: 0x0x7fffffffdbf0
  value after write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  In cu_table::translate_address_to_variable
  Checking cu /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- Check if pc = 0x55555555464a is between 0x00000064a and 0x000000694
+ In cu_record::pc_in_range: check if pc = 0x55555555464a is between 0x55555555464a and 0x55555555469d
+ Found the CU for this instruction In cu_record::translate_address_to_variable
+ Checking if a is a subprogram
+ Checking if c is a subprogram
+ Checking if main is a subprogram
+ In var_record::pc_in_range: check if pc = 0x55555555464a is between 0x55555555464a and 0x55555555469d
+ Checking subprogram main for the address 0x7fffffffdbe8 In var_record::find_address_in_subprog
+ Checking variable b
+ Enter is_at_address
+ trec = 0x7ffff7d7f240
+type name = int
+ Base address for a local or param is: 0x555555554694
+ var_addr: 0x555555554694 mem_addr: 0x7fffffffdbe8 size: 4
+ Checking variable p
+ Enter is_at_address
+ trec = 0x7ffff7d7f340
+type name = int*
+ Base address for a local or param is: 0x555555554698
+ var_addr: 0x555555554698 mem_addr: 0x7fffffffdbe8 size: 8
+ Leave var_record::find_address_in_subprog
  Checking global variable a if at address 0x7fffffffdbe8 Enter is_at_address
  trec = 0x7ffff7d7f240
 type name = int
- Getting base address for a global
- var_addr: 0x000201014 mem_addr: 0x7fffffffdbe8 size: 4
+ Base address for a global is: 0x555555755018
+ var_addr: 0x555555755018 mem_addr: 0x7fffffffdbe8 size: 4
+ Checking global variable c if at address 0x7fffffffdbe8 Enter is_at_address
+ trec = 0x7ffff7d7f240
+type name = int
+ Base address for a global is: 0x555555755010
+ var_addr: 0x555555755010 mem_addr: 0x7fffffffdbe8 size: 4
  Checking global variable main if at address 0x7fffffffdbe8 address 0x7fffffffdbe8 is not a program variable
  After push: SP = 0x7fffffffdbf0
  Enter AfterRegMod Checking values Register Record
  	Event num: 150
- 	Line #: 3
+ 	Line #: 4
  	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Register: rbp
  	Value: 0x0x7fffffffdbf0
  Enter AfterRegMod Checking values Register Record
  	Event num: 151
- 	Line #: 3
+ 	Line #: 4
  	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Register: rsp
  	Value: 0x0x7fffffffdbe0
  Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
  	Event num: 152
- 	Line #: 6
+ 	Line #: 7
  	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Register: rax
  	Value: 0x0x7fffffffdbe4
@@ -2224,154 +2330,333 @@ type name = int
  value after write : 0xe4  0xdb  0xff  0xff  0xff  0x7f  0x0  0x0  
  In cu_table::translate_address_to_variable
  Checking cu /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- Check if pc = 0x555555554656 is between 0x00000064a and 0x000000694
- Checking global variable a if at address 0x7fffffffdbe8 Enter is_at_address
+ In cu_record::pc_in_range: check if pc = 0x555555554656 is between 0x55555555464a and 0x55555555469d
+ Found the CU for this instruction In cu_record::translate_address_to_variable
+ Checking if a is a subprogram
+ Checking if c is a subprogram
+ Checking if main is a subprogram
+ In var_record::pc_in_range: check if pc = 0x555555554656 is between 0x55555555464a and 0x55555555469d
+ Checking subprogram main for the address 0x7fffffffdbe8 In var_record::find_address_in_subprog
+ Checking variable b
+ Enter is_at_address
  trec = 0x7ffff7d7f240
 type name = int
- Getting base address for a global
- var_addr: 0x000201014 mem_addr: 0x7fffffffdbe8 size: 4
- Checking global variable main if at address 0x7fffffffdbe8 address 0x7fffffffdbe8 is not a program variable
- 0x55555555465a: W 0x555555755014 4
+ Base address for a local or param is: 0x7fffffffdbe4
+ var_addr: 0x7fffffffdbe4 mem_addr: 0x7fffffffdbe8 size: 4
+ Checking variable p
+ Enter is_at_address
+ trec = 0x7ffff7d7f340
+type name = int*
+ Base address for a local or param is: 0x7fffffffdbe8
+ var_addr: 0x7fffffffdbe8 mem_addr: 0x7fffffffdbe8 size: 8
+ Leave var_record::find_address_in_subprog
+ Write to an address p
+prefix = 
+ In var_recod::read_value
+ Type is int*
+ Reading 8 bytes at address: 0x7fffffffdbe8
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0x7fffffffdbe4
+ Interpreting data as an int, value is 32767
+ Write to variable p
+ 	Event num: 154
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
+ 	Scope: main
+ 	Address: 0x7fffffffdbe8
+ 	Type: int*
+ 	Value: 32767
+
+ In cu_table::translate_address_to_pointer
+ Checking cu /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
+ In cu_record::translate_address_to_pointer
+ Checking if a is a subprogram
+ Checking if c is a subprogram
+ Checking if main is a subprogram
+ Checking subprogram main for the address 0x7fffffffdbe8 In var_record::find_pointers_to_address_in_subprog
+ Checking variable b
+ Checking variable p
+ Enter points_to_address
+ trec = 0x7ffff7d7f340
+type name = int*
+ Base address for a local or param is: 0x7fffffffdbe8
+ *var_addr: 0x7fffffffdbe4 mem_addr: 0x7fffffffdbe8 size: 8
+ Leave var_record::find_pointers_to_address_in_subprog
+ Checking global variable a if points to address 0x7fffffffdbe8
+ Checking global variable c if points to address 0x7fffffffdbe8
+ Checking global variable main if points to address 0x7fffffffdbe8
+ 0x55555555465a: W 0x555555755018 4
  value before write : 0x0  0x0  0x0  0x0  
  value after write : 0x1  0x0  0x0  0x0  
  In cu_table::translate_address_to_variable
  Checking cu /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- Check if pc = 0x55555555465a is between 0x00000064a and 0x000000694
- Checking global variable a if at address 0x555555755014 Enter is_at_address
+ In cu_record::pc_in_range: check if pc = 0x55555555465a is between 0x55555555464a and 0x55555555469d
+ Found the CU for this instruction In cu_record::translate_address_to_variable
+ Checking if a is a subprogram
+ Checking if c is a subprogram
+ Checking if main is a subprogram
+ In var_record::pc_in_range: check if pc = 0x55555555465a is between 0x55555555464a and 0x55555555469d
+ Checking subprogram main for the address 0x555555755018 In var_record::find_address_in_subprog
+ Checking variable b
+ Enter is_at_address
  trec = 0x7ffff7d7f240
 type name = int
- Getting base address for a global
- var_addr: 0x000201014 mem_addr: 0x555555755014 size: 4
- Checking global variable main if at address 0x555555755014 address 0x555555755014 is not a program variable
+ Base address for a local or param is: 0x7fffffffdbe4
+ var_addr: 0x7fffffffdbe4 mem_addr: 0x555555755018 size: 4
+ Checking variable p
+ Enter is_at_address
+ trec = 0x7ffff7d7f340
+type name = int*
+ Base address for a local or param is: 0x7fffffffdbe8
+ var_addr: 0x7fffffffdbe8 mem_addr: 0x555555755018 size: 8
+ Leave var_record::find_address_in_subprog
+ Checking global variable a if at address 0x555555755018 Enter is_at_address
+ trec = 0x7ffff7d7f240
+type name = int
+ Base address for a global is: 0x555555755018
+ var_addr: 0x555555755018 mem_addr: 0x555555755018 size: 4
+ Write to an address a
+prefix = 
+ In var_recod::read_value
+ Type is int
+ Reading 4 bytes at address: 0x555555755018
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0x555555755018
+ Interpreting data as an int, value is 1
+ Write to variable a
+ 	Event num: 156
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
+ 	Scope: *G*
+ 	Address: 0x555555755018
+ 	Type: int
+ 	Value: 1
+
+ In cu_table::translate_address_to_pointer
+ Checking cu /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
+ In cu_record::translate_address_to_pointer
+ Checking if a is a subprogram
+ Checking if c is a subprogram
+ Checking if main is a subprogram
+ Checking subprogram main for the address 0x555555755018 In var_record::find_pointers_to_address_in_subprog
+ Checking variable b
+ Checking variable p
+ Enter points_to_address
+ trec = 0x7ffff7d7f340
+type name = int*
+ Base address for a local or param is: 0x7fffffffdbe8
+ *var_addr: 0x7fffffffdbe4 mem_addr: 0x555555755018 size: 8
+ Leave var_record::find_pointers_to_address_in_subprog
+ Checking global variable a if points to address 0x555555755018
+ Checking global variable c if points to address 0x555555755018
+ Checking global variable main if points to address 0x555555755018
  0x555555554664: W 0x7fffffffdbe4 4
  value before write : 0xff  0x7f  0x0  0x0  
  value after write : 0x2  0x0  0x0  0x0  
  In cu_table::translate_address_to_variable
  Checking cu /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- Check if pc = 0x555555554664 is between 0x00000064a and 0x000000694
- Checking global variable a if at address 0x7fffffffdbe4 Enter is_at_address
+ In cu_record::pc_in_range: check if pc = 0x555555554664 is between 0x55555555464a and 0x55555555469d
+ Found the CU for this instruction In cu_record::translate_address_to_variable
+ Checking if a is a subprogram
+ Checking if c is a subprogram
+ Checking if main is a subprogram
+ In var_record::pc_in_range: check if pc = 0x555555554664 is between 0x55555555464a and 0x55555555469d
+ Checking subprogram main for the address 0x7fffffffdbe4 In var_record::find_address_in_subprog
+ Checking variable b
+ Enter is_at_address
  trec = 0x7ffff7d7f240
 type name = int
- Getting base address for a global
- var_addr: 0x000201014 mem_addr: 0x7fffffffdbe4 size: 4
- Checking global variable main if at address 0x7fffffffdbe4 address 0x7fffffffdbe4 is not a program variable
- 0x55555555466bR 0x7fffffffdbe8 8
- line number 11
+ Base address for a local or param is: 0x7fffffffdbe4
+ var_addr: 0x7fffffffdbe4 mem_addr: 0x7fffffffdbe4 size: 4
+ Leave var_record::find_address_in_subprog
+ Write to an address b
+prefix = 
+ In var_recod::read_value
+ Type is int
+ Reading 4 bytes at address: 0x7fffffffdbe4
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0x7fffffffdbe4
+ Interpreting data as an int, value is 2
+ Write to variable b
+ 	Event num: 158
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
+ 	Scope: main
+ 	Address: 0x7fffffffdbe4
+ 	Type: int
+ 	Value: 2
+
+ In cu_table::translate_address_to_pointer
+ Checking cu /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
+ In cu_record::translate_address_to_pointer
+ Checking if a is a subprogram
+ Checking if c is a subprogram
+ Checking if main is a subprogram
+ Checking subprogram main for the address 0x7fffffffdbe4 In var_record::find_pointers_to_address_in_subprog
+ Checking variable b
+ Checking variable p
+ Enter points_to_address
+ trec = 0x7ffff7d7f340
+type name = int*
+ Base address for a local or param is: 0x7fffffffdbe8
+ *var_addr: 0x7fffffffdbe4 mem_addr: 0x7fffffffdbe4 size: 8
+ p points to address 0x7fffffffdbe4 Leave var_record::find_pointers_to_address_in_subprog
+ Checking global variable a if points to address 0x7fffffffdbe4
+ Checking global variable c if points to address 0x7fffffffdbe4
+ Checking global variable main if points to address 0x7fffffffdbe4
+ Base address for a local or param is: 0x7fffffffdbe8
+ In var_recod::read_value
+ Type is int
+ Reading 4 bytes at address: 0x7fffffffdbe4
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0x7fffffffdbe4
+ Interpreting data as an int, value is 2
+ Write to variable p
+ 	Event num: 158
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
+ 	Scope: main
+ 	Address: 0x7fffffffdbe8
+ 	Points to Address: 0x7fffffffdbe4
+ 	Type: int*
+ 	Value: 2
+
+ 0x55555555466bR 0x555555755010 4
+ line number 12
+ value before read : 0x3  0x0  0x0  0x0  Invocation ID:145function main was called. Frame pointer was 0x7fffffffdbf0
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 160
+ 	Line #: 12
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
+ 	Register: esi
+ 	Value: 0x0x000000003
+ 0x555555554671R 0x7fffffffdbe8 8
+ line number 12
  value before read : 0xe4  0xdb  0xff  0xff  0xff  0x7f  0x0  0x0  Invocation ID:145function main was called. Frame pointer was 0x7fffffffdbf0
- Enter AfterRegMod Checking values 0x55555555466fR 0x7fffffffdbe4 4
- line number 11
+ Enter AfterRegMod Checking values 0x555555554675R 0x7fffffffdbe4 4
+ line number 12
  value before read : 0x2  0x0  0x0  0x0  Invocation ID:145function main was called. Frame pointer was 0x7fffffffdbf0
  Enter AfterRegMod Checking values Register Record
- 	Event num: 158
- 	Line #: 11
+ 	Event num: 163
+ 	Line #: 12
  	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Register: ecx
  	Value: 0x0x000000002
- 0x555555554671R 0x7fffffffdbe4 4
- line number 11
+ 0x555555554677R 0x7fffffffdbe4 4
+ line number 12
  value before read : 0x2  0x0  0x0  0x0  Invocation ID:145function main was called. Frame pointer was 0x7fffffffdbf0
  Enter AfterRegMod Checking values Register Record
- 	Event num: 160
- 	Line #: 11
+ 	Event num: 165
+ 	Line #: 12
  	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Register: edx
  	Value: 0x0x000000002
- 0x555555554674R 0x555555755014 4
- line number 11
+ 0x55555555467aR 0x555555755018 4
+ line number 12
  value before read : 0x1  0x0  0x0  0x0  Invocation ID:145function main was called. Frame pointer was 0x7fffffffdbf0
  Enter AfterRegMod Checking values Register Record
- 	Event num: 162
- 	Line #: 11
+ 	Event num: 167
+ 	Line #: 12
  	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Register: eax
  	Value: 0x0x000000001
  Enter AfterRegMod Checking values Register Record
- 	Event num: 163
- 	Line #: 11
+ 	Event num: 168
+ 	Line #: 12
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
+ 	Register: r8d
+ 	Value: 0x0x000000003
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 169
+ 	Line #: 12
  	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Register: esi
  	Value: 0x0x000000001
  Enter AfterRegMod Checking values Register Record
- 	Event num: 164
- 	Line #: 11
+ 	Event num: 170
+ 	Line #: 12
  	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Register: rdi
- 	Value: 0x0x555555554724
+ 	Value: 0x0x555555554728
  Enter AfterRegMod Checking values Register Record
- 	Event num: 165
- 	Line #: 11
+ 	Event num: 171
+ 	Line #: 12
  	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Register: eax
  	Value: 0x0x000000000
- 0x555555554688: W 0x7fffffffdbd8 8
+ 0x555555554691: W 0x7fffffffdbd8 8
  value before write : 0x40  0x45  0x55  0x55  0x55  0x55  0x0  0x0  
  Enter AfterRegMod Checking values Register Record
- 	Event num: 167
- 	Line #: 11
+ 	Event num: 173
+ 	Line #: 12
  	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Register: rip
  	Value: 0x0x555555554520
  Enter AfterRegMod Checking values Register Record
- 	Event num: 168
- 	Line #: 11
+ 	Event num: 174
+ 	Line #: 12
  	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Register: rsp
  	Value: 0x0x7fffffffdbd8
  value after write : 0xa0  0x46  0x55  0x55  0x55  0x55  0x0  0x0  
  In cu_table::translate_address_to_variable
  Checking cu /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- Check if pc = 0x555555554688 is between 0x00000064a and 0x000000694
+ In cu_record::pc_in_range: check if pc = 0x555555554691 is between 0x55555555464a and 0x55555555469d
+ Found the CU for this instruction In cu_record::translate_address_to_variable
+ Checking if a is a subprogram
+ Checking if c is a subprogram
+ Checking if main is a subprogram
+ In var_record::pc_in_range: check if pc = 0x555555554691 is between 0x55555555464a and 0x55555555469d
+ Checking subprogram main for the address 0x7fffffffdbd0 In var_record::find_address_in_subprog
+ Checking variable b
+ Enter is_at_address
+ trec = 0x7ffff7d7f240
+type name = int
+ Base address for a local or param is: 0x7fffffffdbe4
+ var_addr: 0x7fffffffdbe4 mem_addr: 0x7fffffffdbd0 size: 4
+ Checking variable p
+ Enter is_at_address
+ trec = 0x7ffff7d7f340
+type name = int*
+ Base address for a local or param is: 0x7fffffffdbe8
+ var_addr: 0x7fffffffdbe8 mem_addr: 0x7fffffffdbd0 size: 8
+ Leave var_record::find_address_in_subprog
  Checking global variable a if at address 0x7fffffffdbd0 Enter is_at_address
  trec = 0x7ffff7d7f240
 type name = int
- Getting base address for a global
- var_addr: 0x000201014 mem_addr: 0x7fffffffdbd0 size: 4
+ Base address for a global is: 0x555555755018
+ var_addr: 0x555555755018 mem_addr: 0x7fffffffdbd0 size: 4
+ Checking global variable c if at address 0x7fffffffdbd0 Enter is_at_address
+ trec = 0x7ffff7d7f240
+type name = int
+ Base address for a global is: 0x555555755010
+ var_addr: 0x555555755010 mem_addr: 0x7fffffffdbd0 size: 4
  Checking global variable main if at address 0x7fffffffdbd0 address 0x7fffffffdbd0 is not a program variable
- Function Call to printf@plt
- after push stack size:3
- Invocation ID:169function printf@plt was called.
- Frame pointer was 0x7fffffffdbf0
- Getting frame pointer for printf@plt
- Address being read: 0x0x7fffffffdbf0
- Address being read: 0x0x7fffffffdbf8
- Call to function
- 	Event num: 169
- 	Function name: printf@plt
- 	Func line: 0
- 	Inv line: 0
- 	Func file: 
- 	Inv file: 
- 	Callee address: 0x555555554520
-
- Return address
- 	Function name: main
- 	Dynamic link: 0x5555555546a0
- 	Return address: 0x7fffe4347b97
  0x555555554520R 0x555555754fd0 8
  line number 0
- value before read : 0x80  0xae  0x38  0xe4  0xff  0x7f  0x0  0x0  Invocation ID:169function printf@plt was called. Frame pointer was 0x7fffffffdbf0
+ value before read : 0x80  0x8e  0x38  0xe4  0xff  0x7f  0x0  0x0  Invocation ID:145function main was called. Frame pointer was 0x7fffffffdbf0
  Enter AfterRegMod Checking values Register Record
- 	Event num: 172
+ 	Event num: 176
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
- 	Value: 0x0x7fffe438ae80
+ 	Value: 0x0x7fffe4388e80
  enter
  malloc(1024)
- function main  Frame pointer was 0x7fffffffdbf0
+ function register_tm_clones  Frame pointer was 0x5555555546a0
  exit
- Enter AfterRegMod Checking values 0x555555554692R 0x7fffffffdbf0 8
- line number 12
- value before read : 0xa0  0x46  0x55  0x55  0x55  0x55  0x0  0x0  Invocation ID:169function printf@plt was called. Frame pointer was 0x7fffffffdbf0
+ Enter AfterRegMod Checking values 0x55555555469bR 0x7fffffffdbf0 8
+ line number 13
+ value before read : 0xa0  0x46  0x55  0x55  0x55  0x55  0x0  0x0  Invocation ID:145function main was called. Frame pointer was 0x7fffffffdbf0
  Enter AfterRegMod Checking values Register Record
- 	Event num: 175
- 	Line #: 12
+ 	Event num: 179
+ 	Line #: 13
  	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Register: rbp
  	Value: 0x0x5555555546a0
  Enter AfterRegMod Checking values Register Record
- 	Event num: 176
- 	Line #: 12
+ 	Event num: 180
+ 	Line #: 13
  	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Register: rsp
  	Value: 0x0x7fffffffdbf8
@@ -2379,63 +2664,63 @@ type name = int
  No output found
  function return
  Exit functionInvocationAfter
- 0x555555554693R 0x7fffffffdbf8 8
- line number 12
- value before read : 0x97  0x7b  0x34  0xe4  0xff  0x7f  0x0  0x0  Invocation ID:169function printf@plt was called. Frame pointer was 0x5555555546a0
+ 0x55555555469cR 0x7fffffffdbf8 8
+ line number 13
+ value before read : 0x97  0x5b  0x34  0xe4  0xff  0x7f  0x0  0x0  Invocation ID:145function main was called. Frame pointer was 0x5555555546a0
  Before return: SP = 0x7fffffffdbf8
  Enter AfterRegMod Checking values Register Record
- 	Event num: 180
- 	Line #: 12
+ 	Event num: 184
+ 	Line #: 13
  	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Register: rip
- 	Value: 0x0x7fffe4347b97
+ 	Value: 0x0x7fffe4345b97
  Enter AfterRegMod Checking values Register Record
- 	Event num: 181
- 	Line #: 12
+ 	Event num: 185
+ 	Line #: 13
  	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Register: rsp
  	Value: 0x0x7fffffffdc00
  After return : SP = 0x7fffffffdc00
  Function Call to __do_global_dtors_aux
- after push stack size:3
- Invocation ID:182function __do_global_dtors_aux was called.
+ after push stack size:2
+ Invocation ID:186function __do_global_dtors_aux was called.
  Frame pointer was 0x7fffffffdb90
  Getting frame pointer for __do_global_dtors_aux
  Address being read: 0x0x7fffffffdb90
  Address being read: 0x0x7fffffffdb98
  Call to function
- 	Event num: 182
+ 	Event num: 186
  	Function name: __do_global_dtors_aux
  	Func line: 0
  	Inv line: 0
  	Func file: 
  	Inv file: 
- 	Callee address: 0x555555554600
+ 	Callee stack address: 0x7fffffffdb08
 
  Return address
  	Function name: main
  	Dynamic link: 0x000000000
- 	Return address: 0x7fffe4369041
- 0x555555554600R 0x555555755010 1
+ 	Return address: 0x7fffe4367041
+ 0x555555554600R 0x555555755014 1
  line number 0
- value before read : 0x0  Invocation ID:182function __do_global_dtors_aux was called. Frame pointer was 0x7fffffffdb90
+ value before read : 0x0  Invocation ID:186function __do_global_dtors_aux was called. Frame pointer was 0x7fffffffdb90
  Enter AfterRegMod Checking values Register Record
- 	Event num: 185
+ 	Event num: 189
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rflags
  	Value: 0x0x000000246
  Enter AfterRegMod Checking values Register Record
- 	Event num: 186
+ 	Event num: 190
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
  	Value: 0x0x555555554609
  0x555555554609R 0x555555754ff8 8
  line number 0
- value before read : 0x20  0x95  0x36  0xe4  0xff  0x7f  0x0  0x0  Invocation ID:182function __do_global_dtors_aux was called. Frame pointer was 0x7fffffffdb90
+ value before read : 0x20  0x75  0x36  0xe4  0xff  0x7f  0x0  0x0  Invocation ID:186function __do_global_dtors_aux was called. Frame pointer was 0x7fffffffdb90
  Enter AfterRegMod Checking values Register Record
- 	Event num: 188
+ 	Event num: 192
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rflags
@@ -2444,7 +2729,7 @@ type name = int
  value before write : 0x90  0xdb  0xff  0xff  0xff  0x7f  0x0  0x0  
  Before push: SP = 0x7fffffffdb08
  Enter AfterRegMod Checking values Register Record
- 	Event num: 191
+ 	Event num: 195
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
@@ -2452,31 +2737,36 @@ type name = int
  value after write : 0x4  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  In cu_table::translate_address_to_variable
  Checking cu /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- Check if pc = 0x555555554611 is between 0x00000064a and 0x000000694
+ In cu_record::pc_in_range: check if pc = 0x555555554611 is between 0x55555555464a and 0x55555555469d
  Checking global variable a if at address 0x7fffffffdaf8 Enter is_at_address
  trec = 0x7ffff7d7f240
 type name = int
- Getting base address for a global
- var_addr: 0x000201014 mem_addr: 0x7fffffffdaf8 size: 4
+ Base address for a global is: 0x555555755018
+ var_addr: 0x555555755018 mem_addr: 0x7fffffffdaf8 size: 4
+ Checking global variable c if at address 0x7fffffffdaf8 Enter is_at_address
+ trec = 0x7ffff7d7f240
+type name = int
+ Base address for a global is: 0x555555755010
+ var_addr: 0x555555755010 mem_addr: 0x7fffffffdaf8 size: 4
  Checking global variable main if at address 0x7fffffffdaf8 address 0x7fffffffdaf8 is not a program variable
  After push: SP = 0x7fffffffdb00
  Enter AfterRegMod Checking values Register Record
- 	Event num: 192
+ 	Event num: 196
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rbp
  	Value: 0x0x7fffffffdb00
  Enter AfterRegMod Checking values Register Record
- 	Event num: 193
+ 	Event num: 197
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
  	Value: 0x0x555555554617
  0x555555554617R 0x555555755008 8
  line number 0
- value before read : 0x8  0x50  0x75  0x55  0x55  0x55  0x0  0x0  Invocation ID:182function __do_global_dtors_aux was called. Frame pointer was 0x7fffffffdb00
+ value before read : 0x8  0x50  0x75  0x55  0x55  0x55  0x0  0x0  Invocation ID:186function __do_global_dtors_aux was called. Frame pointer was 0x7fffffffdb00
  Enter AfterRegMod Checking values Register Record
- 	Event num: 195
+ 	Event num: 199
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rdi
@@ -2484,13 +2774,13 @@ type name = int
  0x55555555461e: W 0x7fffffffdaf8 8
  value before write : 0x4  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  Enter AfterRegMod Checking values Register Record
- 	Event num: 197
+ 	Event num: 201
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
  	Value: 0x0x555555554530
  Enter AfterRegMod Checking values Register Record
- 	Event num: 198
+ 	Event num: 202
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
@@ -2498,46 +2788,31 @@ type name = int
  value after write : 0x10  0xdb  0xff  0xff  0xff  0x7f  0x0  0x0  
  In cu_table::translate_address_to_variable
  Checking cu /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- Check if pc = 0x55555555461e is between 0x00000064a and 0x000000694
+ In cu_record::pc_in_range: check if pc = 0x55555555461e is between 0x55555555464a and 0x55555555469d
  Checking global variable a if at address 0x7fffffffdaf0 Enter is_at_address
  trec = 0x7ffff7d7f240
 type name = int
- Getting base address for a global
- var_addr: 0x000201014 mem_addr: 0x7fffffffdaf0 size: 4
+ Base address for a global is: 0x555555755018
+ var_addr: 0x555555755018 mem_addr: 0x7fffffffdaf0 size: 4
+ Checking global variable c if at address 0x7fffffffdaf0 Enter is_at_address
+ trec = 0x7ffff7d7f240
+type name = int
+ Base address for a global is: 0x555555755010
+ var_addr: 0x555555755010 mem_addr: 0x7fffffffdaf0 size: 4
  Checking global variable main if at address 0x7fffffffdaf0 address 0x7fffffffdaf0 is not a program variable
- Function Call to .plt.got
- after push stack size:4
- Invocation ID:199function .plt.got was called.
- Frame pointer was 0x7fffffffdb00
- Getting frame pointer for .plt.got
- Address being read: 0x0x7fffffffdb00
- Address being read: 0x0x7fffffffdb08
- Call to function
- 	Event num: 199
- 	Function name: .plt.got
- 	Func line: 0
- 	Inv line: 0
- 	Func file: 
- 	Inv file: 
- 	Callee address: 0x555555554530
-
- Return address
- 	Function name: main
- 	Dynamic link: 0x7fffffffdb90
- 	Return address: 0x7ffff7de5b73
  0x555555554530R 0x555555754ff8 8
  line number 0
- value before read : 0x20  0x95  0x36  0xe4  0xff  0x7f  0x0  0x0  Invocation ID:199function .plt.got was called. Frame pointer was 0x7fffffffdb00
+ value before read : 0x20  0x75  0x36  0xe4  0xff  0x7f  0x0  0x0  Invocation ID:186function __do_global_dtors_aux was called. Frame pointer was 0x7fffffffdb00
  Enter AfterRegMod Checking values Register Record
- 	Event num: 202
+ 	Event num: 204
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
- 	Value: 0x0x7fffe4369520
+ 	Value: 0x0x7fffe4367520
  0x555555554623: W 0x7fffffffdaf8 8
  value before write : 0x23  0x46  0x55  0x55  0x55  0x55  0x0  0x0  
  Enter AfterRegMod Checking values Register Record
- 	Event num: 204
+ 	Event num: 206
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
@@ -2545,44 +2820,49 @@ type name = int
  Enter AfterRegMod Checking values value after write : 0xc0  0x4d  0x75  0x55  0x55  0x55  0x0  0x0  
  In cu_table::translate_address_to_variable
  Checking cu /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- Check if pc = 0x555555554623 is between 0x00000064a and 0x000000694
+ In cu_record::pc_in_range: check if pc = 0x555555554623 is between 0x55555555464a and 0x55555555469d
  Checking global variable a if at address 0x7fffffffdaf0 Enter is_at_address
  trec = 0x7ffff7d7f240
 type name = int
- Getting base address for a global
- var_addr: 0x000201014 mem_addr: 0x7fffffffdaf0 size: 4
+ Base address for a global is: 0x555555755018
+ var_addr: 0x555555755018 mem_addr: 0x7fffffffdaf0 size: 4
+ Checking global variable c if at address 0x7fffffffdaf0 Enter is_at_address
+ trec = 0x7ffff7d7f240
+type name = int
+ Base address for a global is: 0x555555755010
+ var_addr: 0x555555755010 mem_addr: 0x7fffffffdaf0 size: 4
  Checking global variable main if at address 0x7fffffffdaf0 address 0x7fffffffdaf0 is not a program variable
  Function Call to deregister_tm_clones
- after push stack size:5
- Invocation ID:205function deregister_tm_clones was called.
+ after push stack size:3
+ Invocation ID:207function deregister_tm_clones was called.
  Frame pointer was 0x7fffffffdb00
  Getting frame pointer for deregister_tm_clones
  Address being read: 0x0x7fffffffdb00
  Address being read: 0x0x7fffffffdb08
  Call to function
- 	Event num: 205
+ 	Event num: 207
  	Function name: deregister_tm_clones
  	Func line: 0
  	Inv line: 0
  	Func file: 
  	Inv file: 
- 	Callee address: 0x555555554570
+ 	Callee stack address: 0x7fffffffdaf8
 
  Return address
  	Function name: main
  	Dynamic link: 0x7fffffffdb90
  	Return address: 0x7ffff7de5b73
  Enter AfterRegMod Checking values Register Record
- 	Event num: 207
+ 	Event num: 209
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rdi
- 	Value: 0x0x555555755010
+ 	Value: 0x0x555555755018
  0x555555554577: W 0x7fffffffdaf0 8
  value before write : 0xc0  0x4d  0x75  0x55  0x55  0x55  0x0  0x0  
  Before push: SP = 0x7fffffffdaf8
  Enter AfterRegMod Checking values Register Record
- 	Event num: 210
+ 	Event num: 212
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
@@ -2590,44 +2870,49 @@ type name = int
  value after write : 0x10  0xdb  0xff  0xff  0xff  0x7f  0x0  0x0  
  In cu_table::translate_address_to_variable
  Checking cu /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- Check if pc = 0x555555554577 is between 0x00000064a and 0x000000694
+ In cu_record::pc_in_range: check if pc = 0x555555554577 is between 0x55555555464a and 0x55555555469d
  Checking global variable a if at address 0x7fffffffdae8 Enter is_at_address
  trec = 0x7ffff7d7f240
 type name = int
- Getting base address for a global
- var_addr: 0x000201014 mem_addr: 0x7fffffffdae8 size: 4
+ Base address for a global is: 0x555555755018
+ var_addr: 0x555555755018 mem_addr: 0x7fffffffdae8 size: 4
+ Checking global variable c if at address 0x7fffffffdae8 Enter is_at_address
+ trec = 0x7ffff7d7f240
+type name = int
+ Base address for a global is: 0x555555755010
+ var_addr: 0x555555755010 mem_addr: 0x7fffffffdae8 size: 4
  Checking global variable main if at address 0x7fffffffdae8 address 0x7fffffffdae8 is not a program variable
  After push: SP = 0x7fffffffdaf0
  Enter AfterRegMod Checking values Register Record
- 	Event num: 211
+ 	Event num: 213
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rax
- 	Value: 0x0x555555755010
+ 	Value: 0x0x555555755018
  Enter AfterRegMod Checking values Register Record
- 	Event num: 212
+ 	Event num: 214
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rflags
  	Value: 0x0x000000246
  Enter AfterRegMod Checking values Register Record
- 	Event num: 213
+ 	Event num: 215
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rbp
  	Value: 0x0x7fffffffdaf0
  0x5555555545a0R 0x7fffffffdaf0 8
  line number 0
- value before read : 0x0  0xdb  0xff  0xff  0xff  0x7f  0x0  0x0  Invocation ID:205function deregister_tm_clones was called. Frame pointer was 0x7fffffffdaf0
+ value before read : 0x0  0xdb  0xff  0xff  0xff  0x7f  0x0  0x0  Invocation ID:207function deregister_tm_clones was called. Frame pointer was 0x7fffffffdaf0
  Before pop: SP = 0x7fffffffdaf0
  Enter AfterRegMod Checking values Register Record
- 	Event num: 216
+ 	Event num: 218
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rbp
  	Value: 0x0x7fffffffdb00
  Enter AfterRegMod Checking values Register Record
- 	Event num: 217
+ 	Event num: 219
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
@@ -2639,45 +2924,50 @@ type name = int
  Exit functionInvocationAfter
  0x5555555545a1R 0x7fffffffdaf8 8
  line number 0
- value before read : 0x28  0x46  0x55  0x55  0x55  0x55  0x0  0x0  Invocation ID:205function deregister_tm_clones was called. Frame pointer was 0x7fffffffdb00
+ value before read : 0x28  0x46  0x55  0x55  0x55  0x55  0x0  0x0  Invocation ID:207function deregister_tm_clones was called. Frame pointer was 0x7fffffffdb00
  Before return: SP = 0x7fffffffdaf8
  Enter AfterRegMod Checking values Register Record
- 	Event num: 221
+ 	Event num: 223
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
  	Value: 0x0x555555554628
  Enter AfterRegMod Checking values Register Record
- 	Event num: 222
+ 	Event num: 224
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
  	Value: 0x0x7fffffffdb00
  After return : SP = 0x7fffffffdb00
- 0x555555554628: W 0x555555755010 1
+ 0x555555554628: W 0x555555755014 1
  value before write : 0x0  
  value after write : 0x1  
  In cu_table::translate_address_to_variable
  Checking cu /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- Check if pc = 0x555555554628 is between 0x00000064a and 0x000000694
- Checking global variable a if at address 0x555555755010 Enter is_at_address
+ In cu_record::pc_in_range: check if pc = 0x555555554628 is between 0x55555555464a and 0x55555555469d
+ Checking global variable a if at address 0x555555755014 Enter is_at_address
  trec = 0x7ffff7d7f240
 type name = int
- Getting base address for a global
- var_addr: 0x000201014 mem_addr: 0x555555755010 size: 4
- Checking global variable main if at address 0x555555755010 address 0x555555755010 is not a program variable
+ Base address for a global is: 0x555555755018
+ var_addr: 0x555555755018 mem_addr: 0x555555755014 size: 4
+ Checking global variable c if at address 0x555555755014 Enter is_at_address
+ trec = 0x7ffff7d7f240
+type name = int
+ Base address for a global is: 0x555555755010
+ var_addr: 0x555555755010 mem_addr: 0x555555755014 size: 4
+ Checking global variable main if at address 0x555555755014 address 0x555555755014 is not a program variable
  0x55555555462fR 0x7fffffffdb00 8
  line number 0
- value before read : 0x90  0xdb  0xff  0xff  0xff  0x7f  0x0  0x0  Invocation ID:205function deregister_tm_clones was called. Frame pointer was 0x7fffffffdb00
+ value before read : 0x90  0xdb  0xff  0xff  0xff  0x7f  0x0  0x0  Invocation ID:207function deregister_tm_clones was called. Frame pointer was 0x7fffffffdb00
  Before pop: SP = 0x7fffffffdb00
  Enter AfterRegMod Checking values Register Record
- 	Event num: 226
+ 	Event num: 228
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rbp
  	Value: 0x0x7fffffffdb90
  Enter AfterRegMod Checking values Register Record
- 	Event num: 227
+ 	Event num: 229
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
@@ -2689,61 +2979,61 @@ type name = int
  Exit functionInvocationAfter
  0x555555554630R 0x7fffffffdb08 8
  line number 0
- value before read : 0x73  0x5b  0xde  0xf7  0xff  0x7f  0x0  0x0  Invocation ID:205function deregister_tm_clones was called. Frame pointer was 0x7fffffffdb90
+ value before read : 0x73  0x5b  0xde  0xf7  0xff  0x7f  0x0  0x0  Invocation ID:207function deregister_tm_clones was called. Frame pointer was 0x7fffffffdb90
  Before return: SP = 0x7fffffffdb08
  Enter AfterRegMod Checking values Register Record
- 	Event num: 231
+ 	Event num: 233
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
  	Value: 0x0x7ffff7de5b73
  Enter AfterRegMod Checking values Register Record
- 	Event num: 232
+ 	Event num: 234
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
  	Value: 0x0x7fffffffdb10
  After return : SP = 0x7fffffffdb10
  Function Call to _fini
- after push stack size:4
- Invocation ID:233function _fini was called.
+ after push stack size:2
+ Invocation ID:235function _fini was called.
  Frame pointer was 0x7fffffffdb90
  Getting frame pointer for _fini
  Address being read: 0x0x7fffffffdb90
  Address being read: 0x0x7fffffffdb98
  Call to function
- 	Event num: 233
+ 	Event num: 235
  	Function name: _fini
  	Func line: 0
  	Inv line: 0
  	Func file: 
  	Inv file: 
- 	Callee address: 0x555555554714
+ 	Callee stack address: 0x7fffffffdb08
 
  Return address
  	Function name: main
  	Dynamic link: 0x000000000
- 	Return address: 0x7fffe4369041
- Enter AfterRegMod Checking values Register Record
- 	Event num: 235
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7fffffffdb00
- Enter AfterRegMod Checking values Register Record
- 	Event num: 236
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rflags
- 	Value: 0x0x000000206
+ 	Return address: 0x7fffe4367041
  Enter AfterRegMod Checking values Register Record
  	Event num: 237
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7fffffffdb08
+ 	Value: 0x0x7fffffffdb00
  Enter AfterRegMod Checking values Register Record
  	Event num: 238
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rflags
+ 	Value: 0x0x000000206
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 239
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rsp
+ 	Value: 0x0x7fffffffdb08
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 240
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rflags
@@ -2754,16 +3044,16 @@ type name = int
  Exit functionInvocationAfter
  0x55555555471cR 0x7fffffffdb08 8
  line number 0
- value before read : 0x93  0x5b  0xde  0xf7  0xff  0x7f  0x0  0x0  Invocation ID:233function _fini was called. Frame pointer was 0x7fffffffdb90
+ value before read : 0x93  0x5b  0xde  0xf7  0xff  0x7f  0x0  0x0  Invocation ID:235function _fini was called. Frame pointer was 0x7fffffffdb90
  Before return: SP = 0x7fffffffdb08
  Enter AfterRegMod Checking values Register Record
- 	Event num: 242
+ 	Event num: 244
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
  	Value: 0x0x7ffff7de5b93
  Enter AfterRegMod Checking values Register Record
- 	Event num: 243
+ 	Event num: 245
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp

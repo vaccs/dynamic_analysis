@@ -9,5 +9,5 @@ int main() {
    
    a = 1;
    b = 2;
-   printf("a = %d, b = %d, *p = %d, c = %d\n",a, b, *p, c);
+   vaccs_printf("a = %d, b = %d, *p = %d, c = %d\n",a, b, *p, c);
 }

@@ -11,16 +11,19 @@
 #include <util/general.h>
 #include <map>
 #include <string>
+#include <list>
 
 #include <tables/symbol_table.h>
 #include <tables/type_table.h>
 
 #include <pin.H>
 
+using namespace std;
+
 class var_record;
 
-extern const std::string void_type;
-extern const std::pair<std::string,var_record*> default_var_pair;
+extern const string void_type;
+extern const pair<string,var_record*> default_var_pair;
 
 class var_table;
 /**
@@ -34,13 +37,13 @@ class var_record: public symbol_table_record {
 
 private:
 
-	std::string type; /* the dwarf index for this type */
+	string type; /* the dwarf index for this type */
 	bool is_subprog; /* is this variable a subprogram? */
 	var_table *local_var_table; /* the local variable declared inside a subprogram */
 	var_table *member_table; /* the member of a structure */
 	bool is_local; /* is this variable local? */
 	bool is_param; /* is this variable a formal parameter */
-	std::string decl_file; /* the name of the file in which this is defined */
+	string decl_file; /* the name of the file in which this is defined */
 	Generic decl_line; /* the line of the file on which this is defined */
 	Generic low_pc; /* the lowest pc of a subroutine variable */
 	Generic high_pc; /* the highest pc of a subroutine variable */
@@ -54,7 +57,7 @@ private:
  	 * @param addr a memory address
  	 * @return a string containg the value stored at the address
   	 */
-	std::string read_singleton_value(type_record *trec, Generic addr);
+	string read_singleton_value(type_record *trec, Generic addr);
 
 public:
 
@@ -81,7 +84,7 @@ public:
 	 * @param type the type of this variable
 	 * @return the object
 	 */
-	var_record* add_type(std::string& type) {
+	var_record* add_type(string& type) {
 		this->type = type;
 		return this;
 	}
@@ -144,7 +147,7 @@ public:
 	 * @param decl_file the declaration file of this variable
 	 * @return the object
 	 */
-	var_record* add_decl_file(std::string& decl_file) {
+	var_record* add_decl_file(string& decl_file) {
 		this->decl_file = decl_file;
 		return this;
 	}
@@ -207,7 +210,7 @@ public:
 	 *
 	 * @return a pointer to a string containing the die offset for the variable type
 	 */
-	std::string& get_type() {
+	string& get_type() {
 		return type;
 	}
 
@@ -261,7 +264,7 @@ public:
 	 *
 	 * @return a record in the cu_table for the compilation unit containing this variable
 	 */
-	std::string& get_decl_file() {
+	string& get_decl_file() {
 		return this->decl_file;
 	}
 
@@ -326,7 +329,19 @@ public:
 	 * @return a name/var_record pair of a variable having the given address, default_var_pair if no such
 	 * 			variable
 	 */
-	std::pair<std::string,var_record*> find_address_in_subprog(const CONTEXT *ctxt, Generic mem_addr,type_table *ttab);
+	pair<string,var_record*> find_address_in_subprog(const CONTEXT *ctxt, Generic mem_addr,type_table *ttab);
+
+	/**
+	 * Find a list of variables that point to an address
+	 *
+	 * @param ctxt a pin process context
+	 * @param mem_addr the memory address for some variable
+	 * @param ttab the type table for this compilation unit
+	 * @return a name/var_record pair of a variable having the given address, default_var_pair if no such
+	 * 			variable
+	 */
+	list<pair<string,var_record*>> *
+	find_pointers_to_address_in_subprog(const CONTEXT *ctxt, Generic mem_addr,type_table *ttab);
 
 	/**
 	 * Determine if this variable is at the specified address
@@ -337,6 +352,16 @@ public:
 	 * @return true if the variable is at the prospective address, otherwise false
 	 */
 	bool is_at_address(const CONTEXT *ctxt, Generic mem_addr, type_record *trec);
+
+	/**
+	 * Determine if this variable points to the specified address
+	 *
+	 * @param ctxt a pin process context
+	 * @param mem_addr the prospective memory address
+	 * @param trec the type record for this variable
+	 * @return true if the variable is at the prospective address, otherwise false
+	 */
+	bool points_to_address(const CONTEXT *ctxt, Generic mem_addr, type_record *trec);
 
 	/**
 	 * Get the base address of this variable in a given execution context
@@ -361,7 +386,7 @@ public:
  	 * @param addr a memory address
  	 * @return a string containg the value stored at the address
   	 */
-	std::string read_value(type_table *ttab,type_record *trec, Generic addr);
+	string read_value(type_table *ttab,type_record *trec, Generic addr);
 
 	/**
 	 * Propagate local information about variables to the structure members
@@ -385,7 +410,7 @@ public:
 	* @param fn the file name for the cu
 	* @param fp a file pointer
 	*/
-   virtual void write(std::string fn,NATIVE_FD fd);
+   virtual void write(string fn,NATIVE_FD fd);
 
 };
 
@@ -405,7 +430,7 @@ public:
 
 	virtual ~var_table();
 
-	var_record* get(std::string str) { return (var_record*) symbol_table::get(str); }
+	var_record* get(string str) { return (var_record*) symbol_table::get(str); }
 
 	/**
 	 * Propagate local information about variables to the structure members

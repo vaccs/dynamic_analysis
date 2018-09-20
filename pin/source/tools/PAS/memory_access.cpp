@@ -178,6 +178,7 @@ VOID BeforeMemWrite(VOID* assembly,ADDRINT  ip, VOID *addr,const CONTEXT *ctxt, 
 
 
 }
+
 void write_variable_access_record(string variable,
       Generic event_num,
       INT32 line,
@@ -194,7 +195,7 @@ void write_variable_access_record(string variable,
    DEBUGL(LOG( "\tEvent num: " + decstr(event_num) + "\n"));
    DEBUGL(LOG( "\tC file name: " + fileName + "\n"));
    DEBUGL(LOG( "\tScope: " + scope + "\n"));
-   DEBUGL(LOG( "\tAddress: 0x" + hexstr((Generic)addr) + "\n"));
+   DEBUGL(LOG( "\tAddress: " + hexstr((Generic)addr) + "\n"));
    DEBUGL(LOG( "\tType: " + type_name + "\n"));
    DEBUGL(LOG( "\tValue: " + value + "\n\n"));
    varec = (var_access_record*)factory.make_vaccs_record(VACCS_VAR_ACCESS);
@@ -211,7 +212,50 @@ void write_variable_access_record(string variable,
 	   varec = varec->add_points_to(addr);
    varec->write(vaccs_fd);
    delete varec;
- }
+}
+
+void write_pointer_access(string variable,
+    var_record *vrec,
+    cu_table *cutab,
+    const CONTEXT *ctxt,
+    Generic event_num,
+    INT32 line,
+    string fileName,
+    ADDRINT addr) {
+
+    type_table *ttab = cutab->get_type_table(vrec->get_type());
+    type_record *trec = ttab->get(vrec->get_type());
+    type_record *btrec = ttab->get(*trec->get_base_type());
+    string scope = cutab->get_scope(vrec);
+    Generic var_addr = vrec->get_base_address(ctxt);
+    string value = vrec->read_value(ttab,btrec,addr);
+    string type_name = *trec->get_name();
+
+    vaccs_record_factory factory;
+    var_access_record *varec;
+
+    DEBUGL(LOG( "Write to variable " + variable + "\n"));
+    DEBUGL(LOG( "\tEvent num: " + decstr(event_num) + "\n"));
+    DEBUGL(LOG( "\tC file name: " + fileName + "\n"));
+    DEBUGL(LOG( "\tScope: " + scope + "\n"));
+    DEBUGL(LOG( "\tAddress: " + hexstr((Generic)var_addr) + "\n"));
+    DEBUGL(LOG( "\tPoints to Address: " + hexstr((Generic)addr) + "\n"));
+    DEBUGL(LOG( "\tType: " + type_name + "\n"));
+    DEBUGL(LOG( "\tValue: " + value + "\n\n"));
+    varec = (var_access_record*)factory.make_vaccs_record(VACCS_VAR_ACCESS);
+    varec = varec->add_event_num(event_num)
+	->add_c_line_num(line)
+	->add_c_file_name(fileName.c_str())
+	->add_scope(scope.c_str())
+	->add_address(var_addr)
+	->add_name(variable.c_str())
+	->add_type(type_name.c_str())
+	->add_value(value.c_str())
+	->add_points_to(addr);
+    
+    varec->write(vaccs_fd);
+    delete varec;
+}
 
 void write_array_element_record(cu_table *cutab, 
      pair<string,var_record*> vpair, 
@@ -403,19 +447,29 @@ VOID AfterMemWrite(VOID* assembly, ADDRINT ip, VOID *addr,const CONTEXT *ctxt, U
 	PIN_GetSourceLocation(ip,&column,&line,&fileName);
 	PIN_UnlockClient();
 
-   if (line == 0)
-      fileName = NOCSOURCE;
+    if (line == 0)
+	fileName = NOCSOURCE;
 
-   pair<string,var_record*> vpair =
-      vdr->get_cutab()->translate_address_to_variable(ctxt,(Generic)ip,(Generic)addr);
-   if (vpair == default_var_pair) {
-      DEBUGL(LOG("address " + hexstr((Generic)addr) + 
-               " is not a program variable" + "\n"));
-   } else {
-      write_element_record(vdr->get_cutab(),vpair,ctxt,(Generic)addr,line,fileName,"",
-            vdr->get_cutab()->get_scope(vpair.second),timestamp++);
-  }
+    pair<string,var_record*> vpair =
+	vdr->get_cutab()->translate_address_to_variable(ctxt,(Generic)ip,(Generic)addr);
+    if (vpair == default_var_pair) {
+	DEBUGL(LOG("address " + hexstr((Generic)addr) + " is not a program variable" + "\n"));
+    } else {
+	cu_table *cutab = vdr->get_cutab();
+	write_element_record(vdr->get_cutab(),vpair,ctxt,(Generic)addr,line,fileName,"",
+            cutab->get_scope(vpair.second),timestamp);
 
+	list<pair<string,var_record*>> *pointer_list = cutab->translate_address_to_pointer_list(ctxt,(Generic)addr);
+
+	if (!pointer_list->empty()) 
+	    for (list<pair<string,var_record*>>::iterator it = pointer_list->begin();
+	         it != pointer_list->end();
+	         it++) 
+		write_pointer_access(it->first,it->second,cutab,ctxt,timestamp,line,fileName,(Generic)addr);
+	    
+	timestamp++;
+    }
+	    
 }
 
 // Is called for every instruction and instruments reads and writes

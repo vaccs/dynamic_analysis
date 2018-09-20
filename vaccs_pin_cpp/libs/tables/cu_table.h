@@ -14,11 +14,14 @@
 
 
 #include <string>
+#include <list>
 
 #include <tables/symbol_table.h>
 #include <tables/symbol_table_factory.h>
 
 #include <pin.H>
+
+using namespace std;
 
 /**
  * Class: cu_record
@@ -139,6 +142,17 @@ public:
 	bool pc_in_range(Generic pc);
 
 	/**
+	 * Translate a memory access to an list of variables that point to it
+	 *
+	 * @param ctxt a pin process context
+	 * @param inst_addr the address of the instruction making the memory access
+	 * @param mem_addr the memory address being accessed
+	 * @return a pointer to a list of variables that point to an address
+	 */
+	list<pair<string,var_record*>> *
+	translate_address_to_pointer_list(const CONTEXT *ctxt, Generic mem_addr);
+
+	/**
 	 * Translate a memory access to a variable name
 	 *
 	 * @param ctxt a pin process context
@@ -146,7 +160,7 @@ public:
 	 * @param mem_addr the memory address being accessed
 	 * @return a key,var_record* pair that matches the given address, or default_var_pai
 	 */
-	std::pair<std::string,var_record*> translate_address_to_variable(const CONTEXT *ctxt,Generic inst_addr, Generic mem_addr);
+	pair<string,var_record*> translate_address_to_variable(const CONTEXT *ctxt,Generic inst_addr, Generic mem_addr);
 
 	/**
 	 * Translate an instruction address to a function containing the address
@@ -154,7 +168,7 @@ public:
 	 * @param inst_addr the address of the instruction making the memory access
 	 * @return a key,var_record* pair that matches the given address, or default_var_pai
 	 */
-	std::pair<std::string,var_record*> translate_address_to_function(Generic inst_addr);
+	pair<string,var_record*> translate_address_to_function(Generic inst_addr);
 
 	/**
 	 * Get the scope name of a var_record
@@ -162,7 +176,7 @@ public:
 	 * @param vrec a variable record
 	 * @return a string containing the name of the scope (function name or *G*)
 	 */
-	std::string get_scope(var_record *vrec);
+	string get_scope(var_record *vrec);
 
 	/**
 	 * Create the member tables from the type declarations for local variables that are structures.
@@ -176,7 +190,7 @@ public:
 	 * @param fn the file name for the cu
 	 * @param fp a file pointer
 	 */
-	virtual void write(std::string fn,NATIVE_FD fd);
+	virtual void write(string fn,NATIVE_FD fd);
 
 };
 
@@ -194,7 +208,18 @@ public:
 	}
 	virtual ~cu_table();
 
-	cu_record* get(std::string str) { return (cu_record*) symbol_table::get(str);}
+	cu_record* get(string str) { return (cu_record*) symbol_table::get(str);}
+
+	/**
+	 * Translate a memory access to an list of variables that point to it
+	 *
+	 * @param ctxt a pin process context
+	 * @param inst_addr the address of the instruction making the memory access
+	 * @param mem_addr the memory address being accessed
+	 * @return a key,var_record* pair that matches the given address, or default_var_pai
+	 */
+	list<pair<string,var_record*>> *
+	translate_address_to_pointer_list(const CONTEXT *ctxt, Generic mem_addr);
 
 	/**
 	 * Translate a memory access to a variable name
@@ -204,7 +229,7 @@ public:
 	 * @param mem_addr the memory address being accessed
 	 * @return a key,var_record* pair that matches the given address, or default_var_pai
 	 */
-	std::pair<std::string,var_record*> translate_address_to_variable(const CONTEXT *ctxt,Generic inst_addr, Generic mem_addr);
+	pair<string,var_record*> translate_address_to_variable(const CONTEXT *ctxt,Generic inst_addr, Generic mem_addr);
 
 	/**
 	 * Translate an instruction address to a function containing the address
@@ -212,7 +237,7 @@ public:
 	 * @param inst_addr the address of the instruction making the memory access
 	 * @return a key,var_record* pair that matches the given address, or default_var_pai
 	 */
-	std::pair<std::string,var_record*> translate_address_to_function(Generic inst_addr);
+	pair<string,var_record*> translate_address_to_function(Generic inst_addr);
 
 	/**
 	 * Get the scope name of a var_record
@@ -220,7 +245,7 @@ public:
 	 * @param vrec a variable record
 	 * @return a string containing the name of the scope (function name or *G*)
 	 */
-	std::string get_scope(var_record *vrec);
+	string get_scope(var_record *vrec);
 
 	/**
  	 * Get the type record of a type given the dwarf index
@@ -228,7 +253,7 @@ public:
  	 * @param dw_index a dwarf index for a type (string)
  	 * @return a pointer to a type_record for the give dwarf index
  	 */
-	type_record *get_type_record(std::string dw_index);
+	type_record *get_type_record(string dw_index);
 
 	/**
  	 * Get the type table containing a type given the dwarf index
@@ -236,7 +261,7 @@ public:
  	 * @param dw_index a dwarf index for a type (string)
  	 * @return a pointer to a type table containing the give dwarf index
  	 */
-	type_table *get_type_table(std::string dw_index);
+	type_table *get_type_table(string dw_index);
 
 	/**
 	 * Create the member tables from the type declarations for structures.

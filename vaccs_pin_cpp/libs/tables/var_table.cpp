@@ -16,8 +16,8 @@
 #include <sstream>
 #include <iostream>
 
-const std::string void_type = "void";
-const std::pair<std::string,var_record*> default_var_pair("",NULL);
+const string void_type = "void";
+const pair<string,var_record*> default_var_pair("",NULL);
 /**
  * The constructor. We use a builder pattern, so there are no parameters
  */
@@ -76,7 +76,7 @@ var_record::~var_record() {}
  * @param fn the file name for the cu
  * @param fp a file pointer
  */
-void var_record::write(std::string key,NATIVE_FD fd) {
+void var_record::write(string key,NATIVE_FD fd) {
 	USIZE size =  sizeof(id); assert(OS_WriteFD(fd,&id,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 	size_t length = key.length();
 	size =  sizeof(length); assert(OS_WriteFD(fd,&length,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
@@ -107,8 +107,8 @@ void var_record::write(std::string key,NATIVE_FD fd) {
  * @return true if the pc is found in this subprogram, otherwise false.
  */
 bool var_record::pc_in_range(Generic pc) {
-	DEBUGL(LOG("In var_record::pc_in_range\n"));
-	return (pc >= low_pc && pc < high_pc);
+	DEBUGL(LOG("In var_record::pc_in_range: check if pc = "+hexstr(pc)+" is between "+hexstr(low_pc+text_base_address)+" and "+hexstr(high_pc+text_base_address)+"\n"));
+	return (pc >= (low_pc+text_base_address) && pc < (high_pc+text_base_address));
 }
 
 /**
@@ -120,12 +120,12 @@ bool var_record::pc_in_range(Generic pc) {
  * @return a name/var_record pair of a variable having the given address, default_var_pair if no such
  * 			variable
  */
-std::pair<std::string,var_record*> var_record::find_address_in_subprog(const CONTEXT *ctxt,Generic mem_addr,type_table *ttab) {
-	std::pair<std::string,var_record*> vpair = default_var_pair;
+pair<string,var_record*> var_record::find_address_in_subprog(const CONTEXT *ctxt,Generic mem_addr,type_table *ttab) {
+	pair<string,var_record*> vpair = default_var_pair;
 	DEBUGL(LOG("In var_record::find_address_in_subprog\n"));
 
 	if (is_subprog)
-		for (std::map<std::string,symbol_table_record*>::iterator it = local_var_table->begin();
+		for (map<string,symbol_table_record*>::iterator it = local_var_table->begin();
 				it != local_var_table->end();
 				it++) {
 			var_record* tvrec = (var_record*)it->second;
@@ -140,6 +140,38 @@ std::pair<std::string,var_record*> var_record::find_address_in_subprog(const CON
 
 	DEBUGL(LOG("Leave var_record::find_address_in_subprog\n"));
 	return vpair;
+
+}
+
+/**
+ * Find local variables that point to the address.
+ *
+ * @param ctxt a pin process context
+ * @param mem_addr the memory address for some variable
+ * @param ttab the type table for this compilation unit
+ * @return a name/var_record pair of a variable having the given address, default_var_pair if no such
+ * 			variable
+ */
+list<pair<string,var_record*>> *
+var_record::find_pointers_to_address_in_subprog(const CONTEXT *ctxt,Generic mem_addr,type_table *ttab) {
+	list<pair<string,var_record*>> *pointer_list = new list<pair<string,var_record*>>();
+	DEBUGL(LOG("In var_record::find_pointers_to_address_in_subprog\n"));
+
+	if (is_subprog)
+		for (map<string,symbol_table_record*>::iterator it = local_var_table->begin();
+				it != local_var_table->end();
+				it++) {
+			pair<string,var_record*> *vpair = new pair<string,var_record*>(it->first,(var_record*)it->second);
+			type_record *trec = ttab->get(vpair->second->get_type());
+			DEBUGL(LOG("Checking variable "+ it->first +"\n"));
+			if (trec->get_is_pointer() && vpair->second->points_to_address(ctxt,mem_addr,trec)) {
+				DEBUGL(LOG(it->first+" points to address "+hexstr(mem_addr)));
+				pointer_list->push_back(*vpair);
+			}
+		}
+
+	DEBUGL(LOG("Leave var_record::find_pointers_to_address_in_subprog\n"));
+	return pointer_list;
 
 }
 
@@ -166,6 +198,25 @@ bool var_record::is_at_address(const CONTEXT *ctxt,Generic mem_addr, type_record
 }
 
 /**
+ * Determine if this variable points to the specified address
+ *
+ * @param ctxt a pin process context
+ * @param mem_addr the prospective memory address
+ * @param trec the type record for this variable
+ * @return true if the variable is at the prospective address, otherwise false
+ */
+bool var_record::points_to_address(const CONTEXT *ctxt, Generic mem_addr, type_record *trec) {
+	DEBUGL(LOG("Enter points_to_address\n"));
+	DEBUGL(LOG("trec = " + hexstr(trec) + "\ntype name = "+*trec->get_name()+ "\n"));
+	Generic *var_addr;
+
+	var_addr = (Generic*)get_base_address(ctxt);
+
+	DEBUGL(LOG("*var_addr: " +hexstr(*var_addr) + " mem_addr: " + hexstr(mem_addr) +  " size: " + decstr(trec->get_size())+ "\n"));
+	return *var_addr == mem_addr;
+}
+
+/**
  * Get the base address of this variable in a given execution context
  * @param ctxt a pin process context
  * @return the base address of this variable in a given execution context
@@ -174,11 +225,11 @@ Generic var_record::get_base_address(const CONTEXT *ctxt) {
 	Generic base_address;
 
 	if (is_local || is_param) {
-		DEBUGL(LOG("Getting base address for a local or param\n"));
 		base_address = PIN_GetContextReg( ctxt, REG_GBP) + location; // location is the offset from the frame pointer
+		DEBUGL(LOG("Base address for a local or param is: " + hexstr(base_address) + "\n"));
 	} else {
-		DEBUGL(LOG("Getting base address for a global\n"));
-		base_address = location; // location is the actual address
+		base_address = location + data_base_address; // location is the actual address
+		DEBUGL(LOG("Base address for a global is: " + hexstr(base_address) + "\n"));
 	}
 
 	return base_address;
@@ -194,7 +245,7 @@ bool var_record::get_scope(var_record *vrec) {
 	bool is_in_scope = false;
 
 	if (is_subprog)
-		for (std::map<std::string,symbol_table_record*>::iterator it = local_var_table->begin();
+		for (map<string,symbol_table_record*>::iterator it = local_var_table->begin();
 				!is_in_scope && it != local_var_table->end();
 				it++) {
 			var_record* tvrec = (var_record*)it->second;
@@ -210,9 +261,9 @@ bool var_record::get_scope(var_record *vrec) {
  * @param addr a memory address
  * @return a string containg the value stored at the address
  */
-std::string var_record::read_singleton_value(type_record *trec, Generic addr) {
-	std::string value;
-	std::string type_name = *(trec->get_name());
+string var_record::read_singleton_value(type_record *trec, Generic addr) {
+	string value;
+	string type_name = *(trec->get_name());
 
 	DEBUGL(LOG("In var_record::read_singleton_value\n"));
 	DEBUGL(LOG("Type is " + type_name + "\n"));
@@ -228,70 +279,81 @@ std::string var_record::read_singleton_value(type_record *trec, Generic addr) {
 
 		convert << addr;
 		value = convert.str();
-	} else if (type_name.find("long long") != std::string::npos) {
+	} else if (type_name.find("long long") != string::npos) {
 		// interpret data as long long
 
-		if (type_name.find("unsigned") != std::string::npos) {
+		if (type_name.find("unsigned") != string::npos) {
 			unsigned long long *ptr =(unsigned long long *)addr;
+			DEBUGL(LOG("Interpreting data as an unsigned long long\n"));
 			convert << *ptr;
 		}else {
 			long long *ptr = (long long *)addr;
+			DEBUGL(LOG("Interpreting data as a long long\n"));
 			convert << *ptr;
 		}
 
 		value = convert.str();
 
-	} else if (type_name.find("long") != std::string::npos) {
+	} else if (type_name.find("long") != string::npos) {
 		// interpret data as long
 
-		if (type_name.find("unsigned") != std::string::npos) {
+		if (type_name.find("unsigned") != string::npos) {
 			unsigned long *ptr = (unsigned long *)addr;
+			DEBUGL(LOG("Interpreting data as an unsigned long, value is "+decstr(*ptr) + "\n"));
 			convert << *ptr;
 		}
 		else {
 			long *ptr = (long *)addr;
+			DEBUGL(LOG("Interpreting data as a long, value is "+decstr(*ptr) + "\n"));
 			convert << *ptr;
 		}
 
 		value = convert.str();
 
-	} else if (type_name.find("short") != std::string::npos) {
+	} else if (type_name.find("short") != string::npos) {
 		// interpret data as short
 
-		if (type_name.find("unsigned") != std::string::npos) {
+		if (type_name.find("unsigned") != string::npos) {
 			unsigned short *ptr = (unsigned short *)addr;
+			DEBUGL(LOG("Interpreting data as an unsigned short, value is "+decstr(*ptr) + "\n"));
 			convert << *ptr;
 		}
 		else {
 			short *ptr = (short *)addr;
+			DEBUGL(LOG("Interpreting data as a short, value is "+decstr(*ptr) + "\n"));
 			convert << *ptr;
 		}
 
 		value = convert.str();
 
-	} else if (type_name.find("char") != std::string::npos) {
+	} else if (type_name.find("char") != string::npos) {
 		// interpret data as a char
 
-		if (type_name.find("unsigned") != std::string::npos) {
+		if (type_name.find("unsigned") != string::npos) {
 			unsigned char *ptr = (unsigned char *)addr;
+			DEBUGL(LOG("Interpreting data as an unsigned, value is "+decstr(*ptr) + "\n"));
 			convert << *ptr;
 		}
 		else {
 			char *ptr = (char *)addr;
+			DEBUGL(LOG("Interpreting data as a byte, value is "+decstr(*ptr) + "\n"));
 			convert << *ptr;
 		}
 
 		value = convert.str();
 
-	} else if (type_name.find("int") != std::string::npos) {
+	} else if (type_name.find("int") != string::npos) {
 		// interpret data as an int
 
-		if (type_name.find("unsigned") != std::string::npos) {
+		if (type_name.find("unsigned") != string::npos) {
 			unsigned int *ptr = (unsigned int *)addr;
+			DEBUGL(LOG("Interpreting data as an unsigned int, value is "+decstr(*ptr) + "\n"));
+			convert << *ptr;
 			convert << *ptr;
 		}
 		else {
 			int *ptr = (int *)addr;
+			DEBUGL(LOG("Interpreting data as an int, value is "+decstr(*ptr) + "\n"));
 			convert << *ptr;
 		}
 
@@ -324,9 +386,9 @@ string read_c_string(Generic addr) {
  * @param addr a memory address
  * @return a string containg the value stored at the address
  */
-std::string var_record::read_value(type_table *ttab, type_record *trec, Generic addr) {
-	std::string value;
-	std::string type_name = *(trec->get_name());
+string var_record::read_value(type_table *ttab, type_record *trec, Generic addr) {
+	string value;
+	string type_name = *(trec->get_name());
 
 	DEBUGL(LOG("In var_recod::read_value\n"));
 	DEBUGL(LOG("Type is " + type_name + "\n"));
@@ -340,7 +402,7 @@ std::string var_record::read_value(type_table *ttab, type_record *trec, Generic 
 
 		// handle a char* as a string
 
-		if (!btrec->get_is_pointer() && !btrec->get_is_array() && bt_name.find("char") != std::string::npos) {
+		if (!btrec->get_is_pointer() && !btrec->get_is_array() && bt_name.find("char") != string::npos) {
 			value = read_c_string(addr);
 		} else {
 			Generic ptr = *(Generic*)addr;
@@ -352,7 +414,7 @@ std::string var_record::read_value(type_table *ttab, type_record *trec, Generic 
 
 		// read a char array as a string
 
-		if (!btrec->get_is_pointer() && !btrec->get_is_array() && bt_name.find("char") != std::string::npos) {
+		if (!btrec->get_is_pointer() && !btrec->get_is_array() && bt_name.find("char") != string::npos) {
 			value = read_c_string(addr);
 		} else {
 			Generic ptr = *(Generic*)addr;
@@ -415,7 +477,7 @@ var_table::var_table(var_table *vtab) :
 
 	DEBUGL(cerr << "Copying var_table\n");
 	symbol_table_record_factory factory;
-	for (std::map<std::string,symbol_table_record*>::iterator it = vtab->begin();
+	for (map<string,symbol_table_record*>::iterator it = vtab->begin();
 			it != vtab->end();
 			it++ ) {
 		DEBUGL(cerr << "Calling factory to copy var_record for " + it->first + "\n");
@@ -437,7 +499,7 @@ var_table::~var_table() {}
  * @param is_param is the variable a formal parameter
  */
 void var_table::propagate_local_info(type_table *ttab,Generic location,bool is_local, bool is_param) {
-	for (std::map<std::string,symbol_table_record*>::iterator it = begin();
+	for (map<string,symbol_table_record*>::iterator it = begin();
 			it != end();
 			it++ ) {
 		var_record *vrec = (var_record*)it->second;
@@ -453,7 +515,7 @@ void var_table::propagate_local_info(type_table *ttab,Generic location,bool is_l
  */
 void var_table::create_member_tables(type_table *ttab) {
 	DEBUGL(cerr << "var_table::create_member_tables\n");
-	for (std::map<std::string,symbol_table_record*>::iterator it = begin();
+	for (map<string,symbol_table_record*>::iterator it = begin();
 			it != end();
 			it++ ) {
 		var_record *vrec = (var_record*)it->second;
@@ -473,7 +535,7 @@ void var_table::write(NATIVE_FD fd) {
 	size_t num = size();
 	dsize = sizeof(num); assert(OS_WriteFD(fd,&num,&dsize).generic_err == OS_RETURN_CODE_NO_ERROR);
 
-	for (std::map<std::string,symbol_table_record*>::iterator it = begin(); it != end(); it++) {
+	for (map<string,symbol_table_record*>::iterator it = begin(); it != end(); it++) {
 		var_record* vrec = (var_record*)it->second;
 		vrec->write(it->first,fd);
 	}

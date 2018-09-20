@@ -196,5 +196,10 @@ EXTERN(void, die_with_message, (char *format, ...));
 #define DEBUGL(L)
 #endif
 
+// The three variables below are also declared in pin/source/tools/PAS/global.h
+
+extern Generic text_base_address;
+extern Generic stack_base_address;
+extern Generic data_base_address;
 
 #endif  /* general_h */
