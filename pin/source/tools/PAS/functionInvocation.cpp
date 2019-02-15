@@ -8,7 +8,7 @@
 #include "global.h"
 #include "database_access_api.h"
 #include <unistd.h>
-#include<iostream>
+#include <iostream>
 #include <fstream>
 #include <cstring>
 
@@ -20,8 +20,10 @@
 #include <io/return_addr_record.h>
 #include <vaccs_read/vaccs_dw_reader.h>
 #include <io/output_record.h>
+#include <tables/frame.h>
 
 extern NATIVE_FD vaccs_stdout;
+extern runtime_stack *stack_model;
 Generic stack_base_address = 0;
 
 function_invocation_transaction function_invocation_event;
@@ -66,7 +68,7 @@ VOID functionInvocationBefore(void* function_name,const CONTEXT* ctxt,
 
 
     vaccs_record_factory factory;
- 
+
     string sfname(name);
     DEBUGL(LOG( "Getting frame pointer for " + sfname + "\n"));
     ADDRINT dynamic_link = 0;
@@ -92,12 +94,12 @@ VOID functionInvocationBefore(void* function_name,const CONTEXT* ctxt,
     DEBUGL(LOG( "\tCallee stack address: " + hexstr(ESP) + "\n\n"));
     func_inv_record *frec = (func_inv_record*)factory.make_vaccs_record(VACCS_FUNCTION_INV);
     frec = frec->add_event_num(timestamp++)
-	->add_func_name(name)
-	->add_func_line_num(line)
-	->add_inv_line_num(inv_line)
-	->add_c_func_file(fileName.c_str())
-	->add_c_inv_file(inv_fileName.c_str())
-	->add_address((Generic)ESP);
+        	->add_func_name(name)
+        	->add_func_line_num(line)
+        	->add_inv_line_num(inv_line)
+        	->add_c_func_file(fileName.c_str())
+        	->add_c_inv_file(inv_fileName.c_str())
+        	->add_address((Generic)ESP);
     frec->write(vaccs_fd);
     delete frec;
 
@@ -106,15 +108,20 @@ VOID functionInvocationBefore(void* function_name,const CONTEXT* ctxt,
     DEBUGL(LOG( "\tDynamic link: " + hexstr(dynamic_link) +"\n"));
     DEBUGL(LOG( "\tReturn address: " + hexstr(return_address) +"\n"));
     return_addr_record *rarec = ((return_addr_record*)factory
-	.make_vaccs_record(VACCS_RETURN_ADDR))
-	->add_dynamic_link(dynamic_link)
-	->add_return_address(return_address)
-	->add_c_func_name(name);
+      	.make_vaccs_record(VACCS_RETURN_ADDR))
+      	->add_dynamic_link(dynamic_link)
+      	->add_return_address(return_address)
+      	->add_c_func_name(name);
     rarec->write(vaccs_fd);
     delete rarec;
+
+    DEBUGL(LOG("Build stack frame\n"));
+
+    if (line != 0)
+	stack_model->push(sfname,(Generic)ip, ctxt);
 }
 
-VOID functionInvocationAfter(void* function_name,const CONTEXT* ctxt){
+VOID functionInvocationAfter(void* function_name,const CONTEXT* ctxt,ADDRINT ip){
 
    // This may have been a library call to print to stdout
    // Restore the original stdout
@@ -124,7 +131,7 @@ VOID functionInvocationAfter(void* function_name,const CONTEXT* ctxt){
    //
     string fstr((char *)function_name);
 
- 
+
     invocation_stack.pop();
 
  	//char* name = (char*) function_name;
@@ -138,7 +145,7 @@ VOID functionInvocationAfter(void* function_name,const CONTEXT* ctxt){
     char stdout_buff[VACCS_MAX_OUTPUT_LENGTH+1];
 
     USIZE num_bytes = VACCS_MAX_OUTPUT_LENGTH;
-   
+
     OS_ReadFD(vaccs_stdout,&num_bytes,stdout_buff);
 
     if (num_bytes != 0) {
@@ -160,6 +167,18 @@ VOID functionInvocationAfter(void* function_name,const CONTEXT* ctxt){
     rrec->write(vaccs_fd);
     delete rrec;
 
+    INT32 column,line;
+    string fileName;
+
+    PIN_LockClient();
+    PIN_GetSourceLocation(ip,&column,&line,&fileName);
+    PIN_UnlockClient();
+
+
+    if (line != 0) {
+	     stack_model->pop();
+       stack_model->update_variables();
+    }
     DEBUGL(LOG("function return\n"));
     DEBUGL(LOG("Exit functionInvocationAfter\n"));
 }
@@ -181,7 +200,7 @@ VOID FunctionInvocatioinImage(IMG img, VOID *v)
 				    IARG_PTR, RTN_Name(rtn).c_str(), IARG_CONTEXT, IARG_INST_PTR,
 				    IARG_END);
 		    RTN_InsertCall(rtn, IPOINT_AFTER, (AFUNPTR)functionInvocationAfter,
-				    IARG_PTR, RTN_Name(rtn).c_str(), IARG_CONTEXT,
+				    IARG_PTR, RTN_Name(rtn).c_str(), IARG_CONTEXT, IARG_INST_PTR,
 				    IARG_END);
 		    RTN_Close(rtn);
 		}

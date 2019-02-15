@@ -38,7 +38,7 @@ cu_record::~cu_record() {}
  * @return true if the pc is found in this compilation unit, otherwise false.
  */
 bool cu_record::pc_in_range(Generic pc) {
-	DEBUGL(LOG("In cu_record::pc_in_range: check if pc = "+hexstr(pc)+" is between "+hexstr(low_pc+text_base_address)+" and "+hexstr(high_pc+text_base_address)+"\n"));
+	DEBUGL(LOG("In cu_record::pc_in_range: check if pc = "+hexstr(pc)+" is between "+hexstr(low_pc)+" and "+hexstr(high_pc)+"\n"));
 	return (pc >= (low_pc + text_base_address) && pc < (high_pc + text_base_address));
 }
 
@@ -182,6 +182,24 @@ void cu_record::write(string key,NATIVE_FD fd) {
 cu_table::~cu_table() {}
 
 /**
+ * Get the cu record for a assembly instruction
+ *
+ * @param ip a instruction pointer value
+ * @return a cu_record for the cu in which the ip is located
+ */
+cu_record *cu_table::get(Generic ip) {
+		DEBUGL(LOG("In cu_table::get"));
+    cu_record *the_cu = NULL;
+    // Look for a compilation unit containing a particular instruction address
+    for (map<string,symbol_table_record*>::iterator it = begin(); it != end() && the_cu == NULL; it++) {
+			cu_record* curec = (cu_record*)it->second;
+			if (curec->pc_in_range(ip))
+	    	the_cu = curec;
+    }
+    return the_cu;
+}
+
+/**
  * Translate a memory access to an list of variables that point to it
  *
  * @param ctxt a pin process context
@@ -310,6 +328,22 @@ string cu_table::get_scope(var_record *vrec) {
    return scope;
 }
 
+
+/**
+ * Get the var table for a particular function
+ *
+ * @param faddr an instruction address in the function
+ * @return the variable table for the function
+ */
+var_table *cu_table::get_function_var_table(Generic ip) {
+    pair<string,var_record*> vpair = translate_address_to_function(ip);
+
+    if (vpair != default_var_pair)
+	return vpair.second->get_local_var_table();
+    else
+	return NULL;
+}
+
 /**
  * Get the type record of a type given the dwarf index
  *
@@ -383,5 +417,3 @@ void cu_table::write(NATIVE_FD fd) {
 	}
 	DEBUGL(LOG("End cu_table::write()\n"));
 }
-
-

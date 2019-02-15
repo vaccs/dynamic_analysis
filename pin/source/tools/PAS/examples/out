@@ -1,0 +1,18 @@
+ar.c:22:26: error: conflicting types for ‘argc’
+ int main(int argc, char *argc){
+                          ^~~~
+ar.c:22:14: note: previous definition of ‘argc’ was here
+ int main(int argc, char *argc){
+              ^~~~
+ar.c: In function ‘main’:
+ar.c:24:23: error: ‘argv’ undeclared (first use in this function); did you mean ‘argc’?
+   simpleFunction(argc,argv[1]);
+                       ^~~~
+                       argc
+ar.c:24:23: note: each undeclared identifier is reported only once for each function it appears in
+ar.c:24:18: warning: passing argument 1 of ‘simpleFunction’ makes integer from pointer without a cast [-Wint-conversion]
+   simpleFunction(argc,argv[1]);
+                  ^~~~
+ar.c:8:5: note: expected ‘int’ but argument is of type ‘char *’
+ int simpleFunction(int iparm, char *cpparm){
+     ^~~~~~~~~~~~~~

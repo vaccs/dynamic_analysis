@@ -2,7 +2,7 @@
  * type_table.H
  *
  * This file contains the code for a type table and its associated
- * records 
+ * records
  *
  */
 #ifndef type_table_h
@@ -248,6 +248,8 @@ public:
 	 * @param fp a file pointer
 	 */
 	virtual void write(std::string fn,NATIVE_FD fd);
+
+	void debug_emit(string type_id);
 };
 
 /**

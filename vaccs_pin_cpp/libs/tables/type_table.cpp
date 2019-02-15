@@ -98,6 +98,21 @@ void type_record::write(std::string key,NATIVE_FD fd) {
 	DEBUGL(LOG("End type_record::write()\n"));
 }
 
+void type_record::debug_emit(string type_id) {
+	DEBUGL(LOG("Type record for " + type_id + "\n"));
+	DEBUGL(LOG("\t type size = " + decstr(type_size) + "\n"));
+	DEBUGL(LOG("\t type name = " + *name + "\n"));
+	DEBUGL(LOG("\t is_array =" + decstr((int)is_array) + "\n"));
+	DEBUGL(LOG("\t upper bound = " + decstr(upper_bound) + "\n"));
+	DEBUGL(LOG("\t is_pointer = " + decstr((int)is_pointer) + "\n"));
+	DEBUGL(LOG("\t is_array = " + decstr((int)is_array) + "\n"));
+	DEBUGL(LOG("\t is_struct = " + decstr((int)is_struct) + "\n"));
+
+	if (base_type != NULL) {
+		DEBUGL(LOG("\t base_type = " + *base_type + "\n"));
+	}
+}
+
 type_table::~type_table() {}
 /**
  * Write the type table to a file

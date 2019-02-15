@@ -2,7 +2,7 @@
  * var_table.H
  *
  * This file contains the code for a variable table and its associated
- * records 
+ * records
  *
  */
 #ifndef var_table_h
@@ -20,6 +20,8 @@
 
 using namespace std;
 
+
+#define	VACCS_MAX_STRING_LENGTH	32	/* the maximum length of a string value read from memory  */
 class var_record;
 
 extern const string void_type;
@@ -58,6 +60,8 @@ private:
  	 * @return a string containg the value stored at the address
   	 */
 	string read_singleton_value(type_record *trec, Generic addr);
+
+	Generic deref_if_by_reference(type_record *trec, Generic var_addr);
 
 public:
 
@@ -371,7 +375,7 @@ public:
 	Generic get_base_address(const CONTEXT *ctxt);
 
 	/**
-	 * Get the scope name of a var_record for a local variable 
+	 * Get the scope name of a var_record for a local variable
  	 *
  	 * @param vrec a variable record
  	 * @return a true if this variable is in this subprogram's scope, otherwise false
@@ -411,6 +415,8 @@ public:
 	* @param fp a file pointer
 	*/
    virtual void write(string fn,NATIVE_FD fd);
+
+	 void debug_emit(string var);
 
 };
 

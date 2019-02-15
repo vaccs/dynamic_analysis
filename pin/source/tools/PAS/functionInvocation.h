@@ -10,7 +10,7 @@
 #ifndef FUNCTIONINVOCATION_H_
 #define FUNCTIONINVOCATION_H_
 VOID functionInvocationBefore(void* function_name,const CONTEXT* contex,ADDRINT ip);
-VOID functionInvocationAfter(void* function_name,const CONTEXT* ctxt);
+VOID functionInvocationAfter(void* function_name,const CONTEXT* ctxt, ADDRINT ip);
 VOID FunctionInvocatioinImage(IMG img, VOID *v);
 
 #endif /* FUNCTIONINVOCATION_H_ */

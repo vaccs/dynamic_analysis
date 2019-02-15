@@ -208,7 +208,21 @@ public:
 	}
 	virtual ~cu_table();
 
+	/**
+	 * Get the cu record for a particular compilation unit
+	 *
+	 * @param str the path to a compilation unit 
+	 * @return a cu_record for the cu
+	 */
 	cu_record* get(string str) { return (cu_record*) symbol_table::get(str);}
+
+	/**
+	 * Get the cu record for a assembly instruction
+	 *
+	 * @param ip a instruction pointer value
+	 * @return a cu_record for the cu in which the ip is located
+	 */
+	cu_record* get(Generic ip);
 
 	/**
 	 * Translate a memory access to an list of variables that point to it
@@ -246,6 +260,14 @@ public:
 	 * @return a string containing the name of the scope (function name or *G*)
 	 */
 	string get_scope(var_record *vrec);
+
+	/**
+	* Get the var table for a particular function
+	*
+	* @param ip an instruction address in the function
+	* @return the variable table for the function
+	*/
+	var_table* get_function_var_table(Generic ip);
 
 	/**
  	 * Get the type record of a type given the dwarf index

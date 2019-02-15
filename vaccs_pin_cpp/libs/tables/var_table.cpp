@@ -8,6 +8,8 @@
  *
  ******************************************************************************/
 
+#include <signal.h>
+#include <setjmp.h>
 #include <util/general.h>
 #include <tables/var_table.h>
 #include <tables/symbol_table_factory.h>
@@ -175,6 +177,16 @@ var_record::find_pointers_to_address_in_subprog(const CONTEXT *ctxt,Generic mem_
 
 }
 
+Generic var_record::deref_if_by_reference(type_record *trec, Generic var_addr) {
+
+	if (is_param && (trec->get_is_array() || trec->get_is_pointer())) {
+		DEBUGL(LOG("Dereferencing a parameter to get the address"));
+		return *(Generic *)var_addr;
+	}
+  else
+		return var_addr;
+}
+
 /**
  * Determine if this variable is at the specified address
  *
@@ -185,12 +197,14 @@ var_record::find_pointers_to_address_in_subprog(const CONTEXT *ctxt,Generic mem_
  */
 bool var_record::is_at_address(const CONTEXT *ctxt,Generic mem_addr, type_record *trec) {
 	DEBUGL(LOG("Enter is_at_address\n"));
-	DEBUGL(LOG("trec = " + hexstr(trec) + "\ntype name = "+*trec->get_name()+ "\n"));
+	DEBUGL(LOG("trec = " + hexstr(trec) + " type name = "+*trec->get_name()+ "\n"));
 	Generic var_addr;
 
 	var_addr = get_base_address(ctxt);
 
-	DEBUGL(LOG("var_addr: " +hexstr(var_addr) + " mem_addr: " + hexstr(mem_addr) +  " size: " + decstr(trec->get_size())+ "\n"));
+	var_addr = deref_if_by_reference(trec,var_addr);
+
+	DEBUGL(LOG("var_addr: " +hexstr(var_addr) + " mem_addr: " + hexstr(mem_addr) +  " size: " + decstr(trec->get_size()) + "\n"));
 	if (trec->get_is_array() || trec->get_is_struct()) { // is this an access to some element of an array or struct
 		return (mem_addr >= var_addr) && (mem_addr < var_addr + trec->get_size());
 	} else
@@ -207,12 +221,12 @@ bool var_record::is_at_address(const CONTEXT *ctxt,Generic mem_addr, type_record
  */
 bool var_record::points_to_address(const CONTEXT *ctxt, Generic mem_addr, type_record *trec) {
 	DEBUGL(LOG("Enter points_to_address\n"));
-	DEBUGL(LOG("trec = " + hexstr(trec) + "\ntype name = "+*trec->get_name()+ "\n"));
+	DEBUGL(LOG("trec = " + hexstr(trec) + " type name = "+*trec->get_name()+ "\n"));
 	Generic *var_addr;
 
 	var_addr = (Generic*)get_base_address(ctxt);
 
-	DEBUGL(LOG("*var_addr: " +hexstr(*var_addr) + " mem_addr: " + hexstr(mem_addr) +  " size: " + decstr(trec->get_size())+ "\n"));
+	DEBUGL(LOG("*var_addr: " +hexstr(var_addr) + " mem_addr: " + hexstr(mem_addr) +  " size: " + decstr(trec->get_size())+ "\n"));
 	return *var_addr == mem_addr;
 }
 
@@ -236,7 +250,7 @@ Generic var_record::get_base_address(const CONTEXT *ctxt) {
 }
 
 /**
- * Get the scope name of a var_record for a local variable 
+ * Get the scope name of a var_record for a local variable
  *
  * @param vrec a variable record
  * @return a true if this variable is in this subprogram's scope, otherwise false
@@ -254,6 +268,16 @@ bool var_record::get_scope(var_record *vrec) {
 
 	return is_in_scope;
 }
+
+static jmp_buf current_env;
+
+static void segv_handler(int signum) {
+
+  DEBUGL(LOG("Caught a SIGSEGV in dereference_memory()"))
+  longjmp(current_env,1);
+
+}
+
 /**
  * Get the value at an address based on a particular type
  *
@@ -262,120 +286,175 @@ bool var_record::get_scope(var_record *vrec) {
  * @return a string containg the value stored at the address
  */
 string var_record::read_singleton_value(type_record *trec, Generic addr) {
-	string value;
+	string value = "Cannot access memory at address " + hexstr(addr);
 	string type_name = *(trec->get_name());
 
 	DEBUGL(LOG("In var_record::read_singleton_value\n"));
 	DEBUGL(LOG("Type is " + type_name + "\n"));
 	DEBUGL(LOG("Reading " + decstr(trec->get_size()) + " bytes at address: " + hexstr(addr) + "\n"));
 
-	ostringstream convert;
-	if (addr == 0)
-		value = "<null>";
-	else if (trec->get_is_pointer() || trec->get_is_array()) {
 
-		// this address has already been dereferenced once, so now its value is just the
-		// address itself
+// set up a signal handler for a segmentation fault in case the address (addr) is not valid
 
-		convert << addr;
-		value = convert.str();
-	} else if (type_name.find("long long") != string::npos) {
-		// interpret data as long long
+	struct sigaction new_action, old_action;
 
-		if (type_name.find("unsigned") != string::npos) {
-			unsigned long long *ptr =(unsigned long long *)addr;
-			DEBUGL(LOG("Interpreting data as an unsigned long long\n"));
-			convert << *ptr;
-		}else {
-			long long *ptr = (long long *)addr;
-			DEBUGL(LOG("Interpreting data as a long long\n"));
-			convert << *ptr;
+  new_action.sa_handler = segv_handler;
+  sigemptyset (&new_action.sa_mask);
+  new_action.sa_flags = 0;
+  sigaction (SIGSEGV, NULL, &old_action);
+
+  sigaction (SIGSEGV, &new_action, NULL);
+
+	// Save the current state using setjmp(), if a SIGSEGV is thrown, then segv_handler is called
+	// segv_handler will LOG the error and call longjmp() to return control to the
+	// if statement with have a return code of 1
+	// In this case, the value of the memory location will be the default string defined above
+	// This prevents the analysis from failing when accessing the monitored programs
+	// variables that might not be set up properly yet or might be errors. The program
+	// itself may error, but the analysis will not.
+
+  if (!setjmp(curent_env)) {
+
+		ostringstream convert;
+		if (addr == 0)
+			value = "<null>";
+		else if (trec->get_is_pointer() || trec->get_is_array()) {
+
+			// this address has already been dereferenced once, so now its value is just the
+			// address itself
+
+			convert << addr;
+			value = convert.str();
+		} else if (type_name.find("long long") != string::npos) {
+			// interpret data as long long
+
+			if (type_name.find("unsigned") != string::npos) {
+				unsigned long long *ptr =(unsigned long long *)addr;
+				DEBUGL(LOG("Interpreting data as an unsigned long long\n"));
+				convert << *ptr;
+			}else {
+				long long *ptr = (long long *)addr;
+				DEBUGL(LOG("Interpreting data as a long long\n"));
+				convert << *ptr;
+			}
+
+			value = convert.str();
+
+		} else if (type_name.find("long") != string::npos) {
+			// interpret data as long
+
+			if (type_name.find("unsigned") != string::npos) {
+				unsigned long *ptr = (unsigned long *)addr;
+				DEBUGL(LOG("Interpreting data as an unsigned long, value is "+decstr(*ptr) + "\n"));
+				convert << *ptr;
+			}
+			else {
+				long *ptr = (long *)addr;
+				DEBUGL(LOG("Interpreting data as a long, value is "+decstr(*ptr) + "\n"));
+				convert << *ptr;
+			}
+
+			value = convert.str();
+
+		} else if (type_name.find("short") != string::npos) {
+			// interpret data as short
+
+			if (type_name.find("unsigned") != string::npos) {
+				unsigned short *ptr = (unsigned short *)addr;
+				DEBUGL(LOG("Interpreting data as an unsigned short, value is "+decstr(*ptr) + "\n"));
+				convert << *ptr;
+			}
+			else {
+				short *ptr = (short *)addr;
+				DEBUGL(LOG("Interpreting data as a short, value is "+decstr(*ptr) + "\n"));
+				convert << *ptr;
+			}
+
+			value = convert.str();
+
+		} else if (type_name.find("char") != string::npos) {
+			// interpret data as a char
+
+			if (type_name.find("unsigned") != string::npos) {
+				unsigned char *ptr = (unsigned char *)addr;
+				DEBUGL(LOG("Interpreting data as an unsigned, value is "+decstr(*ptr) + "\n"));
+				convert << *ptr;
+			}
+			else {
+				char *ptr = (char *)addr;
+				DEBUGL(LOG("Interpreting data as a byte, value is "+decstr(*ptr) + "\n"));
+				convert << *ptr;
+			}
+
+			value = convert.str();
+
+		} else if (type_name.find("int") != string::npos) {
+			// interpret data as an int
+
+			if (type_name.find("unsigned") != string::npos) {
+				unsigned int *ptr = (unsigned int *)addr;
+				DEBUGL(LOG("Interpreting data as an unsigned int, value is "+decstr(*ptr) + "\n"));
+				convert << *ptr;
+				convert << *ptr;
+			}
+			else {
+				int *ptr = (int *)addr;
+				DEBUGL(LOG("Interpreting data as an int, value is "+decstr(*ptr) + "\n"));
+				convert << *ptr;
+			}
+
+			value = convert.str();
+
+		} else {
+			LOG("Type not supported: " + type_name + "\n");
+			PIN_ExitProcess(-1);
 		}
-
-		value = convert.str();
-
-	} else if (type_name.find("long") != string::npos) {
-		// interpret data as long
-
-		if (type_name.find("unsigned") != string::npos) {
-			unsigned long *ptr = (unsigned long *)addr;
-			DEBUGL(LOG("Interpreting data as an unsigned long, value is "+decstr(*ptr) + "\n"));
-			convert << *ptr;
-		}
-		else {
-			long *ptr = (long *)addr;
-			DEBUGL(LOG("Interpreting data as a long, value is "+decstr(*ptr) + "\n"));
-			convert << *ptr;
-		}
-
-		value = convert.str();
-
-	} else if (type_name.find("short") != string::npos) {
-		// interpret data as short
-
-		if (type_name.find("unsigned") != string::npos) {
-			unsigned short *ptr = (unsigned short *)addr;
-			DEBUGL(LOG("Interpreting data as an unsigned short, value is "+decstr(*ptr) + "\n"));
-			convert << *ptr;
-		}
-		else {
-			short *ptr = (short *)addr;
-			DEBUGL(LOG("Interpreting data as a short, value is "+decstr(*ptr) + "\n"));
-			convert << *ptr;
-		}
-
-		value = convert.str();
-
-	} else if (type_name.find("char") != string::npos) {
-		// interpret data as a char
-
-		if (type_name.find("unsigned") != string::npos) {
-			unsigned char *ptr = (unsigned char *)addr;
-			DEBUGL(LOG("Interpreting data as an unsigned, value is "+decstr(*ptr) + "\n"));
-			convert << *ptr;
-		}
-		else {
-			char *ptr = (char *)addr;
-			DEBUGL(LOG("Interpreting data as a byte, value is "+decstr(*ptr) + "\n"));
-			convert << *ptr;
-		}
-
-		value = convert.str();
-
-	} else if (type_name.find("int") != string::npos) {
-		// interpret data as an int
-
-		if (type_name.find("unsigned") != string::npos) {
-			unsigned int *ptr = (unsigned int *)addr;
-			DEBUGL(LOG("Interpreting data as an unsigned int, value is "+decstr(*ptr) + "\n"));
-			convert << *ptr;
-			convert << *ptr;
-		}
-		else {
-			int *ptr = (int *)addr;
-			DEBUGL(LOG("Interpreting data as an int, value is "+decstr(*ptr) + "\n"));
-			convert << *ptr;
-		}
-
-		value = convert.str();
-
-	} else {
-		LOG("Type not supported: " + type_name + "\n");
-		PIN_ExitProcess(-1);
 	}
+
+	// reset the signal handler for SIGSEGV to the original handler.
+
+	sigaction(SIGSEGV,&old_action,NULL)
+
 	return value;
 
 }
 
 string read_c_string(Generic addr) {
-	string value;
-	char *ptr = (char *) addr;
-	value = "";
-	for (int i = 0; *ptr != '\0' && i < 10; i++)
-		value += *ptr;
+	DEBUGL(LOG("Reading C string at addr " + hexstr(addr) + "\n"));
+	string value = "Cannot access memory at address " + hexstr(addr);;
 
-	if (*ptr != '\0')
-		value += "...";
+	struct sigaction new_action, old_action;
+
+	new_action.sa_handler = segv_handler;
+	sigemptyset (&new_action.sa_mask);
+	new_action.sa_flags = 0;
+	sigaction (SIGSEGV, NULL, &old_action);
+
+	sigaction (SIGSEGV, &new_action, NULL);
+
+	// Save the current state using setjmp(), if a SIGSEGV is thrown, then segv_handler is called
+	// segv_handler will LOG the error and call longjmp() to return control to the
+	// if statement with have a return code of 1
+	// In this case, the value of the memory location will be the default string defined above
+	// This prevents the analysis from failing when accessing the monitored programs
+	// variables that might not be set up properly yet or might be errors. The program
+	// itself may error, but the analysis will not.
+
+	if (!setjmp(curent_env)) {
+		char *ptr = *((char **) addr);
+		value = "";
+		for (int i = 0; *ptr != '\0' && i < VACCS_MAX_STRING_LENGTH; i++, ptr++)
+			value += *ptr;
+
+		if (*ptr != '\0')
+			value += "...";
+		else if (value.length() == 0)
+			value = "<null>";
+		}
+
+			// reset the signal handler for SIGSEGV to the original handler.
+
+			sigaction(SIGSEGV,&old_action,NULL)
 
 	return value;
 }
@@ -390,38 +469,44 @@ string var_record::read_value(type_table *ttab, type_record *trec, Generic addr)
 	string value;
 	string type_name = *(trec->get_name());
 
-	DEBUGL(LOG("In var_recod::read_value\n"));
+	DEBUGL(LOG("In var_record::read_value\n"));
 	DEBUGL(LOG("Type is " + type_name + "\n"));
 	DEBUGL(LOG("Reading " + decstr(trec->get_size()) + " bytes at address: " + hexstr(addr) + "\n"));
 
 	if (addr == 0)
 		value = "<null>";
 	else if (trec->get_is_pointer()) {
+		DEBUGL(LOG("Found a pointer\n"));
 		type_record *btrec = ttab->get(*trec->get_base_type());
 		string bt_name = *btrec->get_name();
 
 		// handle a char* as a string
 
 		if (!btrec->get_is_pointer() && !btrec->get_is_array() && bt_name.find("char") != string::npos) {
+			DEBUGL(LOG("Found a character string\n"));
 			value = read_c_string(addr);
 		} else {
-			Generic ptr = *(Generic*)addr;
-			value = read_singleton_value(btrec,ptr);
+			DEBUGL(LOG("Found a non-character pointer\n"));
+			value = read_singleton_value(btrec,addr);
 		}
 	} else if (trec->get_is_array()) {
+		DEBUGL(LOG("Found an array\n"));
 		type_record *btrec = ttab->get(*trec->get_base_type());
 		string bt_name = *btrec->get_name();
 
 		// read a char array as a string
 
 		if (!btrec->get_is_pointer() && !btrec->get_is_array() && bt_name.find("char") != string::npos) {
+			DEBUGL(LOG("Found a character string\n"));
 			value = read_c_string(addr);
 		} else {
-			Generic ptr = *(Generic*)addr;
-			value = read_singleton_value(btrec,ptr);
+			DEBUGL(LOG("Found a non-character array\n"));
+			value = read_singleton_value(btrec,addr);
 		}
-	} else
+	} else {
+		DEBUGL(LOG("Found a singleton value\n"));
 		value = read_singleton_value(trec,addr);
+	}
 
 	return value;
 }
@@ -445,6 +530,20 @@ void var_record::propagate_local_info(type_table *ttab,Generic location, bool is
 		member_table = (var_table *)factory.copy_symbol_table(VAR_TABLE,trec->get_member_table());
 		member_table->propagate_local_info(ttab,this->location,this->is_local,this->is_param);
 	}
+}
+
+void var_record::debug_emit(string var) {
+	DEBUGL(LOG("var_record for "+ var + "\n"));
+	DEBUGL(LOG("\t id = " + decstr(id) +"\n"));
+	DEBUGL(LOG("\t is_local = " + decstr((int)is_local) + "\n"));
+	DEBUGL(LOG("\t is_param = " + decstr((int)is_param) + "\n"));
+	DEBUGL(LOG("\t file = " + decl_file + "\n"));
+	DEBUGL(LOG("\t line = " + decstr(decl_line) +"\n"));
+	DEBUGL(LOG("\t low_pc = " + hexstr(low_pc) +"\n"));
+	DEBUGL(LOG("\t high_pc = " + hexstr(high_pc) +"\n"));
+	DEBUGL(LOG("\t location = " + hexstr(location) +"\n"));
+	DEBUGL(LOG("\t type id = " + type + "\n"));
+	DEBUGL(LOG("\t is_subprog = " + decstr((int)is_subprog) + "\n"));
 }
 
 /**
@@ -540,4 +639,3 @@ void var_table::write(NATIVE_FD fd) {
 		vrec->write(it->first,fd);
 	}
 }
-

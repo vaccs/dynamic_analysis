@@ -31,14 +31,20 @@
 #include <io/cmd_line_record.h>
 #include <io/func_inv_record.h>
 #include <io/output_record.h>
+#include <tables/frame.h>
 
 vaccs_dw_reader *vdr = NULL;
 NATIVE_FD vaccs_fd = -1;
 int vaccs_stdout = -1;
 using namespace std;
 
+
 /*call stack*/
 stack<function_invocation_transaction> invocation_stack;
+
+/* runtime stack of variables */
+runtime_stack *stack_model;
+
 /*file output variable*/
 ofstream ou_function_invocation;
 ofstream ou_return;
@@ -163,6 +169,7 @@ VOID Fini(INT32 code, VOID *v)
 {
 
 	finalize_outputfiles();
+	delete stack_model;
 }
 
 void emit_arch() {
@@ -281,6 +288,11 @@ int main(int argc, char *argv[])
     int i;
     for (i = 0; i < argc && strncmp(argv[i],"--",2); i++);
 
+    PIN_InitSymbols();
+    if( PIN_Init(argc,argv) ) {
+        return Usage();
+    }
+ 
     setup_output_files(argv[++i]);
 
    /*
@@ -293,6 +305,7 @@ int main(int argc, char *argv[])
 
     vdr->read_vaccs_dw_info();
  
+    stack_model = (new runtime_stack())->add_cu_table(vdr->get_cutab());
     emit_arch();
     emit_cmd_line(argc,i,argv);
 
@@ -301,11 +314,6 @@ int main(int argc, char *argv[])
 
     emit_c_code(vdr);
 
-    PIN_InitSymbols();
-    if( PIN_Init(argc,argv) ) {
-        return Usage();
-    }
- 
     IMG_AddInstrumentFunction(dump_section_info,0);
     IMG_AddInstrumentFunction(FunctionInvocatioinImage,0);
 
