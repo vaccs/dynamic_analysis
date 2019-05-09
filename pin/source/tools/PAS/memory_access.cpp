@@ -60,53 +60,41 @@ bool is_indirect(char* assembly){
 // Print a memory read record
 ADDRINT current_EBP;
 PIN_LOCK lock;
-VOID BeforeMemRead(VOID* assembly,ADDRINT ip, VOID *addr,const CONTEXT *ctxt,UINT32 size)
-{
-	char* assembly_code = (char*) assembly;
-	assembly_code = process_string_for_csv(assembly_code);
+VOID BeforeMemRead(VOID* assembly,ADDRINT ip, VOID *addr,const CONTEXT *ctxt,UINT32 size) {
+    char* assembly_code = (char*) assembly;
+    assembly_code = process_string_for_csv(assembly_code);
     DEBUGL(LOG(hexstr(ip)+ "R "+hexstr(addr)+" "+decstr(size)+"\n"));
-    int id = timestamp++;
-    get_registers(ctxt,id);
-	INT32 column;
-	INT32 line;
-	string 	fileName;
 
-	PIN_LockClient();
-	PIN_GetSourceLocation(ip,&column,&line,&fileName);
-	PIN_UnlockClient();
-    //int invocation_id = invocation_stack.top().id;
-   DEBUGL(LOG("line number "+decstr(line)+"\n"));
+    int id = timestamp++;
+
+    get_registers(ctxt,id);
+
+    INT32 column;
+    INT32 line;
+    string 	fileName;
+
+    PIN_LockClient();
+    PIN_GetSourceLocation(ip,&column,&line,&fileName);
+    PIN_UnlockClient();
+
+    DEBUGL(LOG("line number "+decstr(line)+"\n"));
     current_EBP = (ADDRINT)PIN_GetContextReg( ctxt, REG_GBP);
+
     char* location = (char*) malloc(size);
     DEBUGL( LOG( "value before read :"));
     if(is_indirect(assembly_code)) {
-    	 //ou_read_indirect<<"line:"<<dec<<line<<",\t id:"<<id<<","<<assembly_code<<","<<hex<<addr<<","<<dec<<size<<",";
-    	 //pas_output<<"pin_pointer_access~!~"<<dec<<line<<"|"<<id<<"|"<<assembly_code<<"|"<<hex<<addr<<"|"<<dec<<size<<"|";
-    	 for(unsigned int i=0;i<size;i++){
-    	         	location[i] = ((char*)addr)[i];
-    	         	DEBUGL(LOG( hexstr(location[i] & 0xff) + " " ));
-    	         	//ou_read_indirect<< setfill('0') << setw(2) <<hex<<(location[i] & 0xff);
 
+	for(unsigned int i=0;i<size;i++) {
+	    location[i] = ((char*)addr)[i];
+    	    DEBUGL(LOG( hexstr(location[i] & 0xff) + " " ));
     	 }
-    	 for(int i= size-1;i>=0;i--){
-    	 			// pas_output<< setfill('0') << setw(2) <<hex<<(location[i] & 0xff);
-    	 		 }
-    	 //ou_read_indirect<<","<<dec<<invocation_id<<","<<hex<<current_EBP<<endl;
-    	 //pas_output<<"|"<<dec<<invocation_id<<"|"<<hex<<current_EBP<<endl;
+
     }
-    else{
-    	//ou_read_direct<<"line:"<<dec<<line<<",\t id:"<<id<<","<<assembly_code<<","<<hex<<addr<<","<<dec<<size<<",";
-    	//pas_output<<"pin_variable_access~!~"<<dec<<line<<"|"<<id<<"|"<<assembly_code<<"|"<<hex<<addr<<"|"<<dec<<size<<"|";
-    	for(unsigned int i=0;i<size;i++){
-    	    	         	location[i] = ((char*)addr)[i];
-    	         	      DEBUGL(LOG( hexstr(location[i] & 0xff) + " " ));
-    	    	         	//ou_read_direct<< setfill('0') << setw(2) <<hex<<(location[i] & 0xff);
-    	 }
-    	for(int i= size-1;i>=0;i--){
-    		// pas_output<< setfill('0') << setw(2) <<hex<<(location[i] & 0xff);
+    else {
+	for(unsigned int i=0;i<size;i++){
+	   location[i] = ((char*)addr)[i];
+	   DEBUGL(LOG( hexstr(location[i] & 0xff) + " " ));
     	}
-    	 //ou_read_direct<<","<<dec<<invocation_id<<","<<hex<<current_EBP<<endl;
-    	 //pas_output<<"|"<<dec<<invocation_id<<"|"<<hex<<current_EBP<<endl;
     }
 
 
@@ -114,11 +102,12 @@ VOID BeforeMemRead(VOID* assembly,ADDRINT ip, VOID *addr,const CONTEXT *ctxt,UIN
 
 
 }
-VOID AfterMemRead(VOID * ip, VOID *addr,const CONTEXT *ctxt,UINT32 size)
-{
+
+VOID AfterMemRead(VOID * ip, VOID *addr,const CONTEXT *ctxt,UINT32 size) {
 
     char* location = (char*) malloc(size);
     DEBUGL(LOG( "value after read :"));
+
     for(unsigned int i=0;i<size;i++){
     	location[i] = ((char*)addr)[i];
     	DEBUGL(LOG( hexstr(location[i] & 0xff) + " " ));
@@ -128,69 +117,51 @@ VOID AfterMemRead(VOID * ip, VOID *addr,const CONTEXT *ctxt,UINT32 size)
 }
 
 // Print a memory write record
-VOID BeforeMemWrite(VOID* assembly,ADDRINT  ip, VOID *addr,const CONTEXT *ctxt, UINT32 size)
-{
-	//if(size==0) pas_output<<"error here\n";
-	INT32	column;
-	INT32	line;
-	string 	fileName;
+VOID BeforeMemWrite(VOID* assembly,ADDRINT  ip, VOID *addr,const CONTEXT *ctxt, UINT32 size) {
 
-	PIN_LockClient();
-	PIN_GetSourceLocation(ip,&column,&line,&fileName);
-	PIN_UnlockClient();
-	char* assembly_code = (char*) assembly;
-	assembly_code = process_string_for_csv(assembly_code);
+    INT32	column;
+    INT32	line;
+    string 	fileName;
 
-	DEBUGL(LOG(hexstr(ip)+": W "+hexstr(addr)+" "+decstr(size) +"\n"));
+    PIN_LockClient();
+    PIN_GetSourceLocation(ip,&column,&line,&fileName);
+    PIN_UnlockClient();
+
+    char* assembly_code = (char*) assembly;
+    assembly_code = process_string_for_csv(assembly_code);
+
+    DEBUGL(LOG(hexstr(ip)+": W "+hexstr(addr)+" "+decstr(size) +"\n"));
+
     int id = timestamp++;
     get_registers(ctxt,id);
+
     current_EBP = (ADDRINT)PIN_GetContextReg( ctxt, REG_GBP);
     if(is_indirect(assembly_code)) {
-    	//ou_write_indirect<<"line:"<<dec<<line<<",\t id:"<<id<<",\t"<<assembly_code<<",\t"<<hex<<addr<<",\t"<<dec<<size<<",\t";
-    	//pas_output<<"pin_pointer_access~!~"<<dec<<line<<"|"<<id<<"|"<<assembly_code<<"|"<<hex<<addr<<"|"<<dec<<size<<"|";
-    	char* location = (char*) malloc(size);
+	char* location = (char*) malloc(size);
     	DEBUGL(LOG( "value before write :"));
     	for(unsigned int i=0;i<size;i++){
-    		location[i] = ((char*)addr)[i];
+	   location[i] = ((char*)addr)[i];
     	   DEBUGL(LOG( hexstr(location[i] & 0xff) + " " ));
-    		//ou_write_indirect<< setfill('0') << setw(2) <<hex<<(location[i] & 0xff);
     	}
-    	for(int i= size-1;i>=0;i--){
-    		 //pas_output<< setfill('0') << setw(2) <<hex<<(location[i] & 0xff);
-    	}
-    	//ou_write_indirect<<",\t";
-    	//pas_output<<"|";
+
     	DEBUGL(LOG( "\n"));
     }
-    else{
-    	//ou_write_direct<<"line:"<<dec<<line<<",\t id:"<<id<<",\t"<<assembly_code<<",\t"<<hex<<addr<<",\t"<<dec<<size<<",\t";
-    	//pas_output<<"pin_variable_access~!~"<<dec<<line<<"|"<<id<<"|"<<assembly_code<<"|"<<hex<<addr<<"|"<<dec<<size<<"|";
+    else {
     	char* location = (char*) malloc(size);
     	DEBUGL(LOG( "value before write :"));
     	for(unsigned int i=0;i<size;i++){
-    	   		location[i] = ((char*)addr)[i];
-    	         DEBUGL(LOG( hexstr(location[i] & 0xff) + " " ));
-    	   		//ou_write_direct<< setfill('0') << setw(2) <<hex<<(location[i] & 0xff);
+	   location[i] = ((char*)addr)[i];
+    	   DEBUGL(LOG( hexstr(location[i] & 0xff) + " " ));
     	}
-    	for(int i= size-1;i>=0;i--){
-    		 //pas_output<< setfill('0') << setw(2) <<hex<<(location[i] & 0xff);
-    	}
-    	//ou_write_direct<<",\t";
-    	//pas_output<<"|";
+
     	DEBUGL(LOG( "\n"));
     }
 
 
 }
 
-void write_variable_access_record(string variable,
-      Generic event_num,
-      INT32 line,
-      string fileName,
-      string scope,
-      ADDRINT addr,
-      string type_name,
-      string value) {
+void write_variable_access_record(string variable, Generic event_num, INT32 line, string fileName,
+				  string scope, ADDRINT addr, string type_name, string value) { 
 
    vaccs_record_factory factory;
    var_access_record *varec;
@@ -202,6 +173,7 @@ void write_variable_access_record(string variable,
    DEBUGL(LOG( "\tAddress: " + hexstr((Generic)addr) + "\n"));
    DEBUGL(LOG( "\tType: " + type_name + "\n"));
    DEBUGL(LOG( "\tValue: " + value + "\n\n"));
+
    varec = (var_access_record*)factory.make_vaccs_record(VACCS_VAR_ACCESS);
    varec = varec->add_event_num(event_num)
       ->add_c_line_num(line)
@@ -218,18 +190,13 @@ void write_variable_access_record(string variable,
    delete varec;
 }
 
-void write_pointer_access(string variable,
-    var_record *vrec,
-    cu_table *cutab,
-    const CONTEXT *ctxt,
-    Generic event_num,
-    INT32 line,
-    string fileName,
-    ADDRINT addr) {
+void write_pointer_access(string variable, var_record *vrec, cu_table *cutab, const CONTEXT *ctxt,
+			  Generic event_num, INT32 line, string fileName, ADDRINT addr) {
 
     type_table *ttab = cutab->get_type_table(vrec->get_type());
     type_record *trec = ttab->get(vrec->get_type());
     type_record *btrec = ttab->get(*trec->get_base_type());
+
     string scope = cutab->get_scope(vrec);
     Generic var_addr = vrec->get_base_address(ctxt);
     string value = vrec->read_value(ttab,btrec,addr);
@@ -246,6 +213,7 @@ void write_pointer_access(string variable,
     DEBUGL(LOG( "\tPoints to Address: " + hexstr((Generic)addr) + "\n"));
     DEBUGL(LOG( "\tType: " + type_name + "\n"));
     DEBUGL(LOG( "\tValue: " + value + "\n\n"));
+
     varec = (var_access_record*)factory.make_vaccs_record(VACCS_VAR_ACCESS);
     varec = varec->add_event_num(event_num)
 	->add_c_line_num(line)
@@ -261,19 +229,14 @@ void write_pointer_access(string variable,
     delete varec;
 }
 
-void write_array_element_record(cu_table *cutab,
-     pair<string,var_record*> vpair,
-     const CONTEXT *ctxt,
-     ADDRINT addr,
-     INT32 line,
-     string fileName,
-     string var_prefix,
-     string scope,
-     int event_num) {
+void write_array_element_record(cu_table *cutab, pair<string,var_record*> vpair, const CONTEXT *ctxt, ADDRINT addr,
+				INT32 line, string fileName, string var_prefix, string scope, int event_num) {
 
    DEBUGL(LOG( "Write to array element for " + vpair.first + "\nprefix = "+var_prefix + "\n"));
+
    type_table *ttab =cutab->get_type_table(vpair.second->get_type());
    type_record *trec = ttab->get(vpair.second->get_type());
+
    Generic element_size = ttab->get(*trec->get_base_type())->get_size();
    symbol_table_record_factory factory;
 
@@ -329,21 +292,16 @@ void write_array_element_record(cu_table *cutab,
     }
 }
 
-void write_struct_record(cu_table *cutab,
-     pair<string,var_record*> vpair,
-     const CONTEXT *ctxt,
-     ADDRINT addr,
-     INT32 line,
-     string fileName,
-     string var_prefix,
-     string scope,
-     int event_num) {
+void write_struct_record(cu_table *cutab, pair<string,var_record*> vpair, const CONTEXT *ctxt, ADDRINT addr,
+			 INT32 line, string fileName, string var_prefix, string scope, int event_num) {
 
    DEBUGL(LOG( "Write to structure element for " + vpair.first + " at address " + hexstr(addr)));
    DEBUGL(LOG("\nprefix = " + var_prefix + "\n"));
+
    type_table *ttab =cutab->get_type_table(vpair.second->get_type());
    type_record *trec = ttab->get(vpair.second->get_type());
-	var_table *memtab = vpair.second->get_member_table();
+
+   var_table *memtab = vpair.second->get_member_table();
    if (vpair.second->is_first_access()) {
 
       //
@@ -353,126 +311,115 @@ void write_struct_record(cu_table *cutab,
       vpair.second->clear_first_access();
 
       write_variable_access_record(var_prefix + vpair.first, event_num, line, fileName, scope,
-            addr, *trec->get_name(), "<multielement>");
+				   addr, *trec->get_name(), "<multielement>");
 
 
       Generic member_address = addr;
-		for (std::map<std::string,symbol_table_record*>::iterator it = memtab->begin();
-				it != memtab->end();
-				it++) {
+
+      for (std::map<std::string,symbol_table_record*>::iterator it = memtab->begin();
+	   it != memtab->end();
+	   it++) {
+
          pair<string,var_record*> mpair(it->first,(var_record*)it->second);
 			write_element_record(cutab,mpair,ctxt,member_address,line,fileName,
-               *trec->get_name() + ":",scope,event_num);
+					     *trec->get_name() + ":",scope,event_num);
+
          member_address += ttab->get(mpair.second->get_type())->get_size();
       }
    } else {
 
-		for (std::map<std::string,symbol_table_record*>::iterator it = memtab->begin();
-					it != memtab->end();
-					it++) {
-         pair<string,var_record*> mpair(it->first,(var_record *)it->second);
+	for (std::map<std::string,symbol_table_record*>::iterator it = memtab->begin();
+	     it != memtab->end();
+	     it++) {
+
+        pair<string,var_record*> mpair(it->first,(var_record *)it->second);
 			type_record *mtrec = ttab->get(mpair.second->get_type());
 
-         if (mpair.second->is_at_address(ctxt, addr , mtrec)) {
-            write_element_record(cutab,mpair,ctxt,addr,line,fileName,
-               *trec->get_name() + ":",scope,event_num);
+        if (mpair.second->is_at_address(ctxt, addr , mtrec)) {
+            write_element_record(cutab,mpair,ctxt,addr,line,fileName, *trec->get_name() + ":",scope,event_num);
             break;
          }
       }
    }
 }
 
-void write_element_record(cu_table *cutab,
-     pair<string,var_record*> vpair,
-     const CONTEXT *ctxt,
-     ADDRINT addr,
-     INT32 line,
-     string fileName,
-     string var_prefix,
-     string scope,
-     int event_num) {
+void write_element_record(cu_table *cutab, pair<string,var_record*> vpair, const CONTEXT *ctxt, ADDRINT addr,
+			  INT32 line, string fileName, string var_prefix, string scope, int event_num) {
 
    DEBUGL(LOG( "Write to address " + hexstr(addr)+ "is variable " + vpair.first + "prefix = " + var_prefix+"\n"));
+
    type_table *ttab =cutab->get_type_table(vpair.second->get_type());
    type_record *trec = ttab->get(vpair.second->get_type());
+
    if (trec->get_is_array())
-      write_array_element_record(cutab,vpair,ctxt,addr,line,fileName, var_prefix,scope,
-            event_num);
+      write_array_element_record(cutab,vpair,ctxt,addr,line,fileName, var_prefix,scope, event_num);
    else if (trec->get_is_struct())
-      write_struct_record(cutab,vpair,ctxt,addr,line,fileName,var_prefix,scope,
-            event_num);
+      write_struct_record(cutab,vpair,ctxt,addr,line,fileName,var_prefix,scope, event_num);
    else
       write_variable_access_record(var_prefix+vpair.first, event_num, line, fileName, scope,
-            addr, *trec->get_name(), vpair.second->read_value(ttab,trec,addr));
+				   addr, *trec->get_name(), vpair.second->read_value(ttab,trec,addr));
 }
 
-VOID AfterMemWrite(VOID* assembly, ADDRINT ip, VOID *addr,const CONTEXT *ctxt, UINT32 size)
-{
-	 //int invocation_id = invocation_stack.top().id;
-	 char* assembly_code = (char*) assembly;
-	char* location = (char*) malloc(size);
-	current_EBP = (ADDRINT)PIN_GetContextReg( ctxt, REG_GBP);
-	DEBUGL(LOG( "value after write :"));
-	 if(is_indirect(assembly_code)) {
-		 for(unsigned int i=0;i<size;i++){
-		 	    	location[i] = ((char*)addr)[i];
-    	         DEBUGL(LOG( hexstr(location[i] & 0xff) + " " ));
-		 	    	//ou_write_indirect<< setfill('0') << setw(2) <<hex<<(location[i] & 0xff);
-		 }
-		 for(int i= size-1;i>=0;i--){
-		 	 //pas_output<< setfill('0') << setw(2) <<hex<<(location[i] & 0xff);
-		 }
-		 DEBUGL(LOG( "\n"));
-		 //ou_write_indirect<<","<<dec<<invocation_id<<",\t"<<hex<<current_EBP<<endl;
-		 //pas_output<<"|"<<dec<<invocation_id<<"|"<<hex<<current_EBP;
-	 }
-	 else{
-		 for(unsigned int i=0;i<size;i++){
-		 		 	    	location[i] = ((char*)addr)[i];
-    	         	   DEBUGL(LOG( hexstr(location[i] & 0xff) + " " ));
-		 		 	    	//ou_write_direct<< setfill('0') << setw(2) <<hex<<(location[i] & 0xff);
+VOID AfterMemWrite(VOID* assembly, ADDRINT ip, VOID *addr,const CONTEXT *ctxt, UINT32 size) {
+	 
+    char* assembly_code = (char*) assembly;
+    char* location = (char*) malloc(size);
 
-		 }
-		 for(int i= size-1;i>=0;i--){
-			 //pas_output<< setfill('0') << setw(2) <<hex<<(location[i] & 0xff);
-		 }
-		 DEBUGL(LOG( "\n"));
-		 //ou_write_direct<<","<<dec<<invocation_id<<",\t"<<hex<<current_EBP<<endl;
-		 //pas_output<<"|"<<dec<<invocation_id<<"|"<<hex<<current_EBP;
-	 }
+    current_EBP = (ADDRINT)PIN_GetContextReg( ctxt, REG_GBP);
+    DEBUGL(LOG( "value after write :"));
 
-	 //pas_output<<"\n";
+    if(is_indirect(assembly_code)) {
 
-	INT32	column;
-	INT32	line;
-	string 	fileName;
+	for(unsigned int i=0;i<size;i++){
+	    location[i] = ((char*)addr)[i];
+    	    DEBUGL(LOG( hexstr(location[i] & 0xff) + " " ));
+	}
+	DEBUGL(LOG( "\n"));
+    } else {
 
-	PIN_LockClient();
-	PIN_GetSourceLocation(ip,&column,&line,&fileName);
-	PIN_UnlockClient();
+	for(unsigned int i=0;i<size;i++){
+	    location[i] = ((char*)addr)[i];
+    	    DEBUGL(LOG( hexstr(location[i] & 0xff) + " " ));
+	}
+	DEBUGL(LOG( "\n"));
+    }
+
+    INT32	column;
+    INT32	line;
+    string 	fileName;
+
+    PIN_LockClient();
+    PIN_GetSourceLocation(ip,&column,&line,&fileName);
+    PIN_UnlockClient();
 
     if (line == 0)
-	   fileName = NOCSOURCE;
+	fileName = NOCSOURCE;
 
     DEBUGL(LOG("line = " + decstr(line) + ", column = " + decstr(column) + ", file = " + fileName));
+
     cu_table *cutab = vdr->get_cutab();
     cu_record *curec = cutab->get(ip);
+
     if (curec == NULL) {
       DEBUGL(LOG("ip = " + hexstr(ip) + " is not in user code"));
     }
     else {
       DEBUGL(LOG("ip = " + hexstr(ip) + " is in user code checking variable access"));
+
       type_table *ttab = cutab->get(ip)->get_type_table();
-      list<variable_update_record*> *vur_list = stack_model->get_live_variables_accessed();
+
+      list<variable_update_record*> *vur_list = stack_model->get_variables_accessed();
+
       if (vur_list->empty()) {
   	     DEBUGL(LOG("there are no live variables"));
       } else {
+
       	for (list<variable_update_record*>::iterator it = vur_list->begin(); it != vur_list->end(); it++) {
-      	  variable_update_record* vurec = *it;
+	    variable_update_record* vurec = *it;
     	    pair<string,var_record*> vpair(vurec->get_variable_name(),vurec->get_var_record());
     	    write_element_record(cutab,vpair,vurec->get_context(),vurec->get_address(),line,fileName,"",
     				 cutab->get_scope(vpair.second),timestamp);
-    	  }
+    	}
       }
       timestamp++;
     }

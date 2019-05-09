@@ -3,6 +3,6 @@
 
 #include <util/general.h>
 
-EXTERN(Generic, dereference_memory, (Generic *addr));
+EXTERN(Generic, dereference_memory, (Generic *addr, bool *is_segv));
 
 #endif

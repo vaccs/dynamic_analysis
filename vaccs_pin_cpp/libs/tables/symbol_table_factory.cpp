@@ -14,75 +14,76 @@
 
 symbol_table *symbol_table_factory::make_symbol_table(int type){
 
-	symbol_table *table;
+   symbol_table *table;
 
-	switch(type) {
-	case CU_TABLE:
-		table = new cu_table();
-		break;
-	case TYPE_TABLE:
-		table = new type_table();
-		break;
-	case VAR_TABLE:
-		table = new var_table();
-		break;
-	default:
-		table = NULL;
-		break;
-	}
+   switch(type) {
+   case CU_TABLE:
+      table = new cu_table();
+      break;
+   case TYPE_TABLE:
+      table = new type_table();
+      break;
+   case VAR_TABLE:
+      table = new var_table();
+      break;
+   default:
+      table = NULL;
+      break;
+   }
 
-	return table;
+   return table;
 }
 
 symbol_table *symbol_table_factory::copy_symbol_table(int type, symbol_table *stab) {
 
-	symbol_table *tab;
-	switch (type) {
-	case VAR_TABLE:
-		tab = new var_table((var_table *)stab);
-		break;
-	default:
-		tab = NULL;
-	}
+   symbol_table *tab;
 
-	return tab;
+   switch (type) {
+   case VAR_TABLE:
+      tab = new var_table((var_table *)stab);
+      break;
+   default:
+      tab = NULL;
+   }
+
+   return tab;
 
 }
 
 
 symbol_table_record *symbol_table_record_factory::make_symbol_table_record(int type) {
 
-	symbol_table_record *rec;
+   symbol_table_record *rec;
 
-	switch (type) {
-	case CU_RECORD:
-		rec = new cu_record();
-		break;
-	case TYPE_RECORD:
-		rec = new type_record();
-		break;
-	case VAR_RECORD:
-		rec = new var_record();
-		break;
-	default:
-		rec = NULL;
-	}
+   switch (type) {
+   case CU_RECORD:
+      rec = new cu_record();
+      break;
+   case TYPE_RECORD:
+      rec = new type_record();
+      break;
+   case VAR_RECORD:
+      rec = new var_record();
+      break;
+   default:
+      rec = NULL;
+   }
 
-	return rec;
+   return rec;
 }
 
 symbol_table_record *symbol_table_record_factory::copy_symbol_table_record(int type, symbol_table_record *srec) {
 
-	symbol_table_record *rec;
-	switch (type) {
-	case VAR_RECORD:
-		rec = new var_record((var_record *)srec);
-		break;
-	default:
-		rec = NULL;
-	}
+   symbol_table_record *rec;
+   switch (type) {
+   case VAR_RECORD:
+      rec = new var_record((var_record *)srec);
+      break;
+   default:
+      rec = NULL;
+   }
 
-	return rec;
+   return rec;
 
 }
 

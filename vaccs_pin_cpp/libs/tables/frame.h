@@ -156,7 +156,7 @@ class frame : public list<frame_record *>
 	 *
 	 * @return the pin context associated with this frame
 	 */
-	CONTEXT& get_context() {
+	CONTEXT *get_context() {
 	    return ctx;
 	}
 
@@ -179,8 +179,8 @@ class frame : public list<frame_record *>
 	 * @param name a pin context
 	 * @return the instance of this object
 	 */
-	frame *add_context(const CONTEXT *ctx) {
-	    this->ctx = *ctx;
+	frame *add_context(CONTEXT *ctx) {
+	    this->ctx = ctx;
 	    return this;
 	}
 
@@ -221,7 +221,7 @@ class frame : public list<frame_record *>
     private:
 
 	string name; /* the name of the function */
-	CONTEXT ctx; /* a pin context at the time this frame is put on the stack */
+	CONTEXT *ctx; /* a pin context at the time this frame is put on the stack */
 
 }; /* -----  end of class frame  ----- */
 
@@ -266,9 +266,9 @@ public:
     return this;
   }
 
-  variable update_record *add_address(Generic address) {
+  var_upd_record *add_address(Generic address) {
     this->address = address;
-    returh this;
+    return this;
   }
 
   var_upd_record *add_context(CONTEXT *ctxt) {
@@ -283,7 +283,7 @@ private:
   Generic address;
   CONTEXT *ctxt;
 
-}
+};
 
 /*
  * =====================================================================================
@@ -325,7 +325,7 @@ class runtime_stack : public list<frame *>
 	 * @param ip address in the function
 	 * @param ctx the pin context for this stack frame
 	 */
-	void push(string name,Generic ip, const CONTEXT *ctx);
+	void push(string name,Generic ip, CONTEXT *ctx);
 
 	/**
 	 * Pop a frame from the runtime stack
@@ -356,7 +356,7 @@ class runtime_stack : public list<frame *>
   * @return a list of variables that on the stack or in global memory that could
   * have possibly been accessed
   */
-  list<var_upd_record*> *runtime_stack::get_updated_variables();
+  list<var_upd_record*> *get_updated_variables(cu_table *cutab);
 
 	/* ====================  DATA MEMBERS  ======================================= */
     protected:

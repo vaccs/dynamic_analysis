@@ -61,7 +61,6 @@ private:
   	 */
 	string read_singleton_value(type_record *trec, Generic addr);
 
-	Generic deref_if_by_reference(type_record *trec, Generic var_addr);
 
 public:
 
@@ -373,6 +372,8 @@ public:
 	 * @return the base address of this variable in a given execution context
 	 */
 	Generic get_base_address(const CONTEXT *ctxt);
+
+	Generic deref_if_by_reference(type_record *trec, Generic var_addr);
 
 	/**
 	 * Get the scope name of a var_record for a local variable
