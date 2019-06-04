@@ -17,8 +17,12 @@
  * =====================================================================================
  */
 
-#include   <tables/frame.h>
+#include <tables/frame.h>
 #include <tables/deref.h>
+#include <tables/global.h>
+#include <io/vaccs_record_factory.h>
+#include <io/vaccs_record.h>
+#include <io/var_access_record.h>
 
 /**
  * Create an instance of a frame_record and initialize instance variables.
@@ -247,14 +251,18 @@ list<frame_record*> *runtime_stack::get_pointers_to_address(Generic addr,type_ta
    return vlist;
 }
 
+string* get_new_points_to_value(string new_value,frame_record *frec) {
+   bool is_segv;
+   dereference_memory((Generic*)addr,&is_segv);
+}
+
 /**
 * Compute a list of variables that could possibly have been accessed
 *
-* @param cutab a table of compilation units
 * @return a list of variables that on the stack or in global memory that could
 * have possibly been accessed
 */
-list<var_upd_record*> *runtime_stack::get_updated_variables(cu_table *cutab) {
+list<var_upd_record*> *runtime_stack::get_updated_variables() {
 
    DEBUGL(LOG("In runtime_stack::get_updated_variables\n"));
 
@@ -267,22 +275,66 @@ list<var_upd_record*> *runtime_stack::get_updated_variables(cu_table *cutab) {
       for (list<frame_record*>::iterator it2 = fr->begin(); it2 != fr->end(); it2++) {
          frame_record *frec = *it2;
          type_record *trec = cutab->get_type_record(frec->get_var_record()->get_type());
-         Generic addr = frec->get_var_record()->get_base_address(fr->get_context());
-         var_upd_record *vurec = (new var_upd_record())
-            ->add_variable_name(frec->get_variable_name())
-            ->add_var_record(frec->get_var_record())
-            ->add_context(fr->get_context())
-            ->add_address(addr);
-         vlist->push_back(vurec);
+         var_record *vrec = frec->get_var_record();
+         Generic addr = vrec->get_base_address(fr->get_context());
 
-         if (trec->get_is_pointer()) {
-            bool is_segv;
-            addr = dereference_memory((Generic*)addr,&is_segv);
-            if (!is_segv) {
+         string new_value = vrec->read_value(ttab,trec,addr);
+         Generic points_to = 0;
+         string *new_points_to_value = NULL;
+
+         if (new_value != frec->get_value() ||
+             (trec->get_is_pointer() && ((new_points_to_value = get_new_points_to_value(new_value,frec,&points_to) != NULL)) {
+            frec->add_value(new_value);
+            var_upd_record *vurec = (new var_upd_record())
+               ->add_variable_name(frec->get_variable_name())
+               ->add_var_record(frec->get_var_record())
+               ->add_context(fr->get_context())
+               ->add_address(addr)
+               ->add_type_name(trec->get_name())
+               ->add_scope(cu_tab->get_scope(vrec))
+               ->add_value(new_value);
+
+            if (new_points_to_value != NULL)
+                 vurec = vurec->add_points_to(points_to)
+                              ->add_points_to_value(*new_points_to_value);
+               }
+            vlist->push_back(vurec);
             }
          }
       }
    }
 
    return vlist;
+}
+
+void var_upd_record::write(NATIVE_FD vaccs_fd,string fileName,int line) {
+   vaccs_record_factory factory;
+   var_access_record *varec;
+
+   string scope = cutab->get_scope(vrec);
+
+   DEBUGL(LOG( "Write to variable " + variable_name + "\n"));
+   DEBUGL(LOG( "\tEvent num: " + decstr(timestamp) + "\n"));
+   DEBUGL(LOG( "\tC file name: " + fileName + "\n"));
+   DEBUGL(LOG( "\tScope: " + scope + "\n"));
+   DEBUGL(LOG( "\tAddress: " + hexstr(address) + "\n"));
+   DEBUGL(LOG( "\tType: " + type_name + "\n"));
+   DEBUGL(LOG( "\tValue: " + value + "\n\n"));
+
+   varec = (var_access_record*)factory.make_vaccs_record(VACCS_VAR_ACCESS);
+   varec = varec->add_event_num(timestamp++)
+      ->add_c_line_num(line)
+      ->add_c_file_name(fileName.c_str())
+      ->add_scope(scope.c_str())
+      ->add_address(address)
+      ->add_name(variable_name.c_str())
+      ->add_type(type_name.c_str())
+      ->add_value(value.c_str());
+
+   if (type_name.find("*") != string::npos)
+	   varec = varec->add_points_to(points_to);
+   varec->write(vaccs_fd);
+   delete varec;
+}
+
 }

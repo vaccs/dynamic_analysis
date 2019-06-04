@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="PAS"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="PAS">
+				<Option output="/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/cmake-build-debug/PAS" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/."/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 PAS"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="PAS/fast">
+				<Option output="/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/cmake-build-debug/PAS" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/."/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 PAS/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/InstructionInstrumentation.cpp">
+			<Option target="PAS"/>
+		</Unit>
+		<Unit filename="/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/InstructionInstrumentation.h">
+			<Option target="PAS"/>
+		</Unit>
+		<Unit filename="/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/database_access_api.cpp">
+			<Option target="PAS"/>
+		</Unit>
+		<Unit filename="/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/database_access_api.h">
+			<Option target="PAS"/>
+		</Unit>
+		<Unit filename="/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/database_direct_access.cpp">
+			<Option target="PAS"/>
+		</Unit>
+		<Unit filename="/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/database_direct_access.h">
+			<Option target="PAS"/>
+		</Unit>
+		<Unit filename="/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/functionInvocation.cpp">
+			<Option target="PAS"/>
+		</Unit>
+		<Unit filename="/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/functionInvocation.h">
+			<Option target="PAS"/>
+		</Unit>
+		<Unit filename="/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/function_call.cpp">
+			<Option target="PAS"/>
+		</Unit>
+		<Unit filename="/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/function_call.h">
+			<Option target="PAS"/>
+		</Unit>
+		<Unit filename="/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/global.cpp">
+			<Option target="PAS"/>
+		</Unit>
+		<Unit filename="/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/global.h">
+			<Option target="PAS"/>
+		</Unit>
+		<Unit filename="/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/makefile">
+			<Option target="PAS"/>
+		</Unit>
+		<Unit filename="/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/makefile.rules">
+			<Option target="PAS"/>
+		</Unit>
+		<Unit filename="/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/malloc_free.cpp">
+			<Option target="PAS"/>
+		</Unit>
+		<Unit filename="/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/malloc_free.h">
+			<Option target="PAS"/>
+		</Unit>
+		<Unit filename="/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/memory_access.cpp">
+			<Option target="PAS"/>
+		</Unit>
+		<Unit filename="/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/memory_access.h">
+			<Option target="PAS"/>
+		</Unit>
+		<Unit filename="/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/monitor_registers.cpp">
+			<Option target="PAS"/>
+		</Unit>
+		<Unit filename="/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/monitor_registers.h">
+			<Option target="PAS"/>
+		</Unit>
+		<Unit filename="/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/pas_analysis.cpp">
+			<Option target="PAS"/>
+		</Unit>
+		<Unit filename="/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/return.cpp">
+			<Option target="PAS"/>
+		</Unit>
+		<Unit filename="/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/return.h">
+			<Option target="PAS"/>
+		</Unit>
+		<Unit filename="/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/section_info.cpp">
+			<Option target="PAS"/>
+		</Unit>
+		<Unit filename="/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/section_info.h">
+			<Option target="PAS"/>
+		</Unit>
+		<Unit filename="/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/stack_operation.cpp">
+			<Option target="PAS"/>
+		</Unit>
+		<Unit filename="/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/stack_operation.h">
+			<Option target="PAS"/>
+		</Unit>
+		<Unit filename="/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

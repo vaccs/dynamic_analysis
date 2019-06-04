@@ -55,8 +55,8 @@ VOID functionInvocationBefore(void* function_name,const CONTEXT* ctxt,
     invocation_stack.push(function_invocation_event);
     DEBUGL(LOG("after push stack size:"+decstr(invocation_stack.size())+"\n"));
     function_invocation_event.function_name = (char*)function_name;
-    DEBUGL(LOG("Invocation ID:"+decstr(current_invocation_id)+"function "+name+" was called.\n Frame pointer was "+
-           hexstr(EBP)+"\n"));
+    DEBUGL(LOG("Invocation ID:"+decstr(current_invocation_id)+"function "+name+
+             " was called.\n Frame pointer was "+ hexstr(EBP)+"\n"));
 
 
     INT32 column,line;
@@ -176,9 +176,15 @@ VOID functionInvocationAfter(void* function_name,const CONTEXT* ctxt,ADDRINT ip)
 
 
     if (line != 0) {
-	     stack_model->pop();
-       stack_model->update_variables();
-    }
+       stack_model->pop();
+       list<var_upd_record*> *variables = stack_model->get_updated_variables();
+
+       for (list<var_upd_record*>::iterator it = variables->begin(); it != variables->end(); it++) {
+         var_upd_record *vurec = *it;
+         vurec->write(vaccs_fd,line,
+       }
+     }
+         
     DEBUGL(LOG("function return\n"));
     DEBUGL(LOG("Exit functionInvocationAfter\n"));
 }

@@ -25,7 +25,8 @@ using namespace std;
 #include	<list>
 #include	<tables/cu_table.h>
 #include	<tables/var_table.h>
-#include  <util/general.h>
+#include        <util/general.h>
+#include        <tables/global.h>
 
 #include	<pin.H>
 
@@ -276,12 +277,27 @@ public:
     return this;
   }
 
+  var_upd_record *add_value(string value) {
+    value = value;
+    return this;
+  }
+
+  var_upd_record *add_type_name(string name) {
+    type_name = name;
+    return this;
+  }
+
+  void write(NATIVE_FD vaccs_fd,string fileName,int line,cu_table *cutab);
+
 private:
 
   string variable_name;
   var_record *vrec;
   Generic address;
   CONTEXT *ctxt;
+  string value;
+  string type_name;
+  Generic points_to;
 
 };
 
@@ -350,13 +366,13 @@ class runtime_stack : public list<frame *>
 	*/
 	list<frame_record*> *get_pointers_to_address(Generic addr, type_table *ttab);
 
-  /**
-  * Compute a list of variables that could possibly have been accessed
-  *
-  * @return a list of variables that on the stack or in global memory that could
-  * have possibly been accessed
-  */
-  list<var_upd_record*> *get_updated_variables(cu_table *cutab);
+        /**
+         * Compute a list of variables that could possibly have been accessed
+         *
+         * @return a list of variables that on the stack or in global memory that could
+         * have possibly been accessed
+         */
+        list<var_upd_record*> *get_updated_variables();
 
 	/* ====================  DATA MEMBERS  ======================================= */
     protected:
