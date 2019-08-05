@@ -54,7 +54,7 @@ VOID mallocBefore(CHAR * name, ADDRINT size)
 
 }
 
-VOID fopenAfter(ADDRINT ret)
+VOID malloc_after(ADDRINT ret)
 {
 
 	DEBUGL(LOG(" returns " + hexstr(ret) + "\n"));
@@ -87,7 +87,7 @@ VOID MallocAndFreeImage(IMG img, VOID *v)
                        IARG_ADDRINT, "malloc",
                        IARG_FUNCARG_ENTRYPOINT_VALUE, 0,
                        IARG_END);
-        RTN_InsertCall(mallocRtn, IPOINT_AFTER, (AFUNPTR)fopenAfter,
+        RTN_InsertCall(mallocRtn, IPOINT_AFTER, (AFUNPTR)malloc_after,
                        IARG_FUNCRET_EXITPOINT_VALUE, IARG_END);
 
 
