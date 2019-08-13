@@ -18,23 +18,29 @@
  */
 
 #include    <tables/heap.h>
+#include    <string>
 
 HeapBlock::HeapBlock() {
    start_address = 0;
+   value = NULL;
    size = 0;
+   event_id = -1;
 }
 
-HeapMap::HeapMap() : list() {}
+HeapMap::HeapMap() : map() {}
 
-HeapBlock *HeamMap::find(Generic address) {
+HeapBlock *HeapMap::find_block(Generic address) {
 
    HeapBlock *block = NULL;
 
-   for (list<HeapBlock*>::iterator it = begin(); it != end() && block == NULL; it++) {
+   for (map<Generic,HeapBlock*>::iterator it = begin(); it != end(); it++) {
 
-      HeapBlock *hb = *it;
-      if (hb->contains_address(address))
+      HeapBlock *hb = it->second;
+      if (hb->contains_address(address)) {
          block = hb;
+	 break;
+      } else if (hb->address_earlier(address))
+         break;
    }
 
    return block;

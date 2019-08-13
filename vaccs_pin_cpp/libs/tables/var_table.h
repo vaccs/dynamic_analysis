@@ -198,7 +198,6 @@ public:
 		this->location = location;
 		return this;
 	}
-
 	/**
 	 * Set the first_access field to false
 	 *
@@ -306,6 +305,7 @@ public:
 	Generic get_location() {
 		return location;
 	}
+
 
 	/* Get the first access field
 	 *

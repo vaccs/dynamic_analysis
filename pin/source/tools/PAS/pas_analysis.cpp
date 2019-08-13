@@ -160,6 +160,9 @@ void initialize(){
 		timestamp = 0;
 		current_function_name = 0;
 		current_invocation_id =0;
+
+                heapMap = new HeapMap();
+
 		//file output initialization
 
 }

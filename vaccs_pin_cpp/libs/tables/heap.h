@@ -18,10 +18,13 @@
  */
 
 #ifndef heap_h
-#define head_h
+#define heap_h
 
-#include    <list>
+#include    <map>
 
+#include <util/general.h>
+
+using namespace std;
 /*
  * =====================================================================================
  *        Class:  HeapBlock
@@ -48,6 +51,21 @@ class HeapBlock
          return this;
       }
 
+      HeapBlock *add_event_id(unsigned int i) {
+         event_id = i;
+         return this;
+      }
+
+      HeapBlock *add_value() {
+         value = new char[size];
+         memcpy(value,(const void *)start_address,size);
+         return this;
+      }
+
+      void update_value() {
+         memcpy(value,(const void *)start_address,size);
+      }
+
       /* ====================  ACCESSORS     ======================================= */
 
       Generic get_start_address() {
@@ -58,11 +76,28 @@ class HeapBlock
          return size;
       }
 
+      unsigned int get_event_id() {
+         return event_id;
+      }
+
+      const char *get_value() {
+         char *buff = new char[size];
+         memcpy(buff,value,size);
+         return buff;
+      }
 
       /* ====================  OPERATORS     ======================================= */
 
       bool contains_address(Generic address) {
          return address >= start_address && address < start_address+size;
+      }
+
+      bool address_earlier(Generic address) {
+	 return address < start_address;
+      }
+
+      bool mem_has_new_value() {
+         return memcmp(value,(const void *)start_address,size() != 0;
       }
 
       /* ====================  DATA MEMBERS  ======================================= */
@@ -71,6 +106,8 @@ class HeapBlock
    private:
       Generic start_address;
       Generic size;
+      char *value;
+      unsigned int event_id;
 
 }; /* -----  end of class HeapBlock  ----- */
 
@@ -81,7 +118,7 @@ class HeapBlock
  *  Description:  This class represents all of the blocks allocated on the heap.
  * =====================================================================================
  */
-class HeapMap : public list<HeapBlock *>
+class HeapMap : public map<Generic, HeapBlock *>
 {
    public:
       /* ====================  LIFECYCLE     ======================================= */
@@ -90,7 +127,7 @@ class HeapMap : public list<HeapBlock *>
       /* ====================  BUILDERS     ======================================= */
 
       HeapMap *add_block(HeapBlock *block) {
-         push_back(block);
+	 insert(pair<Generic,HeapBlock*>(block->get_start_address(),block));
          return this;
       }
 
@@ -101,6 +138,8 @@ class HeapMap : public list<HeapBlock *>
       /* ====================  OPERATORS     ======================================= */
 
       HeapBlock *find_block(Generic address);
+      HeapBlock *delete_block(Generic address);
+
 
       /* ====================  DATA MEMBERS  ======================================= */
    protected:

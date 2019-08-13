@@ -25,8 +25,8 @@ using namespace std;
 #include	<list>
 #include	<tables/cu_table.h>
 #include	<tables/var_table.h>
+#include	<tables/type_table.h>
 #include        <util/general.h>
-#include        <tables/global.h>
 
 #include	<pin.H>
 
@@ -287,7 +287,30 @@ public:
     return this;
   }
 
-  void write(NATIVE_FD vaccs_fd,string fileName,int line,cu_table *cutab);
+  var_upd_record *add_points_to(Generic points_to) {
+	this->points_to = points_to;
+	return this;
+  }
+
+  var_upd_record *add_points_to_value(string points_to_value) {
+	this->points_to_value = points_to_value;
+	return this;
+  }
+
+  var_upd_record *add_scope(string scope) {
+	this->scope = scope;
+	return this;
+  }
+
+  Generic get_points_to() {
+	return points_to;
+  }	
+
+  string get_points_to_value() {
+	return points_to_value;
+  }	
+
+  void write(NATIVE_FD vaccs_fd,string fileName,int line,cu_table *cutab,int timestamp);
 
 private:
 
@@ -297,7 +320,9 @@ private:
   CONTEXT *ctxt;
   string value;
   string type_name;
+  string scope;
   Generic points_to;
+  string points_to_value;
 
 };
 
@@ -348,31 +373,13 @@ class runtime_stack : public list<frame *>
 	 */
 	void pop();
 
-	/**
-	* Compute a list of variables that reference a memory location
-	*
-	* @param addr the address of a memory location in memory
-	* @param ttab a type table
-	* @return a list of variables that reference the given memory location
-	*/
-	list<frame_record*> *get_variables_accessed(Generic addr, type_table *ttab);
-
-	/**
-	* Compute a list of pointer variables that point to a memory location
-	*
-	* @param addr the address of a memory location in memory
-	* @param ttab a type table
-	* @return a list of pointer variables that point to the given memory location
-	*/
-	list<frame_record*> *get_pointers_to_address(Generic addr, type_table *ttab);
-
         /**
          * Compute a list of variables that could possibly have been accessed
          *
          * @return a list of variables that on the stack or in global memory that could
          * have possibly been accessed
          */
-        list<var_upd_record*> *get_updated_variables();
+        list<var_upd_record*> *get_updated_variables(cu_table *cutab,HeapMap *heapMap);
 
 	/* ====================  DATA MEMBERS  ======================================= */
     protected:

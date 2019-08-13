@@ -360,7 +360,7 @@ void write_element_record(cu_table *cutab, pair<string,var_record*> vpair, const
 				   addr, *trec->get_name(), vpair.second->read_value(ttab,trec,addr));
 }
 
-VOID AfterMemWrite(VOID* assembly, ADDRINT ip, VOID *addr,const CONTEXT *ctxt, UINT32 size) {
+VOID AfterMemWrite(VOID* assembly, ADDRINT ip, ADDRINT addr,const CONTEXT *ctxt, UINT32 size) {
 	 
     char* assembly_code = (char*) assembly;
     char* location = (char*) malloc(size);
@@ -406,16 +406,14 @@ VOID AfterMemWrite(VOID* assembly, ADDRINT ip, VOID *addr,const CONTEXT *ctxt, U
     else {
       DEBUGL(LOG("ip = " + hexstr(ip) + " is in user code checking variable access"));
 
-      type_table *ttab = cutab->get(ip)->get_type_table();
-
-      list<variable_update_record*> *vur_list = stack_model->get_variables_accessed();
+      list<var_upd_record*> *vur_list = stack_model->get_updated_variables();
 
       if (vur_list->empty()) {
   	     DEBUGL(LOG("there are no live variables"));
       } else {
 
-      	for (list<variable_update_record*>::iterator it = vur_list->begin(); it != vur_list->end(); it++) {
-	    variable_update_record* vurec = *it;
+      	for (list<var_upd_record*>::iterator it = vur_list->begin(); it != vur_list->end(); it++) {
+	    var_upd_record* vurec = *it;
     	    pair<string,var_record*> vpair(vurec->get_variable_name(),vurec->get_var_record());
     	    write_element_record(cutab,vpair,vurec->get_context(),vurec->get_address(),line,fileName,"",
     				 cutab->get_scope(vpair.second),timestamp);

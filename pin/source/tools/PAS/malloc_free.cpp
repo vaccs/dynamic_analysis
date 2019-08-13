@@ -10,45 +10,29 @@
 #include "global.h"
 #include "database_access_api.h"
 #include <util/general.h>
+#include <tables/heap.h>
 
 using namespace std;
+
+static HeapBlock *new_hb = NULL;
+HeapMap *heapMap = NULL;
+
 /* ===================================================================== */
 /* Instrumentation malloc and free calls to record the arguments         */
 /* ===================================================================== */
 
-VOID freeBefore(CHAR * name, ADDRINT size)
+VOID freeBefore(CHAR * name, ADDRINT addr)
 {
 
-   DEBUGL(LOG("Enter freeBefore\n"));
-   DEBUGL(string sname(name));
-	DEBUGL(LOG(sname + "(" + decstr(size) + ")" + "\n"));
-
-   DEBUGL(LOG("Exit freeBefore\n"));
-
+   DEBUGL(LOG("entern free\n"));
+   heapMap->delete_block(addr);
 }
 VOID mallocBefore(CHAR * name, ADDRINT size)
 {
-	DEBUGL(LOG("enter\n"));
-   DEBUGL(string sname(name));
-	DEBUGL(LOG(sname + "(" + decstr(size) + ")" + "\n"));
-	if(invocation_stack.empty()) return;
-   DEBUGL(sname = invocation_stack.top().function_name);
-	DEBUGL(LOG("function "+ sname +
-         "  Frame pointer was "+hexstr(invocation_stack.top().frame_pointer)+
-         "\n"));
-
-	malloc_event.id = timestamp++;
-
-
-	malloc_event.frame_pointer = current_EBP;
-
-	malloc_event.id_function_invocation_happened_in = current_invocation_id;
-
-	malloc_event.allocated_size = (int) size;
-
+	DEBUGL(LOG("enter malloc\n"));
+        new_hb = (new HeapBlock())->add_event_id(timestamp++)
+                     ->add_size((Generic)size);
 	DEBUGL(LOG("exit\n"));
-	//ou_malloc << malloc_event.id << "," << malloc_event.frame_pointer << "," << malloc_event.id_function_invocation_happened_in<<
-			//"," << malloc_event.allocated_size + "\n");
 
 
 
@@ -57,16 +41,12 @@ VOID mallocBefore(CHAR * name, ADDRINT size)
 VOID malloc_after(ADDRINT ret)
 {
 
-	DEBUGL(LOG(" returns " + hexstr(ret) + "\n"));
-	if (invocation_stack.empty()) return;
-	DEBUGL(string sname = invocation_stack.top().function_name);
-	DEBUGL(LOG("function "+sname+"  Frame pointer was "+
-            hexstr(current_EBP)+"\n"));
-	malloc_event.heap_address = ret;
-	store_malloc_transaction(malloc_event);
-
-
+   DEBUGL(LOG("malloc returns " + hexstr(ret) + "\n"));
+   new_hb->add_start_address((Generic)ret);
+   heapMap->add_block(new_hb);
 }
+
+
 /* ===================================================================== */
 /* Analysis routine for malloc and free                                  */
 /* ===================================================================== */
@@ -93,7 +73,6 @@ VOID MallocAndFreeImage(IMG img, VOID *v)
 
         RTN_Close(mallocRtn);
     }
-
     // Find the free() function.
     RTN freeRtn = RTN_FindByName(img, "free");
     if (RTN_Valid(freeRtn))

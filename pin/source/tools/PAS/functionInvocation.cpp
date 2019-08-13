@@ -118,7 +118,7 @@ VOID functionInvocationBefore(void* function_name,const CONTEXT* ctxt,
     DEBUGL(LOG("Build stack frame\n"));
 
     if (line != 0)
-	stack_model->push(sfname,(Generic)ip, ctxt);
+	stack_model->push(sfname,(Generic)ip, (CONTEXT*)ctxt);
 }
 
 VOID functionInvocationAfter(void* function_name,const CONTEXT* ctxt,ADDRINT ip){
@@ -174,6 +174,7 @@ VOID functionInvocationAfter(void* function_name,const CONTEXT* ctxt,ADDRINT ip)
     PIN_GetSourceLocation(ip,&column,&line,&fileName);
     PIN_UnlockClient();
 
+   cu_table *cutab = vdr->get_cutab();
 
     if (line != 0) {
        stack_model->pop();
@@ -181,8 +182,9 @@ VOID functionInvocationAfter(void* function_name,const CONTEXT* ctxt,ADDRINT ip)
 
        for (list<var_upd_record*>::iterator it = variables->begin(); it != variables->end(); it++) {
          var_upd_record *vurec = *it;
-         vurec->write(vaccs_fd,line,
+         vurec->write(vaccs_fd,fstr,line,cutab,timestamp);
        }
+       timestamp++;
      }
          
     DEBUGL(LOG("function return\n"));
