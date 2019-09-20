@@ -1406,37 +1406,37 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  malloc returns 0x7ffff7ffedd0
  enter malloc
  exit
- malloc returns 0x7fffe470b000
+ malloc returns 0x7fffe470a000
  enter malloc
  exit
- malloc returns 0x7fffe470b4a0
+ malloc returns 0x7fffe470a4a0
  enter malloc
  exit
- malloc returns 0x7fffe470b4c0
+ malloc returns 0x7fffe470a4c0
  enter malloc
  exit
- malloc returns 0x7fffe470b4f0
+ malloc returns 0x7fffe470a4f0
  enter malloc
  exit
- malloc returns 0x7fffe470b530
+ malloc returns 0x7fffe470a530
  enter malloc
  exit
- malloc returns 0x7fffe470b590
+ malloc returns 0x7fffe470a590
  enter malloc
  exit
- malloc returns 0x7fffe470b5e0
+ malloc returns 0x7fffe470a5e0
  enter malloc
  exit
- malloc returns 0x7fffe470b8e0
+ malloc returns 0x7fffe470a8e0
  enter malloc
  exit
- malloc returns 0x7fffe470b970
+ malloc returns 0x7fffe470a970
  enter malloc
  exit
- malloc returns 0x7fffe470bd80
+ malloc returns 0x7fffe470ad80
  enter malloc
  exit
- malloc returns 0x7fffe470ce10
+ malloc returns 0x7fffe470be10
  Function Call to _start
  Base SP = 0x7fffffffdb90
  after push stack size:1
@@ -2203,7 +2203,14 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  Type is int*
  Reading 8 bytes at address: 0x555555554720
  value = 93824992233248
- 0x5555555546aa: W 0x7fffffffdab0 8
+ In var_record::read_value
+ Type is int
+ Reading 4 bytes at address: 0xc3c9fffffe4ae805
+ Found a singleton value
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0xc3c9fffffe4ae805
+ Caught a SIGSEGV in dereference_memory() 0x5555555546aa: W 0x7fffffffdab0 8
  value before write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  Before push: SP = 0x7fffffffdab8
  Enter AfterRegMod Checking values Register Record
@@ -2214,135 +2221,43 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  	Value: 0x0x7fffffffdab0
  value after write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  line = 4, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c In cu_table::get In cu_record::pc_in_range: check if pc = 0x5555555546aa is between 0x0000006aa and 0x000000728
- ip = 0x5555555546aa is in user code checking variable access In runtime_stack::get_updated_variables
+ ip = 0x5555555546aa is in user code checking variable access In runtime_stack::get_variables_accessed, addr = 0x7fffffffdaa8
+ In runtime_stack::get_updated_variables_from_frame
  Checking if variable b has been updated
- Base address for a local or param is: 0x55555555471c
- In var_record::read_value
- Type is int
- Reading 4 bytes at address: 0x55555555471c
- Found a singleton value
- In var_record::read_singleton_value
- Type is int
- Reading 4 bytes at address: 0x55555555471c
- Interpreting data as an int, value is 1946157056
- New value = 1946157056, old value = 1946157056
- Checking if variable p has been updated
- Base address for a local or param is: 0x555555554720
- In var_record::read_value
- Type is int*
- Reading 8 bytes at address: 0x555555554720
- Found a pointer
- Found a non-character pointer
- In var_record::read_singleton_value
- Type is int*
- Reading 8 bytes at address: 0x555555554720
- value = 93824992233248
- New value = 93824992233248, old value = 93824992233248
- Checking if what variable p points to has been updated
- get_new_points_to_value: address not in allocated block - checking stack0xc3c9fffffe4ae805 In runtime_stack::get_variables_accessed, addr = 0xc3c9fffffe4ae805
- In frame::get for address 0xc3c9fffffe4ae805
- Check variable b
- var_record for b
- 	 id = 2
- 	 is_local = 1
- 	 is_param = 0
- 	 file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- 	 line = 6
- 	 low_pc = 0xffffffffffffffff
- 	 high_pc = 0xffffffffffffffff
- 	 location = 0xffffffffffffffec
- 	 type id = 98
- 	 is_subprog = 0
- Type record for 98
- 	 type size = 4
- 	 type name = int
- 	 is_array =0
- 	 upper bound = 18446744073709551615
- 	 is_pointer = 0
- 	 is_array = 0
- 	 is_struct = 0
  Enter is_at_address
  trec = 0x7ffff7d7f240 type name = int
  Base address for a local or param is: 0x55555555471c
- var_addr: 0x55555555471c mem_addr: 0xc3c9fffffe4ae805 size: 4
- Variable b has not been accessed
- Check variable p
- var_record for p
- 	 id = 2
- 	 is_local = 1
- 	 is_param = 0
- 	 file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- 	 line = 7
- 	 low_pc = 0xffffffffffffffff
- 	 high_pc = 0xffffffffffffffff
- 	 location = 0xfffffffffffffff0
- 	 type id = 863
- 	 is_subprog = 0
- Type record for 863
- 	 type size = 8
- 	 type name = int*
- 	 is_array =0
- 	 upper bound = 18446744073709551615
- 	 is_pointer = 1
- 	 is_array = 0
- 	 is_struct = 0
- 	 base_type = 98
+ var_addr: 0x55555555471c mem_addr: 0x7fffffffdaa8 size: 4
+ Checking if variable p has been updated
  Enter is_at_address
  trec = 0x7ffff7d7f340 type name = int*
  Base address for a local or param is: 0x555555554720
- var_addr: 0x555555554720 mem_addr: 0xc3c9fffffe4ae805 size: 8
- Variable p has not been accessed
- In frame::get for address 0xc3c9fffffe4ae805
- Check variable a
- var_record for a
- 	 id = 2
- 	 is_local = 0
- 	 is_param = 0
- 	 file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- 	 line = 2
- 	 low_pc = 0xffffffffffffffff
- 	 high_pc = 0xffffffffffffffff
- 	 location = 0x000201018
- 	 type id = 98
- 	 is_subprog = 0
- Type record for 98
- 	 type size = 4
- 	 type name = int
- 	 is_array =0
- 	 upper bound = 18446744073709551615
- 	 is_pointer = 0
- 	 is_array = 0
- 	 is_struct = 0
+ var_addr: 0x555555554720 mem_addr: 0x7fffffffdaa8 size: 8
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable a has been updated
  Enter is_at_address
  trec = 0x7ffff7d7f240 type name = int
  Base address for a global is: 0x555555755018
- var_addr: 0x555555755018 mem_addr: 0xc3c9fffffe4ae805 size: 4
- Variable a has not been accessed
- Check variable c
- var_record for c
- 	 id = 2
- 	 is_local = 0
- 	 is_param = 0
- 	 file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- 	 line = 3
- 	 low_pc = 0xffffffffffffffff
- 	 high_pc = 0xffffffffffffffff
- 	 location = 0x000201010
- 	 type id = 98
- 	 is_subprog = 0
- Type record for 98
- 	 type size = 4
- 	 type name = int
- 	 is_array =0
- 	 upper bound = 18446744073709551615
- 	 is_pointer = 0
- 	 is_array = 0
- 	 is_struct = 0
+ var_addr: 0x555555755018 mem_addr: 0x7fffffffdaa8 size: 4
+ Checking if variable c has been updated
  Enter is_at_address
  trec = 0x7ffff7d7f240 type name = int
  Base address for a global is: 0x555555755010
- var_addr: 0x555555755010 mem_addr: 0xc3c9fffffe4ae805 size: 4
- Variable c has not been accessed
+ var_addr: 0x555555755010 mem_addr: 0x7fffffffdaa8 size: 4
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame
+ Found a pointer varialble: p
+ Base address for a local or param is: 0x555555554720
+ Pointer varialble: p points to a valid memory location
+ In var_record::read_value
+ Type is int
+ Reading 4 bytes at address: 0xc3c9fffffe4ae805
+ Found a singleton value
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0xc3c9fffffe4ae805
+ Caught a SIGSEGV in dereference_memory() Checking if what variable p points to has been updated
+ In runtime_stack::get_updated_points_to_frame
  there are no live variables After push: SP = 0x7fffffffdab0
  Enter AfterRegMod Checking values Register Record
  	Event num: 167
@@ -2356,169 +2271,58 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Register: rsp
  	Value: 0x0x7fffffffda90
- Enter AfterRegMod Checking values 0x5555555546b2R 0x7fffe470c4e8 8
+ Enter AfterRegMod Checking values 0x5555555546b2R 0x7fffe470b4e8 8
  line number 4
- value before read : 0x0  0x26  0x3c  0x83  0xd8  0xbb  0x6c  0xfc  Invocation ID:161function main was called. Frame pointer was 0x7fffffffdab0
+ value before read : 0x0  0xbd  0x4d  0xd6  0x63  0xb5  0xb6  0x26  Invocation ID:161function main was called. Frame pointer was 0x7fffffffdab0
  Enter AfterRegMod Checking values Register Record
  	Event num: 170
  	Line #: 4
  	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Register: rax
- 	Value: 0x0xfc6cbbd8833c2600
+ 	Value: 0x0x26b6b563d64dbd00
  0x5555555546bb: W 0x7fffffffdaa8 8
  value before write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- value after write : 0x0  0x26  0x3c  0x83  0xd8  0xbb  0x6c  0xfc  
+ value after write : 0x0  0xbd  0x4d  0xd6  0x63  0xb5  0xb6  0x26  
  line = 4, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c In cu_table::get In cu_record::pc_in_range: check if pc = 0x5555555546bb is between 0x0000006aa and 0x000000728
- ip = 0x5555555546bb is in user code checking variable access In runtime_stack::get_updated_variables
+ ip = 0x5555555546bb is in user code checking variable access In runtime_stack::get_variables_accessed, addr = 0x7fffffffdaa8
+ In runtime_stack::get_updated_variables_from_frame
  Checking if variable b has been updated
- Base address for a local or param is: 0x7fffffffda9c
- In var_record::read_value
- Type is int
- Reading 4 bytes at address: 0x7fffffffda9c
- Found a singleton value
- In var_record::read_singleton_value
- Type is int
- Reading 4 bytes at address: 0x7fffffffda9c
- Interpreting data as an int, value is 21845
- New value = 21845, old value = 1946157056
- Found new value for b
- Found updated variable b
- Checking if variable p has been updated
- Base address for a local or param is: 0x7fffffffdaa0
- In var_record::read_value
- Type is int*
- Reading 8 bytes at address: 0x7fffffffdaa0
- Found a pointer
- Found a non-character pointer
- In var_record::read_singleton_value
- Type is int*
- Reading 8 bytes at address: 0x7fffffffdaa0
- value = 140737488345760
- New value = 140737488345760, old value = 93824992233248
- Found new value for p
- Found updated variable p
- Checking if what variable p points to has been updated
- get_new_points_to_value: address not in allocated block - checking stack0x7fffffffdb90 In runtime_stack::get_variables_accessed, addr = 0x7fffffffdb90
- In frame::get for address 0x7fffffffdb90
- Check variable b
- var_record for b
- 	 id = 2
- 	 is_local = 1
- 	 is_param = 0
- 	 file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- 	 line = 6
- 	 low_pc = 0xffffffffffffffff
- 	 high_pc = 0xffffffffffffffff
- 	 location = 0xffffffffffffffec
- 	 type id = 98
- 	 is_subprog = 0
- Type record for 98
- 	 type size = 4
- 	 type name = int
- 	 is_array =0
- 	 upper bound = 18446744073709551615
- 	 is_pointer = 0
- 	 is_array = 0
- 	 is_struct = 0
  Enter is_at_address
  trec = 0x7ffff7d7f240 type name = int
  Base address for a local or param is: 0x7fffffffda9c
- var_addr: 0x7fffffffda9c mem_addr: 0x7fffffffdb90 size: 4
- Variable b has not been accessed
- Check variable p
- var_record for p
- 	 id = 2
- 	 is_local = 1
- 	 is_param = 0
- 	 file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- 	 line = 7
- 	 low_pc = 0xffffffffffffffff
- 	 high_pc = 0xffffffffffffffff
- 	 location = 0xfffffffffffffff0
- 	 type id = 863
- 	 is_subprog = 0
- Type record for 863
- 	 type size = 8
- 	 type name = int*
- 	 is_array =0
- 	 upper bound = 18446744073709551615
- 	 is_pointer = 1
- 	 is_array = 0
- 	 is_struct = 0
- 	 base_type = 98
+ var_addr: 0x7fffffffda9c mem_addr: 0x7fffffffdaa8 size: 4
+ Checking if variable p has been updated
  Enter is_at_address
  trec = 0x7ffff7d7f340 type name = int*
  Base address for a local or param is: 0x7fffffffdaa0
- var_addr: 0x7fffffffdaa0 mem_addr: 0x7fffffffdb90 size: 8
- Variable p has not been accessed
- In frame::get for address 0x7fffffffdb90
- Check variable a
- var_record for a
- 	 id = 2
- 	 is_local = 0
- 	 is_param = 0
- 	 file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- 	 line = 2
- 	 low_pc = 0xffffffffffffffff
- 	 high_pc = 0xffffffffffffffff
- 	 location = 0x000201018
- 	 type id = 98
- 	 is_subprog = 0
- Type record for 98
- 	 type size = 4
- 	 type name = int
- 	 is_array =0
- 	 upper bound = 18446744073709551615
- 	 is_pointer = 0
- 	 is_array = 0
- 	 is_struct = 0
+ var_addr: 0x7fffffffdaa0 mem_addr: 0x7fffffffdaa8 size: 8
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable a has been updated
  Enter is_at_address
  trec = 0x7ffff7d7f240 type name = int
  Base address for a global is: 0x555555755018
- var_addr: 0x555555755018 mem_addr: 0x7fffffffdb90 size: 4
- Variable a has not been accessed
- Check variable c
- var_record for c
- 	 id = 2
- 	 is_local = 0
- 	 is_param = 0
- 	 file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- 	 line = 3
- 	 low_pc = 0xffffffffffffffff
- 	 high_pc = 0xffffffffffffffff
- 	 location = 0x000201010
- 	 type id = 98
- 	 is_subprog = 0
- Type record for 98
- 	 type size = 4
- 	 type name = int
- 	 is_array =0
- 	 upper bound = 18446744073709551615
- 	 is_pointer = 0
- 	 is_array = 0
- 	 is_struct = 0
+ var_addr: 0x555555755018 mem_addr: 0x7fffffffdaa8 size: 4
+ Checking if variable c has been updated
  Enter is_at_address
  trec = 0x7ffff7d7f240 type name = int
  Base address for a global is: 0x555555755010
- var_addr: 0x555555755010 mem_addr: 0x7fffffffdb90 size: 4
- Variable c has not been accessed
- Write to address 0x7fffffffda9cis variable bprefix = 
+ var_addr: 0x555555755010 mem_addr: 0x7fffffffdaa8 size: 4
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame
+ Found a pointer varialble: p
+ Base address for a local or param is: 0x7fffffffdaa0
+ Pointer varialble: p points to a valid memory location
  In var_record::read_value
  Type is int
- Reading 4 bytes at address: 0x7fffffffda9c
+ Reading 4 bytes at address: 0x7fffffffdb90
  Found a singleton value
  In var_record::read_singleton_value
  Type is int
- Reading 4 bytes at address: 0x7fffffffda9c
- Interpreting data as an int, value is 21845
- Write to variable b
- 	Event num: 172
- 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- 	Scope: main
- 	Address: 0x7fffffffda9c
- 	Type: int
- 	Value: 21845
-
+ Reading 4 bytes at address: 0x7fffffffdb90
+ Interpreting data as an int, value is 1
+ Checking if what variable p points to has been updated
+ Found new points_to value: 1 for p
+ In runtime_stack::get_updated_points_to_frame
  Write to address 0x7fffffffdaa0is variable pprefix = 
  In var_record::read_value
  Type is int*
@@ -2553,20 +2357,18 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  value before write : 0x90  0xdb  0xff  0xff  0xff  0x7f  0x0  0x0  
  value after write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  line = 7, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c In cu_table::get In cu_record::pc_in_range: check if pc = 0x5555555546c1 is between 0x0000006aa and 0x000000728
- ip = 0x5555555546c1 is in user code checking variable access In runtime_stack::get_updated_variables
+ ip = 0x5555555546c1 is in user code checking variable access In runtime_stack::get_variables_accessed, addr = 0x7fffffffdaa0
+ In runtime_stack::get_updated_variables_from_frame
  Checking if variable b has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f240 type name = int
  Base address for a local or param is: 0x7fffffffda9c
- In var_record::read_value
- Type is int
- Reading 4 bytes at address: 0x7fffffffda9c
- Found a singleton value
- In var_record::read_singleton_value
- Type is int
- Reading 4 bytes at address: 0x7fffffffda9c
- Interpreting data as an int, value is 21845
- New value = 21845, old value = 21845
+ var_addr: 0x7fffffffda9c mem_addr: 0x7fffffffdaa0 size: 4
  Checking if variable p has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f340 type name = int*
  Base address for a local or param is: 0x7fffffffdaa0
+ var_addr: 0x7fffffffdaa0 mem_addr: 0x7fffffffdaa0 size: 8
  In var_record::read_value
  Type is int*
  Reading 8 bytes at address: 0x7fffffffdaa0
@@ -2576,113 +2378,67 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  Type is int*
  Reading 8 bytes at address: 0x7fffffffdaa0
  value = 140737488345760
- New value = 140737488345760, old value = 140737488345760
- Checking if what variable p points to has been updated
- get_new_points_to_value: address not in allocated block - checking stack0x000000000 In runtime_stack::get_variables_accessed, addr = 0x000000000
- In frame::get for address 0x000000000
- Check variable b
- var_record for b
- 	 id = 2
- 	 is_local = 1
- 	 is_param = 0
- 	 file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- 	 line = 6
- 	 low_pc = 0xffffffffffffffff
- 	 high_pc = 0xffffffffffffffff
- 	 location = 0xffffffffffffffec
- 	 type id = 98
- 	 is_subprog = 0
- Type record for 98
- 	 type size = 4
- 	 type name = int
- 	 is_array =0
- 	 upper bound = 18446744073709551615
- 	 is_pointer = 0
- 	 is_array = 0
- 	 is_struct = 0
- Enter is_at_address
- trec = 0x7ffff7d7f240 type name = int
- Base address for a local or param is: 0x7fffffffda9c
- var_addr: 0x7fffffffda9c mem_addr: 0x000000000 size: 4
- Variable b has not been accessed
- Check variable p
- var_record for p
- 	 id = 2
- 	 is_local = 1
- 	 is_param = 0
- 	 file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- 	 line = 7
- 	 low_pc = 0xffffffffffffffff
- 	 high_pc = 0xffffffffffffffff
- 	 location = 0xfffffffffffffff0
- 	 type id = 863
- 	 is_subprog = 0
- Type record for 863
- 	 type size = 8
- 	 type name = int*
- 	 is_array =0
- 	 upper bound = 18446744073709551615
- 	 is_pointer = 1
- 	 is_array = 0
- 	 is_struct = 0
- 	 base_type = 98
- Enter is_at_address
- trec = 0x7ffff7d7f340 type name = int*
- Base address for a local or param is: 0x7fffffffdaa0
- var_addr: 0x7fffffffdaa0 mem_addr: 0x000000000 size: 8
- Variable p has not been accessed
- In frame::get for address 0x000000000
- Check variable a
- var_record for a
- 	 id = 2
- 	 is_local = 0
- 	 is_param = 0
- 	 file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- 	 line = 2
- 	 low_pc = 0xffffffffffffffff
- 	 high_pc = 0xffffffffffffffff
- 	 location = 0x000201018
- 	 type id = 98
- 	 is_subprog = 0
- Type record for 98
- 	 type size = 4
- 	 type name = int
- 	 is_array =0
- 	 upper bound = 18446744073709551615
- 	 is_pointer = 0
- 	 is_array = 0
- 	 is_struct = 0
+ New value = 140737488345760, old value = 93824992233248
+ Found new value: 140737488345760 for p
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable a has been updated
  Enter is_at_address
  trec = 0x7ffff7d7f240 type name = int
  Base address for a global is: 0x555555755018
- var_addr: 0x555555755018 mem_addr: 0x000000000 size: 4
- Variable a has not been accessed
- Check variable c
- var_record for c
- 	 id = 2
- 	 is_local = 0
- 	 is_param = 0
- 	 file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- 	 line = 3
- 	 low_pc = 0xffffffffffffffff
- 	 high_pc = 0xffffffffffffffff
- 	 location = 0x000201010
- 	 type id = 98
- 	 is_subprog = 0
- Type record for 98
- 	 type size = 4
- 	 type name = int
- 	 is_array =0
- 	 upper bound = 18446744073709551615
- 	 is_pointer = 0
- 	 is_array = 0
- 	 is_struct = 0
+ var_addr: 0x555555755018 mem_addr: 0x7fffffffdaa0 size: 4
+ Checking if variable c has been updated
  Enter is_at_address
  trec = 0x7ffff7d7f240 type name = int
  Base address for a global is: 0x555555755010
- var_addr: 0x555555755010 mem_addr: 0x000000000 size: 4
- Variable c has not been accessed
- there are no live variables Enter AfterRegMod Checking values Register Record
+ var_addr: 0x555555755010 mem_addr: 0x7fffffffdaa0 size: 4
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame
+ Found a pointer varialble: p
+ Base address for a local or param is: 0x7fffffffdaa0
+ Pointer varialble: p points to a valid memory location
+ In var_record::read_value
+ Type is int
+ Reading 4 bytes at address: 0x000000000
+ Checking if what variable p points to has been updated
+ Found new points_to value: <null> for p
+ In runtime_stack::get_updated_points_to_frame
+ Write to address 0x7fffffffdaa0is variable pprefix = 
+ In var_record::read_value
+ Type is int*
+ Reading 8 bytes at address: 0x7fffffffdaa0
+ Found a pointer
+ Found a non-character pointer
+ In var_record::read_singleton_value
+ Type is int*
+ Reading 8 bytes at address: 0x7fffffffdaa0
+ value = 140737488345760
+ Write to variable p
+ 	Event num: 176
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
+ 	Scope: main
+ 	Address: 0x7fffffffdaa0
+ 	Type: int*
+ 	Value: 140737488345760
+
+ Write to address 0x7fffffffdaa0is variable pprefix = 
+ In var_record::read_value
+ Type is int*
+ Reading 8 bytes at address: 0x7fffffffdaa0
+ Found a pointer
+ Found a non-character pointer
+ In var_record::read_singleton_value
+ Type is int*
+ Reading 8 bytes at address: 0x7fffffffdaa0
+ value = 140737488345760
+ Write to variable p
+ 	Event num: 176
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
+ 	Scope: main
+ 	Address: 0x7fffffffdaa0
+ 	Type: int*
+ 	Value: 140737488345760
+
+ Enter AfterRegMod Checking values Register Record
  	Event num: 177
  	Line #: 9
  	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
@@ -2692,20 +2448,18 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  value before write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  value after write : 0x9c  0xda  0xff  0xff  0xff  0x7f  0x0  0x0  
  line = 9, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c In cu_table::get In cu_record::pc_in_range: check if pc = 0x5555555546cd is between 0x0000006aa and 0x000000728
- ip = 0x5555555546cd is in user code checking variable access In runtime_stack::get_updated_variables
+ ip = 0x5555555546cd is in user code checking variable access In runtime_stack::get_variables_accessed, addr = 0x7fffffffdaa0
+ In runtime_stack::get_updated_variables_from_frame
  Checking if variable b has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f240 type name = int
  Base address for a local or param is: 0x7fffffffda9c
- In var_record::read_value
- Type is int
- Reading 4 bytes at address: 0x7fffffffda9c
- Found a singleton value
- In var_record::read_singleton_value
- Type is int
- Reading 4 bytes at address: 0x7fffffffda9c
- Interpreting data as an int, value is 21845
- New value = 21845, old value = 21845
+ var_addr: 0x7fffffffda9c mem_addr: 0x7fffffffdaa0 size: 4
  Checking if variable p has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f340 type name = int*
  Base address for a local or param is: 0x7fffffffdaa0
+ var_addr: 0x7fffffffdaa0 mem_addr: 0x7fffffffdaa0 size: 8
  In var_record::read_value
  Type is int*
  Reading 8 bytes at address: 0x7fffffffdaa0
@@ -2716,34 +2470,22 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  Reading 8 bytes at address: 0x7fffffffdaa0
  value = 140737488345760
  New value = 140737488345760, old value = 140737488345760
- Checking if what variable p points to has been updated
- get_new_points_to_value: address not in allocated block - checking stack0x7fffffffda9c In runtime_stack::get_variables_accessed, addr = 0x7fffffffda9c
- In frame::get for address 0x7fffffffda9c
- Check variable b
- var_record for b
- 	 id = 2
- 	 is_local = 1
- 	 is_param = 0
- 	 file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- 	 line = 6
- 	 low_pc = 0xffffffffffffffff
- 	 high_pc = 0xffffffffffffffff
- 	 location = 0xffffffffffffffec
- 	 type id = 98
- 	 is_subprog = 0
- Type record for 98
- 	 type size = 4
- 	 type name = int
- 	 is_array =0
- 	 upper bound = 18446744073709551615
- 	 is_pointer = 0
- 	 is_array = 0
- 	 is_struct = 0
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable a has been updated
  Enter is_at_address
  trec = 0x7ffff7d7f240 type name = int
- Base address for a local or param is: 0x7fffffffda9c
- var_addr: 0x7fffffffda9c mem_addr: 0x7fffffffda9c size: 4
- Variable b has been accessed
+ Base address for a global is: 0x555555755018
+ var_addr: 0x555555755018 mem_addr: 0x7fffffffdaa0 size: 4
+ Checking if variable c has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f240 type name = int
+ Base address for a global is: 0x555555755010
+ var_addr: 0x555555755010 mem_addr: 0x7fffffffdaa0 size: 4
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame
+ Found a pointer varialble: p
+ Base address for a local or param is: 0x7fffffffdaa0
+ Pointer varialble: p points to a valid memory location
  In var_record::read_value
  Type is int
  Reading 4 bytes at address: 0x7fffffffda9c
@@ -2752,282 +2494,107 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  Type is int
  Reading 4 bytes at address: 0x7fffffffda9c
  Interpreting data as an int, value is 21845
- Check variable p
- var_record for p
- 	 id = 2
- 	 is_local = 1
- 	 is_param = 0
- 	 file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- 	 line = 7
- 	 low_pc = 0xffffffffffffffff
- 	 high_pc = 0xffffffffffffffff
- 	 location = 0xfffffffffffffff0
- 	 type id = 863
- 	 is_subprog = 0
- Type record for 863
- 	 type size = 8
- 	 type name = int*
- 	 is_array =0
- 	 upper bound = 18446744073709551615
- 	 is_pointer = 1
- 	 is_array = 0
- 	 is_struct = 0
- 	 base_type = 98
- Enter is_at_address
- trec = 0x7ffff7d7f340 type name = int*
- Base address for a local or param is: 0x7fffffffdaa0
- var_addr: 0x7fffffffdaa0 mem_addr: 0x7fffffffda9c size: 8
- Variable p has not been accessed
- In frame::get for address 0x7fffffffda9c
- Check variable a
- var_record for a
- 	 id = 2
- 	 is_local = 0
- 	 is_param = 0
- 	 file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- 	 line = 2
- 	 low_pc = 0xffffffffffffffff
- 	 high_pc = 0xffffffffffffffff
- 	 location = 0x000201018
- 	 type id = 98
- 	 is_subprog = 0
- Type record for 98
- 	 type size = 4
- 	 type name = int
- 	 is_array =0
- 	 upper bound = 18446744073709551615
- 	 is_pointer = 0
- 	 is_array = 0
- 	 is_struct = 0
- Enter is_at_address
- trec = 0x7ffff7d7f240 type name = int
- Base address for a global is: 0x555555755018
- var_addr: 0x555555755018 mem_addr: 0x7fffffffda9c size: 4
- Variable a has not been accessed
- Check variable c
- var_record for c
- 	 id = 2
- 	 is_local = 0
- 	 is_param = 0
- 	 file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- 	 line = 3
- 	 low_pc = 0xffffffffffffffff
- 	 high_pc = 0xffffffffffffffff
- 	 location = 0x000201010
- 	 type id = 98
- 	 is_subprog = 0
- Type record for 98
- 	 type size = 4
- 	 type name = int
- 	 is_array =0
- 	 upper bound = 18446744073709551615
- 	 is_pointer = 0
- 	 is_array = 0
- 	 is_struct = 0
- Enter is_at_address
- trec = 0x7ffff7d7f240 type name = int
- Base address for a global is: 0x555555755010
- var_addr: 0x555555755010 mem_addr: 0x7fffffffda9c size: 4
- Variable c has not been accessed
- there are no live variables 0x5555555546d1: W 0x555555755018 4
+ Checking if what variable p points to has been updated
+ Found new points_to value: 21845 for p
+ In runtime_stack::get_updated_points_to_frame
+ Write to address 0x7fffffffdaa0is variable pprefix = 
+ In var_record::read_value
+ Type is int*
+ Reading 8 bytes at address: 0x7fffffffdaa0
+ Found a pointer
+ Found a non-character pointer
+ In var_record::read_singleton_value
+ Type is int*
+ Reading 8 bytes at address: 0x7fffffffdaa0
+ value = 140737488345760
+ Write to variable p
+ 	Event num: 179
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
+ 	Scope: main
+ 	Address: 0x7fffffffdaa0
+ 	Type: int*
+ 	Value: 140737488345760
+
+ 0x5555555546d1: W 0x555555755018 4
  value before write : 0x0  0x0  0x0  0x0  
  value after write : 0x1  0x0  0x0  0x0  
  line = 10, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c In cu_table::get In cu_record::pc_in_range: check if pc = 0x5555555546d1 is between 0x0000006aa and 0x000000728
- ip = 0x5555555546d1 is in user code checking variable access In runtime_stack::get_updated_variables
+ ip = 0x5555555546d1 is in user code checking variable access In runtime_stack::get_variables_accessed, addr = 0x555555755018
+ In runtime_stack::get_updated_variables_from_frame
  Checking if variable b has been updated
- Base address for a local or param is: 0x7fffffffda9c
- In var_record::read_value
- Type is int
- Reading 4 bytes at address: 0x7fffffffda9c
- Found a singleton value
- In var_record::read_singleton_value
- Type is int
- Reading 4 bytes at address: 0x7fffffffda9c
- Interpreting data as an int, value is 21845
- New value = 21845, old value = 21845
- Checking if variable p has been updated
- Base address for a local or param is: 0x7fffffffdaa0
- In var_record::read_value
- Type is int*
- Reading 8 bytes at address: 0x7fffffffdaa0
- Found a pointer
- Found a non-character pointer
- In var_record::read_singleton_value
- Type is int*
- Reading 8 bytes at address: 0x7fffffffdaa0
- value = 140737488345760
- New value = 140737488345760, old value = 140737488345760
- Checking if what variable p points to has been updated
- get_new_points_to_value: address not in allocated block - checking stack0x7fffffffda9c In runtime_stack::get_variables_accessed, addr = 0x7fffffffda9c
- In frame::get for address 0x7fffffffda9c
- Check variable b
- var_record for b
- 	 id = 2
- 	 is_local = 1
- 	 is_param = 0
- 	 file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- 	 line = 6
- 	 low_pc = 0xffffffffffffffff
- 	 high_pc = 0xffffffffffffffff
- 	 location = 0xffffffffffffffec
- 	 type id = 98
- 	 is_subprog = 0
- Type record for 98
- 	 type size = 4
- 	 type name = int
- 	 is_array =0
- 	 upper bound = 18446744073709551615
- 	 is_pointer = 0
- 	 is_array = 0
- 	 is_struct = 0
  Enter is_at_address
  trec = 0x7ffff7d7f240 type name = int
  Base address for a local or param is: 0x7fffffffda9c
- var_addr: 0x7fffffffda9c mem_addr: 0x7fffffffda9c size: 4
- Variable b has been accessed
- In var_record::read_value
- Type is int
- Reading 4 bytes at address: 0x7fffffffda9c
- Found a singleton value
- In var_record::read_singleton_value
- Type is int
- Reading 4 bytes at address: 0x7fffffffda9c
- Interpreting data as an int, value is 21845
- Check variable p
- var_record for p
- 	 id = 2
- 	 is_local = 1
- 	 is_param = 0
- 	 file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- 	 line = 7
- 	 low_pc = 0xffffffffffffffff
- 	 high_pc = 0xffffffffffffffff
- 	 location = 0xfffffffffffffff0
- 	 type id = 863
- 	 is_subprog = 0
- Type record for 863
- 	 type size = 8
- 	 type name = int*
- 	 is_array =0
- 	 upper bound = 18446744073709551615
- 	 is_pointer = 1
- 	 is_array = 0
- 	 is_struct = 0
- 	 base_type = 98
+ var_addr: 0x7fffffffda9c mem_addr: 0x555555755018 size: 4
+ Checking if variable p has been updated
  Enter is_at_address
  trec = 0x7ffff7d7f340 type name = int*
  Base address for a local or param is: 0x7fffffffdaa0
- var_addr: 0x7fffffffdaa0 mem_addr: 0x7fffffffda9c size: 8
- Variable p has not been accessed
- In frame::get for address 0x7fffffffda9c
- Check variable a
- var_record for a
- 	 id = 2
- 	 is_local = 0
- 	 is_param = 0
- 	 file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- 	 line = 2
- 	 low_pc = 0xffffffffffffffff
- 	 high_pc = 0xffffffffffffffff
- 	 location = 0x000201018
- 	 type id = 98
- 	 is_subprog = 0
- Type record for 98
- 	 type size = 4
- 	 type name = int
- 	 is_array =0
- 	 upper bound = 18446744073709551615
- 	 is_pointer = 0
- 	 is_array = 0
- 	 is_struct = 0
+ var_addr: 0x7fffffffdaa0 mem_addr: 0x555555755018 size: 8
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable a has been updated
  Enter is_at_address
  trec = 0x7ffff7d7f240 type name = int
  Base address for a global is: 0x555555755018
- var_addr: 0x555555755018 mem_addr: 0x7fffffffda9c size: 4
- Variable a has not been accessed
- Check variable c
- var_record for c
- 	 id = 2
- 	 is_local = 0
- 	 is_param = 0
- 	 file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- 	 line = 3
- 	 low_pc = 0xffffffffffffffff
- 	 high_pc = 0xffffffffffffffff
- 	 location = 0x000201010
- 	 type id = 98
- 	 is_subprog = 0
- Type record for 98
- 	 type size = 4
- 	 type name = int
- 	 is_array =0
- 	 upper bound = 18446744073709551615
- 	 is_pointer = 0
- 	 is_array = 0
- 	 is_struct = 0
+ var_addr: 0x555555755018 mem_addr: 0x555555755018 size: 4
+ In var_record::read_value
+ Type is int
+ Reading 4 bytes at address: 0x555555755018
+ Found a singleton value
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0x555555755018
+ Interpreting data as an int, value is 1
+ New value = 1, old value = 
+ Found new value: 1 for a
+ Checking if variable c has been updated
  Enter is_at_address
  trec = 0x7ffff7d7f240 type name = int
  Base address for a global is: 0x555555755010
- var_addr: 0x555555755010 mem_addr: 0x7fffffffda9c size: 4
- Variable c has not been accessed
- there are no live variables 0x5555555546db: W 0x7fffffffda9c 4
+ var_addr: 0x555555755010 mem_addr: 0x555555755018 size: 4
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame
+ Found a pointer varialble: p
+ Base address for a local or param is: 0x7fffffffdaa0
+ Pointer varialble: p points to a valid memory location
+ In var_record::read_value
+ Type is int
+ Reading 4 bytes at address: 0x7fffffffda9c
+ Found a singleton value
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0x7fffffffda9c
+ Interpreting data as an int, value is 21845
+ Checking if what variable p points to has been updated
+ In runtime_stack::get_updated_points_to_frame
+ Write to address 0x555555755018is variable aprefix = 
+ In var_record::read_value
+ Type is int
+ Reading 4 bytes at address: 0x555555755018
+ Found a singleton value
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0x555555755018
+ Interpreting data as an int, value is 1
+ Write to variable a
+ 	Event num: 181
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
+ 	Scope: *G*
+ 	Address: 0x555555755018
+ 	Type: int
+ 	Value: 1
+
+ 0x5555555546db: W 0x7fffffffda9c 4
  value before write : 0x55  0x55  0x0  0x0  
  value after write : 0x2  0x0  0x0  0x0  
  line = 11, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c In cu_table::get In cu_record::pc_in_range: check if pc = 0x5555555546db is between 0x0000006aa and 0x000000728
- ip = 0x5555555546db is in user code checking variable access In runtime_stack::get_updated_variables
+ ip = 0x5555555546db is in user code checking variable access In runtime_stack::get_variables_accessed, addr = 0x7fffffffda9c
+ In runtime_stack::get_updated_variables_from_frame
  Checking if variable b has been updated
- Base address for a local or param is: 0x7fffffffda9c
- In var_record::read_value
- Type is int
- Reading 4 bytes at address: 0x7fffffffda9c
- Found a singleton value
- In var_record::read_singleton_value
- Type is int
- Reading 4 bytes at address: 0x7fffffffda9c
- Interpreting data as an int, value is 2
- New value = 2, old value = 21845
- Found new value for b
- Found updated variable b
- Checking if variable p has been updated
- Base address for a local or param is: 0x7fffffffdaa0
- In var_record::read_value
- Type is int*
- Reading 8 bytes at address: 0x7fffffffdaa0
- Found a pointer
- Found a non-character pointer
- In var_record::read_singleton_value
- Type is int*
- Reading 8 bytes at address: 0x7fffffffdaa0
- value = 140737488345760
- New value = 140737488345760, old value = 140737488345760
- Checking if what variable p points to has been updated
- get_new_points_to_value: address not in allocated block - checking stack0x7fffffffda9c In runtime_stack::get_variables_accessed, addr = 0x7fffffffda9c
- In frame::get for address 0x7fffffffda9c
- Check variable b
- var_record for b
- 	 id = 2
- 	 is_local = 1
- 	 is_param = 0
- 	 file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- 	 line = 6
- 	 low_pc = 0xffffffffffffffff
- 	 high_pc = 0xffffffffffffffff
- 	 location = 0xffffffffffffffec
- 	 type id = 98
- 	 is_subprog = 0
- Type record for 98
- 	 type size = 4
- 	 type name = int
- 	 is_array =0
- 	 upper bound = 18446744073709551615
- 	 is_pointer = 0
- 	 is_array = 0
- 	 is_struct = 0
  Enter is_at_address
  trec = 0x7ffff7d7f240 type name = int
  Base address for a local or param is: 0x7fffffffda9c
  var_addr: 0x7fffffffda9c mem_addr: 0x7fffffffda9c size: 4
- Variable b has been accessed
  In var_record::read_value
  Type is int
  Reading 4 bytes at address: 0x7fffffffda9c
@@ -3036,83 +2603,40 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  Type is int
  Reading 4 bytes at address: 0x7fffffffda9c
  Interpreting data as an int, value is 2
- Check variable p
- var_record for p
- 	 id = 2
- 	 is_local = 1
- 	 is_param = 0
- 	 file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- 	 line = 7
- 	 low_pc = 0xffffffffffffffff
- 	 high_pc = 0xffffffffffffffff
- 	 location = 0xfffffffffffffff0
- 	 type id = 863
- 	 is_subprog = 0
- Type record for 863
- 	 type size = 8
- 	 type name = int*
- 	 is_array =0
- 	 upper bound = 18446744073709551615
- 	 is_pointer = 1
- 	 is_array = 0
- 	 is_struct = 0
- 	 base_type = 98
+ New value = 2, old value = 1946157056
+ Found new value: 2 for b
+ Checking if variable p has been updated
  Enter is_at_address
  trec = 0x7ffff7d7f340 type name = int*
  Base address for a local or param is: 0x7fffffffdaa0
  var_addr: 0x7fffffffdaa0 mem_addr: 0x7fffffffda9c size: 8
- Variable p has not been accessed
- In frame::get for address 0x7fffffffda9c
- Check variable a
- var_record for a
- 	 id = 2
- 	 is_local = 0
- 	 is_param = 0
- 	 file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- 	 line = 2
- 	 low_pc = 0xffffffffffffffff
- 	 high_pc = 0xffffffffffffffff
- 	 location = 0x000201018
- 	 type id = 98
- 	 is_subprog = 0
- Type record for 98
- 	 type size = 4
- 	 type name = int
- 	 is_array =0
- 	 upper bound = 18446744073709551615
- 	 is_pointer = 0
- 	 is_array = 0
- 	 is_struct = 0
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable a has been updated
  Enter is_at_address
  trec = 0x7ffff7d7f240 type name = int
  Base address for a global is: 0x555555755018
  var_addr: 0x555555755018 mem_addr: 0x7fffffffda9c size: 4
- Variable a has not been accessed
- Check variable c
- var_record for c
- 	 id = 2
- 	 is_local = 0
- 	 is_param = 0
- 	 file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- 	 line = 3
- 	 low_pc = 0xffffffffffffffff
- 	 high_pc = 0xffffffffffffffff
- 	 location = 0x000201010
- 	 type id = 98
- 	 is_subprog = 0
- Type record for 98
- 	 type size = 4
- 	 type name = int
- 	 is_array =0
- 	 upper bound = 18446744073709551615
- 	 is_pointer = 0
- 	 is_array = 0
- 	 is_struct = 0
+ Checking if variable c has been updated
  Enter is_at_address
  trec = 0x7ffff7d7f240 type name = int
  Base address for a global is: 0x555555755010
  var_addr: 0x555555755010 mem_addr: 0x7fffffffda9c size: 4
- Variable c has not been accessed
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame
+ Found a pointer varialble: p
+ Base address for a local or param is: 0x7fffffffdaa0
+ Pointer varialble: p points to a valid memory location
+ In var_record::read_value
+ Type is int
+ Reading 4 bytes at address: 0x7fffffffda9c
+ Found a singleton value
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0x7fffffffda9c
+ Interpreting data as an int, value is 2
+ Checking if what variable p points to has been updated
+ Found new points_to value: 2 for p
+ In runtime_stack::get_updated_points_to_frame
  Write to address 0x7fffffffda9cis variable bprefix = 
  In var_record::read_value
  Type is int
@@ -3129,6 +2653,24 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  	Address: 0x7fffffffda9c
  	Type: int
  	Value: 2
+
+ Write to address 0x7fffffffdaa0is variable pprefix = 
+ In var_record::read_value
+ Type is int*
+ Reading 8 bytes at address: 0x7fffffffdaa0
+ Found a pointer
+ Found a non-character pointer
+ In var_record::read_singleton_value
+ Type is int*
+ Reading 8 bytes at address: 0x7fffffffdaa0
+ value = 140737488345760
+ Write to variable p
+ 	Event num: 183
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
+ 	Scope: main
+ 	Address: 0x7fffffffdaa0
+ 	Type: int*
+ 	Value: 140737488345760
 
  0x5555555546e2R 0x555555755010 4
  line number 12
@@ -3209,143 +2751,44 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  	Value: 0x0x7fffffffda88
  value after write : 0xa0  0x59  0xde  0xf7  0xff  0x7f  0x0  0x0  
  line = 12, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c In cu_table::get In cu_record::pc_in_range: check if pc = 0x555555554708 is between 0x0000006aa and 0x000000728
- ip = 0x555555554708 is in user code checking variable access In runtime_stack::get_updated_variables
+ ip = 0x555555554708 is in user code checking variable access In runtime_stack::get_variables_accessed, addr = 0x7fffffffda80
+ In runtime_stack::get_updated_variables_from_frame
  Checking if variable b has been updated
- Base address for a local or param is: 0x7fffffffda9c
- In var_record::read_value
- Type is int
- Reading 4 bytes at address: 0x7fffffffda9c
- Found a singleton value
- In var_record::read_singleton_value
- Type is int
- Reading 4 bytes at address: 0x7fffffffda9c
- Interpreting data as an int, value is 2
- New value = 2, old value = 2
- Checking if variable p has been updated
- Base address for a local or param is: 0x7fffffffdaa0
- In var_record::read_value
- Type is int*
- Reading 8 bytes at address: 0x7fffffffdaa0
- Found a pointer
- Found a non-character pointer
- In var_record::read_singleton_value
- Type is int*
- Reading 8 bytes at address: 0x7fffffffdaa0
- value = 140737488345760
- New value = 140737488345760, old value = 140737488345760
- Checking if what variable p points to has been updated
- get_new_points_to_value: address not in allocated block - checking stack0x7fffffffda9c In runtime_stack::get_variables_accessed, addr = 0x7fffffffda9c
- In frame::get for address 0x7fffffffda9c
- Check variable b
- var_record for b
- 	 id = 2
- 	 is_local = 1
- 	 is_param = 0
- 	 file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- 	 line = 6
- 	 low_pc = 0xffffffffffffffff
- 	 high_pc = 0xffffffffffffffff
- 	 location = 0xffffffffffffffec
- 	 type id = 98
- 	 is_subprog = 0
- Type record for 98
- 	 type size = 4
- 	 type name = int
- 	 is_array =0
- 	 upper bound = 18446744073709551615
- 	 is_pointer = 0
- 	 is_array = 0
- 	 is_struct = 0
  Enter is_at_address
  trec = 0x7ffff7d7f240 type name = int
  Base address for a local or param is: 0x7fffffffda9c
- var_addr: 0x7fffffffda9c mem_addr: 0x7fffffffda9c size: 4
- Variable b has been accessed
- In var_record::read_value
- Type is int
- Reading 4 bytes at address: 0x7fffffffda9c
- Found a singleton value
- In var_record::read_singleton_value
- Type is int
- Reading 4 bytes at address: 0x7fffffffda9c
- Interpreting data as an int, value is 2
- Check variable p
- var_record for p
- 	 id = 2
- 	 is_local = 1
- 	 is_param = 0
- 	 file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- 	 line = 7
- 	 low_pc = 0xffffffffffffffff
- 	 high_pc = 0xffffffffffffffff
- 	 location = 0xfffffffffffffff0
- 	 type id = 863
- 	 is_subprog = 0
- Type record for 863
- 	 type size = 8
- 	 type name = int*
- 	 is_array =0
- 	 upper bound = 18446744073709551615
- 	 is_pointer = 1
- 	 is_array = 0
- 	 is_struct = 0
- 	 base_type = 98
+ var_addr: 0x7fffffffda9c mem_addr: 0x7fffffffda80 size: 4
+ Checking if variable p has been updated
  Enter is_at_address
  trec = 0x7ffff7d7f340 type name = int*
  Base address for a local or param is: 0x7fffffffdaa0
- var_addr: 0x7fffffffdaa0 mem_addr: 0x7fffffffda9c size: 8
- Variable p has not been accessed
- In frame::get for address 0x7fffffffda9c
- Check variable a
- var_record for a
- 	 id = 2
- 	 is_local = 0
- 	 is_param = 0
- 	 file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- 	 line = 2
- 	 low_pc = 0xffffffffffffffff
- 	 high_pc = 0xffffffffffffffff
- 	 location = 0x000201018
- 	 type id = 98
- 	 is_subprog = 0
- Type record for 98
- 	 type size = 4
- 	 type name = int
- 	 is_array =0
- 	 upper bound = 18446744073709551615
- 	 is_pointer = 0
- 	 is_array = 0
- 	 is_struct = 0
+ var_addr: 0x7fffffffdaa0 mem_addr: 0x7fffffffda80 size: 8
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable a has been updated
  Enter is_at_address
  trec = 0x7ffff7d7f240 type name = int
  Base address for a global is: 0x555555755018
- var_addr: 0x555555755018 mem_addr: 0x7fffffffda9c size: 4
- Variable a has not been accessed
- Check variable c
- var_record for c
- 	 id = 2
- 	 is_local = 0
- 	 is_param = 0
- 	 file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
- 	 line = 3
- 	 low_pc = 0xffffffffffffffff
- 	 high_pc = 0xffffffffffffffff
- 	 location = 0x000201010
- 	 type id = 98
- 	 is_subprog = 0
- Type record for 98
- 	 type size = 4
- 	 type name = int
- 	 is_array =0
- 	 upper bound = 18446744073709551615
- 	 is_pointer = 0
- 	 is_array = 0
- 	 is_struct = 0
+ var_addr: 0x555555755018 mem_addr: 0x7fffffffda80 size: 4
+ Checking if variable c has been updated
  Enter is_at_address
  trec = 0x7ffff7d7f240 type name = int
  Base address for a global is: 0x555555755010
- var_addr: 0x555555755010 mem_addr: 0x7fffffffda9c size: 4
- Variable c has not been accessed
+ var_addr: 0x555555755010 mem_addr: 0x7fffffffda80 size: 4
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame
+ Found a pointer varialble: p
+ Base address for a local or param is: 0x7fffffffdaa0
+ Pointer varialble: p points to a valid memory location
+ In var_record::read_value
+ Type is int
+ Reading 4 bytes at address: 0x7fffffffda9c
+ Found a singleton value
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0x7fffffffda9c
+ Interpreting data as an int, value is 2
+ Checking if what variable p points to has been updated
+ In runtime_stack::get_updated_points_to_frame
  there are no live variables 0x555555554580R 0x555555754fd0 8
  line number 0
  value before read : 0x80  0xae  0x35  0xe4  0xff  0x7f  0x0  0x0  Invocation ID:161function main was called. Frame pointer was 0x7fffffffdab0
@@ -3359,16 +2802,16 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  exit
  Enter AfterRegMod Checking values 0x555555554712R 0x7fffffffdaa8 8
  line number 13
- value before read : 0x0  0x26  0x3c  0x83  0xd8  0xbb  0x6c  0xfc  Invocation ID:161function main was called. Frame pointer was 0x7fffffffdab0
+ value before read : 0x0  0xbd  0x4d  0xd6  0x63  0xb5  0xb6  0x26  Invocation ID:161function main was called. Frame pointer was 0x7fffffffdab0
  Enter AfterRegMod Checking values Register Record
  	Event num: 205
  	Line #: 13
  	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test1.c
  	Register: rdi
- 	Value: 0x0xfc6cbbd8833c2600
- 0x555555554716R 0x7fffe470c4e8 8
+ 	Value: 0x0x26b6b563d64dbd00
+ 0x555555554716R 0x7fffe470b4e8 8
  line number 13
- value before read : 0x0  0x26  0x3c  0x83  0xd8  0xbb  0x6c  0xfc  Invocation ID:161function main was called. Frame pointer was 0x7fffffffdab0
+ value before read : 0x0  0xbd  0x4d  0xd6  0x63  0xb5  0xb6  0x26  Invocation ID:161function main was called. Frame pointer was 0x7fffffffdab0
  Enter AfterRegMod Checking values Register Record
  	Event num: 207
  	Line #: 13
@@ -3392,7 +2835,30 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  	Value: 0x0x7fffffffdab8
  Enter functionInvocationAfter
  No output found
- In runtime_stack::get_updated_variables
+ In runtime_stack::get_all_updated_variables
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable a has been updated
+ Base address for a global is: 0x555555755018
+ Enter is_at_address
+ trec = 0x7ffff7d7f240 type name = int
+ Base address for a global is: 0x555555755018
+ var_addr: 0x555555755018 mem_addr: 0x555555755018 size: 4
+ In var_record::read_value
+ Type is int
+ Reading 4 bytes at address: 0x555555755018
+ Found a singleton value
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0x555555755018
+ Interpreting data as an int, value is 1
+ New value = 1, old value = 1
+ Checking if variable c has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f240 type name = int
+ Base address for a global is: 0x555555755010
+ var_addr: 0x555555755010 mem_addr: 0x555555755018 size: 4
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame
  function return
  Exit functionInvocationAfter
  0x555555554727R 0x7fffffffdab8 8

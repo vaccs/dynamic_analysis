@@ -73,8 +73,8 @@ class frame_record
 	 *
 	 * @return a string containing the variable value
 	 */
-	string get_points_to value() {
-	    return points_to value;
+	string get_points_to_value() {
+	    return points_to_value;
 	}
 
 	/**
@@ -107,7 +107,6 @@ class frame_record
 	*/
 	frame_record *add_value(string value) {
 	    this->value = value;
-            this->pending_new_value = value;
 	    return this;
 	}
 
@@ -117,22 +116,10 @@ class frame_record
 	* @param string the string representation of the value
 	* @return a pointer to this record
 	*/
-	frame_record *add_value(string value) {
+	frame_record *add_points_to_value(string value) {
 	    this->points_to_value = value;
 	    return this;
 	}
-
-	/**
-	* Add the pending new value of this variable to the entry
-	*
-	* @param string the string representation of the pending new value
-	* @return a pointer to this record
-	*/
-	frame_record *add_pending_new_value(string value) {
-	    this->pending_new_value = value;
-	    return this;
-	}
-
 
 	/**
 	* Add the var_record of this variable to the entry
@@ -147,15 +134,6 @@ class frame_record
 
 	/* ====================  OPERATORS     ======================================= */
 
-        /**
-         * Commit the pending new value to the value
-         *
-         */
-        void commit_pending_value() {
-           if (value != pending_new_value)
-              value = pending_new_value;
-        }
-
     protected:
 
     private:
@@ -163,7 +141,6 @@ class frame_record
 	/* ====================  DATA MEMBERS  ======================================= */
 	string variable_name;	    /* the name of the variable for this record */
 	string value;		    /* the last value stored in this location */
-        string pending_new_value;   /* a new value that has been found, pending update */
         string points_to_value;     /* the value pointed to by frame records that are pointers */
 	var_record *vrec;	    /* the DWARF information for this variable */
 
@@ -409,14 +386,6 @@ class runtime_stack : public list<frame *>
 	 */
 	void pop();
 
-        /**
-         * Compute a list of pointers whose points_to value has been updated
-         *
-         * @return a list of variables that on the stack or in global memory that could
-         * have possibly been accessed
-         */
-        list<var_upd_record*> *get_updated_pointers(cu_table *cutab,heap_map *heap_m);
-
       /**
        * Compute a list of variables that reference a particular updated memory location
        *
@@ -424,20 +393,46 @@ class runtime_stack : public list<frame *>
        * @param ttab a type table
        * @return a list of variables that reference the given memory location
        */
-      list<frame_record*> *addr_get_updated_variables(Generic addr,type_table *ttab);
+      list<var_upd_record*> *addr_get_updated_variables(Generic addr,cu_table *cutab);
 
       /**
-       * Determine if the variable value at an address has changed
+       * Compute a list of variables that have been updated. Search the stack and global data area for any updated variable.
+       * This method is used after a library routine has been called
        *
-       * @param heap_m a map of the dynamically allocated space
-       * @param trec the type for the address
-       * @param points_to the address pointed to
-       * @return a string containing the value
+       * @param cutab a compilation unit table
+       * @return a list of variables that have been updated  
        */
-      string* get_new_points_to_value(heap_map *heap_m,type_table *ttab, type_record *trec,
-              Generic addr,Generic* points_to) ;
+      list<var_upd_record *> *get_all_updated_variables(cu_table *cutab);
 
-	/* ====================  DATA MEMBERS  ======================================= */
+       /**
+        * Check a single frame for variables that have been updated
+        *
+        * @param cutab a compilation unit table
+        * @param fr a stack or global variable frame
+        * @param addr the addres that has been updated, if addr = 0 then all locations are checked
+        * @return a list of variables in this frame whose value hase changed
+        */
+      list<var_upd_record *> *get_updated_variables_from_frame(cu_table *cutab,frame *fr, Generic addr);
+
+      /**
+       * Check a single frame for variables whose points to location has been updated
+       * 
+       * @param cutab a compilation unit table
+       * @param fr a stack or global variable frame
+       * @return a list of variables in this frame whose value hase changed
+       */
+      list<var_upd_record *> *get_updated_points_to_frame(cu_table *cutab,frame *fr);
+
+      /**
+       * Compute a list of all pointers accessible from the stack or static data area whose points_to location has changed 
+       *
+       * @param cutab a table of compilation units
+       * @return a list of variables that on the stack or in global memory that could
+       * have possibly been accessed
+       */
+      list<var_upd_record*> *get_all_updated_points_to(cu_table *cutab);
+
+ 	/* ====================  DATA MEMBERS  ======================================= */
     protected:
 
     private:

@@ -32,10 +32,12 @@
 #include <io/func_inv_record.h>
 #include <io/output_record.h>
 #include <tables/frame.h>
+#include <tables/heap.h>
 
 vaccs_dw_reader *vdr = NULL;
 NATIVE_FD vaccs_fd = -1;
 int vaccs_stdout = -1;
+extern heap_map *heap_m;
 using namespace std;
 
 

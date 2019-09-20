@@ -21,11 +21,9 @@
 #include <vaccs_read/vaccs_dw_reader.h>
 #include <io/output_record.h>
 #include <tables/frame.h>
-#include <tables/heap.h>
 
 extern NATIVE_FD vaccs_stdout;
 extern runtime_stack *stack_model;
-extern heap_map *heap_m;
 Generic stack_base_address = 0;
 
 function_invocation_transaction function_invocation_event;
@@ -180,7 +178,8 @@ VOID functionInvocationAfter(void* function_name,const CONTEXT* ctxt,ADDRINT ip)
 
     if (line != 0) {
        stack_model->pop();
-       list<var_upd_record*> *variables = stack_model->get_updated_variables(cutab,heap_m);
+       list<var_upd_record*> *variables = stack_model->get_all_updated_variables(cutab);
+       variables->splice(variables->end(),*stack_model->get_all_updated_points_to(cutab));
 
        for (list<var_upd_record*>::iterator it = variables->begin(); it != variables->end(); it++) {
          var_upd_record *vurec = *it;

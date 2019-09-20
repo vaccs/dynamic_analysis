@@ -1,16 +1,71 @@
-Updating dependences for frame.cpp ...
 Compiling frame.cpp
-frame.cpp: In function ‘std::string* get_new_points_to_value(HeapMap*, type_record*, Generic, Generic*)’:
-frame.cpp:276:41: error: invalid conversion from ‘const char*’ to ‘char*’ [-fpermissive]
-             char *buffer = hb->get_value();
-                            ~~~~~~~~~~~~~^~
-frame.cpp: In member function ‘std::list<var_upd_record*>* runtime_stack::get_updated_variables(cu_table*, HeapMap*)’:
-frame.cpp:318:41: error: ‘class type_record’ has no member named ‘get’
-              type_record *tprec = trec->get
-                                         ^~~
-frame.cpp:318:27: error: unused variable ‘tprec’ [-Werror=unused-variable]
-              type_record *tprec = trec->get
-                           ^~~~~
+frame.cpp: In member function ‘void runtime_stack::push(std::string, Generic, LEVEL_VM::CONTEXT*)’:
+frame.cpp:116:13: error: ‘boolean’ was not declared in this scope
+             boolean is_segv;
+             ^~~~~~~
+frame.cpp:116:13: note: suggested alternative: ‘Boolean’
+             boolean is_segv;
+             ^~~~~~~
+             Boolean
+frame.cpp:117:65: error: too few arguments to function ‘Generic dereference_memory(Generic*, bool*)’
+             Generic ptr_addr = dereference_memory((Generic*)addr),&is_segv);
+                                                                 ^
+In file included from ../tables/cu_table.h:11:0,
+                 from ../tables/frame.h:26,
+                 from frame.cpp:20:
+../tables/deref.h:6:17: note: declared here
+ EXTERN(Generic, dereference_memory, (Generic *addr, bool *is_segv));
+                 ^
+../util/general.h:136:59: note: in definition of macro ‘EXTERN’
+ #define EXTERN(rettype, name, arglist) extern "C" rettype name arglist
+                                                           ^~~~
+frame.cpp:120:18: error: ‘is_segv’ was not declared in this scope
+             if (!is_segv) {
+                  ^~~~~~~
+frame.cpp:121:68: error: no matching function for call to ‘type_table::get(std::string*)’
+                type_record *btrec = ttab->get(trec->get_base_type());
+                                                                    ^
+In file included from ../tables/var_table.h:17:0,
+                 from ../tables/cu_table.h:12,
+                 from ../tables/frame.h:26,
+                 from frame.cpp:20:
+../tables/type_table.h:269:15: note: candidate: type_record* type_table::get(std::string)
+  type_record* get(std::string str) { return (type_record*) symbol_table::get(str); }
+               ^~~
+../tables/type_table.h:269:15: note:   no known conversion for argument 1 from ‘std::string* {aka std::basic_string<char, std::char_traits<char>, std::allocator<char> >*}’ to ‘std::string {aka std::basic_string<char, std::char_traits<char>, std::allocator<char> >}’
+frame.cpp: At global scope:
+frame.cpp:151:24: error: prototype for ‘std::list<var_upd_record*>* runtime_stack::addr_get_updated_variables(Generic, type_table*)’ does not match any in class ‘runtime_stack’
+ list<var_upd_record*> *runtime_stack::addr_get_updated_variables(Generic addr,type_table *ttab) {
+                        ^~~~~~~~~~~~~
+In file included from frame.cpp:20:0:
+../tables/frame.h:396:28: error: candidate is: std::list<frame_record*>* runtime_stack::addr_get_updated_variables(Generic, type_table*)
+       list<frame_record*> *addr_get_updated_variables(Generic addr,type_table *ttab);
+                            ^~~~~~~~~~~~~~~~~~~~~~~~~~
+frame.cpp: In member function ‘std::list<var_upd_record*>* runtime_stack::get_updated_variables_from_frame(cu_table*, frame*, Generic)’:
+frame.cpp:223:13: error: ‘vlist’ was not declared in this scope
+             vlist->push_back(vurec);
+             ^~~~~
+frame.cpp:223:13: note: suggested alternative: ‘list’
+             vlist->push_back(vurec);
+             ^~~~~
+             list
+frame.cpp:230:1: error: no return statement in function returning non-void [-Werror=return-type]
+ }
+ ^
+frame.cpp: In member function ‘std::list<var_upd_record*>* runtime_stack::get_updated_points_to_frame(cu_table*, frame*)’:
+frame.cpp:280:33: error: ‘class var_record’ has no member named ‘get_points_to_value’; did you mean ‘read_singleton_value’?
+          if (new_value != vrec->get_points_to_value()) {
+                                 ^~~~~~~~~~~~~~~~~~~
+                                 read_singleton_value
+frame.cpp:294:39: error: ‘new_points_to_value’ was not declared in this scope
+                ->add_points_to_value(*new_points_to_value);
+                                       ^~~~~~~~~~~~~~~~~~~
+frame.cpp:276:23: error: unused variable ‘btrec’ [-Werror=unused-variable]
+          type_record *btrec = cutab->get_type_record(*trec->get_base_type());
+                       ^~~~~
+frame.cpp:300:1: error: no return statement in function returning non-void [-Werror=return-type]
+ }
+ ^
 cc1plus: all warnings being treated as errors
 Makefile:53: recipe for target 'frame.o' failed
 make: *** [frame.o] Error 1
