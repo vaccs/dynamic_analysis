@@ -1,3 +1,3 @@
 Pin: pin-3.6-97554-31f0a167d
 Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
-E:  Unable to load /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/obj-intel64/pas_analysis.so: dlopen failed: cannot locate symbol "_ZN13runtime_stack3popEv" referenced by "/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/obj-intel64/pas_analysis.so"...
+A:  Source/pin/core_ia32/ins_api_xed_ia32.cpp: INS_CallOrBranchIsRegisterIndirect: 1530: Not a branch or call!

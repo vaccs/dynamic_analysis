@@ -14,8 +14,8 @@
 
 using namespace std;
 
-static HeapBlock *new_hb = NULL;
-HeapMap *heapMap = NULL;
+static heap_block *new_hb = NULL;
+heap_map *heap_m = NULL;
 
 /* ===================================================================== */
 /* Instrumentation malloc and free calls to record the arguments         */
@@ -25,12 +25,12 @@ VOID freeBefore(CHAR * name, ADDRINT addr)
 {
 
    DEBUGL(LOG("entern free\n"));
-   heapMap->delete_block(addr);
+   heap_m->delete_block(addr);
 }
 VOID mallocBefore(CHAR * name, ADDRINT size)
 {
 	DEBUGL(LOG("enter malloc\n"));
-        new_hb = (new HeapBlock())->add_event_id(timestamp++)
+        new_hb = (new heap_block())->add_event_id(timestamp++)
                      ->add_size((Generic)size);
 	DEBUGL(LOG("exit\n"));
 
@@ -43,7 +43,7 @@ VOID malloc_after(ADDRINT ret)
 
    DEBUGL(LOG("malloc returns " + hexstr(ret) + "\n"));
    new_hb->add_start_address((Generic)ret);
-   heapMap->add_block(new_hb);
+   heap_m->add_block(new_hb);
 }
 
 

@@ -36,7 +36,7 @@ private:
 	bool is_struct; /* is the type a struct? */
 	bool is_typedef; /* is this type a typedef? */
 	bool is_const; /* is this type const? */
-	std::string *base_type; /* the dwarf index of the base type for an array */
+	std::string *base_type; /* the dwarf index of the base type for an array or pointer */
 	Generic upper_bound; /* the upper bound for the array type */
 	var_table *member_tab; /* the members of a c struct */
 

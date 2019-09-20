@@ -26,6 +26,7 @@ using namespace std;
 #include	<tables/cu_table.h>
 #include	<tables/var_table.h>
 #include	<tables/type_table.h>
+#include        <tables/heap.h>
 #include        <util/general.h>
 
 #include	<pin.H>
@@ -68,6 +69,15 @@ class frame_record
 	}
 
 	/**
+	 * Get the points_to value of the variable
+	 *
+	 * @return a string containing the variable value
+	 */
+	string get_points_to value() {
+	    return points_to value;
+	}
+
+	/**
 	 * Get the var_record of the variable
 	 *
 	 * @return a var_record containing dwarf information for a variable
@@ -97,8 +107,32 @@ class frame_record
 	*/
 	frame_record *add_value(string value) {
 	    this->value = value;
+            this->pending_new_value = value;
 	    return this;
 	}
+
+	/**
+	* Add the points_to value of this variable to the entry
+	*
+	* @param string the string representation of the value
+	* @return a pointer to this record
+	*/
+	frame_record *add_value(string value) {
+	    this->points_to_value = value;
+	    return this;
+	}
+
+	/**
+	* Add the pending new value of this variable to the entry
+	*
+	* @param string the string representation of the pending new value
+	* @return a pointer to this record
+	*/
+	frame_record *add_pending_new_value(string value) {
+	    this->pending_new_value = value;
+	    return this;
+	}
+
 
 	/**
 	* Add the var_record of this variable to the entry
@@ -113,6 +147,15 @@ class frame_record
 
 	/* ====================  OPERATORS     ======================================= */
 
+        /**
+         * Commit the pending new value to the value
+         *
+         */
+        void commit_pending_value() {
+           if (value != pending_new_value)
+              value = pending_new_value;
+        }
+
     protected:
 
     private:
@@ -120,6 +163,8 @@ class frame_record
 	/* ====================  DATA MEMBERS  ======================================= */
 	string variable_name;	    /* the name of the variable for this record */
 	string value;		    /* the last value stored in this location */
+        string pending_new_value;   /* a new value that has been found, pending update */
+        string points_to_value;     /* the value pointed to by frame records that are pointers */
 	var_record *vrec;	    /* the DWARF information for this variable */
 
 }; /* -----  end of class Frame_record  ----- */
@@ -206,15 +251,6 @@ class frame : public list<frame_record *>
 	 * @return a list containing all variables that map to the given address
 	 */
         list<frame_record*> *get(Generic addr, type_table *ttab);
-
-	/**
-	 * Get a list of variable that refer indirectly to the given address
-	 *
-	 * @param addr the runtime address to check
-	 * @param ttab a type table
-	 * @return a list containing all variables that map indirectly to the given address
-	 */
-	list<frame_record*> *get_pointers(Generic addr, type_table *ttab);
 
 	/* ====================  DATA MEMBERS  ======================================= */
     protected:
@@ -374,12 +410,32 @@ class runtime_stack : public list<frame *>
 	void pop();
 
         /**
-         * Compute a list of variables that could possibly have been accessed
+         * Compute a list of pointers whose points_to value has been updated
          *
          * @return a list of variables that on the stack or in global memory that could
          * have possibly been accessed
          */
-        list<var_upd_record*> *get_updated_variables(cu_table *cutab,HeapMap *heapMap);
+        list<var_upd_record*> *get_updated_pointers(cu_table *cutab,heap_map *heap_m);
+
+      /**
+       * Compute a list of variables that reference a particular updated memory location
+       *
+       * @param addr the address of a memory location in memory
+       * @param ttab a type table
+       * @return a list of variables that reference the given memory location
+       */
+      list<frame_record*> *addr_get_updated_variables(Generic addr,type_table *ttab);
+
+      /**
+       * Determine if the variable value at an address has changed
+       *
+       * @param heap_m a map of the dynamically allocated space
+       * @param trec the type for the address
+       * @param points_to the address pointed to
+       * @return a string containing the value
+       */
+      string* get_new_points_to_value(heap_map *heap_m,type_table *ttab, type_record *trec,
+              Generic addr,Generic* points_to) ;
 
 	/* ====================  DATA MEMBERS  ======================================= */
     protected:

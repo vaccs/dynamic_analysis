@@ -10,7 +10,7 @@
 #include "pin.H"
 #include <tables/heap.h>
 
-extern HeapMap *heapMap;
+extern heap_map *heap_m;
 
 VOID freeBefore(CHAR * name, ADDRINT size);
 VOID mallocBefore(CHAR * name, ADDRINT size);

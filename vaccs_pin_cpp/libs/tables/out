@@ -1,0 +1,16 @@
+Updating dependences for frame.cpp ...
+Compiling frame.cpp
+frame.cpp: In function ‘std::string* get_new_points_to_value(HeapMap*, type_record*, Generic, Generic*)’:
+frame.cpp:276:41: error: invalid conversion from ‘const char*’ to ‘char*’ [-fpermissive]
+             char *buffer = hb->get_value();
+                            ~~~~~~~~~~~~~^~
+frame.cpp: In member function ‘std::list<var_upd_record*>* runtime_stack::get_updated_variables(cu_table*, HeapMap*)’:
+frame.cpp:318:41: error: ‘class type_record’ has no member named ‘get’
+              type_record *tprec = trec->get
+                                         ^~~
+frame.cpp:318:27: error: unused variable ‘tprec’ [-Werror=unused-variable]
+              type_record *tprec = trec->get
+                           ^~~~~
+cc1plus: all warnings being treated as errors
+Makefile:53: recipe for target 'frame.o' failed
+make: *** [frame.o] Error 1

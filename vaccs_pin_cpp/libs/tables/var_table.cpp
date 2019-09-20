@@ -508,8 +508,9 @@ string var_record::read_value(type_table *ttab, type_record *trec, Generic addr)
          value = read_c_string(addr);
       } else {
          DEBUGL(LOG("Found a non-character pointer\n"));
-         value = read_singleton_value(btrec,addr);
+         value = read_singleton_value(trec,addr);
       }
+      DEBUGL(LOG("value = "+value+"\n"));
    } else if (trec->get_is_array()) {
       DEBUGL(LOG("Found an array\n"));
       type_record *btrec = ttab->get(*trec->get_base_type());

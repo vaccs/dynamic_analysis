@@ -27,36 +27,37 @@
 using namespace std;
 /*
  * =====================================================================================
- *        Class:  HeapBlock
+ *        Class:  heap_block
  *  Description:  This class represents a block of memory allocated on the heap. We just
  *                record the start address and size for checking if a memory access is to
  *                the heap.
  * =====================================================================================
  */
-class HeapBlock
+class heap_block
 {
    public:
       /* ====================  LIFECYCLE     ======================================= */
-      HeapBlock ();                             /* constructor */
+      heap_block ();                             /* constructor */
 
+      virtual ~heap_block() { if (value != NULL) delete value; }
       /* ====================  BUILDERS      ======================================= */
 
-      HeapBlock *add_start_address(Generic sa) {
+      heap_block *add_start_address(Generic sa) {
          start_address = sa;
          return this;
       }
 
-      HeapBlock *add_size(Generic s) {
+      heap_block *add_size(Generic s) {
          size = s;
          return this;
       }
 
-      HeapBlock *add_event_id(unsigned int i) {
+      heap_block *add_event_id(unsigned int i) {
          event_id = i;
          return this;
       }
 
-      HeapBlock *add_value() {
+      heap_block *add_value() {
          value = new char[size];
          memcpy(value,(const void *)start_address,size);
          return this;
@@ -80,7 +81,7 @@ class HeapBlock
          return event_id;
       }
 
-      const char *get_value() {
+      char *get_value() {
          char *buff = new char[size];
          memcpy(buff,value,size);
          return buff;
@@ -97,7 +98,7 @@ class HeapBlock
       }
 
       bool mem_has_new_value() {
-         return memcmp(value,(const void *)start_address,size() != 0;
+         return memcmp(value,(const void *)start_address,get_size()) != 0;
       }
 
       /* ====================  DATA MEMBERS  ======================================= */
@@ -109,25 +110,27 @@ class HeapBlock
       char *value;
       unsigned int event_id;
 
-}; /* -----  end of class HeapBlock  ----- */
+}; /* -----  end of class heap_block  ----- */
 
 
 /*
  * =====================================================================================
- *        Class:  HeapMap
+ *        Class:  heap_map
  *  Description:  This class represents all of the blocks allocated on the heap.
  * =====================================================================================
  */
-class HeapMap : public map<Generic, HeapBlock *>
+class heap_map : public map<Generic, heap_block *>
 {
    public:
       /* ====================  LIFECYCLE     ======================================= */
-      HeapMap ();                             /* constructor */
+      heap_map ();                             /* constructor */
+
+      virtual ~heap_map() {}
 
       /* ====================  BUILDERS     ======================================= */
 
-      HeapMap *add_block(HeapBlock *block) {
-	 insert(pair<Generic,HeapBlock*>(block->get_start_address(),block));
+      heap_map *add_block(heap_block *block) {
+	 insert(pair<Generic,heap_block*>(block->get_start_address(),block));
          return this;
       }
 
@@ -137,8 +140,8 @@ class HeapMap : public map<Generic, HeapBlock *>
 
       /* ====================  OPERATORS     ======================================= */
 
-      HeapBlock *find_block(Generic address);
-      HeapBlock *delete_block(Generic address);
+      heap_block *find_block(Generic address);
+      heap_block *delete_block(Generic address);
 
 
       /* ====================  DATA MEMBERS  ======================================= */
@@ -146,6 +149,6 @@ class HeapMap : public map<Generic, HeapBlock *>
 
    private:
 
-}; /* -----  end of class HeapMap  ----- */
+}; /* -----  end of class heap_map  ----- */
 
 #endif

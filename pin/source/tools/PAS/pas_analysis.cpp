@@ -161,7 +161,7 @@ void initialize(){
 		current_function_name = 0;
 		current_invocation_id =0;
 
-                heapMap = new HeapMap();
+                heap_m = new heap_map();
 
 		//file output initialization
 

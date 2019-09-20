@@ -18,8 +18,10 @@
 #include <string>
 #include <map>
 #include <tables/frame.h>
+#include <tables/heap.h>
 
 extern runtime_stack *stack_model;
+extern heap_map *heap_m;
 
 void write_element_record(cu_table *cutab, pair<string,var_record*> vpair, const CONTEXT *ctxt,
      ADDRINT addr, INT32 line, string fileName, string var_prefix,
@@ -406,7 +408,7 @@ VOID AfterMemWrite(VOID* assembly, ADDRINT ip, ADDRINT addr,const CONTEXT *ctxt,
     else {
       DEBUGL(LOG("ip = " + hexstr(ip) + " is in user code checking variable access"));
 
-      list<var_upd_record*> *vur_list = stack_model->get_updated_variables();
+      list<var_upd_record*> *vur_list = stack_model->get_updated_variables(cutab,heap_m);
 
       if (vur_list->empty()) {
   	     DEBUGL(LOG("there are no live variables"));
