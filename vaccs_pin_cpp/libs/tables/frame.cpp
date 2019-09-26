@@ -120,11 +120,8 @@ void runtime_stack::push(string name,Generic ip,CONTEXT *ctx) {
             if (!is_segv) {
                type_record *btrec = ttab->get(*trec->get_base_type());
                points_to_value = vrec->read_value(ttab,btrec,ptr_addr);
-            } else if (addr == 0) {
-               points_to_value = "<null>";
-            } else {
-               points_to_value = "<unknown>";
-            }
+            } else 
+               points_to_value = MEM_ADDR_ERROR(addr);
 
             frec->add_points_to_value(points_to_value);
 
@@ -152,7 +149,7 @@ void runtime_stack::pop() {
 */
 list<var_upd_record*> *runtime_stack::addr_get_updated_variables(Generic addr,cu_table *cutab) {
 
-   DEBUGL(LOG("In runtime_stack::get_variables_accessed, addr = "+hexstr(addr)+"\n"));
+   DEBUGL(LOG("In runtime_stack::get_variables_accessed, addr = "+MEM_ADDR_STR(addr)+"\n"));
 
    list<var_upd_record*> *vlist = new list<var_upd_record*>();
 
@@ -198,7 +195,7 @@ list<var_upd_record *> *runtime_stack::get_updated_variables_from_frame(cu_table
       type_table *ttab = cutab->get_type_table(vrec->get_type());
 
       //
-      // If addr = 0, make sure we check this variable (all variables are check in this case)
+      // If addr = 0, make sure we check this variable (all variables are checked in this case)
       //
       if (addr == 0)
          addr = vrec->get_base_address(fr->get_context());
@@ -278,7 +275,7 @@ list<var_upd_record *> *runtime_stack::get_updated_points_to_frame(cu_table *cut
        
       if (trec->get_is_pointer()) {
 
-         DEBUGL(LOG("Found a pointer varialble: "+frec->get_variable_name()+"\n"));
+         DEBUGL(LOG("Found a pointer variable: "+frec->get_variable_name()+"\n"));
 
          var_record *vrec = frec->get_var_record();
          Generic addr = vrec->get_base_address(fr->get_context());
@@ -289,24 +286,30 @@ list<var_upd_record *> *runtime_stack::get_updated_points_to_frame(cu_table *cut
          string new_value;
 
          if (is_segv) {
-            DEBUGL(LOG("Pointer variable: "+frec->get_variable_name()+" does not point to a valid memory location\n"));
-            if (addr == 0)
-               new_value = "<null>";
-            else
-               new_value = "<unknown>";
+            DEBUGL(LOG("Pointer variable: "+frec->get_variable_name()+" is not a valid memory location\n"));
+            new_value = MEM_ADDR_ERROR(addr);
          } else {
-            DEBUGL(LOG("Pointer varialble: "+frec->get_variable_name()+" points to a valid memory location\n"));
-            type_table *ttab = cutab->get_type_table(vrec->get_type());
+            dereference_memory((Generic*)ptr_addr,&is_segv);
 
-            type_record *btrec = cutab->get_type_record(*trec->get_base_type());
+            if (is_segv) {
+               DEBUGL(LOG("Pointer variable: "+frec->get_variable_name()+
+                          " does not point to a valid memory location\n"));
+               new_value = MEM_ADDR_ERROR(ptr_addr);
+            } else {
+               DEBUGL(LOG("Pointer variable: "+frec->get_variable_name()+" points to a valid memory location\n"));
+               type_table *ttab = cutab->get_type_table(vrec->get_type());
 
-            new_value = vrec->read_value(ttab,btrec,ptr_addr);
+               type_record *btrec = cutab->get_type_record(*trec->get_base_type());
+
+               new_value = vrec->read_value(ttab,btrec,ptr_addr);
+            }
          }
 
          DEBUGL(LOG("Checking if what variable "+frec->get_variable_name()+" points to has been updated\n"));
          if (new_value != frec->get_points_to_value()) {
 
-            DEBUGL(LOG("Found new points_to value: "+new_value+" for "+frec->get_variable_name()+"\n"));
+            DEBUGL(LOG("Found new points_to value: "+new_value+" for "+frec->get_variable_name()+
+                     " old points_to value = " + frec->get_points_to_value()+"\n"));
 
             frec->add_points_to_value(new_value);
 
@@ -317,6 +320,7 @@ list<var_upd_record *> *runtime_stack::get_updated_points_to_frame(cu_table *cut
                ->add_address(addr)
                ->add_scope(cutab->get_scope(vrec))
                ->add_value(frec->get_value())
+               ->add_update_is_points_to()
                ->add_points_to(ptr_addr)
                ->add_points_to_value(new_value);
 

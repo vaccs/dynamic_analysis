@@ -248,6 +248,7 @@ public:
     vrec = NULL;
     address = -1;
     ctxt = NULL;
+    update_is_points_to = false;
   };
 
   // GETTERS
@@ -266,6 +267,14 @@ public:
 
   CONTEXT *get_context() {
     return ctxt;
+  }
+
+  string get_value() {
+     return value;
+  }
+
+  bool get_update_is_points_to() {
+     return update_is_points_to;
   }
 
   // BUILDERS
@@ -291,7 +300,7 @@ public:
   }
 
   var_upd_record *add_value(string value) {
-    value = value;
+    this->value = value;
     return this;
   }
 
@@ -310,6 +319,11 @@ public:
 	return this;
   }
 
+  var_upd_record *add_update_is_points_to() {
+     update_is_points_to = true;
+     return this;
+  }
+
   var_upd_record *add_scope(string scope) {
 	this->scope = scope;
 	return this;
@@ -322,6 +336,10 @@ public:
   string get_points_to_value() {
 	return points_to_value;
   }	
+
+  string get_scope() {
+     return scope;
+  }
 
   void write(NATIVE_FD vaccs_fd,string fileName,int line,cu_table *cutab,int timestamp);
 
@@ -336,6 +354,7 @@ private:
   string scope;
   Generic points_to;
   string points_to_value;
+  bool update_is_points_to;
 
 };
 

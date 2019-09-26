@@ -4,6 +4,7 @@ int c = 3;
 int main() {
 
    int b;
+
    int *p = NULL;
 
    p = &b; 

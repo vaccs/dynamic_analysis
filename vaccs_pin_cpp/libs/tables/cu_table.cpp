@@ -189,7 +189,7 @@ cu_table::~cu_table() {}
  */
 cu_record *cu_table::get(Generic ip) {
 
-    DEBUGL(LOG("In cu_table::get"));
+    DEBUGL(LOG("In cu_table::get\n"));
 
     cu_record *the_cu = NULL;
 

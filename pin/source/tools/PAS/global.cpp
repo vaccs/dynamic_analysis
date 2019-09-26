@@ -38,7 +38,7 @@ void get_registers(const CONTEXT * ctxt,int id){
 
 ADDRINT read_memory_as_address(ADDRINT addr) {
    ADDRINT buf;
-   DEBUGL(LOG("Address being read: 0x" + hexstr(addr) + "\n"));
+   DEBUGL(LOG("Address being read: " + MEM_ADDR_STR(addr) + "\n"));
 
    if (addr != 0)
       bcopy((void *)addr,&buf,sizeof(ADDRINT));
