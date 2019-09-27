@@ -17,6 +17,7 @@
  * =====================================================================================
  */
 
+#include <sstream>
 #include <tables/frame.h>
 #include <tables/deref.h>
 #include <io/vaccs_record_factory.h>
@@ -36,7 +37,9 @@ frame_record::frame_record() {
 /**
  * Create and instance of a stack frame
  */
-frame::frame() : list() { }
+frame::frame() : list() {
+   is_first_access = true;
+ }
 
 /**
  * Create an instance of a runtime stack and initialize the instance variables
@@ -87,7 +90,7 @@ runtime_stack *runtime_stack::add_cu_table(cu_table *cutab) {
  * @param ip address in the function
  * @param ctx the pin context for this stack frame
  */
-void runtime_stack::push(string name,Generic ip,CONTEXT *ctx) {
+frame *runtime_stack::push(string name,Generic ip,CONTEXT *ctx) {
    DEBUGL(LOG("In runtime_stack::push for routine" + name + "\n"));
 
    var_table *vtab = cutab->get_function_var_table(ip);
@@ -120,7 +123,7 @@ void runtime_stack::push(string name,Generic ip,CONTEXT *ctx) {
             if (!is_segv) {
                type_record *btrec = ttab->get(*trec->get_base_type());
                points_to_value = vrec->read_value(ttab,btrec,ptr_addr);
-            } else 
+            } else
                points_to_value = MEM_ADDR_ERROR(addr);
 
             frec->add_points_to_value(points_to_value);
@@ -131,6 +134,8 @@ void runtime_stack::push(string name,Generic ip,CONTEXT *ctx) {
    }
 
    push_front(new_frame);
+
+   return new_frame;
 }
 
 /**
@@ -156,7 +161,7 @@ list<var_upd_record*> *runtime_stack::addr_get_updated_variables(Generic addr,cu
     /* check the entire stack for a variable at this address */
 
    for (list<frame*>::iterator it = begin(); it != end(); it++) {
-      vlist->splice(vlist->end(),*get_updated_variables_from_frame(cutab,*it,addr)); 
+      vlist->splice(vlist->end(),*get_updated_variables_from_frame(cutab,*it,addr));
    }
 
     /* check globals for a variable at this address */
@@ -177,14 +182,16 @@ string* convert_buffer_to_string(const char *buffer, const type_record *trec) {
  *
  * @param cutab a compilation unit table
  * @param fr a stack or global variable frame
- * @param addr the addres that has been updated, if addr = 0 then all locations are checked
+ * @param addr the address that has been updated, if addr = 0 then all locations are checked
  * @return a list of variables in this frame whose value hase changed
  */
 list<var_upd_record *> *runtime_stack::get_updated_variables_from_frame(cu_table *cutab,frame *fr,
       Generic addr) {
 
-   DEBUGL(LOG("In runtime_stack::get_updated_variables_from_frame\n"));
+  DEBUGL(LOG("In runtime_stack::get_updated_variables_from_frame\n"));
 
+  if (fr->get_is_first_access())
+    DEBUGL(LOG("First access for frame of "+fr->get_name()+"\n"));
   list<var_upd_record*> *vlist = new list<var_upd_record*>();
 
   for (list<frame_record*>::iterator it2 = fr->begin(); it2 != fr->end(); it2++) {
@@ -198,9 +205,9 @@ list<var_upd_record *> *runtime_stack::get_updated_variables_from_frame(cu_table
       // If addr = 0, make sure we check this variable (all variables are checked in this case)
       //
       if (addr == 0)
-         addr = vrec->get_base_address(fr->get_context());
+         addr = vrec->get_var_address(fr->get_context(),trec);
 
-      if (vrec->is_at_address(fr->get_context(),addr,trec)) {
+      if (fr->get_is_first_access() || vrec->is_at_address(fr->get_context(),addr,trec)) {
 
          string new_value = vrec->read_value(ttab,trec,addr);
 
@@ -208,9 +215,10 @@ list<var_upd_record *> *runtime_stack::get_updated_variables_from_frame(cu_table
 
          //
          // Check if there is a new value for this variable stored in the stack frame
+         // if get_all_values is true, then a record is generated for every variable
          //
-         if (new_value != frec->get_value()) {
-   
+         if (fr->get_is_first_access() || new_value != frec->get_value()) {
+
             DEBUGL(LOG("Found new value: "+new_value+" for "+frec->get_variable_name()+"\n"));
 
             frec->add_value(new_value);
@@ -222,11 +230,24 @@ list<var_upd_record *> *runtime_stack::get_updated_variables_from_frame(cu_table
                ->add_scope(cutab->get_scope(vrec))
                ->add_value(new_value);
 
+            if (trec->get_is_pointer()) {
+
+              unsigned long pointer_val = 0;
+              stringstream(frec->get_points_to_value()) >> pointer_val;
+              DEBUGL(LOG("points_to value converted from "+frec->get_points_to_value()+
+                          " to "+hexstr(pointer_val)));
+              vurec->add_points_to(pointer_val);
+            }
+
             vlist->push_back(vurec);
 
          }
       }
+
    }
+
+  if (fr->get_is_first_access())
+    fr->clear_is_first_access();
 
   return vlist;
 }
@@ -236,7 +257,7 @@ list<var_upd_record *> *runtime_stack::get_updated_variables_from_frame(cu_table
  * This method is used after a library routine has been called
  *
  * @param cutab a compilation unit table
- * @return a list of variables that have been updated  
+ * @return a list of variables that have been updated
  */
 list<var_upd_record *> *runtime_stack::get_all_updated_variables(cu_table *cutab) {
 
@@ -245,7 +266,7 @@ list<var_upd_record *> *runtime_stack::get_all_updated_variables(cu_table *cutab
    list<var_upd_record*> *vlist = new list<var_upd_record*>();
 
    for (list<frame*>::iterator it = begin(); it != end(); it++) {
-      vlist->splice(vlist->end(),*get_updated_variables_from_frame(cutab,*it,0)); 
+      vlist->splice(vlist->end(),*get_updated_variables_from_frame(cutab,*it,0));
    }
 
    vlist->splice(vlist->end(),*get_updated_variables_from_frame(cutab,global_frame,0));
@@ -255,7 +276,7 @@ list<var_upd_record *> *runtime_stack::get_all_updated_variables(cu_table *cutab
 
 /**
  * Check a single frame for variables whose points to location has been updated
- * 
+ *
  * @param cutab a compilation unit table
  * @param fr a stack or global variable frame
  * @return a list of variables in this frame whose value hase changed
@@ -272,7 +293,7 @@ list<var_upd_record *> *runtime_stack::get_updated_points_to_frame(cu_table *cut
        //
        // Check if the value pointed to has changed
        //
-       
+
       if (trec->get_is_pointer()) {
 
          DEBUGL(LOG("Found a pointer variable: "+frec->get_variable_name()+"\n"));
@@ -331,9 +352,9 @@ list<var_upd_record *> *runtime_stack::get_updated_points_to_frame(cu_table *cut
 
    return vlist;
 }
- 
+
 /**
-* Compute a list of all pointers accessible from the stack or static data area whose points_to location has changed 
+* Compute a list of all pointers accessible from the stack or static data area whose points_to location has changed
 *
 * @param cutab a table of compilation units
 * @return a list of variables that on the stack or in global memory that could
@@ -348,7 +369,7 @@ list<var_upd_record*> *runtime_stack::get_all_updated_points_to(cu_table *cutab)
   /* check the entire stack for */
 
    for (list<frame*>::iterator it = begin(); it != end(); it++) {
-      vlist->splice(vlist->end(),*get_updated_points_to_frame(cutab,*it)); 
+      vlist->splice(vlist->end(),*get_updated_points_to_frame(cutab,*it));
    }
 
    vlist->splice(vlist->end(),*get_updated_points_to_frame(cutab,global_frame));
@@ -384,10 +405,9 @@ void var_upd_record::write(NATIVE_FD vaccs_fd,string fileName,int line,cu_table 
    if (type_name.find("*") != string::npos)
       varec = varec->add_points_to(points_to)
                    ->add_value(points_to_value.c_str());
-   else 
+   else
       varec = varec->add_value(value.c_str());
 
    varec->write(vaccs_fd);
    delete varec;
 }
-

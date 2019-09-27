@@ -356,6 +356,16 @@ public:
 	 */
 	bool is_at_address(const CONTEXT *ctxt, Generic mem_addr, type_record *trec);
 
+/**
+ * Determine the address of this variable
+ *
+ * @param ctxt a pin process context
+ * @param mem_addr the prospective memory address
+ * @param trec the type record for this variable
+ * @return true if the variable is at the prospective address, otherwise false
+ */
+  Generic get_var_address(const CONTEXT *ctxt,type_record *trec);
+
 	/**
 	 * Determine if this variable points to the specified address
 	 *

@@ -22,6 +22,8 @@
 #include <io/output_record.h>
 #include <tables/frame.h>
 
+#include "memory_access.h"
+
 extern NATIVE_FD vaccs_stdout;
 extern runtime_stack *stack_model;
 Generic stack_base_address = 0;
@@ -118,7 +120,7 @@ VOID functionInvocationBefore(void* function_name,const CONTEXT* ctxt,
     DEBUGL(LOG("Build stack frame\n"));
 
     if (line != 0)
-	stack_model->push(sfname,(Generic)ip, (CONTEXT*)ctxt);
+	    stack_model->push(sfname,(Generic)ip, (CONTEXT*)ctxt);
 }
 
 VOID functionInvocationAfter(void* function_name,const CONTEXT* ctxt,ADDRINT ip){
@@ -187,7 +189,7 @@ VOID functionInvocationAfter(void* function_name,const CONTEXT* ctxt,ADDRINT ip)
        }
        timestamp++;
      }
-         
+
     DEBUGL(LOG("function return\n"));
     DEBUGL(LOG("Exit functionInvocationAfter\n"));
 }

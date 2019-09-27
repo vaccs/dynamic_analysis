@@ -26,8 +26,8 @@ using namespace std;
 #include	<tables/cu_table.h>
 #include	<tables/var_table.h>
 #include	<tables/type_table.h>
-#include        <tables/heap.h>
-#include        <util/general.h>
+#include  <tables/heap.h>
+#include  <util/general.h>
 
 #include	<pin.H>
 
@@ -141,7 +141,7 @@ class frame_record
 	/* ====================  DATA MEMBERS  ======================================= */
 	string variable_name;	    /* the name of the variable for this record */
 	string value;		    /* the last value stored in this location */
-        string points_to_value;     /* the value pointed to by frame records that are pointers */
+  string points_to_value;     /* the value pointed to by frame records that are pointers */
 	var_record *vrec;	    /* the DWARF information for this variable */
 
 }; /* -----  end of class Frame_record  ----- */
@@ -183,6 +183,10 @@ class frame : public list<frame_record *>
 	    return ctx;
 	}
 
+  bool get_is_first_access() {
+    return is_first_access;
+  }
+
 	/* ====================  BUILDERS      ======================================= */
 
 	/**
@@ -220,6 +224,8 @@ class frame : public list<frame_record *>
 
 	/* ====================  OPERATORS     ======================================= */
 
+  void clear_is_first_access() { is_first_access = false;}
+
 	/**
 	 * Get a list of variable that refer directly to the given address
 	 *
@@ -236,6 +242,7 @@ class frame : public list<frame_record *>
 
 	string name; /* the name of the function */
 	CONTEXT *ctx; /* a pin context at the time this frame is put on the stack */
+  bool is_first_access;
 
 }; /* -----  end of class frame  ----- */
 
@@ -331,11 +338,11 @@ public:
 
   Generic get_points_to() {
 	return points_to;
-  }	
+  }
 
   string get_points_to_value() {
 	return points_to_value;
-  }	
+  }
 
   string get_scope() {
      return scope;
@@ -398,7 +405,7 @@ class runtime_stack : public list<frame *>
 	 * @param ip address in the function
 	 * @param ctx the pin context for this stack frame
 	 */
-	void push(string name,Generic ip, CONTEXT *ctx);
+	frame *push(string name,Generic ip, CONTEXT *ctx);
 
 	/**
 	 * Pop a frame from the runtime stack
@@ -419,7 +426,7 @@ class runtime_stack : public list<frame *>
        * This method is used after a library routine has been called
        *
        * @param cutab a compilation unit table
-       * @return a list of variables that have been updated  
+       * @return a list of variables that have been updated
        */
       list<var_upd_record *> *get_all_updated_variables(cu_table *cutab);
 
@@ -435,7 +442,7 @@ class runtime_stack : public list<frame *>
 
       /**
        * Check a single frame for variables whose points to location has been updated
-       * 
+       *
        * @param cutab a compilation unit table
        * @param fr a stack or global variable frame
        * @return a list of variables in this frame whose value hase changed
@@ -443,7 +450,7 @@ class runtime_stack : public list<frame *>
       list<var_upd_record *> *get_updated_points_to_frame(cu_table *cutab,frame *fr);
 
       /**
-       * Compute a list of all pointers accessible from the stack or static data area whose points_to location has changed 
+       * Compute a list of all pointers accessible from the stack or static data area whose points_to location has changed
        *
        * @param cutab a table of compilation units
        * @return a list of variables that on the stack or in global memory that could

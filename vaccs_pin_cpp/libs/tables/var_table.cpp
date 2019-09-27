@@ -211,22 +211,34 @@ bool var_record::is_at_address(const CONTEXT *ctxt,Generic mem_addr, type_record
 
    DEBUGL(LOG("Enter is_at_address\n"));
    DEBUGL(LOG("trec = " + hexstr(trec) + " type name = "+*trec->get_name()+ "\n"));
-   Generic var_addr;
-    
-   var_addr = get_base_address(ctxt);
+   Generic var_addr = get_var_address(ctxt,trec);
 
-   var_addr = deref_if_by_reference(trec,var_addr);
-
-   DEBUGL(LOG("var_addr: " +hexstr(var_addr) + " mem_addr: " + hexstr(mem_addr) +  " size: " + 
+   DEBUGL(LOG("var_addr: " +hexstr(var_addr) + " mem_addr: " + hexstr(mem_addr) +  " size: " +
               decstr(trec->get_size()) + "\n"));
 
-   if (trec->get_is_array() || trec->get_is_struct()) { 
+   if (trec->get_is_array() || trec->get_is_struct()) {
 
    // is this an access to some element of an array or struct
 
       return (mem_addr >= var_addr) && (mem_addr < var_addr + trec->get_size());
    } else
       return var_addr == mem_addr;
+}
+
+/**
+ * Determine the address of this variable
+ *
+ * @param ctxt a pin process context
+ * @param mem_addr the prospective memory address
+ * @param trec the type record for this variable
+ * @return true if the variable is at the prospective address, otherwise false
+ */
+Generic var_record::get_var_address(const CONTEXT *ctxt,type_record *trec) {
+
+  Generic var_addr= get_base_address(ctxt);
+  var_addr = deref_if_by_reference(trec,var_addr);
+
+  return var_addr;
 }
 
 /**
@@ -259,8 +271,8 @@ Generic var_record::get_base_address(const CONTEXT *ctxt) {
    if (is_local || is_param) {
 
    // location is the offset from the frame pointer
-   
-      base_address = PIN_GetContextReg( ctxt, REG_GBP) + location; 
+
+      base_address = PIN_GetContextReg( ctxt, REG_GBP) + location;
       DEBUGL(LOG("Base address for a local or param is: " + hexstr(base_address) + "\n"));
    } else {
       base_address = location + data_base_address; // location is the actual address
