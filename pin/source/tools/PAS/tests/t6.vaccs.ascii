@@ -1,0 +1,366 @@
+architecture~!~x86_64
+invocation~!~tests/t6 
+binary~!~tests/t6
+ccode~!~#include <stdio.h>
+ccode~!~#include <stdlib.h>
+ccode~!~
+ccode~!~int a;
+ccode~!~int c = 3;
+ccode~!~int main() {
+ccode~!~
+ccode~!~   int b;
+ccode~!~   int *p = malloc(sizeof(int));
+ccode~!~
+ccode~!~   
+ccode~!~   a = 1;
+ccode~!~   b = 2;
+ccode~!~   *p = 5;
+ccode~!~   printf("a = %d, b = %d, *p = %d, c = %d\n",a, b, *p, c);
+ccode~!~}
+section~!~|Type|Address|Size|Section Name
+section~!~|5|0x555555554238|28|.interp
+section~!~|5|0x555555554254|32|.note.ABI-tag
+section~!~|5|0x555555554274|36|.note.gnu.build-id
+section~!~|5|0x555555554298|28|.gnu.hash
+section~!~|16|0x5555555542b8|192|.dynsym
+section~!~|20|0x555555554378|139|.dynstr
+section~!~|5|0x555555554404|16|.gnu.version
+section~!~|5|0x555555554418|32|.gnu.version_r
+section~!~|2|0x555555554438|192|.rela.dyn
+section~!~|2|0x5555555544f8|48|.rela.plt
+section~!~|4|0x555555554528|23|.init
+section~!~|4|0x555555554540|48|.plt
+section~!~|4|0x555555554570|8|.plt.got
+section~!~|4|0x555555554580|482|.text
+section~!~|4|0x555555554764|9|.fini
+section~!~|5|0x555555554770|41|.rodata
+section~!~|5|0x55555555479c|60|.eh_frame_hdr
+section~!~|5|0x5555555547d8|264|.eh_frame
+section~!~|5|0x555555754db0|8|.init_array
+section~!~|5|0x555555754db8|8|.fini_array
+section~!~|6|0x555555754dc0|496|.dynamic
+section~!~|8|0x555555754fb0|80|.got
+section~!~|5|0x555555755000|20|.data
+section~!~|18|0x555555755014|12|.bss
+section~!~|17|0x0|43|.comment
+section~!~|17|0x0|48|.debug_aranges
+section~!~|17|0x0|884|.debug_info
+section~!~|17|0x0|258|.debug_abbrev
+section~!~|17|0x0|215|.debug_line
+section~!~|17|0x0|695|.debug_str
+section~!~|15|0x0|1704|.symtab
+section~!~|19|0x0|537|.strtab
+section~!~|21|0x0|318|.shstrtab
+assembly~!~0|sub rsp, 0x8
+assembly~!~0|mov rax, qword ptr [rip+0x200ab5]
+assembly~!~0|test rax, rax
+assembly~!~0|jz 0x55555555453a
+assembly~!~0|call rax
+assembly~!~0|add rsp, 0x8
+assembly~!~0|ret 
+assembly~!~0|push qword ptr [rip+0x200a72]
+assembly~!~0|jmp qword ptr [rip+0x200a74]
+assembly~!~0|nop dword ptr [rax], eax
+assembly~!~0|jmp qword ptr [rip+0x200a72]
+assembly~!~0|push 0x0
+assembly~!~0|jmp 0x555555554540
+assembly~!~0|jmp qword ptr [rip+0x200a6a]
+assembly~!~0|push 0x1
+assembly~!~0|jmp 0x555555554540
+assembly~!~0|jmp qword ptr [rip+0x200a82]
+assembly~!~0|data16 nop 
+assembly~!~0|xor ebp, ebp
+assembly~!~0|mov r9, rdx
+assembly~!~0|pop rsi
+assembly~!~0|mov rdx, rsp
+assembly~!~0|and rsp, 0xfffffffffffffff0
+assembly~!~0|push rax
+assembly~!~0|push rsp
+assembly~!~0|lea r8, ptr [rip+0x1ca]
+assembly~!~0|lea rcx, ptr [rip+0x153]
+assembly~!~0|lea rdi, ptr [rip+0xe6]
+assembly~!~0|call qword ptr [rip+0x200a36]
+assembly~!~0|hlt 
+assembly~!~0|lea rdi, ptr [rip+0x200a61]
+assembly~!~0|push rbp
+assembly~!~0|lea rax, ptr [rip+0x200a59]
+assembly~!~0|cmp rax, rdi
+assembly~!~0|mov rbp, rsp
+assembly~!~0|jz 0x5555555545e0
+assembly~!~0|mov rax, qword ptr [rip+0x200a0a]
+assembly~!~0|test rax, rax
+assembly~!~0|jz 0x5555555545e0
+assembly~!~0|pop rbp
+assembly~!~0|jmp rax
+assembly~!~0|nop word ptr [rax+rax*1], ax
+assembly~!~0|pop rbp
+assembly~!~0|ret 
+assembly~!~0|nop dword ptr [rax], eax
+assembly~!~0|nop word ptr [rax+rax*1], ax
+assembly~!~0|lea rdi, ptr [rip+0x200a21]
+assembly~!~0|lea rsi, ptr [rip+0x200a1a]
+assembly~!~0|push rbp
+assembly~!~0|sub rsi, rdi
+assembly~!~0|mov rbp, rsp
+assembly~!~0|sar rsi, 0x3
+assembly~!~0|mov rax, rsi
+assembly~!~0|shr rax, 0x3f
+assembly~!~0|add rsi, rax
+assembly~!~0|sar rsi, 0x1
+assembly~!~0|jz 0x555555554630
+assembly~!~0|mov rax, qword ptr [rip+0x2009d1]
+assembly~!~0|test rax, rax
+assembly~!~0|jz 0x555555554630
+assembly~!~0|pop rbp
+assembly~!~0|jmp rax
+assembly~!~0|nop word ptr [rax+rax*1], ax
+assembly~!~0|pop rbp
+assembly~!~0|ret 
+assembly~!~0|nop dword ptr [rax], eax
+assembly~!~0|nop word ptr [rax+rax*1], ax
+assembly~!~0|cmp byte ptr [rip+0x2009cd], 0x0
+assembly~!~0|jnz 0x555555554678
+assembly~!~0|cmp qword ptr [rip+0x2009a7], 0x0
+assembly~!~0|push rbp
+assembly~!~0|mov rbp, rsp
+assembly~!~0|jz 0x555555554663
+assembly~!~0|mov rdi, qword ptr [rip+0x2009aa]
+assembly~!~0|call 0x555555554570
+assembly~!~0|call 0x5555555545b0
+assembly~!~0|mov byte ptr [rip+0x2009a5], 0x1
+assembly~!~0|pop rbp
+assembly~!~0|ret 
+assembly~!~0|nop dword ptr [rax], eax
+assembly~!~0|ret 
+assembly~!~0|push rbp
+assembly~!~0|mov rbp, rsp
+assembly~!~0|pop rbp
+assembly~!~0|jmp 0x5555555545f0
+assembly~!~6|push rbp
+assembly~!~6|mov rbp, rsp
+assembly~!~6|sub rsp, 0x10
+assembly~!~9|mov edi, 0x4
+assembly~!~9|call 0x555555554560
+assembly~!~9|mov qword ptr [rbp-0x8], rax
+assembly~!~12|mov dword ptr [rip+0x20096e], 0x1
+assembly~!~13|mov dword ptr [rbp-0xc], 0x2
+assembly~!~14|mov rax, qword ptr [rbp-0x8]
+assembly~!~14|mov dword ptr [rax], 0x5
+assembly~!~15|mov esi, dword ptr [rip+0x20094f]
+assembly~!~15|mov rax, qword ptr [rbp-0x8]
+assembly~!~15|mov ecx, dword ptr [rax]
+assembly~!~15|mov eax, dword ptr [rip+0x20094b]
+assembly~!~15|mov edx, dword ptr [rbp-0xc]
+assembly~!~15|mov r8d, esi
+assembly~!~15|mov esi, eax
+assembly~!~15|lea rdi, ptr [rip+0x9c]
+assembly~!~15|mov eax, 0x0
+assembly~!~15|call 0x555555554550
+assembly~!~15|mov eax, 0x0
+assembly~!~16|leave 
+assembly~!~16|ret 
+assembly~!~0|push r15
+assembly~!~0|push r14
+assembly~!~0|mov r15, rdx
+assembly~!~0|push r13
+assembly~!~0|push r12
+assembly~!~0|lea r12, ptr [rip+0x2006ae]
+assembly~!~0|push rbp
+assembly~!~0|lea rbp, ptr [rip+0x2006ae]
+assembly~!~0|push rbx
+assembly~!~0|mov r13d, edi
+assembly~!~0|mov r14, rsi
+assembly~!~0|sub rbp, r12
+assembly~!~0|sub rsp, 0x8
+assembly~!~0|sar rbp, 0x3
+assembly~!~0|call 0x555555554528
+assembly~!~0|test rbp, rbp
+assembly~!~0|jz 0x555555554746
+assembly~!~0|xor ebx, ebx
+assembly~!~0|nop dword ptr [rax+rax*1], eax
+assembly~!~0|mov rdx, r15
+assembly~!~0|mov rsi, r14
+assembly~!~0|mov edi, r13d
+assembly~!~0|call qword ptr [r12+rbx*8]
+assembly~!~0|add rbx, 0x1
+assembly~!~0|cmp rbp, rbx
+assembly~!~0|jnz 0x555555554730
+assembly~!~0|add rsp, 0x8
+assembly~!~0|pop rbx
+assembly~!~0|pop rbp
+assembly~!~0|pop r12
+assembly~!~0|pop r13
+assembly~!~0|pop r14
+assembly~!~0|pop r15
+assembly~!~0|ret 
+assembly~!~0|ret 
+assembly~!~0|sub rsp, 0x8
+assembly~!~0|add rsp, 0x8
+assembly~!~0|ret 
+function_invocation~!~19|0|`_start|0x7fffffffdb90
+return_address~!~_start|0|1
+register~!~20|null|ebp|0
+register~!~21|null|rflags|582
+register~!~22|null|r9|140737351932320
+register~!~25|null|rsi|1
+register~!~26|null|rsp|140737488346008
+register~!~27|null|rdx|140737488346008
+register~!~28|null|rsp|140737488346000
+register~!~29|null|rflags|518
+register~!~32|null|rsp|140737488345992
+register~!~35|null|rsp|140737488345984
+register~!~36|null|r8|93824992233312
+register~!~37|null|rcx|93824992233200
+register~!~38|null|rdi|93824992233098
+register~!~41|null|rip|140737021876912
+register~!~42|null|rsp|140737488345976
+function_invocation~!~44|0|`__libc_csu_init|0x7fffffffdab8
+return_address~!~__libc_csu_init|93824992233200|140737021877032
+register~!~47|null|rsp|140737488345776
+register~!~50|null|rsp|140737488345768
+register~!~51|null|r15|140737488346024
+register~!~54|null|rsp|140737488345760
+register~!~57|null|rsp|140737488345752
+register~!~58|null|r12|93824994332080
+register~!~61|null|rsp|140737488345744
+register~!~62|null|rbp|93824994332088
+register~!~65|null|rsp|140737488345736
+register~!~66|null|r13d|1
+register~!~67|null|r14|140737488346008
+register~!~68|null|rbp|8
+register~!~69|null|rflags|514
+register~!~70|null|rsp|140737488345728
+register~!~71|null|rbp|1
+register~!~73|null|rip|93824992232744
+register~!~74|null|rsp|140737488345720
+function_invocation~!~76|0|`_init|0x7fffffffda78
+return_address~!~_init|1|93824992233249
+register~!~77|null|rsp|140737488345712
+register~!~79|null|rax|0
+register~!~80|null|rflags|582
+register~!~81|null|rsp|140737488345720
+register~!~82|null|rflags|518
+return~!~83
+register~!~86|null|rip|93824992233249
+register~!~87|null|rsp|140737488345728
+register~!~88|null|rflags|514
+register~!~89|null|rip|93824992233254
+register~!~90|null|ebx|0
+register~!~91|null|rflags|582
+register~!~92|null|rdx|140737488346024
+register~!~93|null|rsi|140737488346008
+register~!~94|null|edi|1
+register~!~97|null|rip|93824992233088
+register~!~98|null|rsp|140737488345720
+register~!~101|null|rsp|140737488345712
+register~!~102|null|rbp|140737488345712
+register~!~105|null|rbp|1
+register~!~106|null|rsp|140737488345720
+register~!~107|null|rip|93824992232944
+function_invocation~!~109|0|`register_tm_clones|0x7fffffffda78
+return_address~!~register_tm_clones|1|93824992233277
+register~!~110|null|rdi|93824994332696
+register~!~111|null|rsi|93824994332696
+register~!~114|null|rsp|140737488345712
+register~!~115|null|rsi|0
+register~!~116|null|rbp|140737488345712
+register~!~119|null|rbp|1
+register~!~120|null|rsp|140737488345720
+return~!~121
+register~!~124|null|rip|93824992233277
+register~!~125|null|rsp|140737488345728
+register~!~126|null|rbx|1
+register~!~127|null|rflags|514
+register~!~128|null|rflags|582
+register~!~129|null|rip|93824992233286
+register~!~130|null|rsp|140737488345736
+register~!~131|null|rflags|518
+register~!~134|null|rbx|0
+register~!~135|null|rsp|140737488345744
+register~!~138|null|rbp|93824992233200
+register~!~139|null|rsp|140737488345752
+register~!~142|null|r12|93824992232832
+register~!~143|null|rsp|140737488345760
+register~!~146|null|r13|140737488346000
+register~!~147|null|rsp|140737488345768
+register~!~150|null|r14|0
+register~!~151|null|rsp|140737488345776
+register~!~154|null|r15|0
+register~!~155|null|rsp|140737488345784
+return~!~156
+register~!~159|null|rip|140737021877032
+register~!~160|null|rsp|140737488345792
+function_invocation~!~162|0|test6.c`main|0x7fffffffdab8
+return_address~!~main|93824992233200|140737021877143
+register~!~165|int main() {|rsp|140737488345776
+register~!~166|int main() {|rbp|140737488345776
+register~!~167|int main() {|rsp|140737488345760
+register~!~168|   int *p = malloc(sizeof(int));|edi|4
+register~!~170|   int *p = malloc(sizeof(int));|rip|93824992232800
+register~!~171|   int *p = malloc(sizeof(int));|rsp|140737488345752
+variable_access~!~172|9|main|140737488345764|int|b|32767
+variable_access~!~172|9|main|140737488345768|int*|p|0x0|<null pointer>
+variable_access~!~172|9|*G*|93824994332696|int|a|0
+variable_access~!~172|9|*G*|93824994332688|int|c|3
+variable_access~!~172|9|main|140737488345768|int*|p|0x0|Null pointer exception
+register~!~174|null|rip|140737022357616
+variable_access~!~177|9|main|140737488345768|int*|p|0x0|0x555555756260
+variable_access~!~177|9|main|140737488345768|int*|p|0x555555756260|0
+variable_access~!~179|12|*G*|93824994332696|int|a|1
+variable_access~!~181|13|main|140737488345764|int|b|2
+register~!~183|   *p = 5;|rax|93824994337376
+variable_access~!~185|14|main|140737488345768|int*|p|0x555555756260|5
+register~!~187|   printf("a = %d, b = %d, *p = %d, c = %d\n",a, b, *p, c);|esi|3
+register~!~190|   printf("a = %d, b = %d, *p = %d, c = %d\n",a, b, *p, c);|ecx|5
+register~!~192|   printf("a = %d, b = %d, *p = %d, c = %d\n",a, b, *p, c);|eax|1
+register~!~194|   printf("a = %d, b = %d, *p = %d, c = %d\n",a, b, *p, c);|edx|2
+register~!~195|   printf("a = %d, b = %d, *p = %d, c = %d\n",a, b, *p, c);|r8d|3
+register~!~196|   printf("a = %d, b = %d, *p = %d, c = %d\n",a, b, *p, c);|esi|1
+register~!~197|   printf("a = %d, b = %d, *p = %d, c = %d\n",a, b, *p, c);|rdi|93824992233336
+register~!~198|   printf("a = %d, b = %d, *p = %d, c = %d\n",a, b, *p, c);|eax|0
+register~!~200|   printf("a = %d, b = %d, *p = %d, c = %d\n",a, b, *p, c);|rip|93824992232784
+register~!~203|null|rip|140737022152320
+register~!~206|}|rbp|93824992233200
+register~!~207|}|rsp|140737488345784
+return~!~208
+register~!~212|}|rip|140737021877143
+register~!~213|}|rsp|140737488345792
+function_invocation~!~215|0|`__do_global_dtors_aux|0x7fffffffd9c8
+return_address~!~__do_global_dtors_aux|140737488345680|140737351932787
+register~!~217|null|rflags|582
+register~!~218|null|rip|93824992233033
+register~!~220|null|rflags|514
+register~!~223|null|rsp|140737488345536
+register~!~224|null|rbp|140737488345536
+register~!~225|null|rip|93824992233047
+register~!~227|null|rdi|93824994332680
+register~!~229|null|rip|93824992232816
+register~!~230|null|rsp|140737488345528
+register~!~232|null|rip|140737022014752
+register~!~234|null|rip|93824992232880
+function_invocation~!~236|0|`deregister_tm_clones|0x7fffffffd9b8
+return_address~!~deregister_tm_clones|140737488345536|93824992233064
+register~!~237|null|rdi|93824994332696
+register~!~240|null|rsp|140737488345520
+register~!~241|null|rax|93824994332696
+register~!~242|null|rflags|582
+register~!~243|null|rbp|140737488345520
+register~!~246|null|rbp|140737488345536
+register~!~247|null|rsp|140737488345528
+return~!~248
+register~!~251|null|rip|93824992233064
+register~!~252|null|rsp|140737488345536
+register~!~256|null|rbp|140737488345680
+register~!~257|null|rsp|140737488345544
+return~!~258
+register~!~261|null|rip|140737351932787
+register~!~262|null|rsp|140737488345552
+function_invocation~!~264|0|`_fini|0x7fffffffd9c8
+return_address~!~_fini|140737488345680|140737351932819
+register~!~265|null|rsp|140737488345536
+register~!~266|null|rflags|518
+register~!~267|null|rsp|140737488345544
+register~!~268|null|rflags|514
+return~!~269
+register~!~272|null|rip|140737351932819
+register~!~273|null|rsp|140737488345552

@@ -187,6 +187,10 @@ class frame : public list<frame_record *>
     return is_first_access;
   }
 
+  bool get_is_before_stack_setup() {
+    return is_before_stack_setup;
+  }
+
 	/* ====================  BUILDERS      ======================================= */
 
 	/**
@@ -226,6 +230,8 @@ class frame : public list<frame_record *>
 
   void clear_is_first_access() { is_first_access = false;}
 
+  void clear_is_before_stack_setup() { is_before_stack_setup = false;}
+
 	/**
 	 * Get a list of variable that refer directly to the given address
 	 *
@@ -243,6 +249,7 @@ class frame : public list<frame_record *>
 	string name; /* the name of the function */
 	CONTEXT *ctx; /* a pin context at the time this frame is put on the stack */
   bool is_first_access;
+  bool is_before_stack_setup;
 
 }; /* -----  end of class frame  ----- */
 
@@ -406,6 +413,8 @@ class runtime_stack : public list<frame *>
 	 * @param ctx the pin context for this stack frame
 	 */
 	frame *push(string name,Generic ip, CONTEXT *ctx);
+
+  frame *top() { return this->front(); }
 
 	/**
 	 * Pop a frame from the runtime stack

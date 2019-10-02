@@ -462,7 +462,7 @@ VOID AfterMemWrite(VOID* assembly, ADDRINT ip, ADDRINT addr,const CONTEXT *ctxt,
     PIN_UnlockClient();
 
     if (line == 0)
-	fileName = NOCSOURCE;
+	   fileName = NOCSOURCE;
 
     DEBUGL(LOG("line = " + decstr(line) + ", column = " + decstr(column) + ", file = " +
                fileName + "\n"));
@@ -476,19 +476,24 @@ VOID AfterMemWrite(VOID* assembly, ADDRINT ip, ADDRINT addr,const CONTEXT *ctxt,
     else {
       DEBUGL(LOG("ip = " + hexstr(ip) + " is in user code checking variable access"));
 
-      list<var_upd_record*> *vlist = stack_model->addr_get_updated_variables((Generic)addr,cutab);
-      vlist->splice(vlist->end(),*stack_model->get_all_updated_points_to(cutab));
+      frame *fr = stack_model->top();
+      if (!fr->get_is_before_stack_setup()) {
+        list<var_upd_record*> *vlist = stack_model->addr_get_updated_variables((Generic)addr,cutab);
+        vlist->splice(vlist->end(),*stack_model->get_all_updated_points_to(cutab));
 
-      if (vlist->empty()) {
-  	     DEBUGL(LOG("there are no live variables"));
-      } else {
+        if (vlist->empty()) {
+  	       DEBUGL(LOG("there are no live variables"));
+        } else {
 
-      	for (list<var_upd_record*>::iterator it = vlist->begin(); it != vlist->end(); it++) {
-	         var_upd_record* vurec = *it;
-    	     write_element_record(cutab,vurec,line,fileName,"",timestamp);
-    	  }
-      }
-      timestamp++;
+    	     for (list<var_upd_record*>::iterator it = vlist->begin(); it != vlist->end(); it++) {
+	             var_upd_record* vurec = *it;
+              write_element_record(cutab,vurec,line,fileName,"",timestamp);
+           }
+         }
+         timestamp++;
+       } else {
+         DEBUGL(LOG("PC is before stack frame is setup: "+hexstr(ip)));
+       }
     }
 }
 

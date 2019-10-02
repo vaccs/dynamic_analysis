@@ -98,10 +98,10 @@ return_transaction return_event;
 /* ===================================================================== */
 /* Print Help Message                                                    */
 /* ===================================================================== */
-   
+
 INT32 Usage()
 {
-    PIN_ERROR( "This Pintool prints a trace of memory addresses\n" 
+    PIN_ERROR( "This Pintool prints a trace of memory addresses\n"
               + KNOB_BASE::StringKnobSummary() + "\n");
     return -1;
 }
@@ -251,10 +251,10 @@ void emit_c_code(vaccs_dw_reader *vdr) {
 
 }
 
-void emit_initial_function_call() { 
+void emit_initial_function_call() {
 
     vaccs_record_factory factory;
- 
+
     DEBUGL(cerr << "Call to function\n");
     DEBUGL(cerr << "\tEvent num: " + decstr(timestamp++) + "\n");
     DEBUGL(cerr << "\tFunction name: __NOFUNCTION__\n");
@@ -297,7 +297,7 @@ int main(int argc, char *argv[])
     if( PIN_Init(argc,argv) ) {
         return Usage();
     }
- 
+
     setup_output_files(argv[++i]);
 
    /*
@@ -309,7 +309,7 @@ int main(int argc, char *argv[])
     vdr->add_file_name(vfn);
 
     vdr->read_vaccs_dw_info();
- 
+
     stack_model = (new runtime_stack())->add_cu_table(vdr->get_cutab());
     emit_arch();
     emit_cmd_line(argc,i,argv);

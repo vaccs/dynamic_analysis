@@ -13,10 +13,13 @@
 #include <io/vaccs_record.h>
 #include <io/register_record.h>
 #include <map>
+#include <tables/frame.h>
+
+extern runtime_stack *stack_model;
 
 using namespace std;
 
-VOID AfterRegMod(ADDRINT ip, CONTEXT *ctxt, REG reg) {
+VOID AfterRegMod(ADDRINT ip, CONTEXT *ctxt, REG reg, UINT32 opcode) {
     INT32	column;
     INT32	line;
     string 	fileName;
@@ -29,11 +32,22 @@ VOID AfterRegMod(ADDRINT ip, CONTEXT *ctxt, REG reg) {
     PIN_GetSourceLocation(ip,&column,&line,&fileName);
     PIN_UnlockClient();
 
+    string reg_name = REG_StringShort(reg);
     if (line == 0)
-	fileName = NOCSOURCE;
+	   fileName = NOCSOURCE;
+    else {
+      frame *fr = stack_model->top();
+      if (fr->get_is_before_stack_setup() && reg == REG_STACK_PTR && OPCODE_StringShort(opcode) == "SUB") {
+
+        // if we've just entered a function and the stack and frame pointer are now
+        // set up, set the initial context properly
+
+        fr->clear_is_before_stack_setup();
+        fr->add_context(ctxt);
+      }
+    }
 
     vaccs_record_factory factory;
-    string reg_name = REG_StringShort(reg);
     PIN_REGISTER value;
     PIN_GetContextRegval(ctxt,reg,(UINT8*)&value);
     Generic regval;
@@ -72,16 +86,16 @@ VOID AfterRegMod(ADDRINT ip, CONTEXT *ctxt, REG reg) {
 	    ->add_c_file_name(fileName.c_str())
 	    ->add_register_name(reg_name.c_str())
 	    ->add_value(regval);
-    
+
 	rrec->write(vaccs_fd);
 	delete rrec;
-	
+
 	old_values[reg_name] = regval;
     }
 }
 
 
-// Is called for every instruction and instruments all of them that have 
+// Is called for every instruction and instruments all of them that have
 // corresponding C code and modify a register
 VOID MonitorRegisterInstruction(INS ins, VOID *v)
 {
@@ -94,9 +108,10 @@ VOID MonitorRegisterInstruction(INS ins, VOID *v)
       	UINT32 num_wregs = INS_MaxNumWRegs(ins);
 	for (UINT32 i = 0; i < num_wregs; i++) {
 	    REG reg = INS_RegW(ins,i);
+      UINT32 opcode = INS_Opcode	(ins);
 	    INS_InsertPredicatedCall(ins, where, (AFUNPTR)AfterRegMod,
-				     IARG_INST_PTR, IARG_CONTEXT, IARG_UINT32, 
-				     reg, IARG_END);
+				     IARG_INST_PTR, IARG_CONTEXT, IARG_UINT32,
+				     reg, IARG_UINT32,opcode,IARG_END);
 	}
     }
 }

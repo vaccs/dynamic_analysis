@@ -1,68 +1,46 @@
-	.file	"test1.c"
+	.file	"test2.c"
 	.text
 .Ltext0:
-	.comm	a,4,4
-	.globl	c
-	.data
-	.align 4
-	.type	c, @object
-	.size	c, 4
-c:
-	.long	3
+	.comm	x,16,16
 	.section	.rodata
-	.align 8
 .LC0:
-	.string	"a = %d, b = %d, *p = %d, c = %d\n"
+	.string	"a = %d, b = %d, *p = %d\n"
 	.text
 	.globl	main
 	.type	main, @function
 main:
-.LFB0:
-	.file 1 "test1.c"
-	.loc 1 4 0
+.LFB5:
+	.file 1 "test2.c"
+	.loc 1 10 0
 	.cfi_startproc
 	pushq	%rbp
 	.cfi_def_cfa_offset 16
 	.cfi_offset 6, -16
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register 6
-	subq	$32, %rsp
-	.loc 1 4 0
-	movq	%fs:40, %rax
-	movq	%rax, -8(%rbp)
-	xorl	%eax, %eax
-	.loc 1 8 0
-	movq	$0, -16(%rbp)
-	.loc 1 10 0
-	leaq	-20(%rbp), %rax
-	movq	%rax, -16(%rbp)
-	.loc 1 11 0
-	movl	$1, a(%rip)
 	.loc 1 12 0
-	movl	$2, -20(%rbp)
+	movl	$1, x(%rip)
 	.loc 1 13 0
-	movl	c(%rip), %esi
-	movq	-16(%rbp), %rax
+	movl	$2, 4+x(%rip)
+	.loc 1 14 0
+	leaq	4+x(%rip), %rax
+	movq	%rax, 8+x(%rip)
+	.loc 1 15 0
+	movq	8+x(%rip), %rax
 	movl	(%rax), %ecx
-	movl	-20(%rbp), %edx
-	movl	a(%rip), %eax
-	movl	%esi, %r8d
+	movl	4+x(%rip), %edx
+	movl	x(%rip), %eax
 	movl	%eax, %esi
 	leaq	.LC0(%rip), %rdi
 	movl	$0, %eax
 	call	printf@PLT
 	movl	$0, %eax
-	.loc 1 14 0
-	movq	-8(%rbp), %rdi
-	xorq	%fs:40, %rdi
-	je	.L3
-	call	__stack_chk_fail@PLT
-.L3:
-	leave
+	.loc 1 16 0
+	popq	%rbp
 	.cfi_def_cfa 7, 8
 	ret
 	.cfi_endproc
-.LFE0:
+.LFE5:
 	.size	main, .-main
 .Letext0:
 	.file 2 "/usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h"
@@ -70,17 +48,19 @@ main:
 	.file 4 "/usr/include/x86_64-linux-gnu/bits/libio.h"
 	.file 5 "/usr/include/stdio.h"
 	.file 6 "/usr/include/x86_64-linux-gnu/bits/sys_errlist.h"
+	.file 7 "/usr/include/unistd.h"
+	.file 8 "/usr/include/x86_64-linux-gnu/bits/getopt_core.h"
 	.section	.debug_info,"",@progbits
 .Ldebug_info0:
-	.long	0x362
+	.long	0x3a9
 	.value	0x4
 	.long	.Ldebug_abbrev0
 	.byte	0x8
 	.uleb128 0x1
-	.long	.LASF53
+	.long	.LASF61
 	.byte	0xc
-	.long	.LASF54
-	.long	.LASF55
+	.long	.LASF62
+	.long	.LASF63
 	.quad	.Ltext0
 	.quad	.Letext0-.Ltext0
 	.long	.Ldebug_line0
@@ -324,7 +304,7 @@ main:
 	.byte	0xc4
 	.byte	0
 	.uleb128 0xb
-	.long	.LASF56
+	.long	.LASF64
 	.byte	0x4
 	.byte	0x9a
 	.uleb128 0x8
@@ -376,7 +356,7 @@ main:
 	.byte	0x13
 	.byte	0
 	.uleb128 0xe
-	.long	.LASF57
+	.long	.LASF65
 	.uleb128 0xf
 	.long	.LASF45
 	.byte	0x4
@@ -429,52 +409,87 @@ main:
 	.byte	0x6
 	.byte	0x1b
 	.long	0x2ef
+	.uleb128 0x3
+	.byte	0x8
+	.byte	0x5
+	.long	.LASF53
+	.uleb128 0x3
+	.byte	0x8
+	.byte	0x7
+	.long	.LASF54
+	.uleb128 0xf
+	.long	.LASF55
+	.byte	0x7
+	.value	0x222
+	.long	0x319
+	.uleb128 0x6
+	.byte	0x8
+	.long	0x88
+	.uleb128 0x10
+	.long	.LASF56
+	.byte	0x8
+	.byte	0x24
+	.long	0x88
+	.uleb128 0x10
+	.long	.LASF57
+	.byte	0x8
+	.byte	0x32
+	.long	0x62
+	.uleb128 0x10
+	.long	.LASF58
+	.byte	0x8
+	.byte	0x37
+	.long	0x62
+	.uleb128 0x10
+	.long	.LASF59
+	.byte	0x8
+	.byte	0x3b
+	.long	0x62
+	.uleb128 0x8
+	.long	.LASF60
+	.byte	0x10
+	.byte	0x1
+	.byte	0x5
+	.long	0x376
 	.uleb128 0x12
 	.string	"a"
 	.byte	0x1
-	.byte	0x2
-	.long	0x62
-	.uleb128 0x9
-	.byte	0x3
-	.quad	a
-	.uleb128 0x12
-	.string	"c"
-	.byte	0x1
-	.byte	0x3
-	.long	0x62
-	.uleb128 0x9
-	.byte	0x3
-	.quad	c
-	.uleb128 0x13
-	.long	.LASF58
-	.byte	0x1
-	.byte	0x4
-	.long	0x62
-	.quad	.LFB0
-	.quad	.LFE0-.LFB0
-	.uleb128 0x1
-	.byte	0x9c
-	.long	0x35f
-	.uleb128 0x14
-	.string	"b"
-	.byte	0x1
 	.byte	0x6
 	.long	0x62
-	.uleb128 0x2
-	.byte	0x91
-	.sleb128 -36
-	.uleb128 0x14
+	.byte	0
+	.uleb128 0x12
+	.string	"b"
+	.byte	0x1
+	.byte	0x7
+	.long	0x62
+	.byte	0x4
+	.uleb128 0x12
 	.string	"p"
 	.byte	0x1
 	.byte	0x8
-	.long	0x35f
-	.uleb128 0x2
-	.byte	0x91
-	.sleb128 -32
+	.long	0x376
+	.byte	0x8
 	.byte	0
 	.uleb128 0x6
 	.byte	0x8
 	.long	0x62
+	.uleb128 0x13
+	.string	"x"
+	.byte	0x1
+	.byte	0x9
+	.long	0x34b
+	.uleb128 0x9
+	.byte	0x3
+	.quad	x
+	.uleb128 0x14
+	.long	.LASF66
+	.byte	0x1
+	.byte	0xa
+	.long	0x62
+	.quad	.LFB5
+	.quad	.LFE5-.LFB5
+	.uleb128 0x1
+	.byte	0x9c
 	.byte	0
 	.section	.debug_abbrev,"",@progbits
 .Ldebug_abbrev0:
@@ -678,6 +693,21 @@ main:
 	.byte	0
 	.byte	0
 	.uleb128 0x12
+	.uleb128 0xd
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0x8
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x38
+	.uleb128 0xb
+	.byte	0
+	.byte	0
+	.uleb128 0x13
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -694,9 +724,9 @@ main:
 	.uleb128 0x18
 	.byte	0
 	.byte	0
-	.uleb128 0x13
+	.uleb128 0x14
 	.uleb128 0x2e
-	.byte	0x1
+	.byte	0
 	.uleb128 0x3f
 	.uleb128 0x19
 	.uleb128 0x3
@@ -715,23 +745,6 @@ main:
 	.uleb128 0x18
 	.uleb128 0x2116
 	.uleb128 0x19
-	.uleb128 0x1
-	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0x14
-	.uleb128 0x34
-	.byte	0
-	.uleb128 0x3
-	.uleb128 0x8
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0xb
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x2
-	.uleb128 0x18
 	.byte	0
 	.byte	0
 	.byte	0
@@ -750,10 +763,12 @@ main:
 	.section	.debug_line,"",@progbits
 .Ldebug_line0:
 	.section	.debug_str,"MS",@progbits,1
-.LASF19:
-	.string	"_IO_buf_end"
-.LASF27:
-	.string	"_old_offset"
+.LASF57:
+	.string	"optind"
+.LASF56:
+	.string	"optarg"
+.LASF40:
+	.string	"_IO_FILE"
 .LASF51:
 	.string	"sys_nerr"
 .LASF22:
@@ -768,36 +783,44 @@ main:
 	.string	"_IO_write_ptr"
 .LASF11:
 	.string	"_flags"
-.LASF18:
-	.string	"_IO_buf_base"
-.LASF31:
-	.string	"_lock"
+.LASF46:
+	.string	"_IO_2_1_stdout_"
+.LASF55:
+	.string	"__environ"
 .LASF23:
 	.string	"_markers"
 .LASF13:
 	.string	"_IO_read_end"
+.LASF58:
+	.string	"opterr"
+.LASF4:
+	.string	"signed char"
 .LASF50:
 	.string	"stderr"
-.LASF10:
-	.string	"char"
+.LASF53:
+	.string	"long long int"
+.LASF31:
+	.string	"_lock"
 .LASF6:
 	.string	"long int"
 .LASF28:
 	.string	"_cur_column"
 .LASF47:
 	.string	"_IO_2_1_stderr_"
-.LASF57:
+.LASF65:
 	.string	"_IO_FILE_plus"
 .LASF44:
 	.string	"_pos"
 .LASF43:
 	.string	"_sbuf"
-.LASF40:
-	.string	"_IO_FILE"
+.LASF27:
+	.string	"_old_offset"
 .LASF1:
 	.string	"unsigned char"
-.LASF4:
-	.string	"signed char"
+.LASF60:
+	.string	"tests"
+.LASF54:
+	.string	"long long unsigned int"
 .LASF45:
 	.string	"_IO_2_1_stdin_"
 .LASF3:
@@ -806,7 +829,7 @@ main:
 	.string	"_IO_marker"
 .LASF30:
 	.string	"_shortbuf"
-.LASF55:
+.LASF63:
 	.string	"/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests"
 .LASF15:
 	.string	"_IO_write_base"
@@ -814,11 +837,11 @@ main:
 	.string	"_unused2"
 .LASF12:
 	.string	"_IO_read_ptr"
-.LASF2:
-	.string	"short unsigned int"
-.LASF54:
-	.string	"test1.c"
-.LASF58:
+.LASF19:
+	.string	"_IO_buf_end"
+.LASF10:
+	.string	"char"
+.LASF66:
 	.string	"main"
 .LASF42:
 	.string	"_next"
@@ -832,22 +855,30 @@ main:
 	.string	"__pad4"
 .LASF37:
 	.string	"__pad5"
+.LASF62:
+	.string	"test2.c"
+.LASF2:
+	.string	"short unsigned int"
 .LASF0:
 	.string	"long unsigned int"
 .LASF17:
 	.string	"_IO_write_end"
 .LASF9:
 	.string	"__off64_t"
-.LASF8:
-	.string	"__off_t"
+.LASF25:
+	.string	"_fileno"
 .LASF24:
 	.string	"_chain"
-.LASF53:
+.LASF8:
+	.string	"__off_t"
+.LASF61:
 	.string	"GNU C11 7.4.0 -mtune=generic -march=x86-64 -g -fstack-protector-strong"
 .LASF21:
 	.string	"_IO_backup_base"
 .LASF48:
 	.string	"stdin"
+.LASF18:
+	.string	"_IO_buf_base"
 .LASF26:
 	.string	"_flags2"
 .LASF38:
@@ -860,13 +891,11 @@ main:
 	.string	"_IO_save_base"
 .LASF52:
 	.string	"sys_errlist"
-.LASF25:
-	.string	"_fileno"
+.LASF59:
+	.string	"optopt"
 .LASF49:
 	.string	"stdout"
-.LASF46:
-	.string	"_IO_2_1_stdout_"
-.LASF56:
+.LASF64:
 	.string	"_IO_lock_t"
 	.ident	"GCC: (Ubuntu 7.4.0-1ubuntu1~18.04.1) 7.4.0"
 	.section	.note.GNU-stack,"",@progbits

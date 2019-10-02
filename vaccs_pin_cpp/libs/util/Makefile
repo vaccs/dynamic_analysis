@@ -1,6 +1,5 @@
 # $Id: Makefile,v 1.7 1997/03/27 20:27:20 carr Exp $
-SRCS		= general.cpp c_string_utils.cpp 
-
+SRCS		= general.cpp c_string_utils.cpp memory_info.cpp
 CC = gcc
 CXX = g++
 
@@ -44,19 +43,19 @@ target: $(OBJS)
 clean:
 		$(RM) $(OBJS) $(DEPENDS)
 
-.c.o: 
+.c.o:
 		echo "Compiling" $<
 		$(CC) -c $(CFLAGS) $<
 
-.cpp.o: 
+.cpp.o:
 		echo "Compiling" $<
 		$(CXX) -c $(CXXFLAGS) $<
 
-.d_%: %.c 
+.d_%: %.c
 	echo  "Updating dependences for" $< "..."
 	$(CPP) -MM -MT '$(basename $<).o' $(INCLUDES) -MF $@ $<
 
-.d_%: %.cpp 
+.d_%: %.cpp
 	echo  "Updating dependences for" $< "..."
 	$(CPP) $(CXXFLAGS) -MM -MT '$(basename $<).o' -MF $@ $<
 

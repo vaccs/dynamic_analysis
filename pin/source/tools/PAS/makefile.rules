@@ -76,6 +76,7 @@ VACCS_ODIR = $(VACCS_DIR)/libs
 
 VACCS_OBJS = util/general.o \
    util/c_string_utils.o \
+   util/memory_info.o \
    io/vaccs_record.o \
    io/arch_record.o \
    io/asm_record.o \

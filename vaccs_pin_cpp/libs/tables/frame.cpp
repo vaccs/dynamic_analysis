@@ -204,7 +204,7 @@ list<var_upd_record *> *runtime_stack::get_updated_variables_from_frame(cu_table
       //
       // If addr = 0, make sure we check this variable (all variables are checked in this case)
       //
-      if (addr == 0)
+      if (addr == 0 || fr->get_is_first_access())
          addr = vrec->get_var_address(fr->get_context(),trec);
 
       if (fr->get_is_first_access() || vrec->is_at_address(fr->get_context(),addr,trec)) {

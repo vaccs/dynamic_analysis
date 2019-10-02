@@ -21,12 +21,14 @@
 #include <vaccs_read/vaccs_dw_reader.h>
 #include <io/output_record.h>
 #include <tables/frame.h>
+#include <tables/deref.h>
+#include <util/memory_info.h>
 
 #include "memory_access.h"
 
 extern NATIVE_FD vaccs_stdout;
 extern runtime_stack *stack_model;
-Generic stack_base_address = 0;
+memory_info memmap;
 
 function_invocation_transaction function_invocation_event;
 VOID functionInvocationBefore(void* function_name,const CONTEXT* ctxt,
@@ -47,8 +49,9 @@ VOID functionInvocationBefore(void* function_name,const CONTEXT* ctxt,
     ADDRINT ESP = (ADDRINT)PIN_GetContextReg( ctxt, REG_STACK_PTR);
 
     if (!strncmp(name,"_start",6)) {
-	DEBUGL(LOG("Base SP = "+hexstr(ESP)+"\n"));
-	stack_base_address = (Generic)ESP;
+	     DEBUGL(LOG("Base SP = "+hexstr(ESP)+"\n"));
+	     DEBUGL(LOG("Stack Begin ="+hexstr(memmap.get_stack_begin())));
+	     DEBUGL(LOG("Stack End ="+hexstr(memmap.get_stack_end())));
     }
 
     function_invocation_event.frame_pointer = EBP;
@@ -73,17 +76,21 @@ VOID functionInvocationBefore(void* function_name,const CONTEXT* ctxt,
 
     string sfname(name);
     DEBUGL(LOG( "Getting frame pointer for " + sfname + "\n"));
-    ADDRINT dynamic_link = 0;
-    ADDRINT return_address = 0;
+
+    // Note that we are in the procedure before any entry code has occured. So
+    // the return address is on top of the stack and the old frame pointer is
+    // still in EBP
+
+    ADDRINT dynamic_link = EBP;
+    bool is_segv;
+	  ADDRINT return_address = (ADDRINT)dereference_memory((Generic*)ESP,&is_segv);
     INT32 inv_column = 0, inv_line = 0;
     string inv_fileName = NOFUNCNAME;
 
-    if (EBP >= ESP && EBP < stack_base_address) {
-	dynamic_link = read_memory_as_address(EBP+OLD_FRAME_PTR_OFFSET);
-	return_address = read_memory_as_address(EBP+RETURN_ADDRESS_OFFSET);
-	PIN_LockClient();
-	PIN_GetSourceLocation(return_address-sizeof(Generic),&inv_column,&inv_line,&inv_fileName);
-	PIN_UnlockClient();
+    if (!is_segv) {
+	     PIN_LockClient();
+	     PIN_GetSourceLocation(return_address-sizeof(Generic),&inv_column,&inv_line,&inv_fileName);
+	     PIN_UnlockClient();
     }
 
     DEBUGL(LOG( "Call to function\n"));

@@ -1,0 +1,374 @@
+architecture~!~x86_64
+invocation~!~tests/t1 
+binary~!~tests/t1
+ccode~!~#include <stdio.h>
+ccode~!~int a;
+ccode~!~int c = 3;
+ccode~!~int main() {
+ccode~!~
+ccode~!~   int b;
+ccode~!~
+ccode~!~   int *p = NULL;
+ccode~!~
+ccode~!~   p = &b; 
+ccode~!~   a = 1;
+ccode~!~   b = 2;
+ccode~!~   printf("a = %d, b = %d, *p = %d, c = %d\n",a, b, *p, c);
+ccode~!~}
+section~!~|Type|Address|Size|Section Name
+section~!~|5|0x555555554238|28|.interp
+section~!~|5|0x555555554254|32|.note.ABI-tag
+section~!~|5|0x555555554274|36|.note.gnu.build-id
+section~!~|5|0x555555554298|28|.gnu.hash
+section~!~|16|0x5555555542b8|192|.dynsym
+section~!~|20|0x555555554378|159|.dynstr
+section~!~|5|0x555555554418|16|.gnu.version
+section~!~|5|0x555555554428|48|.gnu.version_r
+section~!~|2|0x555555554458|192|.rela.dyn
+section~!~|2|0x555555554518|48|.rela.plt
+section~!~|4|0x555555554548|23|.init
+section~!~|4|0x555555554560|48|.plt
+section~!~|4|0x555555554590|8|.plt.got
+section~!~|4|0x5555555545a0|514|.text
+section~!~|4|0x5555555547a4|9|.fini
+section~!~|5|0x5555555547b0|41|.rodata
+section~!~|5|0x5555555547dc|60|.eh_frame_hdr
+section~!~|5|0x555555554818|264|.eh_frame
+section~!~|5|0x555555754db0|8|.init_array
+section~!~|5|0x555555754db8|8|.fini_array
+section~!~|6|0x555555754dc0|496|.dynamic
+section~!~|8|0x555555754fb0|80|.got
+section~!~|5|0x555555755000|20|.data
+section~!~|18|0x555555755014|12|.bss
+section~!~|17|0x0|43|.comment
+section~!~|17|0x0|48|.debug_aranges
+section~!~|17|0x0|870|.debug_info
+section~!~|17|0x0|258|.debug_abbrev
+section~!~|17|0x0|222|.debug_line
+section~!~|17|0x0|685|.debug_str
+section~!~|15|0x0|1704|.symtab
+section~!~|19|0x0|545|.strtab
+section~!~|21|0x0|318|.shstrtab
+assembly~!~0|sub rsp, 0x8
+assembly~!~0|mov rax, qword ptr [rip+0x200a95]
+assembly~!~0|test rax, rax
+assembly~!~0|jz 0x55555555455a
+assembly~!~0|call rax
+assembly~!~0|add rsp, 0x8
+assembly~!~0|ret 
+assembly~!~0|push qword ptr [rip+0x200a52]
+assembly~!~0|jmp qword ptr [rip+0x200a54]
+assembly~!~0|nop dword ptr [rax], eax
+assembly~!~0|jmp qword ptr [rip+0x200a52]
+assembly~!~0|push 0x0
+assembly~!~0|jmp 0x555555554560
+assembly~!~0|jmp qword ptr [rip+0x200a4a]
+assembly~!~0|push 0x1
+assembly~!~0|jmp 0x555555554560
+assembly~!~0|jmp qword ptr [rip+0x200a62]
+assembly~!~0|data16 nop 
+assembly~!~0|xor ebp, ebp
+assembly~!~0|mov r9, rdx
+assembly~!~0|pop rsi
+assembly~!~0|mov rdx, rsp
+assembly~!~0|and rsp, 0xfffffffffffffff0
+assembly~!~0|push rax
+assembly~!~0|push rsp
+assembly~!~0|lea r8, ptr [rip+0x1ea]
+assembly~!~0|lea rcx, ptr [rip+0x173]
+assembly~!~0|lea rdi, ptr [rip+0xe6]
+assembly~!~0|call qword ptr [rip+0x200a16]
+assembly~!~0|hlt 
+assembly~!~0|lea rdi, ptr [rip+0x200a41]
+assembly~!~0|push rbp
+assembly~!~0|lea rax, ptr [rip+0x200a39]
+assembly~!~0|cmp rax, rdi
+assembly~!~0|mov rbp, rsp
+assembly~!~0|jz 0x555555554600
+assembly~!~0|mov rax, qword ptr [rip+0x2009ea]
+assembly~!~0|test rax, rax
+assembly~!~0|jz 0x555555554600
+assembly~!~0|pop rbp
+assembly~!~0|jmp rax
+assembly~!~0|nop word ptr [rax+rax*1], ax
+assembly~!~0|pop rbp
+assembly~!~0|ret 
+assembly~!~0|nop dword ptr [rax], eax
+assembly~!~0|nop word ptr [rax+rax*1], ax
+assembly~!~0|lea rdi, ptr [rip+0x200a01]
+assembly~!~0|lea rsi, ptr [rip+0x2009fa]
+assembly~!~0|push rbp
+assembly~!~0|sub rsi, rdi
+assembly~!~0|mov rbp, rsp
+assembly~!~0|sar rsi, 0x3
+assembly~!~0|mov rax, rsi
+assembly~!~0|shr rax, 0x3f
+assembly~!~0|add rsi, rax
+assembly~!~0|sar rsi, 0x1
+assembly~!~0|jz 0x555555554650
+assembly~!~0|mov rax, qword ptr [rip+0x2009b1]
+assembly~!~0|test rax, rax
+assembly~!~0|jz 0x555555554650
+assembly~!~0|pop rbp
+assembly~!~0|jmp rax
+assembly~!~0|nop word ptr [rax+rax*1], ax
+assembly~!~0|pop rbp
+assembly~!~0|ret 
+assembly~!~0|nop dword ptr [rax], eax
+assembly~!~0|nop word ptr [rax+rax*1], ax
+assembly~!~0|cmp byte ptr [rip+0x2009ad], 0x0
+assembly~!~0|jnz 0x555555554698
+assembly~!~0|cmp qword ptr [rip+0x200987], 0x0
+assembly~!~0|push rbp
+assembly~!~0|mov rbp, rsp
+assembly~!~0|jz 0x555555554683
+assembly~!~0|mov rdi, qword ptr [rip+0x20098a]
+assembly~!~0|call 0x555555554590
+assembly~!~0|call 0x5555555545d0
+assembly~!~0|mov byte ptr [rip+0x200985], 0x1
+assembly~!~0|pop rbp
+assembly~!~0|ret 
+assembly~!~0|nop dword ptr [rax], eax
+assembly~!~0|ret 
+assembly~!~0|push rbp
+assembly~!~0|mov rbp, rsp
+assembly~!~0|pop rbp
+assembly~!~0|jmp 0x555555554610
+assembly~!~4|push rbp
+assembly~!~4|mov rbp, rsp
+assembly~!~4|sub rsp, 0x20
+assembly~!~4|mov rax, qword ptr fs:[0x28]
+assembly~!~4|mov qword ptr [rbp-0x8], rax
+assembly~!~4|xor eax, eax
+assembly~!~8|mov qword ptr [rbp-0x10], 0x0
+assembly~!~10|lea rax, ptr [rbp-0x14]
+assembly~!~10|mov qword ptr [rbp-0x10], rax
+assembly~!~11|mov dword ptr [rip+0x20093d], 0x1
+assembly~!~12|mov dword ptr [rbp-0x14], 0x2
+assembly~!~13|mov esi, dword ptr [rip+0x200928]
+assembly~!~13|mov rax, qword ptr [rbp-0x10]
+assembly~!~13|mov ecx, dword ptr [rax]
+assembly~!~13|mov edx, dword ptr [rbp-0x14]
+assembly~!~13|mov eax, dword ptr [rip+0x200921]
+assembly~!~13|mov r8d, esi
+assembly~!~13|mov esi, eax
+assembly~!~13|lea rdi, ptr [rip+0xb5]
+assembly~!~13|mov eax, 0x0
+assembly~!~13|call 0x555555554580
+assembly~!~13|mov eax, 0x0
+assembly~!~14|mov rdi, qword ptr [rbp-0x8]
+assembly~!~14|xor rdi, qword ptr fs:[0x28]
+assembly~!~14|jz 0x555555554726
+assembly~!~14|call 0x555555554570
+assembly~!~14|leave 
+assembly~!~14|ret 
+assembly~!~0|push r15
+assembly~!~0|push r14
+assembly~!~0|mov r15, rdx
+assembly~!~0|push r13
+assembly~!~0|push r12
+assembly~!~0|lea r12, ptr [rip+0x20066e]
+assembly~!~0|push rbp
+assembly~!~0|lea rbp, ptr [rip+0x20066e]
+assembly~!~0|push rbx
+assembly~!~0|mov r13d, edi
+assembly~!~0|mov r14, rsi
+assembly~!~0|sub rbp, r12
+assembly~!~0|sub rsp, 0x8
+assembly~!~0|sar rbp, 0x3
+assembly~!~0|call 0x555555554548
+assembly~!~0|test rbp, rbp
+assembly~!~0|jz 0x555555554786
+assembly~!~0|xor ebx, ebx
+assembly~!~0|nop dword ptr [rax+rax*1], eax
+assembly~!~0|mov rdx, r15
+assembly~!~0|mov rsi, r14
+assembly~!~0|mov edi, r13d
+assembly~!~0|call qword ptr [r12+rbx*8]
+assembly~!~0|add rbx, 0x1
+assembly~!~0|cmp rbp, rbx
+assembly~!~0|jnz 0x555555554770
+assembly~!~0|add rsp, 0x8
+assembly~!~0|pop rbx
+assembly~!~0|pop rbp
+assembly~!~0|pop r12
+assembly~!~0|pop r13
+assembly~!~0|pop r14
+assembly~!~0|pop r15
+assembly~!~0|ret 
+assembly~!~0|ret 
+assembly~!~0|sub rsp, 0x8
+assembly~!~0|add rsp, 0x8
+assembly~!~0|ret 
+function_invocation~!~19|0|`_start|0x7fffffffdba0
+return_address~!~_start|0|0
+register~!~20|null|ebp|0
+register~!~21|null|rflags|582
+register~!~22|null|r9|140737351932320
+register~!~25|null|rsi|1
+register~!~26|null|rsp|140737488346024
+register~!~27|null|rdx|140737488346024
+register~!~28|null|rsp|140737488346016
+register~!~29|null|rflags|518
+register~!~32|null|rsp|140737488346008
+register~!~35|null|rsp|140737488346000
+register~!~36|null|r8|93824992233376
+register~!~37|null|rcx|93824992233264
+register~!~38|null|rdi|93824992233130
+register~!~41|null|rip|140737021848240
+register~!~42|null|rsp|140737488345992
+function_invocation~!~44|0|`__libc_csu_init|0x7fffffffdac8
+return_address~!~__libc_csu_init|0|0
+register~!~47|null|rsp|140737488345792
+register~!~50|null|rsp|140737488345784
+register~!~51|null|r15|140737488346040
+register~!~54|null|rsp|140737488345776
+register~!~57|null|rsp|140737488345768
+register~!~58|null|r12|93824994332080
+register~!~61|null|rsp|140737488345760
+register~!~62|null|rbp|93824994332088
+register~!~65|null|rsp|140737488345752
+register~!~66|null|r13d|1
+register~!~67|null|r14|140737488346024
+register~!~68|null|rbp|8
+register~!~69|null|rflags|514
+register~!~70|null|rsp|140737488345744
+register~!~71|null|rflags|518
+register~!~72|null|rbp|1
+register~!~73|null|rflags|514
+register~!~75|null|rip|93824992232776
+register~!~76|null|rsp|140737488345736
+function_invocation~!~78|0|`_init|0x7fffffffda88
+return_address~!~_init|0|0
+register~!~79|null|rsp|140737488345728
+register~!~81|null|rax|0
+register~!~82|null|rflags|582
+register~!~83|null|rsp|140737488345736
+register~!~84|null|rflags|518
+return~!~85
+register~!~88|null|rip|93824992233313
+register~!~89|null|rsp|140737488345744
+register~!~90|null|rflags|514
+register~!~91|null|rip|93824992233318
+register~!~92|null|ebx|0
+register~!~93|null|rflags|582
+register~!~94|null|rdx|140737488346040
+register~!~95|null|rsi|140737488346024
+register~!~96|null|edi|1
+register~!~99|null|rip|93824992233120
+register~!~100|null|rsp|140737488345736
+register~!~103|null|rsp|140737488345728
+register~!~104|null|rbp|140737488345728
+register~!~107|null|rbp|1
+register~!~108|null|rsp|140737488345736
+register~!~109|null|rip|93824992232976
+function_invocation~!~111|0|`register_tm_clones|0x7fffffffda88
+return_address~!~register_tm_clones|0|0
+register~!~112|null|rdi|93824994332696
+register~!~113|null|rsi|93824994332696
+register~!~116|null|rsp|140737488345728
+register~!~117|null|rsi|0
+register~!~118|null|rbp|140737488345728
+register~!~121|null|rbp|1
+register~!~122|null|rsp|140737488345736
+return~!~123
+register~!~126|null|rip|93824992233341
+register~!~127|null|rsp|140737488345744
+register~!~128|null|rbx|1
+register~!~129|null|rflags|514
+register~!~130|null|rflags|582
+register~!~131|null|rip|93824992233350
+register~!~132|null|rsp|140737488345752
+register~!~133|null|rflags|514
+register~!~136|null|rbx|0
+register~!~137|null|rsp|140737488345760
+register~!~140|null|rbp|93824992233264
+register~!~141|null|rsp|140737488345768
+register~!~144|null|r12|93824992232864
+register~!~145|null|rsp|140737488345776
+register~!~148|null|r13|140737488346016
+register~!~149|null|rsp|140737488345784
+register~!~152|null|r14|0
+register~!~153|null|rsp|140737488345792
+register~!~156|null|r15|0
+register~!~157|null|rsp|140737488345800
+return~!~158
+register~!~161|null|rip|140737021848360
+register~!~162|null|rsp|140737488345808
+function_invocation~!~164|0|test1.c`main|0x7fffffffdac8
+return_address~!~main|0|0
+register~!~167|int main() {|rsp|140737488345792
+variable_access~!~168|4|main|140737488345784|int|b|0
+variable_access~!~168|4|main|140737488345784|int*|p|0x0|<null pointer>
+variable_access~!~168|4|*G*|140737488345784|int|a|0
+variable_access~!~168|4|*G*|140737488345784|int|c|0
+register~!~169|int main() {|rbp|140737488345792
+register~!~170|int main() {|rsp|140737488345760
+register~!~171|int main() {|rflags|518
+register~!~173|int main() {|rax|-881296560465132288
+variable_access~!~175|4|main|140737488345776|int*|p|0x7fffffffdba0|1
+register~!~176|int main() {|eax|0
+register~!~177|int main() {|rflags|582
+variable_access~!~179|8|main|140737488345776|int*|p|0x0|Null pointer exception
+register~!~180|   p = &b; |rax|140737488345772
+variable_access~!~182|10|main|140737488345776|int*|p|0x0|0x7fffffffdaac
+variable_access~!~182|10|main|140737488345776|int*|p|0x7fffffffdaac|21845
+variable_access~!~184|11|*G*|93824994332696|int|a|1
+variable_access~!~186|12|main|140737488345772|int|b|2
+variable_access~!~186|12|main|140737488345776|int*|p|0x7fffffffdaac|2
+register~!~188|   printf("a = %d, b = %d, *p = %d, c = %d\n",a, b, *p, c);|esi|3
+register~!~191|   printf("a = %d, b = %d, *p = %d, c = %d\n",a, b, *p, c);|ecx|2
+register~!~193|   printf("a = %d, b = %d, *p = %d, c = %d\n",a, b, *p, c);|edx|2
+register~!~195|   printf("a = %d, b = %d, *p = %d, c = %d\n",a, b, *p, c);|eax|1
+register~!~196|   printf("a = %d, b = %d, *p = %d, c = %d\n",a, b, *p, c);|r8d|3
+register~!~197|   printf("a = %d, b = %d, *p = %d, c = %d\n",a, b, *p, c);|esi|1
+register~!~198|   printf("a = %d, b = %d, *p = %d, c = %d\n",a, b, *p, c);|rdi|93824992233400
+register~!~199|   printf("a = %d, b = %d, *p = %d, c = %d\n",a, b, *p, c);|eax|0
+register~!~201|   printf("a = %d, b = %d, *p = %d, c = %d\n",a, b, *p, c);|rip|93824992232832
+register~!~202|   printf("a = %d, b = %d, *p = %d, c = %d\n",a, b, *p, c);|rsp|140737488345752
+register~!~205|null|rip|140737022123648
+register~!~208|}|rdi|-881296560465132288
+register~!~210|}|rdi|0
+register~!~212|}|rbp|93824992233264
+register~!~213|}|rsp|140737488345800
+return~!~214
+register~!~218|}|rip|140737021848471
+register~!~219|}|rsp|140737488345808
+function_invocation~!~221|0|`__do_global_dtors_aux|0x7fffffffd9d8
+return_address~!~__do_global_dtors_aux|0|140737021984833
+register~!~223|null|rip|93824992233065
+register~!~225|null|rflags|514
+register~!~228|null|rsp|140737488345552
+register~!~229|null|rbp|140737488345552
+register~!~230|null|rip|93824992233079
+register~!~232|null|rdi|93824994332680
+register~!~234|null|rip|93824992232848
+register~!~235|null|rsp|140737488345544
+register~!~237|null|rip|140737021986080
+register~!~239|null|rip|93824992232912
+function_invocation~!~241|0|`deregister_tm_clones|0x7fffffffd9c8
+return_address~!~deregister_tm_clones|140737488345696|140737351932787
+register~!~242|null|rdi|93824994332696
+register~!~245|null|rsp|140737488345536
+register~!~246|null|rax|93824994332696
+register~!~247|null|rflags|582
+register~!~248|null|rbp|140737488345536
+register~!~251|null|rbp|140737488345552
+register~!~252|null|rsp|140737488345544
+return~!~253
+register~!~256|null|rip|93824992233096
+register~!~257|null|rsp|140737488345552
+register~!~261|null|rbp|140737488345696
+register~!~262|null|rsp|140737488345560
+return~!~263
+register~!~266|null|rip|140737351932787
+register~!~267|null|rsp|140737488345568
+function_invocation~!~269|0|`_fini|0x7fffffffd9d8
+return_address~!~_fini|0|140737021984833
+register~!~270|null|rsp|140737488345552
+register~!~271|null|rflags|514
+register~!~272|null|rsp|140737488345560
+register~!~273|null|rflags|518
+return~!~274
+register~!~277|null|rip|140737351932819
+register~!~278|null|rsp|140737488345568
