@@ -299,10 +299,10 @@ register~!~168|   int *p = malloc(sizeof(int));|edi|4
 register~!~170|   int *p = malloc(sizeof(int));|rip|93824992232800
 register~!~171|   int *p = malloc(sizeof(int));|rsp|140737488345752
 variable_access~!~172|9|main|140737488345764|int|b|32767
-variable_access~!~172|9|main|140737488345768|int*|p|0x0|<null pointer>
+variable_access~!~172|9|main|140737488345768|int*|p|0x0|<** null pointer **>
 variable_access~!~172|9|*G*|93824994332696|int|a|0
 variable_access~!~172|9|*G*|93824994332688|int|c|3
-variable_access~!~172|9|main|140737488345768|int*|p|0x0|Null pointer exception
+variable_access~!~172|9|main|140737488345768|int*|p|0x0|<** Null pointer exception **>
 register~!~174|null|rip|140737022357616
 variable_access~!~177|9|main|140737488345768|int*|p|0x0|0x555555756260
 variable_access~!~177|9|main|140737488345768|int*|p|0x555555756260|0

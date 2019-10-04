@@ -1483,7 +1483,8 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
  In cu_record::pc_in_range: check if pc = 0x55555555458d is between 0x00000068a and 0x0000006ed
- ip = 0x55555555458d is not in user code After push: SP = 0x7fffffffdb88
+ ip = 0x55555555458d is not in user code
+ After push: SP = 0x7fffffffdb88
  0x55555555458e: Write 0x7fffffffdb80 8
  value before write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  Before push: SP = 0x7fffffffdb88
@@ -1497,7 +1498,8 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
  In cu_record::pc_in_range: check if pc = 0x55555555458e is between 0x00000068a and 0x0000006ed
- ip = 0x55555555458e is not in user code After push: SP = 0x7fffffffdb80
+ ip = 0x55555555458e is not in user code
+ After push: SP = 0x7fffffffdb80
  Enter AfterRegMod Checking values Register Record
  	Event num: 36
  	Line #: 0
@@ -1537,7 +1539,8 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
  In cu_record::pc_in_range: check if pc = 0x5555555545a4 is between 0x00000068a and 0x0000006ed
- ip = 0x5555555545a4 is not in user code Function Call to __libc_csu_init
+ ip = 0x5555555545a4 is not in user code
+ Function Call to __libc_csu_init
  after push stack size:2
  Invocation ID:43function __libc_csu_init was called.
  Frame pointer was 0x5555555546f0
@@ -1569,7 +1572,8 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
  In cu_record::pc_in_range: check if pc = 0x5555555546f0 is between 0x00000068a and 0x0000006ed
- ip = 0x5555555546f0 is not in user code After push: SP = 0x7fffffffdab0
+ ip = 0x5555555546f0 is not in user code
+ After push: SP = 0x7fffffffdab0
  0x5555555546f2: Write 0x7fffffffdaa8 8
  value before write : 0x80  0x45  0x55  0x55  0x55  0x55  0x0  0x0  
  Before push: SP = 0x7fffffffdab0
@@ -1583,7 +1587,8 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
  In cu_record::pc_in_range: check if pc = 0x5555555546f2 is between 0x00000068a and 0x0000006ed
- ip = 0x5555555546f2 is not in user code After push: SP = 0x7fffffffdaa8
+ ip = 0x5555555546f2 is not in user code
+ After push: SP = 0x7fffffffdaa8
  Enter AfterRegMod Checking values Register Record
  	Event num: 51
  	Line #: 0
@@ -1603,7 +1608,8 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
  In cu_record::pc_in_range: check if pc = 0x5555555546f7 is between 0x00000068a and 0x0000006ed
- ip = 0x5555555546f7 is not in user code After push: SP = 0x7fffffffdaa0
+ ip = 0x5555555546f7 is not in user code
+ After push: SP = 0x7fffffffdaa0
  0x5555555546f9: Write 0x7fffffffda98 8
  value before write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  Before push: SP = 0x7fffffffdaa0
@@ -1617,7 +1623,8 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
  In cu_record::pc_in_range: check if pc = 0x5555555546f9 is between 0x00000068a and 0x0000006ed
- ip = 0x5555555546f9 is not in user code After push: SP = 0x7fffffffda98
+ ip = 0x5555555546f9 is not in user code
+ After push: SP = 0x7fffffffda98
  Enter AfterRegMod Checking values Register Record
  	Event num: 58
  	Line #: 0
@@ -1637,7 +1644,8 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
  In cu_record::pc_in_range: check if pc = 0x555555554702 is between 0x00000068a and 0x0000006ed
- ip = 0x555555554702 is not in user code After push: SP = 0x7fffffffda90
+ ip = 0x555555554702 is not in user code
+ After push: SP = 0x7fffffffda90
  Enter AfterRegMod Checking values Register Record
  	Event num: 62
  	Line #: 0
@@ -1657,7 +1665,8 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
  In cu_record::pc_in_range: check if pc = 0x55555555470a is between 0x00000068a and 0x0000006ed
- ip = 0x55555555470a is not in user code After push: SP = 0x7fffffffda88
+ ip = 0x55555555470a is not in user code
+ After push: SP = 0x7fffffffda88
  Enter AfterRegMod Checking values Register Record
  	Event num: 66
  	Line #: 0
@@ -1712,7 +1721,8 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
  In cu_record::pc_in_range: check if pc = 0x55555555471c is between 0x00000068a and 0x0000006ed
- ip = 0x55555555471c is not in user code Function Call to _init
+ ip = 0x55555555471c is not in user code
+ Function Call to _init
  after push stack size:3
  Invocation ID:75function _init was called.
  Frame pointer was 0x000000001
@@ -1848,7 +1858,8 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
  In cu_record::pc_in_range: check if pc = 0x555555554739 is between 0x00000068a and 0x0000006ed
- ip = 0x555555554739 is not in user code Function Call to frame_dummy
+ ip = 0x555555554739 is not in user code
+ Function Call to frame_dummy
  0x555555554680: Write 0x7fffffffda70 8
  value before write : 0xc2  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  Before push: SP = 0x7fffffffda78
@@ -1862,7 +1873,8 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
  In cu_record::pc_in_range: check if pc = 0x555555554680 is between 0x00000068a and 0x0000006ed
- ip = 0x555555554680 is not in user code After push: SP = 0x7fffffffda70
+ ip = 0x555555554680 is not in user code
+ After push: SP = 0x7fffffffda70
  Enter AfterRegMod Checking values Register Record
  	Event num: 102
  	Line #: 0
@@ -1936,7 +1948,8 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
  In cu_record::pc_in_range: check if pc = 0x5555555545fe is between 0x00000068a and 0x0000006ed
- ip = 0x5555555545fe is not in user code After push: SP = 0x7fffffffda70
+ ip = 0x5555555545fe is not in user code
+ After push: SP = 0x7fffffffda70
  Enter AfterRegMod Checking values Register Record
  	Event num: 115
  	Line #: 0
@@ -2206,7 +2219,8 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  line = 6, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
  In cu_table::get
  In cu_record::pc_in_range: check if pc = 0x55555555468a is between 0x00000068a and 0x0000006ed
- ip = 0x55555555468a is in user code checking variable access PC is before stack frame is setup: 0x55555555468a After push: SP = 0x7fffffffdab0
+ ip = 0x55555555468a is in user code checking variable access
+ PC is before stack frame is setup: 0x55555555468a After push: SP = 0x7fffffffdab0
  Enter AfterRegMod Checking values Register Record
  	Event num: 166
  	Line #: 6
@@ -2243,7 +2257,8 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  line = 9, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
  In cu_table::get
  In cu_record::pc_in_range: check if pc = 0x555555554697 is between 0x00000068a and 0x0000006ed
- ip = 0x555555554697 is in user code checking variable access In runtime_stack::get_variables_accessed, addr = 0x7fffffffda90
+ ip = 0x555555554697 is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffda90
  In runtime_stack::get_updated_variables_from_frame
  First access for frame of main
  Checking if variable b has been updated
@@ -2265,10 +2280,10 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  Reading 8 bytes at address: 0x7fffffffdaa8
  Found a pointer
  Found a non-character pointer to an atomic value
- value = <null pointer>
- New value = <null pointer>, old value = 0x1f0fc3c9000000
- Found new value: <null pointer> for p
- points_to value converted from Segmentation fault for address: 0x1f0fc3c9000000 to 0x000000000 In runtime_stack::get_updated_variables_from_frame
+ value = <** null pointer **>
+ New value = <** null pointer **>, old value = 0x1f0fc3c9000000
+ Found new value: <** null pointer **> for p
+ points_to value converted from <** Segmentation fault for address: 0x1f0fc3c9000000 **> to 0x000000000 In runtime_stack::get_updated_variables_from_frame
  First access for frame of *G*
  Checking if variable a has been updated
  Base address for a global is: 0x555555755018
@@ -2300,7 +2315,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  Base address for a local or param is: 0x7fffffffdaa8
  Caught a SIGSEGV in dereference_memory() Pointer variable: p does not point to a valid memory location
  Checking if what variable p points to has been updated
- Found new points_to value: Null pointer exception for p old points_to value = Segmentation fault for address: 0x1f0fc3c9000000
+ Found new points_to value: <** Null pointer exception **> for p old points_to value = <** Segmentation fault for address: 0x1f0fc3c9000000 **>
  In runtime_stack::get_updated_points_to_frame
  Write to address 0x7fffffffdaa4 is variable b
 prefix = 
@@ -2321,7 +2336,7 @@ prefix =
  	Scope: main
  	Address: 0x7fffffffdaa8
  	Type: int*
- 	Value: <null pointer>
+ 	Value: <** null pointer **>
  	Points to: 0x000000000
 
  Write to address 0x555555755018 is variable a
@@ -2354,7 +2369,7 @@ prefix =
  	Scope: main
  	Address: 0x7fffffffdaa8
  	Type: int*
- 	Value: Null pointer exception
+ 	Value: <** Null pointer exception **>
  	Points to: 0x000000000
 
  0x555555554560Read 0x555555754fd0 8
@@ -2374,7 +2389,8 @@ prefix =
  line = 9, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
  In cu_table::get
  In cu_record::pc_in_range: check if pc = 0x55555555469c is between 0x00000068a and 0x0000006ed
- ip = 0x55555555469c is in user code checking variable access In runtime_stack::get_variables_accessed, addr = 0x7fffffffdaa8
+ ip = 0x55555555469c is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffdaa8
  In runtime_stack::get_updated_variables_from_frame
  Checking if variable b has been updated
  Enter is_at_address
@@ -2392,9 +2408,9 @@ prefix =
  Found a pointer
  Found a non-character pointer to an atomic value
  value = 0x555555756260
- New value = 0x555555756260, old value = <null pointer>
+ New value = 0x555555756260, old value = <** null pointer **>
  Found new value: 0x555555756260 for p
- points_to value converted from Null pointer exception to 0x000000000 In runtime_stack::get_updated_variables_from_frame
+ points_to value converted from <** Null pointer exception **> to 0x000000000 In runtime_stack::get_updated_variables_from_frame
  Checking if variable a has been updated
  Enter is_at_address
  trec = 0x7ffff7d7f140 type name = int
@@ -2419,7 +2435,7 @@ prefix =
  Reading 4 bytes at address: 0x555555756260
  Interpreting data as an int, value is 0
  Checking if what variable p points to has been updated
- Found new points_to value: 0 for p old points_to value = Null pointer exception
+ Found new points_to value: 0 for p old points_to value = <** Null pointer exception **>
  In runtime_stack::get_updated_points_to_frame
  Write to address 0x7fffffffdaa8 is variable p
 prefix = 
@@ -2449,7 +2465,8 @@ prefix =
  line = 12, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
  In cu_table::get
  In cu_record::pc_in_range: check if pc = 0x5555555546a0 is between 0x00000068a and 0x0000006ed
- ip = 0x5555555546a0 is in user code checking variable access In runtime_stack::get_variables_accessed, addr = 0x555555755018
+ ip = 0x5555555546a0 is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x555555755018
  In runtime_stack::get_updated_variables_from_frame
  Checking if variable b has been updated
  Enter is_at_address
@@ -2514,7 +2531,8 @@ prefix =
  line = 13, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
  In cu_table::get
  In cu_record::pc_in_range: check if pc = 0x5555555546aa is between 0x00000068a and 0x0000006ed
- ip = 0x5555555546aa is in user code checking variable access In runtime_stack::get_variables_accessed, addr = 0x7fffffffdaa4
+ ip = 0x5555555546aa is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffdaa4
  In runtime_stack::get_updated_variables_from_frame
  Checking if variable b has been updated
  Enter is_at_address
@@ -2588,7 +2606,8 @@ prefix =
  line = 14, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
  In cu_table::get
  In cu_record::pc_in_range: check if pc = 0x5555555546b5 is between 0x00000068a and 0x0000006ed
- ip = 0x5555555546b5 is in user code checking variable access In runtime_stack::get_variables_accessed, addr = 0x555555756260
+ ip = 0x5555555546b5 is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x555555756260
  In runtime_stack::get_updated_variables_from_frame
  Checking if variable b has been updated
  Enter is_at_address
@@ -2713,7 +2732,8 @@ prefix =
  line = 15, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
  In cu_table::get
  In cu_record::pc_in_range: check if pc = 0x5555555546e1 is between 0x00000068a and 0x0000006ed
- ip = 0x5555555546e1 is in user code checking variable access In runtime_stack::get_variables_accessed, addr = 0x7fffffffda90
+ ip = 0x5555555546e1 is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffda90
  In runtime_stack::get_updated_variables_from_frame
  Checking if variable b has been updated
  Enter is_at_address
@@ -2879,7 +2899,8 @@ prefix =
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
  In cu_record::pc_in_range: check if pc = 0x555555554651 is between 0x00000068a and 0x0000006ed
- ip = 0x555555554651 is not in user code After push: SP = 0x7fffffffd9c0
+ ip = 0x555555554651 is not in user code
+ After push: SP = 0x7fffffffd9c0
  Enter AfterRegMod Checking values Register Record
  	Event num: 224
  	Line #: 0
@@ -2919,7 +2940,8 @@ prefix =
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
  In cu_record::pc_in_range: check if pc = 0x55555555465e is between 0x00000068a and 0x0000006ed
- ip = 0x55555555465e is not in user code 0x555555554570Read 0x555555754ff8 8
+ ip = 0x55555555465e is not in user code
+ 0x555555554570Read 0x555555754ff8 8
  line number 0
  value before read : 0x20  0x35  0x34  0xe4  0xff  0x7f  0x0  0x0  Invocation ID:214function __do_global_dtors_aux was called. Frame pointer was 0x7fffffffd9c0
  Enter AfterRegMod Checking values Register Record
@@ -2940,7 +2962,8 @@ prefix =
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
  In cu_record::pc_in_range: check if pc = 0x555555554663 is between 0x00000068a and 0x0000006ed
- ip = 0x555555554663 is not in user code Function Call to deregister_tm_clones
+ ip = 0x555555554663 is not in user code
+ Function Call to deregister_tm_clones
  after push stack size:3
  Invocation ID:235function deregister_tm_clones was called.
  Frame pointer was 0x7fffffffd9c0
@@ -2978,7 +3001,8 @@ prefix =
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
  In cu_record::pc_in_range: check if pc = 0x5555555545b7 is between 0x00000068a and 0x0000006ed
- ip = 0x5555555545b7 is not in user code After push: SP = 0x7fffffffd9b0
+ ip = 0x5555555545b7 is not in user code
+ After push: SP = 0x7fffffffd9b0
  Enter AfterRegMod Checking values Register Record
  	Event num: 241
  	Line #: 0
@@ -3041,7 +3065,8 @@ prefix =
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
  In cu_record::pc_in_range: check if pc = 0x555555554668 is between 0x00000068a and 0x0000006ed
- ip = 0x555555554668 is not in user code 0x55555555466fRead 0x7fffffffd9c0 8
+ ip = 0x555555554668 is not in user code
+ 0x55555555466fRead 0x7fffffffd9c0 8
  line number 0
  value before read : 0x50  0xda  0xff  0xff  0xff  0x7f  0x0  0x0  Invocation ID:235function deregister_tm_clones was called. Frame pointer was 0x7fffffffd9c0
  Before pop: SP = 0x7fffffffd9c0

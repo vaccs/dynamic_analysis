@@ -308,9 +308,12 @@ int main(int argc, char *argv[])
     vdr = new vaccs_dw_reader();
     vdr->add_file_name(vfn);
 
+    DEBUGL(cerr << "Reading dwarf info\n");
     vdr->read_vaccs_dw_info();
 
+    DEBUGL(cerr << "Building dwarf tables\n");
     stack_model = (new runtime_stack())->add_cu_table(vdr->get_cutab());
+    DEBUGL(cerr << "Begin analysis\n");
     emit_arch();
     emit_cmd_line(argc,i,argv);
 

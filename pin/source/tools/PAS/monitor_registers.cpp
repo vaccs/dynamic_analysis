@@ -37,10 +37,27 @@ VOID AfterRegMod(ADDRINT ip, CONTEXT *ctxt, REG reg, UINT32 opcode) {
 	   fileName = NOCSOURCE;
     else {
       frame *fr = stack_model->top();
-      if (fr->get_is_before_stack_setup() && reg == REG_STACK_PTR && OPCODE_StringShort(opcode) == "SUB") {
+      if (fr->get_is_before_stack_setup())
+
+        if ((fr->size() == 0 && reg == REG_GBP && OPCODE_StringShort(opcode) == "MOV") ||
+            (reg == REG_STACK_PTR && OPCODE_StringShort(opcode) == "SUB")) {
 
         // if we've just entered a function and the stack and frame pointer are now
         // set up, set the initial context properly
+        // initially is_before_stack_setup is false. When the first SUB operation is performed on
+        // the stack pointer, that operation sets up space for local variables and now the context is
+        // set up. If there are no local variables, then the stack is set when the frame pointer is
+        // updated.
+        //
+        // The function entry code looks like
+        //
+        //    push %rbp
+        //    mov %rsp, %rbp
+        //    sub $0x.., $rsp
+        //
+        // If there are no local variables, we look for second instruction, otherwise
+        // the third
+
 
         fr->clear_is_before_stack_setup();
         fr->add_context(ctxt);
