@@ -6,8 +6,10 @@ struct tests {
    int a;
    int b;
    int *p;
-} x;
+};
 int main() {
+
+   struct tests x;
 
    x.a = 1;
    x.b = 2;

@@ -21,15 +21,15 @@
 
 using namespace std;
 
-#include	<string>
-#include	<list>
-#include	<tables/cu_table.h>
-#include	<tables/var_table.h>
-#include	<tables/type_table.h>
+#include    <string>
+#include    <list>
+#include    <tables/cu_table.h>
+#include    <tables/var_table.h>
+#include    <tables/type_table.h>
 #include  <tables/heap.h>
 #include  <util/general.h>
 
-#include	<pin.H>
+#include    <pin.H>
 
 /**
  * =====================================================================================
@@ -40,13 +40,13 @@ using namespace std;
  */
 class frame_record
 {
-    public:
+public:
 	/* ====================  LIFECYCLE     ======================================= */
 
 	/**
 	 * Create an instance of a frame_record and initialize instance variables.
 	 */
-	frame_record ();                             /* constructor */
+	frame_record();                              /* constructor */
 
 	/* ====================  ACCESSORS     ======================================= */
 
@@ -55,8 +55,9 @@ class frame_record
 	 *
 	 * @return a string containing the variable name
 	 */
-	string get_variable_name() {
-	    return variable_name;
+	string get_variable_name()
+	{
+		return variable_name;
 	}
 
 	/**
@@ -64,8 +65,9 @@ class frame_record
 	 *
 	 * @return a string containing the variable value
 	 */
-	string get_value() {
-	    return value;
+	string get_value()
+	{
+		return value;
 	}
 
 	/**
@@ -73,8 +75,9 @@ class frame_record
 	 *
 	 * @return a string containing the variable value
 	 */
-	string get_points_to_value() {
-	    return points_to_value;
+	string get_points_to_value()
+	{
+		return points_to_value;
 	}
 
 	/**
@@ -82,8 +85,9 @@ class frame_record
 	 *
 	 * @return a var_record containing dwarf information for a variable
 	 */
-	var_record *get_var_record() {
-	    return vrec;
+	var_record *get_var_record()
+	{
+		return vrec;
 	}
 
 	/* ====================  BUILDERS      ======================================= */
@@ -94,57 +98,61 @@ class frame_record
 	 * @param a reference to a variable name
 	 * @return a pointer to this record
 	 */
-	frame_record *add_variable_name(const string& name) {
-	    variable_name = name;
-	    return this;
+	frame_record *add_variable_name(const string& name)
+	{
+		variable_name = name;
+		return this;
 	}
 
 	/**
-	* Add the value of this variable to the entry
-	*
-	* @param string the string representation of the value
-	* @return a pointer to this record
-	*/
-	frame_record *add_value(string value) {
-	    this->value = value;
-	    return this;
+	 * Add the value of this variable to the entry
+	 *
+	 * @param string the string representation of the value
+	 * @return a pointer to this record
+	 */
+	frame_record *add_value(string value)
+	{
+		this->value = value;
+		return this;
 	}
 
 	/**
-	* Add the points_to value of this variable to the entry
-	*
-	* @param string the string representation of the value
-	* @return a pointer to this record
-	*/
-	frame_record *add_points_to_value(string value) {
-	    this->points_to_value = value;
-	    return this;
+	 * Add the points_to value of this variable to the entry
+	 *
+	 * @param string the string representation of the value
+	 * @return a pointer to this record
+	 */
+	frame_record *add_points_to_value(string value)
+	{
+		this->points_to_value = value;
+		return this;
 	}
 
 	/**
-	* Add the var_record of this variable to the entry
-	*
-	* @param vrec the var_record containing dwarf information for this variable
-	* @return a pointer to this record
-	*/
-	frame_record *add_var_record(var_record *vrec) {
-	    this->vrec = vrec;
-	    return this;
+	 * Add the var_record of this variable to the entry
+	 *
+	 * @param vrec the var_record containing dwarf information for this variable
+	 * @return a pointer to this record
+	 */
+	frame_record *add_var_record(var_record *vrec)
+	{
+		this->vrec = vrec;
+		return this;
 	}
 
 	/* ====================  OPERATORS     ======================================= */
 
-    protected:
+protected:
 
-    private:
+private:
 
 	/* ====================  DATA MEMBERS  ======================================= */
-	string variable_name;	    /* the name of the variable for this record */
-	string value;		    /* the last value stored in this location */
-  string points_to_value;     /* the value pointed to by frame records that are pointers */
-	var_record *vrec;	    /* the DWARF information for this variable */
+	string variable_name;   /* the name of the variable for this record */
+	string value;           /* the last value stored in this location */
+	string points_to_value; /* the value pointed to by frame records that are pointers */
+	var_record *vrec;       /* the DWARF information for this variable */
 
-}; /* -----  end of class Frame_record  ----- */
+};                          /* -----  end of class Frame_record  ----- */
 
 /*
  * =====================================================================================
@@ -153,15 +161,15 @@ class frame_record
  *		  entries for variables in the scope.
  * =====================================================================================
  */
-class frame : public list<frame_record *>
+class frame: public list < frame_record * >
 {
-    public:
+public:
 	/* ====================  LIFECYCLE     ======================================= */
 
 	/**
 	 * Create and instance of a stack frame
 	 */
-	frame ();                             /* constructor */
+	frame();                              /* constructor */
 
 	/* ====================  ACCESSORS     ======================================= */
 
@@ -170,8 +178,9 @@ class frame : public list<frame_record *>
 	 *
 	 * @return the name of the function associated with this frame
 	 */
-	string get_name() {
-	    return name;
+	string get_name()
+	{
+		return name;
 	}
 
 	/**
@@ -179,17 +188,20 @@ class frame : public list<frame_record *>
 	 *
 	 * @return the pin context associated with this frame
 	 */
-	CONTEXT *get_context() {
-	    return ctx;
+	CONTEXT *get_context()
+	{
+		return ctx;
 	}
 
-  bool get_is_first_access() {
-    return is_first_access;
-  }
+	bool get_is_first_access()
+	{
+		return is_first_access;
+	}
 
-  bool get_is_before_stack_setup() {
-    return is_before_stack_setup;
-  }
+	bool get_is_before_stack_setup()
+	{
+		return is_before_stack_setup;
+	}
 
 	/* ====================  BUILDERS      ======================================= */
 
@@ -199,9 +211,10 @@ class frame : public list<frame_record *>
 	 * @param name a function name
 	 * @return the instance of this object
 	 */
-	frame *add_name(string name) {
-	    this->name = name;
-	    return this;
+	frame *add_name(string name)
+	{
+		this->name = name;
+		return this;
 	}
 
 	/**
@@ -210,9 +223,10 @@ class frame : public list<frame_record *>
 	 * @param name a pin context
 	 * @return the instance of this object
 	 */
-	frame *add_context(CONTEXT *ctx) {
-	    this->ctx = ctx;
-	    return this;
+	frame *add_context(CONTEXT *ctx)
+	{
+		this->ctx = ctx;
+		return this;
 	}
 
 	/**
@@ -221,16 +235,23 @@ class frame : public list<frame_record *>
 	 * @param frec a frame record
 	 * @return the instance of this object
 	 */
-	frame *add_frame_record(frame_record *frec) {
-	    push_back(frec);
-	    return this;
+	frame *add_frame_record(frame_record *frec)
+	{
+		push_back(frec);
+		return this;
 	}
 
 	/* ====================  OPERATORS     ======================================= */
 
-  void clear_is_first_access() { is_first_access = false;}
+	void clear_is_first_access()
+	{
+		is_first_access = false;
+	}
 
-  void clear_is_before_stack_setup() { is_before_stack_setup = false;}
+	void clear_is_before_stack_setup()
+	{
+		is_before_stack_setup = false;
+	}
 
 	/**
 	 * Get a list of variable that refer directly to the given address
@@ -239,17 +260,17 @@ class frame : public list<frame_record *>
 	 * @param ttab a type table
 	 * @return a list containing all variables that map to the given address
 	 */
-        list<frame_record*> *get(Generic addr, type_table *ttab);
+	list < frame_record * > *get(Generic addr, type_table * ttab);
 
 	/* ====================  DATA MEMBERS  ======================================= */
-    protected:
+protected:
 
-    private:
+private:
 
-	string name; /* the name of the function */
-	CONTEXT *ctx; /* a pin context at the time this frame is put on the stack */
-  bool is_first_access;
-  bool is_before_stack_setup;
+	string name;    /* the name of the function */
+	CONTEXT *ctx;   /* a pin context at the time this frame is put on the stack */
+	bool is_first_access;
+	bool is_before_stack_setup;
 
 }; /* -----  end of class frame  ----- */
 
@@ -257,118 +278,150 @@ class var_upd_record {
 
 public:
 
-  var_upd_record() {
-    variable_name = "";
-    vrec = NULL;
-    address = -1;
-    ctxt = NULL;
-    update_is_points_to = false;
-  };
+	var_upd_record() {
+		variable_name = "";
+		vrec = NULL;
+		address = -1;
+		ctxt = NULL;
+		update_is_points_to = false;
+		prefix = "";
+	}
 
-  // GETTERS
+	// GETTERS
 
-  string& get_variable_name() {
-    return variable_name;
-  }
+	string& get_variable_name()
+	{
+		return variable_name;
+	}
 
-  var_record* get_var_record() {
-    return vrec;
-  }
+	var_record* get_var_record()
+	{
+		return vrec;
+	}
 
-  Generic get_address() {
-    return address;
-  }
+	Generic get_address()
+	{
+		return address;
+	}
 
-  CONTEXT *get_context() {
-    return ctxt;
-  }
+	CONTEXT *get_context()
+	{
+		return ctxt;
+	}
 
-  string get_value() {
-     return value;
-  }
+	string get_value()
+	{
+		return value;
+	}
 
-  bool get_update_is_points_to() {
-     return update_is_points_to;
-  }
+	bool get_update_is_points_to()
+	{
+		return update_is_points_to;
+	}
 
-  // BUILDERS
+	string get_prefix()
+	{
+		return prefix;
+	}
 
-  var_upd_record *add_variable_name(string name) {
-    variable_name = name;
-    return this;
-  }
+	// BUILDERS
 
-  var_upd_record *add_var_record(var_record *vrec) {
-    this->vrec = vrec;
-    return this;
-  }
+	var_upd_record *add_variable_name(string name)
+	{
+		variable_name = name;
+		return this;
+	}
 
-  var_upd_record *add_address(Generic address) {
-    this->address = address;
-    return this;
-  }
+	var_upd_record *add_var_record(var_record *vrec)
+	{
+		this->vrec = vrec;
+		return this;
+	}
 
-  var_upd_record *add_context(CONTEXT *ctxt) {
-    this->ctxt = ctxt;
-    return this;
-  }
+	var_upd_record *add_address(Generic address)
+	{
+		this->address = address;
+		return this;
+	}
 
-  var_upd_record *add_value(string value) {
-    this->value = value;
-    return this;
-  }
+	var_upd_record *add_context(CONTEXT *ctxt)
+	{
+		this->ctxt = ctxt;
+		return this;
+	}
 
-  var_upd_record *add_type_name(string name) {
-    type_name = name;
-    return this;
-  }
+	var_upd_record *add_value(string value)
+	{
+		this->value = value;
+		return this;
+	}
 
-  var_upd_record *add_points_to(Generic points_to) {
-	this->points_to = points_to;
-	return this;
-  }
+	var_upd_record *add_type_name(string name)
+	{
+		type_name = name;
+		return this;
+	}
 
-  var_upd_record *add_points_to_value(string points_to_value) {
-	this->points_to_value = points_to_value;
-	return this;
-  }
+	var_upd_record *add_points_to(Generic points_to)
+	{
+		this->points_to = points_to;
+		return this;
+	}
 
-  var_upd_record *add_update_is_points_to() {
-     update_is_points_to = true;
-     return this;
-  }
+	var_upd_record *add_points_to_value(string points_to_value)
+	{
+		this->points_to_value = points_to_value;
+		return this;
+	}
 
-  var_upd_record *add_scope(string scope) {
-	this->scope = scope;
-	return this;
-  }
+	var_upd_record *add_update_is_points_to()
+	{
+		update_is_points_to = true;
+		return this;
+	}
 
-  Generic get_points_to() {
-	return points_to;
-  }
+	var_upd_record *add_scope(string scope)
+	{
+		this->scope = scope;
+		return this;
+	}
 
-  string get_points_to_value() {
-	return points_to_value;
-  }
+	var_upd_record *add_prefix(string prefix)
+	{
+		this->prefix = prefix;
+		return this;
+	}
 
-  string get_scope() {
-     return scope;
-  }
+	Generic get_points_to()
+	{
+		return points_to;
+	}
 
-  void write(NATIVE_FD vaccs_fd,string fileName,int line,cu_table *cutab,int timestamp);
+	string get_points_to_value()
+	{
+		return points_to_value;
+	}
+
+	string get_scope()
+	{
+		return scope;
+	}
+
+	void write(NATIVE_FD vaccs_fd, string fileName, int line, cu_table *cutab, int timestamp);
 
 private:
 
-  string variable_name;
-  var_record *vrec;
-  Generic address;
-  CONTEXT *ctxt;
-  string value;
-  string type_name;
-  string scope;
-  Generic points_to;
-  string points_to_value;
-  bool update_is_points_to;
+	string variable_name;
+	var_record *vrec;
+	Generic address;
+	CONTEXT *ctxt;
+	string value;
+	string type_name;
+	string scope;
+	Generic points_to;
+	string points_to_value;
+	string prefix;
+	bool update_is_points_to;
 
 };
 
@@ -379,15 +432,15 @@ private:
  *                mapped to debug information for variables.
  * =====================================================================================
  */
-class runtime_stack : public list<frame *>
+class runtime_stack: public list < frame * >
 {
-    public:
+public:
 	/* ====================  LIFECYCLE     ======================================= */
 
 	/**
 	 * Create an instance of a runtime stack and initialize the instance variables
 	 */
-	runtime_stack ();                             /* constructor */
+	runtime_stack();                              /* constructor */
 
 	/* ====================  ACCESSORS     ======================================= */
 
@@ -412,69 +465,89 @@ class runtime_stack : public list<frame *>
 	 * @param ip address in the function
 	 * @param ctx the pin context for this stack frame
 	 */
-	frame *push(string name,Generic ip, CONTEXT *ctx);
+	frame *push(string name, Generic ip, CONTEXT *ctx);
 
-  frame *top() { return this->front(); }
+	frame *top()
+	{
+		return this->front();
+	}
 
 	/**
 	 * Pop a frame from the runtime stack
 	 */
 	void pop();
 
-      /**
-       * Compute a list of variables that reference a particular updated memory location
-       *
-       * @param addr the address of a memory location in memory
-       * @param ttab a type table
-       * @return a list of variables that reference the given memory location
-       */
-      list<var_upd_record*> *addr_get_updated_variables(Generic addr,cu_table *cutab);
+	/**
+	 * Compute a list of variables that reference a particular updated memory location
+	 *
+	 * @param addr the address of a memory location in memory
+	 * @param ttab a type table
+	 * @return a list of variables that reference the given memory location
+	 */
+	list < var_upd_record * > *addr_get_updated_variables(Generic addr, cu_table * cutab);
 
-      /**
-       * Compute a list of variables that have been updated. Search the stack and global data area for any updated variable.
-       * This method is used after a library routine has been called
-       *
-       * @param cutab a compilation unit table
-       * @return a list of variables that have been updated
-       */
-      list<var_upd_record *> *get_all_updated_variables(cu_table *cutab);
+	/**
+	 * Compute a list of variables that have been updated. Search the stack and global data area for any updated variable.
+	 * This method is used after a library routine has been called
+	 *
+	 * @param cutab a compilation unit table
+	 * @return a list of variables that have been updated
+	 */
+	list < var_upd_record * > *get_all_updated_variables(cu_table * cutab);
 
-       /**
-        * Check a single frame for variables that have been updated
-        *
-        * @param cutab a compilation unit table
-        * @param fr a stack or global variable frame
-        * @param addr the addres that has been updated, if addr = 0 then all locations are checked
-        * @return a list of variables in this frame whose value hase changed
-        */
-      list<var_upd_record *> *get_updated_variables_from_frame(cu_table *cutab,frame *fr, Generic addr);
+	list < var_upd_record * > *get_updated_struct_members(cu_table * curtab, frame * fr,
+	                                                      frame_record * frec,
+	                                                      var_record * vrec,
+	                                                      Generic addr,
+	                                                      string prefix);
 
-      /**
-       * Check a single frame for variables whose points to location has been updated
-       *
-       * @param cutab a compilation unit table
-       * @param fr a stack or global variable frame
-       * @return a list of variables in this frame whose value hase changed
-       */
-      list<var_upd_record *> *get_updated_points_to_frame(cu_table *cutab,frame *fr);
+	list < var_upd_record * > *get_updated_array_elements(cu_table * curtab, frame * fr,
+	                                                      frame_record * frec,
+	                                                      var_record * vrec,
+	                                                      Generic addr,
+	                                                      string prefix);
+	/**
+	 * Check a single frame for variables that have been updated
+	 *
+	 * @param cutab a compilation unit table
+	 * @param fr a stack or global variable frame
+	 * @param addr the addres that has been updated, if addr = 0 then all locations are checked
+	 * @return a list of variables in this frame whose value hase changed
+	 */
+	list < var_upd_record * > *get_updated_variables_from_frame(cu_table * cutab, frame * fr, Generic addr);
 
-      /**
-       * Compute a list of all pointers accessible from the stack or static data area whose points_to location has changed
-       *
-       * @param cutab a table of compilation units
-       * @return a list of variables that on the stack or in global memory that could
-       * have possibly been accessed
-       */
-      list<var_upd_record*> *get_all_updated_points_to(cu_table *cutab);
+	list < var_upd_record * > *get_updated_points_to_from_struct( cu_table * cutab, frame * fr,
+	                                                              frame_record * frec,
+	                                                              var_record * vrec,
+	                                                              Generic addr,
+	                                                              string prefix);
 
- 	/* ====================  DATA MEMBERS  ======================================= */
-    protected:
+	/**
+	 * Check a single frame for variables whose points to location has been updated
+	 *
+	 * @param cutab a compilation unit table
+	 * @param fr a stack or global variable frame
+	 * @return a list of variables in this frame whose value hase changed
+	 */
+	list < var_upd_record * > *get_updated_points_to_frame(cu_table * cutab, frame * fr);
 
-    private:
+	/**
+	 * Compute a list of all pointers accessible from the stack or static data area whose points_to location has changed
+	 *
+	 * @param cutab a table of compilation units
+	 * @return a list of variables that on the stack or in global memory that could
+	 * have possibly been accessed
+	 */
+	list < var_upd_record * > *get_all_updated_points_to(cu_table * cutab);
 
-	cu_table *cutab;	    /* a table of compilation units from the dwarf info */
-	frame *global_frame;	    /* a frame holding global variable information */
+	/* ====================  DATA MEMBERS  ======================================= */
+protected:
 
-}; /* -----  end of class Runtime_stack  ----- */
+private:
 
-#endif   /* ----- #ifndef frame_h_INC  ----- */
+	cu_table *cutab;        /* a table of compilation units from the dwarf info */
+	frame *global_frame;    /* a frame holding global variable information */
+
+};                          /* -----  end of class Runtime_stack  ----- */
+
+#endif                      /* ----- #ifndef frame_h_INC  ----- */

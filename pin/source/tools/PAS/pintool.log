@@ -1,8 +1,6 @@
 Pin: pin-3.6-97554-31f0a167d
 Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  In runtime_stack::add_cu_table for globals
- Add variable a for frame *G*
- Add variable c for frame *G*
  Section header:
  	|Type|Address|Size|Section Name
  Section name: .interp
@@ -33,68 +31,68 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  Section name: .dynstr
  	Type: 20
  	Address: 0x555555554378
- 	Size: 139
- 	Record: |20|0x555555554378|139|.dynstr
+ 	Size: 159
+ 	Record: |20|0x555555554378|159|.dynstr
  Section name: .gnu.version
  	Type: 5
- 	Address: 0x555555554404
+ 	Address: 0x555555554418
  	Size: 16
- 	Record: |5|0x555555554404|16|.gnu.version
+ 	Record: |5|0x555555554418|16|.gnu.version
  Section name: .gnu.version_r
  	Type: 5
- 	Address: 0x555555554418
- 	Size: 32
- 	Record: |5|0x555555554418|32|.gnu.version_r
+ 	Address: 0x555555554428
+ 	Size: 48
+ 	Record: |5|0x555555554428|48|.gnu.version_r
  Section name: .rela.dyn
  	Type: 2
- 	Address: 0x555555554438
+ 	Address: 0x555555554458
  	Size: 192
- 	Record: |2|0x555555554438|192|.rela.dyn
+ 	Record: |2|0x555555554458|192|.rela.dyn
  Section name: .rela.plt
  	Type: 2
- 	Address: 0x5555555544f8
+ 	Address: 0x555555554518
  	Size: 48
- 	Record: |2|0x5555555544f8|48|.rela.plt
+ 	Record: |2|0x555555554518|48|.rela.plt
  Section name: .init
  	Type: 4
- 	Address: 0x555555554528
+ 	Address: 0x555555554548
  	Size: 23
- 	Record: |4|0x555555554528|23|.init
+ 	Record: |4|0x555555554548|23|.init
  Section name: .plt
  	Type: 4
- 	Address: 0x555555554540
+ 	Address: 0x555555554560
  	Size: 48
- 	Record: |4|0x555555554540|48|.plt
+ 	Record: |4|0x555555554560|48|.plt
  Section name: .plt.got
  	Type: 4
- 	Address: 0x555555554570
+ 	Address: 0x555555554590
  	Size: 8
- 	Record: |4|0x555555554570|8|.plt.got
+ 	Record: |4|0x555555554590|8|.plt.got
  Section name: .text
  	Type: 4
- 	Address: 0x555555554580
- 	Size: 482
- 	Record: |4|0x555555554580|482|.text
+ 	Address: 0x5555555545a0
+ 	Size: 498
+ 	Record: |4|0x5555555545a0|498|.text
  Section name: .fini
  	Type: 4
- 	Address: 0x555555554764
+ 	Address: 0x555555554794
  	Size: 9
- 	Record: |4|0x555555554764|9|.fini
+ 	Record: |4|0x555555554794|9|.fini
  Section name: .rodata
  	Type: 5
- 	Address: 0x555555554770
- 	Size: 41
- 	Record: |5|0x555555554770|41|.rodata
+ 	Address: 0x5555555547a0
+ 	Size: 29
+ 	Record: |5|0x5555555547a0|29|.rodata
  Section name: .eh_frame_hdr
  	Type: 5
- 	Address: 0x55555555479c
+ 	Address: 0x5555555547c0
  	Size: 60
- 	Record: |5|0x55555555479c|60|.eh_frame_hdr
+ 	Record: |5|0x5555555547c0|60|.eh_frame_hdr
  Section name: .eh_frame
  	Type: 5
- 	Address: 0x5555555547d8
+ 	Address: 0x555555554800
  	Size: 264
- 	Record: |5|0x5555555547d8|264|.eh_frame
+ 	Record: |5|0x555555554800|264|.eh_frame
  Section name: .init_array
  	Type: 5
  	Address: 0x555555754db0
@@ -118,13 +116,13 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  Section name: .data
  	Type: 5
  	Address: 0x555555755000
- 	Size: 20
- 	Record: |5|0x555555755000|20|.data
+ 	Size: 16
+ 	Record: |5|0x555555755000|16|.data
  Section name: .bss
  	Type: 18
- 	Address: 0x555555755014
- 	Size: 12
- 	Record: |18|0x555555755014|12|.bss
+ 	Address: 0x555555755010
+ 	Size: 8
+ 	Record: |18|0x555555755010|8|.bss
  Section name: .comment
  	Type: 17
  	Address: 0x000000000
@@ -138,40 +136,40 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  Section name: .debug_info
  	Type: 17
  	Address: 0x000000000
- 	Size: 884
- 	Record: |17|0x0|884|.debug_info
+ 	Size: 935
+ 	Record: |17|0x0|935|.debug_info
  Section name: .debug_abbrev
  	Type: 17
  	Address: 0x000000000
- 	Size: 258
- 	Record: |17|0x0|258|.debug_abbrev
+ 	Size: 254
+ 	Record: |17|0x0|254|.debug_abbrev
  Section name: .debug_line
  	Type: 17
  	Address: 0x000000000
- 	Size: 215
- 	Record: |17|0x0|215|.debug_line
+ 	Size: 246
+ 	Record: |17|0x0|246|.debug_line
  Section name: .debug_str
  	Type: 17
  	Address: 0x000000000
- 	Size: 695
- 	Record: |17|0x0|695|.debug_str
+ 	Size: 733
+ 	Record: |17|0x0|733|.debug_str
  Section name: .symtab
  	Type: 15
  	Address: 0x000000000
- 	Size: 1704
- 	Record: |15|0x0|1704|.symtab
+ 	Size: 1656
+ 	Record: |15|0x0|1656|.symtab
  Section name: .strtab
  	Type: 19
  	Address: 0x000000000
- 	Size: 537
- 	Record: |19|0x0|537|.strtab
+ 	Size: 545
+ 	Record: |19|0x0|545|.strtab
  Section name: .shstrtab
  	Type: 21
  	Address: 0x000000000
  	Size: 318
  	Record: |21|0x0|318|.shstrtab
  ASM Record
- 	ASM line #: 93824992232744
+ 	ASM line #: 93824992232776
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -179,15 +177,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  sub rsp, 0x8
  ASM Record
- 	ASM line #: 93824992232748
+ 	ASM line #: 93824992232780
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: mov rax, qword ptr [rip+0x200ab5]
+ 	Instruction: mov rax, qword ptr [rip+0x200a95]
 
- mov rax, qword ptr [rip+0x200ab5]
+ mov rax, qword ptr [rip+0x200a95]
  ASM Record
- 	ASM line #: 93824992232755
+ 	ASM line #: 93824992232787
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -195,15 +193,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  test rax, rax
  ASM Record
- 	ASM line #: 93824992232758
+ 	ASM line #: 93824992232790
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jz 0x55555555453a
+ 	Instruction: jz 0x55555555455a
 
- jz 0x55555555453a
+ jz 0x55555555455a
  ASM Record
- 	ASM line #: 93824992232760
+ 	ASM line #: 93824992232792
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -211,7 +209,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  call rax
  ASM Record
- 	ASM line #: 93824992232762
+ 	ASM line #: 93824992232794
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -219,7 +217,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  add rsp, 0x8
  ASM Record
- 	ASM line #: 93824992232766
+ 	ASM line #: 93824992232798
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -227,23 +225,23 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  ret 
  ASM Record
- 	ASM line #: 93824992232768
+ 	ASM line #: 93824992232800
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: push qword ptr [rip+0x200a72]
+ 	Instruction: push qword ptr [rip+0x200a52]
 
- push qword ptr [rip+0x200a72]
+ push qword ptr [rip+0x200a52]
  ASM Record
- 	ASM line #: 93824992232774
+ 	ASM line #: 93824992232806
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jmp qword ptr [rip+0x200a74]
+ 	Instruction: jmp qword ptr [rip+0x200a54]
 
- jmp qword ptr [rip+0x200a74]
+ jmp qword ptr [rip+0x200a54]
  ASM Record
- 	ASM line #: 93824992232780
+ 	ASM line #: 93824992232812
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -251,15 +249,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  nop dword ptr [rax], eax
  ASM Record
- 	ASM line #: 93824992232784
+ 	ASM line #: 93824992232816
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jmp qword ptr [rip+0x200a72]
+ 	Instruction: jmp qword ptr [rip+0x200a52]
 
- jmp qword ptr [rip+0x200a72]
+ jmp qword ptr [rip+0x200a52]
  ASM Record
- 	ASM line #: 93824992232790
+ 	ASM line #: 93824992232822
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -267,23 +265,23 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  push 0x0
  ASM Record
- 	ASM line #: 93824992232795
+ 	ASM line #: 93824992232827
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jmp 0x555555554540
+ 	Instruction: jmp 0x555555554560
 
- jmp 0x555555554540
+ jmp 0x555555554560
  ASM Record
- 	ASM line #: 93824992232800
+ 	ASM line #: 93824992232832
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jmp qword ptr [rip+0x200a6a]
+ 	Instruction: jmp qword ptr [rip+0x200a4a]
 
- jmp qword ptr [rip+0x200a6a]
+ jmp qword ptr [rip+0x200a4a]
  ASM Record
- 	ASM line #: 93824992232806
+ 	ASM line #: 93824992232838
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -291,23 +289,23 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  push 0x1
  ASM Record
- 	ASM line #: 93824992232811
+ 	ASM line #: 93824992232843
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jmp 0x555555554540
+ 	Instruction: jmp 0x555555554560
 
- jmp 0x555555554540
+ jmp 0x555555554560
  ASM Record
- 	ASM line #: 93824992232816
+ 	ASM line #: 93824992232848
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jmp qword ptr [rip+0x200a82]
+ 	Instruction: jmp qword ptr [rip+0x200a62]
 
- jmp qword ptr [rip+0x200a82]
+ jmp qword ptr [rip+0x200a62]
  ASM Record
- 	ASM line #: 93824992232822
+ 	ASM line #: 93824992232854
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -315,7 +313,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  data16 nop 
  ASM Record
- 	ASM line #: 93824992232832
+ 	ASM line #: 93824992232864
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -323,7 +321,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  xor ebp, ebp
  ASM Record
- 	ASM line #: 93824992232834
+ 	ASM line #: 93824992232866
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -331,7 +329,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  mov r9, rdx
  ASM Record
- 	ASM line #: 93824992232837
+ 	ASM line #: 93824992232869
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -339,7 +337,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  pop rsi
  ASM Record
- 	ASM line #: 93824992232838
+ 	ASM line #: 93824992232870
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -347,7 +345,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  mov rdx, rsp
  ASM Record
- 	ASM line #: 93824992232841
+ 	ASM line #: 93824992232873
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -355,7 +353,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  and rsp, 0xfffffffffffffff0
  ASM Record
- 	ASM line #: 93824992232845
+ 	ASM line #: 93824992232877
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -363,7 +361,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  push rax
  ASM Record
- 	ASM line #: 93824992232846
+ 	ASM line #: 93824992232878
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -371,23 +369,23 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  push rsp
  ASM Record
- 	ASM line #: 93824992232847
+ 	ASM line #: 93824992232879
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: lea r8, ptr [rip+0x1ca]
+ 	Instruction: lea r8, ptr [rip+0x1da]
 
- lea r8, ptr [rip+0x1ca]
+ lea r8, ptr [rip+0x1da]
  ASM Record
- 	ASM line #: 93824992232854
+ 	ASM line #: 93824992232886
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: lea rcx, ptr [rip+0x153]
+ 	Instruction: lea rcx, ptr [rip+0x163]
 
- lea rcx, ptr [rip+0x153]
+ lea rcx, ptr [rip+0x163]
  ASM Record
- 	ASM line #: 93824992232861
+ 	ASM line #: 93824992232893
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -395,15 +393,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  lea rdi, ptr [rip+0xe6]
  ASM Record
- 	ASM line #: 93824992232868
+ 	ASM line #: 93824992232900
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: call qword ptr [rip+0x200a36]
+ 	Instruction: call qword ptr [rip+0x200a16]
 
- call qword ptr [rip+0x200a36]
+ call qword ptr [rip+0x200a16]
  ASM Record
- 	ASM line #: 93824992232874
+ 	ASM line #: 93824992232906
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -411,15 +409,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  hlt 
  ASM Record
- 	ASM line #: 93824992232880
+ 	ASM line #: 93824992232912
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: lea rdi, ptr [rip+0x200a61]
+ 	Instruction: lea rdi, ptr [rip+0x200a39]
 
- lea rdi, ptr [rip+0x200a61]
+ lea rdi, ptr [rip+0x200a39]
  ASM Record
- 	ASM line #: 93824992232887
+ 	ASM line #: 93824992232919
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -427,15 +425,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  push rbp
  ASM Record
- 	ASM line #: 93824992232888
+ 	ASM line #: 93824992232920
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: lea rax, ptr [rip+0x200a59]
+ 	Instruction: lea rax, ptr [rip+0x200a31]
 
- lea rax, ptr [rip+0x200a59]
+ lea rax, ptr [rip+0x200a31]
  ASM Record
- 	ASM line #: 93824992232895
+ 	ASM line #: 93824992232927
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -443,7 +441,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  cmp rax, rdi
  ASM Record
- 	ASM line #: 93824992232898
+ 	ASM line #: 93824992232930
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -451,23 +449,23 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  mov rbp, rsp
  ASM Record
- 	ASM line #: 93824992232901
+ 	ASM line #: 93824992232933
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jz 0x5555555545e0
+ 	Instruction: jz 0x555555554600
 
- jz 0x5555555545e0
+ jz 0x555555554600
  ASM Record
- 	ASM line #: 93824992232903
+ 	ASM line #: 93824992232935
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: mov rax, qword ptr [rip+0x200a0a]
+ 	Instruction: mov rax, qword ptr [rip+0x2009ea]
 
- mov rax, qword ptr [rip+0x200a0a]
+ mov rax, qword ptr [rip+0x2009ea]
  ASM Record
- 	ASM line #: 93824992232910
+ 	ASM line #: 93824992232942
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -475,15 +473,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  test rax, rax
  ASM Record
- 	ASM line #: 93824992232913
+ 	ASM line #: 93824992232945
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jz 0x5555555545e0
+ 	Instruction: jz 0x555555554600
 
- jz 0x5555555545e0
+ jz 0x555555554600
  ASM Record
- 	ASM line #: 93824992232915
+ 	ASM line #: 93824992232947
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -491,7 +489,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  pop rbp
  ASM Record
- 	ASM line #: 93824992232916
+ 	ASM line #: 93824992232948
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -499,7 +497,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  jmp rax
  ASM Record
- 	ASM line #: 93824992232918
+ 	ASM line #: 93824992232950
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -507,7 +505,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  nop word ptr [rax+rax*1], ax
  ASM Record
- 	ASM line #: 93824992232928
+ 	ASM line #: 93824992232960
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -515,7 +513,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  pop rbp
  ASM Record
- 	ASM line #: 93824992232929
+ 	ASM line #: 93824992232961
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -523,7 +521,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  ret 
  ASM Record
- 	ASM line #: 93824992232930
+ 	ASM line #: 93824992232962
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -531,7 +529,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  nop dword ptr [rax], eax
  ASM Record
- 	ASM line #: 93824992232934
+ 	ASM line #: 93824992232966
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -539,23 +537,23 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  nop word ptr [rax+rax*1], ax
  ASM Record
- 	ASM line #: 93824992232944
+ 	ASM line #: 93824992232976
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: lea rdi, ptr [rip+0x200a21]
+ 	Instruction: lea rdi, ptr [rip+0x2009f9]
 
- lea rdi, ptr [rip+0x200a21]
+ lea rdi, ptr [rip+0x2009f9]
  ASM Record
- 	ASM line #: 93824992232951
+ 	ASM line #: 93824992232983
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: lea rsi, ptr [rip+0x200a1a]
+ 	Instruction: lea rsi, ptr [rip+0x2009f2]
 
- lea rsi, ptr [rip+0x200a1a]
+ lea rsi, ptr [rip+0x2009f2]
  ASM Record
- 	ASM line #: 93824992232958
+ 	ASM line #: 93824992232990
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -563,7 +561,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  push rbp
  ASM Record
- 	ASM line #: 93824992232959
+ 	ASM line #: 93824992232991
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -571,7 +569,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  sub rsi, rdi
  ASM Record
- 	ASM line #: 93824992232962
+ 	ASM line #: 93824992232994
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -579,7 +577,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  mov rbp, rsp
  ASM Record
- 	ASM line #: 93824992232965
+ 	ASM line #: 93824992232997
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -587,7 +585,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  sar rsi, 0x3
  ASM Record
- 	ASM line #: 93824992232969
+ 	ASM line #: 93824992233001
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -595,7 +593,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  mov rax, rsi
  ASM Record
- 	ASM line #: 93824992232972
+ 	ASM line #: 93824992233004
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -603,7 +601,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  shr rax, 0x3f
  ASM Record
- 	ASM line #: 93824992232976
+ 	ASM line #: 93824992233008
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -611,7 +609,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  add rsi, rax
  ASM Record
- 	ASM line #: 93824992232979
+ 	ASM line #: 93824992233011
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -619,23 +617,23 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  sar rsi, 0x1
  ASM Record
- 	ASM line #: 93824992232982
+ 	ASM line #: 93824992233014
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jz 0x555555554630
+ 	Instruction: jz 0x555555554650
 
- jz 0x555555554630
+ jz 0x555555554650
  ASM Record
- 	ASM line #: 93824992232984
+ 	ASM line #: 93824992233016
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: mov rax, qword ptr [rip+0x2009d1]
+ 	Instruction: mov rax, qword ptr [rip+0x2009b1]
 
- mov rax, qword ptr [rip+0x2009d1]
+ mov rax, qword ptr [rip+0x2009b1]
  ASM Record
- 	ASM line #: 93824992232991
+ 	ASM line #: 93824992233023
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -643,15 +641,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  test rax, rax
  ASM Record
- 	ASM line #: 93824992232994
+ 	ASM line #: 93824992233026
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jz 0x555555554630
+ 	Instruction: jz 0x555555554650
 
- jz 0x555555554630
+ jz 0x555555554650
  ASM Record
- 	ASM line #: 93824992232996
+ 	ASM line #: 93824992233028
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -659,7 +657,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  pop rbp
  ASM Record
- 	ASM line #: 93824992232997
+ 	ASM line #: 93824992233029
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -667,7 +665,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  jmp rax
  ASM Record
- 	ASM line #: 93824992232999
+ 	ASM line #: 93824992233031
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -675,137 +673,23 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  nop word ptr [rax+rax*1], ax
  ASM Record
- 	ASM line #: 93824992233008
+ 	ASM line #: 93824992233040
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
  	Instruction: pop rbp
 
  pop rbp
- ASM Record
- 	ASM line #: 93824992233009
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: ret 
-
- ret 
- ASM Record
- 	ASM line #: 93824992233010
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: nop dword ptr [rax], eax
-
- nop dword ptr [rax], eax
- ASM Record
- 	ASM line #: 93824992233014
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: nop word ptr [rax+rax*1], ax
-
- nop word ptr [rax+rax*1], ax
- ASM Record
- 	ASM line #: 93824992233024
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: cmp byte ptr [rip+0x2009cd], 0x0
-
- cmp byte ptr [rip+0x2009cd], 0x0
- ASM Record
- 	ASM line #: 93824992233031
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: jnz 0x555555554678
-
- jnz 0x555555554678
- ASM Record
- 	ASM line #: 93824992233033
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: cmp qword ptr [rip+0x2009a7], 0x0
-
- cmp qword ptr [rip+0x2009a7], 0x0
  ASM Record
  	ASM line #: 93824992233041
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: push rbp
-
- push rbp
- ASM Record
- 	ASM line #: 93824992233042
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov rbp, rsp
-
- mov rbp, rsp
- ASM Record
- 	ASM line #: 93824992233045
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: jz 0x555555554663
-
- jz 0x555555554663
- ASM Record
- 	ASM line #: 93824992233047
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov rdi, qword ptr [rip+0x2009aa]
-
- mov rdi, qword ptr [rip+0x2009aa]
- ASM Record
- 	ASM line #: 93824992233054
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: call 0x555555554570
-
- Direct call: call 0x555555554570
- call 0x555555554570
- ASM Record
- 	ASM line #: 93824992233059
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: call 0x5555555545b0
-
- Direct call: call 0x5555555545b0
- call 0x5555555545b0
- ASM Record
- 	ASM line #: 93824992233064
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov byte ptr [rip+0x2009a5], 0x1
-
- mov byte ptr [rip+0x2009a5], 0x1
- ASM Record
- 	ASM line #: 93824992233071
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: pop rbp
-
- pop rbp
- ASM Record
- 	ASM line #: 93824992233072
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
  	Instruction: ret 
 
  ret 
  ASM Record
- 	ASM line #: 93824992233073
+ 	ASM line #: 93824992233042
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -813,15 +697,39 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  nop dword ptr [rax], eax
  ASM Record
- 	ASM line #: 93824992233080
+ 	ASM line #: 93824992233046
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: ret 
+ 	Instruction: nop word ptr [rax+rax*1], ax
 
- ret 
+ nop word ptr [rax+rax*1], ax
  ASM Record
- 	ASM line #: 93824992233088
+ 	ASM line #: 93824992233056
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: cmp byte ptr [rip+0x2009a9], 0x0
+
+ cmp byte ptr [rip+0x2009a9], 0x0
+ ASM Record
+ 	ASM line #: 93824992233063
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: jnz 0x555555554698
+
+ jnz 0x555555554698
+ ASM Record
+ 	ASM line #: 93824992233065
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: cmp qword ptr [rip+0x200987], 0x0
+
+ cmp qword ptr [rip+0x200987], 0x0
+ ASM Record
+ 	ASM line #: 93824992233073
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -829,7 +737,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  push rbp
  ASM Record
- 	ASM line #: 93824992233089
+ 	ASM line #: 93824992233074
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -837,7 +745,49 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  mov rbp, rsp
  ASM Record
- 	ASM line #: 93824992233092
+ 	ASM line #: 93824992233077
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: jz 0x555555554683
+
+ jz 0x555555554683
+ ASM Record
+ 	ASM line #: 93824992233079
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: mov rdi, qword ptr [rip+0x20098a]
+
+ mov rdi, qword ptr [rip+0x20098a]
+ ASM Record
+ 	ASM line #: 93824992233086
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: call 0x555555554590
+
+ Direct call: call 0x555555554590
+ call 0x555555554590
+ ASM Record
+ 	ASM line #: 93824992233091
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: call 0x5555555545d0
+
+ Direct call: call 0x5555555545d0
+ call 0x5555555545d0
+ ASM Record
+ 	ASM line #: 93824992233096
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: mov byte ptr [rip+0x200981], 0x1
+
+ mov byte ptr [rip+0x200981], 0x1
+ ASM Record
+ 	ASM line #: 93824992233103
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -845,201 +795,273 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  pop rbp
  ASM Record
- 	ASM line #: 93824992233093
+ 	ASM line #: 93824992233104
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jmp 0x5555555545f0
-
- jmp 0x5555555545f0
- ASM Record
- 	ASM line #: 93824992233098
- 	C line #: 6
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
- 	Instruction: push rbp
-
- push rbp
- ASM Record
- 	ASM line #: 93824992233099
- 	C line #: 6
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
- 	Instruction: mov rbp, rsp
-
- mov rbp, rsp
- ASM Record
- 	ASM line #: 93824992233102
- 	C line #: 6
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
- 	Instruction: sub rsp, 0x10
-
- sub rsp, 0x10
- ASM Record
- 	ASM line #: 93824992233106
- 	C line #: 9
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
- 	Instruction: mov edi, 0x4
-
- mov edi, 0x4
- ASM Record
- 	ASM line #: 93824992233111
- 	C line #: 9
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
- 	Instruction: call 0x555555554560
-
- Direct call: call 0x555555554560
- call 0x555555554560
- ASM Record
- 	ASM line #: 93824992233116
- 	C line #: 9
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
- 	Instruction: mov qword ptr [rbp-0x8], rax
-
- mov qword ptr [rbp-0x8], rax
- ASM Record
- 	ASM line #: 93824992233120
- 	C line #: 12
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
- 	Instruction: mov dword ptr [rip+0x20096e], 0x1
-
- mov dword ptr [rip+0x20096e], 0x1
- ASM Record
- 	ASM line #: 93824992233130
- 	C line #: 13
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
- 	Instruction: mov dword ptr [rbp-0xc], 0x2
-
- mov dword ptr [rbp-0xc], 0x2
- ASM Record
- 	ASM line #: 93824992233137
- 	C line #: 14
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
- 	Instruction: mov rax, qword ptr [rbp-0x8]
-
- mov rax, qword ptr [rbp-0x8]
- ASM Record
- 	ASM line #: 93824992233141
- 	C line #: 14
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
- 	Instruction: mov dword ptr [rax], 0x5
-
- mov dword ptr [rax], 0x5
- ASM Record
- 	ASM line #: 93824992233147
- 	C line #: 15
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
- 	Instruction: mov esi, dword ptr [rip+0x20094f]
-
- mov esi, dword ptr [rip+0x20094f]
- ASM Record
- 	ASM line #: 93824992233153
- 	C line #: 15
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
- 	Instruction: mov rax, qword ptr [rbp-0x8]
-
- mov rax, qword ptr [rbp-0x8]
- ASM Record
- 	ASM line #: 93824992233157
- 	C line #: 15
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
- 	Instruction: mov ecx, dword ptr [rax]
-
- mov ecx, dword ptr [rax]
- ASM Record
- 	ASM line #: 93824992233159
- 	C line #: 15
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
- 	Instruction: mov eax, dword ptr [rip+0x20094b]
-
- mov eax, dword ptr [rip+0x20094b]
- ASM Record
- 	ASM line #: 93824992233165
- 	C line #: 15
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
- 	Instruction: mov edx, dword ptr [rbp-0xc]
-
- mov edx, dword ptr [rbp-0xc]
- ASM Record
- 	ASM line #: 93824992233168
- 	C line #: 15
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
- 	Instruction: mov r8d, esi
-
- mov r8d, esi
- ASM Record
- 	ASM line #: 93824992233171
- 	C line #: 15
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
- 	Instruction: mov esi, eax
-
- mov esi, eax
- ASM Record
- 	ASM line #: 93824992233173
- 	C line #: 15
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
- 	Instruction: lea rdi, ptr [rip+0x9c]
-
- lea rdi, ptr [rip+0x9c]
- ASM Record
- 	ASM line #: 93824992233180
- 	C line #: 15
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
- 	Instruction: mov eax, 0x0
-
- mov eax, 0x0
- ASM Record
- 	ASM line #: 93824992233185
- 	C line #: 15
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
- 	Instruction: call 0x555555554550
-
- Direct call: call 0x555555554550
- call 0x555555554550
- ASM Record
- 	ASM line #: 93824992233190
- 	C line #: 15
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
- 	Instruction: mov eax, 0x0
-
- mov eax, 0x0
- ASM Record
- 	ASM line #: 93824992233195
- 	C line #: 16
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
- 	Instruction: leave 
-
- leave 
- ASM Record
- 	ASM line #: 93824992233196
- 	C line #: 16
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
  	Instruction: ret 
 
  ret 
  ASM Record
+ 	ASM line #: 93824992233105
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: nop dword ptr [rax], eax
+
+ nop dword ptr [rax], eax
+ ASM Record
+ 	ASM line #: 93824992233112
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: ret 
+
+ ret 
+ ASM Record
+ 	ASM line #: 93824992233120
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: push rbp
+
+ push rbp
+ ASM Record
+ 	ASM line #: 93824992233121
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: mov rbp, rsp
+
+ mov rbp, rsp
+ ASM Record
+ 	ASM line #: 93824992233124
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: pop rbp
+
+ pop rbp
+ ASM Record
+ 	ASM line #: 93824992233125
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: jmp 0x555555554610
+
+ jmp 0x555555554610
+ ASM Record
+ 	ASM line #: 93824992233130
+ 	C line #: 10
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Instruction: push rbp
+
+ push rbp
+ ASM Record
+ 	ASM line #: 93824992233131
+ 	C line #: 10
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Instruction: mov rbp, rsp
+
+ mov rbp, rsp
+ ASM Record
+ 	ASM line #: 93824992233134
+ 	C line #: 10
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Instruction: sub rsp, 0x20
+
+ sub rsp, 0x20
+ ASM Record
+ 	ASM line #: 93824992233138
+ 	C line #: 10
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Instruction: mov rax, qword ptr fs:[0x28]
+
+ mov rax, qword ptr fs:[0x28]
+ ASM Record
+ 	ASM line #: 93824992233147
+ 	C line #: 10
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Instruction: mov qword ptr [rbp-0x8], rax
+
+ mov qword ptr [rbp-0x8], rax
+ ASM Record
+ 	ASM line #: 93824992233151
+ 	C line #: 10
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Instruction: xor eax, eax
+
+ xor eax, eax
+ ASM Record
+ 	ASM line #: 93824992233153
+ 	C line #: 14
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Instruction: mov dword ptr [rbp-0x20], 0x1
+
+ mov dword ptr [rbp-0x20], 0x1
+ ASM Record
+ 	ASM line #: 93824992233160
+ 	C line #: 15
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Instruction: mov dword ptr [rbp-0x1c], 0x2
+
+ mov dword ptr [rbp-0x1c], 0x2
+ ASM Record
+ 	ASM line #: 93824992233167
+ 	C line #: 16
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Instruction: lea rax, ptr [rbp-0x20]
+
+ lea rax, ptr [rbp-0x20]
+ ASM Record
+ 	ASM line #: 93824992233171
+ 	C line #: 16
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Instruction: add rax, 0x4
+
+ add rax, 0x4
+ ASM Record
+ 	ASM line #: 93824992233175
+ 	C line #: 16
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Instruction: mov qword ptr [rbp-0x18], rax
+
+ mov qword ptr [rbp-0x18], rax
+ ASM Record
+ 	ASM line #: 93824992233179
+ 	C line #: 17
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Instruction: mov rax, qword ptr [rbp-0x18]
+
+ mov rax, qword ptr [rbp-0x18]
+ ASM Record
+ 	ASM line #: 93824992233183
+ 	C line #: 17
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Instruction: mov ecx, dword ptr [rax]
+
+ mov ecx, dword ptr [rax]
+ ASM Record
+ 	ASM line #: 93824992233185
+ 	C line #: 17
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Instruction: mov edx, dword ptr [rbp-0x1c]
+
+ mov edx, dword ptr [rbp-0x1c]
+ ASM Record
+ 	ASM line #: 93824992233188
+ 	C line #: 17
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Instruction: mov eax, dword ptr [rbp-0x20]
+
+ mov eax, dword ptr [rbp-0x20]
+ ASM Record
+ 	ASM line #: 93824992233191
+ 	C line #: 17
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Instruction: mov esi, eax
+
+ mov esi, eax
+ ASM Record
+ 	ASM line #: 93824992233193
+ 	C line #: 17
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Instruction: lea rdi, ptr [rip+0xb4]
+
+ lea rdi, ptr [rip+0xb4]
+ ASM Record
  	ASM line #: 93824992233200
+ 	C line #: 17
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Instruction: mov eax, 0x0
+
+ mov eax, 0x0
+ ASM Record
+ 	ASM line #: 93824992233205
+ 	C line #: 17
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Instruction: call 0x555555554580
+
+ Direct call: call 0x555555554580
+ call 0x555555554580
+ ASM Record
+ 	ASM line #: 93824992233210
+ 	C line #: 17
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Instruction: mov eax, 0x0
+
+ mov eax, 0x0
+ ASM Record
+ 	ASM line #: 93824992233215
+ 	C line #: 18
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Instruction: mov rsi, qword ptr [rbp-0x8]
+
+ mov rsi, qword ptr [rbp-0x8]
+ ASM Record
+ 	ASM line #: 93824992233219
+ 	C line #: 18
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Instruction: xor rsi, qword ptr fs:[0x28]
+
+ xor rsi, qword ptr fs:[0x28]
+ ASM Record
+ 	ASM line #: 93824992233228
+ 	C line #: 18
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Instruction: jz 0x555555554713
+
+ jz 0x555555554713
+ ASM Record
+ 	ASM line #: 93824992233230
+ 	C line #: 18
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Instruction: call 0x555555554570
+
+ Direct call: call 0x555555554570
+ call 0x555555554570
+ ASM Record
+ 	ASM line #: 93824992233235
+ 	C line #: 18
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Instruction: leave 
+
+ leave 
+ ASM Record
+ 	ASM line #: 93824992233236
+ 	C line #: 18
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Instruction: ret 
+
+ ret 
+ ASM Record
+ 	ASM line #: 93824992233248
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1047,7 +1069,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  push r15
  ASM Record
- 	ASM line #: 93824992233202
+ 	ASM line #: 93824992233250
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1055,7 +1077,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  push r14
  ASM Record
- 	ASM line #: 93824992233204
+ 	ASM line #: 93824992233252
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1063,7 +1085,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  mov r15, rdx
  ASM Record
- 	ASM line #: 93824992233207
+ 	ASM line #: 93824992233255
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1071,7 +1093,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  push r13
  ASM Record
- 	ASM line #: 93824992233209
+ 	ASM line #: 93824992233257
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1079,15 +1101,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  push r12
  ASM Record
- 	ASM line #: 93824992233211
+ 	ASM line #: 93824992233259
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: lea r12, ptr [rip+0x2006ae]
+ 	Instruction: lea r12, ptr [rip+0x20067e]
 
- lea r12, ptr [rip+0x2006ae]
+ lea r12, ptr [rip+0x20067e]
  ASM Record
- 	ASM line #: 93824992233218
+ 	ASM line #: 93824992233266
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1095,15 +1117,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  push rbp
  ASM Record
- 	ASM line #: 93824992233219
+ 	ASM line #: 93824992233267
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: lea rbp, ptr [rip+0x2006ae]
+ 	Instruction: lea rbp, ptr [rip+0x20067e]
 
- lea rbp, ptr [rip+0x2006ae]
+ lea rbp, ptr [rip+0x20067e]
  ASM Record
- 	ASM line #: 93824992233226
+ 	ASM line #: 93824992233274
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1111,7 +1133,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  push rbx
  ASM Record
- 	ASM line #: 93824992233227
+ 	ASM line #: 93824992233275
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1119,7 +1141,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  mov r13d, edi
  ASM Record
- 	ASM line #: 93824992233230
+ 	ASM line #: 93824992233278
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1127,7 +1149,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  mov r14, rsi
  ASM Record
- 	ASM line #: 93824992233233
+ 	ASM line #: 93824992233281
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1135,7 +1157,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  sub rbp, r12
  ASM Record
- 	ASM line #: 93824992233236
+ 	ASM line #: 93824992233284
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1143,7 +1165,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  sub rsp, 0x8
  ASM Record
- 	ASM line #: 93824992233240
+ 	ASM line #: 93824992233288
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1151,16 +1173,16 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  sar rbp, 0x3
  ASM Record
- 	ASM line #: 93824992233244
+ 	ASM line #: 93824992233292
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: call 0x555555554528
+ 	Instruction: call 0x555555554548
 
- Direct call: call 0x555555554528
- call 0x555555554528
+ Direct call: call 0x555555554548
+ call 0x555555554548
  ASM Record
- 	ASM line #: 93824992233249
+ 	ASM line #: 93824992233297
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1168,15 +1190,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  test rbp, rbp
  ASM Record
- 	ASM line #: 93824992233252
+ 	ASM line #: 93824992233300
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jz 0x555555554746
+ 	Instruction: jz 0x555555554776
 
- jz 0x555555554746
+ jz 0x555555554776
  ASM Record
- 	ASM line #: 93824992233254
+ 	ASM line #: 93824992233302
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1184,7 +1206,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  xor ebx, ebx
  ASM Record
- 	ASM line #: 93824992233256
+ 	ASM line #: 93824992233304
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1192,7 +1214,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  nop dword ptr [rax+rax*1], eax
  ASM Record
- 	ASM line #: 93824992233264
+ 	ASM line #: 93824992233312
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1200,7 +1222,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  mov rdx, r15
  ASM Record
- 	ASM line #: 93824992233267
+ 	ASM line #: 93824992233315
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1208,7 +1230,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  mov rsi, r14
  ASM Record
- 	ASM line #: 93824992233270
+ 	ASM line #: 93824992233318
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1216,7 +1238,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  mov edi, r13d
  ASM Record
- 	ASM line #: 93824992233273
+ 	ASM line #: 93824992233321
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1224,7 +1246,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  call qword ptr [r12+rbx*8]
  ASM Record
- 	ASM line #: 93824992233277
+ 	ASM line #: 93824992233325
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1232,7 +1254,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  add rbx, 0x1
  ASM Record
- 	ASM line #: 93824992233281
+ 	ASM line #: 93824992233329
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1240,15 +1262,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  cmp rbp, rbx
  ASM Record
- 	ASM line #: 93824992233284
+ 	ASM line #: 93824992233332
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jnz 0x555555554730
+ 	Instruction: jnz 0x555555554760
 
- jnz 0x555555554730
+ jnz 0x555555554760
  ASM Record
- 	ASM line #: 93824992233286
+ 	ASM line #: 93824992233334
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1256,7 +1278,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  add rsp, 0x8
  ASM Record
- 	ASM line #: 93824992233290
+ 	ASM line #: 93824992233338
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1264,7 +1286,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  pop rbx
  ASM Record
- 	ASM line #: 93824992233291
+ 	ASM line #: 93824992233339
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1272,7 +1294,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  pop rbp
  ASM Record
- 	ASM line #: 93824992233292
+ 	ASM line #: 93824992233340
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1280,7 +1302,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  pop r12
  ASM Record
- 	ASM line #: 93824992233294
+ 	ASM line #: 93824992233342
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1288,7 +1310,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  pop r13
  ASM Record
- 	ASM line #: 93824992233296
+ 	ASM line #: 93824992233344
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1296,7 +1318,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  pop r14
  ASM Record
- 	ASM line #: 93824992233298
+ 	ASM line #: 93824992233346
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1304,7 +1326,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  pop r15
  ASM Record
- 	ASM line #: 93824992233300
+ 	ASM line #: 93824992233348
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1312,7 +1334,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  ret 
  ASM Record
- 	ASM line #: 93824992233312
+ 	ASM line #: 93824992233360
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1320,7 +1342,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  ret 
  ASM Record
- 	ASM line #: 93824992233316
+ 	ASM line #: 93824992233364
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1328,7 +1350,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  sub rsp, 0x8
  ASM Record
- 	ASM line #: 93824992233320
+ 	ASM line #: 93824992233368
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1336,7 +1358,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  add rsp, 0x8
  ASM Record
- 	ASM line #: 93824992233324
+ 	ASM line #: 93824992233372
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1366,37 +1388,37 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  malloc returns 0x7ffff7ffedd0
  enter malloc
  exit
- malloc returns 0x7fffe470b000
+ malloc returns 0x7fffe471d000
  enter malloc
  exit
- malloc returns 0x7fffe470b4a0
+ malloc returns 0x7fffe471d4a0
  enter malloc
  exit
- malloc returns 0x7fffe470b4c0
+ malloc returns 0x7fffe471d4c0
  enter malloc
  exit
- malloc returns 0x7fffe470b4f0
+ malloc returns 0x7fffe471d4f0
  enter malloc
  exit
- malloc returns 0x7fffe470b530
+ malloc returns 0x7fffe471d530
  enter malloc
  exit
- malloc returns 0x7fffe470b580
+ malloc returns 0x7fffe471d590
  enter malloc
  exit
- malloc returns 0x7fffe470b5d0
+ malloc returns 0x7fffe471d5e0
  enter malloc
  exit
- malloc returns 0x7fffe470b8d0
+ malloc returns 0x7fffe471d8e0
  enter malloc
  exit
- malloc returns 0x7fffe470b960
+ malloc returns 0x7fffe471d970
  enter malloc
  exit
- malloc returns 0x7fffe470bd70
+ malloc returns 0x7fffe471dd80
  enter malloc
  exit
- malloc returns 0x7fffe470ce00
+ malloc returns 0x7fffe471ee10
  Function Call to _start
  Base SP = 0x7fffffffdb90
  Stack Begin =0x7ffffffdd000 Stack End =0x7ffffffff000 after push stack size:1
@@ -1435,46 +1457,41 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  	File: __NOCSOURCE__
  	Register: r9
  	Value: 0x0x7ffff7de59a0
- 0x555555554585Read 0x7fffffffdb90 8
- line number 0
- value before read : 0x1  0x0  0x0  0x0  0x0  0x0  0x0  0x0  Invocation ID:18function _start was called. Frame pointer was 0x000000000
  Before pop: SP = 0x7fffffffdb90
  Enter AfterRegMod Checking values Register Record
- 	Event num: 25
+ 	Event num: 24
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsi
  	Value: 0x0x000000001
  Enter AfterRegMod Checking values Register Record
- 	Event num: 26
+ 	Event num: 25
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
  	Value: 0x0x7fffffffdb98
  After pop: SP = 0x7fffffffdb98
  Enter AfterRegMod Checking values Register Record
- 	Event num: 27
+ 	Event num: 26
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rdx
  	Value: 0x0x7fffffffdb98
  Enter AfterRegMod Checking values Register Record
- 	Event num: 28
+ 	Event num: 27
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
  	Value: 0x0x7fffffffdb90
  Enter AfterRegMod Checking values Register Record
- 	Event num: 29
+ 	Event num: 28
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rflags
  	Value: 0x0x000000206
- 0x55555555458d: Write 0x7fffffffdb88 8
- value before write : 0xca  0x60  0xdd  0xf7  0xff  0x7f  0x0  0x0  
  Before push: SP = 0x7fffffffdb90
  Enter AfterRegMod Checking values Register Record
- 	Event num: 32
+ 	Event num: 30
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
@@ -1482,14 +1499,12 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  value after write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x55555555458d is between 0x00000068a and 0x0000006ed
- ip = 0x55555555458d is not in user code
+ In cu_record::pc_in_range: check if pc = 0x5555555545ad is between 0x0000006aa and 0x000000715
+ ip = 0x5555555545ad is not in user code
  After push: SP = 0x7fffffffdb88
- 0x55555555458e: Write 0x7fffffffdb80 8
- value before write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  Before push: SP = 0x7fffffffdb88
  Enter AfterRegMod Checking values Register Record
- 	Event num: 35
+ 	Event num: 32
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
@@ -1497,40 +1512,35 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  value after write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x55555555458e is between 0x00000068a and 0x0000006ed
- ip = 0x55555555458e is not in user code
+ In cu_record::pc_in_range: check if pc = 0x5555555545ae is between 0x0000006aa and 0x000000715
+ ip = 0x5555555545ae is not in user code
  After push: SP = 0x7fffffffdb80
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 33
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: r8
+ 	Value: 0x0x555555554790
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 34
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rcx
+ 	Value: 0x0x555555554720
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 35
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rdi
+ 	Value: 0x0x5555555546aa
  Enter AfterRegMod Checking values Register Record
  	Event num: 36
  	Line #: 0
  	File: __NOCSOURCE__
- 	Register: r8
- 	Value: 0x0x555555554760
+ 	Register: rip
+ 	Value: 0x0x7fffe4329ab0
  Enter AfterRegMod Checking values Register Record
  	Event num: 37
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rcx
- 	Value: 0x0x5555555546f0
- Enter AfterRegMod Checking values Register Record
- 	Event num: 38
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rdi
- 	Value: 0x0x55555555468a
- 0x5555555545a4Read 0x555555754fe0 8
- line number 0
- value before read : 0xb0  0x1a  0x32  0xe4  0xff  0x7f  0x0  0x0  Invocation ID:18function _start was called. Frame pointer was 0x000000000
- 0x5555555545a4: Write 0x7fffffffdb78 8
- value before write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- Enter AfterRegMod Checking values Register Record
- 	Event num: 41
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x7fffe4321ab0
- Enter AfterRegMod Checking values Register Record
- 	Event num: 42
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
@@ -1538,15 +1548,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  value after write : 0x90  0xdb  0xff  0xff  0xff  0x7f  0x0  0x0  
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x5555555545a4 is between 0x00000068a and 0x0000006ed
- ip = 0x5555555545a4 is not in user code
+ In cu_record::pc_in_range: check if pc = 0x5555555545c4 is between 0x0000006aa and 0x000000715
+ ip = 0x5555555545c4 is not in user code
  Function Call to __libc_csu_init
  after push stack size:2
- Invocation ID:43function __libc_csu_init was called.
- Frame pointer was 0x5555555546f0
+ Invocation ID:38function __libc_csu_init was called.
+ Frame pointer was 0x555555554720
  Getting frame pointer for __libc_csu_init
  Call to function
- 	Event num: 43
+ 	Event num: 38
  	Function name: __libc_csu_init
  	Func line: 0
  	Inv line: 0
@@ -1556,50 +1566,44 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  Return address
  	Function name: main
- 	Dynamic link: 0x5555555546f0
- 	Return address: 0x7fffe4321b28
+ 	Dynamic link: 0x555555554720
+ 	Return address: 0x7fffe4329b28
  Build stack frame
- 0x5555555546f0: Write 0x7fffffffdab0 8
- value before write : 0x90  0xdb  0xff  0xff  0xff  0x7f  0x0  0x0  
  Before push: SP = 0x7fffffffdab8
  Enter AfterRegMod Checking values Register Record
- 	Event num: 47
+ 	Event num: 41
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
  	Value: 0x0x7fffffffdab0
- value after write : 0x80  0x45  0x55  0x55  0x55  0x55  0x0  0x0  
+ value after write : 0xa0  0x45  0x55  0x55  0x55  0x55  0x0  0x0  
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x5555555546f0 is between 0x00000068a and 0x0000006ed
- ip = 0x5555555546f0 is not in user code
+ In cu_record::pc_in_range: check if pc = 0x555555554720 is between 0x0000006aa and 0x000000715
+ ip = 0x555555554720 is not in user code
  After push: SP = 0x7fffffffdab0
- 0x5555555546f2: Write 0x7fffffffdaa8 8
- value before write : 0x80  0x45  0x55  0x55  0x55  0x55  0x0  0x0  
  Before push: SP = 0x7fffffffdab0
  Enter AfterRegMod Checking values Register Record
- 	Event num: 50
+ 	Event num: 43
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
  	Value: 0x0x7fffffffdaa8
- value after write : 0xf0  0x46  0x55  0x55  0x55  0x55  0x0  0x0  
+ value after write : 0x20  0x47  0x55  0x55  0x55  0x55  0x0  0x0  
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x5555555546f2 is between 0x00000068a and 0x0000006ed
- ip = 0x5555555546f2 is not in user code
+ In cu_record::pc_in_range: check if pc = 0x555555554722 is between 0x0000006aa and 0x000000715
+ ip = 0x555555554722 is not in user code
  After push: SP = 0x7fffffffdaa8
  Enter AfterRegMod Checking values Register Record
- 	Event num: 51
+ 	Event num: 44
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: r15
  	Value: 0x0x7fffffffdba8
- 0x5555555546f7: Write 0x7fffffffdaa0 8
- value before write : 0xf0  0x46  0x55  0x55  0x55  0x55  0x0  0x0  
  Before push: SP = 0x7fffffffdaa8
  Enter AfterRegMod Checking values Register Record
- 	Event num: 54
+ 	Event num: 46
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
@@ -1607,14 +1611,12 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  value after write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x5555555546f7 is between 0x00000068a and 0x0000006ed
- ip = 0x5555555546f7 is not in user code
+ In cu_record::pc_in_range: check if pc = 0x555555554727 is between 0x0000006aa and 0x000000715
+ ip = 0x555555554727 is not in user code
  After push: SP = 0x7fffffffdaa0
- 0x5555555546f9: Write 0x7fffffffda98 8
- value before write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  Before push: SP = 0x7fffffffdaa0
  Enter AfterRegMod Checking values Register Record
- 	Event num: 57
+ 	Event num: 48
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
@@ -1622,41 +1624,37 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  value after write : 0x70  0xe1  0xff  0xf7  0x0  0x0  0x0  0x0  
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x5555555546f9 is between 0x00000068a and 0x0000006ed
- ip = 0x5555555546f9 is not in user code
+ In cu_record::pc_in_range: check if pc = 0x555555554729 is between 0x0000006aa and 0x000000715
+ ip = 0x555555554729 is not in user code
  After push: SP = 0x7fffffffda98
  Enter AfterRegMod Checking values Register Record
- 	Event num: 58
+ 	Event num: 49
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: r12
  	Value: 0x0x555555754db0
- 0x555555554702: Write 0x7fffffffda90 8
- value before write : 0x70  0xe1  0xff  0xf7  0x0  0x0  0x0  0x0  
  Before push: SP = 0x7fffffffda98
  Enter AfterRegMod Checking values Register Record
- 	Event num: 61
+ 	Event num: 51
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
  	Value: 0x0x7fffffffda90
- value after write : 0x89  0x34  0x34  0xe4  0xff  0x7f  0x0  0x0  
+ value after write : 0x89  0xb4  0x34  0xe4  0xff  0x7f  0x0  0x0  
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x555555554702 is between 0x00000068a and 0x0000006ed
- ip = 0x555555554702 is not in user code
+ In cu_record::pc_in_range: check if pc = 0x555555554732 is between 0x0000006aa and 0x000000715
+ ip = 0x555555554732 is not in user code
  After push: SP = 0x7fffffffda90
  Enter AfterRegMod Checking values Register Record
- 	Event num: 62
+ 	Event num: 52
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rbp
  	Value: 0x0x555555754db8
- 0x55555555470a: Write 0x7fffffffda88 8
- value before write : 0x89  0x34  0x34  0xe4  0xff  0x7f  0x0  0x0  
  Before push: SP = 0x7fffffffda90
  Enter AfterRegMod Checking values Register Record
- 	Event num: 65
+ 	Event num: 54
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
@@ -1664,55 +1662,53 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  value after write : 0xa0  0x59  0xde  0xf7  0xff  0x7f  0x0  0x0  
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x55555555470a is between 0x00000068a and 0x0000006ed
- ip = 0x55555555470a is not in user code
+ In cu_record::pc_in_range: check if pc = 0x55555555473a is between 0x0000006aa and 0x000000715
+ ip = 0x55555555473a is not in user code
  After push: SP = 0x7fffffffda88
  Enter AfterRegMod Checking values Register Record
- 	Event num: 66
+ 	Event num: 55
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: r13d
  	Value: 0x0x000000001
  Enter AfterRegMod Checking values Register Record
- 	Event num: 67
+ 	Event num: 56
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: r14
  	Value: 0x0x7fffffffdb98
  Enter AfterRegMod Checking values Register Record
- 	Event num: 68
+ 	Event num: 57
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rbp
  	Value: 0x0x000000008
  Enter AfterRegMod Checking values Register Record
- 	Event num: 69
+ 	Event num: 58
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rflags
  	Value: 0x0x000000202
  Enter AfterRegMod Checking values Register Record
- 	Event num: 70
+ 	Event num: 59
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
  	Value: 0x0x7fffffffda80
  Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
- 	Event num: 71
+ 	Event num: 60
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rbp
  	Value: 0x0x000000001
- Enter AfterRegMod Checking values 0x55555555471c: Write 0x7fffffffda78 8
- value before write : 0x28  0x6  0x6f  0xe4  0xff  0x7f  0x0  0x0  
- Enter AfterRegMod Checking values Register Record
- 	Event num: 73
+ Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
+ 	Event num: 61
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
- 	Value: 0x0x555555554528
+ 	Value: 0x0x555555554548
  Enter AfterRegMod Checking values Register Record
- 	Event num: 74
+ 	Event num: 62
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
@@ -1720,15 +1716,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  value after write : 0xc2  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x55555555471c is between 0x00000068a and 0x0000006ed
- ip = 0x55555555471c is not in user code
+ In cu_record::pc_in_range: check if pc = 0x55555555474c is between 0x0000006aa and 0x000000715
+ ip = 0x55555555474c is not in user code
  Function Call to _init
  after push stack size:3
- Invocation ID:75function _init was called.
+ Invocation ID:63function _init was called.
  Frame pointer was 0x000000001
  Getting frame pointer for _init
  Call to function
- 	Event num: 75
+ 	Event num: 63
  	Function name: _init
  	Func line: 0
  	Inv line: 0
@@ -1739,37 +1735,34 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  Return address
  	Function name: main
  	Dynamic link: 0x000000001
- 	Return address: 0x555555554721
+ 	Return address: 0x555555554751
  Build stack frame
  Enter AfterRegMod Checking values Register Record
- 	Event num: 77
+ 	Event num: 65
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
  	Value: 0x0x7fffffffda70
- Enter AfterRegMod Checking values 0x55555555452cRead 0x555555754fe8 8
- line number 0
- value before read : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  Invocation ID:75function _init was called. Frame pointer was 0x000000001
- Enter AfterRegMod Checking values Register Record
- 	Event num: 79
+ Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
+ 	Event num: 66
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rax
  	Value: 0x0x000000000
  Enter AfterRegMod Checking values Register Record
- 	Event num: 80
+ 	Event num: 67
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rflags
  	Value: 0x0x000000246
  Enter AfterRegMod Checking values Register Record
- 	Event num: 81
+ 	Event num: 68
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
  	Value: 0x0x7fffffffda78
  Enter AfterRegMod Checking values Register Record
- 	Event num: 82
+ 	Event num: 69
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rflags
@@ -1778,78 +1771,70 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  No output found
  function return
  Exit functionInvocationAfter
- 0x55555555453eRead 0x7fffffffda78 8
- line number 0
- value before read : 0x21  0x47  0x55  0x55  0x55  0x55  0x0  0x0  Invocation ID:75function _init was called. Frame pointer was 0x000000001
  Before return: SP = 0x7fffffffda78
  Enter AfterRegMod Checking values Register Record
- 	Event num: 86
+ 	Event num: 72
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
- 	Value: 0x0x555555554721
+ 	Value: 0x0x555555554751
  Enter AfterRegMod Checking values Register Record
- 	Event num: 87
+ 	Event num: 73
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
  	Value: 0x0x7fffffffda80
  After return : SP = 0x7fffffffda80
  Enter AfterRegMod Checking values Register Record
- 	Event num: 88
+ 	Event num: 74
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rflags
  	Value: 0x0x000000202
  Enter AfterRegMod Checking values Register Record
- 	Event num: 89
+ 	Event num: 75
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
- 	Value: 0x0x555555554726
+ 	Value: 0x0x555555554756
  Enter AfterRegMod Checking values Register Record
- 	Event num: 90
+ 	Event num: 76
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: ebx
  	Value: 0x0x000000000
  Enter AfterRegMod Checking values Register Record
- 	Event num: 91
+ 	Event num: 77
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rflags
  	Value: 0x0x000000246
  Enter AfterRegMod Checking values Register Record
- 	Event num: 92
+ 	Event num: 78
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rdx
  	Value: 0x0x7fffffffdba8
  Enter AfterRegMod Checking values Register Record
- 	Event num: 93
+ 	Event num: 79
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsi
  	Value: 0x0x7fffffffdb98
  Enter AfterRegMod Checking values Register Record
- 	Event num: 94
+ 	Event num: 80
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: edi
  	Value: 0x0x000000001
- 0x555555554739Read 0x555555754db0 8
- line number 0
- value before read : 0x80  0x46  0x55  0x55  0x55  0x55  0x0  0x0  Invocation ID:75function _init was called. Frame pointer was 0x000000001
- 0x555555554739: Write 0x7fffffffda78 8
- value before write : 0x21  0x47  0x55  0x55  0x55  0x55  0x0  0x0  
  Enter AfterRegMod Checking values Register Record
- 	Event num: 97
+ 	Event num: 81
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
- 	Value: 0x0x555555554680
+ 	Value: 0x0x5555555546a0
  Enter AfterRegMod Checking values Register Record
- 	Event num: 98
+ 	Event num: 82
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
@@ -1857,14 +1842,12 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  value after write : 0xc2  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x555555554739 is between 0x00000068a and 0x0000006ed
- ip = 0x555555554739 is not in user code
+ In cu_record::pc_in_range: check if pc = 0x555555554769 is between 0x0000006aa and 0x000000715
+ ip = 0x555555554769 is not in user code
  Function Call to frame_dummy
- 0x555555554680: Write 0x7fffffffda70 8
- value before write : 0xc2  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  Before push: SP = 0x7fffffffda78
  Enter AfterRegMod Checking values Register Record
- 	Event num: 101
+ 	Event num: 84
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
@@ -1872,45 +1855,42 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  value after write : 0xff  0xb5  0xf0  0x0  0x0  0x0  0x0  0x0  
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x555555554680 is between 0x00000068a and 0x0000006ed
- ip = 0x555555554680 is not in user code
+ In cu_record::pc_in_range: check if pc = 0x5555555546a0 is between 0x0000006aa and 0x000000715
+ ip = 0x5555555546a0 is not in user code
  After push: SP = 0x7fffffffda70
  Enter AfterRegMod Checking values Register Record
- 	Event num: 102
+ 	Event num: 85
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rbp
  	Value: 0x0x7fffffffda70
- 0x555555554684Read 0x7fffffffda70 8
- line number 0
- value before read : 0x1  0x0  0x0  0x0  0x0  0x0  0x0  0x0  Invocation ID:75function frame_dummy was called. Frame pointer was 0x7fffffffda70
  Before pop: SP = 0x7fffffffda70
  Enter AfterRegMod Checking values Register Record
- 	Event num: 105
+ 	Event num: 87
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rbp
  	Value: 0x0x000000001
  Enter AfterRegMod Checking values Register Record
- 	Event num: 106
+ 	Event num: 88
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
  	Value: 0x0x7fffffffda78
  After pop: SP = 0x7fffffffda78
  Enter AfterRegMod Checking values Register Record
- 	Event num: 107
+ 	Event num: 89
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
- 	Value: 0x0x5555555545f0
+ 	Value: 0x0x555555554610
  Function Call to register_tm_clones
  after push stack size:3
- Invocation ID:108function register_tm_clones was called.
+ Invocation ID:90function register_tm_clones was called.
  Frame pointer was 0x000000001
  Getting frame pointer for register_tm_clones
  Call to function
- 	Event num: 108
+ 	Event num: 90
  	Function name: register_tm_clones
  	Func line: 0
  	Inv line: 0
@@ -1921,25 +1901,23 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  Return address
  	Function name: main
  	Dynamic link: 0x000000001
- 	Return address: 0x55555555473d
+ 	Return address: 0x55555555476d
  Build stack frame
  Enter AfterRegMod Checking values Register Record
- 	Event num: 110
+ 	Event num: 92
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rdi
- 	Value: 0x0x555555755018
+ 	Value: 0x0x555555755010
  Enter AfterRegMod Checking values Register Record
- 	Event num: 111
+ 	Event num: 93
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsi
- 	Value: 0x0x555555755018
- 0x5555555545fe: Write 0x7fffffffda70 8
- value before write : 0x1  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
+ 	Value: 0x0x555555755010
  Before push: SP = 0x7fffffffda78
  Enter AfterRegMod Checking values Register Record
- 	Event num: 114
+ 	Event num: 95
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
@@ -1947,33 +1925,30 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  value after write : 0xff  0xb5  0xf0  0x0  0x0  0x0  0x0  0x0  
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x5555555545fe is between 0x00000068a and 0x0000006ed
- ip = 0x5555555545fe is not in user code
+ In cu_record::pc_in_range: check if pc = 0x55555555461e is between 0x0000006aa and 0x000000715
+ ip = 0x55555555461e is not in user code
  After push: SP = 0x7fffffffda70
  Enter AfterRegMod Checking values Register Record
- 	Event num: 115
+ 	Event num: 96
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsi
  	Value: 0x0x000000000
  Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
- 	Event num: 116
+ 	Event num: 97
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rbp
  	Value: 0x0x7fffffffda70
- Enter AfterRegMod Checking values Enter AfterRegMod Checking values Enter AfterRegMod Checking values Enter AfterRegMod Checking values Enter AfterRegMod Checking values Enter AfterRegMod Checking values Enter AfterRegMod Checking values Enter AfterRegMod Checking values Enter AfterRegMod Checking values 0x555555554630Read 0x7fffffffda70 8
- line number 0
- value before read : 0x1  0x0  0x0  0x0  0x0  0x0  0x0  0x0  Invocation ID:108function register_tm_clones was called. Frame pointer was 0x7fffffffda70
- Before pop: SP = 0x7fffffffda70
+ Enter AfterRegMod Checking values Enter AfterRegMod Checking values Enter AfterRegMod Checking values Enter AfterRegMod Checking values Enter AfterRegMod Checking values Enter AfterRegMod Checking values Enter AfterRegMod Checking values Enter AfterRegMod Checking values Enter AfterRegMod Checking values Before pop: SP = 0x7fffffffda70
  Enter AfterRegMod Checking values Register Record
- 	Event num: 119
+ 	Event num: 99
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rbp
  	Value: 0x0x000000001
  Enter AfterRegMod Checking values Register Record
- 	Event num: 120
+ 	Event num: 100
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
@@ -1983,156 +1958,135 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  No output found
  function return
  Exit functionInvocationAfter
- 0x555555554631Read 0x7fffffffda78 8
- line number 0
- value before read : 0x3d  0x47  0x55  0x55  0x55  0x55  0x0  0x0  Invocation ID:108function register_tm_clones was called. Frame pointer was 0x000000001
  Before return: SP = 0x7fffffffda78
  Enter AfterRegMod Checking values Register Record
- 	Event num: 124
+ 	Event num: 103
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
- 	Value: 0x0x55555555473d
+ 	Value: 0x0x55555555476d
  Enter AfterRegMod Checking values Register Record
- 	Event num: 125
+ 	Event num: 104
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
  	Value: 0x0x7fffffffda80
  After return : SP = 0x7fffffffda80
  Enter AfterRegMod Checking values Register Record
- 	Event num: 126
+ 	Event num: 105
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rbx
  	Value: 0x0x000000001
  Enter AfterRegMod Checking values Register Record
- 	Event num: 127
+ 	Event num: 106
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rflags
  	Value: 0x0x000000202
  Enter AfterRegMod Checking values Register Record
- 	Event num: 128
+ 	Event num: 107
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rflags
  	Value: 0x0x000000246
  Enter AfterRegMod Checking values Register Record
- 	Event num: 129
+ 	Event num: 108
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
- 	Value: 0x0x555555554746
+ 	Value: 0x0x555555554776
  Enter AfterRegMod Checking values Register Record
- 	Event num: 130
+ 	Event num: 109
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
  	Value: 0x0x7fffffffda88
  Enter AfterRegMod Checking values Register Record
- 	Event num: 131
+ 	Event num: 110
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rflags
  	Value: 0x0x000000206
- 0x55555555474aRead 0x7fffffffda88 8
- line number 0
- value before read : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  Invocation ID:108function register_tm_clones was called. Frame pointer was 0x000000001
  Before pop: SP = 0x7fffffffda88
  Enter AfterRegMod Checking values Register Record
- 	Event num: 134
+ 	Event num: 112
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rbx
  	Value: 0x0x000000000
  Enter AfterRegMod Checking values Register Record
- 	Event num: 135
+ 	Event num: 113
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
  	Value: 0x0x7fffffffda90
  After pop: SP = 0x7fffffffda90
- 0x55555555474bRead 0x7fffffffda90 8
- line number 0
- value before read : 0xf0  0x46  0x55  0x55  0x55  0x55  0x0  0x0  Invocation ID:108function register_tm_clones was called. Frame pointer was 0x000000001
  Before pop: SP = 0x7fffffffda90
  Enter AfterRegMod Checking values Register Record
- 	Event num: 138
+ 	Event num: 115
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rbp
- 	Value: 0x0x5555555546f0
+ 	Value: 0x0x555555554720
  Enter AfterRegMod Checking values Register Record
- 	Event num: 139
+ 	Event num: 116
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
  	Value: 0x0x7fffffffda98
  After pop: SP = 0x7fffffffda98
- 0x55555555474cRead 0x7fffffffda98 8
- line number 0
- value before read : 0x80  0x45  0x55  0x55  0x55  0x55  0x0  0x0  Invocation ID:108function register_tm_clones was called. Frame pointer was 0x5555555546f0
  Before pop: SP = 0x7fffffffda98
  Enter AfterRegMod Checking values Register Record
- 	Event num: 142
+ 	Event num: 118
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: r12
- 	Value: 0x0x555555554580
+ 	Value: 0x0x5555555545a0
  Enter AfterRegMod Checking values Register Record
- 	Event num: 143
+ 	Event num: 119
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
  	Value: 0x0x7fffffffdaa0
  After pop: SP = 0x7fffffffdaa0
- 0x55555555474eRead 0x7fffffffdaa0 8
- line number 0
- value before read : 0x90  0xdb  0xff  0xff  0xff  0x7f  0x0  0x0  Invocation ID:108function register_tm_clones was called. Frame pointer was 0x5555555546f0
  Before pop: SP = 0x7fffffffdaa0
  Enter AfterRegMod Checking values Register Record
- 	Event num: 146
+ 	Event num: 121
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: r13
  	Value: 0x0x7fffffffdb90
  Enter AfterRegMod Checking values Register Record
- 	Event num: 147
+ 	Event num: 122
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
  	Value: 0x0x7fffffffdaa8
  After pop: SP = 0x7fffffffdaa8
- 0x555555554750Read 0x7fffffffdaa8 8
- line number 0
- value before read : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  Invocation ID:108function register_tm_clones was called. Frame pointer was 0x5555555546f0
  Before pop: SP = 0x7fffffffdaa8
  Enter AfterRegMod Checking values Register Record
- 	Event num: 150
+ 	Event num: 124
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: r14
  	Value: 0x0x000000000
  Enter AfterRegMod Checking values Register Record
- 	Event num: 151
+ 	Event num: 125
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
  	Value: 0x0x7fffffffdab0
  After pop: SP = 0x7fffffffdab0
- 0x555555554752Read 0x7fffffffdab0 8
- line number 0
- value before read : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  Invocation ID:108function register_tm_clones was called. Frame pointer was 0x5555555546f0
  Before pop: SP = 0x7fffffffdab0
  Enter AfterRegMod Checking values Register Record
- 	Event num: 154
+ 	Event num: 127
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: r15
  	Value: 0x0x000000000
  Enter AfterRegMod Checking values Register Record
- 	Event num: 155
+ 	Event num: 128
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
@@ -2142,18 +2096,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  No output found
  function return
  Exit functionInvocationAfter
- 0x555555554754Read 0x7fffffffdab8 8
- line number 0
- value before read : 0x28  0x1b  0x32  0xe4  0xff  0x7f  0x0  0x0  Invocation ID:108function register_tm_clones was called. Frame pointer was 0x5555555546f0
  Before return: SP = 0x7fffffffdab8
  Enter AfterRegMod Checking values Register Record
- 	Event num: 159
+ 	Event num: 131
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
- 	Value: 0x0x7fffe4321b28
+ 	Value: 0x0x7fffe4329b28
  Enter AfterRegMod Checking values Register Record
- 	Event num: 160
+ 	Event num: 132
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
@@ -2161,695 +2112,565 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  After return : SP = 0x7fffffffdac0
  Function Call to main
  after push stack size:2
- Invocation ID:161function main was called.
- Frame pointer was 0x5555555546f0
+ Invocation ID:133function main was called.
+ Frame pointer was 0x555555554720
  Getting frame pointer for main
  Call to function
- 	Event num: 161
+ 	Event num: 133
  	Function name: main
- 	Func line: 6
+ 	Func line: 10
  	Inv line: 0
- 	Func file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
+ 	Func file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
  	Inv file: 
  	Callee stack address: 0x7fffffffdab8
 
  Return address
  	Function name: main
- 	Dynamic link: 0x5555555546f0
- 	Return address: 0x7fffe4321b97
+ 	Dynamic link: 0x555555554720
+ 	Return address: 0x7fffe4329b97
  Build stack frame
  In runtime_stack::push for routinemain
- In cu_record::pc_in_range: check if pc = 0x55555555468a is between 0x00000068a and 0x0000006ed
- In var_record::pc_in_range: check if pc = 0x55555555468a is between 0x55555555468a and 0x5555555546ed
- Add variable b for frame main
- Base address for a local or param is: 0x5555555546e4
+ In cu_record::pc_in_range: check if pc = 0x5555555546aa is between 0x0000006aa and 0x000000715
+ In var_record::pc_in_range: check if pc = 0x5555555546aa is between 0x5555555546aa and 0x555555554715
+ Add variable x for frame main
+ Base address for a local or param is: 0x555555554700
  In var_record::read_value
- Type is int
- Reading 4 bytes at address: 0x5555555546e4
- Found a singleton value
- In var_record::read_singleton_value
- Type is int
- Reading 4 bytes at address: 0x5555555546e4
- Interpreting data as an int, value is 12124159
- Add variable p for frame main
- Base address for a local or param is: 0x5555555546e8
- In var_record::read_value
- Type is int*
- Reading 8 bytes at address: 0x5555555546e8
- Found a pointer
- Found a non-character pointer to an atomic value
- value = 0x1f0fc3c9000000
- In var_record::read_value
- Type is int
- Reading 4 bytes at address: 0x1f0fc3c9000000
- Found a singleton value
- In var_record::read_singleton_value
- Type is int
- Reading 4 bytes at address: 0x1f0fc3c9000000
- Caught a SIGSEGV in dereference_memory() 0x55555555468a: Write 0x7fffffffdab0 8
- value before write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- Before push: SP = 0x7fffffffdab8
+ Type is struct tests
+ Reading 16 bytes at address: 0x555555554700
+ read_struct_value: Reading a value in a struct at address: 0x555555554700 Before push: SP = 0x7fffffffdab8
  Enter AfterRegMod Checking values Register Record
- 	Event num: 165
- 	Line #: 6
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
+ 	Event num: 136
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
  	Register: rsp
  	Value: 0x0x7fffffffdab0
  value after write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- line = 6, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
+ line = 10, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
  In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x55555555468a is between 0x00000068a and 0x0000006ed
- ip = 0x55555555468a is in user code checking variable access
- PC is before stack frame is setup: 0x55555555468a After push: SP = 0x7fffffffdab0
+ In cu_record::pc_in_range: check if pc = 0x5555555546aa is between 0x0000006aa and 0x000000715
+ ip = 0x5555555546aa is in user code checking variable access
+ PC is before stack frame is setup: 0x5555555546aa After push: SP = 0x7fffffffdab0
  Enter AfterRegMod Checking values Register Record
- 	Event num: 166
- 	Line #: 6
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
+ 	Event num: 137
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
  	Register: rbp
  	Value: 0x0x7fffffffdab0
- Enter AfterRegMod Checking values Register Record
- 	Event num: 167
- 	Line #: 6
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
- 	Register: rsp
- 	Value: 0x0x7fffffffdaa0
- Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
- 	Event num: 168
- 	Line #: 9
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
- 	Register: edi
- 	Value: 0x0x000000004
- 0x555555554697: Write 0x7fffffffda98 8
- value before write : 0x80  0x45  0x55  0x55  0x55  0x55  0x0  0x0  
- Enter AfterRegMod Checking values Register Record
- 	Event num: 170
- 	Line #: 9
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
- 	Register: rip
- 	Value: 0x0x555555554560
- Enter AfterRegMod Checking values Register Record
- 	Event num: 171
- 	Line #: 9
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
- 	Register: rsp
- 	Value: 0x0x7fffffffda98
- value after write : 0xf0  0x46  0x55  0x55  0x55  0x55  0x0  0x0  
- line = 9, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
- In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x555555554697 is between 0x00000068a and 0x0000006ed
- ip = 0x555555554697 is in user code checking variable access
- In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffda90
+ Enter AfterRegMod In runtime_stack::addr_get_updated_variables, addr = <** null pointer **>
  In runtime_stack::get_updated_variables_from_frame
  First access for frame of main
- Checking if variable b has been updated
- Base address for a local or param is: 0x7fffffffdaa4
+ Checking if variable x has been updated
+ Base address for a local or param is: 0x7fffffffda90
+ In get_updated_struct_members: scope = main
+ Base address for a local or param is: 0x7fffffffda90
  In var_record::read_value
  Type is int
- Reading 4 bytes at address: 0x7fffffffdaa4
+ Reading 4 bytes at address: 0x7fffffffda90
  Found a singleton value
  In var_record::read_singleton_value
  Type is int
- Reading 4 bytes at address: 0x7fffffffdaa4
- Interpreting data as an int, value is 32767
- New value = 32767, old value = 12124159
- Found new value: 32767 for b
- Checking if variable p has been updated
- Base address for a local or param is: 0x7fffffffdaa8
+ Reading 4 bytes at address: 0x7fffffffda90
+ Interpreting data as an int, value is 1431652128
+ In var_record::read_value
+ Type is int
+ Reading 4 bytes at address: 0x7fffffffda94
+ Found a singleton value
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0x7fffffffda94
+ Interpreting data as an int, value is 21845
  In var_record::read_value
  Type is int*
- Reading 8 bytes at address: 0x7fffffffdaa8
+ Reading 8 bytes at address: 0x7fffffffda98
  Found a pointer
  Found a non-character pointer to an atomic value
- value = <** null pointer **>
- New value = <** null pointer **>, old value = 0x1f0fc3c9000000
- Found new value: <** null pointer **> for p
- points_to value converted from <** Segmentation fault for address: 0x1f0fc3c9000000 **> to 0x000000000 In runtime_stack::get_updated_variables_from_frame
+ value = 0x5555555545a0
+ In runtime_stack::get_updated_variables_from_frame
  First access for frame of *G*
- Checking if variable a has been updated
- Base address for a global is: 0x555555755018
- In var_record::read_value
- Type is int
- Reading 4 bytes at address: 0x555555755018
- Found a singleton value
- In var_record::read_singleton_value
- Type is int
- Reading 4 bytes at address: 0x555555755018
- Interpreting data as an int, value is 0
- New value = 0, old value = 
- Found new value: 0 for a
- Checking if variable c has been updated
- Base address for a global is: 0x555555755010
- In var_record::read_value
- Type is int
- Reading 4 bytes at address: 0x555555755010
- Found a singleton value
- In var_record::read_singleton_value
- Type is int
- Reading 4 bytes at address: 0x555555755010
- Interpreting data as an int, value is 3
- New value = 3, old value = 
- Found new value: 3 for c
  In runtime_stack::get_all_updated_points_to
  In runtime_stack::get_updated_points_to_frame
- Found a pointer variable: p
- Base address for a local or param is: 0x7fffffffdaa8
- Caught a SIGSEGV in dereference_memory() Pointer variable: p does not point to a valid memory location
- Checking if what variable p points to has been updated
- Found new points_to value: <** Null pointer exception **> for p old points_to value = <** Segmentation fault for address: 0x1f0fc3c9000000 **>
+ Base address for a local or param is: 0x7fffffffda90
+ In get_updated_points_to_from_struct: scope = main
+ Found a pointer variable: x
+ Base address for a local or param is: 0x7fffffffda98
+ Pointer variable: x points to a valid memory location
+ In var_record::read_value
+ Type is int
+ Reading 4 bytes at address: 0x5555555545a0
+ Found a singleton value
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0x5555555545a0
+ Interpreting data as an int, value is -1991643855
  In runtime_stack::get_updated_points_to_frame
- Write to address 0x7fffffffdaa4 is variable b
-prefix = 
- Write to variable b
- 	Event num: 172
- 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
+ Write to variable x
+ 	Event num: 138
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
  	Scope: main
- 	Address: 0x7fffffffdaa4
+ 	Address: 0x7fffffffda90
+ 	Type: struct tests
+ 	Value: <multielement>
+ 	Points to: 0x65745f6765735f47
+ 	Points to value: 
+ Write to variable struct tests:a
+ 	Event num: 138
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Scope: main
+ 	Address: 0x7fffffffda90
  	Type: int
- 	Value: 32767
- 	Points to: 0xffffffffffffffff
-
- Write to address 0x7fffffffdaa8 is variable p
-prefix = 
- Write to pointer variable p
- 	Event num: 172
- 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
+ 	Value: 1431652128
+ 	Points to: 0x65745f6765735f47
+ 	Points to value: 
+ Write to variable struct tests:b
+ 	Event num: 138
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
  	Scope: main
- 	Address: 0x7fffffffdaa8
+ 	Address: 0x7fffffffda94
+ 	Type: int
+ 	Value: 21845
+ 	Points to: 0x4d492032742f7374
+ 	Points to value: 
+ Write to variable struct tests:p
+ 	Event num: 138
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Scope: main
+ 	Address: 0x7fffffffda98
  	Type: int*
- 	Value: <** null pointer **>
- 	Points to: 0x000000000
-
- Write to address 0x555555755018 is variable a
-prefix = 
- Write to variable a
- 	Event num: 172
- 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
- 	Scope: *G*
- 	Address: 0x555555755018
- 	Type: int
- 	Value: 0
- 	Points to: 0xffffffffffffffff
-
- Write to address 0x555555755010 is variable c
-prefix = 
- Write to variable c
- 	Event num: 172
- 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
- 	Scope: *G*
- 	Address: 0x555555755010
- 	Type: int
- 	Value: 3
- 	Points to: 0xffffffffffffffff
-
- Write to address 0x7fffffffdaa8 is variable p
-prefix = 
- Write to pointer variable p
- 	Event num: 172
- 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
+ 	Value: 0x5555555545a0
+ 	Points to: 0x4d492032742f7374
+ 	Points to value: 
+ Write to variable struct tests:p
+ 	Event num: 138
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
  	Scope: main
- 	Address: 0x7fffffffdaa8
+ 	Address: 0x7fffffffda98
  	Type: int*
- 	Value: <** Null pointer exception **>
- 	Points to: 0x000000000
-
- 0x555555554560Read 0x555555754fd0 8
- line number 0
- value before read : 0x70  0x70  0x39  0xe4  0xff  0x7f  0x0  0x0  Invocation ID:161function main was called. Frame pointer was 0x7fffffffdab0
- Enter AfterRegMod Checking values Register Record
- 	Event num: 174
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x7fffe4397070
- enter malloc
- exit
- 0x55555555469c: Write 0x7fffffffdaa8 8
- value before write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- value after write : 0x60  0x62  0x75  0x55  0x55  0x55  0x0  0x0  
- line = 9, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
+ 	Value: 0x5555555545a0
+ 	Points to: 0x5555555545a0
+ 	Points to value: -1991643855
+ Checking values Register Record
+ 	Event num: 139
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Register: rsp
+ 	Value: 0x0x7fffffffda90
+ Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
+ 	Event num: 140
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Register: rax
+ 	Value: 0x0x63be17c82557a700
+ value after write : 0x0  0xa7  0x57  0x25  0xc8  0x17  0xbe  0x63  
+ line = 10, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
  In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x55555555469c is between 0x00000068a and 0x0000006ed
- ip = 0x55555555469c is in user code checking variable access
+ In cu_record::pc_in_range: check if pc = 0x5555555546bb is between 0x0000006aa and 0x000000715
+ ip = 0x5555555546bb is in user code checking variable access
  In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffdaa8
  In runtime_stack::get_updated_variables_from_frame
- Checking if variable b has been updated
+ Checking if variable x has been updated
  Enter is_at_address
- trec = 0x7ffff7d7f140 type name = int
- Base address for a local or param is: 0x7fffffffdaa4
- var_addr: 0x7fffffffdaa4 mem_addr: 0x7fffffffdaa8 size: 4
- Checking if variable p has been updated
- Enter is_at_address
- trec = 0x7ffff7d7f240 type name = int*
- Base address for a local or param is: 0x7fffffffdaa8
- var_addr: 0x7fffffffdaa8 mem_addr: 0x7fffffffdaa8 size: 8
- In var_record::read_value
- Type is int*
- Reading 8 bytes at address: 0x7fffffffdaa8
- Found a pointer
- Found a non-character pointer to an atomic value
- value = 0x555555756260
- New value = 0x555555756260, old value = <** null pointer **>
- Found new value: 0x555555756260 for p
- points_to value converted from <** Null pointer exception **> to 0x000000000 In runtime_stack::get_updated_variables_from_frame
- Checking if variable a has been updated
- Enter is_at_address
- trec = 0x7ffff7d7f140 type name = int
- Base address for a global is: 0x555555755018
- var_addr: 0x555555755018 mem_addr: 0x7fffffffdaa8 size: 4
- Checking if variable c has been updated
- Enter is_at_address
- trec = 0x7ffff7d7f140 type name = int
- Base address for a global is: 0x555555755010
- var_addr: 0x555555755010 mem_addr: 0x7fffffffdaa8 size: 4
+ trec = 0x7ffff7d7f1c0 type name = struct tests
+ Base address for a local or param is: 0x7fffffffda90
+ var_addr: 0x7fffffffda90 mem_addr: 0x7fffffffdaa8 size: 16
+ In runtime_stack::get_updated_variables_from_frame
  In runtime_stack::get_all_updated_points_to
  In runtime_stack::get_updated_points_to_frame
- Found a pointer variable: p
- Base address for a local or param is: 0x7fffffffdaa8
- Pointer variable: p points to a valid memory location
+ Base address for a local or param is: 0x7fffffffda90
+ In get_updated_points_to_from_struct: scope = main
+ Found a pointer variable: x
+ Base address for a local or param is: 0x7fffffffda98
+ Pointer variable: x points to a valid memory location
  In var_record::read_value
  Type is int
- Reading 4 bytes at address: 0x555555756260
+ Reading 4 bytes at address: 0x5555555545a0
  Found a singleton value
  In var_record::read_singleton_value
  Type is int
- Reading 4 bytes at address: 0x555555756260
- Interpreting data as an int, value is 0
- Checking if what variable p points to has been updated
- Found new points_to value: 0 for p old points_to value = <** Null pointer exception **>
+ Reading 4 bytes at address: 0x5555555545a0
+ Interpreting data as an int, value is -1991643855
  In runtime_stack::get_updated_points_to_frame
- Write to address 0x7fffffffdaa8 is variable p
-prefix = 
- Write to pointer variable p
- 	Event num: 177
- 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
+ Write to variable struct tests:p
+ 	Event num: 141
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
  	Scope: main
- 	Address: 0x7fffffffdaa8
+ 	Address: 0x7fffffffda98
  	Type: int*
- 	Value: 0x555555756260
- 	Points to: 0x000000000
-
- Write to address 0x7fffffffdaa8 is variable p
-prefix = 
- Write to pointer variable p
- 	Event num: 177
- 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
- 	Scope: main
- 	Address: 0x7fffffffdaa8
- 	Type: int*
- 	Value: 0
- 	Points to: 0x555555756260
-
- 0x5555555546a0: Write 0x555555755018 4
- value before write : 0x0  0x0  0x0  0x0  
+ 	Value: 0x5555555545a0
+ 	Points to: 0x5555555545a0
+ 	Points to value: -1991643855
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 142
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Register: eax
+ 	Value: 0x0x000000000
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 143
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Register: rflags
+ 	Value: 0x0x000000246
  value after write : 0x1  0x0  0x0  0x0  
- line = 12, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
+ line = 14, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
  In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x5555555546a0 is between 0x00000068a and 0x0000006ed
- ip = 0x5555555546a0 is in user code checking variable access
- In runtime_stack::addr_get_updated_variables, addr = 0x555555755018
+ In cu_record::pc_in_range: check if pc = 0x5555555546c1 is between 0x0000006aa and 0x000000715
+ ip = 0x5555555546c1 is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffda90
  In runtime_stack::get_updated_variables_from_frame
- Checking if variable b has been updated
+ Checking if variable x has been updated
  Enter is_at_address
- trec = 0x7ffff7d7f140 type name = int
- Base address for a local or param is: 0x7fffffffdaa4
- var_addr: 0x7fffffffdaa4 mem_addr: 0x555555755018 size: 4
- Checking if variable p has been updated
+ trec = 0x7ffff7d7f1c0 type name = struct tests
+ Base address for a local or param is: 0x7fffffffda90
+ var_addr: 0x7fffffffda90 mem_addr: 0x7fffffffda90 size: 16
+ In get_updated_struct_members: scope = main
  Enter is_at_address
- trec = 0x7ffff7d7f240 type name = int*
- Base address for a local or param is: 0x7fffffffdaa8
- var_addr: 0x7fffffffdaa8 mem_addr: 0x555555755018 size: 8
- In runtime_stack::get_updated_variables_from_frame
- Checking if variable a has been updated
- Enter is_at_address
- trec = 0x7ffff7d7f140 type name = int
- Base address for a global is: 0x555555755018
- var_addr: 0x555555755018 mem_addr: 0x555555755018 size: 4
+ trec = 0x7fffe4a2e040 type name = int
+ Base address for a local or param is: 0x7fffffffda90
+ var_addr: 0x7fffffffda90 mem_addr: 0x7fffffffda90 size: 4
  In var_record::read_value
  Type is int
- Reading 4 bytes at address: 0x555555755018
+ Reading 4 bytes at address: 0x7fffffffda90
  Found a singleton value
  In var_record::read_singleton_value
  Type is int
- Reading 4 bytes at address: 0x555555755018
+ Reading 4 bytes at address: 0x7fffffffda90
  Interpreting data as an int, value is 1
- New value = 1, old value = 0
- Found new value: 1 for a
- Checking if variable c has been updated
- Enter is_at_address
- trec = 0x7ffff7d7f140 type name = int
- Base address for a global is: 0x555555755010
- var_addr: 0x555555755010 mem_addr: 0x555555755018 size: 4
+ In runtime_stack::get_updated_variables_from_frame
  In runtime_stack::get_all_updated_points_to
  In runtime_stack::get_updated_points_to_frame
- Found a pointer variable: p
- Base address for a local or param is: 0x7fffffffdaa8
- Pointer variable: p points to a valid memory location
+ Base address for a local or param is: 0x7fffffffda90
+ In get_updated_points_to_from_struct: scope = main
+ Found a pointer variable: x
+ Base address for a local or param is: 0x7fffffffda98
+ Pointer variable: x points to a valid memory location
  In var_record::read_value
  Type is int
- Reading 4 bytes at address: 0x555555756260
+ Reading 4 bytes at address: 0x5555555545a0
  Found a singleton value
  In var_record::read_singleton_value
  Type is int
- Reading 4 bytes at address: 0x555555756260
- Interpreting data as an int, value is 0
- Checking if what variable p points to has been updated
+ Reading 4 bytes at address: 0x5555555545a0
+ Interpreting data as an int, value is -1991643855
  In runtime_stack::get_updated_points_to_frame
- Write to address 0x555555755018 is variable a
-prefix = 
- Write to variable a
- 	Event num: 179
- 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
- 	Scope: *G*
- 	Address: 0x555555755018
+ Write to variable struct tests:a
+ 	Event num: 144
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Scope: main
+ 	Address: 0x7fffffffda90
  	Type: int
  	Value: 1
- 	Points to: 0xffffffffffffffff
-
- 0x5555555546aa: Write 0x7fffffffdaa4 4
- value before write : 0xff  0x7f  0x0  0x0  
+ 	Points to: 0x7261747320747865
+ 	Points to value: 
+ Write to variable struct tests:p
+ 	Event num: 144
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Scope: main
+ 	Address: 0x7fffffffda98
+ 	Type: int*
+ 	Value: 0x5555555545a0
+ 	Points to: 0x5555555545a0
+ 	Points to value: -1991643855
  value after write : 0x2  0x0  0x0  0x0  
- line = 13, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
+ line = 15, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
  In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x5555555546aa is between 0x00000068a and 0x0000006ed
- ip = 0x5555555546aa is in user code checking variable access
- In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffdaa4
+ In cu_record::pc_in_range: check if pc = 0x5555555546c8 is between 0x0000006aa and 0x000000715
+ ip = 0x5555555546c8 is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffda94
  In runtime_stack::get_updated_variables_from_frame
- Checking if variable b has been updated
+ Checking if variable x has been updated
  Enter is_at_address
- trec = 0x7ffff7d7f140 type name = int
- Base address for a local or param is: 0x7fffffffdaa4
- var_addr: 0x7fffffffdaa4 mem_addr: 0x7fffffffdaa4 size: 4
+ trec = 0x7ffff7d7f1c0 type name = struct tests
+ Base address for a local or param is: 0x7fffffffda90
+ var_addr: 0x7fffffffda90 mem_addr: 0x7fffffffda94 size: 16
+ In get_updated_struct_members: scope = main
+ Enter is_at_address
+ trec = 0x7fffe4a2e040 type name = int
+ Base address for a local or param is: 0x7fffffffda90
+ var_addr: 0x7fffffffda90 mem_addr: 0x7fffffffda94 size: 4
+ Enter is_at_address
+ trec = 0x7fffe4a2e040 type name = int
+ Base address for a local or param is: 0x7fffffffda94
+ var_addr: 0x7fffffffda94 mem_addr: 0x7fffffffda94 size: 4
  In var_record::read_value
  Type is int
- Reading 4 bytes at address: 0x7fffffffdaa4
+ Reading 4 bytes at address: 0x7fffffffda94
  Found a singleton value
  In var_record::read_singleton_value
  Type is int
- Reading 4 bytes at address: 0x7fffffffdaa4
+ Reading 4 bytes at address: 0x7fffffffda94
  Interpreting data as an int, value is 2
- New value = 2, old value = 32767
- Found new value: 2 for b
- Checking if variable p has been updated
- Enter is_at_address
- trec = 0x7ffff7d7f240 type name = int*
- Base address for a local or param is: 0x7fffffffdaa8
- var_addr: 0x7fffffffdaa8 mem_addr: 0x7fffffffdaa4 size: 8
  In runtime_stack::get_updated_variables_from_frame
- Checking if variable a has been updated
- Enter is_at_address
- trec = 0x7ffff7d7f140 type name = int
- Base address for a global is: 0x555555755018
- var_addr: 0x555555755018 mem_addr: 0x7fffffffdaa4 size: 4
- Checking if variable c has been updated
- Enter is_at_address
- trec = 0x7ffff7d7f140 type name = int
- Base address for a global is: 0x555555755010
- var_addr: 0x555555755010 mem_addr: 0x7fffffffdaa4 size: 4
  In runtime_stack::get_all_updated_points_to
  In runtime_stack::get_updated_points_to_frame
- Found a pointer variable: p
- Base address for a local or param is: 0x7fffffffdaa8
- Pointer variable: p points to a valid memory location
+ Base address for a local or param is: 0x7fffffffda90
+ In get_updated_points_to_from_struct: scope = main
+ Found a pointer variable: x
+ Base address for a local or param is: 0x7fffffffda98
+ Pointer variable: x points to a valid memory location
  In var_record::read_value
  Type is int
- Reading 4 bytes at address: 0x555555756260
+ Reading 4 bytes at address: 0x5555555545a0
  Found a singleton value
  In var_record::read_singleton_value
  Type is int
- Reading 4 bytes at address: 0x555555756260
- Interpreting data as an int, value is 0
- Checking if what variable p points to has been updated
+ Reading 4 bytes at address: 0x5555555545a0
+ Interpreting data as an int, value is -1991643855
  In runtime_stack::get_updated_points_to_frame
- Write to address 0x7fffffffdaa4 is variable b
-prefix = 
- Write to variable b
- 	Event num: 181
- 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
+ Write to variable struct tests:b
+ 	Event num: 145
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
  	Scope: main
- 	Address: 0x7fffffffdaa4
+ 	Address: 0x7fffffffda94
  	Type: int
  	Value: 2
- 	Points to: 0xffffffffffffffff
-
- 0x5555555546b1Read 0x7fffffffdaa8 8
- line number 14
- value before read : 0x60  0x62  0x75  0x55  0x55  0x55  0x0  0x0  Invocation ID:161function main was called. Frame pointer was 0x7fffffffdab0
+ 	Points to: 0x5043542063696669
+ 	Points to value: 
+ Write to variable struct tests:p
+ 	Event num: 145
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Scope: main
+ 	Address: 0x7fffffffda98
+ 	Type: int*
+ 	Value: 0x5555555545a0
+ 	Points to: 0x5555555545a0
+ 	Points to value: -1991643855
  Enter AfterRegMod Checking values Register Record
- 	Event num: 183
- 	Line #: 14
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
+ 	Event num: 146
+ 	Line #: 16
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
  	Register: rax
- 	Value: 0x0x555555756260
- 0x5555555546b5: Write 0x555555756260 4
- value before write : 0x0  0x0  0x0  0x0  
- value after write : 0x5  0x0  0x0  0x0  
- line = 14, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
+ 	Value: 0x0x7fffffffda90
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 147
+ 	Line #: 16
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Register: rax
+ 	Value: 0x0x7fffffffda94
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 148
+ 	Line #: 16
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Register: rflags
+ 	Value: 0x0x000000202
+ value after write : 0x94  0xda  0xff  0xff  0xff  0x7f  0x0  0x0  
+ line = 16, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
  In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x5555555546b5 is between 0x00000068a and 0x0000006ed
- ip = 0x5555555546b5 is in user code checking variable access
- In runtime_stack::addr_get_updated_variables, addr = 0x555555756260
+ In cu_record::pc_in_range: check if pc = 0x5555555546d7 is between 0x0000006aa and 0x000000715
+ ip = 0x5555555546d7 is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffda98
  In runtime_stack::get_updated_variables_from_frame
- Checking if variable b has been updated
+ Checking if variable x has been updated
  Enter is_at_address
- trec = 0x7ffff7d7f140 type name = int
- Base address for a local or param is: 0x7fffffffdaa4
- var_addr: 0x7fffffffdaa4 mem_addr: 0x555555756260 size: 4
- Checking if variable p has been updated
+ trec = 0x7ffff7d7f1c0 type name = struct tests
+ Base address for a local or param is: 0x7fffffffda90
+ var_addr: 0x7fffffffda90 mem_addr: 0x7fffffffda98 size: 16
+ In get_updated_struct_members: scope = main
  Enter is_at_address
- trec = 0x7ffff7d7f240 type name = int*
- Base address for a local or param is: 0x7fffffffdaa8
- var_addr: 0x7fffffffdaa8 mem_addr: 0x555555756260 size: 8
+ trec = 0x7fffe4a2e040 type name = int
+ Base address for a local or param is: 0x7fffffffda90
+ var_addr: 0x7fffffffda90 mem_addr: 0x7fffffffda98 size: 4
+ Enter is_at_address
+ trec = 0x7fffe4a2e040 type name = int
+ Base address for a local or param is: 0x7fffffffda94
+ var_addr: 0x7fffffffda94 mem_addr: 0x7fffffffda98 size: 4
+ Enter is_at_address
+ trec = 0x7ffff7d7f0c0 type name = int*
+ Base address for a local or param is: 0x7fffffffda98
+ var_addr: 0x7fffffffda98 mem_addr: 0x7fffffffda98 size: 8
+ In var_record::read_value
+ Type is int*
+ Reading 8 bytes at address: 0x7fffffffda98
+ Found a pointer
+ Found a non-character pointer to an atomic value
+ value = 0x7fffffffda94
  In runtime_stack::get_updated_variables_from_frame
- Checking if variable a has been updated
- Enter is_at_address
- trec = 0x7ffff7d7f140 type name = int
- Base address for a global is: 0x555555755018
- var_addr: 0x555555755018 mem_addr: 0x555555756260 size: 4
- Checking if variable c has been updated
- Enter is_at_address
- trec = 0x7ffff7d7f140 type name = int
- Base address for a global is: 0x555555755010
- var_addr: 0x555555755010 mem_addr: 0x555555756260 size: 4
  In runtime_stack::get_all_updated_points_to
  In runtime_stack::get_updated_points_to_frame
- Found a pointer variable: p
- Base address for a local or param is: 0x7fffffffdaa8
- Pointer variable: p points to a valid memory location
+ Base address for a local or param is: 0x7fffffffda90
+ In get_updated_points_to_from_struct: scope = main
+ Found a pointer variable: x
+ Base address for a local or param is: 0x7fffffffda98
+ Pointer variable: x points to a valid memory location
  In var_record::read_value
  Type is int
- Reading 4 bytes at address: 0x555555756260
+ Reading 4 bytes at address: 0x7fffffffda94
  Found a singleton value
  In var_record::read_singleton_value
  Type is int
- Reading 4 bytes at address: 0x555555756260
- Interpreting data as an int, value is 5
- Checking if what variable p points to has been updated
- Found new points_to value: 5 for p old points_to value = 0
+ Reading 4 bytes at address: 0x7fffffffda94
+ Interpreting data as an int, value is 2
  In runtime_stack::get_updated_points_to_frame
- Write to address 0x7fffffffdaa8 is variable p
-prefix = 
- Write to pointer variable p
- 	Event num: 185
- 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
+ Write to variable struct tests:p
+ 	Event num: 149
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
  	Scope: main
- 	Address: 0x7fffffffdaa8
+ 	Address: 0x7fffffffda98
  	Type: int*
- 	Value: 5
- 	Points to: 0x555555756260
-
- 0x5555555546bbRead 0x555555755010 4
- line number 15
- value before read : 0x3  0x0  0x0  0x0  Invocation ID:161function main was called. Frame pointer was 0x7fffffffdab0
- Enter AfterRegMod Checking values Register Record
- 	Event num: 187
- 	Line #: 15
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
- 	Register: esi
- 	Value: 0x0x000000003
- 0x5555555546c1Read 0x7fffffffdaa8 8
- line number 15
- value before read : 0x60  0x62  0x75  0x55  0x55  0x55  0x0  0x0  Invocation ID:161function main was called. Frame pointer was 0x7fffffffdab0
- Enter AfterRegMod Checking values 0x5555555546c5Read 0x555555756260 4
- line number 15
- value before read : 0x5  0x0  0x0  0x0  Invocation ID:161function main was called. Frame pointer was 0x7fffffffdab0
- Enter AfterRegMod Checking values Register Record
- 	Event num: 190
- 	Line #: 15
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
+ 	Value: 0x7fffffffda94
+ 	Points to: 0x000000000
+ 	Points to value: 
+ Write to variable struct tests:p
+ 	Event num: 149
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Scope: main
+ 	Address: 0x7fffffffda98
+ 	Type: int*
+ 	Value: 0x7fffffffda94
+ 	Points to: 0x7fffffffda94
+ 	Points to value: 2
+ Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
+ 	Event num: 150
+ 	Line #: 17
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
  	Register: ecx
- 	Value: 0x0x000000005
- 0x5555555546c7Read 0x555555755018 4
- line number 15
- value before read : 0x1  0x0  0x0  0x0  Invocation ID:161function main was called. Frame pointer was 0x7fffffffdab0
+ 	Value: 0x0x000000002
  Enter AfterRegMod Checking values Register Record
- 	Event num: 192
- 	Line #: 15
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
- 	Register: eax
- 	Value: 0x0x000000001
- 0x5555555546cdRead 0x7fffffffdaa4 4
- line number 15
- value before read : 0x2  0x0  0x0  0x0  Invocation ID:161function main was called. Frame pointer was 0x7fffffffdab0
- Enter AfterRegMod Checking values Register Record
- 	Event num: 194
- 	Line #: 15
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
+ 	Event num: 151
+ 	Line #: 17
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
  	Register: edx
  	Value: 0x0x000000002
  Enter AfterRegMod Checking values Register Record
- 	Event num: 195
- 	Line #: 15
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
- 	Register: r8d
- 	Value: 0x0x000000003
+ 	Event num: 152
+ 	Line #: 17
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Register: eax
+ 	Value: 0x0x000000001
  Enter AfterRegMod Checking values Register Record
- 	Event num: 196
- 	Line #: 15
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
+ 	Event num: 153
+ 	Line #: 17
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
  	Register: esi
  	Value: 0x0x000000001
  Enter AfterRegMod Checking values Register Record
- 	Event num: 197
- 	Line #: 15
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
+ 	Event num: 154
+ 	Line #: 17
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
  	Register: rdi
- 	Value: 0x0x555555554778
+ 	Value: 0x0x5555555547a4
  Enter AfterRegMod Checking values Register Record
- 	Event num: 198
- 	Line #: 15
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
+ 	Event num: 155
+ 	Line #: 17
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
  	Register: eax
  	Value: 0x0x000000000
- 0x5555555546e1: Write 0x7fffffffda98 8
- value before write : 0x9c  0x46  0x55  0x55  0x55  0x55  0x0  0x0  
  Enter AfterRegMod Checking values Register Record
- 	Event num: 200
- 	Line #: 15
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
+ 	Event num: 156
+ 	Line #: 17
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
  	Register: rip
- 	Value: 0x0x555555554550
- Enter AfterRegMod Checking values value after write : 0xb0  0xda  0xff  0xff  0xff  0x7f  0x0  0x0  
- line = 15, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
+ 	Value: 0x0x555555554580
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 157
+ 	Line #: 17
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Register: rsp
+ 	Value: 0x0x7fffffffda88
+ value after write : 0xa0  0x59  0xde  0xf7  0xff  0x7f  0x0  0x0  
+ line = 17, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
  In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x5555555546e1 is between 0x00000068a and 0x0000006ed
- ip = 0x5555555546e1 is in user code checking variable access
- In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffda90
+ In cu_record::pc_in_range: check if pc = 0x5555555546f5 is between 0x0000006aa and 0x000000715
+ ip = 0x5555555546f5 is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffda80
  In runtime_stack::get_updated_variables_from_frame
- Checking if variable b has been updated
+ Checking if variable x has been updated
  Enter is_at_address
- trec = 0x7ffff7d7f140 type name = int
- Base address for a local or param is: 0x7fffffffdaa4
- var_addr: 0x7fffffffdaa4 mem_addr: 0x7fffffffda90 size: 4
- Checking if variable p has been updated
- Enter is_at_address
- trec = 0x7ffff7d7f240 type name = int*
- Base address for a local or param is: 0x7fffffffdaa8
- var_addr: 0x7fffffffdaa8 mem_addr: 0x7fffffffda90 size: 8
+ trec = 0x7ffff7d7f1c0 type name = struct tests
+ Base address for a local or param is: 0x7fffffffda90
+ var_addr: 0x7fffffffda90 mem_addr: 0x7fffffffda80 size: 16
  In runtime_stack::get_updated_variables_from_frame
- Checking if variable a has been updated
- Enter is_at_address
- trec = 0x7ffff7d7f140 type name = int
- Base address for a global is: 0x555555755018
- var_addr: 0x555555755018 mem_addr: 0x7fffffffda90 size: 4
- Checking if variable c has been updated
- Enter is_at_address
- trec = 0x7ffff7d7f140 type name = int
- Base address for a global is: 0x555555755010
- var_addr: 0x555555755010 mem_addr: 0x7fffffffda90 size: 4
  In runtime_stack::get_all_updated_points_to
  In runtime_stack::get_updated_points_to_frame
- Found a pointer variable: p
- Base address for a local or param is: 0x7fffffffdaa8
- Pointer variable: p points to a valid memory location
+ Base address for a local or param is: 0x7fffffffda90
+ In get_updated_points_to_from_struct: scope = main
+ Found a pointer variable: x
+ Base address for a local or param is: 0x7fffffffda98
+ Pointer variable: x points to a valid memory location
  In var_record::read_value
  Type is int
- Reading 4 bytes at address: 0x555555756260
+ Reading 4 bytes at address: 0x7fffffffda94
  Found a singleton value
  In var_record::read_singleton_value
  Type is int
- Reading 4 bytes at address: 0x555555756260
- Interpreting data as an int, value is 5
- Checking if what variable p points to has been updated
+ Reading 4 bytes at address: 0x7fffffffda94
+ Interpreting data as an int, value is 2
  In runtime_stack::get_updated_points_to_frame
- there are no live variables 0x555555554550Read 0x555555754fc8 8
- line number 0
- value before read : 0x80  0x4e  0x36  0xe4  0xff  0x7f  0x0  0x0  Invocation ID:161function main was called. Frame pointer was 0x7fffffffdab0
+ Write to variable struct tests:p
+ 	Event num: 158
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Scope: main
+ 	Address: 0x7fffffffda98
+ 	Type: int*
+ 	Value: 0x7fffffffda94
+ 	Points to: 0x7fffffffda94
+ 	Points to value: 2
  Enter AfterRegMod Checking values Register Record
- 	Event num: 203
+ 	Event num: 159
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
- 	Value: 0x0x7fffe4364e80
+ 	Value: 0x0x7fffe436ce80
  enter malloc
  exit
- malloc returns 0x555555756280
- Enter AfterRegMod Checking values 0x5555555546ebRead 0x7fffffffdab0 8
- line number 16
- value before read : 0xf0  0x46  0x55  0x55  0x55  0x55  0x0  0x0  Invocation ID:161function main was called. Frame pointer was 0x7fffffffdab0
+ Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
+ 	Event num: 161
+ 	Line #: 18
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Register: rsi
+ 	Value: 0x0x63be17c82557a700
  Enter AfterRegMod Checking values Register Record
- 	Event num: 206
- 	Line #: 16
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
+ 	Event num: 162
+ 	Line #: 18
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Register: rsi
+ 	Value: 0x0x000000000
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 163
+ 	Line #: 18
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Register: rflags
+ 	Value: 0x0x000000246
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 164
+ 	Line #: 18
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
  	Register: rbp
- 	Value: 0x0x5555555546f0
+ 	Value: 0x0x555555554720
  Enter AfterRegMod Checking values Register Record
- 	Event num: 207
- 	Line #: 16
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
+ 	Event num: 165
+ 	Line #: 18
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
  	Register: rsp
  	Value: 0x0x7fffffffdab8
  Enter functionInvocationAfter
  No output found
  In runtime_stack::get_all_updated_variables
  In runtime_stack::get_updated_variables_from_frame
- Checking if variable a has been updated
- Base address for a global is: 0x555555755018
- Enter is_at_address
- trec = 0x7ffff7d7f140 type name = int
- Base address for a global is: 0x555555755018
- var_addr: 0x555555755018 mem_addr: 0x555555755018 size: 4
- In var_record::read_value
- Type is int
- Reading 4 bytes at address: 0x555555755018
- Found a singleton value
- In var_record::read_singleton_value
- Type is int
- Reading 4 bytes at address: 0x555555755018
- Interpreting data as an int, value is 1
- New value = 1, old value = 1
- Checking if variable c has been updated
- Enter is_at_address
- trec = 0x7ffff7d7f140 type name = int
- Base address for a global is: 0x555555755010
- var_addr: 0x555555755010 mem_addr: 0x555555755018 size: 4
  In runtime_stack::get_all_updated_points_to
  In runtime_stack::get_updated_points_to_frame
  function return
  Exit functionInvocationAfter
- 0x5555555546ecRead 0x7fffffffdab8 8
- line number 16
- value before read : 0x97  0x1b  0x32  0xe4  0xff  0x7f  0x0  0x0  Invocation ID:161function main was called. Frame pointer was 0x5555555546f0
  Before return: SP = 0x7fffffffdab8
  Enter AfterRegMod Checking values Register Record
- 	Event num: 212
- 	Line #: 16
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
+ 	Event num: 169
+ 	Line #: 18
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
  	Register: rip
- 	Value: 0x0x7fffe4321b97
+ 	Value: 0x0x7fffe4329b97
  Enter AfterRegMod Checking values Register Record
- 	Event num: 213
- 	Line #: 16
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test6.c
+ 	Event num: 170
+ 	Line #: 18
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
  	Register: rsp
  	Value: 0x0x7fffffffdac0
  After return : SP = 0x7fffffffdac0
  Function Call to __do_global_dtors_aux
  after push stack size:2
- Invocation ID:214function __do_global_dtors_aux was called.
+ Invocation ID:171function __do_global_dtors_aux was called.
  Frame pointer was 0x7fffffffda50
  Getting frame pointer for __do_global_dtors_aux
  Call to function
- 	Event num: 214
+ 	Event num: 171
  	Function name: __do_global_dtors_aux
  	Func line: 0
  	Inv line: 0
@@ -2862,35 +2683,21 @@ prefix =
  	Dynamic link: 0x7fffffffda50
  	Return address: 0x7ffff7de5b73
  Build stack frame
- 0x555555554640Read 0x555555755014 1
- line number 0
- value before read : 0x0  Invocation ID:214function __do_global_dtors_aux was called. Frame pointer was 0x7fffffffda50
- Enter AfterRegMod Checking values Register Record
- 	Event num: 217
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rflags
- 	Value: 0x0x000000246
- Enter AfterRegMod Checking values Register Record
- 	Event num: 218
+ Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
+ 	Event num: 173
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
- 	Value: 0x0x555555554649
- 0x555555554649Read 0x555555754ff8 8
- line number 0
- value before read : 0x20  0x35  0x34  0xe4  0xff  0x7f  0x0  0x0  Invocation ID:214function __do_global_dtors_aux was called. Frame pointer was 0x7fffffffda50
+ 	Value: 0x0x555555554669
  Enter AfterRegMod Checking values Register Record
- 	Event num: 220
+ 	Event num: 174
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rflags
  	Value: 0x0x000000202
- 0x555555554651: Write 0x7fffffffd9c0 8
- value before write : 0x50  0xda  0xff  0xff  0xff  0x7f  0x0  0x0  
  Before push: SP = 0x7fffffffd9c8
  Enter AfterRegMod Checking values Register Record
- 	Event num: 223
+ 	Event num: 176
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
@@ -2898,40 +2705,35 @@ prefix =
  value after write : 0x4  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x555555554651 is between 0x00000068a and 0x0000006ed
- ip = 0x555555554651 is not in user code
+ In cu_record::pc_in_range: check if pc = 0x555555554671 is between 0x0000006aa and 0x000000715
+ ip = 0x555555554671 is not in user code
  After push: SP = 0x7fffffffd9c0
  Enter AfterRegMod Checking values Register Record
- 	Event num: 224
+ 	Event num: 177
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rbp
  	Value: 0x0x7fffffffd9c0
  Enter AfterRegMod Checking values Register Record
- 	Event num: 225
+ 	Event num: 178
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
- 	Value: 0x0x555555554657
- 0x555555554657Read 0x555555755008 8
- line number 0
- value before read : 0x8  0x50  0x75  0x55  0x55  0x55  0x0  0x0  Invocation ID:214function __do_global_dtors_aux was called. Frame pointer was 0x7fffffffd9c0
+ 	Value: 0x0x555555554677
  Enter AfterRegMod Checking values Register Record
- 	Event num: 227
+ 	Event num: 179
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rdi
  	Value: 0x0x555555755008
- 0x55555555465e: Write 0x7fffffffd9b8 8
- value before write : 0x4  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  Enter AfterRegMod Checking values Register Record
- 	Event num: 229
+ 	Event num: 180
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
- 	Value: 0x0x555555554570
+ 	Value: 0x0x555555554590
  Enter AfterRegMod Checking values Register Record
- 	Event num: 230
+ 	Event num: 181
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
@@ -2939,37 +2741,32 @@ prefix =
  value after write : 0xd0  0xd9  0xff  0xff  0xff  0x7f  0x0  0x0  
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x55555555465e is between 0x00000068a and 0x0000006ed
- ip = 0x55555555465e is not in user code
- 0x555555554570Read 0x555555754ff8 8
- line number 0
- value before read : 0x20  0x35  0x34  0xe4  0xff  0x7f  0x0  0x0  Invocation ID:214function __do_global_dtors_aux was called. Frame pointer was 0x7fffffffd9c0
+ In cu_record::pc_in_range: check if pc = 0x55555555467e is between 0x0000006aa and 0x000000715
+ ip = 0x55555555467e is not in user code
  Enter AfterRegMod Checking values Register Record
- 	Event num: 232
+ 	Event num: 182
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
- 	Value: 0x0x7fffe4343520
- 0x555555554663: Write 0x7fffffffd9b8 8
- value before write : 0x63  0x46  0x55  0x55  0x55  0x55  0x0  0x0  
+ 	Value: 0x0x7fffe434b520
  Enter AfterRegMod Checking values Register Record
- 	Event num: 234
+ 	Event num: 183
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
- 	Value: 0x0x5555555545b0
+ 	Value: 0x0x5555555545d0
  Enter AfterRegMod Checking values value after write : 0xb8  0x4d  0x75  0x55  0x55  0x55  0x0  0x0  
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x555555554663 is between 0x00000068a and 0x0000006ed
- ip = 0x555555554663 is not in user code
+ In cu_record::pc_in_range: check if pc = 0x555555554683 is between 0x0000006aa and 0x000000715
+ ip = 0x555555554683 is not in user code
  Function Call to deregister_tm_clones
  after push stack size:3
- Invocation ID:235function deregister_tm_clones was called.
+ Invocation ID:184function deregister_tm_clones was called.
  Frame pointer was 0x7fffffffd9c0
  Getting frame pointer for deregister_tm_clones
  Call to function
- 	Event num: 235
+ 	Event num: 184
  	Function name: deregister_tm_clones
  	Func line: 0
  	Inv line: 0
@@ -2980,19 +2777,17 @@ prefix =
  Return address
  	Function name: main
  	Dynamic link: 0x7fffffffd9c0
- 	Return address: 0x555555554668
+ 	Return address: 0x555555554688
  Build stack frame
  Enter AfterRegMod Checking values Register Record
- 	Event num: 237
+ 	Event num: 186
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rdi
- 	Value: 0x0x555555755018
- 0x5555555545b7: Write 0x7fffffffd9b0 8
- value before write : 0xb8  0x4d  0x75  0x55  0x55  0x55  0x0  0x0  
+ 	Value: 0x0x555555755010
  Before push: SP = 0x7fffffffd9b8
  Enter AfterRegMod Checking values Register Record
- 	Event num: 240
+ 	Event num: 188
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
@@ -3000,39 +2795,36 @@ prefix =
  value after write : 0xd0  0xd9  0xff  0xff  0xff  0x7f  0x0  0x0  
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x5555555545b7 is between 0x00000068a and 0x0000006ed
- ip = 0x5555555545b7 is not in user code
+ In cu_record::pc_in_range: check if pc = 0x5555555545d7 is between 0x0000006aa and 0x000000715
+ ip = 0x5555555545d7 is not in user code
  After push: SP = 0x7fffffffd9b0
  Enter AfterRegMod Checking values Register Record
- 	Event num: 241
+ 	Event num: 189
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rax
- 	Value: 0x0x555555755018
+ 	Value: 0x0x555555755010
  Enter AfterRegMod Checking values Register Record
- 	Event num: 242
+ 	Event num: 190
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rflags
  	Value: 0x0x000000246
  Enter AfterRegMod Checking values Register Record
- 	Event num: 243
+ 	Event num: 191
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rbp
  	Value: 0x0x7fffffffd9b0
- 0x5555555545e0Read 0x7fffffffd9b0 8
- line number 0
- value before read : 0xc0  0xd9  0xff  0xff  0xff  0x7f  0x0  0x0  Invocation ID:235function deregister_tm_clones was called. Frame pointer was 0x7fffffffd9b0
  Before pop: SP = 0x7fffffffd9b0
  Enter AfterRegMod Checking values Register Record
- 	Event num: 246
+ 	Event num: 193
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rbp
  	Value: 0x0x7fffffffd9c0
  Enter AfterRegMod Checking values Register Record
- 	Event num: 247
+ 	Event num: 194
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
@@ -3042,42 +2834,34 @@ prefix =
  No output found
  function return
  Exit functionInvocationAfter
- 0x5555555545e1Read 0x7fffffffd9b8 8
- line number 0
- value before read : 0x68  0x46  0x55  0x55  0x55  0x55  0x0  0x0  Invocation ID:235function deregister_tm_clones was called. Frame pointer was 0x7fffffffd9c0
  Before return: SP = 0x7fffffffd9b8
  Enter AfterRegMod Checking values Register Record
- 	Event num: 251
+ 	Event num: 197
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
- 	Value: 0x0x555555554668
+ 	Value: 0x0x555555554688
  Enter AfterRegMod Checking values Register Record
- 	Event num: 252
+ 	Event num: 198
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
  	Value: 0x0x7fffffffd9c0
  After return : SP = 0x7fffffffd9c0
- 0x555555554668: Write 0x555555755014 1
- value before write : 0x0  
  value after write : 0x1  
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x555555554668 is between 0x00000068a and 0x0000006ed
- ip = 0x555555554668 is not in user code
- 0x55555555466fRead 0x7fffffffd9c0 8
- line number 0
- value before read : 0x50  0xda  0xff  0xff  0xff  0x7f  0x0  0x0  Invocation ID:235function deregister_tm_clones was called. Frame pointer was 0x7fffffffd9c0
+ In cu_record::pc_in_range: check if pc = 0x555555554688 is between 0x0000006aa and 0x000000715
+ ip = 0x555555554688 is not in user code
  Before pop: SP = 0x7fffffffd9c0
  Enter AfterRegMod Checking values Register Record
- 	Event num: 256
+ 	Event num: 200
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rbp
  	Value: 0x0x7fffffffda50
  Enter AfterRegMod Checking values Register Record
- 	Event num: 257
+ 	Event num: 201
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
@@ -3087,18 +2871,15 @@ prefix =
  No output found
  function return
  Exit functionInvocationAfter
- 0x555555554670Read 0x7fffffffd9c8 8
- line number 0
- value before read : 0x73  0x5b  0xde  0xf7  0xff  0x7f  0x0  0x0  Invocation ID:235function deregister_tm_clones was called. Frame pointer was 0x7fffffffda50
  Before return: SP = 0x7fffffffd9c8
  Enter AfterRegMod Checking values Register Record
- 	Event num: 261
+ 	Event num: 204
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
  	Value: 0x0x7ffff7de5b73
  Enter AfterRegMod Checking values Register Record
- 	Event num: 262
+ 	Event num: 205
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
@@ -3106,11 +2887,11 @@ prefix =
  After return : SP = 0x7fffffffd9d0
  Function Call to _fini
  after push stack size:2
- Invocation ID:263function _fini was called.
+ Invocation ID:206function _fini was called.
  Frame pointer was 0x7fffffffda50
  Getting frame pointer for _fini
  Call to function
- 	Event num: 263
+ 	Event num: 206
  	Function name: _fini
  	Func line: 0
  	Inv line: 0
@@ -3124,25 +2905,25 @@ prefix =
  	Return address: 0x7ffff7de5b93
  Build stack frame
  Enter AfterRegMod Checking values Register Record
- 	Event num: 265
+ 	Event num: 208
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
  	Value: 0x0x7fffffffd9c0
  Enter AfterRegMod Checking values Register Record
- 	Event num: 266
+ 	Event num: 209
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rflags
  	Value: 0x0x000000206
  Enter AfterRegMod Checking values Register Record
- 	Event num: 267
+ 	Event num: 210
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
  	Value: 0x0x7fffffffd9c8
  Enter AfterRegMod Checking values Register Record
- 	Event num: 268
+ 	Event num: 211
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rflags
@@ -3151,18 +2932,15 @@ prefix =
  No output found
  function return
  Exit functionInvocationAfter
- 0x55555555476cRead 0x7fffffffd9c8 8
- line number 0
- value before read : 0x93  0x5b  0xde  0xf7  0xff  0x7f  0x0  0x0  Invocation ID:263function _fini was called. Frame pointer was 0x7fffffffda50
  Before return: SP = 0x7fffffffd9c8
  Enter AfterRegMod Checking values Register Record
- 	Event num: 272
+ 	Event num: 214
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
  	Value: 0x0x7ffff7de5b93
  Enter AfterRegMod Checking values Register Record
- 	Event num: 273
+ 	Event num: 215
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp

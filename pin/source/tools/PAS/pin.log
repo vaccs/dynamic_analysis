@@ -1,3 +1,3 @@
 Pin: pin-3.6-97554-31f0a167d
 Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
-E:  monitor_registers.cpp:114: Invalid IARG_TYPE: IARG_-182251488 for instruction at address: 0x555555554548.
+E:  Unable to load /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/obj-intel64/pas_analysis.so: dlopen failed: cannot locate symbol "write_variable_access_record" referenced by "/home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/obj-intel64/pas_analysis.so"...
