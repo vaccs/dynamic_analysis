@@ -202,122 +202,122 @@ assembly~!~0|ret
 assembly~!~0|sub rsp, 0x8
 assembly~!~0|add rsp, 0x8
 assembly~!~0|ret 
-function_invocation~!~19|0|`_start|0x7fffffffdb90
+function_invocation~!~19|0|`_start|0x7fffffffdbe0
 return_address~!~_start|0|1
 register~!~20|null|ebp|0
 register~!~21|null|rflags|582
 register~!~22|null|r9|140737351932320
 register~!~24|null|rsi|1
-register~!~25|null|rsp|140737488346008
-register~!~26|null|rdx|140737488346008
-register~!~27|null|rsp|140737488346000
-register~!~28|null|rflags|518
-register~!~30|null|rsp|140737488345992
-register~!~32|null|rsp|140737488345984
+register~!~25|null|rsp|140737488346088
+register~!~26|null|rdx|140737488346088
+register~!~27|null|rsp|140737488346080
+register~!~28|null|rflags|514
+register~!~30|null|rsp|140737488346072
+register~!~32|null|rsp|140737488346064
 register~!~33|null|r8|93824992233360
 register~!~34|null|rcx|93824992233248
 register~!~35|null|rdi|93824992233130
 register~!~36|null|rip|140737021909680
-register~!~37|null|rsp|140737488345976
-function_invocation~!~39|0|`__libc_csu_init|0x7fffffffdab8
+register~!~37|null|rsp|140737488346056
+function_invocation~!~39|0|`__libc_csu_init|0x7fffffffdb08
 return_address~!~__libc_csu_init|93824992233248|140737021909800
-register~!~41|null|rsp|140737488345776
-register~!~43|null|rsp|140737488345768
-register~!~44|null|r15|140737488346024
-register~!~46|null|rsp|140737488345760
-register~!~48|null|rsp|140737488345752
+register~!~41|null|rsp|140737488345856
+register~!~43|null|rsp|140737488345848
+register~!~44|null|r15|140737488346104
+register~!~46|null|rsp|140737488345840
+register~!~48|null|rsp|140737488345832
 register~!~49|null|r12|93824994332080
-register~!~51|null|rsp|140737488345744
+register~!~51|null|rsp|140737488345824
 register~!~52|null|rbp|93824994332088
-register~!~54|null|rsp|140737488345736
+register~!~54|null|rsp|140737488345816
 register~!~55|null|r13d|1
-register~!~56|null|r14|140737488346008
+register~!~56|null|r14|140737488346088
 register~!~57|null|rbp|8
-register~!~58|null|rflags|514
-register~!~59|null|rsp|140737488345728
-register~!~60|null|rbp|1
-register~!~61|null|rip|93824992232776
-register~!~62|null|rsp|140737488345720
-function_invocation~!~64|0|`_init|0x7fffffffda78
+register~!~58|null|rsp|140737488345808
+register~!~59|null|rbp|1
+register~!~60|null|rip|93824992232776
+register~!~61|null|rsp|140737488345800
+function_invocation~!~63|0|`_init|0x7fffffffdac8
 return_address~!~_init|1|93824992233297
-register~!~65|null|rsp|140737488345712
+register~!~64|null|rsp|140737488345792
+register~!~65|null|rflags|518
 register~!~66|null|rax|0
 register~!~67|null|rflags|582
-register~!~68|null|rsp|140737488345720
-register~!~69|null|rflags|518
+register~!~68|null|rsp|140737488345800
+register~!~69|null|rflags|514
 return~!~70
 register~!~72|null|rip|93824992233297
-register~!~73|null|rsp|140737488345728
-register~!~74|null|rflags|514
-register~!~75|null|rip|93824992233302
-register~!~76|null|ebx|0
-register~!~77|null|rflags|582
-register~!~78|null|rdx|140737488346024
-register~!~79|null|rsi|140737488346008
-register~!~80|null|edi|1
-register~!~81|null|rip|93824992233120
-register~!~82|null|rsp|140737488345720
-register~!~84|null|rsp|140737488345712
-register~!~85|null|rbp|140737488345712
-register~!~87|null|rbp|1
-register~!~88|null|rsp|140737488345720
-register~!~89|null|rip|93824992232976
-function_invocation~!~91|0|`register_tm_clones|0x7fffffffda78
+register~!~73|null|rsp|140737488345808
+register~!~74|null|rip|93824992233302
+register~!~75|null|ebx|0
+register~!~76|null|rflags|582
+register~!~77|null|rdx|140737488346104
+register~!~78|null|rsi|140737488346088
+register~!~79|null|edi|1
+register~!~80|null|rip|93824992233120
+register~!~81|null|rsp|140737488345800
+register~!~83|null|rsp|140737488345792
+register~!~84|null|rbp|140737488345792
+register~!~86|null|rbp|1
+register~!~87|null|rsp|140737488345800
+register~!~88|null|rip|93824992232976
+function_invocation~!~90|0|`register_tm_clones|0x7fffffffdac8
 return_address~!~register_tm_clones|1|93824992233325
-register~!~92|null|rdi|93824994332688
-register~!~93|null|rsi|93824994332688
-register~!~95|null|rsp|140737488345712
-register~!~96|null|rsi|0
-register~!~97|null|rbp|140737488345712
-register~!~99|null|rbp|1
-register~!~100|null|rsp|140737488345720
-return~!~101
-register~!~103|null|rip|93824992233325
-register~!~104|null|rsp|140737488345728
-register~!~105|null|rbx|1
-register~!~106|null|rflags|514
-register~!~107|null|rflags|582
-register~!~108|null|rip|93824992233334
-register~!~109|null|rsp|140737488345736
-register~!~110|null|rflags|518
-register~!~112|null|rbx|0
-register~!~113|null|rsp|140737488345744
-register~!~115|null|rbp|93824992233248
-register~!~116|null|rsp|140737488345752
-register~!~118|null|r12|93824992232864
-register~!~119|null|rsp|140737488345760
-register~!~121|null|r13|140737488346000
-register~!~122|null|rsp|140737488345768
-register~!~124|null|r14|0
-register~!~125|null|rsp|140737488345776
-register~!~127|null|r15|0
-register~!~128|null|rsp|140737488345784
-return~!~129
-register~!~131|null|rip|140737021909800
-register~!~132|null|rsp|140737488345792
-function_invocation~!~134|0|test2.c`main|0x7fffffffdab8
+register~!~91|null|rdi|93824994332688
+register~!~92|null|rsi|93824994332688
+register~!~94|null|rsp|140737488345792
+register~!~95|null|rsi|0
+register~!~96|null|rbp|140737488345792
+register~!~98|null|rbp|1
+register~!~99|null|rsp|140737488345800
+return~!~100
+register~!~102|null|rip|93824992233325
+register~!~103|null|rsp|140737488345808
+register~!~104|null|rbx|1
+register~!~105|null|rflags|514
+register~!~106|null|rflags|582
+register~!~107|null|rip|93824992233334
+register~!~108|null|rsp|140737488345816
+register~!~109|null|rflags|518
+register~!~111|null|rbx|0
+register~!~112|null|rsp|140737488345824
+register~!~114|null|rbp|93824992233248
+register~!~115|null|rsp|140737488345832
+register~!~117|null|r12|93824992232864
+register~!~118|null|rsp|140737488345840
+register~!~120|null|r13|140737488346080
+register~!~121|null|rsp|140737488345848
+register~!~123|null|r14|0
+register~!~124|null|rsp|140737488345856
+register~!~126|null|r15|0
+register~!~127|null|rsp|140737488345864
+return~!~128
+register~!~130|null|rip|140737021909800
+register~!~131|null|rsp|140737488345872
+function_invocation~!~133|0|test2.c`main|0x7fffffffdb08
 return_address~!~main|93824992233248|140737021909911
-register~!~136|int main() {|rsp|140737488345776
-register~!~137|int main() {|rbp|140737488345776
-variable_access~!~138|10|main|140737488345744|struct tests|x|<multielement>
-variable_access~!~138|10|main|140737488345744|int|struct tests:a|1431652128
-variable_access~!~138|10|main|140737488345748|int|struct tests:b|21845
-variable_access~!~138|10|main|140737488345752|int*|struct tests:p|0x4d492032742f7374|0x5555555545a0
-variable_access~!~138|10|main|140737488345752|int*|struct tests:p|0x5555555545a0|-1991643855
-register~!~139|int main() {|rsp|140737488345744
-register~!~140|int main() {|rax|7187208203717289728
-variable_access~!~141|10|main|140737488345752|int*|struct tests:p|0x5555555545a0|-1991643855
+register~!~135|int main() {|rsp|140737488345856
+register~!~136|int main() {|rbp|140737488345856
+variable_access~!~137|10|main|140737488345824|struct tests|x|-1|<multielement>
+variable_access~!~137|10|main|140737488345824|int|struct tests:a|-1|1431652128
+variable_access~!~137|10|main|140737488345828|int|struct tests:b|-1|21845
+variable_access~!~137|10|main|140737488345832|int*|struct tests:p|5569017815290049396|0x5555555545a0
+variable_access~!~137|10|main|140737488345832|int*|struct tests:p|93824992232864|-1991643855
+register~!~138|int main() {|rsp|140737488345824
+register~!~139|int main() {|rflags|514
+register~!~140|int main() {|rax|-4215950361929027328
+variable_access~!~141|10|main|140737488345832|int*|struct tests:p|93824992232864|-1991643855
 register~!~142|int main() {|eax|0
 register~!~143|int main() {|rflags|582
-variable_access~!~144|14|main|140737488345744|int|struct tests:a|1
-variable_access~!~144|14|main|140737488345752|int*|struct tests:p|0x5555555545a0|-1991643855
-variable_access~!~145|15|main|140737488345748|int|struct tests:b|2
-variable_access~!~145|15|main|140737488345752|int*|struct tests:p|0x5555555545a0|-1991643855
-register~!~146|   x.p = &x.b;|rax|140737488345744
-register~!~147|   x.p = &x.b;|rax|140737488345748
-register~!~148|   x.p = &x.b;|rflags|514
-variable_access~!~149|16|main|140737488345752|int*|struct tests:p|0x0|0x7fffffffda94
-variable_access~!~149|16|main|140737488345752|int*|struct tests:p|0x7fffffffda94|2
+variable_access~!~144|14|main|140737488345824|int|struct tests:a|-1|1
+variable_access~!~144|14|main|140737488345832|int*|struct tests:p|93824992232864|-1991643855
+variable_access~!~145|15|main|140737488345828|int|struct tests:b|-1|2
+variable_access~!~145|15|main|140737488345832|int*|struct tests:p|93824992232864|-1991643855
+register~!~146|   x.p = &x.b;|rax|140737488345824
+register~!~147|   x.p = &x.b;|rax|140737488345828
+register~!~148|   x.p = &x.b;|rflags|518
+variable_access~!~149|16|main|140737488345832|int*|struct tests:p|0x7fffffffdae4
+variable_access~!~149|16|main|140737488345832|int*|struct tests:p|140737488345828|2
 register~!~150|   printf("a = %d, b = %d, *p = %d\n",x.a, x.b,*x.p);|ecx|2
 register~!~151|   printf("a = %d, b = %d, *p = %d\n",x.a, x.b,*x.p);|edx|2
 register~!~152|   printf("a = %d, b = %d, *p = %d\n",x.a, x.b,*x.p);|eax|1
@@ -325,52 +325,52 @@ register~!~153|   printf("a = %d, b = %d, *p = %d\n",x.a, x.b,*x.p);|esi|1
 register~!~154|   printf("a = %d, b = %d, *p = %d\n",x.a, x.b,*x.p);|rdi|93824992233380
 register~!~155|   printf("a = %d, b = %d, *p = %d\n",x.a, x.b,*x.p);|eax|0
 register~!~156|   printf("a = %d, b = %d, *p = %d\n",x.a, x.b,*x.p);|rip|93824992232832
-register~!~157|   printf("a = %d, b = %d, *p = %d\n",x.a, x.b,*x.p);|rsp|140737488345736
-variable_access~!~158|17|main|140737488345752|int*|struct tests:p|0x7fffffffda94|2
+register~!~157|   printf("a = %d, b = %d, *p = %d\n",x.a, x.b,*x.p);|rsp|140737488345816
+variable_access~!~158|17|main|140737488345832|int*|struct tests:p|140737488345828|2
 register~!~159|null|rip|140737022185088
-register~!~161|}|rsi|7187208203717289728
+register~!~161|}|rsi|-4215950361929027328
 register~!~162|}|rsi|0
 register~!~163|}|rflags|582
 register~!~164|}|rbp|93824992233248
-register~!~165|}|rsp|140737488345784
+register~!~165|}|rsp|140737488345864
 return~!~166
 register~!~169|}|rip|140737021909911
-register~!~170|}|rsp|140737488345792
-function_invocation~!~172|0|`__do_global_dtors_aux|0x7fffffffd9c8
-return_address~!~__do_global_dtors_aux|140737488345680|140737351932787
+register~!~170|}|rsp|140737488345872
+function_invocation~!~172|0|`__do_global_dtors_aux|0x7fffffffda18
+return_address~!~__do_global_dtors_aux|140737488345760|140737351932787
 register~!~173|null|rip|93824992233065
 register~!~174|null|rflags|514
-register~!~176|null|rsp|140737488345536
-register~!~177|null|rbp|140737488345536
+register~!~176|null|rsp|140737488345616
+register~!~177|null|rbp|140737488345616
 register~!~178|null|rip|93824992233079
 register~!~179|null|rdi|93824994332680
 register~!~180|null|rip|93824992232848
-register~!~181|null|rsp|140737488345528
+register~!~181|null|rsp|140737488345608
 register~!~182|null|rip|140737022047520
 register~!~183|null|rip|93824992232912
-function_invocation~!~185|0|`deregister_tm_clones|0x7fffffffd9b8
-return_address~!~deregister_tm_clones|140737488345536|93824992233096
+function_invocation~!~185|0|`deregister_tm_clones|0x7fffffffda08
+return_address~!~deregister_tm_clones|140737488345616|93824992233096
 register~!~186|null|rdi|93824994332688
-register~!~188|null|rsp|140737488345520
+register~!~188|null|rsp|140737488345600
 register~!~189|null|rax|93824994332688
 register~!~190|null|rflags|582
-register~!~191|null|rbp|140737488345520
-register~!~193|null|rbp|140737488345536
-register~!~194|null|rsp|140737488345528
+register~!~191|null|rbp|140737488345600
+register~!~193|null|rbp|140737488345616
+register~!~194|null|rsp|140737488345608
 return~!~195
 register~!~197|null|rip|93824992233096
-register~!~198|null|rsp|140737488345536
-register~!~200|null|rbp|140737488345680
-register~!~201|null|rsp|140737488345544
+register~!~198|null|rsp|140737488345616
+register~!~200|null|rbp|140737488345760
+register~!~201|null|rsp|140737488345624
 return~!~202
 register~!~204|null|rip|140737351932787
-register~!~205|null|rsp|140737488345552
-function_invocation~!~207|0|`_fini|0x7fffffffd9c8
-return_address~!~_fini|140737488345680|140737351932819
-register~!~208|null|rsp|140737488345536
-register~!~209|null|rflags|518
-register~!~210|null|rsp|140737488345544
-register~!~211|null|rflags|514
+register~!~205|null|rsp|140737488345632
+function_invocation~!~207|0|`_fini|0x7fffffffda18
+return_address~!~_fini|140737488345760|140737351932819
+register~!~208|null|rsp|140737488345616
+register~!~209|null|rflags|514
+register~!~210|null|rsp|140737488345624
+register~!~211|null|rflags|518
 return~!~212
 register~!~214|null|rip|140737351932819
-register~!~215|null|rsp|140737488345552
+register~!~215|null|rsp|140737488345632

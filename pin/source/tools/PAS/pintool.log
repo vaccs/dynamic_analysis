@@ -1,6 +1,7 @@
 Pin: pin-3.6-97554-31f0a167d
 Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  In runtime_stack::add_cu_table for globals
+ Add variable a for frame *G*
  Section header:
  	|Type|Address|Size|Section Name
  Section name: .interp
@@ -26,93 +27,93 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  Section name: .dynsym
  	Type: 16
  	Address: 0x5555555542b8
- 	Size: 192
- 	Record: |16|0x5555555542b8|192|.dynsym
+ 	Size: 168
+ 	Record: |16|0x5555555542b8|168|.dynsym
  Section name: .dynstr
  	Type: 20
- 	Address: 0x555555554378
- 	Size: 159
- 	Record: |20|0x555555554378|159|.dynstr
+ 	Address: 0x555555554360
+ 	Size: 132
+ 	Record: |20|0x555555554360|132|.dynstr
  Section name: .gnu.version
  	Type: 5
- 	Address: 0x555555554418
- 	Size: 16
- 	Record: |5|0x555555554418|16|.gnu.version
+ 	Address: 0x5555555543e4
+ 	Size: 14
+ 	Record: |5|0x5555555543e4|14|.gnu.version
  Section name: .gnu.version_r
  	Type: 5
- 	Address: 0x555555554428
- 	Size: 48
- 	Record: |5|0x555555554428|48|.gnu.version_r
+ 	Address: 0x5555555543f8
+ 	Size: 32
+ 	Record: |5|0x5555555543f8|32|.gnu.version_r
  Section name: .rela.dyn
  	Type: 2
- 	Address: 0x555555554458
+ 	Address: 0x555555554418
  	Size: 192
- 	Record: |2|0x555555554458|192|.rela.dyn
+ 	Record: |2|0x555555554418|192|.rela.dyn
  Section name: .rela.plt
  	Type: 2
- 	Address: 0x555555554518
- 	Size: 48
- 	Record: |2|0x555555554518|48|.rela.plt
+ 	Address: 0x5555555544d8
+ 	Size: 24
+ 	Record: |2|0x5555555544d8|24|.rela.plt
  Section name: .init
  	Type: 4
- 	Address: 0x555555554548
+ 	Address: 0x5555555544f0
  	Size: 23
- 	Record: |4|0x555555554548|23|.init
+ 	Record: |4|0x5555555544f0|23|.init
  Section name: .plt
  	Type: 4
- 	Address: 0x555555554560
- 	Size: 48
- 	Record: |4|0x555555554560|48|.plt
+ 	Address: 0x555555554510
+ 	Size: 32
+ 	Record: |4|0x555555554510|32|.plt
  Section name: .plt.got
  	Type: 4
- 	Address: 0x555555554590
+ 	Address: 0x555555554530
  	Size: 8
- 	Record: |4|0x555555554590|8|.plt.got
+ 	Record: |4|0x555555554530|8|.plt.got
  Section name: .text
  	Type: 4
- 	Address: 0x5555555545a0
+ 	Address: 0x555555554540
  	Size: 498
- 	Record: |4|0x5555555545a0|498|.text
+ 	Record: |4|0x555555554540|498|.text
  Section name: .fini
  	Type: 4
- 	Address: 0x555555554794
+ 	Address: 0x555555554734
  	Size: 9
- 	Record: |4|0x555555554794|9|.fini
+ 	Record: |4|0x555555554734|9|.fini
  Section name: .rodata
  	Type: 5
- 	Address: 0x5555555547a0
- 	Size: 29
- 	Record: |5|0x5555555547a0|29|.rodata
+ 	Address: 0x555555554740
+ 	Size: 16
+ 	Record: |5|0x555555554740|16|.rodata
  Section name: .eh_frame_hdr
  	Type: 5
- 	Address: 0x5555555547c0
+ 	Address: 0x555555554750
  	Size: 60
- 	Record: |5|0x5555555547c0|60|.eh_frame_hdr
+ 	Record: |5|0x555555554750|60|.eh_frame_hdr
  Section name: .eh_frame
  	Type: 5
- 	Address: 0x555555554800
+ 	Address: 0x555555554790
  	Size: 264
- 	Record: |5|0x555555554800|264|.eh_frame
+ 	Record: |5|0x555555554790|264|.eh_frame
  Section name: .init_array
- 	Type: 5
- 	Address: 0x555555754db0
- 	Size: 8
- 	Record: |5|0x555555754db0|8|.init_array
- Section name: .fini_array
  	Type: 5
  	Address: 0x555555754db8
  	Size: 8
- 	Record: |5|0x555555754db8|8|.fini_array
+ 	Record: |5|0x555555754db8|8|.init_array
+ Section name: .fini_array
+ 	Type: 5
+ 	Address: 0x555555754dc0
+ 	Size: 8
+ 	Record: |5|0x555555754dc0|8|.fini_array
  Section name: .dynamic
  	Type: 6
- 	Address: 0x555555754dc0
+ 	Address: 0x555555754dc8
  	Size: 496
- 	Record: |6|0x555555754dc0|496|.dynamic
+ 	Record: |6|0x555555754dc8|496|.dynamic
  Section name: .got
  	Type: 8
- 	Address: 0x555555754fb0
- 	Size: 80
- 	Record: |8|0x555555754fb0|80|.got
+ 	Address: 0x555555754fb8
+ 	Size: 72
+ 	Record: |8|0x555555754fb8|72|.got
  Section name: .data
  	Type: 5
  	Address: 0x555555755000
@@ -120,9 +121,9 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  	Record: |5|0x555555755000|16|.data
  Section name: .bss
  	Type: 18
- 	Address: 0x555555755010
- 	Size: 8
- 	Record: |18|0x555555755010|8|.bss
+ 	Address: 0x555555755020
+ 	Size: 72
+ 	Record: |18|0x555555755020|72|.bss
  Section name: .comment
  	Type: 17
  	Address: 0x000000000
@@ -136,18 +137,18 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  Section name: .debug_info
  	Type: 17
  	Address: 0x000000000
- 	Size: 935
- 	Record: |17|0x0|935|.debug_info
+ 	Size: 939
+ 	Record: |17|0x0|939|.debug_info
  Section name: .debug_abbrev
  	Type: 17
  	Address: 0x000000000
- 	Size: 254
- 	Record: |17|0x0|254|.debug_abbrev
+ 	Size: 265
+ 	Record: |17|0x0|265|.debug_abbrev
  Section name: .debug_line
  	Type: 17
  	Address: 0x000000000
- 	Size: 246
- 	Record: |17|0x0|246|.debug_line
+ 	Size: 263
+ 	Record: |17|0x0|263|.debug_line
  Section name: .debug_str
  	Type: 17
  	Address: 0x000000000
@@ -161,15 +162,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  Section name: .strtab
  	Type: 19
  	Address: 0x000000000
- 	Size: 545
- 	Record: |19|0x0|545|.strtab
+ 	Size: 517
+ 	Record: |19|0x0|517|.strtab
  Section name: .shstrtab
  	Type: 21
  	Address: 0x000000000
  	Size: 318
  	Record: |21|0x0|318|.shstrtab
  ASM Record
- 	ASM line #: 93824992232776
+ 	ASM line #: 93824992232688
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -177,15 +178,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  sub rsp, 0x8
  ASM Record
- 	ASM line #: 93824992232780
+ 	ASM line #: 93824992232692
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: mov rax, qword ptr [rip+0x200a95]
+ 	Instruction: mov rax, qword ptr [rip+0x200aed]
 
- mov rax, qword ptr [rip+0x200a95]
+ mov rax, qword ptr [rip+0x200aed]
  ASM Record
- 	ASM line #: 93824992232787
+ 	ASM line #: 93824992232699
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -193,15 +194,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  test rax, rax
  ASM Record
- 	ASM line #: 93824992232790
+ 	ASM line #: 93824992232702
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jz 0x55555555455a
+ 	Instruction: jz 0x555555554502
 
- jz 0x55555555455a
+ jz 0x555555554502
  ASM Record
- 	ASM line #: 93824992232792
+ 	ASM line #: 93824992232704
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -209,7 +210,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  call rax
  ASM Record
- 	ASM line #: 93824992232794
+ 	ASM line #: 93824992232706
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -217,7 +218,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  add rsp, 0x8
  ASM Record
- 	ASM line #: 93824992232798
+ 	ASM line #: 93824992232710
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -225,23 +226,23 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  ret 
  ASM Record
- 	ASM line #: 93824992232800
+ 	ASM line #: 93824992232720
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: push qword ptr [rip+0x200a52]
+ 	Instruction: push qword ptr [rip+0x200aaa]
 
- push qword ptr [rip+0x200a52]
+ push qword ptr [rip+0x200aaa]
  ASM Record
- 	ASM line #: 93824992232806
+ 	ASM line #: 93824992232726
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jmp qword ptr [rip+0x200a54]
+ 	Instruction: jmp qword ptr [rip+0x200aac]
 
- jmp qword ptr [rip+0x200a54]
+ jmp qword ptr [rip+0x200aac]
  ASM Record
- 	ASM line #: 93824992232812
+ 	ASM line #: 93824992232732
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -249,15 +250,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  nop dword ptr [rax], eax
  ASM Record
- 	ASM line #: 93824992232816
+ 	ASM line #: 93824992232736
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jmp qword ptr [rip+0x200a52]
+ 	Instruction: jmp qword ptr [rip+0x200aaa]
 
- jmp qword ptr [rip+0x200a52]
+ jmp qword ptr [rip+0x200aaa]
  ASM Record
- 	ASM line #: 93824992232822
+ 	ASM line #: 93824992232742
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -265,47 +266,23 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  push 0x0
  ASM Record
- 	ASM line #: 93824992232827
+ 	ASM line #: 93824992232747
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jmp 0x555555554560
+ 	Instruction: jmp 0x555555554510
 
- jmp 0x555555554560
+ jmp 0x555555554510
  ASM Record
- 	ASM line #: 93824992232832
+ 	ASM line #: 93824992232752
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jmp qword ptr [rip+0x200a4a]
+ 	Instruction: jmp qword ptr [rip+0x200ac2]
 
- jmp qword ptr [rip+0x200a4a]
+ jmp qword ptr [rip+0x200ac2]
  ASM Record
- 	ASM line #: 93824992232838
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: push 0x1
-
- push 0x1
- ASM Record
- 	ASM line #: 93824992232843
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: jmp 0x555555554560
-
- jmp 0x555555554560
- ASM Record
- 	ASM line #: 93824992232848
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: jmp qword ptr [rip+0x200a62]
-
- jmp qword ptr [rip+0x200a62]
- ASM Record
- 	ASM line #: 93824992232854
+ 	ASM line #: 93824992232758
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -313,7 +290,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  data16 nop 
  ASM Record
- 	ASM line #: 93824992232864
+ 	ASM line #: 93824992232768
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -321,7 +298,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  xor ebp, ebp
  ASM Record
- 	ASM line #: 93824992232866
+ 	ASM line #: 93824992232770
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -329,7 +306,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  mov r9, rdx
  ASM Record
- 	ASM line #: 93824992232869
+ 	ASM line #: 93824992232773
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -337,7 +314,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  pop rsi
  ASM Record
- 	ASM line #: 93824992232870
+ 	ASM line #: 93824992232774
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -345,7 +322,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  mov rdx, rsp
  ASM Record
- 	ASM line #: 93824992232873
+ 	ASM line #: 93824992232777
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -353,7 +330,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  and rsp, 0xfffffffffffffff0
  ASM Record
- 	ASM line #: 93824992232877
+ 	ASM line #: 93824992232781
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -361,7 +338,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  push rax
  ASM Record
- 	ASM line #: 93824992232878
+ 	ASM line #: 93824992232782
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -369,7 +346,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  push rsp
  ASM Record
- 	ASM line #: 93824992232879
+ 	ASM line #: 93824992232783
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -377,7 +354,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  lea r8, ptr [rip+0x1da]
  ASM Record
- 	ASM line #: 93824992232886
+ 	ASM line #: 93824992232790
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -385,7 +362,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  lea rcx, ptr [rip+0x163]
  ASM Record
- 	ASM line #: 93824992232893
+ 	ASM line #: 93824992232797
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -393,15 +370,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  lea rdi, ptr [rip+0xe6]
  ASM Record
- 	ASM line #: 93824992232900
+ 	ASM line #: 93824992232804
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: call qword ptr [rip+0x200a16]
+ 	Instruction: call qword ptr [rip+0x200a76]
 
- call qword ptr [rip+0x200a16]
+ call qword ptr [rip+0x200a76]
  ASM Record
- 	ASM line #: 93824992232906
+ 	ASM line #: 93824992232810
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -409,15 +386,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  hlt 
  ASM Record
- 	ASM line #: 93824992232912
+ 	ASM line #: 93824992232816
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: lea rdi, ptr [rip+0x200a39]
+ 	Instruction: lea rdi, ptr [rip+0x200a99]
 
- lea rdi, ptr [rip+0x200a39]
+ lea rdi, ptr [rip+0x200a99]
  ASM Record
- 	ASM line #: 93824992232919
+ 	ASM line #: 93824992232823
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -425,15 +402,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  push rbp
  ASM Record
- 	ASM line #: 93824992232920
+ 	ASM line #: 93824992232824
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: lea rax, ptr [rip+0x200a31]
+ 	Instruction: lea rax, ptr [rip+0x200a91]
 
- lea rax, ptr [rip+0x200a31]
+ lea rax, ptr [rip+0x200a91]
  ASM Record
- 	ASM line #: 93824992232927
+ 	ASM line #: 93824992232831
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -441,7 +418,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  cmp rax, rdi
  ASM Record
- 	ASM line #: 93824992232930
+ 	ASM line #: 93824992232834
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -449,23 +426,23 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  mov rbp, rsp
  ASM Record
- 	ASM line #: 93824992232933
+ 	ASM line #: 93824992232837
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jz 0x555555554600
+ 	Instruction: jz 0x5555555545a0
 
- jz 0x555555554600
+ jz 0x5555555545a0
  ASM Record
- 	ASM line #: 93824992232935
+ 	ASM line #: 93824992232839
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: mov rax, qword ptr [rip+0x2009ea]
+ 	Instruction: mov rax, qword ptr [rip+0x200a4a]
 
- mov rax, qword ptr [rip+0x2009ea]
+ mov rax, qword ptr [rip+0x200a4a]
  ASM Record
- 	ASM line #: 93824992232942
+ 	ASM line #: 93824992232846
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -473,15 +450,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  test rax, rax
  ASM Record
- 	ASM line #: 93824992232945
+ 	ASM line #: 93824992232849
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jz 0x555555554600
+ 	Instruction: jz 0x5555555545a0
 
- jz 0x555555554600
+ jz 0x5555555545a0
  ASM Record
- 	ASM line #: 93824992232947
+ 	ASM line #: 93824992232851
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -489,13 +466,213 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  pop rbp
  ASM Record
- 	ASM line #: 93824992232948
+ 	ASM line #: 93824992232852
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
  	Instruction: jmp rax
 
  jmp rax
+ ASM Record
+ 	ASM line #: 93824992232854
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: nop word ptr [rax+rax*1], ax
+
+ nop word ptr [rax+rax*1], ax
+ ASM Record
+ 	ASM line #: 93824992232864
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: pop rbp
+
+ pop rbp
+ ASM Record
+ 	ASM line #: 93824992232865
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: ret 
+
+ ret 
+ ASM Record
+ 	ASM line #: 93824992232866
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: nop dword ptr [rax], eax
+
+ nop dword ptr [rax], eax
+ ASM Record
+ 	ASM line #: 93824992232870
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: nop word ptr [rax+rax*1], ax
+
+ nop word ptr [rax+rax*1], ax
+ ASM Record
+ 	ASM line #: 93824992232880
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: lea rdi, ptr [rip+0x200a59]
+
+ lea rdi, ptr [rip+0x200a59]
+ ASM Record
+ 	ASM line #: 93824992232887
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: lea rsi, ptr [rip+0x200a52]
+
+ lea rsi, ptr [rip+0x200a52]
+ ASM Record
+ 	ASM line #: 93824992232894
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: push rbp
+
+ push rbp
+ ASM Record
+ 	ASM line #: 93824992232895
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: sub rsi, rdi
+
+ sub rsi, rdi
+ ASM Record
+ 	ASM line #: 93824992232898
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: mov rbp, rsp
+
+ mov rbp, rsp
+ ASM Record
+ 	ASM line #: 93824992232901
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: sar rsi, 0x3
+
+ sar rsi, 0x3
+ ASM Record
+ 	ASM line #: 93824992232905
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: mov rax, rsi
+
+ mov rax, rsi
+ ASM Record
+ 	ASM line #: 93824992232908
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: shr rax, 0x3f
+
+ shr rax, 0x3f
+ ASM Record
+ 	ASM line #: 93824992232912
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: add rsi, rax
+
+ add rsi, rax
+ ASM Record
+ 	ASM line #: 93824992232915
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: sar rsi, 0x1
+
+ sar rsi, 0x1
+ ASM Record
+ 	ASM line #: 93824992232918
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: jz 0x5555555545f0
+
+ jz 0x5555555545f0
+ ASM Record
+ 	ASM line #: 93824992232920
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: mov rax, qword ptr [rip+0x200a11]
+
+ mov rax, qword ptr [rip+0x200a11]
+ ASM Record
+ 	ASM line #: 93824992232927
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: test rax, rax
+
+ test rax, rax
+ ASM Record
+ 	ASM line #: 93824992232930
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: jz 0x5555555545f0
+
+ jz 0x5555555545f0
+ ASM Record
+ 	ASM line #: 93824992232932
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: pop rbp
+
+ pop rbp
+ ASM Record
+ 	ASM line #: 93824992232933
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: jmp rax
+
+ jmp rax
+ ASM Record
+ 	ASM line #: 93824992232935
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: nop word ptr [rax+rax*1], ax
+
+ nop word ptr [rax+rax*1], ax
+ ASM Record
+ 	ASM line #: 93824992232944
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: pop rbp
+
+ pop rbp
+ ASM Record
+ 	ASM line #: 93824992232945
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: ret 
+
+ ret 
+ ASM Record
+ 	ASM line #: 93824992232946
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: nop dword ptr [rax], eax
+
+ nop dword ptr [rax], eax
  ASM Record
  	ASM line #: 93824992232950
  	C line #: 0
@@ -509,51 +686,27 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: pop rbp
+ 	Instruction: cmp byte ptr [rip+0x200a19], 0x0
 
- pop rbp
+ cmp byte ptr [rip+0x200a19], 0x0
  ASM Record
- 	ASM line #: 93824992232961
+ 	ASM line #: 93824992232967
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: ret 
+ 	Instruction: jnz 0x555555554638
 
- ret 
+ jnz 0x555555554638
  ASM Record
- 	ASM line #: 93824992232962
+ 	ASM line #: 93824992232969
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: nop dword ptr [rax], eax
+ 	Instruction: cmp qword ptr [rip+0x2009e7], 0x0
 
- nop dword ptr [rax], eax
+ cmp qword ptr [rip+0x2009e7], 0x0
  ASM Record
- 	ASM line #: 93824992232966
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: nop word ptr [rax+rax*1], ax
-
- nop word ptr [rax+rax*1], ax
- ASM Record
- 	ASM line #: 93824992232976
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: lea rdi, ptr [rip+0x2009f9]
-
- lea rdi, ptr [rip+0x2009f9]
- ASM Record
- 	ASM line #: 93824992232983
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: lea rsi, ptr [rip+0x2009f2]
-
- lea rsi, ptr [rip+0x2009f2]
- ASM Record
- 	ASM line #: 93824992232990
+ 	ASM line #: 93824992232977
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -561,15 +714,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  push rbp
  ASM Record
- 	ASM line #: 93824992232991
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: sub rsi, rdi
-
- sub rsi, rdi
- ASM Record
- 	ASM line #: 93824992232994
+ 	ASM line #: 93824992232978
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -577,77 +722,95 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  mov rbp, rsp
  ASM Record
- 	ASM line #: 93824992232997
+ 	ASM line #: 93824992232981
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: sar rsi, 0x3
+ 	Instruction: jz 0x555555554623
 
- sar rsi, 0x3
+ jz 0x555555554623
  ASM Record
- 	ASM line #: 93824992233001
+ 	ASM line #: 93824992232983
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: mov rax, rsi
+ 	Instruction: mov rdi, qword ptr [rip+0x2009ea]
 
- mov rax, rsi
+ mov rdi, qword ptr [rip+0x2009ea]
  ASM Record
- 	ASM line #: 93824992233004
+ 	ASM line #: 93824992232990
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: shr rax, 0x3f
+ 	Instruction: call 0x555555554530
 
- shr rax, 0x3f
+ Direct call: call 0x555555554530
+ call 0x555555554530
+ ASM Record
+ 	ASM line #: 93824992232995
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: call 0x555555554570
+
+ Direct call: call 0x555555554570
+ call 0x555555554570
+ ASM Record
+ 	ASM line #: 93824992233000
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: mov byte ptr [rip+0x2009f1], 0x1
+
+ mov byte ptr [rip+0x2009f1], 0x1
+ ASM Record
+ 	ASM line #: 93824992233007
+ 	C line #: 0
+ 	ASM file: __NOASMSOURCE__
+ 	C file: __NOCSOURCE__
+ 	Instruction: pop rbp
+
+ pop rbp
  ASM Record
  	ASM line #: 93824992233008
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: add rsi, rax
+ 	Instruction: ret 
 
- add rsi, rax
+ ret 
  ASM Record
- 	ASM line #: 93824992233011
+ 	ASM line #: 93824992233009
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: sar rsi, 0x1
+ 	Instruction: nop dword ptr [rax], eax
 
- sar rsi, 0x1
- ASM Record
- 	ASM line #: 93824992233014
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: jz 0x555555554650
-
- jz 0x555555554650
+ nop dword ptr [rax], eax
  ASM Record
  	ASM line #: 93824992233016
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: mov rax, qword ptr [rip+0x2009b1]
+ 	Instruction: ret 
 
- mov rax, qword ptr [rip+0x2009b1]
+ ret 
  ASM Record
- 	ASM line #: 93824992233023
+ 	ASM line #: 93824992233024
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: test rax, rax
+ 	Instruction: push rbp
 
- test rax, rax
+ push rbp
  ASM Record
- 	ASM line #: 93824992233026
+ 	ASM line #: 93824992233025
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jz 0x555555554650
+ 	Instruction: mov rbp, rsp
 
- jz 0x555555554650
+ mov rbp, rsp
  ASM Record
  	ASM line #: 93824992233028
  	C line #: 0
@@ -661,407 +824,228 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jmp rax
+ 	Instruction: jmp 0x5555555545b0
 
- jmp rax
+ jmp 0x5555555545b0
  ASM Record
- 	ASM line #: 93824992233031
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: nop word ptr [rax+rax*1], ax
+ 	ASM line #: 93824992233034
+ 	C line #: 6
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Instruction: push rbp
 
- nop word ptr [rax+rax*1], ax
+ push rbp
  ASM Record
- 	ASM line #: 93824992233040
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: pop rbp
+ 	ASM line #: 93824992233035
+ 	C line #: 6
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Instruction: mov rbp, rsp
 
- pop rbp
+ mov rbp, rsp
  ASM Record
- 	ASM line #: 93824992233041
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: ret 
+ 	ASM line #: 93824992233038
+ 	C line #: 6
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Instruction: sub rsp, 0x10
 
- ret 
+ sub rsp, 0x10
  ASM Record
  	ASM line #: 93824992233042
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: nop dword ptr [rax], eax
+ 	C line #: 8
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Instruction: mov dword ptr [rbp-0x4], 0x0
 
- nop dword ptr [rax], eax
+ mov dword ptr [rbp-0x4], 0x0
  ASM Record
- 	ASM line #: 93824992233046
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: nop word ptr [rax+rax*1], ax
+ 	ASM line #: 93824992233049
+ 	C line #: 8
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Instruction: jmp 0x5555555546a6
 
- nop word ptr [rax+rax*1], ax
+ jmp 0x5555555546a6
+ ASM Record
+ 	ASM line #: 93824992233051
+ 	C line #: 9
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Instruction: mov eax, dword ptr [rbp-0x4]
+
+ mov eax, dword ptr [rbp-0x4]
+ ASM Record
+ 	ASM line #: 93824992233054
+ 	C line #: 9
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Instruction: cdqe 
+
+ cdqe 
  ASM Record
  	ASM line #: 93824992233056
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: cmp byte ptr [rip+0x2009a9], 0x0
+ 	C line #: 9
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Instruction: lea rcx, ptr [rax*4]
 
- cmp byte ptr [rip+0x2009a9], 0x0
+ lea rcx, ptr [rax*4]
  ASM Record
- 	ASM line #: 93824992233063
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: jnz 0x555555554698
+ 	ASM line #: 93824992233064
+ 	C line #: 9
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Instruction: lea rax, ptr [rip+0x2009d1]
 
- jnz 0x555555554698
+ lea rax, ptr [rip+0x2009d1]
  ASM Record
- 	ASM line #: 93824992233065
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: cmp qword ptr [rip+0x200987], 0x0
+ 	ASM line #: 93824992233071
+ 	C line #: 9
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Instruction: mov edx, dword ptr [rbp-0x4]
 
- cmp qword ptr [rip+0x200987], 0x0
- ASM Record
- 	ASM line #: 93824992233073
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: push rbp
-
- push rbp
+ mov edx, dword ptr [rbp-0x4]
  ASM Record
  	ASM line #: 93824992233074
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov rbp, rsp
+ 	C line #: 9
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Instruction: mov dword ptr [rcx+rax*1], edx
 
- mov rbp, rsp
+ mov dword ptr [rcx+rax*1], edx
  ASM Record
  	ASM line #: 93824992233077
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: jz 0x555555554683
+ 	C line #: 10
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Instruction: mov eax, dword ptr [rbp-0x4]
 
- jz 0x555555554683
+ mov eax, dword ptr [rbp-0x4]
  ASM Record
- 	ASM line #: 93824992233079
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov rdi, qword ptr [rip+0x20098a]
+ 	ASM line #: 93824992233080
+ 	C line #: 10
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Instruction: cdqe 
 
- mov rdi, qword ptr [rip+0x20098a]
+ cdqe 
  ASM Record
- 	ASM line #: 93824992233086
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: call 0x555555554590
+ 	ASM line #: 93824992233082
+ 	C line #: 10
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Instruction: lea rdx, ptr [rax*4]
 
- Direct call: call 0x555555554590
- call 0x555555554590
+ lea rdx, ptr [rax*4]
  ASM Record
- 	ASM line #: 93824992233091
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: call 0x5555555545d0
+ 	ASM line #: 93824992233090
+ 	C line #: 10
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Instruction: lea rax, ptr [rip+0x2009b7]
 
- Direct call: call 0x5555555545d0
- call 0x5555555545d0
+ lea rax, ptr [rip+0x2009b7]
  ASM Record
- 	ASM line #: 93824992233096
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov byte ptr [rip+0x200981], 0x1
+ 	ASM line #: 93824992233097
+ 	C line #: 10
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Instruction: mov edx, dword ptr [rdx+rax*1]
 
- mov byte ptr [rip+0x200981], 0x1
+ mov edx, dword ptr [rdx+rax*1]
+ ASM Record
+ 	ASM line #: 93824992233100
+ 	C line #: 10
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Instruction: mov eax, dword ptr [rbp-0x4]
+
+ mov eax, dword ptr [rbp-0x4]
  ASM Record
  	ASM line #: 93824992233103
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: pop rbp
-
- pop rbp
- ASM Record
- 	ASM line #: 93824992233104
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: ret 
-
- ret 
- ASM Record
- 	ASM line #: 93824992233105
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: nop dword ptr [rax], eax
-
- nop dword ptr [rax], eax
- ASM Record
- 	ASM line #: 93824992233112
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: ret 
-
- ret 
- ASM Record
- 	ASM line #: 93824992233120
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: push rbp
-
- push rbp
- ASM Record
- 	ASM line #: 93824992233121
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: mov rbp, rsp
-
- mov rbp, rsp
- ASM Record
- 	ASM line #: 93824992233124
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: pop rbp
-
- pop rbp
- ASM Record
- 	ASM line #: 93824992233125
- 	C line #: 0
- 	ASM file: __NOASMSOURCE__
- 	C file: __NOCSOURCE__
- 	Instruction: jmp 0x555555554610
-
- jmp 0x555555554610
- ASM Record
- 	ASM line #: 93824992233130
  	C line #: 10
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Instruction: push rbp
-
- push rbp
- ASM Record
- 	ASM line #: 93824992233131
- 	C line #: 10
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Instruction: mov rbp, rsp
-
- mov rbp, rsp
- ASM Record
- 	ASM line #: 93824992233134
- 	C line #: 10
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Instruction: sub rsp, 0x20
-
- sub rsp, 0x20
- ASM Record
- 	ASM line #: 93824992233138
- 	C line #: 10
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Instruction: mov rax, qword ptr fs:[0x28]
-
- mov rax, qword ptr fs:[0x28]
- ASM Record
- 	ASM line #: 93824992233147
- 	C line #: 10
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Instruction: mov qword ptr [rbp-0x8], rax
-
- mov qword ptr [rbp-0x8], rax
- ASM Record
- 	ASM line #: 93824992233151
- 	C line #: 10
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Instruction: xor eax, eax
-
- xor eax, eax
- ASM Record
- 	ASM line #: 93824992233153
- 	C line #: 14
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Instruction: mov dword ptr [rbp-0x20], 0x1
-
- mov dword ptr [rbp-0x20], 0x1
- ASM Record
- 	ASM line #: 93824992233160
- 	C line #: 15
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Instruction: mov dword ptr [rbp-0x1c], 0x2
-
- mov dword ptr [rbp-0x1c], 0x2
- ASM Record
- 	ASM line #: 93824992233167
- 	C line #: 16
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Instruction: lea rax, ptr [rbp-0x20]
-
- lea rax, ptr [rbp-0x20]
- ASM Record
- 	ASM line #: 93824992233171
- 	C line #: 16
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Instruction: add rax, 0x4
-
- add rax, 0x4
- ASM Record
- 	ASM line #: 93824992233175
- 	C line #: 16
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Instruction: mov qword ptr [rbp-0x18], rax
-
- mov qword ptr [rbp-0x18], rax
- ASM Record
- 	ASM line #: 93824992233179
- 	C line #: 17
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Instruction: mov rax, qword ptr [rbp-0x18]
-
- mov rax, qword ptr [rbp-0x18]
- ASM Record
- 	ASM line #: 93824992233183
- 	C line #: 17
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Instruction: mov ecx, dword ptr [rax]
-
- mov ecx, dword ptr [rax]
- ASM Record
- 	ASM line #: 93824992233185
- 	C line #: 17
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Instruction: mov edx, dword ptr [rbp-0x1c]
-
- mov edx, dword ptr [rbp-0x1c]
- ASM Record
- 	ASM line #: 93824992233188
- 	C line #: 17
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Instruction: mov eax, dword ptr [rbp-0x20]
-
- mov eax, dword ptr [rbp-0x20]
- ASM Record
- 	ASM line #: 93824992233191
- 	C line #: 17
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
  	Instruction: mov esi, eax
 
  mov esi, eax
  ASM Record
- 	ASM line #: 93824992233193
- 	C line #: 17
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Instruction: lea rdi, ptr [rip+0xb4]
+ 	ASM line #: 93824992233105
+ 	C line #: 10
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Instruction: lea rdi, ptr [rip+0xac]
 
- lea rdi, ptr [rip+0xb4]
+ lea rdi, ptr [rip+0xac]
  ASM Record
- 	ASM line #: 93824992233200
- 	C line #: 17
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	ASM line #: 93824992233112
+ 	C line #: 10
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
  	Instruction: mov eax, 0x0
 
  mov eax, 0x0
  ASM Record
- 	ASM line #: 93824992233205
- 	C line #: 17
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Instruction: call 0x555555554580
+ 	ASM line #: 93824992233117
+ 	C line #: 10
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Instruction: call 0x555555554520
 
- Direct call: call 0x555555554580
- call 0x555555554580
+ Direct call: call 0x555555554520
+ call 0x555555554520
  ASM Record
- 	ASM line #: 93824992233210
- 	C line #: 17
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	ASM line #: 93824992233122
+ 	C line #: 8
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Instruction: add dword ptr [rbp-0x4], 0x1
+
+ add dword ptr [rbp-0x4], 0x1
+ ASM Record
+ 	ASM line #: 93824992233126
+ 	C line #: 8
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Instruction: cmp dword ptr [rbp-0x4], 0x9
+
+ cmp dword ptr [rbp-0x4], 0x9
+ ASM Record
+ 	ASM line #: 93824992233130
+ 	C line #: 8
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Instruction: jle 0x55555555465b
+
+ jle 0x55555555465b
+ ASM Record
+ 	ASM line #: 93824992233132
+ 	C line #: 8
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
  	Instruction: mov eax, 0x0
 
  mov eax, 0x0
  ASM Record
- 	ASM line #: 93824992233215
- 	C line #: 18
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Instruction: mov rsi, qword ptr [rbp-0x8]
-
- mov rsi, qword ptr [rbp-0x8]
- ASM Record
- 	ASM line #: 93824992233219
- 	C line #: 18
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Instruction: xor rsi, qword ptr fs:[0x28]
-
- xor rsi, qword ptr fs:[0x28]
- ASM Record
- 	ASM line #: 93824992233228
- 	C line #: 18
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Instruction: jz 0x555555554713
-
- jz 0x555555554713
- ASM Record
- 	ASM line #: 93824992233230
- 	C line #: 18
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Instruction: call 0x555555554570
-
- Direct call: call 0x555555554570
- call 0x555555554570
- ASM Record
- 	ASM line #: 93824992233235
- 	C line #: 18
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	ASM line #: 93824992233137
+ 	C line #: 12
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
  	Instruction: leave 
 
  leave 
  ASM Record
- 	ASM line #: 93824992233236
- 	C line #: 18
- 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.s
- 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	ASM line #: 93824992233138
+ 	C line #: 12
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
  	Instruction: ret 
 
  ret 
  ASM Record
- 	ASM line #: 93824992233248
+ 	ASM line #: 93824992233152
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1069,7 +1053,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  push r15
  ASM Record
- 	ASM line #: 93824992233250
+ 	ASM line #: 93824992233154
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1077,7 +1061,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  push r14
  ASM Record
- 	ASM line #: 93824992233252
+ 	ASM line #: 93824992233156
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1085,7 +1069,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  mov r15, rdx
  ASM Record
- 	ASM line #: 93824992233255
+ 	ASM line #: 93824992233159
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1093,7 +1077,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  push r13
  ASM Record
- 	ASM line #: 93824992233257
+ 	ASM line #: 93824992233161
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1101,15 +1085,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  push r12
  ASM Record
- 	ASM line #: 93824992233259
+ 	ASM line #: 93824992233163
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: lea r12, ptr [rip+0x20067e]
+ 	Instruction: lea r12, ptr [rip+0x2006e6]
 
- lea r12, ptr [rip+0x20067e]
+ lea r12, ptr [rip+0x2006e6]
  ASM Record
- 	ASM line #: 93824992233266
+ 	ASM line #: 93824992233170
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1117,15 +1101,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  push rbp
  ASM Record
- 	ASM line #: 93824992233267
+ 	ASM line #: 93824992233171
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: lea rbp, ptr [rip+0x20067e]
+ 	Instruction: lea rbp, ptr [rip+0x2006e6]
 
- lea rbp, ptr [rip+0x20067e]
+ lea rbp, ptr [rip+0x2006e6]
  ASM Record
- 	ASM line #: 93824992233274
+ 	ASM line #: 93824992233178
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1133,7 +1117,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  push rbx
  ASM Record
- 	ASM line #: 93824992233275
+ 	ASM line #: 93824992233179
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1141,7 +1125,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  mov r13d, edi
  ASM Record
- 	ASM line #: 93824992233278
+ 	ASM line #: 93824992233182
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1149,7 +1133,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  mov r14, rsi
  ASM Record
- 	ASM line #: 93824992233281
+ 	ASM line #: 93824992233185
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1157,7 +1141,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  sub rbp, r12
  ASM Record
- 	ASM line #: 93824992233284
+ 	ASM line #: 93824992233188
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1165,7 +1149,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  sub rsp, 0x8
  ASM Record
- 	ASM line #: 93824992233288
+ 	ASM line #: 93824992233192
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1173,16 +1157,16 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  sar rbp, 0x3
  ASM Record
- 	ASM line #: 93824992233292
+ 	ASM line #: 93824992233196
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: call 0x555555554548
+ 	Instruction: call 0x5555555544f0
 
- Direct call: call 0x555555554548
- call 0x555555554548
+ Direct call: call 0x5555555544f0
+ call 0x5555555544f0
  ASM Record
- 	ASM line #: 93824992233297
+ 	ASM line #: 93824992233201
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1190,15 +1174,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  test rbp, rbp
  ASM Record
- 	ASM line #: 93824992233300
+ 	ASM line #: 93824992233204
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jz 0x555555554776
+ 	Instruction: jz 0x555555554716
 
- jz 0x555555554776
+ jz 0x555555554716
  ASM Record
- 	ASM line #: 93824992233302
+ 	ASM line #: 93824992233206
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1206,7 +1190,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  xor ebx, ebx
  ASM Record
- 	ASM line #: 93824992233304
+ 	ASM line #: 93824992233208
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1214,7 +1198,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  nop dword ptr [rax+rax*1], eax
  ASM Record
- 	ASM line #: 93824992233312
+ 	ASM line #: 93824992233216
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1222,7 +1206,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  mov rdx, r15
  ASM Record
- 	ASM line #: 93824992233315
+ 	ASM line #: 93824992233219
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1230,7 +1214,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  mov rsi, r14
  ASM Record
- 	ASM line #: 93824992233318
+ 	ASM line #: 93824992233222
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1238,7 +1222,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  mov edi, r13d
  ASM Record
- 	ASM line #: 93824992233321
+ 	ASM line #: 93824992233225
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1246,7 +1230,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  call qword ptr [r12+rbx*8]
  ASM Record
- 	ASM line #: 93824992233325
+ 	ASM line #: 93824992233229
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1254,7 +1238,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  add rbx, 0x1
  ASM Record
- 	ASM line #: 93824992233329
+ 	ASM line #: 93824992233233
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1262,15 +1246,15 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  cmp rbp, rbx
  ASM Record
- 	ASM line #: 93824992233332
+ 	ASM line #: 93824992233236
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
- 	Instruction: jnz 0x555555554760
+ 	Instruction: jnz 0x555555554700
 
- jnz 0x555555554760
+ jnz 0x555555554700
  ASM Record
- 	ASM line #: 93824992233334
+ 	ASM line #: 93824992233238
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1278,7 +1262,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  add rsp, 0x8
  ASM Record
- 	ASM line #: 93824992233338
+ 	ASM line #: 93824992233242
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1286,7 +1270,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  pop rbx
  ASM Record
- 	ASM line #: 93824992233339
+ 	ASM line #: 93824992233243
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1294,7 +1278,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  pop rbp
  ASM Record
- 	ASM line #: 93824992233340
+ 	ASM line #: 93824992233244
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1302,7 +1286,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  pop r12
  ASM Record
- 	ASM line #: 93824992233342
+ 	ASM line #: 93824992233246
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1310,7 +1294,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  pop r13
  ASM Record
- 	ASM line #: 93824992233344
+ 	ASM line #: 93824992233248
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1318,7 +1302,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  pop r14
  ASM Record
- 	ASM line #: 93824992233346
+ 	ASM line #: 93824992233250
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1326,7 +1310,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  pop r15
  ASM Record
- 	ASM line #: 93824992233348
+ 	ASM line #: 93824992233252
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1334,7 +1318,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  ret 
  ASM Record
- 	ASM line #: 93824992233360
+ 	ASM line #: 93824992233264
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1342,7 +1326,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  ret 
  ASM Record
- 	ASM line #: 93824992233364
+ 	ASM line #: 93824992233268
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1350,7 +1334,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  sub rsp, 0x8
  ASM Record
- 	ASM line #: 93824992233368
+ 	ASM line #: 93824992233272
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1358,7 +1342,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
 
  add rsp, 0x8
  ASM Record
- 	ASM line #: 93824992233372
+ 	ASM line #: 93824992233276
  	C line #: 0
  	ASM file: __NOASMSOURCE__
  	C file: __NOCSOURCE__
@@ -1388,39 +1372,39 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  malloc returns 0x7ffff7ffedd0
  enter malloc
  exit
- malloc returns 0x7fffe471d000
+ malloc returns 0x7fffe473a000
  enter malloc
  exit
- malloc returns 0x7fffe471d4a0
+ malloc returns 0x7fffe473a4a0
  enter malloc
  exit
- malloc returns 0x7fffe471d4c0
+ malloc returns 0x7fffe473a4c0
  enter malloc
  exit
- malloc returns 0x7fffe471d4f0
+ malloc returns 0x7fffe473a4f0
  enter malloc
  exit
- malloc returns 0x7fffe471d530
+ malloc returns 0x7fffe473a530
  enter malloc
  exit
- malloc returns 0x7fffe471d590
+ malloc returns 0x7fffe473a580
  enter malloc
  exit
- malloc returns 0x7fffe471d5e0
+ malloc returns 0x7fffe473a5d0
  enter malloc
  exit
- malloc returns 0x7fffe471d8e0
+ malloc returns 0x7fffe473a8d0
  enter malloc
  exit
- malloc returns 0x7fffe471d970
+ malloc returns 0x7fffe473a960
  enter malloc
  exit
- malloc returns 0x7fffe471dd80
+ malloc returns 0x7fffe473ad70
  enter malloc
  exit
- malloc returns 0x7fffe471ee10
+ malloc returns 0x7fffe473be00
  Function Call to _start
- Base SP = 0x7fffffffdb90
+ Base SP = 0x7fffffffdbe0
  Stack Begin =0x7ffffffdd000 Stack End =0x7ffffffff000 after push stack size:1
  Invocation ID:18function _start was called.
  Frame pointer was 0x000000000
@@ -1432,7 +1416,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  	Inv line: 0
  	Func file: 
  	Inv file: 
- 	Callee stack address: 0x7fffffffdb90
+ 	Callee stack address: 0x7fffffffdbe0
 
  Return address
  	Function name: main
@@ -1457,7 +1441,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  	File: __NOCSOURCE__
  	Register: r9
  	Value: 0x0x7ffff7de59a0
- Before pop: SP = 0x7fffffffdb90
+ Before pop: SP = 0x7fffffffdbe0
  Enter AfterRegMod Checking values Register Record
  	Event num: 24
  	Line #: 0
@@ -1469,91 +1453,91 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7fffffffdb98
- After pop: SP = 0x7fffffffdb98
+ 	Value: 0x0x7fffffffdbe8
+ After pop: SP = 0x7fffffffdbe8
  Enter AfterRegMod Checking values Register Record
  	Event num: 26
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rdx
- 	Value: 0x0x7fffffffdb98
+ 	Value: 0x0x7fffffffdbe8
  Enter AfterRegMod Checking values Register Record
  	Event num: 27
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7fffffffdb90
+ 	Value: 0x0x7fffffffdbe0
  Enter AfterRegMod Checking values Register Record
  	Event num: 28
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rflags
- 	Value: 0x0x000000206
- Before push: SP = 0x7fffffffdb90
+ 	Value: 0x0x000000202
+ Before push: SP = 0x7fffffffdbe0
  Enter AfterRegMod Checking values Register Record
  	Event num: 30
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7fffffffdb88
+ 	Value: 0x0x7fffffffdbd8
  value after write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x5555555545ad is between 0x0000006aa and 0x000000715
- ip = 0x5555555545ad is not in user code
- After push: SP = 0x7fffffffdb88
- Before push: SP = 0x7fffffffdb88
+ In cu_record::pc_in_range: check if pc = 0x55555555454d is between 0x00000064a and 0x0000006b3
+ ip = 0x55555555454d is not in user code
+ After push: SP = 0x7fffffffdbd8
+ Before push: SP = 0x7fffffffdbd8
  Enter AfterRegMod Checking values Register Record
  	Event num: 32
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7fffffffdb80
+ 	Value: 0x0x7fffffffdbd0
  value after write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x5555555545ae is between 0x0000006aa and 0x000000715
- ip = 0x5555555545ae is not in user code
- After push: SP = 0x7fffffffdb80
+ In cu_record::pc_in_range: check if pc = 0x55555555454e is between 0x00000064a and 0x0000006b3
+ ip = 0x55555555454e is not in user code
+ After push: SP = 0x7fffffffdbd0
  Enter AfterRegMod Checking values Register Record
  	Event num: 33
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: r8
- 	Value: 0x0x555555554790
+ 	Value: 0x0x555555554730
  Enter AfterRegMod Checking values Register Record
  	Event num: 34
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rcx
- 	Value: 0x0x555555554720
+ 	Value: 0x0x5555555546c0
  Enter AfterRegMod Checking values Register Record
  	Event num: 35
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rdi
- 	Value: 0x0x5555555546aa
+ 	Value: 0x0x55555555464a
  Enter AfterRegMod Checking values Register Record
  	Event num: 36
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
- 	Value: 0x0x7fffe4329ab0
+ 	Value: 0x0x7fffe434eab0
  Enter AfterRegMod Checking values Register Record
  	Event num: 37
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7fffffffdb78
- value after write : 0x90  0xdb  0xff  0xff  0xff  0x7f  0x0  0x0  
+ 	Value: 0x0x7fffffffdbc8
+ value after write : 0xe0  0xdb  0xff  0xff  0xff  0x7f  0x0  0x0  
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x5555555545c4 is between 0x0000006aa and 0x000000715
- ip = 0x5555555545c4 is not in user code
+ In cu_record::pc_in_range: check if pc = 0x555555554564 is between 0x00000064a and 0x0000006b3
+ ip = 0x555555554564 is not in user code
  Function Call to __libc_csu_init
  after push stack size:2
  Invocation ID:38function __libc_csu_init was called.
- Frame pointer was 0x555555554720
+ Frame pointer was 0x5555555546c0
  Getting frame pointer for __libc_csu_init
  Call to function
  	Event num: 38
@@ -1562,109 +1546,109 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  	Inv line: 0
  	Func file: 
  	Inv file: 
- 	Callee stack address: 0x7fffffffdab8
+ 	Callee stack address: 0x7fffffffdb08
 
  Return address
  	Function name: main
- 	Dynamic link: 0x555555554720
- 	Return address: 0x7fffe4329b28
+ 	Dynamic link: 0x5555555546c0
+ 	Return address: 0x7fffe434eb28
  Build stack frame
- Before push: SP = 0x7fffffffdab8
+ Before push: SP = 0x7fffffffdb08
  Enter AfterRegMod Checking values Register Record
  	Event num: 41
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7fffffffdab0
- value after write : 0xa0  0x45  0x55  0x55  0x55  0x55  0x0  0x0  
+ 	Value: 0x0x7fffffffdb00
+ value after write : 0x40  0x45  0x55  0x55  0x55  0x55  0x0  0x0  
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x555555554720 is between 0x0000006aa and 0x000000715
- ip = 0x555555554720 is not in user code
- After push: SP = 0x7fffffffdab0
- Before push: SP = 0x7fffffffdab0
+ In cu_record::pc_in_range: check if pc = 0x5555555546c0 is between 0x00000064a and 0x0000006b3
+ ip = 0x5555555546c0 is not in user code
+ After push: SP = 0x7fffffffdb00
+ Before push: SP = 0x7fffffffdb00
  Enter AfterRegMod Checking values Register Record
  	Event num: 43
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7fffffffdaa8
- value after write : 0x20  0x47  0x55  0x55  0x55  0x55  0x0  0x0  
+ 	Value: 0x0x7fffffffdaf8
+ value after write : 0xc0  0x46  0x55  0x55  0x55  0x55  0x0  0x0  
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x555555554722 is between 0x0000006aa and 0x000000715
- ip = 0x555555554722 is not in user code
- After push: SP = 0x7fffffffdaa8
+ In cu_record::pc_in_range: check if pc = 0x5555555546c2 is between 0x00000064a and 0x0000006b3
+ ip = 0x5555555546c2 is not in user code
+ After push: SP = 0x7fffffffdaf8
  Enter AfterRegMod Checking values Register Record
  	Event num: 44
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: r15
- 	Value: 0x0x7fffffffdba8
- Before push: SP = 0x7fffffffdaa8
+ 	Value: 0x0x7fffffffdbf8
+ Before push: SP = 0x7fffffffdaf8
  Enter AfterRegMod Checking values Register Record
  	Event num: 46
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7fffffffdaa0
+ 	Value: 0x0x7fffffffdaf0
  value after write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x555555554727 is between 0x0000006aa and 0x000000715
- ip = 0x555555554727 is not in user code
- After push: SP = 0x7fffffffdaa0
- Before push: SP = 0x7fffffffdaa0
+ In cu_record::pc_in_range: check if pc = 0x5555555546c7 is between 0x00000064a and 0x0000006b3
+ ip = 0x5555555546c7 is not in user code
+ After push: SP = 0x7fffffffdaf0
+ Before push: SP = 0x7fffffffdaf0
  Enter AfterRegMod Checking values Register Record
  	Event num: 48
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7fffffffda98
+ 	Value: 0x0x7fffffffdae8
  value after write : 0x70  0xe1  0xff  0xf7  0x0  0x0  0x0  0x0  
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x555555554729 is between 0x0000006aa and 0x000000715
- ip = 0x555555554729 is not in user code
- After push: SP = 0x7fffffffda98
+ In cu_record::pc_in_range: check if pc = 0x5555555546c9 is between 0x00000064a and 0x0000006b3
+ ip = 0x5555555546c9 is not in user code
+ After push: SP = 0x7fffffffdae8
  Enter AfterRegMod Checking values Register Record
  	Event num: 49
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: r12
- 	Value: 0x0x555555754db0
- Before push: SP = 0x7fffffffda98
+ 	Value: 0x0x555555754db8
+ Before push: SP = 0x7fffffffdae8
  Enter AfterRegMod Checking values Register Record
  	Event num: 51
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7fffffffda90
- value after write : 0x89  0xb4  0x34  0xe4  0xff  0x7f  0x0  0x0  
+ 	Value: 0x0x7fffffffdae0
+ value after write : 0x89  0x4  0x37  0xe4  0xff  0x7f  0x0  0x0  
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x555555554732 is between 0x0000006aa and 0x000000715
- ip = 0x555555554732 is not in user code
- After push: SP = 0x7fffffffda90
+ In cu_record::pc_in_range: check if pc = 0x5555555546d2 is between 0x00000064a and 0x0000006b3
+ ip = 0x5555555546d2 is not in user code
+ After push: SP = 0x7fffffffdae0
  Enter AfterRegMod Checking values Register Record
  	Event num: 52
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rbp
- 	Value: 0x0x555555754db8
- Before push: SP = 0x7fffffffda90
+ 	Value: 0x0x555555754dc0
+ Before push: SP = 0x7fffffffdae0
  Enter AfterRegMod Checking values Register Record
  	Event num: 54
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7fffffffda88
+ 	Value: 0x0x7fffffffdad8
  value after write : 0xa0  0x59  0xde  0xf7  0xff  0x7f  0x0  0x0  
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x55555555473a is between 0x0000006aa and 0x000000715
- ip = 0x55555555473a is not in user code
- After push: SP = 0x7fffffffda88
+ In cu_record::pc_in_range: check if pc = 0x5555555546da is between 0x00000064a and 0x0000006b3
+ ip = 0x5555555546da is not in user code
+ After push: SP = 0x7fffffffdad8
  Enter AfterRegMod Checking values Register Record
  	Event num: 55
  	Line #: 0
@@ -1676,7 +1660,7 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: r14
- 	Value: 0x0x7fffffffdb98
+ 	Value: 0x0x7fffffffdbe8
  Enter AfterRegMod Checking values Register Record
  	Event num: 57
  	Line #: 0
@@ -1688,1261 +1672,2840 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rflags
- 	Value: 0x0x000000202
+ 	Value: 0x0x000000212
  Enter AfterRegMod Checking values Register Record
  	Event num: 59
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7fffffffda80
- Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
+ 	Value: 0x0x7fffffffdad0
+ Enter AfterRegMod Checking values Register Record
  	Event num: 60
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rflags
+ 	Value: 0x0x000000202
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 61
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rbp
  	Value: 0x0x000000001
  Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
- 	Event num: 61
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x555555554548
- Enter AfterRegMod Checking values Register Record
  	Event num: 62
  	Line #: 0
  	File: __NOCSOURCE__
+ 	Register: rip
+ 	Value: 0x0x5555555544f0
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 63
+ 	Line #: 0
+ 	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7fffffffda78
+ 	Value: 0x0x7fffffffdac8
  value after write : 0xc2  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x55555555474c is between 0x0000006aa and 0x000000715
- ip = 0x55555555474c is not in user code
+ In cu_record::pc_in_range: check if pc = 0x5555555546ec is between 0x00000064a and 0x0000006b3
+ ip = 0x5555555546ec is not in user code
  Function Call to _init
  after push stack size:3
- Invocation ID:63function _init was called.
+ Invocation ID:64function _init was called.
  Frame pointer was 0x000000001
  Getting frame pointer for _init
  Call to function
- 	Event num: 63
+ 	Event num: 64
  	Function name: _init
  	Func line: 0
  	Inv line: 0
  	Func file: 
  	Inv file: 
- 	Callee stack address: 0x7fffffffda78
+ 	Callee stack address: 0x7fffffffdac8
 
  Return address
  	Function name: main
  	Dynamic link: 0x000000001
- 	Return address: 0x555555554751
+ 	Return address: 0x5555555546f1
  Build stack frame
  Enter AfterRegMod Checking values Register Record
- 	Event num: 65
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7fffffffda70
- Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
  	Event num: 66
  	Line #: 0
  	File: __NOCSOURCE__
- 	Register: rax
- 	Value: 0x0x000000000
+ 	Register: rsp
+ 	Value: 0x0x7fffffffdac0
  Enter AfterRegMod Checking values Register Record
  	Event num: 67
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rflags
- 	Value: 0x0x000000246
+ 	Value: 0x0x000000206
  Enter AfterRegMod Checking values Register Record
  	Event num: 68
  	Line #: 0
  	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7fffffffda78
+ 	Register: rax
+ 	Value: 0x0x000000000
  Enter AfterRegMod Checking values Register Record
  	Event num: 69
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rflags
- 	Value: 0x0x000000206
- Enter functionInvocationAfter
- No output found
- function return
- Exit functionInvocationAfter
- Before return: SP = 0x7fffffffda78
+ 	Value: 0x0x000000246
  Enter AfterRegMod Checking values Register Record
- 	Event num: 72
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x555555554751
- Enter AfterRegMod Checking values Register Record
- 	Event num: 73
+ 	Event num: 70
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7fffffffda80
- After return : SP = 0x7fffffffda80
+ 	Value: 0x0x7fffffffdac8
  Enter AfterRegMod Checking values Register Record
- 	Event num: 74
+ 	Event num: 71
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rflags
  	Value: 0x0x000000202
+ Enter functionInvocationAfter
+ No output found
+ function return
+ Exit functionInvocationAfter
+ Before return: SP = 0x7fffffffdac8
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 74
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rip
+ 	Value: 0x0x5555555546f1
  Enter AfterRegMod Checking values Register Record
  	Event num: 75
  	Line #: 0
  	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x555555554756
- Enter AfterRegMod Checking values Register Record
+ 	Register: rsp
+ 	Value: 0x0x7fffffffdad0
+ After return : SP = 0x7fffffffdad0
+ Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
  	Event num: 76
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rip
+ 	Value: 0x0x5555555546f6
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 77
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: ebx
  	Value: 0x0x000000000
  Enter AfterRegMod Checking values Register Record
- 	Event num: 77
+ 	Event num: 78
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rflags
  	Value: 0x0x000000246
  Enter AfterRegMod Checking values Register Record
- 	Event num: 78
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rdx
- 	Value: 0x0x7fffffffdba8
- Enter AfterRegMod Checking values Register Record
  	Event num: 79
  	Line #: 0
  	File: __NOCSOURCE__
- 	Register: rsi
- 	Value: 0x0x7fffffffdb98
+ 	Register: rdx
+ 	Value: 0x0x7fffffffdbf8
  Enter AfterRegMod Checking values Register Record
  	Event num: 80
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rsi
+ 	Value: 0x0x7fffffffdbe8
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 81
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: edi
  	Value: 0x0x000000001
  Enter AfterRegMod Checking values Register Record
- 	Event num: 81
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x5555555546a0
- Enter AfterRegMod Checking values Register Record
  	Event num: 82
  	Line #: 0
  	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7fffffffda78
- value after write : 0xc2  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- line = 0, column = 0, file = __NOCSOURCE__
- In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x555555554769 is between 0x0000006aa and 0x000000715
- ip = 0x555555554769 is not in user code
- Function Call to frame_dummy
- Before push: SP = 0x7fffffffda78
+ 	Register: rip
+ 	Value: 0x0x555555554640
  Enter AfterRegMod Checking values Register Record
- 	Event num: 84
+ 	Event num: 83
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7fffffffda70
- value after write : 0xff  0xb5  0xf0  0x0  0x0  0x0  0x0  0x0  
+ 	Value: 0x0x7fffffffdac8
+ value after write : 0xc2  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x5555555546a0 is between 0x0000006aa and 0x000000715
- ip = 0x5555555546a0 is not in user code
- After push: SP = 0x7fffffffda70
+ In cu_record::pc_in_range: check if pc = 0x555555554709 is between 0x00000064a and 0x0000006b3
+ ip = 0x555555554709 is not in user code
+ Function Call to frame_dummy
+ Before push: SP = 0x7fffffffdac8
  Enter AfterRegMod Checking values Register Record
  	Event num: 85
  	Line #: 0
  	File: __NOCSOURCE__
- 	Register: rbp
- 	Value: 0x0x7fffffffda70
- Before pop: SP = 0x7fffffffda70
+ 	Register: rsp
+ 	Value: 0x0x7fffffffdac0
+ value after write : 0xff  0xb5  0xf0  0x0  0x0  0x0  0x0  0x0  
+ line = 0, column = 0, file = __NOCSOURCE__
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x555555554640 is between 0x00000064a and 0x0000006b3
+ ip = 0x555555554640 is not in user code
+ After push: SP = 0x7fffffffdac0
  Enter AfterRegMod Checking values Register Record
- 	Event num: 87
+ 	Event num: 86
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rbp
+ 	Value: 0x0x7fffffffdac0
+ Before pop: SP = 0x7fffffffdac0
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 88
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rbp
  	Value: 0x0x000000001
  Enter AfterRegMod Checking values Register Record
- 	Event num: 88
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7fffffffda78
- After pop: SP = 0x7fffffffda78
- Enter AfterRegMod Checking values Register Record
  	Event num: 89
  	Line #: 0
  	File: __NOCSOURCE__
+ 	Register: rsp
+ 	Value: 0x0x7fffffffdac8
+ After pop: SP = 0x7fffffffdac8
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 90
+ 	Line #: 0
+ 	File: __NOCSOURCE__
  	Register: rip
- 	Value: 0x0x555555554610
+ 	Value: 0x0x5555555545b0
  Function Call to register_tm_clones
  after push stack size:3
- Invocation ID:90function register_tm_clones was called.
+ Invocation ID:91function register_tm_clones was called.
  Frame pointer was 0x000000001
  Getting frame pointer for register_tm_clones
  Call to function
- 	Event num: 90
+ 	Event num: 91
  	Function name: register_tm_clones
  	Func line: 0
  	Inv line: 0
  	Func file: 
  	Inv file: 
- 	Callee stack address: 0x7fffffffda78
+ 	Callee stack address: 0x7fffffffdac8
 
  Return address
  	Function name: main
  	Dynamic link: 0x000000001
- 	Return address: 0x55555555476d
+ 	Return address: 0x55555555470d
  Build stack frame
  Enter AfterRegMod Checking values Register Record
- 	Event num: 92
+ 	Event num: 93
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rdi
  	Value: 0x0x555555755010
  Enter AfterRegMod Checking values Register Record
- 	Event num: 93
+ 	Event num: 94
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsi
  	Value: 0x0x555555755010
- Before push: SP = 0x7fffffffda78
+ Before push: SP = 0x7fffffffdac8
  Enter AfterRegMod Checking values Register Record
- 	Event num: 95
+ 	Event num: 96
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7fffffffda70
+ 	Value: 0x0x7fffffffdac0
  value after write : 0xff  0xb5  0xf0  0x0  0x0  0x0  0x0  0x0  
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x55555555461e is between 0x0000006aa and 0x000000715
- ip = 0x55555555461e is not in user code
- After push: SP = 0x7fffffffda70
+ In cu_record::pc_in_range: check if pc = 0x5555555545be is between 0x00000064a and 0x0000006b3
+ ip = 0x5555555545be is not in user code
+ After push: SP = 0x7fffffffdac0
  Enter AfterRegMod Checking values Register Record
- 	Event num: 96
+ 	Event num: 97
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsi
  	Value: 0x0x000000000
  Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
- 	Event num: 97
+ 	Event num: 98
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rbp
- 	Value: 0x0x7fffffffda70
- Enter AfterRegMod Checking values Enter AfterRegMod Checking values Enter AfterRegMod Checking values Enter AfterRegMod Checking values Enter AfterRegMod Checking values Enter AfterRegMod Checking values Enter AfterRegMod Checking values Enter AfterRegMod Checking values Enter AfterRegMod Checking values Before pop: SP = 0x7fffffffda70
- Enter AfterRegMod Checking values Register Record
- 	Event num: 99
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rbp
- 	Value: 0x0x000000001
+ 	Value: 0x0x7fffffffdac0
+ Enter AfterRegMod Checking values Enter AfterRegMod Checking values Enter AfterRegMod Checking values Enter AfterRegMod Checking values Enter AfterRegMod Checking values Enter AfterRegMod Checking values Enter AfterRegMod Checking values Enter AfterRegMod Checking values Enter AfterRegMod Checking values Before pop: SP = 0x7fffffffdac0
  Enter AfterRegMod Checking values Register Record
  	Event num: 100
  	Line #: 0
  	File: __NOCSOURCE__
+ 	Register: rbp
+ 	Value: 0x0x000000001
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 101
+ 	Line #: 0
+ 	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7fffffffda78
- After pop: SP = 0x7fffffffda78
+ 	Value: 0x0x7fffffffdac8
+ After pop: SP = 0x7fffffffdac8
  Enter functionInvocationAfter
  No output found
  function return
  Exit functionInvocationAfter
- Before return: SP = 0x7fffffffda78
- Enter AfterRegMod Checking values Register Record
- 	Event num: 103
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x55555555476d
+ Before return: SP = 0x7fffffffdac8
  Enter AfterRegMod Checking values Register Record
  	Event num: 104
  	Line #: 0
  	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7fffffffda80
- After return : SP = 0x7fffffffda80
+ 	Register: rip
+ 	Value: 0x0x55555555470d
  Enter AfterRegMod Checking values Register Record
  	Event num: 105
  	Line #: 0
  	File: __NOCSOURCE__
- 	Register: rbx
- 	Value: 0x0x000000001
+ 	Register: rsp
+ 	Value: 0x0x7fffffffdad0
+ After return : SP = 0x7fffffffdad0
  Enter AfterRegMod Checking values Register Record
  	Event num: 106
  	Line #: 0
  	File: __NOCSOURCE__
- 	Register: rflags
- 	Value: 0x0x000000202
+ 	Register: rbx
+ 	Value: 0x0x000000001
  Enter AfterRegMod Checking values Register Record
  	Event num: 107
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rflags
- 	Value: 0x0x000000246
+ 	Value: 0x0x000000202
  Enter AfterRegMod Checking values Register Record
  	Event num: 108
  	Line #: 0
  	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x555555554776
+ 	Register: rflags
+ 	Value: 0x0x000000246
  Enter AfterRegMod Checking values Register Record
  	Event num: 109
  	Line #: 0
  	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7fffffffda88
+ 	Register: rip
+ 	Value: 0x0x555555554716
  Enter AfterRegMod Checking values Register Record
  	Event num: 110
  	Line #: 0
  	File: __NOCSOURCE__
+ 	Register: rsp
+ 	Value: 0x0x7fffffffdad8
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 111
+ 	Line #: 0
+ 	File: __NOCSOURCE__
  	Register: rflags
  	Value: 0x0x000000206
- Before pop: SP = 0x7fffffffda88
+ Before pop: SP = 0x7fffffffdad8
  Enter AfterRegMod Checking values Register Record
- 	Event num: 112
+ 	Event num: 113
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rbx
  	Value: 0x0x000000000
  Enter AfterRegMod Checking values Register Record
- 	Event num: 113
+ 	Event num: 114
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7fffffffda90
- After pop: SP = 0x7fffffffda90
- Before pop: SP = 0x7fffffffda90
- Enter AfterRegMod Checking values Register Record
- 	Event num: 115
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rbp
- 	Value: 0x0x555555554720
+ 	Value: 0x0x7fffffffdae0
+ After pop: SP = 0x7fffffffdae0
+ Before pop: SP = 0x7fffffffdae0
  Enter AfterRegMod Checking values Register Record
  	Event num: 116
  	Line #: 0
  	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7fffffffda98
- After pop: SP = 0x7fffffffda98
- Before pop: SP = 0x7fffffffda98
+ 	Register: rbp
+ 	Value: 0x0x5555555546c0
  Enter AfterRegMod Checking values Register Record
- 	Event num: 118
+ 	Event num: 117
  	Line #: 0
  	File: __NOCSOURCE__
- 	Register: r12
- 	Value: 0x0x5555555545a0
+ 	Register: rsp
+ 	Value: 0x0x7fffffffdae8
+ After pop: SP = 0x7fffffffdae8
+ Before pop: SP = 0x7fffffffdae8
  Enter AfterRegMod Checking values Register Record
  	Event num: 119
  	Line #: 0
  	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7fffffffdaa0
- After pop: SP = 0x7fffffffdaa0
- Before pop: SP = 0x7fffffffdaa0
+ 	Register: r12
+ 	Value: 0x0x555555554540
  Enter AfterRegMod Checking values Register Record
- 	Event num: 121
+ 	Event num: 120
  	Line #: 0
  	File: __NOCSOURCE__
- 	Register: r13
- 	Value: 0x0x7fffffffdb90
+ 	Register: rsp
+ 	Value: 0x0x7fffffffdaf0
+ After pop: SP = 0x7fffffffdaf0
+ Before pop: SP = 0x7fffffffdaf0
  Enter AfterRegMod Checking values Register Record
  	Event num: 122
  	Line #: 0
  	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7fffffffdaa8
- After pop: SP = 0x7fffffffdaa8
- Before pop: SP = 0x7fffffffdaa8
+ 	Register: r13
+ 	Value: 0x0x7fffffffdbe0
  Enter AfterRegMod Checking values Register Record
- 	Event num: 124
+ 	Event num: 123
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rsp
+ 	Value: 0x0x7fffffffdaf8
+ After pop: SP = 0x7fffffffdaf8
+ Before pop: SP = 0x7fffffffdaf8
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 125
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: r14
  	Value: 0x0x000000000
  Enter AfterRegMod Checking values Register Record
- 	Event num: 125
+ 	Event num: 126
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7fffffffdab0
- After pop: SP = 0x7fffffffdab0
- Before pop: SP = 0x7fffffffdab0
+ 	Value: 0x0x7fffffffdb00
+ After pop: SP = 0x7fffffffdb00
+ Before pop: SP = 0x7fffffffdb00
  Enter AfterRegMod Checking values Register Record
- 	Event num: 127
+ 	Event num: 128
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: r15
  	Value: 0x0x000000000
  Enter AfterRegMod Checking values Register Record
- 	Event num: 128
+ 	Event num: 129
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7fffffffdab8
- After pop: SP = 0x7fffffffdab8
+ 	Value: 0x0x7fffffffdb08
+ After pop: SP = 0x7fffffffdb08
  Enter functionInvocationAfter
  No output found
  function return
  Exit functionInvocationAfter
- Before return: SP = 0x7fffffffdab8
- Enter AfterRegMod Checking values Register Record
- 	Event num: 131
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x7fffe4329b28
+ Before return: SP = 0x7fffffffdb08
  Enter AfterRegMod Checking values Register Record
  	Event num: 132
  	Line #: 0
  	File: __NOCSOURCE__
+ 	Register: rip
+ 	Value: 0x0x7fffe434eb28
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 133
+ 	Line #: 0
+ 	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7fffffffdac0
- After return : SP = 0x7fffffffdac0
+ 	Value: 0x0x7fffffffdb10
+ After return : SP = 0x7fffffffdb10
  Function Call to main
  after push stack size:2
- Invocation ID:133function main was called.
- Frame pointer was 0x555555554720
+ Invocation ID:134function main was called.
+ Frame pointer was 0x5555555546c0
  Getting frame pointer for main
  Call to function
- 	Event num: 133
+ 	Event num: 134
  	Function name: main
- 	Func line: 10
+ 	Func line: 6
  	Inv line: 0
- 	Func file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Func file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
  	Inv file: 
- 	Callee stack address: 0x7fffffffdab8
+ 	Callee stack address: 0x7fffffffdb08
 
  Return address
  	Function name: main
- 	Dynamic link: 0x555555554720
- 	Return address: 0x7fffe4329b97
+ 	Dynamic link: 0x5555555546c0
+ 	Return address: 0x7fffe434eb97
  Build stack frame
  In runtime_stack::push for routinemain
- In cu_record::pc_in_range: check if pc = 0x5555555546aa is between 0x0000006aa and 0x000000715
- In var_record::pc_in_range: check if pc = 0x5555555546aa is between 0x5555555546aa and 0x555555554715
- Add variable x for frame main
- Base address for a local or param is: 0x555555554700
+ In cu_record::pc_in_range: check if pc = 0x55555555464a is between 0x00000064a and 0x0000006b3
+ In var_record::pc_in_range: check if pc = 0x55555555464a is between 0x55555555464a and 0x5555555546b3
+ Add variable i for frame main
+ Base address for a local or param is: 0x5555555546bc
  In var_record::read_value
- Type is struct tests
- Reading 16 bytes at address: 0x555555554700
- read_struct_value: Reading a value in a struct at address: 0x555555554700 Before push: SP = 0x7fffffffdab8
- Enter AfterRegMod Checking values Register Record
- 	Event num: 136
- 	Line #: 10
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Register: rsp
- 	Value: 0x0x7fffffffdab0
- value after write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- line = 10, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x5555555546aa is between 0x0000006aa and 0x000000715
- ip = 0x5555555546aa is in user code checking variable access
- PC is before stack frame is setup: 0x5555555546aa After push: SP = 0x7fffffffdab0
+ Type is int
+ Reading 4 bytes at address: 0x5555555546bc
+ Found a singleton value
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0x5555555546bc
+ Interpreting data as an int, value is 2035456
+ Before push: SP = 0x7fffffffdb08
  Enter AfterRegMod Checking values Register Record
  	Event num: 137
- 	Line #: 10
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Line #: 6
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rsp
+ 	Value: 0x0x7fffffffdb00
+ value after write : 0x0  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
+ line = 6, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x55555555464a is between 0x00000064a and 0x0000006b3
+ ip = 0x55555555464a is in user code checking variable access
+ PC is before stack frame is setup: 0x55555555464a After push: SP = 0x7fffffffdb00
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 138
+ 	Line #: 6
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
  	Register: rbp
- 	Value: 0x0x7fffffffdab0
+ 	Value: 0x0x7fffffffdb00
  Enter AfterRegMod In runtime_stack::addr_get_updated_variables, addr = <** null pointer **>
  In runtime_stack::get_updated_variables_from_frame
  First access for frame of main
- Checking if variable x has been updated
- Base address for a local or param is: 0x7fffffffda90
- In get_updated_struct_members: scope = main
- Base address for a local or param is: 0x7fffffffda90
+ Checking if variable i has been updated
+ Base address for a local or param is: 0x7fffffffdafc
  In var_record::read_value
  Type is int
- Reading 4 bytes at address: 0x7fffffffda90
+ Reading 4 bytes at address: 0x7fffffffdafc
  Found a singleton value
  In var_record::read_singleton_value
  Type is int
- Reading 4 bytes at address: 0x7fffffffda90
- Interpreting data as an int, value is 1431652128
- In var_record::read_value
- Type is int
- Reading 4 bytes at address: 0x7fffffffda94
- Found a singleton value
- In var_record::read_singleton_value
- Type is int
- Reading 4 bytes at address: 0x7fffffffda94
- Interpreting data as an int, value is 21845
- In var_record::read_value
- Type is int*
- Reading 8 bytes at address: 0x7fffffffda98
- Found a pointer
- Found a non-character pointer to an atomic value
- value = 0x5555555545a0
+ Reading 4 bytes at address: 0x7fffffffdafc
+ Interpreting data as an int, value is 0
+ New value = 0, old value = 2035456
+ Found new value: 0 for i
  In runtime_stack::get_updated_variables_from_frame
  First access for frame of *G*
- In runtime_stack::get_all_updated_points_to
- In runtime_stack::get_updated_points_to_frame
- Base address for a local or param is: 0x7fffffffda90
- In get_updated_points_to_from_struct: scope = main
- Found a pointer variable: x
- Base address for a local or param is: 0x7fffffffda98
- Pointer variable: x points to a valid memory location
+ Checking if variable a has been updated
+ Base address for a global is: 0x555555755040
+ Base address for a global is: 0x555555755040
  In var_record::read_value
  Type is int
- Reading 4 bytes at address: 0x5555555545a0
+ Reading 4 bytes at address: 0x555555755040
  Found a singleton value
  In var_record::read_singleton_value
  Type is int
- Reading 4 bytes at address: 0x5555555545a0
- Interpreting data as an int, value is -1991643855
+ Reading 4 bytes at address: 0x555555755040
+ Interpreting data as an int, value is 0
+ In var_record::read_value
+ Type is int
+ Reading 4 bytes at address: 0x555555755044
+ Found a singleton value
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0x555555755044
+ Interpreting data as an int, value is 0
+ In var_record::read_value
+ Type is int
+ Reading 4 bytes at address: 0x555555755048
+ Found a singleton value
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0x555555755048
+ Interpreting data as an int, value is 0
+ In var_record::read_value
+ Type is int
+ Reading 4 bytes at address: 0x55555575504c
+ Found a singleton value
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0x55555575504c
+ Interpreting data as an int, value is 0
+ In var_record::read_value
+ Type is int
+ Reading 4 bytes at address: 0x555555755050
+ Found a singleton value
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0x555555755050
+ Interpreting data as an int, value is 0
+ In var_record::read_value
+ Type is int
+ Reading 4 bytes at address: 0x555555755054
+ Found a singleton value
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0x555555755054
+ Interpreting data as an int, value is 0
+ In var_record::read_value
+ Type is int
+ Reading 4 bytes at address: 0x555555755058
+ Found a singleton value
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0x555555755058
+ Interpreting data as an int, value is 0
+ In var_record::read_value
+ Type is int
+ Reading 4 bytes at address: 0x55555575505c
+ Found a singleton value
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0x55555575505c
+ Interpreting data as an int, value is 0
+ In var_record::read_value
+ Type is int
+ Reading 4 bytes at address: 0x555555755060
+ Found a singleton value
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0x555555755060
+ Interpreting data as an int, value is 0
+ In var_record::read_value
+ Type is int
+ Reading 4 bytes at address: 0x555555755064
+ Found a singleton value
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0x555555755064
+ Interpreting data as an int, value is 0
+ In runtime_stack::get_all_updated_points_to
  In runtime_stack::get_updated_points_to_frame
- Write to variable x
- 	Event num: 138
- 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ Base address for a local or param is: 0x7fffffffdafc
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a global is: 0x555555755040
+ Write to variable i
+ 	Event num: 139
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
  	Scope: main
- 	Address: 0x7fffffffda90
- 	Type: struct tests
+ 	Address: 0x7fffffffdafc
+ 	Type: int
+ 	Value: 0
+ 	Points to: 0x65745f6765735f47
+ 	Points to value: 
+ Write to variable a
+ 	Event num: 139
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Scope: *G*
+ 	Address: 0x555555755040
+ 	Type: int
  	Value: <multielement>
  	Points to: 0x65745f6765735f47
  	Points to value: 
- Write to variable struct tests:a
- 	Event num: 138
- 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Scope: main
- 	Address: 0x7fffffffda90
- 	Type: int
- 	Value: 1431652128
- 	Points to: 0x65745f6765735f47
- 	Points to value: 
- Write to variable struct tests:b
- 	Event num: 138
- 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Scope: main
- 	Address: 0x7fffffffda94
- 	Type: int
- 	Value: 21845
- 	Points to: 0x4d492032742f7374
- 	Points to value: 
- Write to variable struct tests:p
- 	Event num: 138
- 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Scope: main
- 	Address: 0x7fffffffda98
- 	Type: int*
- 	Value: 0x5555555545a0
- 	Points to: 0x4d492032742f7374
- 	Points to value: 
- Write to variable struct tests:p
- 	Event num: 138
- 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Scope: main
- 	Address: 0x7fffffffda98
- 	Type: int*
- 	Value: 0x5555555545a0
- 	Points to: 0x5555555545a0
- 	Points to value: -1991643855
- Checking values Register Record
+ Write to variable a:[0]a
  	Event num: 139
- 	Line #: 10
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Register: rsp
- 	Value: 0x0x7fffffffda90
- Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
- 	Event num: 140
- 	Line #: 10
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Register: rax
- 	Value: 0x0x63be17c82557a700
- value after write : 0x0  0xa7  0x57  0x25  0xc8  0x17  0xbe  0x63  
- line = 10, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x5555555546bb is between 0x0000006aa and 0x000000715
- ip = 0x5555555546bb is in user code checking variable access
- In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffdaa8
- In runtime_stack::get_updated_variables_from_frame
- Checking if variable x has been updated
- Enter is_at_address
- trec = 0x7ffff7d7f1c0 type name = struct tests
- Base address for a local or param is: 0x7fffffffda90
- var_addr: 0x7fffffffda90 mem_addr: 0x7fffffffdaa8 size: 16
- In runtime_stack::get_updated_variables_from_frame
- In runtime_stack::get_all_updated_points_to
- In runtime_stack::get_updated_points_to_frame
- Base address for a local or param is: 0x7fffffffda90
- In get_updated_points_to_from_struct: scope = main
- Found a pointer variable: x
- Base address for a local or param is: 0x7fffffffda98
- Pointer variable: x points to a valid memory location
- In var_record::read_value
- Type is int
- Reading 4 bytes at address: 0x5555555545a0
- Found a singleton value
- In var_record::read_singleton_value
- Type is int
- Reading 4 bytes at address: 0x5555555545a0
- Interpreting data as an int, value is -1991643855
- In runtime_stack::get_updated_points_to_frame
- Write to variable struct tests:p
- 	Event num: 141
- 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Scope: main
- 	Address: 0x7fffffffda98
- 	Type: int*
- 	Value: 0x5555555545a0
- 	Points to: 0x5555555545a0
- 	Points to value: -1991643855
- Enter AfterRegMod Checking values Register Record
- 	Event num: 142
- 	Line #: 10
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Register: eax
- 	Value: 0x0x000000000
- Enter AfterRegMod Checking values Register Record
- 	Event num: 143
- 	Line #: 10
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Register: rflags
- 	Value: 0x0x000000246
- value after write : 0x1  0x0  0x0  0x0  
- line = 14, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x5555555546c1 is between 0x0000006aa and 0x000000715
- ip = 0x5555555546c1 is in user code checking variable access
- In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffda90
- In runtime_stack::get_updated_variables_from_frame
- Checking if variable x has been updated
- Enter is_at_address
- trec = 0x7ffff7d7f1c0 type name = struct tests
- Base address for a local or param is: 0x7fffffffda90
- var_addr: 0x7fffffffda90 mem_addr: 0x7fffffffda90 size: 16
- In get_updated_struct_members: scope = main
- Enter is_at_address
- trec = 0x7fffe4a2e040 type name = int
- Base address for a local or param is: 0x7fffffffda90
- var_addr: 0x7fffffffda90 mem_addr: 0x7fffffffda90 size: 4
- In var_record::read_value
- Type is int
- Reading 4 bytes at address: 0x7fffffffda90
- Found a singleton value
- In var_record::read_singleton_value
- Type is int
- Reading 4 bytes at address: 0x7fffffffda90
- Interpreting data as an int, value is 1
- In runtime_stack::get_updated_variables_from_frame
- In runtime_stack::get_all_updated_points_to
- In runtime_stack::get_updated_points_to_frame
- Base address for a local or param is: 0x7fffffffda90
- In get_updated_points_to_from_struct: scope = main
- Found a pointer variable: x
- Base address for a local or param is: 0x7fffffffda98
- Pointer variable: x points to a valid memory location
- In var_record::read_value
- Type is int
- Reading 4 bytes at address: 0x5555555545a0
- Found a singleton value
- In var_record::read_singleton_value
- Type is int
- Reading 4 bytes at address: 0x5555555545a0
- Interpreting data as an int, value is -1991643855
- In runtime_stack::get_updated_points_to_frame
- Write to variable struct tests:a
- 	Event num: 144
- 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Scope: main
- 	Address: 0x7fffffffda90
- 	Type: int
- 	Value: 1
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Scope: *G*
+ 	Address: 0x555555755040
+ 	Type: 98
+ 	Value: 0
+ 	Points to: 0x4d492033742f7374
+ 	Points to value: 
+ Write to variable a:[1]a
+ 	Event num: 139
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Scope: *G*
+ 	Address: 0x555555755044
+ 	Type: 98
+ 	Value: 0
+ 	Points to: 0x4d492033742f7374
+ 	Points to value: 
+ Write to variable a:[2]a
+ 	Event num: 139
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Scope: *G*
+ 	Address: 0x555555755048
+ 	Type: 98
+ 	Value: 0
+ 	Points to: 0x6174732074786574
+ 	Points to value: 
+ Write to variable a:[3]a
+ 	Event num: 139
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Scope: *G*
+ 	Address: 0x55555575504c
+ 	Type: 98
+ 	Value: 0
+ 	Points to: 0x6174732074786574
+ 	Points to value: 
+ Write to variable a:[4]a
+ 	Event num: 139
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Scope: *G*
+ 	Address: 0x555555755050
+ 	Type: 98
+ 	Value: 0
  	Points to: 0x7261747320747865
  	Points to value: 
- Write to variable struct tests:p
- 	Event num: 144
- 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Scope: main
- 	Address: 0x7fffffffda98
- 	Type: int*
- 	Value: 0x5555555545a0
- 	Points to: 0x5555555545a0
- 	Points to value: -1991643855
- value after write : 0x2  0x0  0x0  0x0  
- line = 15, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x5555555546c8 is between 0x0000006aa and 0x000000715
- ip = 0x5555555546c8 is in user code checking variable access
- In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffda94
- In runtime_stack::get_updated_variables_from_frame
- Checking if variable x has been updated
- Enter is_at_address
- trec = 0x7ffff7d7f1c0 type name = struct tests
- Base address for a local or param is: 0x7fffffffda90
- var_addr: 0x7fffffffda90 mem_addr: 0x7fffffffda94 size: 16
- In get_updated_struct_members: scope = main
- Enter is_at_address
- trec = 0x7fffe4a2e040 type name = int
- Base address for a local or param is: 0x7fffffffda90
- var_addr: 0x7fffffffda90 mem_addr: 0x7fffffffda94 size: 4
- Enter is_at_address
- trec = 0x7fffe4a2e040 type name = int
- Base address for a local or param is: 0x7fffffffda94
- var_addr: 0x7fffffffda94 mem_addr: 0x7fffffffda94 size: 4
- In var_record::read_value
- Type is int
- Reading 4 bytes at address: 0x7fffffffda94
- Found a singleton value
- In var_record::read_singleton_value
- Type is int
- Reading 4 bytes at address: 0x7fffffffda94
- Interpreting data as an int, value is 2
- In runtime_stack::get_updated_variables_from_frame
- In runtime_stack::get_all_updated_points_to
- In runtime_stack::get_updated_points_to_frame
- Base address for a local or param is: 0x7fffffffda90
- In get_updated_points_to_from_struct: scope = main
- Found a pointer variable: x
- Base address for a local or param is: 0x7fffffffda98
- Pointer variable: x points to a valid memory location
- In var_record::read_value
- Type is int
- Reading 4 bytes at address: 0x5555555545a0
- Found a singleton value
- In var_record::read_singleton_value
- Type is int
- Reading 4 bytes at address: 0x5555555545a0
- Interpreting data as an int, value is -1991643855
- In runtime_stack::get_updated_points_to_frame
- Write to variable struct tests:b
- 	Event num: 145
- 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Scope: main
- 	Address: 0x7fffffffda94
- 	Type: int
- 	Value: 2
+ Write to variable a:[5]a
+ 	Event num: 139
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Scope: *G*
+ 	Address: 0x555555755054
+ 	Type: 98
+ 	Value: 0
+ 	Points to: 0x7261747320747865
+ 	Points to value: 
+ Write to variable a:[6]a
+ 	Event num: 139
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Scope: *G*
+ 	Address: 0x555555755058
+ 	Type: 98
+ 	Value: 0
  	Points to: 0x5043542063696669
  	Points to value: 
- Write to variable struct tests:p
- 	Event num: 145
- 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Scope: main
- 	Address: 0x7fffffffda98
- 	Type: int*
- 	Value: 0x5555555545a0
- 	Points to: 0x5555555545a0
- 	Points to value: -1991643855
- Enter AfterRegMod Checking values Register Record
- 	Event num: 146
- 	Line #: 16
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Register: rax
- 	Value: 0x0x7fffffffda90
- Enter AfterRegMod Checking values Register Record
- 	Event num: 147
- 	Line #: 16
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Register: rax
- 	Value: 0x0x7fffffffda94
- Enter AfterRegMod Checking values Register Record
- 	Event num: 148
- 	Line #: 16
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Register: rflags
- 	Value: 0x0x000000202
- value after write : 0x94  0xda  0xff  0xff  0xff  0x7f  0x0  0x0  
- line = 16, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x5555555546d7 is between 0x0000006aa and 0x000000715
- ip = 0x5555555546d7 is in user code checking variable access
- In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffda98
- In runtime_stack::get_updated_variables_from_frame
- Checking if variable x has been updated
- Enter is_at_address
- trec = 0x7ffff7d7f1c0 type name = struct tests
- Base address for a local or param is: 0x7fffffffda90
- var_addr: 0x7fffffffda90 mem_addr: 0x7fffffffda98 size: 16
- In get_updated_struct_members: scope = main
- Enter is_at_address
- trec = 0x7fffe4a2e040 type name = int
- Base address for a local or param is: 0x7fffffffda90
- var_addr: 0x7fffffffda90 mem_addr: 0x7fffffffda98 size: 4
- Enter is_at_address
- trec = 0x7fffe4a2e040 type name = int
- Base address for a local or param is: 0x7fffffffda94
- var_addr: 0x7fffffffda94 mem_addr: 0x7fffffffda98 size: 4
- Enter is_at_address
- trec = 0x7ffff7d7f0c0 type name = int*
- Base address for a local or param is: 0x7fffffffda98
- var_addr: 0x7fffffffda98 mem_addr: 0x7fffffffda98 size: 8
- In var_record::read_value
- Type is int*
- Reading 8 bytes at address: 0x7fffffffda98
- Found a pointer
- Found a non-character pointer to an atomic value
- value = 0x7fffffffda94
- In runtime_stack::get_updated_variables_from_frame
- In runtime_stack::get_all_updated_points_to
- In runtime_stack::get_updated_points_to_frame
- Base address for a local or param is: 0x7fffffffda90
- In get_updated_points_to_from_struct: scope = main
- Found a pointer variable: x
- Base address for a local or param is: 0x7fffffffda98
- Pointer variable: x points to a valid memory location
- In var_record::read_value
- Type is int
- Reading 4 bytes at address: 0x7fffffffda94
- Found a singleton value
- In var_record::read_singleton_value
- Type is int
- Reading 4 bytes at address: 0x7fffffffda94
- Interpreting data as an int, value is 2
- In runtime_stack::get_updated_points_to_frame
- Write to variable struct tests:p
- 	Event num: 149
- 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Scope: main
- 	Address: 0x7fffffffda98
- 	Type: int*
- 	Value: 0x7fffffffda94
+ Write to variable a:[7]a
+ 	Event num: 139
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Scope: *G*
+ 	Address: 0x55555575505c
+ 	Type: 98
+ 	Value: 0
+ 	Points to: 0x6261736964207369
+ 	Points to value: 
+ Write to variable a:[8]a
+ 	Event num: 139
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Scope: *G*
+ 	Address: 0x555555755060
+ 	Type: 98
+ 	Value: 0
  	Points to: 0x000000000
  	Points to value: 
- Write to variable struct tests:p
- 	Event num: 149
- 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Scope: main
- 	Address: 0x7fffffffda98
- 	Type: int*
- 	Value: 0x7fffffffda94
- 	Points to: 0x7fffffffda94
- 	Points to value: 2
- Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
- 	Event num: 150
- 	Line #: 17
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Register: ecx
- 	Value: 0x0x000000002
- Enter AfterRegMod Checking values Register Record
- 	Event num: 151
- 	Line #: 17
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Register: edx
- 	Value: 0x0x000000002
- Enter AfterRegMod Checking values Register Record
- 	Event num: 152
- 	Line #: 17
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Register: eax
- 	Value: 0x0x000000001
- Enter AfterRegMod Checking values Register Record
- 	Event num: 153
- 	Line #: 17
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Register: esi
- 	Value: 0x0x000000001
- Enter AfterRegMod Checking values Register Record
- 	Event num: 154
- 	Line #: 17
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Register: rdi
- 	Value: 0x0x5555555547a4
- Enter AfterRegMod Checking values Register Record
- 	Event num: 155
- 	Line #: 17
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Register: eax
- 	Value: 0x0x000000000
- Enter AfterRegMod Checking values Register Record
- 	Event num: 156
- 	Line #: 17
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Register: rip
- 	Value: 0x0x555555554580
- Enter AfterRegMod Checking values Register Record
- 	Event num: 157
- 	Line #: 17
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ Write to variable a:[9]a
+ 	Event num: 139
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Scope: *G*
+ 	Address: 0x555555755064
+ 	Type: 98
+ 	Value: 0
+ 	Points to: 0x000000000
+ 	Points to value: 
+ Checking values Register Record
+ 	Event num: 140
+ 	Line #: 6
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
  	Register: rsp
- 	Value: 0x0x7fffffffda88
- value after write : 0xa0  0x59  0xde  0xf7  0xff  0x7f  0x0  0x0  
- line = 17, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Value: 0x0x7fffffffdaf0
+ Enter AfterRegMod Checking values value after write : 0x0  0x0  0x0  0x0  
+ line = 8, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
  In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x5555555546f5 is between 0x0000006aa and 0x000000715
- ip = 0x5555555546f5 is in user code checking variable access
- In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffda80
+ In cu_record::pc_in_range: check if pc = 0x555555554652 is between 0x00000064a and 0x0000006b3
+ ip = 0x555555554652 is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffdafc
  In runtime_stack::get_updated_variables_from_frame
- Checking if variable x has been updated
+ Checking if variable i has been updated
  Enter is_at_address
- trec = 0x7ffff7d7f1c0 type name = struct tests
- Base address for a local or param is: 0x7fffffffda90
- var_addr: 0x7fffffffda90 mem_addr: 0x7fffffffda80 size: 16
- In runtime_stack::get_updated_variables_from_frame
- In runtime_stack::get_all_updated_points_to
- In runtime_stack::get_updated_points_to_frame
- Base address for a local or param is: 0x7fffffffda90
- In get_updated_points_to_from_struct: scope = main
- Found a pointer variable: x
- Base address for a local or param is: 0x7fffffffda98
- Pointer variable: x points to a valid memory location
+ trec = 0x7ffff7d7f0c0 type name = int
+ Base address for a local or param is: 0x7fffffffdafc
+ var_addr: 0x7fffffffdafc mem_addr: 0x7fffffffdafc size: 4
  In var_record::read_value
  Type is int
- Reading 4 bytes at address: 0x7fffffffda94
+ Reading 4 bytes at address: 0x7fffffffdafc
  Found a singleton value
  In var_record::read_singleton_value
  Type is int
- Reading 4 bytes at address: 0x7fffffffda94
- Interpreting data as an int, value is 2
+ Reading 4 bytes at address: 0x7fffffffdafc
+ Interpreting data as an int, value is 0
+ New value = 0, old value = 0
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable a has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f1c0 type name = int
+ Base address for a global is: 0x555555755040
+ var_addr: 0x555555755040 mem_addr: 0x7fffffffdafc size: 4
+ In runtime_stack::get_all_updated_points_to
  In runtime_stack::get_updated_points_to_frame
- Write to variable struct tests:p
- 	Event num: 158
- 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Scope: main
- 	Address: 0x7fffffffda98
- 	Type: int*
- 	Value: 0x7fffffffda94
- 	Points to: 0x7fffffffda94
- 	Points to value: 2
+ Base address for a local or param is: 0x7fffffffdafc
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a global is: 0x555555755040
+ there are no live variables Enter AfterRegMod Checking values Register Record
+ 	Event num: 142
+ 	Line #: 8
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rip
+ 	Value: 0x0x5555555546a6
  Enter AfterRegMod Checking values Register Record
- 	Event num: 159
+ 	Event num: 143
+ 	Line #: 8
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rflags
+ 	Value: 0x0x000000293
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 144
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: eax
+ 	Value: 0x0x000000000
+ Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
+ 	Event num: 145
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rcx
+ 	Value: 0x0x000000000
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 146
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rax
+ 	Value: 0x0x555555755040
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 147
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: edx
+ 	Value: 0x0x000000000
+ value after write : 0x0  0x0  0x0  0x0  
+ line = 9, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x555555554672 is between 0x00000064a and 0x0000006b3
+ ip = 0x555555554672 is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x555555755040
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable i has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f0c0 type name = int
+ Base address for a local or param is: 0x7fffffffdafc
+ var_addr: 0x7fffffffdafc mem_addr: 0x555555755040 size: 4
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable a has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f1c0 type name = int
+ Base address for a global is: 0x555555755040
+ var_addr: 0x555555755040 mem_addr: 0x555555755040 size: 4
+ Base address for a global is: 0x555555755040
+ Computed index = 0
+ In var_record::read_value
+ Type is int
+ Reading 4 bytes at address: 0x555555755040
+ Found a singleton value
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0x555555755040
+ Interpreting data as an int, value is 0
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a local or param is: 0x7fffffffdafc
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a global is: 0x555555755040
+ Write to variable a:[0]a
+ 	Event num: 148
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Scope: *G*
+ 	Address: 0x555555755040
+ 	Type: 98
+ 	Value: 0
+ 	Points to: 0x000000000
+ 	Points to value: 
+ Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
+ 	Event num: 149
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rax
+ 	Value: 0x0x000000000
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 150
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rdx
+ 	Value: 0x0x000000000
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 151
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rax
+ 	Value: 0x0x555555755040
+ Enter AfterRegMod Checking values Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
+ 	Event num: 152
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: esi
+ 	Value: 0x0x000000000
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 153
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rdi
+ 	Value: 0x0x555555554744
+ Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
+ 	Event num: 154
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rip
+ 	Value: 0x0x555555554520
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 155
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rsp
+ 	Value: 0x0x7fffffffdae8
+ value after write : 0xc0  0x46  0x55  0x55  0x55  0x55  0x0  0x0  
+ line = 10, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x55555555469d is between 0x00000064a and 0x0000006b3
+ ip = 0x55555555469d is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffdae0
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable i has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f0c0 type name = int
+ Base address for a local or param is: 0x7fffffffdafc
+ var_addr: 0x7fffffffdafc mem_addr: 0x7fffffffdae0 size: 4
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable a has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f1c0 type name = int
+ Base address for a global is: 0x555555755040
+ var_addr: 0x555555755040 mem_addr: 0x7fffffffdae0 size: 4
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a local or param is: 0x7fffffffdafc
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a global is: 0x555555755040
+ there are no live variables Enter AfterRegMod Checking values Register Record
+ 	Event num: 157
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
- 	Value: 0x0x7fffe436ce80
+ 	Value: 0x0x7fffe4391e80
  enter malloc
  exit
- Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 159
+ 	Line #: 8
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rflags
+ 	Value: 0x0x000000202
+ value after write : 0x1  0x0  0x0  0x0  
+ line = 8, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x5555555546a2 is between 0x00000064a and 0x0000006b3
+ ip = 0x5555555546a2 is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffdafc
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable i has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f0c0 type name = int
+ Base address for a local or param is: 0x7fffffffdafc
+ var_addr: 0x7fffffffdafc mem_addr: 0x7fffffffdafc size: 4
+ In var_record::read_value
+ Type is int
+ Reading 4 bytes at address: 0x7fffffffdafc
+ Found a singleton value
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0x7fffffffdafc
+ Interpreting data as an int, value is 1
+ New value = 1, old value = 0
+ Found new value: 1 for i
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable a has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f1c0 type name = int
+ Base address for a global is: 0x555555755040
+ var_addr: 0x555555755040 mem_addr: 0x7fffffffdafc size: 4
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a local or param is: 0x7fffffffdafc
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a global is: 0x555555755040
+ Write to variable i
+ 	Event num: 160
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Scope: main
+ 	Address: 0x7fffffffdafc
+ 	Type: int
+ 	Value: 1
+ 	Points to: 0x000000000
+ 	Points to value: 
+ Enter AfterRegMod Checking values Register Record
  	Event num: 161
- 	Line #: 18
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Register: rsi
- 	Value: 0x0x63be17c82557a700
+ 	Line #: 8
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rflags
+ 	Value: 0x0x000000293
  Enter AfterRegMod Checking values Register Record
  	Event num: 162
- 	Line #: 18
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Register: rsi
- 	Value: 0x0x000000000
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: eax
+ 	Value: 0x0x000000001
  Enter AfterRegMod Checking values Register Record
  	Event num: 163
- 	Line #: 18
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rax
+ 	Value: 0x0x000000001
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 164
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rcx
+ 	Value: 0x0x000000004
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 165
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rax
+ 	Value: 0x0x555555755040
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 166
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: edx
+ 	Value: 0x0x000000001
+ value after write : 0x1  0x0  0x0  0x0  
+ line = 9, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x555555554672 is between 0x00000064a and 0x0000006b3
+ ip = 0x555555554672 is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x555555755044
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable i has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f0c0 type name = int
+ Base address for a local or param is: 0x7fffffffdafc
+ var_addr: 0x7fffffffdafc mem_addr: 0x555555755044 size: 4
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable a has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f1c0 type name = int
+ Base address for a global is: 0x555555755040
+ var_addr: 0x555555755040 mem_addr: 0x555555755044 size: 4
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a local or param is: 0x7fffffffdafc
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a global is: 0x555555755040
+ there are no live variables Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
+ 	Event num: 168
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rax
+ 	Value: 0x0x000000001
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 169
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rdx
+ 	Value: 0x0x000000004
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 170
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rax
+ 	Value: 0x0x555555755040
+ Enter AfterRegMod Checking values Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
+ 	Event num: 171
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: esi
+ 	Value: 0x0x000000001
+ Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
+ 	Event num: 172
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: eax
+ 	Value: 0x0x000000000
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 173
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rip
+ 	Value: 0x0x555555554520
+ Enter AfterRegMod Checking values value after write : 0xc0  0x46  0x55  0x55  0x55  0x55  0x0  0x0  
+ line = 10, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x55555555469d is between 0x00000064a and 0x0000006b3
+ ip = 0x55555555469d is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffdae0
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable i has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f0c0 type name = int
+ Base address for a local or param is: 0x7fffffffdafc
+ var_addr: 0x7fffffffdafc mem_addr: 0x7fffffffdae0 size: 4
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable a has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f1c0 type name = int
+ Base address for a global is: 0x555555755040
+ var_addr: 0x555555755040 mem_addr: 0x7fffffffdae0 size: 4
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a local or param is: 0x7fffffffdafc
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a global is: 0x555555755040
+ there are no live variables Enter AfterRegMod Checking values Register Record
+ 	Event num: 175
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rip
+ 	Value: 0x0x7fffe4391e80
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 176
+ 	Line #: 8
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rflags
+ 	Value: 0x0x000000202
+ value after write : 0x2  0x0  0x0  0x0  
+ line = 8, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x5555555546a2 is between 0x00000064a and 0x0000006b3
+ ip = 0x5555555546a2 is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffdafc
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable i has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f0c0 type name = int
+ Base address for a local or param is: 0x7fffffffdafc
+ var_addr: 0x7fffffffdafc mem_addr: 0x7fffffffdafc size: 4
+ In var_record::read_value
+ Type is int
+ Reading 4 bytes at address: 0x7fffffffdafc
+ Found a singleton value
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0x7fffffffdafc
+ Interpreting data as an int, value is 2
+ New value = 2, old value = 1
+ Found new value: 2 for i
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable a has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f1c0 type name = int
+ Base address for a global is: 0x555555755040
+ var_addr: 0x555555755040 mem_addr: 0x7fffffffdafc size: 4
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a local or param is: 0x7fffffffdafc
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a global is: 0x555555755040
+ Write to variable i
+ 	Event num: 177
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Scope: main
+ 	Address: 0x7fffffffdafc
+ 	Type: int
+ 	Value: 2
+ 	Points to: 0x000000000
+ 	Points to value: 
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 178
+ 	Line #: 8
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rflags
+ 	Value: 0x0x000000297
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 179
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: eax
+ 	Value: 0x0x000000002
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 180
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rax
+ 	Value: 0x0x000000002
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 181
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rcx
+ 	Value: 0x0x000000008
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 182
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rax
+ 	Value: 0x0x555555755040
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 183
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: edx
+ 	Value: 0x0x000000002
+ value after write : 0x2  0x0  0x0  0x0  
+ line = 9, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x555555554672 is between 0x00000064a and 0x0000006b3
+ ip = 0x555555554672 is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x555555755048
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable i has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f0c0 type name = int
+ Base address for a local or param is: 0x7fffffffdafc
+ var_addr: 0x7fffffffdafc mem_addr: 0x555555755048 size: 4
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable a has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f1c0 type name = int
+ Base address for a global is: 0x555555755040
+ var_addr: 0x555555755040 mem_addr: 0x555555755048 size: 4
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a local or param is: 0x7fffffffdafc
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a global is: 0x555555755040
+ there are no live variables Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
+ 	Event num: 185
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rax
+ 	Value: 0x0x000000002
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 186
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rdx
+ 	Value: 0x0x000000008
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 187
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rax
+ 	Value: 0x0x555555755040
+ Enter AfterRegMod Checking values Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
+ 	Event num: 188
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: esi
+ 	Value: 0x0x000000002
+ Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
+ 	Event num: 189
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: eax
+ 	Value: 0x0x000000000
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 190
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rip
+ 	Value: 0x0x555555554520
+ Enter AfterRegMod Checking values value after write : 0xc0  0x46  0x55  0x55  0x55  0x55  0x0  0x0  
+ line = 10, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x55555555469d is between 0x00000064a and 0x0000006b3
+ ip = 0x55555555469d is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffdae0
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable i has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f0c0 type name = int
+ Base address for a local or param is: 0x7fffffffdafc
+ var_addr: 0x7fffffffdafc mem_addr: 0x7fffffffdae0 size: 4
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable a has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f1c0 type name = int
+ Base address for a global is: 0x555555755040
+ var_addr: 0x555555755040 mem_addr: 0x7fffffffdae0 size: 4
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a local or param is: 0x7fffffffdafc
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a global is: 0x555555755040
+ there are no live variables Enter AfterRegMod Checking values Register Record
+ 	Event num: 192
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rip
+ 	Value: 0x0x7fffe4391e80
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 193
+ 	Line #: 8
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rflags
+ 	Value: 0x0x000000206
+ value after write : 0x3  0x0  0x0  0x0  
+ line = 8, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x5555555546a2 is between 0x00000064a and 0x0000006b3
+ ip = 0x5555555546a2 is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffdafc
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable i has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f0c0 type name = int
+ Base address for a local or param is: 0x7fffffffdafc
+ var_addr: 0x7fffffffdafc mem_addr: 0x7fffffffdafc size: 4
+ In var_record::read_value
+ Type is int
+ Reading 4 bytes at address: 0x7fffffffdafc
+ Found a singleton value
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0x7fffffffdafc
+ Interpreting data as an int, value is 3
+ New value = 3, old value = 2
+ Found new value: 3 for i
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable a has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f1c0 type name = int
+ Base address for a global is: 0x555555755040
+ var_addr: 0x555555755040 mem_addr: 0x7fffffffdafc size: 4
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a local or param is: 0x7fffffffdafc
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a global is: 0x555555755040
+ Write to variable i
+ 	Event num: 194
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Scope: main
+ 	Address: 0x7fffffffdafc
+ 	Type: int
+ 	Value: 3
+ 	Points to: 0x000000000
+ 	Points to value: 
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 195
+ 	Line #: 8
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rflags
+ 	Value: 0x0x000000297
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 196
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: eax
+ 	Value: 0x0x000000003
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 197
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rax
+ 	Value: 0x0x000000003
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 198
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rcx
+ 	Value: 0x0x00000000c
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 199
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rax
+ 	Value: 0x0x555555755040
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 200
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: edx
+ 	Value: 0x0x000000003
+ value after write : 0x3  0x0  0x0  0x0  
+ line = 9, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x555555554672 is between 0x00000064a and 0x0000006b3
+ ip = 0x555555554672 is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x55555575504c
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable i has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f0c0 type name = int
+ Base address for a local or param is: 0x7fffffffdafc
+ var_addr: 0x7fffffffdafc mem_addr: 0x55555575504c size: 4
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable a has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f1c0 type name = int
+ Base address for a global is: 0x555555755040
+ var_addr: 0x555555755040 mem_addr: 0x55555575504c size: 4
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a local or param is: 0x7fffffffdafc
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a global is: 0x555555755040
+ there are no live variables Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
+ 	Event num: 202
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rax
+ 	Value: 0x0x000000003
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 203
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rdx
+ 	Value: 0x0x00000000c
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 204
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rax
+ 	Value: 0x0x555555755040
+ Enter AfterRegMod Checking values Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
+ 	Event num: 205
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: esi
+ 	Value: 0x0x000000003
+ Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
+ 	Event num: 206
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: eax
+ 	Value: 0x0x000000000
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 207
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rip
+ 	Value: 0x0x555555554520
+ Enter AfterRegMod Checking values value after write : 0xc0  0x46  0x55  0x55  0x55  0x55  0x0  0x0  
+ line = 10, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x55555555469d is between 0x00000064a and 0x0000006b3
+ ip = 0x55555555469d is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffdae0
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable i has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f0c0 type name = int
+ Base address for a local or param is: 0x7fffffffdafc
+ var_addr: 0x7fffffffdafc mem_addr: 0x7fffffffdae0 size: 4
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable a has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f1c0 type name = int
+ Base address for a global is: 0x555555755040
+ var_addr: 0x555555755040 mem_addr: 0x7fffffffdae0 size: 4
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a local or param is: 0x7fffffffdafc
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a global is: 0x555555755040
+ there are no live variables Enter AfterRegMod Checking values Register Record
+ 	Event num: 209
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rip
+ 	Value: 0x0x7fffe4391e80
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 210
+ 	Line #: 8
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rflags
+ 	Value: 0x0x000000202
+ value after write : 0x4  0x0  0x0  0x0  
+ line = 8, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x5555555546a2 is between 0x00000064a and 0x0000006b3
+ ip = 0x5555555546a2 is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffdafc
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable i has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f0c0 type name = int
+ Base address for a local or param is: 0x7fffffffdafc
+ var_addr: 0x7fffffffdafc mem_addr: 0x7fffffffdafc size: 4
+ In var_record::read_value
+ Type is int
+ Reading 4 bytes at address: 0x7fffffffdafc
+ Found a singleton value
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0x7fffffffdafc
+ Interpreting data as an int, value is 4
+ New value = 4, old value = 3
+ Found new value: 4 for i
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable a has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f1c0 type name = int
+ Base address for a global is: 0x555555755040
+ var_addr: 0x555555755040 mem_addr: 0x7fffffffdafc size: 4
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a local or param is: 0x7fffffffdafc
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a global is: 0x555555755040
+ Write to variable i
+ 	Event num: 211
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Scope: main
+ 	Address: 0x7fffffffdafc
+ 	Type: int
+ 	Value: 4
+ 	Points to: 0x000000000
+ 	Points to value: 
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 212
+ 	Line #: 8
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rflags
+ 	Value: 0x0x000000293
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 213
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: eax
+ 	Value: 0x0x000000004
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 214
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rax
+ 	Value: 0x0x000000004
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 215
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rcx
+ 	Value: 0x0x000000010
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 216
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rax
+ 	Value: 0x0x555555755040
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 217
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: edx
+ 	Value: 0x0x000000004
+ value after write : 0x4  0x0  0x0  0x0  
+ line = 9, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x555555554672 is between 0x00000064a and 0x0000006b3
+ ip = 0x555555554672 is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x555555755050
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable i has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f0c0 type name = int
+ Base address for a local or param is: 0x7fffffffdafc
+ var_addr: 0x7fffffffdafc mem_addr: 0x555555755050 size: 4
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable a has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f1c0 type name = int
+ Base address for a global is: 0x555555755040
+ var_addr: 0x555555755040 mem_addr: 0x555555755050 size: 4
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a local or param is: 0x7fffffffdafc
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a global is: 0x555555755040
+ there are no live variables Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
+ 	Event num: 219
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rax
+ 	Value: 0x0x000000004
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 220
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rdx
+ 	Value: 0x0x000000010
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 221
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rax
+ 	Value: 0x0x555555755040
+ Enter AfterRegMod Checking values Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
+ 	Event num: 222
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: esi
+ 	Value: 0x0x000000004
+ Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
+ 	Event num: 223
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: eax
+ 	Value: 0x0x000000000
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 224
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rip
+ 	Value: 0x0x555555554520
+ Enter AfterRegMod Checking values value after write : 0xc0  0x46  0x55  0x55  0x55  0x55  0x0  0x0  
+ line = 10, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x55555555469d is between 0x00000064a and 0x0000006b3
+ ip = 0x55555555469d is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffdae0
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable i has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f0c0 type name = int
+ Base address for a local or param is: 0x7fffffffdafc
+ var_addr: 0x7fffffffdafc mem_addr: 0x7fffffffdae0 size: 4
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable a has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f1c0 type name = int
+ Base address for a global is: 0x555555755040
+ var_addr: 0x555555755040 mem_addr: 0x7fffffffdae0 size: 4
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a local or param is: 0x7fffffffdafc
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a global is: 0x555555755040
+ there are no live variables Enter AfterRegMod Checking values Register Record
+ 	Event num: 226
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rip
+ 	Value: 0x0x7fffe4391e80
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 227
+ 	Line #: 8
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rflags
+ 	Value: 0x0x000000206
+ value after write : 0x5  0x0  0x0  0x0  
+ line = 8, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x5555555546a2 is between 0x00000064a and 0x0000006b3
+ ip = 0x5555555546a2 is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffdafc
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable i has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f0c0 type name = int
+ Base address for a local or param is: 0x7fffffffdafc
+ var_addr: 0x7fffffffdafc mem_addr: 0x7fffffffdafc size: 4
+ In var_record::read_value
+ Type is int
+ Reading 4 bytes at address: 0x7fffffffdafc
+ Found a singleton value
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0x7fffffffdafc
+ Interpreting data as an int, value is 5
+ New value = 5, old value = 4
+ Found new value: 5 for i
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable a has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f1c0 type name = int
+ Base address for a global is: 0x555555755040
+ var_addr: 0x555555755040 mem_addr: 0x7fffffffdafc size: 4
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a local or param is: 0x7fffffffdafc
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a global is: 0x555555755040
+ Write to variable i
+ 	Event num: 228
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Scope: main
+ 	Address: 0x7fffffffdafc
+ 	Type: int
+ 	Value: 5
+ 	Points to: 0x000000000
+ 	Points to value: 
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 229
+ 	Line #: 8
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rflags
+ 	Value: 0x0x000000297
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 230
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: eax
+ 	Value: 0x0x000000005
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 231
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rax
+ 	Value: 0x0x000000005
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 232
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rcx
+ 	Value: 0x0x000000014
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 233
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rax
+ 	Value: 0x0x555555755040
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 234
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: edx
+ 	Value: 0x0x000000005
+ value after write : 0x5  0x0  0x0  0x0  
+ line = 9, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x555555554672 is between 0x00000064a and 0x0000006b3
+ ip = 0x555555554672 is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x555555755054
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable i has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f0c0 type name = int
+ Base address for a local or param is: 0x7fffffffdafc
+ var_addr: 0x7fffffffdafc mem_addr: 0x555555755054 size: 4
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable a has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f1c0 type name = int
+ Base address for a global is: 0x555555755040
+ var_addr: 0x555555755040 mem_addr: 0x555555755054 size: 4
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a local or param is: 0x7fffffffdafc
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a global is: 0x555555755040
+ there are no live variables Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
+ 	Event num: 236
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rax
+ 	Value: 0x0x000000005
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 237
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rdx
+ 	Value: 0x0x000000014
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 238
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rax
+ 	Value: 0x0x555555755040
+ Enter AfterRegMod Checking values Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
+ 	Event num: 239
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: esi
+ 	Value: 0x0x000000005
+ Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
+ 	Event num: 240
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: eax
+ 	Value: 0x0x000000000
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 241
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rip
+ 	Value: 0x0x555555554520
+ Enter AfterRegMod Checking values value after write : 0xc0  0x46  0x55  0x55  0x55  0x55  0x0  0x0  
+ line = 10, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x55555555469d is between 0x00000064a and 0x0000006b3
+ ip = 0x55555555469d is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffdae0
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable i has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f0c0 type name = int
+ Base address for a local or param is: 0x7fffffffdafc
+ var_addr: 0x7fffffffdafc mem_addr: 0x7fffffffdae0 size: 4
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable a has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f1c0 type name = int
+ Base address for a global is: 0x555555755040
+ var_addr: 0x555555755040 mem_addr: 0x7fffffffdae0 size: 4
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a local or param is: 0x7fffffffdafc
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a global is: 0x555555755040
+ there are no live variables Enter AfterRegMod Checking values Register Record
+ 	Event num: 243
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rip
+ 	Value: 0x0x7fffe4391e80
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 244
+ 	Line #: 8
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rflags
+ 	Value: 0x0x000000206
+ value after write : 0x6  0x0  0x0  0x0  
+ line = 8, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x5555555546a2 is between 0x00000064a and 0x0000006b3
+ ip = 0x5555555546a2 is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffdafc
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable i has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f0c0 type name = int
+ Base address for a local or param is: 0x7fffffffdafc
+ var_addr: 0x7fffffffdafc mem_addr: 0x7fffffffdafc size: 4
+ In var_record::read_value
+ Type is int
+ Reading 4 bytes at address: 0x7fffffffdafc
+ Found a singleton value
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0x7fffffffdafc
+ Interpreting data as an int, value is 6
+ New value = 6, old value = 5
+ Found new value: 6 for i
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable a has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f1c0 type name = int
+ Base address for a global is: 0x555555755040
+ var_addr: 0x555555755040 mem_addr: 0x7fffffffdafc size: 4
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a local or param is: 0x7fffffffdafc
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a global is: 0x555555755040
+ Write to variable i
+ 	Event num: 245
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Scope: main
+ 	Address: 0x7fffffffdafc
+ 	Type: int
+ 	Value: 6
+ 	Points to: 0x000000000
+ 	Points to value: 
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 246
+ 	Line #: 8
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rflags
+ 	Value: 0x0x000000293
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 247
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: eax
+ 	Value: 0x0x000000006
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 248
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rax
+ 	Value: 0x0x000000006
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 249
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rcx
+ 	Value: 0x0x000000018
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 250
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rax
+ 	Value: 0x0x555555755040
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 251
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: edx
+ 	Value: 0x0x000000006
+ value after write : 0x6  0x0  0x0  0x0  
+ line = 9, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x555555554672 is between 0x00000064a and 0x0000006b3
+ ip = 0x555555554672 is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x555555755058
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable i has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f0c0 type name = int
+ Base address for a local or param is: 0x7fffffffdafc
+ var_addr: 0x7fffffffdafc mem_addr: 0x555555755058 size: 4
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable a has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f1c0 type name = int
+ Base address for a global is: 0x555555755040
+ var_addr: 0x555555755040 mem_addr: 0x555555755058 size: 4
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a local or param is: 0x7fffffffdafc
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a global is: 0x555555755040
+ there are no live variables Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
+ 	Event num: 253
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rax
+ 	Value: 0x0x000000006
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 254
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rdx
+ 	Value: 0x0x000000018
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 255
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rax
+ 	Value: 0x0x555555755040
+ Enter AfterRegMod Checking values Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
+ 	Event num: 256
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: esi
+ 	Value: 0x0x000000006
+ Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
+ 	Event num: 257
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: eax
+ 	Value: 0x0x000000000
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 258
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rip
+ 	Value: 0x0x555555554520
+ Enter AfterRegMod Checking values value after write : 0xc0  0x46  0x55  0x55  0x55  0x55  0x0  0x0  
+ line = 10, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x55555555469d is between 0x00000064a and 0x0000006b3
+ ip = 0x55555555469d is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffdae0
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable i has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f0c0 type name = int
+ Base address for a local or param is: 0x7fffffffdafc
+ var_addr: 0x7fffffffdafc mem_addr: 0x7fffffffdae0 size: 4
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable a has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f1c0 type name = int
+ Base address for a global is: 0x555555755040
+ var_addr: 0x555555755040 mem_addr: 0x7fffffffdae0 size: 4
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a local or param is: 0x7fffffffdafc
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a global is: 0x555555755040
+ there are no live variables Enter AfterRegMod Checking values Register Record
+ 	Event num: 260
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rip
+ 	Value: 0x0x7fffe4391e80
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 261
+ 	Line #: 8
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rflags
+ 	Value: 0x0x000000202
+ value after write : 0x7  0x0  0x0  0x0  
+ line = 8, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x5555555546a2 is between 0x00000064a and 0x0000006b3
+ ip = 0x5555555546a2 is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffdafc
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable i has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f0c0 type name = int
+ Base address for a local or param is: 0x7fffffffdafc
+ var_addr: 0x7fffffffdafc mem_addr: 0x7fffffffdafc size: 4
+ In var_record::read_value
+ Type is int
+ Reading 4 bytes at address: 0x7fffffffdafc
+ Found a singleton value
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0x7fffffffdafc
+ Interpreting data as an int, value is 7
+ New value = 7, old value = 6
+ Found new value: 7 for i
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable a has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f1c0 type name = int
+ Base address for a global is: 0x555555755040
+ var_addr: 0x555555755040 mem_addr: 0x7fffffffdafc size: 4
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a local or param is: 0x7fffffffdafc
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a global is: 0x555555755040
+ Write to variable i
+ 	Event num: 262
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Scope: main
+ 	Address: 0x7fffffffdafc
+ 	Type: int
+ 	Value: 7
+ 	Points to: 0x000000000
+ 	Points to value: 
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 263
+ 	Line #: 8
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rflags
+ 	Value: 0x0x000000293
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 264
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: eax
+ 	Value: 0x0x000000007
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 265
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rax
+ 	Value: 0x0x000000007
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 266
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rcx
+ 	Value: 0x0x00000001c
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 267
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rax
+ 	Value: 0x0x555555755040
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 268
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: edx
+ 	Value: 0x0x000000007
+ value after write : 0x7  0x0  0x0  0x0  
+ line = 9, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x555555554672 is between 0x00000064a and 0x0000006b3
+ ip = 0x555555554672 is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x55555575505c
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable i has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f0c0 type name = int
+ Base address for a local or param is: 0x7fffffffdafc
+ var_addr: 0x7fffffffdafc mem_addr: 0x55555575505c size: 4
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable a has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f1c0 type name = int
+ Base address for a global is: 0x555555755040
+ var_addr: 0x555555755040 mem_addr: 0x55555575505c size: 4
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a local or param is: 0x7fffffffdafc
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a global is: 0x555555755040
+ there are no live variables Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
+ 	Event num: 270
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rax
+ 	Value: 0x0x000000007
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 271
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rdx
+ 	Value: 0x0x00000001c
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 272
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rax
+ 	Value: 0x0x555555755040
+ Enter AfterRegMod Checking values Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
+ 	Event num: 273
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: esi
+ 	Value: 0x0x000000007
+ Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
+ 	Event num: 274
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: eax
+ 	Value: 0x0x000000000
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 275
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rip
+ 	Value: 0x0x555555554520
+ Enter AfterRegMod Checking values value after write : 0xc0  0x46  0x55  0x55  0x55  0x55  0x0  0x0  
+ line = 10, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x55555555469d is between 0x00000064a and 0x0000006b3
+ ip = 0x55555555469d is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffdae0
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable i has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f0c0 type name = int
+ Base address for a local or param is: 0x7fffffffdafc
+ var_addr: 0x7fffffffdafc mem_addr: 0x7fffffffdae0 size: 4
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable a has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f1c0 type name = int
+ Base address for a global is: 0x555555755040
+ var_addr: 0x555555755040 mem_addr: 0x7fffffffdae0 size: 4
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a local or param is: 0x7fffffffdafc
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a global is: 0x555555755040
+ there are no live variables Enter AfterRegMod Checking values Register Record
+ 	Event num: 277
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rip
+ 	Value: 0x0x7fffe4391e80
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 278
+ 	Line #: 8
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rflags
+ 	Value: 0x0x000000202
+ value after write : 0x8  0x0  0x0  0x0  
+ line = 8, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x5555555546a2 is between 0x00000064a and 0x0000006b3
+ ip = 0x5555555546a2 is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffdafc
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable i has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f0c0 type name = int
+ Base address for a local or param is: 0x7fffffffdafc
+ var_addr: 0x7fffffffdafc mem_addr: 0x7fffffffdafc size: 4
+ In var_record::read_value
+ Type is int
+ Reading 4 bytes at address: 0x7fffffffdafc
+ Found a singleton value
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0x7fffffffdafc
+ Interpreting data as an int, value is 8
+ New value = 8, old value = 7
+ Found new value: 8 for i
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable a has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f1c0 type name = int
+ Base address for a global is: 0x555555755040
+ var_addr: 0x555555755040 mem_addr: 0x7fffffffdafc size: 4
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a local or param is: 0x7fffffffdafc
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a global is: 0x555555755040
+ Write to variable i
+ 	Event num: 279
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Scope: main
+ 	Address: 0x7fffffffdafc
+ 	Type: int
+ 	Value: 8
+ 	Points to: 0x000000000
+ 	Points to value: 
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 280
+ 	Line #: 8
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rflags
+ 	Value: 0x0x000000297
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 281
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: eax
+ 	Value: 0x0x000000008
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 282
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rax
+ 	Value: 0x0x000000008
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 283
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rcx
+ 	Value: 0x0x000000020
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 284
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rax
+ 	Value: 0x0x555555755040
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 285
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: edx
+ 	Value: 0x0x000000008
+ value after write : 0x8  0x0  0x0  0x0  
+ line = 9, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x555555554672 is between 0x00000064a and 0x0000006b3
+ ip = 0x555555554672 is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x555555755060
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable i has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f0c0 type name = int
+ Base address for a local or param is: 0x7fffffffdafc
+ var_addr: 0x7fffffffdafc mem_addr: 0x555555755060 size: 4
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable a has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f1c0 type name = int
+ Base address for a global is: 0x555555755040
+ var_addr: 0x555555755040 mem_addr: 0x555555755060 size: 4
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a local or param is: 0x7fffffffdafc
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a global is: 0x555555755040
+ there are no live variables Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
+ 	Event num: 287
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rax
+ 	Value: 0x0x000000008
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 288
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rdx
+ 	Value: 0x0x000000020
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 289
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rax
+ 	Value: 0x0x555555755040
+ Enter AfterRegMod Checking values Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
+ 	Event num: 290
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: esi
+ 	Value: 0x0x000000008
+ Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
+ 	Event num: 291
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: eax
+ 	Value: 0x0x000000000
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 292
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rip
+ 	Value: 0x0x555555554520
+ Enter AfterRegMod Checking values value after write : 0xc0  0x46  0x55  0x55  0x55  0x55  0x0  0x0  
+ line = 10, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x55555555469d is between 0x00000064a and 0x0000006b3
+ ip = 0x55555555469d is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffdae0
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable i has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f0c0 type name = int
+ Base address for a local or param is: 0x7fffffffdafc
+ var_addr: 0x7fffffffdafc mem_addr: 0x7fffffffdae0 size: 4
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable a has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f1c0 type name = int
+ Base address for a global is: 0x555555755040
+ var_addr: 0x555555755040 mem_addr: 0x7fffffffdae0 size: 4
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a local or param is: 0x7fffffffdafc
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a global is: 0x555555755040
+ there are no live variables Enter AfterRegMod Checking values Register Record
+ 	Event num: 294
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rip
+ 	Value: 0x0x7fffe4391e80
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 295
+ 	Line #: 8
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rflags
+ 	Value: 0x0x000000206
+ value after write : 0x9  0x0  0x0  0x0  
+ line = 8, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x5555555546a2 is between 0x00000064a and 0x0000006b3
+ ip = 0x5555555546a2 is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffdafc
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable i has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f0c0 type name = int
+ Base address for a local or param is: 0x7fffffffdafc
+ var_addr: 0x7fffffffdafc mem_addr: 0x7fffffffdafc size: 4
+ In var_record::read_value
+ Type is int
+ Reading 4 bytes at address: 0x7fffffffdafc
+ Found a singleton value
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0x7fffffffdafc
+ Interpreting data as an int, value is 9
+ New value = 9, old value = 8
+ Found new value: 9 for i
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable a has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f1c0 type name = int
+ Base address for a global is: 0x555555755040
+ var_addr: 0x555555755040 mem_addr: 0x7fffffffdafc size: 4
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a local or param is: 0x7fffffffdafc
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a global is: 0x555555755040
+ Write to variable i
+ 	Event num: 296
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Scope: main
+ 	Address: 0x7fffffffdafc
+ 	Type: int
+ 	Value: 9
+ 	Points to: 0x000000000
+ 	Points to value: 
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 297
+ 	Line #: 8
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
  	Register: rflags
  	Value: 0x0x000000246
  Enter AfterRegMod Checking values Register Record
- 	Event num: 164
- 	Line #: 18
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
- 	Register: rbp
- 	Value: 0x0x555555554720
+ 	Event num: 298
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: eax
+ 	Value: 0x0x000000009
  Enter AfterRegMod Checking values Register Record
- 	Event num: 165
- 	Line #: 18
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Event num: 299
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rax
+ 	Value: 0x0x000000009
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 300
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rcx
+ 	Value: 0x0x000000024
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 301
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rax
+ 	Value: 0x0x555555755040
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 302
+ 	Line #: 9
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: edx
+ 	Value: 0x0x000000009
+ value after write : 0x9  0x0  0x0  0x0  
+ line = 9, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x555555554672 is between 0x00000064a and 0x0000006b3
+ ip = 0x555555554672 is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x555555755064
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable i has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f0c0 type name = int
+ Base address for a local or param is: 0x7fffffffdafc
+ var_addr: 0x7fffffffdafc mem_addr: 0x555555755064 size: 4
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable a has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f1c0 type name = int
+ Base address for a global is: 0x555555755040
+ var_addr: 0x555555755040 mem_addr: 0x555555755064 size: 4
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a local or param is: 0x7fffffffdafc
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a global is: 0x555555755040
+ there are no live variables Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
+ 	Event num: 304
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rax
+ 	Value: 0x0x000000009
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 305
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rdx
+ 	Value: 0x0x000000024
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 306
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rax
+ 	Value: 0x0x555555755040
+ Enter AfterRegMod Checking values Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
+ 	Event num: 307
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: esi
+ 	Value: 0x0x000000009
+ Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
+ 	Event num: 308
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: eax
+ 	Value: 0x0x000000000
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 309
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rip
+ 	Value: 0x0x555555554520
+ Enter AfterRegMod Checking values value after write : 0xc0  0x46  0x55  0x55  0x55  0x55  0x0  0x0  
+ line = 10, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x55555555469d is between 0x00000064a and 0x0000006b3
+ ip = 0x55555555469d is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffdae0
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable i has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f0c0 type name = int
+ Base address for a local or param is: 0x7fffffffdafc
+ var_addr: 0x7fffffffdafc mem_addr: 0x7fffffffdae0 size: 4
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable a has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f1c0 type name = int
+ Base address for a global is: 0x555555755040
+ var_addr: 0x555555755040 mem_addr: 0x7fffffffdae0 size: 4
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a local or param is: 0x7fffffffdafc
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a global is: 0x555555755040
+ there are no live variables Enter AfterRegMod Checking values Register Record
+ 	Event num: 311
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rip
+ 	Value: 0x0x7fffe4391e80
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 312
+ 	Line #: 8
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rflags
+ 	Value: 0x0x000000206
+ value after write : 0xa  0x0  0x0  0x0  
+ line = 8, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x5555555546a2 is between 0x00000064a and 0x0000006b3
+ ip = 0x5555555546a2 is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffdafc
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable i has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f0c0 type name = int
+ Base address for a local or param is: 0x7fffffffdafc
+ var_addr: 0x7fffffffdafc mem_addr: 0x7fffffffdafc size: 4
+ In var_record::read_value
+ Type is int
+ Reading 4 bytes at address: 0x7fffffffdafc
+ Found a singleton value
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0x7fffffffdafc
+ Interpreting data as an int, value is 10
+ New value = 10, old value = 9
+ Found new value: 10 for i
+ In runtime_stack::get_updated_variables_from_frame
+ Checking if variable a has been updated
+ Enter is_at_address
+ trec = 0x7ffff7d7f1c0 type name = int
+ Base address for a global is: 0x555555755040
+ var_addr: 0x555555755040 mem_addr: 0x7fffffffdafc size: 4
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a local or param is: 0x7fffffffdafc
+ In runtime_stack::get_updated_points_to_frame
+ Base address for a global is: 0x555555755040
+ Write to variable i
+ 	Event num: 313
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Scope: main
+ 	Address: 0x7fffffffdafc
+ 	Type: int
+ 	Value: 10
+ 	Points to: 0x000000000
+ 	Points to value: 
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 314
+ 	Line #: 8
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rflags
+ 	Value: 0x0x000000202
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 315
+ 	Line #: 8
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rip
+ 	Value: 0x0x5555555546ac
+ Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
+ 	Event num: 316
+ 	Line #: 12
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
+ 	Register: rbp
+ 	Value: 0x0x5555555546c0
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 317
+ 	Line #: 12
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
  	Register: rsp
- 	Value: 0x0x7fffffffdab8
+ 	Value: 0x0x7fffffffdb08
  Enter functionInvocationAfter
  No output found
  In runtime_stack::get_all_updated_variables
  In runtime_stack::get_updated_variables_from_frame
+ Checking if variable a has been updated
+ Base address for a global is: 0x555555755040
+ Enter is_at_address
+ trec = 0x7ffff7d7f1c0 type name = int
+ Base address for a global is: 0x555555755040
+ var_addr: 0x555555755040 mem_addr: 0x555555755040 size: 4
+ Base address for a global is: 0x555555755040
+ Computed index = 0
+ In var_record::read_value
+ Type is int
+ Reading 4 bytes at address: 0x555555755040
+ Found a singleton value
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0x555555755040
+ Interpreting data as an int, value is 0
  In runtime_stack::get_all_updated_points_to
  In runtime_stack::get_updated_points_to_frame
+ Base address for a global is: 0x555555755040
+ Write to variable a:[0]a
+ 	Event num: 319
+ 	C file name: main
+ 	Scope: *G*
+ 	Address: 0x555555755040
+ 	Type: 98
+ 	Value: 0
+ 	Points to: 0x000000000
+ 	Points to value: 
  function return
  Exit functionInvocationAfter
- Before return: SP = 0x7fffffffdab8
+ Before return: SP = 0x7fffffffdb08
  Enter AfterRegMod Checking values Register Record
- 	Event num: 169
- 	Line #: 18
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Event num: 321
+ 	Line #: 12
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
  	Register: rip
- 	Value: 0x0x7fffe4329b97
+ 	Value: 0x0x7fffe434eb97
  Enter AfterRegMod Checking values Register Record
- 	Event num: 170
- 	Line #: 18
- 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test2.c
+ 	Event num: 322
+ 	Line #: 12
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test3.c
  	Register: rsp
- 	Value: 0x0x7fffffffdac0
- After return : SP = 0x7fffffffdac0
+ 	Value: 0x0x7fffffffdb10
+ After return : SP = 0x7fffffffdb10
  Function Call to __do_global_dtors_aux
  after push stack size:2
- Invocation ID:171function __do_global_dtors_aux was called.
- Frame pointer was 0x7fffffffda50
+ Invocation ID:323function __do_global_dtors_aux was called.
+ Frame pointer was 0x7fffffffdaa0
  Getting frame pointer for __do_global_dtors_aux
  Call to function
- 	Event num: 171
+ 	Event num: 323
  	Function name: __do_global_dtors_aux
  	Func line: 0
  	Inv line: 0
  	Func file: 
  	Inv file: 
- 	Callee stack address: 0x7fffffffd9c8
+ 	Callee stack address: 0x7fffffffda18
 
  Return address
  	Function name: main
- 	Dynamic link: 0x7fffffffda50
+ 	Dynamic link: 0x7fffffffdaa0
  	Return address: 0x7ffff7de5b73
  Build stack frame
- Enter AfterRegMod Checking values Enter AfterRegMod Checking values Register Record
- 	Event num: 173
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x555555554669
  Enter AfterRegMod Checking values Register Record
- 	Event num: 174
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rflags
- 	Value: 0x0x000000202
- Before push: SP = 0x7fffffffd9c8
- Enter AfterRegMod Checking values Register Record
- 	Event num: 176
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7fffffffd9c0
- value after write : 0x4  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
- line = 0, column = 0, file = __NOCSOURCE__
- In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x555555554671 is between 0x0000006aa and 0x000000715
- ip = 0x555555554671 is not in user code
- After push: SP = 0x7fffffffd9c0
- Enter AfterRegMod Checking values Register Record
- 	Event num: 177
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rbp
- 	Value: 0x0x7fffffffd9c0
- Enter AfterRegMod Checking values Register Record
- 	Event num: 178
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x555555554677
- Enter AfterRegMod Checking values Register Record
- 	Event num: 179
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rdi
- 	Value: 0x0x555555755008
- Enter AfterRegMod Checking values Register Record
- 	Event num: 180
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x555555554590
- Enter AfterRegMod Checking values Register Record
- 	Event num: 181
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7fffffffd9b8
- value after write : 0xd0  0xd9  0xff  0xff  0xff  0x7f  0x0  0x0  
- line = 0, column = 0, file = __NOCSOURCE__
- In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x55555555467e is between 0x0000006aa and 0x000000715
- ip = 0x55555555467e is not in user code
- Enter AfterRegMod Checking values Register Record
- 	Event num: 182
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x7fffe434b520
- Enter AfterRegMod Checking values Register Record
- 	Event num: 183
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rip
- 	Value: 0x0x5555555545d0
- Enter AfterRegMod Checking values value after write : 0xb8  0x4d  0x75  0x55  0x55  0x55  0x0  0x0  
- line = 0, column = 0, file = __NOCSOURCE__
- In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x555555554683 is between 0x0000006aa and 0x000000715
- ip = 0x555555554683 is not in user code
- Function Call to deregister_tm_clones
- after push stack size:3
- Invocation ID:184function deregister_tm_clones was called.
- Frame pointer was 0x7fffffffd9c0
- Getting frame pointer for deregister_tm_clones
- Call to function
- 	Event num: 184
- 	Function name: deregister_tm_clones
- 	Func line: 0
- 	Inv line: 0
- 	Func file: 
- 	Inv file: 
- 	Callee stack address: 0x7fffffffd9b8
-
- Return address
- 	Function name: main
- 	Dynamic link: 0x7fffffffd9c0
- 	Return address: 0x555555554688
- Build stack frame
- Enter AfterRegMod Checking values Register Record
- 	Event num: 186
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rdi
- 	Value: 0x0x555555755010
- Before push: SP = 0x7fffffffd9b8
- Enter AfterRegMod Checking values Register Record
- 	Event num: 188
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7fffffffd9b0
- value after write : 0xd0  0xd9  0xff  0xff  0xff  0x7f  0x0  0x0  
- line = 0, column = 0, file = __NOCSOURCE__
- In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x5555555545d7 is between 0x0000006aa and 0x000000715
- ip = 0x5555555545d7 is not in user code
- After push: SP = 0x7fffffffd9b0
- Enter AfterRegMod Checking values Register Record
- 	Event num: 189
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rax
- 	Value: 0x0x555555755010
- Enter AfterRegMod Checking values Register Record
- 	Event num: 190
+ 	Event num: 325
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rflags
  	Value: 0x0x000000246
  Enter AfterRegMod Checking values Register Record
- 	Event num: 191
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rbp
- 	Value: 0x0x7fffffffd9b0
- Before pop: SP = 0x7fffffffd9b0
- Enter AfterRegMod Checking values Register Record
- 	Event num: 193
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rbp
- 	Value: 0x0x7fffffffd9c0
- Enter AfterRegMod Checking values Register Record
- 	Event num: 194
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7fffffffd9b8
- After pop: SP = 0x7fffffffd9b8
- Enter functionInvocationAfter
- No output found
- function return
- Exit functionInvocationAfter
- Before return: SP = 0x7fffffffd9b8
- Enter AfterRegMod Checking values Register Record
- 	Event num: 197
+ 	Event num: 326
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
- 	Value: 0x0x555555554688
+ 	Value: 0x0x555555554609
  Enter AfterRegMod Checking values Register Record
- 	Event num: 198
+ 	Event num: 327
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rflags
+ 	Value: 0x0x000000202
+ Before push: SP = 0x7fffffffda18
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 329
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7fffffffd9c0
- After return : SP = 0x7fffffffd9c0
- value after write : 0x1  
+ 	Value: 0x0x7fffffffda10
+ value after write : 0x4  0x0  0x0  0x0  0x0  0x0  0x0  0x0  
  line = 0, column = 0, file = __NOCSOURCE__
  In cu_table::get
- In cu_record::pc_in_range: check if pc = 0x555555554688 is between 0x0000006aa and 0x000000715
- ip = 0x555555554688 is not in user code
- Before pop: SP = 0x7fffffffd9c0
+ In cu_record::pc_in_range: check if pc = 0x555555554611 is between 0x00000064a and 0x0000006b3
+ ip = 0x555555554611 is not in user code
+ After push: SP = 0x7fffffffda10
  Enter AfterRegMod Checking values Register Record
- 	Event num: 200
+ 	Event num: 330
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rbp
- 	Value: 0x0x7fffffffda50
+ 	Value: 0x0x7fffffffda10
  Enter AfterRegMod Checking values Register Record
- 	Event num: 201
+ 	Event num: 331
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rip
+ 	Value: 0x0x555555554617
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 332
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rdi
+ 	Value: 0x0x555555755008
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 333
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rip
+ 	Value: 0x0x555555554530
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 334
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7fffffffd9c8
- After pop: SP = 0x7fffffffd9c8
+ 	Value: 0x0x7fffffffda08
+ value after write : 0x20  0xda  0xff  0xff  0xff  0x7f  0x0  0x0  
+ line = 0, column = 0, file = __NOCSOURCE__
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x55555555461e is between 0x00000064a and 0x0000006b3
+ ip = 0x55555555461e is not in user code
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 335
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rip
+ 	Value: 0x0x7fffe4370520
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 336
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rip
+ 	Value: 0x0x555555554570
+ Enter AfterRegMod Checking values value after write : 0xc0  0x4d  0x75  0x55  0x55  0x55  0x0  0x0  
+ line = 0, column = 0, file = __NOCSOURCE__
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x555555554623 is between 0x00000064a and 0x0000006b3
+ ip = 0x555555554623 is not in user code
+ Function Call to deregister_tm_clones
+ after push stack size:3
+ Invocation ID:337function deregister_tm_clones was called.
+ Frame pointer was 0x7fffffffda10
+ Getting frame pointer for deregister_tm_clones
+ Call to function
+ 	Event num: 337
+ 	Function name: deregister_tm_clones
+ 	Func line: 0
+ 	Inv line: 0
+ 	Func file: 
+ 	Inv file: 
+ 	Callee stack address: 0x7fffffffda08
+
+ Return address
+ 	Function name: main
+ 	Dynamic link: 0x7fffffffda10
+ 	Return address: 0x555555554628
+ Build stack frame
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 339
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rdi
+ 	Value: 0x0x555555755010
+ Before push: SP = 0x7fffffffda08
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 341
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rsp
+ 	Value: 0x0x7fffffffda00
+ value after write : 0x20  0xda  0xff  0xff  0xff  0x7f  0x0  0x0  
+ line = 0, column = 0, file = __NOCSOURCE__
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x555555554577 is between 0x00000064a and 0x0000006b3
+ ip = 0x555555554577 is not in user code
+ After push: SP = 0x7fffffffda00
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 342
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rax
+ 	Value: 0x0x555555755010
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 343
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rflags
+ 	Value: 0x0x000000246
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 344
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rbp
+ 	Value: 0x0x7fffffffda00
+ Before pop: SP = 0x7fffffffda00
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 346
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rbp
+ 	Value: 0x0x7fffffffda10
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 347
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rsp
+ 	Value: 0x0x7fffffffda08
+ After pop: SP = 0x7fffffffda08
  Enter functionInvocationAfter
  No output found
  function return
  Exit functionInvocationAfter
- Before return: SP = 0x7fffffffd9c8
+ Before return: SP = 0x7fffffffda08
  Enter AfterRegMod Checking values Register Record
- 	Event num: 204
+ 	Event num: 350
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rip
+ 	Value: 0x0x555555554628
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 351
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rsp
+ 	Value: 0x0x7fffffffda10
+ After return : SP = 0x7fffffffda10
+ value after write : 0x1  
+ line = 0, column = 0, file = __NOCSOURCE__
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x555555554628 is between 0x00000064a and 0x0000006b3
+ ip = 0x555555554628 is not in user code
+ Before pop: SP = 0x7fffffffda10
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 353
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rbp
+ 	Value: 0x0x7fffffffdaa0
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 354
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rsp
+ 	Value: 0x0x7fffffffda18
+ After pop: SP = 0x7fffffffda18
+ Enter functionInvocationAfter
+ No output found
+ function return
+ Exit functionInvocationAfter
+ Before return: SP = 0x7fffffffda18
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 357
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
  	Value: 0x0x7ffff7de5b73
  Enter AfterRegMod Checking values Register Record
- 	Event num: 205
+ 	Event num: 358
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7fffffffd9d0
- After return : SP = 0x7fffffffd9d0
+ 	Value: 0x0x7fffffffda20
+ After return : SP = 0x7fffffffda20
  Function Call to _fini
  after push stack size:2
- Invocation ID:206function _fini was called.
- Frame pointer was 0x7fffffffda50
+ Invocation ID:359function _fini was called.
+ Frame pointer was 0x7fffffffdaa0
  Getting frame pointer for _fini
  Call to function
- 	Event num: 206
+ 	Event num: 359
  	Function name: _fini
  	Func line: 0
  	Inv line: 0
  	Func file: 
  	Inv file: 
- 	Callee stack address: 0x7fffffffd9c8
+ 	Callee stack address: 0x7fffffffda18
 
  Return address
  	Function name: main
- 	Dynamic link: 0x7fffffffda50
+ 	Dynamic link: 0x7fffffffdaa0
  	Return address: 0x7ffff7de5b93
  Build stack frame
  Enter AfterRegMod Checking values Register Record
- 	Event num: 208
+ 	Event num: 361
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7fffffffd9c0
+ 	Value: 0x0x7fffffffda10
  Enter AfterRegMod Checking values Register Record
- 	Event num: 209
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rflags
- 	Value: 0x0x000000206
- Enter AfterRegMod Checking values Register Record
- 	Event num: 210
- 	Line #: 0
- 	File: __NOCSOURCE__
- 	Register: rsp
- 	Value: 0x0x7fffffffd9c8
- Enter AfterRegMod Checking values Register Record
- 	Event num: 211
+ 	Event num: 362
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rflags
  	Value: 0x0x000000202
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 363
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rsp
+ 	Value: 0x0x7fffffffda18
+ Enter AfterRegMod Checking values Register Record
+ 	Event num: 364
+ 	Line #: 0
+ 	File: __NOCSOURCE__
+ 	Register: rflags
+ 	Value: 0x0x000000206
  Enter functionInvocationAfter
  No output found
  function return
  Exit functionInvocationAfter
- Before return: SP = 0x7fffffffd9c8
+ Before return: SP = 0x7fffffffda18
  Enter AfterRegMod Checking values Register Record
- 	Event num: 214
+ 	Event num: 367
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rip
  	Value: 0x0x7ffff7de5b93
  Enter AfterRegMod Checking values Register Record
- 	Event num: 215
+ 	Event num: 368
  	Line #: 0
  	File: __NOCSOURCE__
  	Register: rsp
- 	Value: 0x0x7fffffffd9d0
- After return : SP = 0x7fffffffd9d0
+ 	Value: 0x0x7fffffffda20
+ After return : SP = 0x7fffffffda20
