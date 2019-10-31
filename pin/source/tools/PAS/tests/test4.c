@@ -1,18 +1,17 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/types.h>
-#include <unistd.h>
-#include "vaccs_printf.h"
 int a;
+
+void modify(int a, int b, int c, int d , int e) {
+
+   a = a + b + c + d + e;
+}
+
 int main() {
 
    int b;
    int *p = &b;
 
-   vaccs_printf("start program\n");
    
    a = 1;
    b = 2;
-   vaccs_printf("a = %d, b = %d\n",a, b);
-   vaccs_printf("p = %ld, *p = %d\n",p, *p);
+   modify(a,b,a,b,a);
 }

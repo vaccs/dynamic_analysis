@@ -203,10 +203,13 @@ void vaccs_dw_reader::read_type_record() {
 
 	trec = trec->add_size(type_size)->add_name(name);
 
-	if (is_array)
+	if (is_array) {
+               DEBUGL(LOG("Read array type, size = "+decstr(type_size)+
+                          ", upper bound = "+decstr(upper_bound)+"\n"));
 		trec = trec->add_is_array()
 			->add_upper_bound(upper_bound,false)
 			->add_base_type(base_type);
+        }
 
 	if (is_pointer)
 		trec = trec->add_is_pointer()

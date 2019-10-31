@@ -192,10 +192,14 @@ list<var_upd_record *> *runtime_stack::get_updated_array_elements(cu_table *cuta
                                                                   string prefix)
 {
 
+      DEBUGL(LOG("In get_updated_array_elements for array: "+frec->get_variable_name()+"\n"));
+
 	list<var_upd_record *> *vlist = new list<var_upd_record *>();
 	type_table *ttab = cutab->get_type_table(vrec->get_type());
 	type_record *trec = ttab->get(vrec->get_type());
 	string scope = cutab->get_scope(vrec);
+
+      DEBUGL(LOG("\tType is "+*trec->get_name()+", # is "+vrec->get_type()+"\n"));
 
 	Generic element_size = ttab->get(*trec->get_base_type())->get_size();
 	symbol_table_record_factory factory;
@@ -212,7 +216,7 @@ list<var_upd_record *> *runtime_stack::get_updated_array_elements(cu_table *cuta
 		var_upd_record *vurec = (new var_upd_record())
 		                        ->add_variable_name(frec->get_variable_name())
 		                        ->add_var_record(vrec)
-														->add_type_name(*trec->get_name())
+					->add_type_name(*trec->get_name())
 		                        ->add_context(fr->get_context())
 		                        ->add_address(array_addr)
 		                        ->add_scope(scope)
@@ -222,6 +226,7 @@ list<var_upd_record *> *runtime_stack::get_updated_array_elements(cu_table *cuta
 		vlist->push_back(vurec);
 
 		string base_type = *ttab->get(vrec->get_type())->get_base_type();
+	        type_record *btrec = ttab->get(base_type);
 		for (unsigned int i = 0; i <= trec->get_upper_bound(); i++) {
 			var_record *varec = (var_record*)factory.make_symbol_table_record(VAR_RECORD);
 			varec = varec->add_decl_file(vrec->get_decl_file())
@@ -236,12 +241,12 @@ list<var_upd_record *> *runtime_stack::get_updated_array_elements(cu_table *cuta
 
 			Generic addr = array_addr + (element_size * i);
 			var_upd_record *nvurec = (new var_upd_record())
-			                         ->add_variable_name(vurec->get_variable_name())
+			                         ->add_variable_name(":[" + decstr(i) + "]")
 			                         ->add_var_record(varec)
-														   ->add_type_name(base_type)
+					         ->add_type_name(*btrec->get_name())
 			                         ->add_context(fr->get_context())
 			                         ->add_address(addr)
-			                         ->add_prefix(vurec->get_variable_name() + ":[" + decstr(i) + "]")
+			                         ->add_prefix(vurec->get_variable_name())
 			                         ->add_scope(scope)
 			                         ->add_value(varec->read_value(ttab, ttab->get(base_type), addr,
 			                                                       fr->get_context()));
@@ -254,6 +259,8 @@ list<var_upd_record *> *runtime_stack::get_updated_array_elements(cu_table *cuta
 		DEBUGL(LOG("Computed index = " + decstr(index) + "\n"));
 		var_record *varec = (var_record*)factory.make_symbol_table_record(VAR_RECORD);
 		string base_type = *ttab->get(vrec->get_type())->get_base_type();
+	        type_record *btrec = ttab->get(base_type);
+   
 		varec = varec->add_decl_file(vrec->get_decl_file())
 		        ->add_decl_line(vrec->get_decl_line())
 		        ->add_type(base_type)
@@ -265,13 +272,13 @@ list<var_upd_record *> *runtime_stack::get_updated_array_elements(cu_table *cuta
 			varec = varec->add_is_param();
 
 		var_upd_record *nvurec = (new var_upd_record())
-		                         ->add_variable_name(frec->get_variable_name())
+		                         ->add_variable_name(":[" + decstr(index) + "]")
 		                         ->add_var_record(varec)
-														 ->add_type_name(base_type)
+					 ->add_type_name(*btrec->get_name())
 		                         ->add_context(fr->get_context())
 		                         ->add_address(addr)
 		                         ->add_scope(scope)
-		                         ->add_prefix(frec->get_variable_name() + ":[" + decstr(index) + "]")
+		                         ->add_prefix(frec->get_variable_name())
 		                         ->add_value(varec->read_value(ttab, ttab->get(base_type), addr,
 		                                                       fr->get_context()));
 
@@ -406,9 +413,15 @@ list<var_upd_record *> *runtime_stack::get_updated_variables_from_frame(cu_table
 	for (list<frame_record*>::iterator it2 = fr->begin(); it2 != fr->end(); it2++) {
 		frame_record *frec = *it2;
 		DEBUGL(LOG("Checking if variable " + frec->get_variable_name() + " has been updated\n"));
-		type_record *trec = cutab->get_type_record(frec->get_var_record()->get_type());
 		var_record *vrec = frec->get_var_record();
 		type_table *ttab = cutab->get_type_table(vrec->get_type());
+		type_record *trec = ttab->get(vrec->get_type());
+                trec->debug_emit(vrec->get_type());
+                
+                if (trec->get_is_array())
+                  DEBUGL(LOG("This variable is an array\n"));
+                else if (trec->get_is_struct())
+                  DEBUGL(LOG("This variable is an struct\n"));
 
 		//
 		// If addr = 0, make sure we check this variable (all variables are checked in this case)

@@ -203,6 +203,16 @@ public:
 		return is_before_stack_setup;
 	}
 
+        Generic get_old_rbp_addr() 
+        {
+            return old_rbp_addr;
+        }
+
+        Generic get_return_addr_addr() 
+        {
+            return return_addr_addr;
+        }
+
 	/* ====================  BUILDERS      ======================================= */
 
 	/**
@@ -229,6 +239,18 @@ public:
 		return this;
 	}
 
+        frame *add_old_rbp_addr(Generic addr) 
+        {
+           this->old_rbp_addr = addr;
+           return this;
+        }
+
+
+        frame *add_return_addr_addr(Generic addr) 
+        {
+           this->return_addr_addr = addr;
+           return this;
+        }
 	/**
 	 * Add a frame_record to this frame using a builder pattern
 	 *
@@ -271,6 +293,8 @@ private:
 	CONTEXT *ctx;   /* a pin context at the time this frame is put on the stack */
 	bool is_first_access;
 	bool is_before_stack_setup;
+        Generic old_rbp_addr;
+        Generic return_addr_addr; 
 
 }; /* -----  end of class frame  ----- */
 
