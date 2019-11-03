@@ -13,6 +13,6 @@
 VOID before_function_direct_call(ADDRINT ip, CONTEXT *ctx, ADDRINT callee_address);
 VOID before_function_indirect_call(ADDRINT ip, CONTEXT *ctx, ADDRINT callee_address, BOOL taken);
 VOID after_function_call(void);
-VOID monitor_function_calls(INS ins, VOID *v);
+VOID monitor_function_calls(INS ins, VOID *fn, VOID *v);
 
 #endif /* FUNCTION_CALL_H */

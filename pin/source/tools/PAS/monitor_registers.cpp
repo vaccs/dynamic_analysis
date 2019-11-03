@@ -13,153 +13,157 @@
 #include <io/vaccs_record.h>
 #include <io/register_record.h>
 #include <map>
+#include <list>
 #include <tables/frame.h>
 #include <util/general.h>
 
-extern runtime_stack *stack_model;
+extern runtime_stack * stack_model;
+
 /* EXTERN(void, write_variable_access_record,
-       (string variable, Generic event_num, INT32 line, string fileName,
-        string scope, ADDRINT addr, string type_name, string value, Generic points_to));*/
+ *     (string variable, Generic event_num, INT32 line, string fileName,
+ *      string scope, ADDRINT addr, string type_name, string value, Generic points_to));*/
 
 using namespace std;
 
-VOID AfterRegMod(ADDRINT ip, CONTEXT *ctxt, REG reg, UINT32 opcode)
+VOID
+AfterRegMod(ADDRINT ip, CONTEXT * ctxt, REG reg, UINT32 opcode)
 {
-	INT32 column;
-	INT32 line;
-	string fileName;
+    INT32 column;
+    INT32 line;
+    string fileName;
 
-	DEBUGL(LOG("Enter AfterRegMod"));
+    DEBUGL(LOG("Enter AfterRegMod"));
 
-	static map<string, Generic> old_values;
+    static map<string, Generic> old_values;
 
-	PIN_LockClient();
-	PIN_GetSourceLocation(ip, &column, &line, &fileName);
-	PIN_UnlockClient();
+    PIN_LockClient();
+    PIN_GetSourceLocation(ip, &column, &line, &fileName);
+    PIN_UnlockClient();
 
-	string reg_name = REG_StringShort(reg);
-	if (line == 0)
-		fileName = NOCSOURCE;
-	else {
-		frame *fr = stack_model->top();
-		if (fr->get_is_before_stack_setup())
+    string reg_name = REG_StringShort(reg);
+    if (line == 0) {
+        fileName = NOCSOURCE;
+    } else {
+        frame * fr = stack_model->top();
+        if (fr->get_is_before_stack_setup()) {
+            if ((fr->size() == 0 && reg == REG_GBP && OPCODE_StringShort(opcode) == "MOV") ||
+              (reg == REG_STACK_PTR && OPCODE_StringShort(opcode) == "SUB"))
+            {
+                // if we've just entered a function and the stack and frame pointer are now
+                // set up, set the initial context properly
+                // initially is_before_stack_setup is false. When the first SUB operation is performed on
+                // the stack pointer, that operation sets up space for local variables and now the context is
+                // set up. If there are no local variables, then the stack is set when the frame pointer is
+                // updated.
+                //
+                // The function entry code looks like
+                //
+                //    push %rbp
+                //    mov %rsp, %rbp
+                //    sub $0x.., $rsp
+                //
+                // If there are no local variables, we look for second instruction, otherwise
+                // the third
 
-			if ((fr->size() == 0 && reg == REG_GBP && OPCODE_StringShort(opcode) == "MOV") ||
-			    (reg == REG_STACK_PTR && OPCODE_StringShort(opcode) == "SUB")) {
 
-				// if we've just entered a function and the stack and frame pointer are now
-				// set up, set the initial context properly
-				// initially is_before_stack_setup is false. When the first SUB operation is performed on
-				// the stack pointer, that operation sets up space for local variables and now the context is
-				// set up. If there are no local variables, then the stack is set when the frame pointer is
-				// updated.
-				//
-				// The function entry code looks like
-				//
-				//    push %rbp
-				//    mov %rsp, %rbp
-				//    sub $0x.., $rsp
-				//
-				// If there are no local variables, we look for second instruction, otherwise
-				// the third
+                fr->clear_is_before_stack_setup();
+                fr->add_context(ctxt);
 
+                // Just entering a function
+                // Initialize the visualization with records for all variables
 
-				fr->clear_is_before_stack_setup();
-				fr->add_context(ctxt);
+                cu_table * cutab = vdr->get_cutab();
 
-				// Just entering a function
-				// Initialize the visualization with records for all variables
+                list<var_upd_record *> * vlist = stack_model->addr_get_updated_variables((Generic) 0, cutab);
+                vlist->splice(vlist->end(), *stack_model->get_all_updated_points_to(cutab));
 
-				cu_table *cutab = vdr->get_cutab();
+                if (vlist->empty()) {
+                    DEBUGL(LOG("there are no local variables"));
+                } else {
+                    for (list<var_upd_record *>::iterator it = vlist->begin(); it != vlist->end(); it++) {
+                        var_upd_record * vurec = *it;
+                        vurec->write(vaccs_fd, fileName, line, vdr->get_cutab(), timestamp);
+                    }
+                }
 
-				list<var_upd_record*> *vlist = stack_model->addr_get_updated_variables((Generic)0, cutab);
-				vlist->splice(vlist->end(), *stack_model->get_all_updated_points_to(cutab));
+                list<return_addr_record *> * ralist = stack_model->get_updated_links();
+                if (ralist->empty()) {
+                    DEBUGL(LOG("There were no link updates"));
+                } else {
+                    for (list<return_addr_record *>::iterator it = ralist->begin(); it != ralist->end(); it++) {
+                        return_addr_record * rarec = *it;
+                        rarec->write(vaccs_fd);
+                    }
+                }
+                timestamp++;
+            }
+        }
+    }
 
-				if (vlist->empty())
-					DEBUGL(LOG("there are no local variables"));
-				else {
+    vaccs_record_factory factory;
+    PIN_REGISTER value;
+    PIN_GetContextRegval(ctxt, reg, (UINT8 *) &value);
+    Generic regval;
 
-					for (list<var_upd_record*>::iterator it = vlist->begin(); it != vlist->end(); it++) {
-						var_upd_record* vurec = *it;
-					  vurec->write(vaccs_fd,fileName,line,vdr->get_cutab(),timestamp);
-						/* var_record *vrec = vurec->get_var_record();
-						type_table *ttab = vdr->get_cutab()->get_type_table(vrec->get_type());
-						type_record *trec = ttab->get(vrec->get_type());
-						write_variable_access_record(vurec->get_prefix() + vurec->get_variable_name(),
-						                             timestamp, line, fileName, vurec->get_scope(),
-						                             vurec->get_address(), *trec->get_name(),
-						                             vurec->get_points_to_value(), vurec->get_points_to()); */
-					}
-				}
-				timestamp++;
-			}
-	}
+    // No vector registers handled nor floating point registers
+    switch (REG_Size(reg)) {
+        case 1:
+            regval = (Generic) value.byte[0];
+            break;
+        case 2:
+            regval = (Generic) value.word[0];
+            break;
+        case 4:
+            regval = (Generic) value.dword[0];
+            break;
+        default:
+            regval = (Generic) value.qword[0];
+            break;
+    }
 
-	vaccs_record_factory factory;
-	PIN_REGISTER value;
-	PIN_GetContextRegval(ctxt, reg, (UINT8*)&value);
-	Generic regval;
+    DEBUGL(LOG("Checking values"));
+    map<string, Generic>::iterator it;
 
-	// No vector registers handled nor floating point registers
-	switch (REG_Size(reg)) {
-	case 1:
-		regval = (Generic)value.byte[0];
-		break;
-	case 2:
-		regval = (Generic)value.word[0];
-		break;
-	case 4:
-		regval = (Generic)value.dword[0];
-		break;
-	default:
-		regval = (Generic)value.qword[0];
-		break;
-	}
+    it = old_values.find(reg_name);
 
-	DEBUGL(LOG("Checking values"));
-	map<string, Generic>::iterator it;
+    if (it == old_values.end() || it->second != regval) {
+        register_record * rrec = (register_record *) factory.make_vaccs_record(VACCS_REGISTER);
+        DEBUGL(LOG("Register Record\n"));
+        DEBUGL(LOG("\tEvent num: " + decstr(timestamp) + "\n"));
+        DEBUGL(LOG("\tLine #: " + decstr(line) + "\n"));
+        DEBUGL(LOG("\tFile: " + fileName + "\n"));
+        DEBUGL(LOG("\tRegister: " + reg_name + "\n"));
+        DEBUGL(LOG("\tValue: 0x" + hexstr(regval) + "\n"));
+        rrec = rrec->add_event_num(timestamp++)
+          ->add_c_line_num(line)
+          ->add_c_file_name(fileName.c_str())
+          ->add_register_name(reg_name.c_str())
+          ->add_value(regval);
 
-	it = old_values.find(reg_name);
+        rrec->write(vaccs_fd);
+        delete rrec;
 
-	if (it == old_values.end() || it->second != regval) {
-		register_record *rrec = (register_record*)factory.make_vaccs_record(VACCS_REGISTER);
-		DEBUGL(LOG("Register Record\n"));
-		DEBUGL(LOG("\tEvent num: " + decstr(timestamp) + "\n"));
-		DEBUGL(LOG("\tLine #: " + decstr(line) + "\n"));
-		DEBUGL(LOG("\tFile: " + fileName + "\n"));
-		DEBUGL(LOG("\tRegister: " + reg_name + "\n"));
-		DEBUGL(LOG("\tValue: 0x" + hexstr(regval) + "\n"));
-		rrec = rrec->add_event_num(timestamp++)
-		       ->add_c_line_num(line)
-		       ->add_c_file_name(fileName.c_str())
-		       ->add_register_name(reg_name.c_str())
-		       ->add_value(regval);
-
-		rrec->write(vaccs_fd);
-		delete rrec;
-
-		old_values[reg_name] = regval;
-	}
-}
-
+        old_values[reg_name] = regval;
+    }
+} // AfterRegMod
 
 // Is called for every instruction and instruments all of them that have
 // corresponding C code and modify a register
-VOID MonitorRegisterInstruction(INS ins, VOID *v)
+VOID
+MonitorRegisterInstruction(INS ins, VOID * v)
 {
-
-	if (INS_MaxNumWRegs(ins) > 0) {
-		string assembly_code = INS_Disassemble(ins);
-		IPOINT where = IPOINT_AFTER;
-		if (!INS_HasFallThrough(ins))
-			where = IPOINT_TAKEN_BRANCH;
-		UINT32 num_wregs = INS_MaxNumWRegs(ins);
-		for (UINT32 i = 0; i < num_wregs; i++) {
-			REG reg = INS_RegW(ins, i);
-			UINT32 opcode = INS_Opcode(ins);
-			INS_InsertPredicatedCall(ins, where, (AFUNPTR)AfterRegMod,
-			                         IARG_INST_PTR, IARG_CONTEXT, IARG_UINT32,
-			                         reg, IARG_UINT32, opcode, IARG_END);
-		}
-	}
+    if (INS_MaxNumWRegs(ins) > 0) {
+        string assembly_code = INS_Disassemble(ins);
+        IPOINT where         = IPOINT_AFTER;
+        if (!INS_HasFallThrough(ins))
+            where = IPOINT_TAKEN_BRANCH;
+        UINT32 num_wregs = INS_MaxNumWRegs(ins);
+        for (UINT32 i = 0; i < num_wregs; i++) {
+            REG reg       = INS_RegW(ins, i);
+            UINT32 opcode = INS_Opcode(ins);
+            INS_InsertPredicatedCall(ins, where, (AFUNPTR) AfterRegMod,
+              IARG_INST_PTR, IARG_CONTEXT, IARG_UINT32,
+              reg, IARG_UINT32, opcode, IARG_END);
+        }
+    }
 }
