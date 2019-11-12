@@ -15,6 +15,7 @@
 #include <io/vaccs_record.h>
 #include <io/var_access_record.h>
 #include <tables/var_table.h>
+#include <tables/deref.h>
 #include <string>
 #include <map>
 #include <tables/frame.h>
@@ -351,25 +352,15 @@ pointer_is_char_array(type_table * ttab, type_record * trec)
 VOID
 AfterMemWrite(VOID * assembly, ADDRINT ip, ADDRINT addr, const CONTEXT * ctxt, UINT32 size)
 {
-    char * assembly_code = (char *) assembly;
-    char * location      = (char *) malloc(size);
-
     current_EBP = (ADDRINT) PIN_GetContextReg(ctxt, REG_GBP);
-    DEBUGL(LOG("value after write :"));
-
-    if (is_indirect(assembly_code)) {
-        for (unsigned int i = 0; i < size; i++) {
-            location[i] = ((char *) addr)[i];
-            DEBUGL(LOG(hexstr(location[i] & 0xff) + " "));
-        }
-        DEBUGL(LOG("\n"));
-    } else {
-        for (unsigned int i = 0; i < size; i++) {
-            location[i] = ((char *) addr)[i];
-            DEBUGL(LOG(hexstr(location[i] & 0xff) + " "));
-        }
-        DEBUGL(LOG("\n"));
+    bool is_segv;
+    Generic value = dereference_memory((Generic *)addr,&is_segv);
+    if  (is_segv) {
+      DEBUGL(LOG("Address is written is seg fault. SHOULD NOT HAPPEN\n"));
+      return;
     }
+
+    DEBUGL(LOG("value after write to address "+hexstr(addr)+" is :" + hexstr(value)+ "\n"));
 
     INT32 column;
     INT32 line;
@@ -401,18 +392,19 @@ AfterMemWrite(VOID * assembly, ADDRINT ip, ADDRINT addr, const CONTEXT * ctxt, U
         if (!fr->get_is_before_stack_setup()) {
             list<var_upd_record *> * vlist = stack_model->addr_get_updated_variables((Generic) addr, cutab);
             vlist->splice(vlist->end(), *stack_model->get_all_updated_points_to(cutab));
-            list<return_addr_record *> * ralist = stack_model->get_updated_links();
 
             if (vlist->empty()) {
-                DEBUGL(LOG("there are no live variables"));
+                DEBUGL(LOG("there are no live variables\n"));
             } else   {
                 for (list<var_upd_record *>::iterator it = vlist->begin(); it != vlist->end(); it++) {
                     var_upd_record * vurec = *it;
                     vurec->write(vaccs_fd, fileName, line, cutab, timestamp);
                 }
             }
+
+            list<return_addr_record *> * ralist = stack_model->get_updated_links();
             if (ralist->empty()) {
-                DEBUGL(LOG("There were link updates"));
+                DEBUGL(LOG("There were no link updates\n"));
             } else   {
                 for (list<return_addr_record *>::iterator it = ralist->begin(); it != ralist->end(); it++) {
                     return_addr_record * rarec = *it;

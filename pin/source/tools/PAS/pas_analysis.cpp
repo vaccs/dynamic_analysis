@@ -153,6 +153,29 @@ void finalize_outputfiles(){
    close(vaccs_stdout);
 }
 
+struct sigaction new_action, old_action;
+VOID Fini(INT32 code, VOID *v);
+
+static void segv_handler(int signum) {
+
+   DEBUGL(LOG("Caught a SIGSEGV in analysis of program -- aborting\n"));
+   cerr << "Segmentation fault caught\nCleanup routines called\n";
+   sigaction(SIGSEGV,&old_action,NULL);
+   Fini(0,NULL);
+   exit(-1);
+}
+
+void set_sigsegv_handler() {
+
+   new_action.sa_handler = segv_handler;
+   sigemptyset (&new_action.sa_mask);
+   new_action.sa_flags = 0;
+
+   sigaction (SIGSEGV, NULL, &old_action);
+
+   sigaction (SIGSEGV, &new_action, NULL);
+
+}
 void initialize(){
 
 		 /*
@@ -164,6 +187,7 @@ void initialize(){
 		current_invocation_id =0;
 
                 heap_m = new heap_map();
+    set_sigsegv_handler();
 
 		//file output initialization
 

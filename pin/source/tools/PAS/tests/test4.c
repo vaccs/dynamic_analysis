@@ -1,17 +1,12 @@
-int a;
-
-void modify(int a, int b, int c, int d , int e) {
-
-   a = a + b + c + d + e;
-}
-
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <unistd.h>
 int main() {
+int a[10];
 
-   int b;
-   int *p = &b;
-
-   
-   a = 1;
-   b = 2;
-   modify(a,b,a,b,a);
+   for (int i = 0; i < 15; i++) {
+      a[i] = i;
+      printf("a[%d] = %d\n",i,a[i]);
+   }
 }

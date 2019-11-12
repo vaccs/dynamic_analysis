@@ -10,3 +10,6 @@
 *.dwarf
 *.log
 config.txt
+*.vaccs
+*.vaccs.ascii
+out

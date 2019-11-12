@@ -10,9 +10,8 @@
 #include "pin.H"
 
 
-VOID before_function_direct_call(ADDRINT ip, CONTEXT *ctx, ADDRINT callee_address);
-VOID before_function_indirect_call(ADDRINT ip, CONTEXT *ctx, ADDRINT callee_address, BOOL taken);
-VOID after_function_call(void);
+VOID before_function_call(ADDRINT ip, ADDRINT addr);
+VOID after_function_call(VOID * function_name, const CONTEXT * ctxt, ADDRINT ip);
 VOID monitor_function_calls(INS ins, VOID *fn, VOID *v);
 
 #endif /* FUNCTION_CALL_H */

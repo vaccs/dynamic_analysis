@@ -226,13 +226,13 @@ bool var_record::is_at_address(const CONTEXT *ctxt, Generic mem_addr, type_recor
 	DEBUGL(LOG("var_addr: " + hexstr(var_addr) + " mem_addr: " + hexstr(mem_addr) +  " size: " +
 	           decstr(trec->get_size()) + "\n"));
 
-	if (trec->get_is_array() || trec->get_is_struct()) {
+	//if (trec->get_is_array() || trec->get_is_struct()) {
 
 		// is this an access to some element of an array or struct
 
 		return (mem_addr >= var_addr) && (mem_addr < var_addr + trec->get_size());
-	} else
-		return var_addr == mem_addr;
+	//} else
+		//return var_addr == mem_addr;
 }
 
 /**

@@ -1,13 +1,9 @@
 #include <stdio.h>
-int a;
-int c = 3;
+#include <string.h>
 int main() {
 
-   int b;
-   int *p = &b;
+   char a[8];
 
-   
-   a = 1;
-   b = 2;
-   vaccs_printf("a = %d, b = %d, *p = %d, c = %d\n",a, b, *p, c);
+   strcpy(a,"0123456789abcdef");   
+   printf("a = %s\n",a);
 }
