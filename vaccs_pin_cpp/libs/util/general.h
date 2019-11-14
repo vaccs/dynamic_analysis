@@ -202,11 +202,9 @@ extern Generic text_base_address;
 extern Generic stack_base_address;
 extern Generic data_base_address;
 
-#define NULL_PTR_DEREF_STR "<** Null pointer exception **>"
-#define INVALID_MEM_STR "<** Segmentation fault for address: "
-#define MEM_ADDR_ERROR(A) (A == 0 ? NULL_PTR_DEREF_STR : INVALID_MEM_STR + hexstr(A) + " **>")
+#define MEM_ADDR_ERROR(A) ("<Error: " + hexstr(A) + ">")
 
-#define NULL_STR "<** null pointer **>"
+#define NULL_STR "<NULL>"
 #define MEM_ADDR_STR(A) (A == 0 ? NULL_STR : hexstr(A))
 
 #endif  /* general_h */

@@ -159,7 +159,7 @@ VOID Fini(INT32 code, VOID *v);
 static void segv_handler(int signum) {
 
    DEBUGL(LOG("Caught a SIGSEGV in analysis of program -- aborting\n"));
-   cerr << "Segmentation fault caught\nCleanup routines called\n";
+   cerr << "Segmentation fault caught -- Cleanup routines called\n";
    sigaction(SIGSEGV,&old_action,NULL);
    Fini(0,NULL);
    exit(-1);
@@ -207,10 +207,10 @@ void emit_arch() {
 	arch_record *rec;
 
 #ifdef __x86_64
-   DEBUGL(cerr << "Architecture: x86_64\n");
+   DEBUGL(LOG("Architecture: x86_64\n"));
 	rec = ((arch_record*)factory.make_vaccs_record(VACCS_ARCH))->add_arch_type(VACCS_ARCH_X86_64);
 #else
-   DEBUGL(cerr << "Architecture: ia32\n");
+   DEBUGL(LOG("Architecture: ia32\n"));
 	rec = ((arch_record*)factory.make_vaccs_record(VACCS_ARCH))->add_arch_type(VACCS_ARCH_I386);
 #endif
 
@@ -221,7 +221,7 @@ void emit_arch() {
 }
 
 void emit_binary(string binary) {
-   DEBUGL(cerr << "Binary: " + binary + "\n");
+   DEBUGL(LOG("Binary: " + binary + "\n"));
 	vaccs_record_factory factory;
    binary_record *brec = ((binary_record*)factory.make_vaccs_record(VACCS_BINARY))
          ->add_bin_file_name(binary.c_str());
@@ -235,7 +235,7 @@ void emit_cmd_line(int argc, int file_index, char **argv) {
 	for (int i = file_index; i < argc; i++)
 		cmd_line.append(argv[i]).append(" ");
 
-	DEBUGL(cerr << "Command line = " + cmd_line + "\n");
+	DEBUGL(LOG("Command line = " + cmd_line + "\n"));
 
 	vaccs_record_factory factory;
 	cmd_line_record *rec = ((cmd_line_record*)factory.make_vaccs_record(VACCS_CMD_LINE))
@@ -250,16 +250,16 @@ void emit_c_code(vaccs_dw_reader *vdr) {
 	cu_table *cutab = vdr->get_cutab();
 	vaccs_record_factory factory;
 
-	DEBUGL(cerr << "C source code\n");
-	DEBUGL(cerr << "-------------\n");
+	DEBUGL(LOG("C source code\n"));
+	DEBUGL(LOG("-------------\n"));
 	for (map<std::string,symbol_table_record*>::iterator it = cutab->begin(); it != cutab->end(); it++) {
-		DEBUGL(cerr << "Found a file " +  it->first + "\n");
+		DEBUGL(LOG("Found a file " +  it->first + "\n"));
 		ifstream cfile(it->first.c_str(), std::ifstream::in);
 		string ccode;
 		ccode_record *rec;
 		int i = 1;
 		while (getline(cfile,ccode)) {
-			DEBUGL(cerr << "Line " + decstr(i) + ": " + ccode + "\n");
+			DEBUGL(LOG("Line " + decstr(i) + ": " + ccode + "\n"));
 			rec = ((ccode_record*)factory.make_vaccs_record(VACCS_CCODE))->add_c_file_name(it->first.c_str())
 					->add_c_line_num(i)
 					->add_c_start_pos(0)
@@ -279,16 +279,16 @@ void emit_initial_function_call() {
 
     vaccs_record_factory factory;
 
-    DEBUGL(cerr << "Call to function\n");
-    DEBUGL(cerr << "\tEvent num: " + decstr(timestamp++) + "\n");
-    DEBUGL(cerr << "\tFunction name: __NOFUNCTION__\n");
-    DEBUGL(cerr << "\tFunc line: 0\n");
-    DEBUGL(cerr << "\tInv line: 0\n");
-    DEBUGL(cerr << "\tFunc file: __NOCSOURCE__\n");
-    DEBUGL(cerr << "\tInv file: __NOCSOURCE\n");
-    DEBUGL(cerr << "\tCallee address: 0x0\n\n");
+    DEBUGL(LOG("Call to function\n"));
+    DEBUGL(LOG("\tEvent num: " + decstr(timestamp++) + "\n"));
+    DEBUGL(LOG("\tFunction name: __NOFUNCTION__\n"));
+    DEBUGL(LOG("\tFunc line: 0\n"));
+    DEBUGL(LOG("\tInv line: 0\n"));
+    DEBUGL(LOG("\tFunc file: __NOCSOURCE__\n"));
+    DEBUGL(LOG("\tInv file: __NOCSOURCE\n"));
+    DEBUGL(LOG("\tCallee address: 0x0\n\n"));
     func_inv_record *frec = (func_inv_record*)factory.make_vaccs_record(VACCS_FUNCTION_INV);
-    DEBUGL(cerr << "frec = 0x" + hexstr(frec) + "\n");
+    DEBUGL(LOG("frec = 0x" + hexstr(frec) + "\n"));
     frec = frec->add_event_num(timestamp++)
       ->add_func_name(NOFUNCNAME)
       ->add_func_line_num(0)
@@ -297,16 +297,16 @@ void emit_initial_function_call() {
       ->add_c_inv_file(NOCSOURCE)
       ->add_address(0);
 
-    DEBUGL(cerr << "Built frec\n");
+    DEBUGL(LOG("Built frec\n"));
     frec->write(vaccs_fd);
     delete frec;
-    DEBUGL(cerr << "Wrote frec\n");
+    DEBUGL(LOG("Wrote frec\n"));
 }
 
 int main(int argc, char *argv[])
 {
 
-    DEBUGL(cerr << "Begin pas_analysis\n");
+    DEBUGL(LOG("Begin pas_analysis\n"));
 
      /*
       * Pin Initialization
@@ -332,12 +332,12 @@ int main(int argc, char *argv[])
     vdr = new vaccs_dw_reader();
     vdr->add_file_name(vfn);
 
-    DEBUGL(cerr << "Reading dwarf info\n");
+    DEBUGL(LOG("Reading dwarf info\n"));
     vdr->read_vaccs_dw_info();
 
-    DEBUGL(cerr << "Building dwarf tables\n");
+    DEBUGL(LOG("Building dwarf tables\n"));
     stack_model = (new runtime_stack())->add_cu_table(vdr->get_cutab());
-    DEBUGL(cerr << "Begin analysis\n");
+    DEBUGL(LOG("Begin analysis\n"));
     emit_arch();
     emit_cmd_line(argc,i,argv);
 
@@ -358,7 +358,7 @@ int main(int argc, char *argv[])
 
     //emit_initial_function_call();
 
-    DEBUGL(cerr << "Starting program\n");
+    DEBUGL(LOG("Starting program\n"));
 
     // Never returns
     PIN_StartProgram();

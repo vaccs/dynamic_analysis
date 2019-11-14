@@ -224,7 +224,7 @@ void vaccs_dw_reader::read_type_record() {
 	current_cu_rec->get_type_table()->put(type,trec);
 	if (is_struct) {
 
-		DEBUGL(cerr << "Reading member table for structure for type: " + type + "\n");
+		DEBUGL(LOG("Reading member table for structure for type: " + type + "\n"));
 		trec = trec->add_is_struct();
 		var_table *memtab = (var_table*)table_factory.make_symbol_table(VAR_TABLE);
 		trec = trec->add_member_table(memtab);
@@ -300,7 +300,7 @@ void vaccs_dw_reader::read_cu_record() {
  */
 void vaccs_dw_reader::read_vaccs_dw_info(void) {
 
-	DEBUGL(cerr << "Reading vaccs dwarf info\n");
+	DEBUGL(LOG("Reading vaccs dwarf info\n"));
 	assert((OS_OpenFD(file_name.c_str(), OS_FILE_OPEN_TYPE_READ, OS_FILE_PERMISSION_TYPE_READ, &fd)).generic_err
 			== OS_RETURN_CODE_NO_ERROR);
 
@@ -315,12 +315,12 @@ void vaccs_dw_reader::read_vaccs_dw_info(void) {
 		for (unsigned long i = 0; i < num_curecs; i++)
 			read_cu_record();
 
-		DEBUGL(cerr << "Creating Member Tables\n");
+		DEBUGL(LOG("Creating Member Tables\n"));
 		cutab->create_member_tables();
-		DEBUGL(cerr << "Done Creating Member Tables\n");
+		DEBUGL(LOG("Done Creating Member Tables\n"));
 
 	} else {
-		LOG("Malformed vaccs dw file (must start with a CU Table): " + file_name + ", Id = " + decstr(id) + "\n");
+		DEBUGL(LOG("Malformed vaccs dw file (must start with a CU Table): " + file_name + ", Id = " + decstr(id) + "\n"));
 	}
 
 

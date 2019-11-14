@@ -436,6 +436,12 @@ runtime_stack::get_updated_variables_from_frame(cu_table * cutab, frame * fr,
 		type_record * trec = ttab->get(vrec->get_type());
 		trec->debug_emit(vrec->get_type());
 
+		type_record  *btrec = NULL;
+		string *btstr = NULL;
+		if ((btstr = trec->get_base_type()) != NULL) {
+			btrec = ttab->get(*btstr);
+		}
+
 		if (trec->get_is_array())
 			DEBUGL(LOG("This variable is an array\n"));
 		else if (trec->get_is_struct())
@@ -448,7 +454,7 @@ runtime_stack::get_updated_variables_from_frame(cu_table * cutab, frame * fr,
 		if (addr == 0 || fr->get_is_first_access() || vrec->is_at_address(fr->get_context(), addr, trec)) {
 			if (trec->get_is_struct())
 				vlist->splice(vlist->end(), *get_updated_struct_members(cutab, fr, frec, vrec, addr, ""));
-			else if (trec->get_is_array())
+			else if (trec->get_is_array() && btrec != NULL && btrec->get_name()->find("char") != string::npos)
 				vlist->splice(vlist->end(), *get_updated_array_elements(cutab, fr, frec, vrec, addr, ""));
 			else {
 				if (addr == 0 || fr->get_is_first_access())
@@ -637,7 +643,8 @@ runtime_stack::get_updated_points_to_frame(cu_table * cutab, frame * fr)
 					new_value = MEM_ADDR_ERROR(ptr_addr);
 				} else {
 					DEBUGL(LOG(
-							   "Pointer variable: " + frec->get_variable_name() + " points to a valid memory location\n"));
+							   "Pointer variable: " + frec->get_variable_name() + " points to a valid memory location "
+							 		+ hexstr(ptr_addr) + "\n"));
 					type_table * ttab = cutab->get_type_table(vrec->get_type());
 
 					type_record * btrec = cutab->get_type_record(*trec->get_base_type());

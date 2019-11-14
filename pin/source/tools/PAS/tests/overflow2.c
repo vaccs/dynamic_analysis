@@ -1,7 +1,6 @@
 #include <string.h>
-
+int i;
 void func(char *cptr){
-  int i;
   char buf[8];
   int j;
 

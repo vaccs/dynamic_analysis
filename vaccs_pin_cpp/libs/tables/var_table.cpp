@@ -51,7 +51,7 @@ var_record::var_record(var_record *vrec) : symbol_table_record(VAR_RECORD)
 
 	symbol_table_factory factory;
 
-	DEBUGL(cerr << "Copying var_record\n");
+	DEBUGL(LOG("Copying var_record\n"));
 	if (vrec->get_local_var_table() != NULL)
 		local_var_table = (var_table*)factory.copy_symbol_table(VAR_TABLE, vrec->get_local_var_table());
 	else
@@ -228,11 +228,11 @@ bool var_record::is_at_address(const CONTEXT *ctxt, Generic mem_addr, type_recor
 
 	//if (trec->get_is_array() || trec->get_is_struct()) {
 
-		// is this an access to some element of an array or struct
+	// is this an access to some element of an array or struct
 
-		return (mem_addr >= var_addr) && (mem_addr < var_addr + trec->get_size());
+	return (mem_addr >= var_addr) && (mem_addr < var_addr + trec->get_size());
 	//} else
-		//return var_addr == mem_addr;
+	//return var_addr == mem_addr;
 }
 
 /**
@@ -440,6 +440,9 @@ string var_record::read_singleton_value(type_record *trec, Generic addr)
 
 			value = convert.str();
 
+			if (value[0] == '\0')
+				value = "\\0";
+
 		} else if (type_name.find("int") != string::npos) {
 			// interpret data as an int
 
@@ -479,12 +482,11 @@ string var_record::read_singleton_value(type_record *trec, Generic addr)
 string var_record::read_struct_value(type_table *ttab, type_record *trec, Generic addr, CONTEXT *ctxt)
 {
 	DEBUGL(LOG("read_struct_value: Reading a value in a struct at address: " + hexstr(addr)));
-	if (is_first_access()) {
+	if (is_first_access())
 		return "<multielement>";
-  }
 
 	var_table *memtab = get_member_table();
-  string value = "";
+	string value = "";
 
 	for (std::map<std::string, symbol_table_record*>::iterator it = memtab->begin();
 	     it != memtab->end();
@@ -495,11 +497,11 @@ string var_record::read_struct_value(type_table *ttab, type_record *trec, Generi
 
 		if (mvrec->is_at_address(ctxt, addr, mtrec)) {
 			value = read_value(ttab, mtrec, addr, ctxt);
-      break;
-    }
+			break;
+		}
 	}
 
-  return value;
+	return value;
 }
 /**
  * Get a value at an address contained within an array
@@ -513,12 +515,11 @@ string var_record::read_struct_value(type_table *ttab, type_record *trec, Generi
 string var_record::read_array_value(type_table *ttab, type_record *trec, Generic addr, CONTEXT *ctxt)
 {
 	DEBUGL(LOG("read_array_value: Reading a value in a struct at address: " + hexstr(addr)));
-	if (is_first_access()) {
+	if (is_first_access())
 		return "<multielement>";
-  }
 
 
-  type_record *atrec = ttab->get(*trec->get_base_type());
+	type_record *atrec = ttab->get(*trec->get_base_type());
 	Generic element_size = atrec->get_size();
 	symbol_table_record_factory factory;
 
@@ -526,13 +527,13 @@ string var_record::read_array_value(type_table *ttab, type_record *trec, Generic
 	DEBUGL(LOG("Computed index = " + decstr(index) + "\n"));
 	addr +=  (element_size * index);
 
-  return read_value(ttab,atrec,addr,ctxt);
+	return read_value(ttab, atrec, addr, ctxt);
 }
 
-string read_c_string(Generic addr)
+string read_c_string(Generic addr, type_record *trec)
 {
 	DEBUGL(LOG("Reading C string at addr " + MEM_ADDR_STR(addr) + "\n"));
-	string value = "Cannot access memory at address " + MEM_ADDR_STR(addr);;
+	string value;
 
 	struct sigaction new_action, old_action;
 
@@ -552,15 +553,18 @@ string read_c_string(Generic addr)
 	// itself may error, but the analysis will not.
 
 	if (!setjmp(current_env)) {
-		char *ptr = *((char**)addr);
+		char *ptr = (char*)addr;
 		value = "";
-		for (int i = 0; *ptr != '\0' && i < VACCS_MAX_STRING_LENGTH; i++, ptr++)
+		int upb = VACCS_MAX_STRING_LENGTH;
+		for (int i = 0; *ptr != '\0' && i < upb; i++, ptr++)
 			value += *ptr;
 
 		if (*ptr != '\0')
 			value += "...";
 		else if (value.length() == 0)
 			value = NULL_STR;
+	} else {
+		value = MEM_ADDR_ERROR(addr);
 	}
 
 	// reset the signal handler for SIGSEGV to the original handler.
@@ -597,10 +601,10 @@ string var_record::read_value(type_table *ttab, type_record *trec, Generic addr,
 
 		if (!btrec->get_is_pointer() && !btrec->get_is_array() && bt_name.find("char") != string::npos) {
 			DEBUGL(LOG("Found a character string\n"));
-			value = read_c_string(addr);
-		} else if (btrec->get_is_struct()) {
-			value = read_struct_value(ttab, btrec, addr,ctxt);
-		} else {
+			value = read_c_string(addr,trec);
+		} else if (btrec->get_is_struct())
+			value = read_struct_value(ttab, btrec, addr, ctxt);
+		else {
 			DEBUGL(LOG("Found a non-character pointer to an atomic value\n"));
 			bool is_segv;
 			addr = dereference_memory((Generic*)addr, &is_segv);               // get the pointer value
@@ -619,13 +623,13 @@ string var_record::read_value(type_table *ttab, type_record *trec, Generic addr,
 
 		if (!btrec->get_is_pointer() && !btrec->get_is_array() && bt_name.find("char") != string::npos) {
 			DEBUGL(LOG("Found a character string\n"));
-			value = read_c_string(addr);
+			value = read_c_string(addr,trec);
 		} else {
 			DEBUGL(LOG("Found a non-character array\n"));
-			value = read_array_value(ttab,btrec, addr,ctxt);
+			value = read_array_value(ttab, btrec, addr, ctxt);
 		}
 	} else if (trec->get_is_struct())
-		value = read_struct_value(ttab, trec, addr,ctxt);
+		value = read_struct_value(ttab, trec, addr, ctxt);
 	else {
 		DEBUGL(LOG("Found a singleton value\n"));
 		value = read_singleton_value(trec, addr);
@@ -647,7 +651,7 @@ void var_record::propagate_local_info(type_table *ttab, Generic location, bool i
 	this->is_param = is_param;
 	this->location += location;
 
-	DEBUGL(cerr << "New updated address = " + hexstr(this->location) + "\n");
+	DEBUGL(LOG("New updated address = " + hexstr(this->location) + "\n"));
 	type_record *trec = ttab->get(type);
 	if (trec->get_is_struct()) {
 		symbol_table_factory factory;
@@ -678,14 +682,14 @@ void var_record::debug_emit(string var)
  */
 void var_record::create_member_tables(type_table *ttab)
 {
-	DEBUGL(cerr << "var_table::create_member_tables\n");
+	DEBUGL(LOG("var_table::create_member_tables\n"));
 	if (is_subprog)
 		local_var_table->create_member_tables(ttab);
 	else {
 		type_record *trec = ttab->get(type);
 		if (trec->get_is_struct()) {
 			symbol_table_factory factory;
-			DEBUGL(cerr << "Propagate local info from address " + hexstr(location) + "\n");
+			DEBUGL(LOG("Propagate local info from address " + hexstr(location) + "\n"));
 			member_table = (var_table*)factory.copy_symbol_table(VAR_TABLE, trec->get_member_table());
 			member_table->propagate_local_info(ttab, location, is_local, is_param);
 		}
@@ -701,14 +705,14 @@ var_table::var_table(var_table *vtab) :
 	symbol_table(VAR_TABLE)
 {
 
-	DEBUGL(cerr << "Copying var_table\n");
+	DEBUGL(LOG("Copying var_table\n"));
 	symbol_table_record_factory factory;
 	for (map<string, symbol_table_record*>::iterator it = vtab->begin();
 	     it != vtab->end();
 	     it++ ) {
-		DEBUGL(cerr << "Calling factory to copy var_record for " + it->first + "\n");
+		DEBUGL(LOG("Calling factory to copy var_record for " + it->first + "\n"));
 		var_record *vrec = (var_record*)factory.copy_symbol_table_record(VAR_RECORD, (var_record*)it->second);
-		DEBUGL(cerr << "Adding var_record for " + it->first + "\n");
+		DEBUGL(LOG("Adding var_record for " + it->first + "\n"));
 
 		put(it->first, vrec);
 	}
@@ -732,7 +736,7 @@ void var_table::propagate_local_info(type_table *ttab, Generic location, bool is
 	     it != end();
 	     it++ ) {
 		var_record *vrec = (var_record*)it->second;
-		DEBUGL(cerr << "Propagate local info for variable " + it->first + "\n");
+		DEBUGL(LOG("Propagate local info for variable " + it->first + "\n"));
 		vrec->propagate_local_info(ttab, location, is_local, is_param);
 	}
 }
@@ -744,7 +748,7 @@ void var_table::propagate_local_info(type_table *ttab, Generic location, bool is
  */
 void var_table::create_member_tables(type_table *ttab)
 {
-	DEBUGL(cerr << "var_table::create_member_tables\n");
+	DEBUGL(LOG("var_table::create_member_tables\n"));
 	for (map<string, symbol_table_record*>::iterator it = begin();
 	     it != end();
 	     it++ ) {

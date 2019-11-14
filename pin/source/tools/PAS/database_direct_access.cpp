@@ -10,7 +10,7 @@ void test_mysql()
 {
 	int d[2];
 	pipe(d);
-	printf("MySQL client version: %s\n", mysql_get_client_info());
+	DEBUGL(LOG("MySQL client version: %s\n", mysql_get_client_info()));
 }
 void write_push_transaction(){
 

@@ -209,7 +209,7 @@ FunctionInvocatioinImage(IMG img, VOID * v)
             for (RTN rtn = SEC_RtnHead(sec); RTN_Valid(rtn); rtn = RTN_Next(rtn)) {
                 RTN_Open(rtn);
 
-                cerr << "Instrumenting call to routine " << RTN_Name(rtn) << endl;
+                DEBUGL(LOG("Instrumenting call to routine " + RTN_Name(rtn) + "\n"));
                 RTN_InsertCall(rtn, IPOINT_BEFORE, (AFUNPTR) functionInvocationBefore,
                   IARG_PTR, RTN_Name(rtn).c_str(), IARG_CONTEXT, IARG_INST_PTR,
                   IARG_END);
