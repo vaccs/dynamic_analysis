@@ -630,6 +630,14 @@ runtime_stack::get_updated_points_to_frame(cu_table * cutab, frame * fr)
         //
 
         var_record * vrec = frec->get_var_record();
+
+        //
+        // base_addr from addr will be different for pointer parameters.
+        // addr will be derferenced if it is a pointer parameter. base_addr will not.
+        // We want to make sure the location of the variable is where it is on the stack_model
+        // Not what that stack location points to
+        //
+
         Generic base_addr = vrec->get_base_address(fr->get_context());
         Generic addr      = vrec->get_var_address(fr->get_context(), trec);
 
