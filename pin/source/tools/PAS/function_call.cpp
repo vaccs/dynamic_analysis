@@ -56,7 +56,7 @@ before_function_call(ADDRINT ip, ADDRINT addr)
 VOID
 after_function_call(VOID * function_name, const CONTEXT * ctxt, ADDRINT ip)
 {
-	DEBUGL(LOG("In after_function_call\n"));
+	DEBUGL(LOG("In after_function_call, ip = "+hexstr(ip)+"\n"));
 	string fstr((char*)function_name);
 	INT32 column, line;
 	string fileName;
@@ -84,7 +84,7 @@ after_function_call(VOID * function_name, const CONTEXT * ctxt, ADDRINT ip)
 		list<return_addr_record *> * ralist = stack_model->get_updated_links();
 		for (list<return_addr_record *>::iterator it = ralist->begin(); it != ralist->end(); it++) {
 			return_addr_record * rarec = *it;
-			DEBUGL(LOG("Found link updated after call in " + fstr));
+			DEBUGL(LOG("Found link updated after call in " + fstr+", timestamp = "+decstr(timestamp)+"\n"));
 			rarec->write(vaccs_fd);
 		}
 	}
@@ -104,11 +104,9 @@ monitor_function_calls(INS ins, VOID * fn, VOID * v)
 			INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)before_function_call,
 			               IARG_INST_PTR, IARG_ADDRINT, target, IARG_END);
 
-			IPOINT where = IPOINT_AFTER;
-			if (!INS_HasFallThrough(ins))
-				where = IPOINT_TAKEN_BRANCH;
-			INS_InsertPredicatedCall(ins, where, (AFUNPTR)after_function_call,
-			                         IARG_PTR, fn, IARG_CONTEXT, IARG_INST_PTR, IARG_END);
+			INS next_ins = INS_Next(ins);
+			INS_InsertCall(next_ins, IPOINT_BEFORE, (AFUNPTR)after_function_call,
+			               IARG_PTR, fn, IARG_CONTEXT, IARG_INST_PTR, IARG_END);
 		}
 	}
 }

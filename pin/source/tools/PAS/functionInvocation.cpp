@@ -23,11 +23,13 @@
 #include <tables/frame.h>
 #include <tables/deref.h>
 #include <util/memory_info.h>
+#include <util/vaccs_config.h>
 
 #include "memory_access.h"
 
 extern NATIVE_FD vaccs_stdout;
 extern runtime_stack * stack_model;
+extern vaccs_config *vcfg;
 memory_info memmap;
 
 function_invocation_transaction function_invocation_event;
@@ -73,6 +75,8 @@ functionInvocationBefore(void * function_name, const CONTEXT * ctxt,
     PIN_GetSourceLocation(ip, &column, &line, &fileName);
     PIN_UnlockClient();
 
+    if (line == 0 && vcfg->get_user_code_only())
+      return;
 
     vaccs_record_factory factory;
 
@@ -173,17 +177,20 @@ functionInvocationAfter(void * function_name, const CONTEXT * ctxt, ADDRINT ip)
         DEBUGL(LOG("No output found\n"));
     }
 
-    return_record * rrec = (return_record *) factory.make_vaccs_record(VACCS_RETURN);
-    rrec = rrec->add_event_num(timestamp++);
-    rrec->write(vaccs_fd);
-    delete rrec;
-
     INT32 column, line;
     string fileName;
 
     PIN_LockClient();
     PIN_GetSourceLocation(ip, &column, &line, &fileName);
     PIN_UnlockClient();
+
+    if (line == 0 && vcfg->get_user_code_only())
+      return;
+
+    return_record * rrec = (return_record *) factory.make_vaccs_record(VACCS_RETURN);
+    rrec = rrec->add_event_num(timestamp++);
+    rrec->write(vaccs_fd);
+    delete rrec;
 
 
     if (line != 0) {

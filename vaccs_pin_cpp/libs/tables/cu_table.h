@@ -2,7 +2,7 @@
  * cu_table.H
  *
  * This file contains the code for a compliation unit table and its associated
- * records 
+ * records
  *
  */
 #ifndef cu_table_h
@@ -211,7 +211,7 @@ public:
 	/**
 	 * Get the cu record for a particular compilation unit
 	 *
-	 * @param str the path to a compilation unit 
+	 * @param str the path to a compilation unit
 	 * @return a cu_record for the cu
 	 */
 	cu_record* get(string str) { return (cu_record*) symbol_table::get(str);}
@@ -268,6 +268,14 @@ public:
 	* @return the variable table for the function
 	*/
 	var_table* get_function_var_table(Generic ip);
+
+	/**
+	* Get the var record for a particular function
+	*
+	* @param ip an instruction address in the function
+	* @return the variable table record for the function
+	*/
+	var_record* get_function_var_record(Generic ip);
 
 	/**
  	 * Get the type record of a type given the dwarf index

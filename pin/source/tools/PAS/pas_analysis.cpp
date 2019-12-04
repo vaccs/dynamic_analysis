@@ -23,6 +23,8 @@
 #include "functionInvocation.h"
 #include "section_info.h"
 #include <util/general.h>
+#include <util/c_string_utils.h>
+#include <util/vaccs_config.h>
 #include <vaccs_read/vaccs_dw_reader.h>
 #include <io/vaccs_record_factory.h>
 #include <io/arch_record.h>
@@ -39,6 +41,9 @@ NATIVE_FD vaccs_fd = -1;
 int vaccs_stdout = -1;
 extern heap_map *heap_m;
 using namespace std;
+bool no_reg = false;
+vaccs_config *vcfg;
+
 
 
 /*call stack*/
@@ -189,6 +194,10 @@ void initialize(){
                 heap_m = new heap_map();
     set_sigsegv_handler();
 
+    char *vpas = getenv("VPAS");
+    char *config_file_name = nssave(2,vpas,"/vaccs.cfg");
+    vcfg = new vaccs_config(config_file_name);
+
 		//file output initialization
 
 }
@@ -281,26 +290,23 @@ void emit_initial_function_call() {
 
     DEBUGL(LOG("Call to function\n"));
     DEBUGL(LOG("\tEvent num: " + decstr(timestamp++) + "\n"));
-    DEBUGL(LOG("\tFunction name: __NOFUNCTION__\n"));
+    DEBUGL(LOG("\tFunction name: _start\n"));
     DEBUGL(LOG("\tFunc line: 0\n"));
     DEBUGL(LOG("\tInv line: 0\n"));
     DEBUGL(LOG("\tFunc file: __NOCSOURCE__\n"));
     DEBUGL(LOG("\tInv file: __NOCSOURCE\n"));
     DEBUGL(LOG("\tCallee address: 0x0\n\n"));
     func_inv_record *frec = (func_inv_record*)factory.make_vaccs_record(VACCS_FUNCTION_INV);
-    DEBUGL(LOG("frec = 0x" + hexstr(frec) + "\n"));
     frec = frec->add_event_num(timestamp++)
-      ->add_func_name(NOFUNCNAME)
+      ->add_func_name("_start")
       ->add_func_line_num(0)
       ->add_inv_line_num(0)
       ->add_c_func_file(NOCSOURCE)
       ->add_c_inv_file(NOCSOURCE)
       ->add_address(0);
 
-    DEBUGL(LOG("Built frec\n"));
     frec->write(vaccs_fd);
     delete frec;
-    DEBUGL(LOG("Wrote frec\n"));
 }
 
 int main(int argc, char *argv[])
@@ -317,6 +323,7 @@ int main(int argc, char *argv[])
     int i;
     for (i = 0; i < argc && strncmp(argv[i],"--",2); i++);
 
+    //DEBUGL(no_reg = true);
     PIN_InitSymbols();
     if( PIN_Init(argc,argv) ) {
         return Usage();
@@ -356,7 +363,8 @@ int main(int argc, char *argv[])
 
     PIN_AddFiniFunction(Fini, 0);
 
-    //emit_initial_function_call();
+    if (vcfg->get_user_code_only())
+      emit_initial_function_call();
 
     DEBUGL(LOG("Starting program\n"));
 

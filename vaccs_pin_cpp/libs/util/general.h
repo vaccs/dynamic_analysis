@@ -202,7 +202,7 @@ extern Generic text_base_address;
 extern Generic stack_base_address;
 extern Generic data_base_address;
 
-#define MEM_ADDR_ERROR(A) ("<Error: " + hexstr(A) + ">")
+#define MEM_ADDR_ERROR(A) "<SEGV>"
 
 #define NULL_STR "<NULL>"
 #define MEM_ADDR_STR(A) (A == 0 ? NULL_STR : hexstr(A))

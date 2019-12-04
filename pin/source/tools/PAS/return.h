@@ -8,8 +8,6 @@
 
 #ifndef RETURN_H_
 #define RETURN_H_
-VOID BeforeReturn(CONTEXT * ctxt);
-VOID AfterReturn( const CONTEXT * ctxt);
 VOID ReturnImage(IMG img, VOID *v);
 
 #endif /* RETURN_H_ */

@@ -49,6 +49,7 @@ string decl_file;           /* the name of the file in which this is defined */
 Generic decl_line;          /* the line of the file on which this is defined */
 Generic low_pc;             /* the lowest pc of a subroutine variable */
 Generic high_pc;            /* the highest pc of a subroutine variable */
+Generic start_pc;						/* the pc of the first executable line of a subroutine */
 Generic location;           /* an expression storing how to compute the address of the variable*/
 bool first_access;          /* is this the first access of this variable in the program? */
 
@@ -210,6 +211,18 @@ var_record* add_high_pc(Generic high_pc)
 }
 
 /**
+ * Add the starting pc to the object using a builder pattern
+ *
+ * @param start_pc the starting pc of this subprogram
+ * @return the object
+ */
+var_record* add_start_pc(Generic start_pc)
+{
+	this->start_pc = start_pc;
+	return this;
+}
+
+/**
  * Add the location  to the object using a builder pattern
  *
  * @param location an expression for computing the address of a variable
@@ -328,6 +341,16 @@ Generic get_low_pc()
 Generic get_high_pc()
 {
 	return high_pc;
+}
+
+/**
+ * Get the pc of the first executable line in a subprogram
+ *
+ * @return the starting pc
+ */
+Generic get_start_pc()
+{
+	return start_pc;
 }
 
 /**

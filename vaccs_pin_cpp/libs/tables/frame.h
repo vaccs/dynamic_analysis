@@ -179,6 +179,8 @@ public:
      */
     frame(); /* constructor */
 
+    void dump();
+
     /* ====================  ACCESSORS     ======================================= */
 
     /**
@@ -200,7 +202,7 @@ public:
     CONTEXT *
     get_context()
     {
-        return ctx;
+        return ctxp;
     }
 
     bool
@@ -227,6 +229,18 @@ public:
         return return_addr;
     }
 
+    Generic
+    get_start_pc()
+    {
+        return start_pc;
+    }
+
+    Generic
+    get_high_pc()
+    {
+        return high_pc;
+    }
+
     /* ====================  BUILDERS      ======================================= */
 
     /**
@@ -249,9 +263,10 @@ public:
      * @return the instance of this object
      */
     frame *
-    add_context(CONTEXT * ctx)
+    add_context(const CONTEXT * ctx)
     {
-        this->ctx = ctx;
+        ctxp = &(this->ctx);
+        PIN_SaveContext(ctx,ctxp);
         return this;
     }
 
@@ -266,6 +281,21 @@ public:
     add_return_addr(Generic addr)
     {
         this->return_addr = addr;
+        return this;
+    }
+
+    frame *
+    add_start_pc(Generic addr)
+    {
+        this->start_pc = addr + text_base_address;
+        return this;
+    }
+
+
+    frame *
+    add_high_pc(Generic addr)
+    {
+        this->high_pc = addr + text_base_address;
         return this;
     }
 
@@ -315,17 +345,31 @@ public:
     frame *
     add_links(CONTEXT * ctx);
 
+    /**
+     * Determine if an instruction pointer address is in the section of user
+     * code for a particular active function call
+     *
+     * @param ip an instruction pointer
+     * @return true if the ip is within the bounds of the function instruction
+     *              space and after the stack setup code
+     */
+    bool
+    in_user_code(Generic ip);
+
     /* ====================  DATA MEMBERS  ======================================= */
 protected:
 
 private:
 
     string name;   /* the name of the function */
-    CONTEXT * ctx; /* a pin context at the time this frame is put on the stack */
+    CONTEXT *ctxp;
+    CONTEXT ctx; /* a pin context at the time this frame is put on the stack */
     bool is_first_access;
     bool is_before_stack_setup;
     Generic old_rbp;
     Generic return_addr;
+    Generic start_pc;
+    Generic high_pc;
 }; /* -----  end of class frame  ----- */
 
 class var_upd_record {
@@ -546,7 +590,10 @@ public:
     frame *
     top()
     {
-        return this->front();
+        if (!this->empty())
+          return this->front();
+        else
+          return NULL;
     }
 
     /**

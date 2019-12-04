@@ -39,6 +39,7 @@ var_record::var_record() : symbol_table_record(VAR_RECORD)
 	type = void_type;
 	location = 0;
 	first_access = true;
+	start_pc = 0;
 }
 
 /**
@@ -200,9 +201,10 @@ Generic var_record::deref_if_by_reference(type_record *trec, Generic var_addr)
 {
 
 	if (is_param && (trec->get_is_array() || trec->get_is_pointer())) {
-		DEBUGL(LOG("Dereferencing a parameter to get the address"));
+		DEBUGL(LOG("Dereferencing a parameter to get the address\n"));
 		bool is_segv;
 		Generic addr = dereference_memory((Generic*)var_addr, &is_segv);
+		DEBUGL(LOG("var_addr = "+hexstr(var_addr)+", *var_addr = "+hexstr(addr)));
 		return addr;
 	} else
 		return var_addr;

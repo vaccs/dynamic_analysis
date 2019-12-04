@@ -13,37 +13,23 @@
 #include <io/vaccs_record_factory.h>
 #include <io/vaccs_record.h>
 #include <io/return_record.h>
+#include <util/vaccs_config.h>
 
+extern vaccs_config *vcfg;
 
 using namespace std;
 
-VOID AfterReturn( const CONTEXT * ctxt)
+VOID BeforeHalt(ADDRINT ip,CONTEXT * ctxt)
 {
-	ADDRINT AfterSP = (ADDRINT)PIN_GetContextReg( ctxt, REG_STACK_PTR );
+  INT32 column, line;
+  string fileName;
 
-	DEBUGL(LOG("After return : SP = " + hexstr(AfterSP) + "\n"));
-	return_event.sp_after = AfterSP;
-	store_return_transaction(return_event);
-	//ou_return<<","<< hex<< return_event.sp_after<< "," <<dec << return_event.id_function_invocation_happened_in<<endl;
-	//pas_output<<"|"<< hex<< return_event.sp_after<< "|" <<dec << return_event.id_function_invocation_happened_in<<endl;
-}
+  PIN_LockClient();
+  PIN_GetSourceLocation(ip, &column, &line, &fileName);
+  PIN_UnlockClient();	vaccs_record_factory factory;
 
-VOID BeforeReturn(CONTEXT * ctxt)
-{
-	ADDRINT BeforeSP = (ADDRINT)PIN_GetContextReg( ctxt, REG_STACK_PTR);
-
-	DEBUGL(LOG("Before return: SP = " + hexstr(BeforeSP) + "\n"));
-	return_event.id = timestamp++;
-	return_event.id_function_invocation_happened_in = invocation_stack.top().id;
-	return_event.sp_before = BeforeSP;
-	get_registers(ctxt, return_event.id);
-	//ou_return << dec << return_event.id  <<","<<hex << return_event.sp_before;
-	//pas_output<<"pin_return~!~" << dec << return_event.id  <<"|"<<hex << return_event.sp_before;
-}
-
-VOID BeforeHalt(CONTEXT * ctxt)
-{
-	vaccs_record_factory factory;
+	if (line == 0 && vcfg->get_user_code_only())
+		return;
 
 	return_record *rrec = (return_record*)factory.make_vaccs_record(VACCS_RETURN);
 
@@ -76,17 +62,10 @@ VOID ReturnImage(IMG img, VOID *v)
 
 			// Examine each instruction in the routine.
 			for ( INS ins = RTN_InsHead(rtn); INS_Valid(ins); ins = INS_Next(ins) ) {
-				if ( INS_IsRet(ins) ) {
-					// instrument each return instruction.
-					// IPOINT_TAKEN_BRANCH always occurs last.
-					INS_InsertCall( ins, IPOINT_BEFORE, (AFUNPTR)BeforeReturn,
-					                IARG_CONTEXT, IARG_END);
-					INS_InsertCall( ins, IPOINT_TAKEN_BRANCH, (AFUNPTR)AfterReturn,
-					                IARG_CONTEXT, IARG_END);
-				} else if (INS_IsHalt(ins)) {
+				if (INS_IsHalt(ins)) {
 					DEBUGL(LOG("Instrument a halt instruction\n"));
 					INS_InsertCall( ins, IPOINT_BEFORE, (AFUNPTR)BeforeHalt,
-					                IARG_CONTEXT, IARG_END);
+					                IARG_INST_PTR, IARG_CONTEXT, IARG_END);
 				}
 			}
 			// Close the RTN.

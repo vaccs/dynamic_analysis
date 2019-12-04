@@ -13,8 +13,11 @@
 #include <iostream>
 #include <string>
 #include <util/general.h>
+#include <util/vaccs_config.h>
 #include <io/vaccs_record_factory.h>
 #include <io/asm_record.h>
+
+extern vaccs_config *vcfg;
 
 /* ===================================================================== */
 /* Write a vaccs asm record for each line of assembly                    */
@@ -35,6 +38,8 @@ EmitAssembly(INS ins, VOID * v)
 
     string asmFileName;
     if (line == 0) { // there is no corresponding source
+        if (vcfg->get_user_code_only())
+          return;
         fileName    = NOCSOURCE;
         asmFileName = NOASMSOURCE;
     } else {
@@ -76,9 +81,9 @@ InstructionInstrumentation(IMG img, VOID * v)
             RTN_Open(rtn);
             for (INS ins = RTN_InsHead(rtn); INS_Valid(ins); ins = INS_Next(ins)) {
                 EmitAssembly(ins, 0);
-                MonitorRegisterInstruction(ins, 0);
                 MemoryAccessInstruction(ins, 0);
                 monitor_function_calls(ins, (VOID *) RTN_Name(rtn).c_str(), 0);
+                MonitorRegisterInstruction(ins, 0);
                 StackOperationInstruction(ins, 0);
             }
             RTN_Close(rtn);

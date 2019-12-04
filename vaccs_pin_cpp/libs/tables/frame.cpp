@@ -18,6 +18,7 @@
  */
 
 #include <sstream>
+#include <iostream>
 #include <tables/frame.h>
 #include <tables/deref.h>
 #include <io/vaccs_record_factory.h>
@@ -40,6 +41,7 @@ frame_record::frame_record()
  */
 frame::frame() : list()
 {
+    name = "<nonameyet>";
     is_first_access       = true;
     is_before_stack_setup = true;
 }
@@ -63,6 +65,26 @@ frame::add_links(CONTEXT * ctx)
     return this;
 }
 
+/**
+ * Determine if an instruction pointer address is in the section of user
+ * code for a particular active function call
+ *
+ * @param ip an instruction pointer
+ * @return true if the ip is within the bounds of the function instruction
+ *              space and after the stack setup code
+ */
+bool
+frame::in_user_code(Generic ip) {
+  return (ip >= start_pc ) && (ip < high_pc);
+}
+
+void frame::dump() {
+
+  cout << "Function name = " << name << "\n";
+  cout << "Start pc = " << hexstr(start_pc) << "\n";
+  cout << "High pc = " << hexstr(high_pc) << "\n";
+
+}
 /**
  * Create an instance of a runtime stack and initialize the instance variables
  */
@@ -117,9 +139,12 @@ runtime_stack::push(string name, Generic ip, CONTEXT * ctx)
 {
     DEBUGL(LOG("In runtime_stack::push for routine " + name + "\n"));
 
-    var_table * vtab = cutab->get_function_var_table(ip);
+    var_record *fvrec = cutab->get_function_var_record(ip);
+    var_table *vtab = fvrec->get_local_var_table();
 
-    frame * new_frame = (new frame())->add_name(name)->add_context(ctx);
+    frame * new_frame = (new frame())->add_name(name)->add_context(ctx)
+                                     ->add_start_pc(fvrec->get_start_pc())
+                                     ->add_high_pc(fvrec->get_high_pc());
 
     if (vtab != NULL) {
         for (map<string, symbol_table_record *>::iterator it = vtab->begin(); it != vtab->end(); it++) {
@@ -130,24 +155,15 @@ runtime_stack::push(string name, Generic ip, CONTEXT * ctx)
 
                 type_table * ttab  = cutab->get_type_table(vrec->get_type());
                 type_record * trec = ttab->get(vrec->get_type());
-                Generic addr       = vrec->deref_if_by_reference(trec, vrec->get_base_address(ctx));
-                string value       = vrec->read_value(ttab, trec, addr, ctx);
+                string value       = "<NOVALUE>";
 
                 frame_record * frec = (new frame_record())->add_variable_name(it->first)
                   ->add_var_record(vrec)
                   ->add_value(value);
 
                 if (trec->get_is_pointer()) {
-                    bool is_segv;
-                    Generic ptr_addr = dereference_memory((Generic *) addr, &is_segv);
 
-                    string points_to_value;
-                    if (!is_segv) {
-                        type_record * btrec = ttab->get(*trec->get_base_type());
-                        points_to_value = vrec->read_value(ttab, btrec, ptr_addr, ctx);
-                    } else {
-                        points_to_value = MEM_ADDR_ERROR(addr);
-                    }
+                    string points_to_value = "<NOVALUE>";
 
                     frec->add_points_to_value(points_to_value);
                 }
@@ -618,7 +634,7 @@ runtime_stack::get_updated_points_to_from_struct(
 list<var_upd_record *> *
 runtime_stack::get_updated_points_to_frame(cu_table * cutab, frame * fr)
 {
-    DEBUGL(LOG("In runtime_stack::get_updated_points_to_frame\n"));
+    DEBUGL(LOG("In runtime_stack::get_updated_points_to_frame "+ fr->get_name() + "\n"));
 
     list<var_upd_record *> * vlist = new list<var_upd_record *>();
     for (list<frame_record *>::iterator it2 = fr->begin(); it2 != fr->end(); it2++) {
@@ -642,7 +658,8 @@ runtime_stack::get_updated_points_to_frame(cu_table * cutab, frame * fr)
         Generic addr      = vrec->get_var_address(fr->get_context(), trec);
 
         if (trec->get_is_pointer()) {
-            DEBUGL(LOG("Found a pointer variable: " + frec->get_variable_name() + ",addr = " + hexstr(addr) + "\n"));
+            DEBUGL(LOG("Found a pointer variable: " + frec->get_variable_name() + ", addr = "
+            + hexstr(addr) + " base_addr = " + hexstr(base_addr) + "\n"));
 
             bool is_segv;
 
@@ -661,14 +678,24 @@ runtime_stack::get_updated_points_to_frame(cu_table * cutab, frame * fr)
                       + " does not point to a valid memory location\n"));
                     new_value = MEM_ADDR_ERROR(ptr_addr);
                 } else {
-                    DEBUGL(LOG(
-                          "Pointer variable: " + frec->get_variable_name() + " points to a valid memory location "
-                          + hexstr(ptr_addr) + "\n"));
                     type_table * ttab = cutab->get_type_table(vrec->get_type());
 
-                    type_record * btrec = cutab->get_type_record(*trec->get_base_type());
+                    if (!trec->get_name()->compare("char*")) { // character strings are handled specially
+                      DEBUGL(LOG(
+                          "Pointer variable: " + frec->get_variable_name() + " points to a valid memory location "
+                          + hexstr(ptr_addr) + " of type " + *trec->get_name() + "\n"));
 
-                    new_value = vrec->read_value(ttab, btrec, ptr_addr, fr->get_context());
+                      new_value = vrec->read_value(ttab, trec, ptr_addr, fr->get_context());
+                    } else {
+                      type_record * btrec = cutab->get_type_record(*trec->get_base_type());
+
+                      DEBUGL(LOG(
+                            "Pointer variable: " + frec->get_variable_name() + " points to a valid memory location "
+                            + hexstr(ptr_addr) + " of type " + *btrec->get_name() + "\n"));
+
+                      new_value = vrec->read_value(ttab, btrec, ptr_addr, fr->get_context());
+                    }
+
                 }
             }
 

@@ -77,6 +77,9 @@ void vaccs_dw_reader::read_var_record() {
 	Generic high_pc;
 	size =  sizeof(high_pc); assert(OS_ReadFD(fd,&size,&high_pc).generic_err == OS_RETURN_CODE_NO_ERROR);
 
+	Generic start_pc;
+	size =  sizeof(start_pc); assert(OS_ReadFD(fd,&size,&start_pc).generic_err == OS_RETURN_CODE_NO_ERROR);
+
 	Generic location;
 	size =  sizeof(location); assert(OS_ReadFD(fd,&size,&location).generic_err == OS_RETURN_CODE_NO_ERROR);
 
@@ -100,6 +103,7 @@ void vaccs_dw_reader::read_var_record() {
 			->add_decl_line(decl_line)
 			->add_low_pc(low_pc)
 			->add_high_pc(high_pc)
+			->add_start_pc(start_pc)
 			->add_type(stype)
 			->add_location(location);
 

@@ -16,8 +16,10 @@
 #include <list>
 #include <tables/frame.h>
 #include <util/general.h>
+#include <util/vaccs_config.h>
 
 extern runtime_stack * stack_model;
+extern vaccs_config *vcfg;
 
 /* EXTERN(void, write_variable_access_record,
  *     (string variable, Generic event_num, INT32 line, string fileName,
@@ -32,8 +34,6 @@ AfterRegMod(ADDRINT ip, CONTEXT * ctxt, REG reg, UINT32 opcode)
     INT32 line;
     string fileName;
 
-    DEBUGL(LOG("Enter AfterRegMod"));
-
     static map<string, Generic> old_values;
 
     PIN_LockClient();
@@ -42,31 +42,21 @@ AfterRegMod(ADDRINT ip, CONTEXT * ctxt, REG reg, UINT32 opcode)
 
     string reg_name = REG_StringShort(reg);
     if (line == 0) {
+        if (vcfg->get_user_code_only())
+          return;
         fileName = NOCSOURCE;
     } else {
         frame * fr = stack_model->top();
-        if (fr->get_is_before_stack_setup()) {
-            if ((fr->size() == 0 && reg == REG_GBP && OPCODE_StringShort(opcode) == "MOV") ||
-              (reg == REG_STACK_PTR && OPCODE_StringShort(opcode) == "SUB"))
+        if (fr != NULL && fr->get_is_before_stack_setup()) {
+            DEBUGL(LOG("Before stack setup, line =  " + decstr(line)+"\n"));
+            if (fr->in_user_code(ip))
             {
                 // if we've just entered a function and the stack and frame pointer are now
                 // set up, set the initial context properly
-                // initially is_before_stack_setup is false. When the first SUB operation is performed on
-                // the stack pointer, that operation sets up space for local variables and now the context is
-                // set up. If there are no local variables, then the stack is set when the frame pointer is
-                // updated.
-                //
-                // The function entry code looks like
-                //
-                //    push %rbp
-                //    mov %rsp, %rbp
-                //    sub $0x.., $rsp
-                //
-                // If there are no local variables, we look for second instruction, otherwise
-                // the third
-
 
                 fr->clear_is_before_stack_setup();
+                DEBUGL(LOG("After stack setup, start_pc = "+hexstr(fr->get_start_pc())
+                            + " ip = " + hexstr(ip) + "\n"));
                 fr->add_context(ctxt);
 
                 // Just entering a function
@@ -88,8 +78,9 @@ AfterRegMod(ADDRINT ip, CONTEXT * ctxt, REG reg, UINT32 opcode)
 
                 list<return_addr_record *> * ralist = stack_model->get_updated_links();
                 if (ralist->empty()) {
-                    DEBUGL(LOG("There were no link updates"));
+                    DEBUGL(LOG("There were no link updates\n"));
                 } else {
+                    DEBUGL(LOG("There were link updates after register update, timestamp = "+decstr(timestamp)+"\n"));
                     for (list<return_addr_record *>::iterator it = ralist->begin(); it != ralist->end(); it++) {
                         return_addr_record * rarec = *it;
                         rarec->write(vaccs_fd);
@@ -99,6 +90,10 @@ AfterRegMod(ADDRINT ip, CONTEXT * ctxt, REG reg, UINT32 opcode)
             }
         }
     }
+
+
+    if (!vcfg->get_monitor_registers())
+      return;
 
     vaccs_record_factory factory;
     PIN_REGISTER value;

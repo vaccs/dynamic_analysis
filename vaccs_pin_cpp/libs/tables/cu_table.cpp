@@ -374,6 +374,21 @@ var_table *cu_table::get_function_var_table(Generic ip) {
 }
 
 /**
+* Get the var record for a particular function
+*
+* @param ip the instruction pointer for a function
+* @return the variable table for the function
+*/
+var_record* cu_table::get_function_var_record(Generic ip) {
+
+  pair<string,var_record*> vpair = translate_address_to_function(ip);
+  if (vpair != default_var_pair)
+    return vpair.second;
+  else
+    return NULL;
+}
+
+/**
  * Get the type record of a type given the dwarf index
  *
  * @param dw_index a dwarf index for a type (string)
@@ -426,7 +441,7 @@ type_table *cu_table::get_type_table(string dw_index) {
 void cu_table::create_member_tables() {
 
    // Create member tables for local variables
-   
+
    for (map<string,symbol_table_record*>::iterator it = begin(); it != end(); it++) {
 
       cu_record* curec = (cu_record*)it->second;
@@ -444,11 +459,11 @@ void cu_table::write(NATIVE_FD fd) {
 
    DEBUGL(LOG("Begin cu_table::write()\n"));
 
-   USIZE dsize =  sizeof(id); 
+   USIZE dsize =  sizeof(id);
    assert(OS_WriteFD(fd,&id,&dsize).generic_err == OS_RETURN_CODE_NO_ERROR);
 
    size_t num = size();
-   dsize = sizeof(size_t); 
+   dsize = sizeof(size_t);
    assert(OS_WriteFD(fd,&num,&dsize).generic_err == OS_RETURN_CODE_NO_ERROR);
 
    for (map<string,symbol_table_record*>::iterator it = begin(); it != end(); it++) {
