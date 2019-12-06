@@ -56,8 +56,8 @@ before_function_call(ADDRINT ip, ADDRINT addr)
 VOID
 after_function_call(VOID * function_name, const CONTEXT * ctxt, ADDRINT ip)
 {
-	DEBUGL(LOG("In after_function_call, ip = "+hexstr(ip)+"\n"));
 	string fstr((char*)function_name);
+	DEBUGL(LOG("In after_function_call in "+fstr+", ip = "+hexstr(ip)+"\n"));
 	INT32 column, line;
 	string fileName;
 
@@ -87,6 +87,7 @@ after_function_call(VOID * function_name, const CONTEXT * ctxt, ADDRINT ip)
 			DEBUGL(LOG("Found link updated after call in " + fstr+", timestamp = "+decstr(timestamp)+"\n"));
 			rarec->write(vaccs_fd);
 		}
+		timestamp++;
 	}
 }
 

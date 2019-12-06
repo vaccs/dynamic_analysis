@@ -250,7 +250,7 @@ Generic var_record::get_var_address(const CONTEXT *ctxt, type_record *trec)
 
 	Generic var_addr = get_base_address(ctxt);
 
-	var_addr = deref_if_by_reference(trec, var_addr);
+	//var_addr = deref_if_by_reference(trec, var_addr);
 
 	return var_addr;
 }

@@ -470,7 +470,7 @@ runtime_stack::get_updated_variables_from_frame(cu_table * cutab, frame * fr,
         // If addr = 0, make sure we check this variable (all variables are checked in this case)
         //
 
-        Generic base_addr;
+        Generic base_addr = 0;
 
         if (addr == 0 || fr->get_is_first_access() || vrec->is_at_address(fr->get_context(), addr, trec)) {
             if (trec->get_is_struct()) {
@@ -479,12 +479,12 @@ runtime_stack::get_updated_variables_from_frame(cu_table * cutab, frame * fr,
                 vlist->splice(vlist->end(), *get_updated_array_elements(cutab, fr, frec, vrec, addr, ""));
             } else {
                 if (addr == 0 || fr->get_is_first_access()) {
-                    addr      = vrec->get_var_address(fr->get_context(), trec);
+       //             addr      = vrec->get_var_address(fr->get_context(), trec);
                     base_addr = vrec->get_base_address(fr->get_context());
                 } else {
                     base_addr = addr;
                 }
-                string new_value = vrec->read_value(ttab, trec, addr, fr->get_context());
+                string new_value = vrec->read_value(ttab, trec, base_addr, fr->get_context());
 
                 DEBUGL(LOG("New value = " + new_value + ", old value = " + frec->get_value() + "\n"));
 
