@@ -601,7 +601,7 @@ string var_record::read_value(type_table *ttab, type_record *trec, Generic addr,
 
 		// handle a char* as a string
 
-		if (!btrec->get_is_pointer() && !btrec->get_is_array() && bt_name.find("char") != string::npos) {
+		if (!btrec->get_is_pointer() && !btrec->get_is_array() && !bt_name.compare("char")) {
 			DEBUGL(LOG("Found a character string\n"));
 			value = read_c_string(addr,trec);
 		} else if (btrec->get_is_struct())

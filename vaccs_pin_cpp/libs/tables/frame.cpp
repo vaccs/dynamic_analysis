@@ -654,12 +654,11 @@ runtime_stack::get_updated_points_to_frame(cu_table * cutab, frame * fr)
         // Not what that stack location points to
         //
 
-        Generic base_addr = vrec->get_base_address(fr->get_context());
         Generic addr      = vrec->get_var_address(fr->get_context(), trec);
 
         if (trec->get_is_pointer()) {
             DEBUGL(LOG("Found a pointer variable: " + frec->get_variable_name() + ", addr = "
-            + hexstr(addr) + " base_addr = " + hexstr(base_addr) + "\n"));
+            + hexstr(addr) + "\n"));
 
             bool is_segv;
 
@@ -680,7 +679,7 @@ runtime_stack::get_updated_points_to_frame(cu_table * cutab, frame * fr)
                 } else {
                     type_table * ttab = cutab->get_type_table(vrec->get_type());
 
-                    if (!trec->get_name()->compare("char*")) { // character strings are handled specially
+                    if (!trec->get_name()->compare("char*") || !trec->get_name()->compare("char**")) { // character strings are handled specially
                       DEBUGL(LOG(
                           "Pointer variable: " + frec->get_variable_name() + " points to a valid memory location "
                           + hexstr(ptr_addr) + " of type " + *trec->get_name() + "\n"));
@@ -711,7 +710,7 @@ runtime_stack::get_updated_points_to_frame(cu_table * cutab, frame * fr)
                   ->add_var_record(frec->get_var_record())
                   ->add_type_name(*trec->get_name())
                   ->add_context(fr->get_context())
-                  ->add_address(base_addr)
+                  ->add_address(addr)
                   ->add_scope(cutab->get_scope(vrec))
                   ->add_value(frec->get_value())
                   ->add_update_is_points_to()
