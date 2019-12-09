@@ -12,4 +12,6 @@
 config.txt
 *.vaccs
 *.vaccs.ascii
+*.dw
+*.obj
 out
