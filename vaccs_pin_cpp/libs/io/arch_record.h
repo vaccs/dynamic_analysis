@@ -22,6 +22,8 @@
 class arch_record : public vaccs_record {
     private:
       vaccs_arch_t arch_type;         /* The type of architecture */
+      vaccs_address_t heap_start;     /* the start address of the heap */
+      vaccs_address_t heap_end;       /* the end address of the heap */
 
     public:
       arch_record();
@@ -32,8 +34,23 @@ class arch_record : public vaccs_record {
        *
        * @return the object
        */
-      arch_record *add_arch_type(vaccs_arch_t atype) 
+      arch_record *add_arch_type(vaccs_arch_t atype)
          { this->arch_type = atype;  return this; }
+
+      /**
+       * Add the heap start using a builder pattern
+       *
+       * @return the object
+       */
+      arch_record *add_heap_start(vaccs_address_t hstart)
+         { this->heap_start = hstart;  return this; }
+      /**
+       * Add the heap end using a builder pattern
+       *
+       * @return the object
+       */
+      arch_record *add_heap_end(vaccs_address_t hend)
+         { this->heap_end = hend;  return this; }
 
       /**
        * Get the architecture type
@@ -41,6 +58,20 @@ class arch_record : public vaccs_record {
        * @return the architecture type
        */
       vaccs_arch_t get_arch_type() { return arch_type; }
+
+      /**
+       * Get the heap start
+       *
+       * @return the heap start
+       */
+      vaccs_address_t get_heap_start() { return heap_start; }
+
+      /**
+       * Get the heap end
+       *
+       * @return the heap end
+       */
+      vaccs_address_t get_heap_end() { return heap_end; }
 
       /**
        * Write an analysis record to a file

@@ -27,7 +27,7 @@ private:
   bool process_config_setting(string config_var,int config_setting);
 
 public:
-    vaccs_config(char* config_file_name);
+    vaccs_config(string config_file_name);
     ~vaccs_config();
 
     bool get_monitor_registers() { return monitor_registers; }

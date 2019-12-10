@@ -31,9 +31,9 @@ bool vaccs_config::process_config_setting(string config_var,int config_setting) 
   return true;
 }
 
-vaccs_config::vaccs_config(char *config_file_name)  {
+vaccs_config::vaccs_config(string config_file_name)  {
 
-  ifstream config_file(config_file_name);
+  ifstream config_file(config_file_name.c_str());
   string line;
 
   while (getline(config_file,line)) {
@@ -47,6 +47,7 @@ vaccs_config::vaccs_config(char *config_file_name)  {
       break;
     }
   }
+  config_file.close();
 }
 
 vaccs_config::~vaccs_config() {}

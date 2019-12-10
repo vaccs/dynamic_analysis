@@ -44,9 +44,12 @@ bool close_vaccs_file(void) {
 
 TEST_CASE("Test arch_record i386","[arch_record]") {
 	vaccs_record_factory factory;
-	arch_record *rec = ((arch_record*)factory.make_vaccs_record(VACCS_ARCH))->add_arch_type(VACCS_ARCH_I386);
+	arch_record *rec = ((arch_record*)factory.make_vaccs_record(VACCS_ARCH))->add_arch_type(VACCS_ARCH_I386)
+           ->add_heap_start(0x56000)->add_heap_end(0x755fff);
 	REQUIRE( rec != nullptr );
 	REQUIRE(rec->get_arch_type() == VACCS_ARCH_I386);
+        REQUIRE(rec->get_heap_start() == 0x560000);
+        REQUIRE(rec->get_heap_end() == 0x755fff);
 
 	REQUIRE(open_vaccs_file("input/i386.vaccs","w"));
 
@@ -67,6 +70,8 @@ TEST_CASE("Test arch_record i386","[arch_record]") {
 	REQUIRE(rec2 != nullptr);
 	REQUIRE(rec2->get_id() == VACCS_ARCH);
 	REQUIRE(rec2->get_arch_type() == rec->get_arch_type());
+        REQUIRE(rec2->get_heap_start() == rec->get_heap_start());
+        REQUIRE(rec2->get_heap_end() == rec->get_heap_end());
 
 	delete rec;
 	delete rec2;
@@ -76,8 +81,11 @@ TEST_CASE("Test arch_record i386","[arch_record]") {
 TEST_CASE("Test arch_record x86_64","[arch_record") {
 	vaccs_record_factory factory;
 	arch_record *rec = ((arch_record*)factory.make_vaccs_record(VACCS_ARCH))->add_arch_type(VACCS_ARCH_X86_64);
+           ->add_heap_start(0x555555756000)->add_heap_end(0x5555d5755fff);
 	REQUIRE( rec != nullptr );
 	REQUIRE(rec->get_arch_type() == VACCS_ARCH_X86_64);
+        REQUIRE(rec->get_heap_start() == 0x5555557560000);
+        REQUIRE(rec->get_heap_end() == 0x5555d5755fff);
 
 	REQUIRE(open_vaccs_file("input/x86_64.vaccs","w"));
 
@@ -97,6 +105,8 @@ TEST_CASE("Test arch_record x86_64","[arch_record") {
 	REQUIRE(rec2 != nullptr);
 	REQUIRE(rec2->get_id() == VACCS_ARCH);
 	REQUIRE(rec2->get_arch_type() == rec->get_arch_type());
+        REQUIRE(rec2->get_heap_start() == rec->get_heap_start());
+        REQUIRE(rec2->get_heap_end() == rec->get_heap_end());
 
 	delete rec;
 	delete rec2;

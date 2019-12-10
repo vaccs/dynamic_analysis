@@ -464,7 +464,7 @@ runtime_stack::get_updated_variables_from_frame(cu_table * cutab, frame * fr,
         if (trec->get_is_array())
             DEBUGL(LOG("This variable is an array\n"));
         else if (trec->get_is_struct())
-            DEBUGL(LOG("This variable is an struct\n"));
+            DEBUGL(LOG("This variable is a struct\n"));
 
         //
         // If addr = 0, make sure we check this variable (all variables are checked in this case)
@@ -484,7 +484,18 @@ runtime_stack::get_updated_variables_from_frame(cu_table * cutab, frame * fr,
                 } else {
                     base_addr = addr;
                 }
-                string new_value = vrec->read_value(ttab, trec, base_addr, fr->get_context());
+                string new_value;
+                if (trec->get_is_pointer()) {
+                    bool is_segv;
+
+                    Generic ptr_addr = dereference_memory((Generic *) base_addr, &is_segv);
+
+                    if (is_segv)
+                      new_value = MEM_ADDR_ERROR(base_addr);
+                    else
+                      new_value = MEM_ADDR_STR(ptr_addr);
+                  } else 
+                    new_value = vrec->read_value(ttab, trec, base_addr, fr->get_context());
 
                 DEBUGL(LOG("New value = " + new_value + ", old value = " + frec->get_value() + "\n"));
 

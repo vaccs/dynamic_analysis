@@ -1,3 +1,4 @@
+#include <stdlib.h>
 int  gy;
 char *gdata;
 void f(int parm)

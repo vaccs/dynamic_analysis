@@ -21,8 +21,10 @@
 #define heap_h
 
 #include    <map>
+#include  <string>
 
 #include <util/general.h>
+#include <io/vaccs_record.h>
 
 using namespace std;
 /*
@@ -35,80 +37,95 @@ using namespace std;
  */
 class heap_block
 {
-   public:
-      /* ====================  LIFECYCLE     ======================================= */
-      heap_block ();                             /* constructor */
+public:
+	/* ====================  LIFECYCLE     ======================================= */
+	heap_block();                                /* constructor */
 
-      virtual ~heap_block() { if (value != NULL) delete value; }
-      /* ====================  BUILDERS      ======================================= */
+	virtual ~heap_block() {
+		if (value != NULL) delete value;
+	}
+	/* ====================  BUILDERS      ======================================= */
 
-      heap_block *add_start_address(Generic sa) {
-         start_address = sa;
-         return this;
-      }
+	heap_block *add_start_address(Generic sa)
+	{
+		start_address = sa;
+		return this;
+	}
 
-      heap_block *add_size(Generic s) {
-         size = s;
-         return this;
-      }
+	heap_block *add_size(Generic s)
+	{
+		size = s;
+		return this;
+	}
 
-      heap_block *add_event_id(unsigned int i) {
-         event_id = i;
-         return this;
-      }
+	heap_block *add_event_id(unsigned int i)
+	{
+		event_id = i;
+		return this;
+	}
 
-      heap_block *add_value() {
-         value = new char[size];
-         memcpy(value,(const void *)start_address,size);
-         return this;
-      }
+	heap_block *add_value()
+	{
+		value = new char[size];
+		memcpy(value, (const void*)start_address, size);
+		return this;
+	}
 
-      void update_value() {
-         memcpy(value,(const void *)start_address,size);
-      }
+	void update_value()
+	{
+		memcpy(value, (const void*)start_address, size);
+	}
 
-      /* ====================  ACCESSORS     ======================================= */
+	/* ====================  ACCESSORS     ======================================= */
 
-      Generic get_start_address() {
-         return start_address;
-      }
+	Generic get_start_address()
+	{
+		return start_address;
+	}
 
-      Generic get_size() {
-         return size;
-      }
+	Generic get_size()
+	{
+		return size;
+	}
 
-      unsigned int get_event_id() {
-         return event_id;
-      }
+	unsigned int get_event_id()
+	{
+		return event_id;
+	}
 
-      char *get_value() {
-         char *buff = new char[size];
-         memcpy(buff,value,size);
-         return buff;
-      }
+	char *get_value()
+	{
+		char *buff = new char[size];
 
-      /* ====================  OPERATORS     ======================================= */
+		memcpy(buff, value, size);
+		return buff;
+	}
 
-      bool contains_address(Generic address) {
-         return address >= start_address && address < start_address+size;
-      }
+	/* ====================  OPERATORS     ======================================= */
 
-      bool address_earlier(Generic address) {
-	 return address < start_address;
-      }
+	bool contains_address(Generic address)
+	{
+		return address >= start_address && address < start_address + size;
+	}
 
-      bool mem_has_new_value() {
-         return memcmp(value,(const void *)start_address,get_size()) != 0;
-      }
+	bool address_earlier(Generic address)
+	{
+		return address < start_address;
+	}
 
-      /* ====================  DATA MEMBERS  ======================================= */
-   protected:
+	bool mem_has_new_value()
+	{
+		return memcmp(value, (const void*)start_address, get_size()) != 0;
+	}
 
-   private:
-      Generic start_address;
-      Generic size;
-      char *value;
-      unsigned int event_id;
+	/* ====================  DATA MEMBERS  ======================================= */
+protected:
+
+private:
+	Generic start_address;
+	Generic size;
+	char *value;
+	unsigned int event_id;
 
 }; /* -----  end of class heap_block  ----- */
 
@@ -119,35 +136,47 @@ class heap_block
  *  Description:  This class represents all of the blocks allocated on the heap.
  * =====================================================================================
  */
-class heap_map : public map<Generic, heap_block *>
+class heap_map: public map < Generic, heap_block * >
 {
-   public:
-      /* ====================  LIFECYCLE     ======================================= */
-      heap_map ();                             /* constructor */
+public:
+	/* ====================  LIFECYCLE     ======================================= */
+	heap_map(string map_file_name);                                /* constructor */
 
-      virtual ~heap_map() {}
+	virtual ~heap_map() {
+	}
 
-      /* ====================  BUILDERS     ======================================= */
+	/* ====================  BUILDERS     ======================================= */
 
-      heap_map *add_block(heap_block *block) {
-	 insert(pair<Generic,heap_block*>(block->get_start_address(),block));
-         return this;
-      }
+	heap_map *add_block(heap_block *block)
+	{
+		insert(pair < Generic, heap_block * > (block->get_start_address(), block));
+		return this;
+	}
 
-      /* ====================  ACCESSORS     ======================================= */
+	/* ====================  ACCESSORS     ======================================= */
 
-      /* ====================  MUTATORS      ======================================= */
+  vaccs_address_t get_heap_start() {
+    return heap_start;
+  }
 
-      /* ====================  OPERATORS     ======================================= */
+  vaccs_address_t get_heap_end() {
+    return heap_end;
+  }
 
-      heap_block *find_block(Generic address);
-      heap_block *delete_block(Generic address);
+	/* ====================  MUTATORS      ======================================= */
+
+	/* ====================  OPERATORS     ======================================= */
+
+	heap_block *find_block(Generic address);
+	heap_block *delete_block(Generic address);
 
 
-      /* ====================  DATA MEMBERS  ======================================= */
-   protected:
+	/* ====================  DATA MEMBERS  ======================================= */
+protected:
 
-   private:
+private:
+  vaccs_address_t heap_start;
+  vaccs_address_t heap_end;
 
 }; /* -----  end of class heap_map  ----- */
 

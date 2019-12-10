@@ -32,6 +32,10 @@ void arch_record::write(NATIVE_FD fp) {
 	assert(OS_WriteFD(fp,&id,&size).generic_err == OS_RETURN_CODE_NO_ERROR);
 	size = sizeof(arch_type);
 	assert(OS_WriteFD(fp, &arch_type, &size).generic_err == OS_RETURN_CODE_NO_ERROR);
+	size = sizeof(heap_start);
+	assert(OS_WriteFD(fp, &heap_start, &size).generic_err == OS_RETURN_CODE_NO_ERROR);
+	size = sizeof(heap_end);
+	assert(OS_WriteFD(fp, &heap_end, &size).generic_err == OS_RETURN_CODE_NO_ERROR);
 }
 
 /**
@@ -43,6 +47,7 @@ void arch_record::write(NATIVE_FD fp) {
 vaccs_record *arch_record::read(NATIVE_FD fp) {
 	USIZE size = sizeof(vaccs_arch_t);
 	assert(OS_ReadFD(fp, &size, &arch_type).generic_err == OS_RETURN_CODE_NO_ERROR);
+	assert(OS_ReadFD(fp, &heap_start, &arch_type).generic_err == OS_RETURN_CODE_NO_ERROR);
+	assert(OS_ReadFD(fp, &heap_end, &arch_type).generic_err == OS_RETURN_CODE_NO_ERROR);
 	return this;
 }
-
