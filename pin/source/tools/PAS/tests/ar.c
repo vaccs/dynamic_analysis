@@ -18,6 +18,8 @@ int simpleFunction(int iparm, char *cpparm1, char *cpparm2, char *cpparm3){
    lbuf3=malloc(8);
    strcpy(lbuf3,cpparm3);
 
+   free(lbuf3);
+
    return(0);
 }
 int main(int argc, char **argv){

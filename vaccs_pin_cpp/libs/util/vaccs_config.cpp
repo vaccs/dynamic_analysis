@@ -25,6 +25,11 @@ bool vaccs_config::process_config_setting(string config_var,int config_setting) 
       user_code_only = true;
     else
       user_code_only = false;
+  else if (config_var == MALLOC_FREE)
+    if (config_setting)
+      malloc_free = true;
+    else
+      malloc_free = false;
   else
     return false;
 

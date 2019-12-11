@@ -20,9 +20,11 @@ private:
 
   string const USER_CODE_ONLY = "user_code_only";
   string const MONITOR_REGISTERS = "monitor_registers";
+  string const MALLOC_FREE = "malloc_free";
 
   bool user_code_only = true;
   bool monitor_registers = false;
+  bool malloc_free = false;
 
   bool process_config_setting(string config_var,int config_setting);
 

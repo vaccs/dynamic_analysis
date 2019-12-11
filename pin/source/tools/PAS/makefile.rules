@@ -98,6 +98,8 @@ VACCS_OBJS = util/general.o \
    io/var_access_record.o \
    io/vaccs_record_factory.o \
    io/vaccs_record_reader.o \
+   io/malloc_record.o \
+   io/free_record.o \
    tables/cu_table.o \
    tables/deref.o \
    tables/frame.o \

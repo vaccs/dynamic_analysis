@@ -27,6 +27,8 @@
 #include <io/sd_unlock_record.h>
 #include <io/section_record.h>
 #include <io/var_access_record.h>
+#include <io/malloc_record.h>
+#include <io/free_record.h>
 
 /**
  * Create a vaccs_record object
@@ -89,6 +91,12 @@ vaccs_record *vaccs_record_factory::make_vaccs_record(vaccs_id_t id) {
 	case VACCS_VAR_ACCESS:
 		rec = new var_access_record();
 		break;
+	case VACCS_MALLOC:
+		rec = new malloc_record();
+		break;
+	case VACCS_FREE:
+		rec = new free_record();
+		break;
 	default:
 		break;
 	}
@@ -97,4 +105,3 @@ vaccs_record *vaccs_record_factory::make_vaccs_record(vaccs_id_t id) {
 
 	return rec;
 }
-

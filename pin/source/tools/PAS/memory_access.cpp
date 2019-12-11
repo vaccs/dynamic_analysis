@@ -183,7 +183,7 @@ MemoryAccessInstruction(INS ins, VOID * v)
                 IARG_PTR, assembly_code,
                 IARG_INST_PTR,
                 IARG_MEMORYOP_EA,
-                memOp, IARG_CONTEXT,
+                memOp, IARG_CONST_CONTEXT,
                 IARG_MEMORYWRITE_SIZE,
                 IARG_END);
         }

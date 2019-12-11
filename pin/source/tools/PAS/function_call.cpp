@@ -24,7 +24,7 @@
 extern NATIVE_FD vaccs_stdout;
 extern runtime_stack * stack_model;
 
-bool func_is_user_code;
+static list<bool> func_is_user_code;
 
 VOID
 before_function_call(ADDRINT ip, ADDRINT addr)
@@ -38,7 +38,6 @@ before_function_call(ADDRINT ip, ADDRINT addr)
 	PIN_GetSourceLocation(ip, &column, &line, &fileName);
 	PIN_UnlockClient();
 
-	func_is_user_code = false;
 	if (line != 0) {
 		PIN_LockClient();
 		PIN_GetSourceLocation(addr, &column, &line, &fileName);
@@ -47,11 +46,12 @@ before_function_call(ADDRINT ip, ADDRINT addr)
 
 
 		if (line != 0) {
-			func_is_user_code = true;
+			func_is_user_code.push_front(true);
 			DEBUGL(LOG("Function call to user code: line = " + decstr(line) + "\n"));
-		}
-	}
-}
+		} else
+			func_is_user_code.push_front(false);
+	} else
+		func_is_user_code.push_front(false);}
 
 VOID
 after_function_call(VOID * function_name, const CONTEXT * ctxt, ADDRINT ip)
@@ -65,7 +65,7 @@ after_function_call(VOID * function_name, const CONTEXT * ctxt, ADDRINT ip)
 	PIN_GetSourceLocation(ip, &column, &line, &fileName);
 	PIN_UnlockClient();
 
-	if (line != 0 && !func_is_user_code) {
+	if (line != 0 && !func_is_user_code.front()) {
 
 		// after a function call to a non local function, check for updated variables
 
@@ -89,6 +89,7 @@ after_function_call(VOID * function_name, const CONTEXT * ctxt, ADDRINT ip)
 		}
 		timestamp++;
 	}
+	func_is_user_code.pop_front();
 }
 
 // Is called for every instruction and instruments all of them that have
@@ -107,7 +108,7 @@ monitor_function_calls(INS ins, VOID * fn, VOID * v)
 
 			INS next_ins = INS_Next(ins);
 			INS_InsertCall(next_ins, IPOINT_BEFORE, (AFUNPTR)after_function_call,
-			               IARG_PTR, fn, IARG_CONTEXT, IARG_INST_PTR, IARG_END);
+			               IARG_PTR, fn, IARG_CONST_CONTEXT, IARG_INST_PTR, IARG_END);
 		}
 	}
 }

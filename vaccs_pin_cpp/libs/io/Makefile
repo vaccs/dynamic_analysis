@@ -5,7 +5,8 @@ SRCS		= vaccs_record.cpp arch_record.cpp vaccs_record_factory.cpp \
 			  register_record.cpp return_record.cpp return_addr_record.cpp \
 			  sd_clear_record.cpp sd_czero_record.cpp sd_lock_record.cpp \
 			  sd_set_record.cpp sd_unlock_record.cpp section_record.cpp \
-			  var_access_record.cpp cmd_line_record.cpp
+			  var_access_record.cpp cmd_line_record.cpp malloc_record.cpp \
+				free_record.cpp
 
 CC = gcc
 CXX = g++
@@ -50,15 +51,15 @@ target: $(OBJS)
 clean:
 		$(RM) $(OBJS) $(DEPENDS)
 
-.c.o: 
+.c.o:
 		echo "Compiling" $<
 		$(CC) -c $(CFLAGS) $<
 
-.cpp.o: 
+.cpp.o:
 		echo "Compiling" $<
 		$(CXX) -c $(CXXFLAGS) $<
 
-.d_%: %.c 
+.d_%: %.c
 	echo  "Updating dependences for" $< "..."
 	$(CPP) -MM -MT '$(basename $<).o' $(INCLUDES) -MF $@ $<
 

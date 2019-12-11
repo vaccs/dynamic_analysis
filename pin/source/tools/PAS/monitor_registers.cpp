@@ -157,7 +157,7 @@ MonitorRegisterInstruction(INS ins, VOID * v)
             REG reg       = INS_RegW(ins, i);
             UINT32 opcode = INS_Opcode(ins);
             INS_InsertPredicatedCall(ins, where, (AFUNPTR) AfterRegMod,
-              IARG_INST_PTR, IARG_CONTEXT, IARG_UINT32,
+              IARG_INST_PTR, IARG_CONST_CONTEXT, IARG_UINT32,
               reg, IARG_UINT32, opcode, IARG_END);
         }
     }

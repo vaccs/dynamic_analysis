@@ -54,17 +54,17 @@ VOID StackOperationInstruction(INS ins, VOID *v){
 	if(op.compare(push)==0){
 		INS_InsertCall( ins, IPOINT_BEFORE, (AFUNPTR)beforePush,
 									IARG_PTR,assembly_code,
-		                            IARG_CONTEXT, IARG_END);
+		                            IARG_CONST_CONTEXT, IARG_END);
 		INS_InsertCall( ins, IPOINT_AFTER, (AFUNPTR)afterPush,
-				                            IARG_CONTEXT,
+				                            IARG_CONST_CONTEXT,
 				                         IARG_END);
 	}
 	if(op.compare(pop)==0){
 		INS_InsertCall( ins, IPOINT_BEFORE, (AFUNPTR)beforePop,
 											IARG_PTR,assembly_code,
-				                            IARG_CONTEXT, IARG_END);
+				                            IARG_CONST_CONTEXT, IARG_END);
 				INS_InsertCall( ins, IPOINT_AFTER, (AFUNPTR)afterPop,
-						                            IARG_CONTEXT, IARG_END);
+						                            IARG_CONST_CONTEXT, IARG_END);
 	}
 
 
@@ -92,4 +92,3 @@ VOID afterPop(const CONTEXT * ctxt){
    //ou_pop<<hex<<pop_event.sp_after<<","<<dec<<pop_event.id_function_invocation_happened_in<<endl;
 
 }
-

@@ -218,10 +218,10 @@ FunctionInvocatioinImage(IMG img, VOID * v)
 
                 DEBUGL(LOG("Instrumenting call to routine " + RTN_Name(rtn) + "\n"));
                 RTN_InsertCall(rtn, IPOINT_BEFORE, (AFUNPTR) functionInvocationBefore,
-                  IARG_PTR, RTN_Name(rtn).c_str(), IARG_CONTEXT, IARG_INST_PTR,
+                  IARG_PTR, RTN_Name(rtn).c_str(), IARG_CONST_CONTEXT, IARG_INST_PTR,
                   IARG_END);
                 RTN_InsertCall(rtn, IPOINT_AFTER, (AFUNPTR) functionInvocationAfter,
-                  IARG_PTR, RTN_Name(rtn).c_str(), IARG_CONTEXT, IARG_INST_PTR,
+                  IARG_PTR, RTN_Name(rtn).c_str(), IARG_CONST_CONTEXT, IARG_INST_PTR,
                   IARG_END);
                 RTN_Close(rtn);
             }

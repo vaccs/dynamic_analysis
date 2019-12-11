@@ -65,7 +65,7 @@ VOID ReturnImage(IMG img, VOID *v)
 				if (INS_IsHalt(ins)) {
 					DEBUGL(LOG("Instrument a halt instruction\n"));
 					INS_InsertCall( ins, IPOINT_BEFORE, (AFUNPTR)BeforeHalt,
-					                IARG_INST_PTR, IARG_CONTEXT, IARG_END);
+					                IARG_INST_PTR, IARG_CONST_CONTEXT, IARG_END);
 				}
 			}
 			// Close the RTN.
