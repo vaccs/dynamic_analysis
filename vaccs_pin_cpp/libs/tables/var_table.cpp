@@ -684,16 +684,21 @@ void var_record::debug_emit(string var)
  */
 void var_record::create_member_tables(type_table *ttab)
 {
-	DEBUGL(LOG("var_table::create_member_tables\n"));
-	if (is_subprog)
+	DEBUGL(LOG("var_record::create_member_tables\n"));
+	if (is_subprog) {
+		DEBUGL(LOG("This is a function. Recurring on the function's var_table\n"));
 		local_var_table->create_member_tables(ttab);
+	}
 	else {
+		DEBUGL(LOG("This a variable. Checking the type.\n"));
 		type_record *trec = ttab->get(type);
 		if (trec->get_is_struct()) {
 			symbol_table_factory factory;
 			DEBUGL(LOG("Propagate local info from address " + hexstr(location) + "\n"));
 			member_table = (var_table*)factory.copy_symbol_table(VAR_TABLE, trec->get_member_table());
 			member_table->propagate_local_info(ttab, location, is_local, is_param);
+		} else {
+			DEBUGL(LOG("This type is not a struct.\n"));
 		}
 	}
 }
@@ -755,6 +760,7 @@ void var_table::create_member_tables(type_table *ttab)
 	     it != end();
 	     it++ ) {
 		var_record *vrec = (var_record*)it->second;
+		DEBUGL(LOG("Create member table for "+it->first+"\n"));
 		vrec->create_member_tables(ttab);
 	}
 

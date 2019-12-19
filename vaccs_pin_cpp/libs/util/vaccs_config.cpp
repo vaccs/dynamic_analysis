@@ -30,6 +30,11 @@ bool vaccs_config::process_config_setting(string config_var,int config_setting) 
       malloc_free = true;
     else
       malloc_free = false;
+  else if (config_var == SECURE_DATA)
+    if (config_setting)
+      secure_data = true;
+    else
+      secure_data = false;
   else
     return false;
 

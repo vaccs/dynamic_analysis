@@ -12,8 +12,8 @@
 
 extern heap_map *heap_m;
 
-VOID free_before(CHAR * name, ADDRINT size, ADDRINT ret_ip);
-VOID malloc_before(CHAR * name, ADDRINT size, ADDRINT ret_ip);
+VOID free_before(CHAR * name, ADDRINT size);
+VOID malloc_before(CHAR * name, ADDRINT size);
 VOID malloc_after(ADDRINT ret);
 VOID MallocAndFreeImage(IMG img, VOID *v);
 

@@ -43,7 +43,6 @@ functionInvocationBefore(void * function_name, const CONTEXT * ctxt,
 
     DEBUGL(string sname(name));
     DEBUGL(LOG("Function Call to " + sname + "\n"));
-    // if(strcmp(name,".plt")==0) return;
     if (strcmp(name, "frame_dummy") == 0) return;
 
     int id = timestamp++;
@@ -158,24 +157,24 @@ functionInvocationAfter(void * function_name, const CONTEXT * ctxt, ADDRINT ip)
 
     DEBUGL(LOG("Enter functionInvocationAfter\n"));
 
-    char stdout_buff[VACCS_MAX_OUTPUT_LENGTH + 1];
-
-    USIZE num_bytes = VACCS_MAX_OUTPUT_LENGTH;
-
-    OS_ReadFD(vaccs_stdout, &num_bytes, stdout_buff);
-
-    if (num_bytes != 0) {
-        stdout_buff[num_bytes] = '\0';
-        string bufs(stdout_buff);
-        DEBUGL(LOG("output has been found: " + bufs + "\n"));
-        output_record * orec = (output_record *) factory.make_vaccs_record(VACCS_OUTPUT);
-        orec = orec->add_event_num(timestamp++)
-          ->add_output(stdout_buff);
-        orec->write(vaccs_fd);
-        delete orec;
-    } else {
-        DEBUGL(LOG("No output found\n"));
-    }
+    // char stdout_buff[VACCS_MAX_OUTPUT_LENGTH + 1];
+    //
+    // USIZE num_bytes = VACCS_MAX_OUTPUT_LENGTH;
+    //
+    // OS_ReadFD(vaccs_stdout, &num_bytes, stdout_buff);
+    //
+    // if (num_bytes != 0) {
+    //     stdout_buff[num_bytes] = '\0';
+    //     string bufs(stdout_buff);
+    //     DEBUGL(LOG("output has been found: " + bufs + "\n"));
+    //     output_record * orec = (output_record *) factory.make_vaccs_record(VACCS_OUTPUT);
+    //     orec = orec->add_event_num(timestamp++)
+    //       ->add_output(stdout_buff);
+    //     orec->write(vaccs_fd);
+    //     delete orec;
+    // } else {
+    //     DEBUGL(LOG("No output found\n"));
+    // }
 
     INT32 column, line;
     string fileName;
@@ -194,6 +193,7 @@ functionInvocationAfter(void * function_name, const CONTEXT * ctxt, ADDRINT ip)
 
 
     if (line != 0) {
+        DEBUGL(LOG("Popping stack model in function " + fstr + "\n"));
         stack_model->pop();
         timestamp++;
     }

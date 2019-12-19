@@ -25,6 +25,7 @@ extern NATIVE_FD vaccs_stdout;
 extern runtime_stack * stack_model;
 
 static list<bool> func_is_user_code;
+list<ADDRINT> call_inst_ip;
 
 VOID
 before_function_call(ADDRINT ip, ADDRINT addr)
@@ -38,6 +39,7 @@ before_function_call(ADDRINT ip, ADDRINT addr)
 	PIN_GetSourceLocation(ip, &column, &line, &fileName);
 	PIN_UnlockClient();
 
+	call_inst_ip.push_front(ip);
 	if (line != 0) {
 		PIN_LockClient();
 		PIN_GetSourceLocation(addr, &column, &line, &fileName);
@@ -90,6 +92,7 @@ after_function_call(VOID * function_name, const CONTEXT * ctxt, ADDRINT ip)
 		timestamp++;
 	}
 	func_is_user_code.pop_front();
+	call_inst_ip.pop_front();
 }
 
 // Is called for every instruction and instruments all of them that have

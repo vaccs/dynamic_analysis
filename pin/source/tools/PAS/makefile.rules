@@ -128,6 +128,6 @@ test: $(OBJDIR) $(TOOL_ROOTS:%=%.test)
 $(TOOLS): $(OBJDIR)pas_analysis.o $(OBJDIR)return.o $(PIN_LIBNAMES)
 
 
-$(OBJDIR)pas_analysis$(PINTOOL_SUFFIX):  $(OBJDIR)return$(OBJ_SUFFIX) $(OBJDIR)global$(OBJ_SUFFIX) $(OBJDIR)malloc_free$(OBJ_SUFFIX) $(OBJDIR)InstructionInstrumentation$(OBJ_SUFFIX) $(OBJDIR)functionInvocation$(OBJ_SUFFIX) $(OBJDIR)memory_access$(OBJ_SUFFIX) $(OBJDIR)stack_operation$(OBJ_SUFFIX) $(OBJDIR)database_access_api$(OBJ_SUFFIX) $(OBJDIR)monitor_registers$(OBJ_SUFFIX) $(OBJDIR)function_call$(OBJ_SUFFIX) $(OBJDIR)section_info$(OBJ_SUFFIX)
+$(OBJDIR)pas_analysis$(PINTOOL_SUFFIX):  $(OBJDIR)return$(OBJ_SUFFIX) $(OBJDIR)global$(OBJ_SUFFIX) $(OBJDIR)malloc_free$(OBJ_SUFFIX) $(OBJDIR)InstructionInstrumentation$(OBJ_SUFFIX) $(OBJDIR)functionInvocation$(OBJ_SUFFIX) $(OBJDIR)memory_access$(OBJ_SUFFIX) $(OBJDIR)stack_operation$(OBJ_SUFFIX) $(OBJDIR)database_access_api$(OBJ_SUFFIX) $(OBJDIR)monitor_registers$(OBJ_SUFFIX) $(OBJDIR)function_call$(OBJ_SUFFIX) $(OBJDIR)section_info$(OBJ_SUFFIX) $(OBJDIR)sd$(OBJ_SUFFIX)
 #make -C $(VACCS_DIR)
 	$(LINKER) $(TOOL_LDFLAGS_NOOPT) $(LINK_EXE)$@ $(^:%.h=) $(VOBJS) $(TOOL_LPATHS) $(TOOL_LIBS)
