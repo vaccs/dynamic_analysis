@@ -19,6 +19,7 @@
 #include "return.h"
 #include "malloc_free.h"
 #include "sd.h"
+#include "setuid.h"
 #include "InstructionInstrumentation.h"
 #include "global.h"
 #include "functionInvocation.h"
@@ -387,6 +388,7 @@ int main(int argc, char *argv[])
 
 	IMG_AddInstrumentFunction(MallocAndFreeImage, 0);
 	IMG_AddInstrumentFunction(SecureDataImage, 0);
+	IMG_AddInstrumentFunction(SetUIDImage, 0);
 
 	PIN_AddFiniFunction(Fini, 0);
 
