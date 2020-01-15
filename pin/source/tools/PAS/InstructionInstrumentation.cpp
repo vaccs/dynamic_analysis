@@ -8,7 +8,6 @@
 #include "memory_access.h"
 #include "monitor_registers.h"
 #include "function_call.h"
-#include "stack_operation.h"
 #include "sd.h"
 #include "global.h"
 #include <iostream>
@@ -85,7 +84,6 @@ InstructionInstrumentation(IMG img, VOID * v)
                 MemoryAccessInstruction(ins, 0);
                 monitor_function_calls(ins, (VOID *) RTN_Name(rtn).c_str(), 0);
                 MonitorRegisterInstruction(ins, 0);
-                StackOperationInstruction(ins, 0);
                 vaccs_sd_clear_set_instrument_inst(ins,0);
             }
             RTN_Close(rtn);

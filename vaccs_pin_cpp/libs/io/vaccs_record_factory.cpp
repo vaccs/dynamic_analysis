@@ -29,6 +29,10 @@
 #include <io/var_access_record.h>
 #include <io/malloc_record.h>
 #include <io/free_record.h>
+#include <io/file_open_record.h>
+#include <io/file_close_record.h>
+#include <io/file_read_record.h>
+#include <io/file_write_record.h>
 
 /**
  * Create a vaccs_record object
@@ -96,6 +100,18 @@ vaccs_record *vaccs_record_factory::make_vaccs_record(vaccs_id_t id) {
 		break;
 	case VACCS_FREE:
 		rec = new free_record();
+		break;
+	case VACCS_FILE_OPEN:
+		rec = new file_open_record();
+		break;
+	case VACCS_FILE_CLOSE:
+		rec = new file_close_record();
+		break;
+	case VACCS_FILE_READ:
+		rec = new file_read_record();
+		break;
+	case VACCS_FILE_WRITE:
+		rec = new file_write_record();
 		break;
 	default:
 		break;

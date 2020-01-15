@@ -22,11 +22,13 @@ private:
   string const MONITOR_REGISTERS = "monitor_registers";
   string const MALLOC_FREE = "malloc_free";
   string const SECURE_DATA = "secure_data";
+  string const FILE_OPS = "file_ops";
 
   bool user_code_only = true;
   bool monitor_registers = false;
   bool malloc_free = false;
   bool secure_data = false;
+  bool file_ops = false;
 
   bool process_config_setting(string config_var,int config_setting);
 
@@ -38,6 +40,7 @@ public:
     bool get_user_code_only() { return user_code_only; }
     bool get_malloc_free() { return malloc_free; }
     bool get_secure_data() { return secure_data; }
+    bool get_file_ops() { return file_ops; }
 };
 
 

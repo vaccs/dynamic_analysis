@@ -1,7 +1,7 @@
 /**
  * symbol_table.H
  *
- * This file contains a "abstract class" for symbol tables. This should be the 
+ * This file contains a "abstract class" for symbol tables. This should be the
  * base class of any symbol table used so that they are all related to each
  * other. Specifically, all should be able to be put on a symbol table stack.
  *

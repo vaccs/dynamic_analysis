@@ -43,6 +43,10 @@
 #define VACCS_VAR_ACCESS 18         		/* A variable access event */
 #define VACCS_MALLOC 19									/* a call to malloc() */
 #define VACCS_FREE 20									/* a call to free() */
+#define VACCS_FILE_OPEN 21									/* a call to open() */
+#define VACCS_FILE_CLOSE 22									/* a call to close() */
+#define VACCS_FILE_READ 23									/* a call to read() */
+#define VACCS_FILE_WRITE 24									/* a call to write() */
 
 #define VACCS_MAX_RECORD_TYPE_ID USHRT_MAX  /* The maximum number of record type ids */
 

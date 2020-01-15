@@ -35,6 +35,11 @@ bool vaccs_config::process_config_setting(string config_var,int config_setting) 
       secure_data = true;
     else
       secure_data = false;
+  else if (config_var == FILE_OPS)
+    if (config_setting)
+      file_ops = true;
+    else
+      file_ops = false;
   else
     return false;
 

@@ -6,7 +6,8 @@ SRCS		= vaccs_record.cpp arch_record.cpp vaccs_record_factory.cpp \
 			  sd_clear_record.cpp sd_czero_record.cpp sd_lock_record.cpp \
 			  sd_set_record.cpp sd_unlock_record.cpp section_record.cpp \
 			  var_access_record.cpp cmd_line_record.cpp malloc_record.cpp \
-				free_record.cpp
+				free_record.cpp file_open_record.cpp file_close_record.cpp \
+				file_read_record.cpp file_write_record.cpp
 
 CC = gcc
 CXX = g++

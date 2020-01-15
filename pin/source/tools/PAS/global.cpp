@@ -22,19 +22,6 @@ bool Is_System_Image(IMG img){
 		return false;
 	}
 }
-void get_registers(const CONTEXT * ctxt,int id){
-	/***EAX,EBX,ECX,EDX,EBP,EIP***/
-	//ADDRINT EAX = (ADDRINT)PIN_GetContextReg( ctxt, REG_GAX);
-	//ADDRINT EBX = (ADDRINT)PIN_GetContextReg( ctxt, REG_GBX);
-	//ADDRINT ECX = (ADDRINT)PIN_GetContextReg( ctxt, REG_GCX);
-	//ADDRINT EDX = (ADDRINT)PIN_GetContextReg( ctxt, REG_GDX);
-	//ADDRINT EBP = (ADDRINT)PIN_GetContextReg( ctxt, REG_GBP);
-	//ADDRINT EIP = (ADDRINT)PIN_GetContextReg( ctxt, REG_INST_PTR);
-	//ADDRINT RBP = (ADDRINT)PIN_GetContextReg( ctxt, REG_GR_BASE);
-	//ou_register<<dec<<id<<","<<hex<<EAX<<","<<EBX<<","<<ECX<<","<<EDX<<","<<EBP
-			//<<","<<EIP<<","<<EBP<<std::endl;
-
-}
 
 ADDRINT read_memory_as_address(ADDRINT addr) {
    ADDRINT buf;
