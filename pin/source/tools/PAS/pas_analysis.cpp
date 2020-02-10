@@ -402,6 +402,7 @@ int main(int argc, char *argv[])
     emit_initial_function_call();
 
   DEBUGL(LOG("Starting program\n"));
+  vcfg->dump_vaccs_config();
 
   // Never returns
   PIN_StartProgram();

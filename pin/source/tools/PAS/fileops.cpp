@@ -74,12 +74,14 @@ VOID vaccs_monitor_open_after(INT32 fd)
 
   if (line != 0 && fd != -1) {
     DEBUGL(LOG("Call from line = " + decstr(line) + "\n"));
-    struct stat lstat_info, fstat_info;
     fd_record *fdr = last_file_op.front();
 
-    if (!lstat(fdr->get_path().c_str(), &lstat_info) && !fstat(fd, &fstat_info)) {
+    OS_FILE_ATTRIBUTES lattr;
+    OS_FILE_ATTRIBUTES fattr;
+    if ((OS_GetFileAttributes(fdr->get_path().c_str(), &lattr).generic_err == OS_RETURN_CODE_NO_ERROR) &&
+        (OS_GetFDAttributes(fd, &fattr).generic_err == OS_RETURN_CODE_NO_ERROR)) {
 
-      if (S_ISLNK(lstat_info.st_mode))
+      if (lattr & OS_FILE_ATTRIBUTES_SYMLINK)
         fdr->add_is_sym_link();
 
       fdtab.put((const long)fd, fdr);
@@ -212,7 +214,7 @@ VOID vaccs_monitor_fclose(VOID *fp)
 }
 
 VOID vaccs_monitor_read(INT32 fd)
-{ 
+{
   INT32 column;
   INT32 line;
   string file_name;
@@ -225,10 +227,10 @@ VOID vaccs_monitor_read(INT32 fd)
     fdtab.erase((const long)fd);
     vaccs_record_factory factory;
     file_read_record *fcrec = ((file_read_record*)factory.make_vaccs_record(VACCS_FILE_READ))
-                               ->add_event_num(timestamp++)
-                               ->add_c_line_num(line)
-                               ->add_c_file_name(file_name.c_str())
-                               ->add_file_descriptor(fd);
+                              ->add_event_num(timestamp++)
+                              ->add_c_line_num(line)
+                              ->add_c_file_name(file_name.c_str())
+                              ->add_file_descriptor(fd);
 
     fcrec->write(vaccs_fd);
     delete fcrec;
@@ -237,7 +239,7 @@ VOID vaccs_monitor_read(INT32 fd)
 }
 
 VOID vaccs_monitor_fread(VOID *fp)
-{ 
+{
   INT32 column;
   INT32 line;
   string file_name;
@@ -250,10 +252,10 @@ VOID vaccs_monitor_fread(VOID *fp)
     fdtab.erase((const long)fp);
     vaccs_record_factory factory;
     file_read_record *fcrec = ((file_read_record*)factory.make_vaccs_record(VACCS_FILE_READ))
-                               ->add_event_num(timestamp++)
-                               ->add_c_line_num(line)
-                               ->add_c_file_name(file_name.c_str())
-                               ->add_file_descriptor((long)fp);
+                              ->add_event_num(timestamp++)
+                              ->add_c_line_num(line)
+                              ->add_c_file_name(file_name.c_str())
+                              ->add_file_descriptor((long)fp);
 
     fcrec->write(vaccs_fd);
     delete fcrec;;
@@ -262,7 +264,7 @@ VOID vaccs_monitor_fread(VOID *fp)
 }
 
 VOID vaccs_monitor_write(INT32 fd)
-{ 
+{
   INT32 column;
   INT32 line;
   string file_name;
@@ -287,7 +289,7 @@ VOID vaccs_monitor_write(INT32 fd)
 }
 
 VOID vaccs_monitor_fwrite(VOID *fp)
-{ 
+{
   INT32 column;
   INT32 line;
   string file_name;
