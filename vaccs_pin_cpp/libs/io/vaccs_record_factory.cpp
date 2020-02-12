@@ -33,6 +33,7 @@
 #include <io/file_close_record.h>
 #include <io/file_read_record.h>
 #include <io/file_write_record.h>
+#include <io/line_change_record.h>
 
 /**
  * Create a vaccs_record object
@@ -40,84 +41,88 @@
  * @param id the type of analysis record
  * @return a pointer to vaccs_record object
  */
-vaccs_record *vaccs_record_factory::make_vaccs_record(vaccs_id_t id) {
-	vaccs_record *rec = NULL;
+vaccs_record *vaccs_record_factory::make_vaccs_record(vaccs_id_t id)
+{
+  vaccs_record *rec = NULL;
 
-	switch (id) {
-	case VACCS_ARCH:
-		rec = new arch_record();
-		break;
-	case VACCS_ASM:
-		rec = new asm_record();
-		break;
-	case VACCS_BINARY:
-		rec = new binary_record();
-		break;
-	case VACCS_CCODE:
-		rec = new ccode_record();
-		break;
-	case VACCS_CMD_LINE:
-		rec = new cmd_line_record();
-		break;
-	case VACCS_FUNCTION_INV:
-		rec = new func_inv_record();
-		break;
-	case VACCS_OUTPUT:
-		rec = new output_record();
-		break;
-	case VACCS_REGISTER:
-		rec = new register_record();
-		break;
-	case VACCS_RETURN:
-		rec = new return_record();
-		break;
-	case VACCS_RETURN_ADDR:
-		rec = new return_addr_record();
-		break;
-	case VACCS_SD_CLEAR:
-		rec = new sd_clear_record();
-		break;
-	case VACCS_SD_CZERO:
-		rec = new sd_czero_record();
-		break;
-	case VACCS_SD_LOCK:
-		rec = new sd_lock_record();
-		break;
-	case VACCS_SD_SET:
-		rec = new sd_set_record();
-		break;
-	case VACCS_SD_UNLOCK:
-		rec = new sd_unlock_record();
-		break;
-	case VACCS_SECTION:
-		rec = new section_record();
-		break;
-	case VACCS_VAR_ACCESS:
-		rec = new var_access_record();
-		break;
-	case VACCS_MALLOC:
-		rec = new malloc_record();
-		break;
-	case VACCS_FREE:
-		rec = new free_record();
-		break;
-	case VACCS_FILE_OPEN:
-		rec = new file_open_record();
-		break;
-	case VACCS_FILE_CLOSE:
-		rec = new file_close_record();
-		break;
-	case VACCS_FILE_READ:
-		rec = new file_read_record();
-		break;
-	case VACCS_FILE_WRITE:
-		rec = new file_write_record();
-		break;
-	default:
-		break;
-	}
+  switch (id) {
+  case VACCS_ARCH:
+    rec = new arch_record();
+    break;
+  case VACCS_ASM:
+    rec = new asm_record();
+    break;
+  case VACCS_BINARY:
+    rec = new binary_record();
+    break;
+  case VACCS_CCODE:
+    rec = new ccode_record();
+    break;
+  case VACCS_CMD_LINE:
+    rec = new cmd_line_record();
+    break;
+  case VACCS_FUNCTION_INV:
+    rec = new func_inv_record();
+    break;
+  case VACCS_OUTPUT:
+    rec = new output_record();
+    break;
+  case VACCS_REGISTER:
+    rec = new register_record();
+    break;
+  case VACCS_RETURN:
+    rec = new return_record();
+    break;
+  case VACCS_RETURN_ADDR:
+    rec = new return_addr_record();
+    break;
+  case VACCS_SD_CLEAR:
+    rec = new sd_clear_record();
+    break;
+  case VACCS_SD_CZERO:
+    rec = new sd_czero_record();
+    break;
+  case VACCS_SD_LOCK:
+    rec = new sd_lock_record();
+    break;
+  case VACCS_SD_SET:
+    rec = new sd_set_record();
+    break;
+  case VACCS_SD_UNLOCK:
+    rec = new sd_unlock_record();
+    break;
+  case VACCS_SECTION:
+    rec = new section_record();
+    break;
+  case VACCS_VAR_ACCESS:
+    rec = new var_access_record();
+    break;
+  case VACCS_MALLOC:
+    rec = new malloc_record();
+    break;
+  case VACCS_FREE:
+    rec = new free_record();
+    break;
+  case VACCS_FILE_OPEN:
+    rec = new file_open_record();
+    break;
+  case VACCS_FILE_CLOSE:
+    rec = new file_close_record();
+    break;
+  case VACCS_FILE_READ:
+    rec = new file_read_record();
+    break;
+  case VACCS_FILE_WRITE:
+    rec = new file_write_record();
+    break;
+  case VACCS_LINE_CHANGE:
+    rec = new line_change_record();
+    break;
+  default:
+    break;
+  }
 
-	assert(rec != NULL);
+  assert(rec != NULL);
 
-	return rec;
+  return rec;
 }

@@ -12,6 +12,7 @@
 #include <io/vaccs_record_factory.h>
 #include <io/vaccs_record.h>
 #include <io/register_record.h>
+#include <io/line_change_record.h>
 #include <map>
 #include <list>
 #include <tables/frame.h>
@@ -27,12 +28,16 @@ extern vaccs_config *vcfg;
 
 using namespace std;
 
+static int current_C_line_num = -1;
+static string current_C_file_name = "";
+
 VOID
 AfterRegMod(ADDRINT ip, CONTEXT * ctxt, REG reg, UINT32 opcode)
 {
   INT32 column;
   INT32 line;
   string fileName;
+  bool line_change = false;
 
   static map<string, Generic> old_values;
 
@@ -90,10 +95,30 @@ AfterRegMod(ADDRINT ip, CONTEXT * ctxt, REG reg, UINT32 opcode)
     }
   }
 
-  if (!vcfg->get_monitor_registers())
-    return;
+  /* record a line change if we are now at a new C line # */
 
   vaccs_record_factory factory;
+
+  if (line != 0 && (current_C_line_num  != line || current_C_file_name.compare(fileName) != 0)) {
+    line_change_record *lcrec = (line_change_record*)factory.make_vaccs_record(VACCS_LINE_CHANGE);
+    lcrec = lcrec->add_event_num(timestamp)
+            ->add_c_line_num(line)
+            ->add_c_file_name(fileName.c_str());
+
+    lcrec->write(vaccs_fd);
+    delete lcrec;
+
+    current_C_file_name = fileName;
+    current_C_line_num = line;
+    line_change = true;
+  }
+
+  if (!vcfg->get_monitor_registers()) {
+    if (line_change)
+      timestamp++;
+    return;
+  }
+
   PIN_REGISTER value;
   PIN_GetContextRegval(ctxt, reg, (UINT8*)&value);
   Generic regval;

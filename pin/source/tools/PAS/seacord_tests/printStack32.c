@@ -22,16 +22,16 @@ void func(int parm1, int parm2, int parm3){
   stackPtr=&parm3;
   printf("Address of parm3 is <%p>\n",stackPtr);
   printf("Value is <%d>\n",*stackPtr);
-  stackPtr--;
+  stackPtr++;
   printf("Address of parm2 is <%p>\n",stackPtr);
   printf("Value there is <%d>\n",*stackPtr);
-  stackPtr--;
+  stackPtr++;
   printf("Address of parm1 is <%p>\n",stackPtr);
   printf("Value there is <%d>\n",*stackPtr);
-  stackPtr--;
+  stackPtr++;
   printf("Return address at <%p>\n",stackPtr);returnPtr=stackPtr;
   printf("Value there is <%x>\n",(unsigned int)*stackPtr);
-  stackPtr--;
+  stackPtr++;
   
   /* Change the value of a local through an overflow */
   printf("firstlocal at %p\n",&firstLocal);

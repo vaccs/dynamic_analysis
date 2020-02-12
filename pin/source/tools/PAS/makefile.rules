@@ -85,6 +85,7 @@ VACCS_OBJS = util/general.o \
    io/ccode_record.o \
    io/cmd_line_record.o \
    io/func_inv_record.o \
+   io/line_change_record.o \
    io/output_record.o \
    io/register_record.o \
    io/return_record.o \
