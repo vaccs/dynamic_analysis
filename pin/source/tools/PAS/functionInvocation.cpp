@@ -6,7 +6,6 @@
  */
 #include "functionInvocation.h"
 #include "global.h"
-#include "database_access_api.h"
 #include <unistd.h>
 #include <iostream>
 #include <fstream>
@@ -32,7 +31,6 @@ extern runtime_stack * stack_model;
 extern vaccs_config *vcfg;
 memory_info memmap;
 
-function_invocation_transaction function_invocation_event;
 VOID
 functionInvocationBefore(void * function_name, const CONTEXT * ctxt,
   ADDRINT ip)
@@ -46,8 +44,6 @@ functionInvocationBefore(void * function_name, const CONTEXT * ctxt,
     if (strcmp(name, "frame_dummy") == 0) return;
 
     int id = timestamp++;
-    current_invocation_id = id;
-    get_registers(ctxt, id);
     ADDRINT EBP = (ADDRINT) PIN_GetContextReg(ctxt, REG_GBP);
     ADDRINT ESP = (ADDRINT) PIN_GetContextReg(ctxt, REG_STACK_PTR);
 
@@ -56,16 +52,6 @@ functionInvocationBefore(void * function_name, const CONTEXT * ctxt,
         DEBUGL(LOG("Stack Begin =" + hexstr(memmap.get_stack_begin())));
         DEBUGL(LOG("Stack End =" + hexstr(memmap.get_stack_end())));
     }
-
-    function_invocation_event.frame_pointer = EBP;
-    function_invocation_event.id = id;
-    store_function_invocation_transaction(function_invocation_event);
-    invocation_stack.push(function_invocation_event);
-    DEBUGL(LOG("after push stack size:" + decstr(invocation_stack.size()) + "\n"));
-    function_invocation_event.function_name = (char *) function_name;
-    DEBUGL(LOG("Invocation ID:" + decstr(current_invocation_id) + "function " + name
-      + " was called.\n Frame pointer was " + hexstr(EBP) + "\n"));
-
 
     INT32 column, line;
     string fileName;
@@ -107,7 +93,7 @@ functionInvocationBefore(void * function_name, const CONTEXT * ctxt,
     DEBUGL(LOG("\tInv file: " + inv_fileName + "\n"));
     DEBUGL(LOG("\tCallee stack address: " + hexstr(ESP) + "\n\n"));
     func_inv_record * frec = (func_inv_record *) factory.make_vaccs_record(VACCS_FUNCTION_INV);
-    frec = frec->add_event_num(timestamp++)
+    frec = frec->add_event_num(id)
       ->add_func_name(name)
       ->add_func_line_num(line)
       ->add_inv_line_num(inv_line)
@@ -146,12 +132,6 @@ functionInvocationAfter(void * function_name, const CONTEXT * ctxt, ADDRINT ip)
     //
     string fstr((char *) function_name);
 
-
-    invocation_stack.pop();
-
-    // char* name = (char*) function_name;
-    // ou_function_invocation<<"quit "<<name<<endl;
-    // ou_function_invocation<<"after pop stack size:"<<invocation_stack.size()<<endl;
 
     vaccs_record_factory factory;
 

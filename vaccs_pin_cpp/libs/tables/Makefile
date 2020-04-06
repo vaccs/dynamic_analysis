@@ -1,6 +1,6 @@
 # $Id: Makefile,v 1.7 1997/03/27 20:27:20 carr Exp $
 SRCS		= symbol_table.cpp cu_table.cpp type_table.cpp var_table.cpp \
-			symbol_table_factory.cpp frame.cpp deref.cpp heap.cpp
+			symbol_table_factory.cpp frame.cpp deref.cpp heap.cpp fd_table.cpp
 
 CC = gcc
 CXX = g++

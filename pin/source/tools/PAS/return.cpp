@@ -8,7 +8,6 @@
 #include <iostream>
 #include <fstream>
 #include "global.h"
-#include "database_access_api.h"
 #include <util/general.h>
 #include <io/vaccs_record_factory.h>
 #include <io/vaccs_record.h>

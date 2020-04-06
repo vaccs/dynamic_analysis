@@ -85,6 +85,7 @@ VACCS_OBJS = util/general.o \
    io/ccode_record.o \
    io/cmd_line_record.o \
    io/func_inv_record.o \
+   io/line_change_record.o \
    io/output_record.o \
    io/register_record.o \
    io/return_record.o \
@@ -100,8 +101,13 @@ VACCS_OBJS = util/general.o \
    io/vaccs_record_reader.o \
    io/malloc_record.o \
    io/free_record.o \
+   io/file_open_record.o \
+   io/file_close_record.o \
+   io/file_read_record.o \
+   io/file_write_record.o \
    tables/cu_table.o \
    tables/deref.o \
+   tables/fd_table.o \
    tables/frame.o \
    tables/heap.o \
    tables/symbol_table.o \
@@ -133,13 +139,12 @@ PASOBJS = $(OBJDIR)return$(OBJ_SUFFIX) \
           $(OBJDIR)InstructionInstrumentation$(OBJ_SUFFIX) \
           $(OBJDIR)functionInvocation$(OBJ_SUFFIX) \
           $(OBJDIR)memory_access$(OBJ_SUFFIX) \
-          $(OBJDIR)stack_operation$(OBJ_SUFFIX) \
-          $(OBJDIR)database_access_api$(OBJ_SUFFIX) \
           $(OBJDIR)monitor_registers$(OBJ_SUFFIX) \
           $(OBJDIR)function_call$(OBJ_SUFFIX) \
           $(OBJDIR)section_info$(OBJ_SUFFIX) \
           $(OBJDIR)sd$(OBJ_SUFFIX) \
-          $(OBJDIR)setuid$(OBJ_SUFFIX)
+          $(OBJDIR)setuid$(OBJ_SUFFIX) \
+          $(OBJDIR)fileops$(OBJ_SUFFIX)
 
 $(OBJDIR)pas_analysis$(PINTOOL_SUFFIX): $(PASOBJS)
 #make -C $(VACCS_DIR)

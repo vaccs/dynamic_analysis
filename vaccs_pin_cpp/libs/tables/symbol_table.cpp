@@ -4,12 +4,6 @@
  * This file contains the implementation of a general symbol table
  *
  */
-/**
- * symbol_table.cpp
- *
- * This file contains the implementation of a general symbol table
- *
- */
 
 #include <tables/symbol_table.h>
 
