@@ -204,6 +204,7 @@ void initialize()
   string vpas(getenv("VPAS"));
   string config_file_name = vpas + "/vaccs.cfg";
   vcfg = new vaccs_config(config_file_name);
+  DEBUGL(vcfg->dump_vaccs_config());
 
   pid_t pid = getpid();
   stringstream ss;
