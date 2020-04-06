@@ -1,20 +1,21 @@
 # $Id: Makefile,v 1.7 1997/03/27 20:27:20 carr Exp $
 SRCS		= vaccs_record.cpp arch_record.cpp vaccs_record_factory.cpp \
-			  vaccs_record_reader.cpp asm_record.cpp binary_record.cpp \
-			  ccode_record.cpp func_inv_record.cpp output_record.cpp \
-			  register_record.cpp return_record.cpp return_addr_record.cpp \
-			  sd_clear_record.cpp sd_czero_record.cpp sd_lock_record.cpp \
-			  sd_set_record.cpp sd_unlock_record.cpp section_record.cpp \
-			  var_access_record.cpp cmd_line_record.cpp malloc_record.cpp \
-				free_record.cpp file_open_record.cpp file_close_record.cpp \
-				file_read_record.cpp file_write_record.cpp line_change_record.cpp
+		  vaccs_record_reader.cpp asm_record.cpp binary_record.cpp \
+		  ccode_record.cpp func_inv_record.cpp output_record.cpp \
+		  register_record.cpp return_record.cpp return_addr_record.cpp \
+		  sd_clear_record.cpp sd_czero_record.cpp sd_lock_record.cpp \
+		  sd_set_record.cpp sd_unlock_record.cpp section_record.cpp \
+		  var_access_record.cpp cmd_line_record.cpp malloc_record.cpp \
+		  free_record.cpp file_open_record.cpp file_close_record.cpp \
+		  file_read_record.cpp file_write_record.cpp \
+		  line_change_record.cpp
 
 CC = gcc
 CXX = g++
 
 OBJS = $(addsuffix .o,$(basename $(SRCS)))
 
-PINDIR = /home/carr/vaccs/dynamic_analysis/pin
+PINDIR = ../../../pin
 ENV = -g
 
 INCLUDES=  \
@@ -29,12 +30,12 @@ CFLAGS	= $(INCLUDES) $(ENV) -fPIC
 CXXFLAGS	= $(INCLUDES) $(ENV) -Werror -Wall -Wno-unknown-pragmas \
 	 -D__PIN__=1 -DPIN_CRT=1 -fno-stack-protector -fno-exceptions -funwind-tables \
 	 -fasynchronous-unwind-tables -fno-rtti -DTARGET_IA32E -DHOST_IA32E -fPIC -DTARGET_LINUX \
-	 -fabi-version=2 -isystem /home/carr/vaccs/dynamic_analysis/pin/extras/stlport/include \
-	 -isystem /home/carr/vaccs/dynamic_analysis/pin/extras/libstdc++/include \
-	 -isystem /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include \
-	 -isystem /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/arch-x86_64 \
-	 -isystem /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/kernel/uapi \
-	 -isystem /home/carr/vaccs/dynamic_analysis/pin/extras/crt/include/kernel/uapi/asm-x86
+	 -fabi-version=2 -isystem $(PINDIR)/extras/stlport/include \
+	 -isystem $(PINDIR)/extras/libstdc++/include \
+	 -isystem $(PINDIR)/extras/crt/include \
+	 -isystem $(PINDIR)/extras/crt/include/arch-x86_64 \
+	 -isystem $(PINDIR)/extras/crt/include/kernel/uapi \
+	 -isystem $(PINDIR)/extras/crt/include/kernel/uapi/asm-x86
 
 RM = /bin/rm -f
 

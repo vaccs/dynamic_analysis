@@ -1,0 +1,8 @@
+*.so
+*.[oa]
+.d_*
+.*.swp
+*.o
+execs/dwread/dwread
+execs/dwwrite/dwwrite
+execs/test_dwread/dwread
