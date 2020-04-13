@@ -329,32 +329,6 @@ void emit_c_code(vaccs_dw_reader *vdr)
 
 }
 
-void emit_initial_function_call()
-{
-
-  vaccs_record_factory factory;
-
-  DEBUGL(LOG("Call to function\n"));
-  DEBUGL(LOG("\tEvent num: " + decstr(timestamp++) + "\n"));
-  DEBUGL(LOG("\tFunction name: _start\n"));
-  DEBUGL(LOG("\tFunc line: 0\n"));
-  DEBUGL(LOG("\tInv line: 0\n"));
-  DEBUGL(LOG("\tFunc file: __NOCSOURCE__\n"));
-  DEBUGL(LOG("\tInv file: __NOCSOURCE\n"));
-  DEBUGL(LOG("\tCallee address: 0x0\n\n"));
-  func_inv_record *frec = (func_inv_record*)factory.make_vaccs_record(VACCS_FUNCTION_INV);
-  frec = frec->add_event_num(timestamp++)
-         ->add_func_name("_start")
-         ->add_func_line_num(0)
-         ->add_inv_line_num(0)
-         ->add_c_func_file(NOCSOURCE)
-         ->add_c_inv_file(NOCSOURCE)
-         ->add_address(0);
-
-  frec->write(vaccs_fd);
-  delete frec;
-}
-
 int main(int argc, char *argv[])
 {
 
@@ -414,9 +388,6 @@ int main(int argc, char *argv[])
     IMG_AddInstrumentFunction(FileOpsImage, 0);
 
   PIN_AddFiniFunction(Fini, 0);
-
-  //if (vcfg->get_user_code_only())
-    //emit_initial_function_call();
 
   DEBUGL(LOG("Starting program\n"));
   vcfg->dump_vaccs_config();

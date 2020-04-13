@@ -63,6 +63,18 @@ functionInvocationBefore(void * function_name, const CONTEXT * ctxt,
     vaccs_record_factory factory;
 
     if (line == 0 && vcfg->get_user_code_only()) {
+      if (strncmp(name, "_start",6)) {
+        func_inv_record * frec = (func_inv_record *) factory.make_vaccs_record(VACCS_FUNCTION_INV);
+        frec = frec->add_event_num(id)
+          ->add_func_name("_start")
+          ->add_func_line_num(0)
+          ->add_inv_line_num(0)
+          ->add_c_func_file(NOCSOURCE)
+          ->add_c_inv_file(NOCSOURCE)
+          ->add_address(memmap.get_stack_end());
+        frec->write(vaccs_fd);
+        delete frec;
+      }
       return;
     }
 
