@@ -182,10 +182,11 @@ void dw_reader::process_array_type_die(const dwarf::die &node) {
 	// resolved later
 	std::string name = "<array>";
 	Generic size = sizeof(Generic);
-	current_cu_rec->get_type_table()->put(type,trec->add_name(name)
-			->add_is_array()
-			->add_base_type(base_type)
-			->add_size(size));
+	trec = trec->add_name(name)
+			   ->add_is_array()
+			   ->add_base_type(base_type)
+			   ->add_size(size);
+	current_cu_rec->get_type_table()->put(type,trec);
 	last_array_rec = trec;
 }
 

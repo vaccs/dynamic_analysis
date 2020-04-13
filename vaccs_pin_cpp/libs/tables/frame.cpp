@@ -838,18 +838,17 @@ runtime_stack::get_updated_points_to_frame(cu_table * cutab, frame * fr)
 				DEBUGL(LOG("Pointer variable: " + frec->get_variable_name() + " is not a valid memory location\n"));
 				new_value = MEM_ADDR_ERROR(addr);
 			} else {
-				dereference_memory((Generic*)ptr_addr, &is_segv);
-
-				if (is_segv) {
-					DEBUGL(LOG("Pointer variable: " + frec->get_variable_name()
-					           + " does not point to a valid memory location\n"));
-					new_value = MEM_ADDR_ERROR(ptr_addr);
-				} else {
 					type_table * ttab = cutab->get_type_table(vrec->get_type());
 
-					if (!trec->get_name()->compare("char*") || !trec->get_name()->compare("char**")) { // character strings are handled specially
+					if (trec->get_name()->compare("char**") != 0) {
 						DEBUGL(LOG(
-								   "Pointer variable: " + frec->get_variable_name() + " points to a valid memory location "
+								   "Non-character Pointer variable: " + frec->get_variable_name() + " points to a valid memory location "
+								   + hexstr(ptr_addr) + " of type " + *trec->get_name() + "\n"));
+						new_value = vrec->read_value(ttab, trec, ptr_addr, fr->get_context());
+
+					} else if (trec->get_name()->compare("char*") != 0) { // character strings are handled specially
+						DEBUGL(LOG(
+								   "Non-character Pointer variable: " + frec->get_variable_name() + " points to a valid memory location "
 								   + hexstr(ptr_addr) + " of type " + *trec->get_name() + "\n"));
 
 						new_value = vrec->read_value(ttab, trec, ptr_addr, fr->get_context());
@@ -857,13 +856,12 @@ runtime_stack::get_updated_points_to_frame(cu_table * cutab, frame * fr)
 						type_record * btrec = cutab->get_type_record(*trec->get_base_type());
 
 						DEBUGL(LOG(
-								   "Pointer variable: " + frec->get_variable_name() + " points to a valid memory location "
+								   "Character Pointer variable: " + frec->get_variable_name() + " points to a valid memory location "
 								   + hexstr(ptr_addr) + " of type " + *btrec->get_name() + "\n"));
 
 						new_value = vrec->read_value(ttab, btrec, ptr_addr, fr->get_context());
 					}
 
-				}
 			}
 
 			DEBUGL(LOG("Checking if what variable " + frec->get_variable_name() + " points to has been updated\n"));

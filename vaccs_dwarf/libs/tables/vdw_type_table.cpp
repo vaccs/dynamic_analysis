@@ -126,24 +126,51 @@ std::string vdw_type_table::get_type_offset(std::string str) {
 	return type;
 }
 
+std::string vdw_type_table::get_base_type_index(std::string type_index) {
+	vdw_type_record *btrec = get(type_index);
+	if (btrec->get_is_const())
+		return get_base_type_index(*btrec->get_base_type());
+    return type_index;
+}
+
+void vdw_type_table::update_base_type(vdw_type_record *trec) {
+	std::string type_index = get_base_type_index(*trec->get_base_type());
+
+	if (type_index != *trec->get_base_type())
+		trec->add_base_type(type_index);
+}
+
 void vdw_type_table::resolve_base_types() {
+
+	// resolve type indices 
+
 	for (std::map<std::string,symbol_table_record*>::iterator it = begin();
 			it != end();
 			it++) {
 		vdw_type_record *trec = (vdw_type_record *)it->second;
+		std::string type_index;
+		if (trec->get_is_pointer() || trec->get_is_array())
+			update_base_type(trec);
+	}
+
+	// build the type name
+	for (std::map<std::string,symbol_table_record*>::iterator it = begin();
+			it != end();
+			it++) {
+		vdw_type_record *trec = (vdw_type_record *)it->second;
+		vdw_type_record *btrec;
 		if (trec->get_is_pointer()) {
-			vdw_type_record *btrec = get(*trec->get_base_type());
+			btrec = get(*trec->get_base_type());
 			trec->add_name(*btrec->get_name() + "*");
 		} else if (trec->get_is_array()) {
-			vdw_type_record *btrec = get(*trec->get_base_type());
+			btrec = get(*trec->get_base_type());
 			trec->add_size(btrec->get_size()*(trec->get_upper_bound()+1));
 			trec->add_name(*btrec->get_name()+"[]");
 		} else if (trec->get_is_const()) {
-			vdw_type_record *btrec = get(*trec->get_base_type());
+			btrec = get(*trec->get_base_type());
 			trec->add_name("const " + *btrec->get_name());
 		} else if (trec->get_is_typedef()) {
 			trec->add_name("typedef " + *trec->get_name());
 		}
 	}
-
 }

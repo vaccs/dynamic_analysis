@@ -253,6 +253,11 @@ public:
  */
 class vdw_type_table: public symbol_table {
 
+private: 
+	void update_base_type(vdw_type_record *trec);
+	std::string get_base_type_index(std::string type_index);
+	std::string build_type_name(vdw_type_record *trec);
+
 public:
 	vdw_type_table() :
 			symbol_table(TYPE_TABLE) {
