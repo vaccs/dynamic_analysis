@@ -1,4 +1,5 @@
 #include <string.h>
+#include <stdio.h>
 
 void func(char *cptr){
   int i;
@@ -12,5 +13,6 @@ void func(char *cptr){
   j=0;
 }
 int main(int argc, char *argv[]){
+  printf("argv[0] = %s\n",*argv);
   func(argv[1]);
 }

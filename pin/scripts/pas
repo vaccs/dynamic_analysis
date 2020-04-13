@@ -1,4 +1,2 @@
-source config
-$DWARF_ROOT/execs/dwwrite/dwwrite $1
-/bin/rm -f /tmp/vaccs.stdout
-$PIN_ROOT/pin -t $PIN_ROOT/source/tools/PAS/obj-intel64/pas_analysis.so -- $@
+/home/carr/vaccs/dynamic_analysis/vaccs_dwarf/execs/dwwrite/dwwrite $1
+$VPIN/pin -t $VPAS/obj-intel64/pas_analysis.so -- $@

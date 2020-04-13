@@ -60,10 +60,11 @@ functionInvocationBefore(void * function_name, const CONTEXT * ctxt,
     PIN_GetSourceLocation(ip, &column, &line, &fileName);
     PIN_UnlockClient();
 
-    if (line == 0 && vcfg->get_user_code_only())
-      return;
-
     vaccs_record_factory factory;
+
+    if (line == 0 && vcfg->get_user_code_only()) {
+      return;
+    }
 
     string sfname(name);
     DEBUGL(LOG("Getting frame pointer for " + sfname + "\n"));
@@ -163,8 +164,10 @@ functionInvocationAfter(void * function_name, const CONTEXT * ctxt, ADDRINT ip)
     PIN_GetSourceLocation(ip, &column, &line, &fileName);
     PIN_UnlockClient();
 
-    if (line == 0 && vcfg->get_user_code_only())
+    DEBUGL(LOG("Exiting "+fstr+"\n"));
+    if (line == 0 && vcfg->get_user_code_only()) {
       return;
+    }
 
     return_record * rrec = (return_record *) factory.make_vaccs_record(VACCS_RETURN);
     rrec = rrec->add_event_num(timestamp++);

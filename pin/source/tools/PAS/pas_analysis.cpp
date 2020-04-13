@@ -36,6 +36,7 @@
 #include <io/cmd_line_record.h>
 #include <io/func_inv_record.h>
 #include <io/output_record.h>
+#include <io/return_record.h>
 #include <tables/frame.h>
 #include <tables/heap.h>
 
@@ -220,6 +221,21 @@ void initialize()
 VOID Fini(INT32 code, VOID *v)
 {
 
+  // this is a return for main() which does not happen
+  vaccs_record_factory factory;
+  return_record * rrec = (return_record *) factory.make_vaccs_record(VACCS_RETURN);
+
+  rrec = rrec->add_event_num(timestamp++);
+  rrec->write(vaccs_fd);
+
+  // this is a return for _start which does not happen
+
+  if (!vcfg->get_user_code_only()) {
+    rrec->add_event_num(timestamp++);
+    rrec->write(vaccs_fd);
+  }
+
+  delete rrec;
   finalize_outputfiles();
   delete stack_model;
   delete heap_m;
@@ -399,8 +415,8 @@ int main(int argc, char *argv[])
 
   PIN_AddFiniFunction(Fini, 0);
 
-  if (vcfg->get_user_code_only())
-    emit_initial_function_call();
+  //if (vcfg->get_user_code_only())
+    //emit_initial_function_call();
 
   DEBUGL(LOG("Starting program\n"));
   vcfg->dump_vaccs_config();
