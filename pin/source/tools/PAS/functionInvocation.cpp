@@ -29,7 +29,7 @@
 extern NATIVE_FD vaccs_stdout;
 extern runtime_stack * stack_model;
 extern vaccs_config *vcfg;
-memory_info memmap;
+extern memory_info memmap;
 
 VOID
 functionInvocationBefore(void * function_name, const CONTEXT * ctxt,

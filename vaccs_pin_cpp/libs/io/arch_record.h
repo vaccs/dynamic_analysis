@@ -24,6 +24,8 @@ class arch_record : public vaccs_record {
       vaccs_arch_t arch_type;         /* The type of architecture */
       vaccs_address_t heap_start;     /* the start address of the heap */
       vaccs_address_t heap_end;       /* the end address of the heap */
+      vaccs_address_t stack_start;     /* the start address of the stack */
+      vaccs_address_t stack_end;       /* the end address of the stack (will be the smaller of two addresses) */ 
 
     public:
       arch_record();
@@ -44,6 +46,22 @@ class arch_record : public vaccs_record {
        */
       arch_record *add_heap_start(vaccs_address_t hstart)
          { this->heap_start = hstart;  return this; }
+
+      /**
+       * Add the stack end using a builder pattern
+       *
+       * @return the object
+       */
+      arch_record *add_stack_end(vaccs_address_t send)
+         { this->stack_end = send;  return this; }
+
+      /**
+       * Add the stack start using a builder pattern
+       *
+       * @return the object
+       */
+      arch_record *add_stack_start(vaccs_address_t sstart)
+         { this->stack_start = sstart;  return this; }
       /**
        * Add the heap end using a builder pattern
        *
