@@ -1,2 +1,3 @@
-/home/carr/vaccs/dynamic_analysis/vaccs_dwarf/execs/dwwrite/dwwrite $1
+#!/bin/bash
+$VDWARF/execs/dwwrite/dwwrite $1
 $VPIN/pin -t $VPAS/obj-intel64/pas_analysis.so -- $@

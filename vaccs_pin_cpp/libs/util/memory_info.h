@@ -7,6 +7,7 @@
  */
 
 #include <pin.H>
+#include <util/general.h>
 
 #define MEMORY_MAP_FILE "/proc/self/maps"
 
@@ -19,9 +20,26 @@ private:
   ADDRINT heap_begin;
   ADDRINT heap_end;
 
+
+  /**
+   * Read the stack address information
+   * 
+   * @param map_file_name the name of the proc file containing information
+   * @return true if information is found in the file; otherwise, false
+   */
+  bool read_stack_map(string map_file_name);
+
+  /**
+   * Read the heap address information
+   * 
+   * @param map_file_name the name of the proc file containing information
+   * @return true if information is found in the file; otherwise, false
+   */
+  bool read_heap_map(string map_file_name);
+
 public:
 
-    memory_info();
+    memory_info(string map_file_name);
     virtual ~memory_info() {}
 
     /**
@@ -30,8 +48,6 @@ public:
      * @return the start address of the stack
      */
      ADDRINT get_stack_begin() {
-       if (stack_begin == 0)
-         read_stack_map();
        return stack_begin;
      }
 
@@ -41,8 +57,6 @@ public:
      * @return the end address of the stack
      */
      ADDRINT get_stack_end() {
-       if (stack_end == 0)
-         read_stack_map();
        return stack_end;
      }
 
@@ -52,8 +66,6 @@ public:
      * @return the start address of the heap
      */
      ADDRINT get_heap_begin() {
-       if (heap_begin == 0)
-         read_heap_map();
        return heap_begin;
      }
 
@@ -63,18 +75,6 @@ public:
      * @return the end address of the heap
      */
      ADDRINT get_heap_end() {
-       if (heap_end == 0)
-         read_heap_map();
        return heap_end;
      }
-
-     /**
-      * Read the stack address information from MEMORY_MAP_FILE
-      */
-     void read_stack_map();
-
-     /**
-      * Read the heap address information from MEMORY_MAP_FILE
-      */
-     void read_heap_map();
 };

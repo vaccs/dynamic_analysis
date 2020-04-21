@@ -39,11 +39,13 @@
 #include <io/return_record.h>
 #include <tables/frame.h>
 #include <tables/heap.h>
+#include <util/memory_info.h>
 
 vaccs_dw_reader *vdr = NULL;
 NATIVE_FD vaccs_fd = -1;
 int vaccs_stdout = -1;
 extern heap_map *heap_m;
+memory_info *memmap;
 using namespace std;
 bool no_reg = false;
 vaccs_config *vcfg;
@@ -214,6 +216,7 @@ void initialize()
   ss >> spid;
   string map_file = "/proc/" + spid + "/maps";
   heap_m = new heap_map(map_file);
+  memmap = new memory_info(map_file);
   DEBUGL(LOG("Done reading file\n"));
 }
 
@@ -249,12 +252,16 @@ void emit_arch()
   arch_record *rec;
 
 #ifdef __x86_64
-  DEBUGL(LOG("Architecture: x86_64, heap_start = " + hexstr(heap_m->get_heap_start()) +
-             " heap_end = " + hexstr(heap_m->get_heap_end()) + ": \n"));
+  DEBUGL(LOG("Architecture: x86_64, heap_start = " + hexstr(memmap->get_heap_begin()) +
+             " heap_end = " + hexstr(memmap->get_heap_end()) + " stack_begin = "+
+             hexstr(memmap->get_stack_begin()) + " stack end "+
+             hexstr(memmap->get_stack_end())+ ": \n"));
   rec = ((arch_record*)factory.make_vaccs_record(VACCS_ARCH))
         ->add_arch_type(VACCS_ARCH_X86_64)
-        ->add_heap_start(heap_m->get_heap_start())
-        ->add_heap_end(heap_m->get_heap_end());
+        ->add_heap_start(memmap->get_heap_begin())
+        ->add_heap_end(memmap->get_heap_end())
+        ->add_stack_start(memmap->get_stack_begin())
+        ->add_stack_end(memmap->get_stack_end());
 #else
   DEBUGL(LOG("Architecture: ia32, heap_start = " + hexstr(heap_m->get_heap_start()) +
              " heap_end = " + hexstr(heap_m->get_heap_end()) + ": \n"));
