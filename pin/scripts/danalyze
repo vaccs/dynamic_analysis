@@ -1,0 +1,9 @@
+#!/bin/bash
+SRC=$1
+shift 1
+EXE=$1
+shift 1
+ARGS=$*
+docker cp $SRC vaccs:/root/$SRC
+docker exec vaccs /opt/vaccs/dynamic_analysis/analyze $SRC /root/$EXE $ARGS
+docker cp vaccs:/root/$EXE.vaccs $EXE.vaccs
