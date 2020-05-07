@@ -4,6 +4,6 @@ shift 1
 EXE=$1
 shift 1
 ARGS=$*
-docker cp $SRC vaccs:/root/$SRC
-docker exec vaccs analyze $SRC /root/$EXE $ARGS
-docker cp vaccs:/root/$EXE.vaccs $EXE.vaccs
+docker cp $SRC vaccs:/root/`basename $SRC`
+docker exec vaccs analyze `basename $SRC` /root/$EXE $ARGS
+docker cp vaccs:/root/$EXE.vaccs `dirname $SRC`/$EXE.vaccs

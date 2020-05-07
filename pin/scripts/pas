@@ -1,3 +1,31 @@
 #!/bin/bash
+for i in "$@"
+do
+case $i in
+    --user)
+    USER_OPT="-user-code-only"
+    shift # past argument
+    ;;
+    --registers)
+    REG_OPT="-monitor-registers "
+    shift # past argument=value
+    ;;
+    --malloc)
+    MALLOC_OPT="-malloc-free "
+    shift # past argument=value
+    ;;
+    --secure)
+    SECURE_OPT="-secure-data "
+    shift # past argument=value
+    ;;
+    --files)
+    FILE_OPT="-file-ops"
+    shift # past argument with no value
+    ;;
+    *)
+     break;
+    ;;
+esac
+done
 $VDWARF/execs/dwwrite/dwwrite $1
-$VPIN/pin -t $VPAS/obj-intel64/pas_analysis.so -- $@
+$VPIN/pin -t $VPAS/obj-intel64/pas_analysis.so $USER_OPT $REG_OPT $MALLOC_OPT $SECURE_OPT $FILE_OPT -- $@

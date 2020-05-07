@@ -34,27 +34,62 @@ private:
 
 public:
   vaccs_config(string config_file_name);
+  vaccs_config();
   ~vaccs_config();
 
   bool get_monitor_registers()
   {
     return monitor_registers;
   }
+
   bool get_user_code_only()
   {
     return user_code_only;
   }
+
   bool get_malloc_free()
   {
     return malloc_free;
   }
+
   bool get_secure_data()
   {
     return secure_data;
   }
+
   bool get_file_ops()
   {
     return file_ops;
+  }
+
+ vaccs_config* add_monitor_registers()
+  {
+    monitor_registers = true;
+    return this;
+  }
+
+  vaccs_config* add_user_code_only()
+  {
+    user_code_only = true;
+    return this;
+  }
+
+  vaccs_config* add_malloc_free()
+  {
+    malloc_free = true;
+    return this;
+  }
+
+  vaccs_config* add_secure_data()
+  {
+    secure_data = true;
+    return this;
+  }
+
+  vaccs_config* add_file_ops()
+  {
+    file_ops = true;
+    return this;
   }
 
   void dump_vaccs_config();

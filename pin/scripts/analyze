@@ -5,4 +5,4 @@ EXE=$1
 shift 1
 ARGS=$*
 gcc -fno-stack-protector -g -o $EXE $SRC
-pas $EXE $ARGS 
+pas $ARGS $EXE
