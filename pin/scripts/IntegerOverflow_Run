@@ -1,2 +1,0 @@
-source config
-$PIN_ROOT/pin -t $PIN_ROOT/source/tools/IntegerOverflow/obj-intel64/IntegerOverflow.so -- $@

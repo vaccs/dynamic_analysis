@@ -49,6 +49,15 @@ bool vaccs_config::process_config_setting(string config_var, int config_setting)
   return true;
 }
 
+vaccs_config::vaccs_config()
+{
+  monitor_registers = false;
+  user_code_only = false;
+  malloc_free = false;
+  secure_data = false;
+  file_ops = false;
+}
+
 vaccs_config::vaccs_config(string config_file_name)
 {
 

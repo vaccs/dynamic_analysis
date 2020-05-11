@@ -1,3 +1,16 @@
 #!/bin/bash
+while getopts "urmsf" opt
+do
+case $opt in 
+    u) USER_OPT="-user-code-only ";;
+    r) REG_OPT="-monitor-registers ";;
+    m) MALLOC_OPT="-malloc-free ";;
+    s) SECURE_OPT="-secure-data ";;
+    f) FILE_OPT="-file-ops" ;;
+    ?) echo "Usage: pas [-u] [-r] [-m] [-s] [-f] <executable> [executable args]"
+       exit 1;;
+esac
+done
+shift $((OPTIND-1))
 $VDWARF/execs/dwwrite/dwwrite $1
-$VPIN/pin -t $VPAS/obj-intel64/pas_analysis.so -- $@
+$VPIN/pin -t $VPAS/obj-intel64/pas_analysis.so $USER_OPT $REG_OPT $MALLOC_OPT $SECURE_OPT $FILE_OPT -- $@

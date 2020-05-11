@@ -1,9 +1,21 @@
 #!/bin/bash
-SRC=$1
-shift 1
-EXE=$1
-shift 1
-ARGS=$*
-docker cp $SRC vaccs:/root/$SRC
-docker exec vaccs analyze $SRC /root/$EXE $ARGS
-docker cp vaccs:/root/$EXE.vaccs $EXE.vaccs
+while getopts "urmsfc:o:" opt
+do
+case $opt in 
+  c) SRC=`basename $OPTARG` 
+     SRCS+="$SRC "
+     SRCARGS+="-c $SRC ";;
+  o) EXE=`basename $OPTARG`
+     DIR=`dirname $OPTARG`;;
+  u|r|m|s|f) ARGS+="-$opt ";;
+  ?) echo "Usage: analyze [-u] [-r] [-m] [-s] [-f] [-c <file>]+ -o <file> <application args>"
+     exit 1;;
+esac
+done
+shift $((OPTIND-1))
+EXEARGS=$@
+docker exec --privileged --user root vaccs sysctl -w kernel.yama.ptrace_scope=0
+docker exec --privileged --user root vaccs sysctl -w kernel.randomize_va_space=0
+docker cp $SRCS vaccs:/home/vaccs/
+docker exec --user vaccs vaccs analyze $ARGS $SRCARGS -o /home/vaccs/$EXE $EXEARGS
+docker cp vaccs:/home/vaccs/$EXE.vaccs $DIR/$EXE.vaccs

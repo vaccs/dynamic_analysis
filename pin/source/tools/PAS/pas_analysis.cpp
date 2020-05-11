@@ -51,6 +51,12 @@ bool no_reg = false;
 vaccs_config *vcfg;
 
 
+KNOB<BOOL> user_code_only(KNOB_MODE_WRITEONCE,"pintool","user-code-only","0","analyze user code only");
+KNOB<BOOL> monitor_registers(KNOB_MODE_WRITEONCE,"pintool","monitor-registers","0","analyze registers");
+KNOB<BOOL> malloc_free(KNOB_MODE_WRITEONCE,"pintool","malloc-free","0","analyze calls to malloc and free");
+KNOB<BOOL> secure_data(KNOB_MODE_WRITEONCE,"pintool","secure-data","0","analyze secure data");
+KNOB<BOOL> file_ops(KNOB_MODE_WRITEONCE,"pintool","file-ops","0","analyze file operations");
+KNOB<string> config_file(KNOB_MODE_WRITEONCE,"pintool","vaccs-config","default","set vaccs configuration file");
 
 /*call stack*/
 stack<function_invocation_transaction> invocation_stack;
@@ -204,9 +210,29 @@ void initialize()
   current_invocation_id = 0;
 
   set_sigsegv_handler();
-  string vpas(getenv("VPAS"));
-  string config_file_name = vpas + "/vaccs.cfg";
-  vcfg = new vaccs_config(config_file_name);
+  if (!user_code_only && !monitor_registers && !malloc_free && !secure_data && !file_ops) {
+    string config_file_name;
+    if (config_file.Value() == "default") {
+      string vpas(getenv("VPAS"));
+      config_file_name = vpas + "/vaccs.cfg";
+    } else {
+      config_file_name = config_file.Value();
+    }
+    vcfg = new vaccs_config(config_file_name);
+  } else {
+    vcfg = new vaccs_config(); 
+    if (user_code_only)
+      vcfg->add_user_code_only();
+    if (monitor_registers)
+      vcfg->add_monitor_registers();
+    if (malloc_free)
+      vcfg->add_malloc_free();
+    if (secure_data)
+      vcfg->add_secure_data();
+    if (file_ops)
+      vcfg->add_file_ops();
+  }
+
   DEBUGL(vcfg->dump_vaccs_config());
 
   pid_t pid = getpid();

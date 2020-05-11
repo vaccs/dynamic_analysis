@@ -1,2 +1,0 @@
-source config
-$PIN_ROOT/pin -t $PIN_ROOT/source/tools/SensitiveDataMonitor/obj-intel64/SensitiveDataMonitor.so -- $@

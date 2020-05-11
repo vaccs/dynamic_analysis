@@ -1,8 +1,15 @@
 #!/bin/bash
-SRC=$1
-shift 1
-EXE=$1
-shift 1
-ARGS=$*
-gcc -fno-stack-protector -g -o $EXE $SRC
-pas $EXE $ARGS 
+while getopts "urmsfc:o:" opt
+do
+case $opt in 
+  c) SRCS+="$OPTARG ";;
+  o) EXE="$OPTARG";;
+  u|r|m|s|f) ARGS+="-$opt ";;
+  ?) echo "Usage: analyze [-u] [-r] [-m] [-s] [-f] [-c <file>]+ -o <file> <application args>"
+     exit 1;;
+esac
+done
+shift $((OPTIND-1))
+EXEARGS=$@
+gcc -fno-stack-protector -g -o $EXE $SRCS
+pas $ARGS $EXE $EXEARGS
