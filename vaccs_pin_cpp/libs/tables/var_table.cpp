@@ -690,7 +690,7 @@ void var_record::create_member_tables(type_table *ttab)
 		local_var_table->create_member_tables(ttab);
 	}
 	else {
-		DEBUGL(LOG("This a variable. Checking the type.\n"));
+		DEBUGL(LOG("This a variable. Checking the type, id = "+type+".\n"));
 		type_record *trec = ttab->get(type);
 		if (trec->get_is_struct()) {
 			symbol_table_factory factory;

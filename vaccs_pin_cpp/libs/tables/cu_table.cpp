@@ -469,6 +469,7 @@ void cu_table::create_member_tables()
 
 	for (map<string, symbol_table_record*>::iterator it = begin(); it != end(); it++) {
 
+		DEBUGL(LOG("create_member_tables for cu "+it->first+".\n"));
 		cu_record* curec = (cu_record*)it->second;
 
 		curec->create_member_tables();
