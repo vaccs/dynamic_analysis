@@ -22,6 +22,8 @@
 
 #include <pin.H>
 
+type_table* global_type_table;
+
 /**
  * Constructor
  */
@@ -294,7 +296,7 @@ void vaccs_dw_reader::read_cu_record() {
 	cutab->put(path,current_cu_rec->add_low_pc(low_pc)
 			->add_high_pc(high_pc)
 			->add_var_table(var_table_stack.top())
-			->add_type_table((type_table*)table_factory.make_symbol_table(TYPE_TABLE)));
+			->add_type_table(global_type_table));
 
 	read_type_table();
 	read_var_table();
@@ -308,6 +310,7 @@ void vaccs_dw_reader::read_vaccs_dw_info(void) {
 	assert((OS_OpenFD(file_name.c_str(), OS_FILE_OPEN_TYPE_READ, OS_FILE_PERMISSION_TYPE_READ, &fd)).generic_err
 			== OS_RETURN_CODE_NO_ERROR);
 
+	global_type_table =	(type_table*)table_factory.make_symbol_table(TYPE_TABLE);
 	int id;
 	USIZE size = sizeof(int);
 	if (OS_ReadFD(fd, &size, &id).generic_err == OS_RETURN_CODE_NO_ERROR &&
