@@ -82,7 +82,7 @@ after_function_call(VOID * function_name, const CONTEXT * ctxt, ADDRINT ip)
     for (list<var_upd_record *>::iterator it = variables->begin(); it != variables->end(); it++) {
       var_upd_record * vurec = *it;
       DEBUGL(LOG("Found variable updated after call in " + fstr + ":" + vurec->get_variable_name()));
-      vurec->write(vaccs_fd, fstr, line, cutab, timestamp);
+      vurec->write(vaccs_fd, fileName, line, cutab, timestamp);
     }
 
     list<return_addr_record *> * ralist = stack_model->get_updated_links();
