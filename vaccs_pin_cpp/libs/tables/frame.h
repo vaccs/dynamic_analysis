@@ -16,21 +16,21 @@
  * =====================================================================================
  */
 
-#ifndef  frame_h_INC
-#define  frame_h_INC
+#ifndef frame_h_INC
+#define frame_h_INC
 
 using namespace std;
 
-#include    <string>
-#include    <list>
-#include    <tables/cu_table.h>
-#include    <tables/var_table.h>
-#include    <tables/type_table.h>
-#include  <tables/heap.h>
-#include  <util/general.h>
-#include  <io/return_addr_record.h>
+#include <string>
+#include <list>
+#include <tables/cu_table.h>
+#include <tables/var_table.h>
+#include <tables/type_table.h>
+#include <tables/heap.h>
+#include <util/general.h>
+#include <io/return_addr_record.h>
 
-#include    <pin.H>
+#include <pin.H>
 
 class frame;
 
@@ -119,7 +119,6 @@ public:
 		return hb;
 	}
 
-
 	/**
 	 * Get the stack frame
 	 *
@@ -140,7 +139,7 @@ public:
 	 * @return a pointer to this record
 	 */
 	frame_record *
-	add_variable_name(const string& name)
+	add_variable_name(const string &name)
 	{
 		variable_name = name;
 		return this;
@@ -179,7 +178,7 @@ public:
 	 * @return a pointer to this record
 	 */
 	frame_record *
-	add_var_record(var_record * vrec)
+	add_var_record(var_record *vrec)
 	{
 		this->vrec = vrec;
 		return this;
@@ -209,7 +208,6 @@ public:
 		return this;
 	}
 
-
 	/**
 	 * Add the frame for this record
 	 *
@@ -227,36 +225,35 @@ public:
 	 *
 	 */
 	void
-	remove_heap_block(heap_block *hb) {
-    this->hb = NULL;
-    delete data_clear_status;
-    data_clear_status = NULL;
-    delete data_set_status;
-    data_set_status = NULL;
-  }
+	remove_heap_block(heap_block *hb)
+	{
+		this->hb = NULL;
+		delete data_clear_status;
+		data_clear_status = NULL;
+		delete data_set_status;
+		data_set_status = NULL;
+	}
 	/* ====================  OPERATORS     ======================================= */
 
-  void mark_data_clear_status(cu_table *cutab,CONTEXT *ctxt, Generic addr,int c, Generic n);
-  bool is_data_clear();
-  bool is_data_set();
+	void mark_data_clear_status(cu_table *cutab, CONTEXT *ctxt, Generic addr, int c, Generic n);
+	bool is_data_clear();
+	bool is_data_set();
 	void reset_clear_set_status();
 
 protected:
-
 private:
-
 	/* ====================  DATA MEMBERS  ======================================= */
 	string variable_name;   /* the name of the variable for this record */
-	string value;           /* the last value stored in this location */
+	string value;			/* the last value stored in this location */
 	string points_to_value; /* the value pointed to by frame records that are pointers */
-	var_record * vrec;      /* the DWARF information for this variable */
+	var_record *vrec;		/* the DWARF information for this variable */
 	bool sensitive_data;
 	heap_block *hb;
-  bool *data_clear_status;
-  bool *data_set_status;
-  Generic num_bytes;
-  frame *stack_frame;
-};                          /* -----  end of class Frame_record  ----- */
+	bool *data_clear_status;
+	bool *data_set_status;
+	Generic num_bytes;
+	frame *stack_frame;
+}; /* -----  end of class Frame_record  ----- */
 
 /*
  * =====================================================================================
@@ -265,7 +262,7 @@ private:
  *		  entries for variables in the scope.
  * =====================================================================================
  */
-class frame: public list < frame_record * >
+class frame : public list<frame_record *>
 {
 public:
 	/* ====================  LIFECYCLE     ======================================= */
@@ -359,7 +356,7 @@ public:
 	 * @return the instance of this object
 	 */
 	frame *
-	add_context(const CONTEXT * ctx)
+	add_context(const CONTEXT *ctx)
 	{
 		ctxp = &(this->ctx);
 		PIN_SaveContext(ctx, ctxp);
@@ -387,7 +384,6 @@ public:
 		return this;
 	}
 
-
 	frame *
 	add_high_pc(Generic addr)
 	{
@@ -402,7 +398,7 @@ public:
 	 * @return the instance of this object
 	 */
 	frame *
-	add_frame_record(frame_record * frec)
+	add_frame_record(frame_record *frec)
 	{
 		push_back(frec);
 		return this;
@@ -429,7 +425,7 @@ public:
 	 * @param cutab a compilation unit table
 	 * @return a list containing all variables that map to the given address
 	 */
-	list < frame_record * > *get(Generic addr, cu_table * cutab);
+	list<frame_record *> *get(Generic addr, cu_table *cutab);
 
 	/**
 	 * Remove heap block from frame_record for a freed block
@@ -446,7 +442,7 @@ public:
 	 * @return the frame
 	 */
 	frame *
-	add_links(CONTEXT * ctx);
+	add_links(CONTEXT *ctx);
 
 	/**
 	 * Determine if an instruction pointer address is in the section of user
@@ -461,12 +457,10 @@ public:
 
 	/* ====================  DATA MEMBERS  ======================================= */
 protected:
-
 private:
-
-	string name;    /* the name of the function */
+	string name; /* the name of the function */
 	CONTEXT *ctxp;
-	CONTEXT ctx;    /* a pin context at the time this frame is put on the stack */
+	CONTEXT ctx; /* a pin context at the time this frame is put on the stack */
 	bool is_first_access;
 	bool is_before_stack_setup;
 	Generic old_rbp;
@@ -475,10 +469,11 @@ private:
 	Generic high_pc;
 }; /* -----  end of class frame  ----- */
 
-class var_upd_record {
+class var_upd_record
+{
 public:
-
-	var_upd_record(){
+	var_upd_record()
+	{
 		variable_name = "";
 		vrec = NULL;
 		address = -1;
@@ -489,7 +484,7 @@ public:
 
 	// GETTERS
 
-	string&
+	string &
 	get_variable_name()
 	{
 		return variable_name;
@@ -541,7 +536,7 @@ public:
 	}
 
 	var_upd_record *
-	add_var_record(var_record * vrec)
+	add_var_record(var_record *vrec)
 	{
 		this->vrec = vrec;
 		return this;
@@ -555,7 +550,7 @@ public:
 	}
 
 	var_upd_record *
-	add_context(CONTEXT * ctxt)
+	add_context(CONTEXT *ctxt)
 	{
 		this->ctxt = ctxt;
 		return this;
@@ -629,14 +624,13 @@ public:
 	}
 
 	void
-	write(NATIVE_FD vaccs_fd, string fileName, int line, cu_table * cutab, int timestamp);
+	write(NATIVE_FD vaccs_fd, string fileName, int line, cu_table *cutab, int timestamp);
 
 private:
-
 	string variable_name;
-	var_record * vrec;
+	var_record *vrec;
 	Generic address;
-	CONTEXT * ctxt;
+	CONTEXT *ctxt;
 	string value;
 	string type_name;
 	string scope;
@@ -653,7 +647,7 @@ private:
  *                mapped to debug information for variables.
  * =====================================================================================
  */
-class runtime_stack: public list < frame * >
+class runtime_stack : public list<frame *>
 {
 public:
 	/* ====================  LIFECYCLE     ======================================= */
@@ -675,7 +669,7 @@ public:
 	 * @return a pointer to this runtime_stack
 	 */
 	runtime_stack *
-	add_cu_table(cu_table * cutab);
+	add_cu_table(cu_table *cutab);
 
 	/* ====================  OPERATORS     ======================================= */
 
@@ -688,7 +682,7 @@ public:
 	 * @param ctx the pin context for this stack frame
 	 */
 	frame *
-	push(string name, Generic ip, CONTEXT * ctx);
+	push(string name, Generic ip, CONTEXT *ctx);
 
 	frame *
 	top()
@@ -706,13 +700,18 @@ public:
 	pop();
 
 	/**
+	 * Determine the last user function called 
+	 */
+	string get_last_user_function_called();
+
+	/**
 	 * Compute a list of variables that reference a particular updated memory location
 	 *
 	 * @param addr the address of a memory location in memory
 	 * @param ttab a type table
 	 * @return a list of variables that reference the given memory location
 	 */
-	list < var_upd_record * > *addr_get_updated_variables(Generic addr, cu_table * cutab);
+	list<var_upd_record *> *addr_get_updated_variables(Generic addr, cu_table *cutab);
 
 	/**
 	 * Compute a list of variables that have been updated. Search the stack and global data area for any updated variable.
@@ -721,19 +720,19 @@ public:
 	 * @param cutab a compilation unit table
 	 * @return a list of variables that have been updated
 	 */
-	list < var_upd_record * > *get_all_updated_variables(cu_table * cutab);
+	list<var_upd_record *> *get_all_updated_variables(cu_table *cutab);
 
-	list < var_upd_record * > *get_updated_struct_members(cu_table * curtab, frame * fr,
-	                                                      frame_record * frec,
-	                                                      var_record * vrec,
-	                                                      Generic addr,
-	                                                      string prefix);
+	list<var_upd_record *> *get_updated_struct_members(cu_table *curtab, frame *fr,
+													   frame_record *frec,
+													   var_record *vrec,
+													   Generic addr,
+													   string prefix);
 
-	list < var_upd_record * > *get_updated_array_elements(cu_table * curtab, frame * fr,
-	                                                      frame_record * frec,
-	                                                      var_record * vrec,
-	                                                      Generic addr,
-	                                                      string prefix);
+	list<var_upd_record *> *get_updated_array_elements(cu_table *curtab, frame *fr,
+													   frame_record *frec,
+													   var_record *vrec,
+													   Generic addr,
+													   string prefix);
 
 	/**
 	 * Check a single frame for variables that have been updated
@@ -743,13 +742,13 @@ public:
 	 * @param addr the addres that has been updated, if addr = 0 then all locations are checked
 	 * @return a list of variables in this frame whose value hase changed
 	 */
-	list < var_upd_record * > *get_updated_variables_from_frame(cu_table * cutab, frame * fr, Generic addr);
+	list<var_upd_record *> *get_updated_variables_from_frame(cu_table *cutab, frame *fr, Generic addr);
 
-	list < var_upd_record * > *get_updated_points_to_from_struct(cu_table * cutab, frame * fr,
-	                                                             frame_record * frec,
-	                                                             var_record * vrec,
-	                                                             Generic addr,
-	                                                             string prefix);
+	list<var_upd_record *> *get_updated_points_to_from_struct(cu_table *cutab, frame *fr,
+															  frame_record *frec,
+															  var_record *vrec,
+															  Generic addr,
+															  string prefix);
 
 	/**
 	 * Check a single frame for variables whose points to location has been updated
@@ -758,7 +757,7 @@ public:
 	 * @param fr a stack or global variable frame
 	 * @return a list of variables in this frame whose value hase changed
 	 */
-	list < var_upd_record * > *get_updated_points_to_frame(cu_table * cutab, frame * fr);
+	list<var_upd_record *> *get_updated_points_to_frame(cu_table *cutab, frame *fr);
 
 	/**
 	 * Compute a list of all pointers accessible from the stack or static data area whose points_to location has changed
@@ -767,25 +766,35 @@ public:
 	 * @return a list of variables that on the stack or in global memory that could
 	 * have possibly been accessed
 	 */
-	list < var_upd_record * > *get_all_updated_points_to(cu_table * cutab);
+	list<var_upd_record *> *get_all_updated_points_to(cu_table *cutab);
 
 	/**
 	 * Compute a list a frames with updated old_rbp or return addresses
 	 *
 	 * @return a list of return address records with updated information
 	 */
-	list < return_addr_record * > *
+	list<return_addr_record *> *
 	get_updated_links();
 
 	/**
+	 * Compute a list a frames with updated old_rbp or return addresses
+ 	 *
+ 	 * @param fileName the name of the file in which the application is currently executing
+ 	 * @param lineNum the line number in the file at which the application is currently executing 
+ 	 * @return a list of return address records with updated information
+ 	 */
+	list<return_addr_record *> *
+	get_updated_links(string fileName, int lineNum);
+
+		/**
 	 * Compute a list a frame records whose address matches addr
 	 *
 	 * @param addr a variable address
 	 * @return a list of return address records with updated information
 	 */
-	list < frame_record * > *get_variables_with_address(Generic addr, cu_table * cutab);
+		list<frame_record *> *get_variables_with_address(Generic addr, cu_table *cutab);
 
-/**
+	/**
  * Remove heap block from frame_record for a freed block
  *
  * @param hb the heap block that has been freed
@@ -794,11 +803,9 @@ public:
 
 	/* ====================  DATA MEMBERS  ======================================= */
 protected:
-
 private:
-
-	cu_table * cutab;       /* a table of compilation units from the dwarf info */
-	frame * global_frame;   /* a frame holding global variable information */
-};                          /* -----  end of class Runtime_stack  ----- */
+	cu_table *cutab;	 /* a table of compilation units from the dwarf info */
+	frame *global_frame; /* a frame holding global variable information */
+};						 /* -----  end of class Runtime_stack  ----- */
 
 #endif /* ----- #ifndef frame_h_INC  ----- */

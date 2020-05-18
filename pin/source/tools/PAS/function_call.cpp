@@ -85,7 +85,7 @@ after_function_call(VOID * function_name, const CONTEXT * ctxt, ADDRINT ip)
       vurec->write(vaccs_fd, fileName, line, cutab, timestamp);
     }
 
-    list<return_addr_record *> * ralist = stack_model->get_updated_links();
+    list<return_addr_record *> * ralist = stack_model->get_updated_links(fileName,line);
     for (list<return_addr_record *>::iterator it = ralist->begin(); it != ralist->end(); it++) {
       return_addr_record * rarec = *it;
       DEBUGL(LOG("Found link updated after call in " + fstr + ", timestamp = " + decstr(timestamp) + "\n"));
