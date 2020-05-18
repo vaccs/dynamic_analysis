@@ -58,7 +58,6 @@ AfterRegMod(ADDRINT ip, CONTEXT * ctxt, REG reg, UINT32 opcode)
         // if we've just entered a function and the stack and frame pointer are now
         // set up, set the initial context properly
 
-        fr->clear_is_before_stack_setup();
         DEBUGL(LOG("After stack setup, start_pc = " + hexstr(fr->get_start_pc())
                    + " ip = " + hexstr(ip) + "\n"));
         fr->add_context(ctxt);
@@ -80,7 +79,7 @@ AfterRegMod(ADDRINT ip, CONTEXT * ctxt, REG reg, UINT32 opcode)
           }
         }
 
-        list<return_addr_record *> * ralist = stack_model->get_updated_links();
+        list<return_addr_record *> * ralist = stack_model->get_updated_links(fileName,line);
         if (ralist->empty())
           DEBUGL(LOG("There were no link updates\n"));
         else {
@@ -90,6 +89,7 @@ AfterRegMod(ADDRINT ip, CONTEXT * ctxt, REG reg, UINT32 opcode)
             rarec->write(vaccs_fd);
           }
         }
+        fr->clear_is_before_stack_setup();
         timestamp++;
       }
     }

@@ -121,7 +121,7 @@ AfterMemWrite(VOID * assembly, ADDRINT ip, ADDRINT addr, const CONTEXT * ctxt, U
 
         frame * fr = stack_model->top();
 
-        // wait until the stack fram is set up before analyzing memory references
+        // wait until the stack frame is set up before analyzing memory references
         // otherwise the registers will not be what the dwarf information expects
 
         if (fr != NULL && !fr->get_is_before_stack_setup()) {
@@ -137,7 +137,7 @@ AfterMemWrite(VOID * assembly, ADDRINT ip, ADDRINT addr, const CONTEXT * ctxt, U
                 }
             }
 
-            list<return_addr_record *> * ralist = stack_model->get_updated_links();
+            list<return_addr_record *> * ralist = stack_model->get_updated_links(fileName,line);
             if (ralist->empty()) {
                 DEBUGL(LOG("There were no link updates\n"));
             } else   {

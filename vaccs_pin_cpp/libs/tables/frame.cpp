@@ -26,6 +26,7 @@
 #include <io/vaccs_record.h>
 #include <io/var_access_record.h>
 #include <tables/heap.h>
+#include <util/general.h>
 
 extern heap_map *heap_m;
 
@@ -342,6 +343,18 @@ void
 runtime_stack::pop()
 {
 	pop_front();
+}
+
+/**
+ * Determine the last user function called 
+ */
+string runtime_stack::get_last_user_function_called() {
+	frame *func = top();	
+	if (func != NULL) 
+		return func->get_name();
+	else {
+		return "after exiting main()";
+	}
 }
 
 /**
@@ -925,6 +938,19 @@ runtime_stack::get_all_updated_points_to(cu_table * cutab)
 list<return_addr_record *> *
 runtime_stack::get_updated_links()
 {
+	return get_updated_links("__NOCSOURCE__",0);
+}
+
+/**
+ * Compute a list a frames with updated old_rbp or return addresses
+ *
+ * @param fileName the name of the file in which the application is currently executing
+ * @param lineNum the line number in the file at which the application is currently executing 
+ * @return a list of return address records with updated information
+ */
+list<return_addr_record *> *
+runtime_stack::get_updated_links(string fileName, int lineNum)
+{
 	vaccs_record_factory factory;
 	return_addr_record * rarec;
 
@@ -952,6 +978,10 @@ runtime_stack::get_updated_links()
 			        ->add_dynamic_link(rbp)
 			        ->add_return_address(fr->get_return_addr())
 			        ->add_c_func_name(fr->get_name().c_str());
+			if (!fr->get_is_before_stack_setup()) 
+				cerr << "VACCS: Stack smashing of old frame pointer detected in file " << fileName 
+					 << " at line " << lineNum << " in function " << fr->get_name() << "\n";
+				
 		}
 
 		Generic ra = dereference_memory((Generic*)(current_EBP + sizeof(Generic)), &is_segv);
@@ -966,6 +996,9 @@ runtime_stack::get_updated_links()
 				        ->add_c_func_name(fr->get_name().c_str());
 			}
 			rarec->add_return_address(ra);
+			if (!fr->get_is_before_stack_setup()) 
+				cerr << "VACCS: Stack smashing of return address detected in file " << fileName 
+					 << " at line " << lineNum << " in function " << fr->get_name() << "\n";
 		}
 
 		if (rarec != NULL)
