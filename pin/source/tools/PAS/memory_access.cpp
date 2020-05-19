@@ -137,7 +137,7 @@ AfterMemWrite(VOID * assembly, ADDRINT ip, ADDRINT addr, const CONTEXT * ctxt, U
                 }
             }
 
-            list<return_addr_record *> * ralist = stack_model->get_updated_links(fileName,line);
+            list<return_addr_record *> * ralist = stack_model->get_updated_links();
             if (ralist->empty()) {
                 DEBUGL(LOG("There were no link updates\n"));
             } else   {

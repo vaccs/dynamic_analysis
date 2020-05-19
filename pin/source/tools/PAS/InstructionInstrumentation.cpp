@@ -14,6 +14,7 @@
 #include <string>
 #include <util/general.h>
 #include <util/vaccs_config.h>
+#include <util/vaccs_source_location.h>
 #include <io/vaccs_record_factory.h>
 #include <io/asm_record.h>
 
@@ -70,6 +71,32 @@ EmitAssembly(INS ins, VOID * v)
     delete arec;
 } // EmitAssembly
 
+vaccs_source_location last_known_user_location;
+
+VOID
+before_instruction(ADDRINT ip) {
+
+  INT32 column;
+  INT32 line;
+  string fileName;
+
+  PIN_LockClient();
+  PIN_GetSourceLocation(ip, &column, &line, &fileName);
+  PIN_UnlockClient();
+
+  if (line != 0) {
+    last_known_user_location.set_file_name(fileName);
+    last_known_user_location.set_line_num(line);
+  }
+}
+
+VOID
+monitor_source_location(INS ins, VOID * v)
+{
+      INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)before_instruction,
+                     IARG_INST_PTR, IARG_END);
+}
+
 // extern bool Is_System_Image(IMG img);;
 VOID
 InstructionInstrumentation(IMG img, VOID * v)
@@ -85,6 +112,7 @@ InstructionInstrumentation(IMG img, VOID * v)
                 monitor_function_calls(ins, (VOID *) RTN_Name(rtn).c_str(), 0);
                 MonitorRegisterInstruction(ins, 0);
                 vaccs_sd_clear_set_instrument_inst(ins,0);
+                monitor_source_location(ins, 0);
             }
             RTN_Close(rtn);
         }

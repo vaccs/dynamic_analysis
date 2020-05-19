@@ -79,7 +79,7 @@ AfterRegMod(ADDRINT ip, CONTEXT * ctxt, REG reg, UINT32 opcode)
           }
         }
 
-        list<return_addr_record *> * ralist = stack_model->get_updated_links(fileName,line);
+        list<return_addr_record *> * ralist = stack_model->get_updated_links();
         if (ralist->empty())
           DEBUGL(LOG("There were no link updates\n"));
         else {
