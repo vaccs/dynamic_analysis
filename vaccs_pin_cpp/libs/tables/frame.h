@@ -777,16 +777,6 @@ public:
 	get_updated_links();
 
 	/**
-	 * Compute a list a frames with updated old_rbp or return addresses
- 	 *
- 	 * @param fileName the name of the file in which the application is currently executing
- 	 * @param lineNum the line number in the file at which the application is currently executing 
- 	 * @return a list of return address records with updated information
- 	 */
-	list<return_addr_record *> *
-	get_updated_links(string fileName, int lineNum);
-
-		/**
 	 * Compute a list a frame records whose address matches addr
 	 *
 	 * @param addr a variable address

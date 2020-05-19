@@ -17,6 +17,7 @@
 #include <iostream>
 #include <fstream>
 #include <stack>
+#include "pas_analysis.h"
 #include "return.h"
 #include "malloc_free.h"
 #include "sd.h"
@@ -41,6 +42,8 @@
 #include <tables/frame.h>
 #include <tables/heap.h>
 #include <util/memory_info.h>
+#include <util/vaccs_error_message.h>
+#include <util/vaccs_source_location.h>
 
 vaccs_dw_reader *vdr = NULL;
 NATIVE_FD vaccs_fd = -1;
@@ -233,6 +236,8 @@ static string get_signal_string(EXCEPTION_CODE ex_code) {
   return ex_msg;
 }
 
+extern vaccs_source_location last_known_user_location;
+
 static BOOL signal_handler(THREADID id, INT32 signum, CONTEXT *ctxt, BOOL hasHandler, const EXCEPTION_INFO *einfo, VOID *val)
 {
   ADDRINT ip = PIN_GetContextReg(ctxt, REG_INST_PTR);
@@ -248,16 +253,21 @@ static BOOL signal_handler(THREADID id, INT32 signum, CONTEXT *ctxt, BOOL hasHan
   ADDRINT exAddr = PIN_GetExceptionAddress(einfo);
   string last_func = stack_model->get_last_user_function_called();
   DEBUGL(LOG("Caught a signal in analysis of program -- aborting\n"));
-  if (line == 0)
-    cerr << "VACCS: Application raised " << get_signal_string(PIN_GetExceptionCode(einfo)) << " fault trying to access address " 
-         << hexstr(exAddr) << " in unknown file at ip = " << hexstr(ip) << ". Last known program function: " << last_func << "\n";
-  else
-    cerr << "VACCS: Application raised " << get_signal_string(PIN_GetExceptionCode(einfo)) << " fault in file " << fileName << " at line " 
-         << line << " in function " << last_func << " trying to access address " << hexstr(exAddr) << "\n";
+  vaccs_error_message *emsg = (new vaccs_error_message())
+					->add_file_name(last_known_user_location.get_file_name())
+					->add_line(last_known_user_location.get_line_num())
+					->add_severity(VACCS_ERROR_LEVEL_ERROR)
+					->add_message("Application raised " + get_signal_string(PIN_GetExceptionCode(einfo)) +
+                        " fault trying to access address " + hexstr(exAddr));
+				emsg->emit_vaccs_formatted_error_message();
+  exit_analysis();
+  return false; // unreachable code
+}
+
+void exit_analysis() {
   Fini(0, NULL);
   exit(-1);
 }
-
 
 void initialize()
 {

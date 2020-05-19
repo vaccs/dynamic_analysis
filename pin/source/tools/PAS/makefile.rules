@@ -78,6 +78,8 @@ VACCS_OBJS = util/general.o \
    util/c_string_utils.o \
    util/memory_info.o \
    util/vaccs_config.o \
+   util/vaccs_error_message.o \
+   util/vaccs_source_location.o \
    io/vaccs_record.o \
    io/arch_record.o \
    io/asm_record.o \

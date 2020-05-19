@@ -1,5 +1,6 @@
 # $Id: Makefile,v 1.7 1997/03/27 20:27:20 carr Exp $
-SRCS		= general.cpp c_string_utils.cpp memory_info.cpp vaccs_config.cpp
+SRCS		= general.cpp c_string_utils.cpp memory_info.cpp vaccs_config.cpp \
+				vaccs_error_message.cpp vaccs_source_location.cpp
 CC = gcc
 CXX = g++
 
