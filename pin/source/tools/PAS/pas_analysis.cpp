@@ -166,71 +166,141 @@ void finalize_outputfiles()
 
 VOID Fini(INT32 code, VOID *v);
 
+static string get_signal_id(EXCEPTION_CODE ex_code) {
+  string ex_id;
+  switch (ex_code) {
+    case EXCEPTCODE_ACCESS_INVALID_ADDRESS:
+    case EXCEPTCODE_RECEIVED_ACCESS_FAULT:
+      ex_id = ACCESS_FAULT_ID;
+      break;
+    case EXCEPTCODE_ACCESS_DENIED:
+      ex_id = PROT_FAULT_ID;
+      break;
+    case EXCEPTCODE_ACCESS_INVALID_PAGE:
+      ex_id = PAGE_FAULT_ID;
+      break;
+    case EXCEPTCODE_ACCESS_MISALIGNED:
+      ex_id = ALIGN_FAULT_ID;
+      break;
+    case EXCEPTCODE_ILLEGAL_INS:
+      ex_id = ILL_FAULT_ID;
+      break;
+    case EXCEPTCODE_PRIVILEGED_INS:
+      ex_id = PRIV_FAULT_ID;
+      break;
+    case EXCEPTCODE_INT_DIVIDE_BY_ZERO:
+      ex_id = DIV_FAULT_ID;
+      break;
+    case EXCEPTCODE_INT_OVERFLOW_TRAP:
+      ex_id = OVER_FAULT_ID;
+      break;
+    case EXCEPTCODE_INT_BOUNDS_EXCEEDED:
+      ex_id = BND_FAUlT_ID;
+      break;
+    case EXCEPTCODE_X87_DIVIDE_BY_ZERO:
+    case EXCEPTCODE_SIMD_DIVIDE_BY_ZERO:
+      ex_id = FDIV_FAULT_ID;
+      break;
+    case EXCEPTCODE_X87_OVERFLOW:
+    case EXCEPTCODE_SIMD_OVERFLOW:
+      ex_id = FOVER_FAULT_ID;
+      break;
+    case EXCEPTCODE_X87_UNDERFLOW:
+    case EXCEPTCODE_SIMD_UNDERFLOW:
+      ex_id = FUNDR_FAULT_ID;
+      break;
+    case EXCEPTCODE_X87_INEXACT_RESULT:
+    case EXCEPTCODE_SIMD_INEXACT_RESULT:
+      ex_id = FEXT_FAULT_ID;
+      break;
+    case EXCEPTCODE_X87_INVALID_OPERATION:
+    case EXCEPTCODE_SIMD_INVALID_OPERATION:
+      ex_id = FINV_FAULT_ID;
+      break;
+    case EXCEPTCODE_X87_DENORMAL_OPERAND:
+    case EXCEPTCODE_SIMD_DENORMAL_OPERAND:
+      ex_id = FNRM_FAULT_ID;
+      break;
+    case EXCEPTCODE_X87_STACK_ERROR:
+      ex_id = FSTK_FAULT_ID;
+       break;
+    case EXCEPTCODE_RECEIVED_AMBIGUOUS_X87:
+    case EXCEPTCODE_RECEIVED_AMBIGUOUS_SIMD:
+      ex_id = FUNK_FAULT_ID;
+       break;
+    default:
+      ex_id = UNK_FAULT_ID;
+      break;
+  }
+
+  return ex_id;
+}
+
 static string get_signal_string(EXCEPTION_CODE ex_code) {
   string ex_msg;
   switch (ex_code) {
     case EXCEPTCODE_ACCESS_INVALID_ADDRESS:
     case EXCEPTCODE_RECEIVED_ACCESS_FAULT:
-      ex_msg = "invalid memory address";
+      ex_msg = ACCESS_MSG;
       break;
     case EXCEPTCODE_ACCESS_DENIED:
-      ex_msg = "memory protection violation";
+      ex_msg = PROT_MSG;
       break;
     case EXCEPTCODE_ACCESS_INVALID_PAGE:
-      ex_msg = "invalid memory page";
+      ex_msg = PAGE_MSG;
       break;
     case EXCEPTCODE_ACCESS_MISALIGNED:
-      ex_msg = "memory access misaligned";
+      ex_msg = ALIGN_MSG;
       break;
     case EXCEPTCODE_ILLEGAL_INS:
-      ex_msg = "illegal instruction";
+      ex_msg = ILL_MSG;
       break;
     case EXCEPTCODE_PRIVILEGED_INS:
-      ex_msg = "privileged instruction";
+      ex_msg = PRIV_MSG;
       break;
     case EXCEPTCODE_INT_DIVIDE_BY_ZERO:
-      ex_msg = "integer divide by zero";
+      ex_msg = DIV_MSG;
       break;
     case EXCEPTCODE_INT_OVERFLOW_TRAP:
-      ex_msg = "integer overflow";
+      ex_msg = OVER_MSG;
       break;
     case EXCEPTCODE_INT_BOUNDS_EXCEEDED:
-      ex_msg = "array out-of-bounds";
+      ex_msg = BND_MSG;
       break;
     case EXCEPTCODE_X87_DIVIDE_BY_ZERO:
     case EXCEPTCODE_SIMD_DIVIDE_BY_ZERO:
-      ex_msg = "floating-point divide by zero";
+      ex_msg = FDIV_MSG;
       break;
     case EXCEPTCODE_X87_OVERFLOW:
     case EXCEPTCODE_SIMD_OVERFLOW:
-      ex_msg = "floating-point overflow";
+      ex_msg = FOVER_MSG;
       break;
     case EXCEPTCODE_X87_UNDERFLOW:
     case EXCEPTCODE_SIMD_UNDERFLOW:
-      ex_msg = "floating-point underflow";
+      ex_msg = FUNDR_MSG;
       break;
     case EXCEPTCODE_X87_INEXACT_RESULT:
     case EXCEPTCODE_SIMD_INEXACT_RESULT:
-      ex_msg = "floating-point inexact result";
+      ex_msg = FEXT_MSG;
       break;
     case EXCEPTCODE_X87_INVALID_OPERATION:
     case EXCEPTCODE_SIMD_INVALID_OPERATION:
-      ex_msg = "floating-point invalid operation";
+      ex_msg = FINV_MSG;
       break;
     case EXCEPTCODE_X87_DENORMAL_OPERAND:
     case EXCEPTCODE_SIMD_DENORMAL_OPERAND:
-      ex_msg = "floating-point denormalized operand";
+      ex_msg = FNRM_MSG;
       break;
     case EXCEPTCODE_X87_STACK_ERROR:
-      ex_msg = "floating-point stack error";
+      ex_msg = FSTK_MSG;
        break;
     case EXCEPTCODE_RECEIVED_AMBIGUOUS_X87:
     case EXCEPTCODE_RECEIVED_AMBIGUOUS_SIMD:
-      ex_msg = "floating-point unknown error";
+      ex_msg = FUNK_MSG;
        break;
     default:
-      ex_msg = "unknown error";
-       break;
+      ex_msg = UNK_MSG;
+      break;
   }
 
   return ex_msg;
@@ -256,7 +326,7 @@ static BOOL signal_handler(THREADID id, INT32 signum, CONTEXT *ctxt, BOOL hasHan
   vaccs_error_message *emsg = (new vaccs_error_message())
 					->add_file_name(last_known_user_location.get_file_name())
 					->add_line(last_known_user_location.get_line_num())
-					->add_severity(VACCS_ERROR_LEVEL_ERROR)
+					->add_id(get_signal_id(PIN_GetExceptionCode(einfo)))
 					->add_message("Application raised " + get_signal_string(PIN_GetExceptionCode(einfo)) +
                         " fault trying to access address " + hexstr(exAddr));
 				emsg->emit_vaccs_formatted_error_message();

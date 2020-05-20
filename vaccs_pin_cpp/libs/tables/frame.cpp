@@ -371,8 +371,8 @@ void runtime_stack::pop()
 		vaccs_error_message *emsg = (new vaccs_error_message())
 			->add_file_name(last_known_user_location.get_file_name())
 			->add_line(last_known_user_location.get_line_num())
-			->add_severity(VACCS_ERROR_LEVEL_ERROR)
-			->add_message("Corrupted stack detected");
+			->add_id(STK_FAULT_ID)
+			->add_message(STK_MSG);
 		emsg->emit_vaccs_formatted_error_message();
 		exit(-1);
 	}
@@ -1037,8 +1037,8 @@ runtime_stack::get_updated_links()
 				vaccs_error_message *emsg = (new vaccs_error_message())
 					->add_file_name(last_known_user_location.get_file_name())
 					->add_line(last_known_user_location.get_line_num())
-					->add_severity(VACCS_ERROR_LEVEL_WARNING)
-					->add_message("Stack smashing of old frame pointer detected");
+					->add_id(RBP_FAULT_ID)
+					->add_message(RBP_MSG);
 				emsg->emit_vaccs_formatted_error_message();
 			}
 		}
@@ -1061,8 +1061,8 @@ runtime_stack::get_updated_links()
 				vaccs_error_message *emsg = (new vaccs_error_message())
 					->add_file_name(last_known_user_location.get_file_name())
 					->add_line(last_known_user_location.get_line_num())
-					->add_severity(VACCS_ERROR_LEVEL_WARNING)
-					->add_message("Stack smashing of return address detected");
+					->add_id(RA_FAULT_ID)
+					->add_message(RA_MSG);
 				emsg->emit_vaccs_formatted_error_message();
 			}
 		}
