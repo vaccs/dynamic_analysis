@@ -460,6 +460,16 @@ string var_record::read_singleton_value(type_record *trec, Generic addr)
 
 			value = convert.str();
 
+		} else if (type_name.find("float") != string::npos) {
+			float *ptr = (float *)addr;
+			convert << *ptr;
+			value = convert.str();
+			DEBUGL(LOG("Interpreting data as a float, value is " + value + "\n"));
+		} else if (type_name.find("double") != string::npos) {
+			double *ptr = (double *)addr;
+			convert << *ptr;
+			value = convert.str();
+			DEBUGL(LOG("Interpreting data as a double, value is " + value + "\n"));
 		} else
 			value = "<multielement>";
 	}

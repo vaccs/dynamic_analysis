@@ -1,19 +1,23 @@
 Pin: pin-3.6-97554-31f0a167d
 Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
+ process_config_setting: monitor_registers, 1
+ process_config_setting: user_code_only, 1
+ process_config_setting: malloc_free, 0
+ process_config_setting: secure_data, 0
+ process_config_setting: file_ops, 0
  monitor_registers = true
  user_code_only = true
  malloc_free = false
  secure_data = false
  file_ops = false
- Reading Heap Boundaries from file /proc/3765/maps
- Reading Stack Boundaries from file /proc/3765/maps
+ Reading Heap Boundaries from file /proc/40410/maps
+ Reading Stack Boundaries from file /proc/40410/maps
  Found stack information
- Reading Heap Boundaries from file /proc/3765/maps
+ Reading Heap Boundaries from file /proc/40410/maps
  Reading Heap Boundaries from file /proc/self/maps
  Done reading file
  Reading dwarf info
  Reading vaccs dwarf info
- Read array type, size = 8, upper bound = 7
  Reading member table for structure for type: 154
  Reading member table for structure for type: 545
  Read array type, size = 1, upper bound = 0
@@ -21,32 +25,1610 @@ Copyright (c) 2003-2017, Intel Corporation. All rights reserved.
  Reading member table for structure for type: 644
  Read array type, size = 16, upper bound = 1
  Creating Member Tables
+ create_member_tables for cu /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c.
  Creating member tables for a compilation unit
  var_table::create_member_tables
- Create member table for func
+ Create member table for a
  var_record::create_member_tables
- This is a function. Recurring on the function's var_table
- var_table::create_member_tables
- Create member table for buf
- var_record::create_member_tables
- This a variable. Checking the type.
+ This a variable. Checking the type, id = 98.
  This type is not a struct.
- Create member table for cptr
+ Create member table for c
  var_record::create_member_tables
- This a variable. Checking the type.
- This type is not a struct.
- Create member table for i
- var_record::create_member_tables
- This a variable. Checking the type.
- This type is not a struct.
- Create member table for j
- var_record::create_member_tables
- This a variable. Checking the type.
+ This a variable. Checking the type, id = 98.
  This type is not a struct.
  Create member table for main
  var_record::create_member_tables
  This is a function. Recurring on the function's var_table
  var_table::create_member_tables
- Create member table for argc
+ Create member table for b
  var_record::create_member_tables
- This a variable. Checking the type.
+ This a variable. Checking the type, id = 863.
+ This type is not a struct.
+ Create member table for p
+ var_record::create_member_tables
+ This a variable. Checking the type, id = 870.
+ This type is not a struct.
+ Done Creating Member Tables
+ Building dwarf tables
+ In runtime_stack::add_cu_table for globals
+ Add variable a for frame *G*
+ Add variable c for frame *G*
+ Begin analysis
+ Architecture: x86_64, heap_start = 0x555555756000 heap_end = 0x7ffffffdcff8 stack_begin = 0x7ffffffff000 stack end 0x7ffffffdd000: 
+ Command line = ./t8 
+ Binary: ./t8
+ C source code
+ -------------
+ Found a file /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ Line 1: #include <stdio.h>
+ Line 2: int a;
+ Line 3: int c = 3;
+ Line 4: int main() {
+ Line 5: 
+ Line 6:    float b;
+ Line 7: 
+ Line 8:    float *p = NULL;
+ Line 9: 
+ Line 10:    p = &b; 
+ Line 11:    a = 1;
+ Line 12:    b = 2.0;
+ Line 13:    printf("a = %d, b = %f, *p = %f, c = %d\n",a, b, *p, c);
+ Line 14: }
+ Starting program
+ monitor_registers = true
+ user_code_only = true
+ malloc_free = false
+ secure_data = false
+ file_ops = false
+ Section header:
+ 	|Type|Address|Size|Section Name
+ Section name: .interp
+ 	Type: 5
+ 	Address: 0x555555554238
+ 	Size: 28
+ 	Record: |5|0x555555554238|28|.interp
+ Section name: .note.ABI-tag
+ 	Type: 5
+ 	Address: 0x555555554254
+ 	Size: 32
+ 	Record: |5|0x555555554254|32|.note.ABI-tag
+ Section name: .note.gnu.build-id
+ 	Type: 5
+ 	Address: 0x555555554274
+ 	Size: 36
+ 	Record: |5|0x555555554274|36|.note.gnu.build-id
+ Section name: .gnu.hash
+ 	Type: 5
+ 	Address: 0x555555554298
+ 	Size: 28
+ 	Record: |5|0x555555554298|28|.gnu.hash
+ Section name: .dynsym
+ 	Type: 16
+ 	Address: 0x5555555542b8
+ 	Size: 168
+ 	Record: |16|0x5555555542b8|168|.dynsym
+ Section name: .dynstr
+ 	Type: 20
+ 	Address: 0x555555554360
+ 	Size: 132
+ 	Record: |20|0x555555554360|132|.dynstr
+ Section name: .gnu.version
+ 	Type: 5
+ 	Address: 0x5555555543e4
+ 	Size: 14
+ 	Record: |5|0x5555555543e4|14|.gnu.version
+ Section name: .gnu.version_r
+ 	Type: 5
+ 	Address: 0x5555555543f8
+ 	Size: 32
+ 	Record: |5|0x5555555543f8|32|.gnu.version_r
+ Section name: .rela.dyn
+ 	Type: 2
+ 	Address: 0x555555554418
+ 	Size: 192
+ 	Record: |2|0x555555554418|192|.rela.dyn
+ Section name: .rela.plt
+ 	Type: 2
+ 	Address: 0x5555555544d8
+ 	Size: 24
+ 	Record: |2|0x5555555544d8|24|.rela.plt
+ Section name: .init
+ 	Type: 4
+ 	Address: 0x5555555544f0
+ 	Size: 23
+ 	Record: |4|0x5555555544f0|23|.init
+ Section name: .plt
+ 	Type: 4
+ 	Address: 0x555555554510
+ 	Size: 32
+ 	Record: |4|0x555555554510|32|.plt
+ Section name: .plt.got
+ 	Type: 4
+ 	Address: 0x555555554530
+ 	Size: 8
+ 	Record: |4|0x555555554530|8|.plt.got
+ Section name: .text
+ 	Type: 4
+ 	Address: 0x555555554540
+ 	Size: 498
+ 	Record: |4|0x555555554540|498|.text
+ Section name: .fini
+ 	Type: 4
+ 	Address: 0x555555554734
+ 	Size: 9
+ 	Record: |4|0x555555554734|9|.fini
+ Section name: .rodata
+ 	Type: 5
+ 	Address: 0x555555554740
+ 	Size: 48
+ 	Record: |5|0x555555554740|48|.rodata
+ Section name: .eh_frame_hdr
+ 	Type: 5
+ 	Address: 0x555555554770
+ 	Size: 60
+ 	Record: |5|0x555555554770|60|.eh_frame_hdr
+ Section name: .eh_frame
+ 	Type: 5
+ 	Address: 0x5555555547b0
+ 	Size: 264
+ 	Record: |5|0x5555555547b0|264|.eh_frame
+ Section name: .init_array
+ 	Type: 5
+ 	Address: 0x555555754db8
+ 	Size: 8
+ 	Record: |5|0x555555754db8|8|.init_array
+ Section name: .fini_array
+ 	Type: 5
+ 	Address: 0x555555754dc0
+ 	Size: 8
+ 	Record: |5|0x555555754dc0|8|.fini_array
+ Section name: .dynamic
+ 	Type: 6
+ 	Address: 0x555555754dc8
+ 	Size: 496
+ 	Record: |6|0x555555754dc8|496|.dynamic
+ Section name: .got
+ 	Type: 8
+ 	Address: 0x555555754fb8
+ 	Size: 72
+ 	Record: |8|0x555555754fb8|72|.got
+ Section name: .data
+ 	Type: 5
+ 	Address: 0x555555755000
+ 	Size: 20
+ 	Record: |5|0x555555755000|20|.data
+ Section name: .bss
+ 	Type: 18
+ 	Address: 0x555555755014
+ 	Size: 12
+ 	Record: |18|0x555555755014|12|.bss
+ Section name: .comment
+ 	Type: 17
+ 	Address: 0x000000000
+ 	Size: 41
+ 	Record: |17|0x0|41|.comment
+ Section name: .debug_aranges
+ 	Type: 17
+ 	Address: 0x000000000
+ 	Size: 48
+ 	Record: |17|0x0|48|.debug_aranges
+ Section name: .debug_info
+ 	Type: 17
+ 	Address: 0x000000000
+ 	Size: 877
+ 	Record: |17|0x0|877|.debug_info
+ Section name: .debug_abbrev
+ 	Type: 17
+ 	Address: 0x000000000
+ 	Size: 258
+ 	Record: |17|0x0|258|.debug_abbrev
+ Section name: .debug_line
+ 	Type: 17
+ 	Address: 0x000000000
+ 	Size: 215
+ 	Record: |17|0x0|215|.debug_line
+ Section name: .debug_str
+ 	Type: 17
+ 	Address: 0x000000000
+ 	Size: 687
+ 	Record: |17|0x0|687|.debug_str
+ Section name: .symtab
+ 	Type: 15
+ 	Address: 0x000000000
+ 	Size: 1680
+ 	Record: |15|0x0|1680|.symtab
+ Section name: .strtab
+ 	Type: 19
+ 	Address: 0x000000000
+ 	Size: 517
+ 	Record: |19|0x0|517|.strtab
+ Section name: .shstrtab
+ 	Type: 21
+ 	Address: 0x000000000
+ 	Size: 318
+ 	Record: |21|0x0|318|.shstrtab
+ Instrumenting call to routine _init
+ Instrumenting call to routine _start
+ Instrumenting call to routine deregister_tm_clones
+ Instrumenting call to routine register_tm_clones
+ Instrumenting call to routine __do_global_dtors_aux
+ Instrumenting call to routine frame_dummy
+ Instrumenting call to routine main
+ Instrumenting call to routine __libc_csu_init
+ Instrumenting call to routine __libc_csu_fini
+ Instrumenting call to routine _fini
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ Direct call: call 0x555555554530
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ Direct call: call 0x555555554570
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ ASM Record
+ 	ASM line #: 93824992233034
+ 	C line #: 4
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Instruction: push rbp
+
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ ASM Record
+ 	ASM line #: 93824992233035
+ 	C line #: 4
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Instruction: mov rbp, rsp
+
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ ASM Record
+ 	ASM line #: 93824992233038
+ 	C line #: 4
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Instruction: sub rsp, 0x10
+
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ ASM Record
+ 	ASM line #: 93824992233042
+ 	C line #: 8
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Instruction: mov qword ptr [rbp-0x8], 0x0
+
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ ASM Record
+ 	ASM line #: 93824992233050
+ 	C line #: 10
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Instruction: lea rax, ptr [rbp-0xc]
+
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ ASM Record
+ 	ASM line #: 93824992233054
+ 	C line #: 10
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Instruction: mov qword ptr [rbp-0x8], rax
+
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ ASM Record
+ 	ASM line #: 93824992233058
+ 	C line #: 11
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Instruction: mov dword ptr [rip+0x2009ac], 0x1
+
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ ASM Record
+ 	ASM line #: 93824992233068
+ 	C line #: 12
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Instruction: movss xmm0, dword ptr [rip+0xf8]
+
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ ASM Record
+ 	ASM line #: 93824992233076
+ 	C line #: 12
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Instruction: movss dword ptr [rbp-0xc], xmm0
+
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ ASM Record
+ 	ASM line #: 93824992233081
+ 	C line #: 13
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Instruction: mov edx, dword ptr [rip+0x200991]
+
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ ASM Record
+ 	ASM line #: 93824992233087
+ 	C line #: 13
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Instruction: mov rax, qword ptr [rbp-0x8]
+
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ ASM Record
+ 	ASM line #: 93824992233091
+ 	C line #: 13
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Instruction: movss xmm0, dword ptr [rax]
+
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ ASM Record
+ 	ASM line #: 93824992233095
+ 	C line #: 13
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Instruction: cvtss2sd xmm1, xmm0
+
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ ASM Record
+ 	ASM line #: 93824992233099
+ 	C line #: 13
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Instruction: movss xmm0, dword ptr [rbp-0xc]
+
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ ASM Record
+ 	ASM line #: 93824992233104
+ 	C line #: 13
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Instruction: cvtss2sd xmm0, xmm0
+
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ ASM Record
+ 	ASM line #: 93824992233108
+ 	C line #: 13
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Instruction: mov eax, dword ptr [rip+0x20097e]
+
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ ASM Record
+ 	ASM line #: 93824992233114
+ 	C line #: 13
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Instruction: mov esi, eax
+
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ ASM Record
+ 	ASM line #: 93824992233116
+ 	C line #: 13
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Instruction: lea rdi, ptr [rip+0xa5]
+
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ ASM Record
+ 	ASM line #: 93824992233123
+ 	C line #: 13
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Instruction: mov eax, 0x2
+
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ ASM Record
+ 	ASM line #: 93824992233128
+ 	C line #: 13
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Instruction: call 0x555555554520
+
+ Direct call: call 0x555555554520
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ ASM Record
+ 	ASM line #: 93824992233133
+ 	C line #: 13
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Instruction: mov eax, 0x0
+
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ ASM Record
+ 	ASM line #: 93824992233138
+ 	C line #: 14
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Instruction: leave 
+
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ ASM Record
+ 	ASM line #: 93824992233139
+ 	C line #: 14
+ 	ASM file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.s
+ 	C file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Instruction: ret 
+
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ Direct call: call 0x5555555544f0
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ In vaccs_sd_clear_instrument_ins
+ Exit vaccs_sd_clear_set_instrument_ins
+ Instrument a halt instruction
+ Function Call to _start
+ Base SP = 0x7fffffffd920
+ Stack Begin =0x7fffe49f0030 Stack End =0x000000000 value after write to address 0x7fffffffd910 is :0x000000000
+ line = 0, column = 0, file = __NOCSOURCE__
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x55555555454d is between 0x00000064a and 0x0000006b4
+ ip = 0x55555555454d is not in user code
+ value after write to address 0x7fffffffd908 is :0x000000000
+ line = 0, column = 0, file = __NOCSOURCE__
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x55555555454e is between 0x00000064a and 0x0000006b4
+ ip = 0x55555555454e is not in user code
+ value after write to address 0x7fffffffd900 is :0x7fffffffd920
+ line = 0, column = 0, file = __NOCSOURCE__
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x555555554564 is between 0x00000064a and 0x0000006b4
+ ip = 0x555555554564 is not in user code
+ Function Call to __libc_csu_init
+ value after write to address 0x7fffffffd838 is :0x555555554540
+ line = 0, column = 0, file = __NOCSOURCE__
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x5555555546c0 is between 0x00000064a and 0x0000006b4
+ ip = 0x5555555546c0 is not in user code
+ value after write to address 0x7fffffffd830 is :0x5555555546c0
+ line = 0, column = 0, file = __NOCSOURCE__
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x5555555546c2 is between 0x00000064a and 0x0000006b4
+ ip = 0x5555555546c2 is not in user code
+ value after write to address 0x7fffffffd828 is :0x000000000
+ line = 0, column = 0, file = __NOCSOURCE__
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x5555555546c7 is between 0x00000064a and 0x0000006b4
+ ip = 0x5555555546c7 is not in user code
+ value after write to address 0x7fffffffd820 is :0x0f7ffe170
+ line = 0, column = 0, file = __NOCSOURCE__
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x5555555546c9 is between 0x00000064a and 0x0000006b4
+ ip = 0x5555555546c9 is not in user code
+ value after write to address 0x7fffffffd818 is :0x7fffe43b3539
+ line = 0, column = 0, file = __NOCSOURCE__
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x5555555546d2 is between 0x00000064a and 0x0000006b4
+ ip = 0x5555555546d2 is not in user code
+ value after write to address 0x7fffffffd810 is :0x7ffff7de59f0
+ line = 0, column = 0, file = __NOCSOURCE__
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x5555555546da is between 0x00000064a and 0x0000006b4
+ ip = 0x5555555546da is not in user code
+ value after write to address 0x7fffffffd800 is :0x0000000c2
+ line = 0, column = 0, file = __NOCSOURCE__
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x5555555546ec is between 0x00000064a and 0x0000006b4
+ ip = 0x5555555546ec is not in user code
+ Function Call to _init
+ Enter functionInvocationAfter
+ Exiting _init
+ In after_function_call in __libc_csu_init, ip = 0x5555555546f1
+ value after write to address 0x7fffffffd800 is :0x0000000c2
+ line = 0, column = 0, file = __NOCSOURCE__
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x555555554709 is between 0x00000064a and 0x0000006b4
+ ip = 0x555555554709 is not in user code
+ Function Call to frame_dummy
+ value after write to address 0x7fffffffd7f8 is :0x000f0b5ff
+ line = 0, column = 0, file = __NOCSOURCE__
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x555555554640 is between 0x00000064a and 0x0000006b4
+ ip = 0x555555554640 is not in user code
+ Function Call to register_tm_clones
+ value after write to address 0x7fffffffd7f8 is :0x000f0b5ff
+ line = 0, column = 0, file = __NOCSOURCE__
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x5555555545be is between 0x00000064a and 0x0000006b4
+ ip = 0x5555555545be is not in user code
+ Enter functionInvocationAfter
+ Exiting register_tm_clones
+ Enter functionInvocationAfter
+ Exiting __libc_csu_init
+ Function Call to main
+ Getting frame pointer for main
+ Call to function
+ 	Event num: 4
+ 	Function name: main
+ 	Func line: 4
+ 	Inv line: 0
+ 	Func file: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Inv file: 
+ 	Callee stack address: 0x7fffffffd848
+
+ Return address
+ 	Function name: main
+ 	Dynamic link: 0x5555555546c0
+ 	Return address: 0x7fffe4391b97
+ Build stack frame
+ In runtime_stack::push for routine main
+ In cu_record::pc_in_range: check if pc = 0x55555555464a is between 0x00000064a and 0x0000006b4
+ In var_record::pc_in_range: check if pc = 0x55555555464a is between 0x55555555464a and 0x5555555546b4
+ Add variable b for frame main
+ Add variable p for frame main
+ value after write to address 0x7fffffffd838 is :0x000000000
+ line = 4, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x55555555464a is between 0x00000064a and 0x0000006b4
+ ip = 0x55555555464a is in user code checking variable access
+ PC is before stack frame is setup: 0x55555555464a Before stack setup, line =  4
+ Checking values Register Record
+ 	Event num: 5
+ 	Line #: 4
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Register: rsp
+ 	Value: 0x0x7fffffffd840
+ Before stack setup, line =  4
+ Checking values Register Record
+ 	Event num: 6
+ 	Line #: 4
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Register: rbp
+ 	Value: 0x0x7fffffffd840
+ Before stack setup, line =  4
+ Checking values Register Record
+ 	Event num: 7
+ 	Line #: 4
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Register: rsp
+ 	Value: 0x0x7fffffffd830
+ Before stack setup, line =  4
+ Checking values Register Record
+ 	Event num: 8
+ 	Line #: 4
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Register: rflags
+ 	Value: 0x0x000000206
+ value after write to address 0x7fffffffd838 is :0x000000000
+ line = 8, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x555555554652 is between 0x00000064a and 0x0000006b4
+ ip = 0x555555554652 is in user code checking variable access
+ PC is before stack frame is setup: 0x555555554652 Before stack setup, line =  10
+ After stack setup, start_pc = 0x555555554652 ip = 0x55555555465a
+ In runtime_stack::addr_get_updated_variables, addr = <NULL>
+ In runtime_stack::get_updated_variables_from_frame, addr = 0x000000000
+ First access for frame of main
+ Checking if variable b has been updated
+ Type record for 863
+ 	 type size = 4
+ 	 type name = float
+ 	 is_array =0
+ 	 upper bound = 18446744073709551615
+ 	 is_pointer = 0
+ 	 is_array = 0
+ 	 is_struct = 0
+ Base address for a local or param is: 0x7fffffffd834
+ In var_record::read_value
+ Type is float
+ Reading 4 bytes at address: 0x7fffffffd834
+ Found a singleton value
+ In var_record::read_singleton_value
+ Type is float
+ Reading 4 bytes at address: 0x7fffffffd834
+ Interpreting data as a float, value is 4.59163e-41
+ New value = 4.59163e-41, old value = <NOVALUE>
+ Found new value: 4.59163e-41 for b
+ Checking if variable p has been updated
+ Type record for 870
+ 	 type size = 8
+ 	 type name = float*
+ 	 is_array =0
+ 	 upper bound = 18446744073709551615
+ 	 is_pointer = 1
+ 	 is_array = 0
+ 	 is_struct = 0
+ 	 base_type = 863
+ Base address for a local or param is: 0x7fffffffd838
+ New value = <NULL>, old value = <NOVALUE>
+ Found new value: <NULL> for p
+ points_to value converted from <NOVALUE> to 0x000000000 In runtime_stack::get_updated_variables_from_frame, addr = 0x000000000
+ First access for frame of *G*
+ Checking if variable a has been updated
+ Type record for 98
+ 	 type size = 4
+ 	 type name = int
+ 	 is_array =0
+ 	 upper bound = 18446744073709551615
+ 	 is_pointer = 0
+ 	 is_array = 0
+ 	 is_struct = 0
+ Base address for a global is: 0x555555755018
+ In var_record::read_value
+ Type is int
+ Reading 4 bytes at address: 0x555555755018
+ Found a singleton value
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0x555555755018
+ Interpreting data as an int, value is 0
+ New value = 0, old value = 
+ Found new value: 0 for a
+ Checking if variable c has been updated
+ Type record for 98
+ 	 type size = 4
+ 	 type name = int
+ 	 is_array =0
+ 	 upper bound = 18446744073709551615
+ 	 is_pointer = 0
+ 	 is_array = 0
+ 	 is_struct = 0
+ Base address for a global is: 0x555555755010
+ In var_record::read_value
+ Type is int
+ Reading 4 bytes at address: 0x555555755010
+ Found a singleton value
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0x555555755010
+ Interpreting data as an int, value is 3
+ New value = 3, old value = 
+ Found new value: 3 for c
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame main
+ Base address for a local or param is: 0x7fffffffd834
+ Base address for a local or param is: 0x7fffffffd838
+ Found a pointer variable: p, addr = 0x7fffffffd838
+ Non-character Pointer variable: p points to a valid memory location 0x000000000 of type float*
+ In var_record::read_value
+ Type is float*
+ Reading 8 bytes at address: <NULL>
+ Checking if what variable p points to has been updated
+ Found new points_to value: <NULL> for p old points_to value = <NOVALUE>
+ In runtime_stack::get_updated_points_to_frame *G*
+ Base address for a global is: 0x555555755018
+ Base address for a global is: 0x555555755010
+ Write to variable b
+ 	Event num: 9
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Scope: main
+ 	Address: 0x7fffffffd834
+ 	Type: float
+ 	Value: 4.59163e-41
+ 	Points to: 0x7261747320747865
+ 	Points to value: 
+ Write to variable p
+ 	Event num: 9
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Scope: main
+ 	Address: 0x7fffffffd838
+ 	Type: float*
+ 	Value: <NULL>
+ 	Points to: 0x000000000
+ 	Points to value: 
+ Write to variable a
+ 	Event num: 9
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Scope: *G*
+ 	Address: 0x555555755018
+ 	Type: int
+ 	Value: 0
+ 	Points to: 0x4d492038742f7374
+ 	Points to value: 
+ Write to variable c
+ 	Event num: 9
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Scope: *G*
+ 	Address: 0x555555755010
+ 	Type: int
+ 	Value: 3
+ 	Points to: 0x4d492038742f7374
+ 	Points to value: 
+ Write to variable p
+ 	Event num: 9
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Scope: main
+ 	Address: 0x7fffffffd838
+ 	Type: float*
+ 	Value: <NULL>
+ 	Points to: 0x000000000
+ 	Points to value: <NULL>
+ Enter get_updated_links
+ Checking frame for main
+ Saved old_rbp = 0x6e6258d4c544155
+ Stack old_rbp = 0x5555555546c0
+ Saved return address = 0x6e62d8d48550020
+ Stack return address = 0x7fffe4391b97
+ There were link updates after register update, timestamp = 9
+ Checking values Register Record
+ 	Event num: 10
+ 	Line #: 10
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Register: rax
+ 	Value: 0x0x7fffffffd834
+ value after write to address 0x7fffffffd838 is :0x7fffffffd834
+ line = 10, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x55555555465e is between 0x00000064a and 0x0000006b4
+ ip = 0x55555555465e is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffd838
+ In runtime_stack::get_updated_variables_from_frame, addr = 0x7fffffffd838
+ Checking if variable b has been updated
+ Type record for 863
+ 	 type size = 4
+ 	 type name = float
+ 	 is_array =0
+ 	 upper bound = 18446744073709551615
+ 	 is_pointer = 0
+ 	 is_array = 0
+ 	 is_struct = 0
+ Enter is_at_address
+ trec = 0x7ffff7d7f340 type name = float
+ Base address for a local or param is: 0x7fffffffd834
+ var_addr: 0x7fffffffd834 mem_addr: 0x7fffffffd838 size: 4
+ Checking if variable p has been updated
+ Type record for 870
+ 	 type size = 8
+ 	 type name = float*
+ 	 is_array =0
+ 	 upper bound = 18446744073709551615
+ 	 is_pointer = 1
+ 	 is_array = 0
+ 	 is_struct = 0
+ 	 base_type = 863
+ Enter is_at_address
+ trec = 0x7ffff7d7f2c0 type name = float*
+ Base address for a local or param is: 0x7fffffffd838
+ var_addr: 0x7fffffffd838 mem_addr: 0x7fffffffd838 size: 8
+ New value = 0x7fffffffd834, old value = <NULL>
+ Found new value: 0x7fffffffd834 for p
+ points_to value converted from <NULL> to 0x000000000 In runtime_stack::get_updated_variables_from_frame, addr = 0x7fffffffd838
+ Checking if variable a has been updated
+ Type record for 98
+ 	 type size = 4
+ 	 type name = int
+ 	 is_array =0
+ 	 upper bound = 18446744073709551615
+ 	 is_pointer = 0
+ 	 is_array = 0
+ 	 is_struct = 0
+ Enter is_at_address
+ trec = 0x7ffff7d7f1c0 type name = int
+ Base address for a global is: 0x555555755018
+ var_addr: 0x555555755018 mem_addr: 0x7fffffffd838 size: 4
+ Checking if variable c has been updated
+ Type record for 98
+ 	 type size = 4
+ 	 type name = int
+ 	 is_array =0
+ 	 upper bound = 18446744073709551615
+ 	 is_pointer = 0
+ 	 is_array = 0
+ 	 is_struct = 0
+ Enter is_at_address
+ trec = 0x7ffff7d7f1c0 type name = int
+ Base address for a global is: 0x555555755010
+ var_addr: 0x555555755010 mem_addr: 0x7fffffffd838 size: 4
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame main
+ Base address for a local or param is: 0x7fffffffd834
+ Base address for a local or param is: 0x7fffffffd838
+ Found a pointer variable: p, addr = 0x7fffffffd838
+ Non-character Pointer variable: p points to a valid memory location 0x7fffffffd834 of type float*
+ In var_record::read_value
+ Type is float*
+ Reading 8 bytes at address: 0x7fffffffd834
+ Found a pointer
+ Found a non-character pointer to an atomic value
+ value = 0xffffd83400007fff
+ Checking if what variable p points to has been updated
+ Found new points_to value: 0xffffd83400007fff for p old points_to value = <NULL>
+ In runtime_stack::get_updated_points_to_frame *G*
+ Base address for a global is: 0x555555755018
+ Base address for a global is: 0x555555755010
+ Write to variable p
+ 	Event num: 11
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Scope: main
+ 	Address: 0x7fffffffd838
+ 	Type: float*
+ 	Value: 0x7fffffffd834
+ 	Points to: 0x000000000
+ 	Points to value: 
+ Write to variable p
+ 	Event num: 11
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Scope: main
+ 	Address: 0x7fffffffd838
+ 	Type: float*
+ 	Value: 0x7fffffffd834
+ 	Points to: 0x7fffffffd834
+ 	Points to value: 0xffffd83400007fff
+ Enter get_updated_links
+ Checking frame for main
+ Saved old_rbp = 0x5555555546c0
+ Stack old_rbp = 0x5555555546c0
+ Saved return address = 0x7fffe4391b97
+ Stack return address = 0x7fffe4391b97
+ There were no link updates
+ value after write to address 0x555555755018 is :0x000000001
+ line = 11, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x555555554662 is between 0x00000064a and 0x0000006b4
+ ip = 0x555555554662 is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x555555755018
+ In runtime_stack::get_updated_variables_from_frame, addr = 0x555555755018
+ Checking if variable b has been updated
+ Type record for 863
+ 	 type size = 4
+ 	 type name = float
+ 	 is_array =0
+ 	 upper bound = 18446744073709551615
+ 	 is_pointer = 0
+ 	 is_array = 0
+ 	 is_struct = 0
+ Enter is_at_address
+ trec = 0x7ffff7d7f340 type name = float
+ Base address for a local or param is: 0x7fffffffd834
+ var_addr: 0x7fffffffd834 mem_addr: 0x555555755018 size: 4
+ Checking if variable p has been updated
+ Type record for 870
+ 	 type size = 8
+ 	 type name = float*
+ 	 is_array =0
+ 	 upper bound = 18446744073709551615
+ 	 is_pointer = 1
+ 	 is_array = 0
+ 	 is_struct = 0
+ 	 base_type = 863
+ Enter is_at_address
+ trec = 0x7ffff7d7f2c0 type name = float*
+ Base address for a local or param is: 0x7fffffffd838
+ var_addr: 0x7fffffffd838 mem_addr: 0x555555755018 size: 8
+ In runtime_stack::get_updated_variables_from_frame, addr = 0x555555755018
+ Checking if variable a has been updated
+ Type record for 98
+ 	 type size = 4
+ 	 type name = int
+ 	 is_array =0
+ 	 upper bound = 18446744073709551615
+ 	 is_pointer = 0
+ 	 is_array = 0
+ 	 is_struct = 0
+ Enter is_at_address
+ trec = 0x7ffff7d7f1c0 type name = int
+ Base address for a global is: 0x555555755018
+ var_addr: 0x555555755018 mem_addr: 0x555555755018 size: 4
+ In var_record::read_value
+ Type is int
+ Reading 4 bytes at address: 0x555555755018
+ Found a singleton value
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0x555555755018
+ Interpreting data as an int, value is 1
+ New value = 1, old value = 0
+ Found new value: 1 for a
+ Checking if variable c has been updated
+ Type record for 98
+ 	 type size = 4
+ 	 type name = int
+ 	 is_array =0
+ 	 upper bound = 18446744073709551615
+ 	 is_pointer = 0
+ 	 is_array = 0
+ 	 is_struct = 0
+ Enter is_at_address
+ trec = 0x7ffff7d7f1c0 type name = int
+ Base address for a global is: 0x555555755010
+ var_addr: 0x555555755010 mem_addr: 0x555555755018 size: 4
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame main
+ Base address for a local or param is: 0x7fffffffd834
+ Base address for a local or param is: 0x7fffffffd838
+ Found a pointer variable: p, addr = 0x7fffffffd838
+ Non-character Pointer variable: p points to a valid memory location 0x7fffffffd834 of type float*
+ In var_record::read_value
+ Type is float*
+ Reading 8 bytes at address: 0x7fffffffd834
+ Found a pointer
+ Found a non-character pointer to an atomic value
+ value = 0xffffd83400007fff
+ Checking if what variable p points to has been updated
+ In runtime_stack::get_updated_points_to_frame *G*
+ Base address for a global is: 0x555555755018
+ Base address for a global is: 0x555555755010
+ Write to variable a
+ 	Event num: 12
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Scope: *G*
+ 	Address: 0x555555755018
+ 	Type: int
+ 	Value: 1
+ 	Points to: 0x7261747320747865
+ 	Points to value: 
+ Enter get_updated_links
+ Checking frame for main
+ Saved old_rbp = 0x5555555546c0
+ Stack old_rbp = 0x5555555546c0
+ Saved return address = 0x7fffe4391b97
+ Stack return address = 0x7fffe4391b97
+ There were no link updates
+ Checking values Register Record
+ 	Event num: 13
+ 	Line #: 12
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Register: xmm0
+ 	Value: 0x0x040000000
+ value after write to address 0x7fffffffd834 is :0xffffd83440000000
+ line = 12, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x555555554674 is between 0x00000064a and 0x0000006b4
+ ip = 0x555555554674 is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffd834
+ In runtime_stack::get_updated_variables_from_frame, addr = 0x7fffffffd834
+ Checking if variable b has been updated
+ Type record for 863
+ 	 type size = 4
+ 	 type name = float
+ 	 is_array =0
+ 	 upper bound = 18446744073709551615
+ 	 is_pointer = 0
+ 	 is_array = 0
+ 	 is_struct = 0
+ Enter is_at_address
+ trec = 0x7ffff7d7f340 type name = float
+ Base address for a local or param is: 0x7fffffffd834
+ var_addr: 0x7fffffffd834 mem_addr: 0x7fffffffd834 size: 4
+ In var_record::read_value
+ Type is float
+ Reading 4 bytes at address: 0x7fffffffd834
+ Found a singleton value
+ In var_record::read_singleton_value
+ Type is float
+ Reading 4 bytes at address: 0x7fffffffd834
+ Interpreting data as a float, value is 2
+ New value = 2, old value = 4.59163e-41
+ Found new value: 2 for b
+ Checking if variable p has been updated
+ Type record for 870
+ 	 type size = 8
+ 	 type name = float*
+ 	 is_array =0
+ 	 upper bound = 18446744073709551615
+ 	 is_pointer = 1
+ 	 is_array = 0
+ 	 is_struct = 0
+ 	 base_type = 863
+ Enter is_at_address
+ trec = 0x7ffff7d7f2c0 type name = float*
+ Base address for a local or param is: 0x7fffffffd838
+ var_addr: 0x7fffffffd838 mem_addr: 0x7fffffffd834 size: 8
+ In runtime_stack::get_updated_variables_from_frame, addr = 0x7fffffffd834
+ Checking if variable a has been updated
+ Type record for 98
+ 	 type size = 4
+ 	 type name = int
+ 	 is_array =0
+ 	 upper bound = 18446744073709551615
+ 	 is_pointer = 0
+ 	 is_array = 0
+ 	 is_struct = 0
+ Enter is_at_address
+ trec = 0x7ffff7d7f1c0 type name = int
+ Base address for a global is: 0x555555755018
+ var_addr: 0x555555755018 mem_addr: 0x7fffffffd834 size: 4
+ Checking if variable c has been updated
+ Type record for 98
+ 	 type size = 4
+ 	 type name = int
+ 	 is_array =0
+ 	 upper bound = 18446744073709551615
+ 	 is_pointer = 0
+ 	 is_array = 0
+ 	 is_struct = 0
+ Enter is_at_address
+ trec = 0x7ffff7d7f1c0 type name = int
+ Base address for a global is: 0x555555755010
+ var_addr: 0x555555755010 mem_addr: 0x7fffffffd834 size: 4
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame main
+ Base address for a local or param is: 0x7fffffffd834
+ Base address for a local or param is: 0x7fffffffd838
+ Found a pointer variable: p, addr = 0x7fffffffd838
+ Non-character Pointer variable: p points to a valid memory location 0x7fffffffd834 of type float*
+ In var_record::read_value
+ Type is float*
+ Reading 8 bytes at address: 0x7fffffffd834
+ Found a pointer
+ Found a non-character pointer to an atomic value
+ value = 0xffffd83440000000
+ Checking if what variable p points to has been updated
+ Found new points_to value: 0xffffd83440000000 for p old points_to value = 0xffffd83400007fff
+ In runtime_stack::get_updated_points_to_frame *G*
+ Base address for a global is: 0x555555755018
+ Base address for a global is: 0x555555755010
+ Write to variable b
+ 	Event num: 14
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Scope: main
+ 	Address: 0x7fffffffd834
+ 	Type: float
+ 	Value: 2
+ 	Points to: 0x5043542063696669
+ 	Points to value: 
+ Write to variable p
+ 	Event num: 14
+ 	C file name: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Scope: main
+ 	Address: 0x7fffffffd838
+ 	Type: float*
+ 	Value: 0x7fffffffd834
+ 	Points to: 0x7fffffffd834
+ 	Points to value: 0xffffd83440000000
+ Enter get_updated_links
+ Checking frame for main
+ Saved old_rbp = 0x5555555546c0
+ Stack old_rbp = 0x5555555546c0
+ Saved return address = 0x7fffe4391b97
+ Stack return address = 0x7fffe4391b97
+ There were no link updates
+ Checking values Register Record
+ 	Event num: 15
+ 	Line #: 13
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Register: edx
+ 	Value: 0x0x000000003
+ Checking values Checking values Checking values Register Record
+ 	Event num: 16
+ 	Line #: 13
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Register: xmm1
+ 	Value: 0x0x4000000000000000
+ Checking values Checking values Register Record
+ 	Event num: 17
+ 	Line #: 13
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Register: xmm0
+ 	Value: 0x0x4000000000000000
+ Checking values Register Record
+ 	Event num: 18
+ 	Line #: 13
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Register: eax
+ 	Value: 0x0x000000001
+ Checking values Register Record
+ 	Event num: 19
+ 	Line #: 13
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Register: esi
+ 	Value: 0x0x000000001
+ Checking values Register Record
+ 	Event num: 20
+ 	Line #: 13
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Register: rdi
+ 	Value: 0x0x555555554748
+ Checking values Register Record
+ 	Event num: 21
+ 	Line #: 13
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Register: eax
+ 	Value: 0x0x000000002
+ Function call to address: 0x555555554520 ip = 0x5555555546a8
+ value after write to address 0x7fffffffd820 is :0x5555555546c0
+ line = 13, column = 0, file = /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x5555555546a8 is between 0x00000064a and 0x0000006b4
+ ip = 0x5555555546a8 is in user code checking variable access
+ In runtime_stack::addr_get_updated_variables, addr = 0x7fffffffd820
+ In runtime_stack::get_updated_variables_from_frame, addr = 0x7fffffffd820
+ Checking if variable b has been updated
+ Type record for 863
+ 	 type size = 4
+ 	 type name = float
+ 	 is_array =0
+ 	 upper bound = 18446744073709551615
+ 	 is_pointer = 0
+ 	 is_array = 0
+ 	 is_struct = 0
+ Enter is_at_address
+ trec = 0x7ffff7d7f340 type name = float
+ Base address for a local or param is: 0x7fffffffd834
+ var_addr: 0x7fffffffd834 mem_addr: 0x7fffffffd820 size: 4
+ Checking if variable p has been updated
+ Type record for 870
+ 	 type size = 8
+ 	 type name = float*
+ 	 is_array =0
+ 	 upper bound = 18446744073709551615
+ 	 is_pointer = 1
+ 	 is_array = 0
+ 	 is_struct = 0
+ 	 base_type = 863
+ Enter is_at_address
+ trec = 0x7ffff7d7f2c0 type name = float*
+ Base address for a local or param is: 0x7fffffffd838
+ var_addr: 0x7fffffffd838 mem_addr: 0x7fffffffd820 size: 8
+ In runtime_stack::get_updated_variables_from_frame, addr = 0x7fffffffd820
+ Checking if variable a has been updated
+ Type record for 98
+ 	 type size = 4
+ 	 type name = int
+ 	 is_array =0
+ 	 upper bound = 18446744073709551615
+ 	 is_pointer = 0
+ 	 is_array = 0
+ 	 is_struct = 0
+ Enter is_at_address
+ trec = 0x7ffff7d7f1c0 type name = int
+ Base address for a global is: 0x555555755018
+ var_addr: 0x555555755018 mem_addr: 0x7fffffffd820 size: 4
+ Checking if variable c has been updated
+ Type record for 98
+ 	 type size = 4
+ 	 type name = int
+ 	 is_array =0
+ 	 upper bound = 18446744073709551615
+ 	 is_pointer = 0
+ 	 is_array = 0
+ 	 is_struct = 0
+ Enter is_at_address
+ trec = 0x7ffff7d7f1c0 type name = int
+ Base address for a global is: 0x555555755010
+ var_addr: 0x555555755010 mem_addr: 0x7fffffffd820 size: 4
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame main
+ Base address for a local or param is: 0x7fffffffd834
+ Base address for a local or param is: 0x7fffffffd838
+ Found a pointer variable: p, addr = 0x7fffffffd838
+ Non-character Pointer variable: p points to a valid memory location 0x7fffffffd834 of type float*
+ In var_record::read_value
+ Type is float*
+ Reading 8 bytes at address: 0x7fffffffd834
+ Found a pointer
+ Found a non-character pointer to an atomic value
+ value = 0xffffd83440000000
+ Checking if what variable p points to has been updated
+ In runtime_stack::get_updated_points_to_frame *G*
+ Base address for a global is: 0x555555755018
+ Base address for a global is: 0x555555755010
+ there are no live variables
+ Enter get_updated_links
+ Checking frame for main
+ Saved old_rbp = 0x5555555546c0
+ Stack old_rbp = 0x5555555546c0
+ Saved return address = 0x7fffe4391b97
+ Stack return address = 0x7fffe4391b97
+ There were no link updates
+ Checking values Register Record
+ 	Event num: 23
+ 	Line #: 13
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Register: rip
+ 	Value: 0x0x555555554520
+ Checking values Register Record
+ 	Event num: 24
+ 	Line #: 13
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Register: rsp
+ 	Value: 0x0x7fffffffd828
+ In after_function_call in main, ip = 0x5555555546ad
+ Looking for updates after a library function call
+ In runtime_stack::get_all_updated_variables
+ In runtime_stack::get_updated_variables_from_frame, addr = 0x000000000
+ Checking if variable b has been updated
+ Type record for 863
+ 	 type size = 4
+ 	 type name = float
+ 	 is_array =0
+ 	 upper bound = 18446744073709551615
+ 	 is_pointer = 0
+ 	 is_array = 0
+ 	 is_struct = 0
+ Base address for a local or param is: 0x7fffffffd834
+ In var_record::read_value
+ Type is float
+ Reading 4 bytes at address: 0x7fffffffd834
+ Found a singleton value
+ In var_record::read_singleton_value
+ Type is float
+ Reading 4 bytes at address: 0x7fffffffd834
+ Interpreting data as a float, value is 2
+ New value = 2, old value = 2
+ Checking if variable p has been updated
+ Type record for 870
+ 	 type size = 8
+ 	 type name = float*
+ 	 is_array =0
+ 	 upper bound = 18446744073709551615
+ 	 is_pointer = 1
+ 	 is_array = 0
+ 	 is_struct = 0
+ 	 base_type = 863
+ Base address for a local or param is: 0x7fffffffd838
+ New value = 0x7fffffffd834, old value = 0x7fffffffd834
+ In runtime_stack::get_updated_variables_from_frame, addr = 0x000000000
+ Checking if variable a has been updated
+ Type record for 98
+ 	 type size = 4
+ 	 type name = int
+ 	 is_array =0
+ 	 upper bound = 18446744073709551615
+ 	 is_pointer = 0
+ 	 is_array = 0
+ 	 is_struct = 0
+ Base address for a global is: 0x555555755018
+ In var_record::read_value
+ Type is int
+ Reading 4 bytes at address: 0x555555755018
+ Found a singleton value
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0x555555755018
+ Interpreting data as an int, value is 1
+ New value = 1, old value = 1
+ Checking if variable c has been updated
+ Type record for 98
+ 	 type size = 4
+ 	 type name = int
+ 	 is_array =0
+ 	 upper bound = 18446744073709551615
+ 	 is_pointer = 0
+ 	 is_array = 0
+ 	 is_struct = 0
+ Base address for a global is: 0x555555755010
+ In var_record::read_value
+ Type is int
+ Reading 4 bytes at address: 0x555555755010
+ Found a singleton value
+ In var_record::read_singleton_value
+ Type is int
+ Reading 4 bytes at address: 0x555555755010
+ Interpreting data as an int, value is 3
+ New value = 3, old value = 3
+ In runtime_stack::get_all_updated_points_to
+ In runtime_stack::get_updated_points_to_frame main
+ Base address for a local or param is: 0x7fffffffd834
+ Base address for a local or param is: 0x7fffffffd838
+ Found a pointer variable: p, addr = 0x7fffffffd838
+ Non-character Pointer variable: p points to a valid memory location 0x7fffffffd834 of type float*
+ In var_record::read_value
+ Type is float*
+ Reading 8 bytes at address: 0x7fffffffd834
+ Found a pointer
+ Found a non-character pointer to an atomic value
+ value = 0xffffd83440000000
+ Checking if what variable p points to has been updated
+ In runtime_stack::get_updated_points_to_frame *G*
+ Base address for a global is: 0x555555755018
+ Base address for a global is: 0x555555755010
+ Enter get_updated_links
+ Checking frame for main
+ Saved old_rbp = 0x5555555546c0
+ Stack old_rbp = 0x5555555546c0
+ Saved return address = 0x7fffe4391b97
+ Stack return address = 0x7fffe4391b97
+ Checking values Register Record
+ 	Event num: 26
+ 	Line #: 13
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Register: eax
+ 	Value: 0x0x000000000
+ Checking values Register Record
+ 	Event num: 27
+ 	Line #: 14
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Register: rbp
+ 	Value: 0x0x5555555546c0
+ Checking values Register Record
+ 	Event num: 28
+ 	Line #: 14
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Register: rsp
+ 	Value: 0x0x7fffffffd848
+ Enter functionInvocationAfter
+ Exiting main
+ Popping stack model in function main
+ function return
+ Exit functionInvocationAfter
+ Checking values Register Record
+ 	Event num: 31
+ 	Line #: 14
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Register: rip
+ 	Value: 0x0x7fffe4391b97
+ Checking values Register Record
+ 	Event num: 32
+ 	Line #: 14
+ 	File: /home/carr/vaccs/dynamic_analysis/pin/source/tools/PAS/tests/test8.c
+ 	Register: rsp
+ 	Value: 0x0x7fffffffd850
+ Function Call to __do_global_dtors_aux
+ value after write to address 0x7fffffffd748 is :0x000000004
+ line = 0, column = 0, file = __NOCSOURCE__
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x555555554611 is between 0x00000064a and 0x0000006b4
+ ip = 0x555555554611 is not in user code
+ value after write to address 0x7fffffffd740 is :0x7fffffffd760
+ line = 0, column = 0, file = __NOCSOURCE__
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x55555555461e is between 0x00000064a and 0x0000006b4
+ ip = 0x55555555461e is not in user code
+ In after_function_call in __do_global_dtors_aux, ip = 0x555555554623
+ value after write to address 0x7fffffffd740 is :0x555555754dc0
+ line = 0, column = 0, file = __NOCSOURCE__
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x555555554623 is between 0x00000064a and 0x0000006b4
+ ip = 0x555555554623 is not in user code
+ Function Call to deregister_tm_clones
+ value after write to address 0x7fffffffd738 is :0x7fffffffd760
+ line = 0, column = 0, file = __NOCSOURCE__
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x555555554577 is between 0x00000064a and 0x0000006b4
+ ip = 0x555555554577 is not in user code
+ Enter functionInvocationAfter
+ Exiting deregister_tm_clones
+ In after_function_call in __do_global_dtors_aux, ip = 0x555555554628
+ value after write to address 0x555555755014 is :0x100000001
+ line = 0, column = 0, file = __NOCSOURCE__
+ In cu_table::get
+ In cu_record::pc_in_range: check if pc = 0x555555554628 is between 0x00000064a and 0x0000006b4
+ ip = 0x555555554628 is not in user code
+ Enter functionInvocationAfter
+ Exiting __do_global_dtors_aux
+ Function Call to _fini
+ Enter functionInvocationAfter
+ Exiting _fini
