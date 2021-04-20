@@ -5,24 +5,25 @@
 #ifndef _DWARFPP_DW_HH_
 #define _DWARFPP_DW_HH_
 
-//#include <cstdint>
+#include <stdint.h>
+
 #include <string>
 
 DWARFPP_BEGIN_NAMESPACE
 
 // Integer representations (Section 7.26)
-typedef std::int8_t sbyte;
-typedef std::uint8_t ubyte;
-typedef std::uint16_t uhalf;
-typedef std::uint32_t uword;
+typedef int8_t sbyte;
+typedef uint8_t ubyte;
+typedef uint16_t uhalf;
+typedef uint32_t uword;
 
 // Section offsets and lengths
-typedef std::uint64_t section_offset;
-typedef std::uint64_t section_length;
+typedef uint64_t section_offset;
+typedef uint64_t section_length;
 
 // A target machine address.  Targets may use smaller addresses; this
 // represents the largest supported address type.
-typedef std::uint64_t taddr;
+typedef uint64_t taddr;
 
 // DIE tags (Section 7, figure 18).  typedef, friend, and namespace
 // have a trailing underscore because they are reserved words.

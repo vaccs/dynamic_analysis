@@ -13,6 +13,8 @@
 #include "data.hh"
 #include "small_vector.hh"
 
+#include "../cpp03/cpp03help.hh"
+
 #include <initializer_list>
 #include <map>
 #include <memory>

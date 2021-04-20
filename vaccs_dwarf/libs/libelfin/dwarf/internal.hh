@@ -8,6 +8,8 @@
 #include "dwarf++.hh"
 #include "../elf/to_hex.hh"
 
+#include <stdint.h>
+
 #include <stdexcept>
 #include <type_traits>
 #include <unordered_map>
@@ -114,7 +116,7 @@ struct cursor
          * skip_initial_length).
          */
         std::shared_ptr<section> subsection();
-        std::int64_t sleb128();
+        int64_t sleb128();
         section_offset offset();
         void string(std::string &out);
         const char *cstr(size_t *size_out = nullptr);
@@ -145,11 +147,11 @@ struct cursor
                 return (T)val;
         }
 
-        std::uint64_t uleb128()
+        uint64_t uleb128()
         {
                 // Appendix C
                 // XXX Pre-compute all two byte ULEB's
-                std::uint64_t result = 0;
+                uint64_t result = 0;
                 int shift = 0;
                 while (pos < sec->end) {
                         uint8_t byte = *(uint8_t*)(pos++);
@@ -233,7 +235,7 @@ struct attribute_spec
         attribute_spec(DW_AT name, DW_FORM form);
 };
 
-typedef std::uint64_t abbrev_code;
+typedef uint64_t abbrev_code;
 
 /**
  * An entry in .debug_abbrev.
