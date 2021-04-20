@@ -12,57 +12,49 @@ DWARFPP_BEGIN_NAMESPACE
         value at_##name(const die &d)           \
         {                                       \
                 return d[DW_AT::name];          \
-        }                                       \
-        static_assert(true, "")
+        }                                       
 
 #define AT_ADDRESS(name)                                \
         taddr at_##name(const die &d)                   \
         {                                               \
                 return d[DW_AT::name].as_address();     \
-        }                                               \
-        static_assert(true, "")
+        }                                               
 
 #define AT_ENUM(name, type)                                \
         type at_##name(const die &d)                            \
         {                                                       \
                 return (type)d[DW_AT::name].as_uconstant();     \
-        }                                                       \
-        static_assert(true, "")
+        }                                                       
 
 #define AT_FLAG(name)                                   \
         bool at_##name(const die &d)                    \
         {                                               \
                 return d[DW_AT::name].as_flag();        \
-        }                                               \
-        static_assert(true, "")
+        }                                               
 
 #define AT_FLAG_(name)                                  \
         bool at_##name(const die &d)                    \
         {                                               \
                 return d[DW_AT::name##_].as_flag();     \
-        }                                               \
-        static_assert(true, "")
+        }                                               
 
 #define AT_REFERENCE(name)                              \
         die at_##name(const die &d)                     \
         {                                               \
                 return d[DW_AT::name].as_reference();   \
-        }                                               \
-        static_assert(true, "")
+        }                                               
 
 #define AT_STRING(name)                                 \
         string at_##name(const die &d)                  \
         {                                               \
                 return d[DW_AT::name].as_string();      \
-        }                                               \
-        static_assert(true, "")
+        }                                               
 
 #define AT_UDYNAMIC(name)                                       \
         uint64_t at_##name(const die &d, expr_context *ctx)     \
         {                                                       \
                 return _at_udynamic(DW_AT::name, d, ctx);       \
-        }                                                       \
-        static_assert(true, "")
+        }                                                       
 
 static uint64_t _at_udynamic(DW_AT attr, const die &d, expr_context *ctx, int depth = 0)
 {

@@ -8,12 +8,14 @@
 #include <string>
 #include <type_traits>
 
+#include "../dwarf/cpp98help.hh"
+
 template<typename T>
 std::string
 to_hex(T v)
 {
-        static_assert(std::is_integral<T>::value,
-                "to_hex applied to non-integral type");
+        // c++98 style static assert
+        typedef int static_assert_integral[is_integral<T>::value ? 1 : -1];
         if (v == 0)
                 return std::string("0");
         char buf[sizeof(T)*2 + 1];

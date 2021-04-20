@@ -96,8 +96,8 @@ line_table::line_table(const shared_ptr<section> &sec, section_offset offset,
                 throw format_error("line_range cannot be 0 in line number table");
         m->opcode_base = cur.fixed<ubyte>();
         
-        static_assert(sizeof(opcode_lengths) / sizeof(opcode_lengths[0]) == 13,
-                      "opcode_lengths table has wrong length");
+        // c++03 style static assert
+        typedef int static_assert_opcode_lengths[sizeof(opcode_lengths) / sizeof(opcode_lengths[0]) == 13 ? 1 : -1];
 
         // Opcode length table
         m->standard_opcode_lengths.resize(m->opcode_base);

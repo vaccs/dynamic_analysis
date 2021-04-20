@@ -130,7 +130,8 @@ struct cursor
         T fixed()
         {
                 ensure(sizeof(T));
-                static_assert(sizeof(T) <= 8, "T too big");
+                // c++03 style static assert
+                typedef int static_assert_toobig[sizeof(T) <= 8 ? 1 : -1];
                 uint64_t val = 0;
                 const unsigned char *p = (const unsigned char*)pos;
                 if (sec->ord == byte_order::lsb) {

@@ -50,11 +50,11 @@ template<typename T>
 T
 swizzle(T v, byte_order from, byte_order to)
 {
-        static_assert(sizeof(T) == 1 ||
-                      sizeof(T) == 2 ||
-                      sizeof(T) == 4 ||
-                      sizeof(T) == 8,
-                      "cannot swizzle type");
+        // c++03 style static assert
+        typedef int static_assert_can_swizzle[sizeof(T) == 1 ||
+                                              sizeof(T) == 2 ||
+                                              sizeof(T) == 4 ||
+                                              sizeof(T) == 8 ? 1 : -1];
 
         from = resolve_order(from);
         to = resolve_order(to);

@@ -80,7 +80,8 @@ expr::evaluate(expr_context *ctx, const std::initializer_list<taddr> &arguments)
                         uint64_t u;
                         int64_t s;
                 } tmp1, tmp2, tmp3;
-                static_assert(sizeof(tmp1) == sizeof(taddr), "taddr is not 64 bits");
+                // c++03 style static assert
+                typedef int static_assert_64bits[sizeof(tmp1) == sizeof(taddr) ? 1 : -1];
 
                 // Tell GCC to warn us about missing switch cases,
                 // even though we have a default case.
