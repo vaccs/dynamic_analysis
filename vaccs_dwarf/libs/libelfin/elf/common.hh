@@ -17,7 +17,7 @@ ELFPP_BEGIN_NAMESPACE
 /**
  * A byte ordering.
  */
-enum class byte_order
+enum byte_order
 {
         native,
         lsb,

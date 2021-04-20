@@ -4,6 +4,7 @@
 // define nullptr to mean NULL
 #define nullptr NULL
 
+#include <limits>
 // replacement for std::is_integral
 template <typename T>
 struct is_integral

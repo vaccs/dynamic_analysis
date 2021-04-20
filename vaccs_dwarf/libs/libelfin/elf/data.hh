@@ -14,7 +14,7 @@
 ELFPP_BEGIN_NAMESPACE
 
 // Object file classes (ELF64 table 3)
-enum class elfclass : unsigned char
+enum elfclass : unsigned char
 {
         _32 = 1,                // 32-bit objects
         _64 = 2,                // 64-bit objects
@@ -72,7 +72,7 @@ struct Elf64 : ElfTypes
 };
 
 // Data encodings (ELF64 table 4)
-enum class elfdata : unsigned char
+enum elfdata : unsigned char
 {
         lsb = 1,
         msb = 2,
@@ -82,7 +82,7 @@ std::string
 to_string(elfdata v);
 
 // Operating system and ABI identifiers (ELF64 table 5)
-enum class elfosabi : unsigned char
+enum elfosabi : unsigned char
 {
         sysv = 0,
         hpux = 1,
@@ -93,7 +93,7 @@ std::string
 to_string(elfosabi v);
 
 // Object file types (ELF64 table 6)
-enum class et : ElfTypes::Half
+enum et : ElfTypes::Half
 {
         none   = 0,             // No file type
         rel    = 1,             // Relocatable object file
@@ -192,7 +192,7 @@ to_string(shn v);
 using enums::shn;
 
 // Section types (ELF64 table 8)
-enum class sht : ElfTypes::Word
+enum sht : ElfTypes::Word
 {
         null     = 0,           // Marks an unseen section header
         progbits = 1,           // Contains information defined by the program
@@ -220,7 +220,7 @@ to_string(sht v);
 // ELF32.  We use the larger ELF64 type for the canonical
 // representation and switch it out for a plain Elf32_Word in the
 // ELF32 format.
-enum class shf : Elf64::Xword
+enum shf : Elf64::Xword
 {
         write     = 0x1,        // Section contains writable data
         alloc     = 0x2,        // Section is allocated in memory image of program
@@ -310,7 +310,7 @@ struct Shdr
 };
 
 // Segment types (ELF64 table 16)
-enum class pt : ElfTypes::Word
+enum pt : ElfTypes::Word
 {
         null    = 0,            // Unused entry
         load    = 1,            // Loadable segment
@@ -329,7 +329,7 @@ std::string
 to_string(pt v);
 
 // Segment attributes
-enum class pf : ElfTypes::Word
+enum pf : ElfTypes::Word
 {
         x        = 0x1,         // Execute permission
         w        = 0x2,         // Write permission
@@ -442,7 +442,7 @@ struct Phdr<Elf64, Order>
 };
 
 // Symbol bindings (ELF32 figure 1-16, ELF64 table 14)
-enum class stb : unsigned char
+enum stb : unsigned char
 {
         local  = 0,             // Not visible outside the object file
         global = 1,             // Global symbol
@@ -458,7 +458,7 @@ std::string
 to_string(stb v);
 
 // Symbol types (ELF32 figure 1-17, ELF64 table 15)
-enum class stt : unsigned char
+enum stt : unsigned char
 {
         notype  = 0,            // No type (e.g., absolute symbol)
         object  = 1,            // Data object
