@@ -1,9 +1,6 @@
 // some tricks to help accomplish some c++11 stuff in c++98
 #pragma once
 
-// define nullptr to mean NULL
-#define nullptr NULL
-
 #include <limits>
 // replacement for std::is_integral
 template <typename T>

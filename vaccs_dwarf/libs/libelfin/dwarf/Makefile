@@ -43,7 +43,7 @@ CLEAN += libdwarf++.so
 # Create pkg-config for local library and headers. This will be
 # transformed in to the correct global pkg-config by install.
 libdwarf++.pc: always
-	@(VER=$$(git describe --match 'v*' | sed -e s/^v//); \
+	@(VER=$$(echo "sans-cpp11"); \
 	  echo "libdir=$$PWD"; \
 	  echo "includedir=$$PWD"; \
 	  echo ""; \
