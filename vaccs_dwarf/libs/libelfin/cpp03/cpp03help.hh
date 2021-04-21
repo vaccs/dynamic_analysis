@@ -2,6 +2,7 @@
 #pragma once
 
 #include <limits>
+
 // replacement for std::is_integral
 template <typename T>
 struct is_integral

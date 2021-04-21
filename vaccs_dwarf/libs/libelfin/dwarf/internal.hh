@@ -17,14 +17,14 @@
 
 DWARFPP_BEGIN_NAMESPACE
 
-enum format
+enum class format
 {
         unknown,
         dwarf32,
         dwarf64
 };
 
-enum byte_order
+enum class byte_order
 {
         lsb,
         msb

@@ -76,13 +76,11 @@ public:
                 : std::runtime_error(what_arg) { }
 };
 
-namespace section_type {
-
 /**
  * DWARF section types.  These correspond to the names of ELF
  * sections, though DWARF can be embedded in other formats.
  */
-enum section_type
+enum class section_type
 {
         abbrev,
         aranges,
@@ -98,10 +96,8 @@ enum section_type
         types,
 };
 
-}; // namespace
-
-::std::string
-to_string(section_type::section_type v);
+std::string
+to_string(section_type v);
 
 /**
  * A DWARF file.  This class is internally reference counted and can
@@ -552,7 +548,7 @@ public:
 class value
 {
 public:
-        enum type
+        enum class type
         {
                 invalid,
                 address,
@@ -853,7 +849,7 @@ extern expr_context no_expr_context;
 class expr_result
 {
 public:
-        enum type {
+        enum class type {
                 /**
                  * value specifies the address in memory of an object.
                  * This is also the result type used for general
