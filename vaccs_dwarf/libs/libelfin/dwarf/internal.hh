@@ -66,7 +66,7 @@ struct section
 
         section(const section &o) = default;
 
-        std::shared_ptr<section> slice(section_offset start, section_length len,
+        section * slice(section_offset start, section_length len,
                                        format fmt = format::unknown,
                                        unsigned addr_size = 0)
         {
@@ -75,7 +75,7 @@ struct section
                 if (addr_size == 0)
                         addr_size = this->addr_size;
 
-                return std::make_shared<section>(
+                return new section(
                         type, begin+start,
                         std::min(len, (section_length)(end-begin)),
                         ord, fmt, addr_size);
@@ -99,12 +99,12 @@ struct cursor
         // (directly or indirectly) and that keeps the loader alive,
         // so a cursor just needs a regular section*.
 
-        std::shared_ptr<section> sec;
+        section * sec;
         const char *pos;
 
         cursor()
                 : pos(nullptr) { }
-        cursor(const std::shared_ptr<section> sec, section_offset offset = 0)
+        cursor(const section * sec, section_offset offset = 0)
                 : sec(sec), pos(sec->begin + offset) { }
 
         /**
@@ -115,7 +115,7 @@ struct cursor
          * cursor (so this is usually followed by a
          * skip_initial_length).
          */
-        std::shared_ptr<section> subsection();
+        section * subsection();
         int64_t sleb128();
         section_offset offset();
         void string(std::string &out);
@@ -215,7 +215,7 @@ struct cursor
         }
 
 private:
-        cursor(const std::shared_ptr<section> sec, const char *pos)
+        cursor(const section * sec, const char *pos)
                 : sec(sec), pos(pos) { }
 
         void underflow();
@@ -267,7 +267,7 @@ struct name_unit
         void read(cursor *cur)
         {
                 // Section 7.19
-                std::shared_ptr<section> subsec = cur->subsection();
+                section * subsec = cur->subsection();
                 cursor sub(subsec);
                 sub.skip_initial_length();
                 version = sub.fixed<uhalf>();

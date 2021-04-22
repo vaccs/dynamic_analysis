@@ -48,8 +48,8 @@ expr::evaluate(expr_context *ctx, const std::initializer_list<taddr> &arguments)
         // Create a subsection for just this expression so we can
         // easily detect the end (including premature end).
         auto cusec = cu->data();
-        shared_ptr<section> subsec
-                (make_shared<section>(cusec->type,
+        section * subsec
+                (new section(cusec->type,
                                       cusec->begin + offset, len,
                                       cusec->ord, cusec->fmt,
                                       cusec->addr_size));

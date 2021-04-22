@@ -8,8 +8,6 @@
 #include <string>
 #include <type_traits>
 
-#include "../dwarf/cpp98help.hh"
-
 template<typename T>
 std::string
 to_hex(T v)

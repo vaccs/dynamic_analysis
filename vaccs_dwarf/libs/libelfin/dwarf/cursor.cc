@@ -31,7 +31,7 @@ cursor::sleb128()
         return 0;
 }
 
-shared_ptr<section>
+section *
 cursor::subsection()
 {
         // Section 7.4
@@ -49,7 +49,7 @@ cursor::subsection()
                 throw format_error("initial length has reserved value");
         }
         pos = begin + length;
-        return make_shared<section>(sec->type, begin, length, sec->ord, fmt);
+        return new section(sec->type, begin, length, sec->ord, fmt);
 }
 
 void

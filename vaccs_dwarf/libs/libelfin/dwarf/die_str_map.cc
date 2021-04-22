@@ -65,7 +65,7 @@ struct die_str_map::impl
 
 die_str_map::die_str_map(const die &parent, DW_AT attr,
                          const initializer_list<DW_TAG> &accept)
-        : m(make_shared<impl>(parent, attr, accept))
+        : m(new impl(parent, attr, accept))
 {
 }
 

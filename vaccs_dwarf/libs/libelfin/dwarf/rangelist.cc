@@ -8,7 +8,7 @@ using namespace std;
 
 DWARFPP_BEGIN_NAMESPACE
 
-rangelist::rangelist(const std::shared_ptr<section> &sec, section_offset off,
+rangelist::rangelist(const section *sec, section_offset off,
                      unsigned cu_addr_size, taddr cu_low_pc)
         : sec(sec->slice(off, ~0, format::unknown, cu_addr_size)),
           base_addr(cu_low_pc)
@@ -25,7 +25,7 @@ rangelist::rangelist(const initializer_list<pair<taddr, taddr> > &ranges)
         synthetic.push_back(0);
         synthetic.push_back(0);
 
-        sec = make_shared<section>(
+        sec = new section(
                 section_type::ranges, (const char*)synthetic.data(),
                 synthetic.size() * sizeof(taddr),
                 native_order(), format::unknown, sizeof(taddr));
@@ -56,7 +56,7 @@ rangelist::contains(taddr addr) const
         return false;
 }
 
-rangelist::iterator::iterator(const std::shared_ptr<section> &sec, taddr base_addr)
+rangelist::iterator::iterator(const section *sec, taddr base_addr)
         : sec(sec), base_addr(base_addr), pos(0)
 {
         // Read in the first entry

@@ -14,24 +14,24 @@ DWARFPP_BEGIN_NAMESPACE
 
 struct dwarf::impl
 {
-        impl(const std::shared_ptr<loader> &l)
+        impl(const loader *l)
                 : l(l), have_type_units(false) { }
 
-        std::shared_ptr<loader> l;
+        loader * l;
 
-        std::shared_ptr<section> sec_info;
-        std::shared_ptr<section> sec_abbrev;
+        section * sec_info;
+        section * sec_abbrev;
 
         std::vector<compilation_unit> compilation_units;
 
         std::unordered_map<uint64_t, type_unit> type_units;
         bool have_type_units;
 
-        std::map<section_type, std::shared_ptr<section> > sections;
+        std::map<section_type, section * > sections;
 };
 
-dwarf::dwarf(const std::shared_ptr<loader> &l)
-        : m(make_shared<impl>(l))
+dwarf::dwarf(const loader *l)
+        : m(new impl(l))
 {
         const void *data;
         size_t size;
@@ -40,7 +40,7 @@ dwarf::dwarf(const std::shared_ptr<loader> &l)
         data = l->load(section_type::info, &size);
         if (!data)
                 throw format_error("required .debug_info section missing");
-        m->sec_info = make_shared<section>(section_type::info, data, size, byte_order::lsb);
+        m->sec_info = new section(section_type::info, data, size, byte_order::lsb);
 
         // Sniff the endianness from the version field of the first
         // CU. This is always a small but non-zero integer.
@@ -53,13 +53,13 @@ dwarf::dwarf(const std::shared_ptr<loader> &l)
         uhalf version = endcur.fixed<uhalf>();
         uhalf versionbe = (version >> 8) | ((version & 0xFF) << 8);
         if (versionbe < version) {
-                m->sec_info = make_shared<section>(section_type::info, data, size, byte_order::msb);
+                m->sec_info = new section(section_type::info, data, size, byte_order::msb);
         }
 
         data = l->load(section_type::abbrev, &size);
         if (!data)
                 throw format_error("required .debug_abbrev section missing");
-        m->sec_abbrev = make_shared<section>(section_type::abbrev, data, size, m->sec_info->ord);
+        m->sec_abbrev = new section(section_type::abbrev, data, size, m->sec_info->ord);
 
         // Get compilation units.  Everything derives from these, so
         // there's no point in doing it lazily.
@@ -105,7 +105,7 @@ dwarf::get_type_unit(uint64_t type_signature) const
         return m->type_units[type_signature];
 }
 
-std::shared_ptr<section>
+section *
 dwarf::get_section(section_type type) const
 {
         if (type == section_type::info)
@@ -122,7 +122,7 @@ dwarf::get_section(section_type type) const
         if (!data)
                 throw format_error(std::string(elf::section_type_to_name(type))
                                    + " section missing");
-        m->sections[type] = std::make_shared<section>(section_type::str, data, size, m->sec_info->ord);
+        m->sections[type] = new section(section_type::str, data, size, m->sec_info->ord);
         return m->sections[type];
 }
 
@@ -137,7 +137,7 @@ struct unit::impl
 {
         const dwarf file;
         const section_offset offset;
-        const std::shared_ptr<section> subsec;
+        const section * subsec;
         const section_offset debug_abbrev_offset;
         const section_offset root_offset;
 
@@ -159,7 +159,7 @@ struct unit::impl
         std::unordered_map<abbrev_code, abbrev_entry> abbrevs_map;
 
         impl(const dwarf &file, section_offset offset,
-             const std::shared_ptr<section> &subsec,
+             const section *subsec,
              section_offset debug_abbrev_offset, section_offset root_offset,
              uint64_t type_signature = 0, section_offset type_offset = 0)
                 : file(file), offset(offset), subsec(subsec),
@@ -197,7 +197,7 @@ unit::root() const
         return m->root;
 }
 
-const std::shared_ptr<section> &
+const section *
 unit::data() const
 {
         return m->subsec;
@@ -269,7 +269,7 @@ compilation_unit::compilation_unit(const dwarf &file, section_offset offset)
 {
         // Read the CU header (DWARF4 section 7.5.1.1)
         cursor cur(file.get_section(section_type::info), offset);
-        std::shared_ptr<section> subsec = cur.subsection();
+        section * subsec = cur.subsection();
         cursor sub(subsec);
         sub.skip_initial_length();
         uhalf version = sub.fixed<uhalf>();
@@ -280,7 +280,7 @@ compilation_unit::compilation_unit(const dwarf &file, section_offset offset)
         ubyte address_size = sub.fixed<ubyte>();
         subsec->addr_size = address_size;
 
-        m = make_shared<impl>(file, offset, subsec, debug_abbrev_offset,
+        m = new impl(file, offset, subsec, debug_abbrev_offset,
                               sub.get_section_offset());
 }
 
@@ -292,7 +292,7 @@ compilation_unit::get_line_table() const
                 if (!d.has(DW_AT::stmt_list) || !d.has(DW_AT::name))
                         goto done;
 
-                shared_ptr<section> sec;
+                section * sec;
                 try {
                         sec = m->file.get_section(section_type::line);
                 } catch (format_error &e) {
@@ -317,7 +317,7 @@ type_unit::type_unit(const dwarf &file, section_offset offset)
 {
         // Read the type unit header (DWARF4 section 7.5.1.2)
         cursor cur(file.get_section(section_type::types), offset);
-        std::shared_ptr<section> subsec = cur.subsection();
+        section * subsec = cur.subsection();
         cursor sub(subsec);
         sub.skip_initial_length();
         uhalf version = sub.fixed<uhalf>();
@@ -330,7 +330,7 @@ type_unit::type_unit(const dwarf &file, section_offset offset)
         uint64_t type_signature = sub.fixed<uint64_t>();
         section_offset type_offset = sub.offset();
 
-        m = make_shared<impl>(file, offset, subsec, debug_abbrev_offset,
+        m = new impl(file, offset, subsec, debug_abbrev_offset,
                               sub.get_section_offset(), type_signature,
                               type_offset);
 }

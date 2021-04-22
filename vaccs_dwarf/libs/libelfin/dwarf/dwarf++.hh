@@ -114,7 +114,7 @@ public:
          * Construct a DWARF file that is backed by sections read from
          * the given loader.
          */
-        explicit dwarf(const std::shared_ptr<loader> &l);
+        explicit dwarf(const loader *l);
 
         /**
          * Construct a DWARF file that is initially not valid.
@@ -165,11 +165,11 @@ public:
          * \internal Retrieve the specified section from this file.
          * If the section does not exist, throws format_error.
          */
-        std::shared_ptr<section> get_section(section_type type) const;
+        section * get_section(section_type type) const;
 
 private:
         struct impl;
-        std::shared_ptr<impl> m;
+        impl * m;
 };
 
 /**
@@ -241,7 +241,7 @@ public:
         /**
          * \internal Return the data for this unit.
          */
-        const std::shared_ptr<section> &data() const;
+        const section *data() const;
 
         /**
          * \internal Return the abbrev for the specified abbrev
@@ -252,7 +252,7 @@ public:
 protected:
         friend struct ::std::hash<unit>;
         struct impl;
-        std::shared_ptr<impl> m;
+        impl * m;
 };
 
 /**
@@ -926,7 +926,7 @@ public:
          * the referring DIE or 0 (this is used as the base address of
          * the range list).
          */
-        rangelist(const std::shared_ptr<section> &sec, section_offset off,
+        rangelist(const section *sec, section_offset off,
                   unsigned cu_addr_size, taddr cu_low_pc);
 
         /**
@@ -974,7 +974,7 @@ public:
 
 private:
         std::vector<taddr> synthetic;
-        std::shared_ptr<section> sec;
+        section * sec;
         taddr base_addr;
 };
 
@@ -1011,7 +1011,7 @@ public:
          * from the beginning of the given section and starts with the
          * given base address.
          */
-        iterator(const std::shared_ptr<section> &sec, taddr base_addr);
+        iterator(const section *sec, taddr base_addr);
 
         /** Copy constructor */
         iterator(const iterator &o) = default;
@@ -1056,7 +1056,7 @@ public:
         iterator &operator++();
 
 private:
-        std::shared_ptr<section> sec;
+        section * sec;
         taddr base_addr;
         section_offset pos;
         rangelist::entry entry;
@@ -1087,7 +1087,7 @@ public:
          * cu_name give the DW_AT::comp_dir and DW_AT::name attributes
          * of the associated compilation unit.
          */
-        line_table(const std::shared_ptr<section> &sec, section_offset offset,
+        line_table(const section *sec, section_offset offset,
                    unsigned cu_addr_size, const std::string &cu_comp_dir,
                    const std::string &cu_name);
 
@@ -1151,7 +1151,7 @@ private:
         friend class iterator;
 
         struct impl;
-        std::shared_ptr<impl> m;
+        impl * m;
 };
 
 /**
@@ -1485,7 +1485,7 @@ public:
 
 private:
         struct impl;
-        std::shared_ptr<impl> m;
+        impl * m;
 };
 
 //////////////////////////////////////////////////////////////////
@@ -1531,9 +1531,9 @@ namespace elf
          * reasonably be used with elf::elf from libelf++.
          */
         template<typename Elf>
-        std::shared_ptr<elf_loader<Elf> > create_loader(const Elf &f)
+        elf_loader<Elf *f)
         {
-                return std::make_shared<elf_loader<Elf> >(f);
+                return new elf_loader<Elf >(f);
         }
 };
 

@@ -24,7 +24,7 @@ static const int opcode_lengths[] = {
 
 struct line_table::impl
 {
-        shared_ptr<section> sec;
+        section * sec;
 
         // Header information
         section_offset program_offset;
@@ -54,10 +54,10 @@ struct line_table::impl
         bool read_file_entry(cursor *cur, bool in_header);
 };
 
-line_table::line_table(const shared_ptr<section> &sec, section_offset offset,
+line_table::line_table(const section *sec, section_offset offset,
                        unsigned cu_addr_size, const string &cu_comp_dir,
                        const string &cu_name)
-        : m(make_shared<impl>())
+        : m(new impl())
 {
         // XXX DWARF2 and 3 give a weird specification for DW_AT_comp_dir
 
