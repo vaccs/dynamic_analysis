@@ -260,7 +260,7 @@ public:
 
         /**
          * Return this section's data.  If this is a NOBITS section,
-         * return nullptr.
+         * return NULL.
          */
         const void *data() const;
         /**
@@ -350,7 +350,7 @@ public:
          * Return this symbol's name.
          *
          * This returns a pointer into the string table and, as such,
-         * is very efficient.  If len_out is non-nullptr, *len_out
+         * is very efficient.  If len_out is non-NULL, *len_out
          * will be set the length of the returned string.
          */
         const char *get_name(size_t *len_out) const;

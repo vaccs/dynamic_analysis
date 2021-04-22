@@ -185,7 +185,7 @@ public:
          * pointer to the beginning of it.  This memory must remain
          * valid and unchanged until the loader is destroyed.  If the
          * requested section does not exist, this should return
-         * nullptr.  If the section exists but cannot be loaded for
+         * NULL.  If the section exists but cannot be loaded for
          * any reason, this should throw an exception.
          */
         virtual const void *load(section_type section, size_t *size_out) = 0;
@@ -341,7 +341,7 @@ class die
 public:
         DW_TAG tag;
 
-        die() : cu(nullptr), abbrev(nullptr) { }
+        die() : cu(NULL), abbrev(NULL) { }
         die(const die &o) = default;
         die(die &&o) = default;
 
@@ -355,7 +355,7 @@ public:
          */
         bool valid() const
         {
-                return abbrev != nullptr;
+                return abbrev != NULL;
         }
 
         /**
@@ -488,7 +488,7 @@ public:
                 // then next's are uncomparable, so we need to stop
                 // now.  We consider all ends to be the same, without
                 // comparing cu's.
-                if (d.abbrev == nullptr)
+                if (d.abbrev == NULL)
                         return false;
 
                 // Comparing two non-end abbrevs.
@@ -569,7 +569,7 @@ public:
         /**
          * Construct a value with type `type::invalid`.
          */
-        value() : cu(nullptr), typ(type::invalid) { }
+        value() : cu(NULL), typ(type::invalid) { }
 
         value(const value &o) = default;
         value(value &&o) = default;
@@ -695,7 +695,7 @@ public:
          * data is in use.  *size_out, if not NULL, is set to the
          * length of the returned string without the NUL-terminator.
          */
-        const char *as_cstr(size_t *size_out = nullptr) const;
+        const char *as_cstr(size_t *size_out = NULL) const;
 
         /**
          * Return this value as a section offset.  This is applicable
@@ -1004,7 +1004,7 @@ public:
         /**
          * \internal Construct an end iterator.
          */
-        iterator() : sec(nullptr), base_addr(0), pos(0) { }
+        iterator() : sec(NULL), base_addr(0), pos(0) { }
 
         /**
          * \internal Construct an iterator that reads rangelist data
@@ -1518,7 +1518,7 @@ namespace elf
                 {
                         auto sec = f.get_section(section_type_to_name(section));
                         if (!sec.valid())
-                                return nullptr;
+                                return NULL;
                         *size_out = sec.size();
                         return sec.data();
                 }

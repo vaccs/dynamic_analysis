@@ -140,7 +140,7 @@ const section &
 elf::get_section(const std::string &name) const
 {
         for (auto &sec : sections())
-                if (name == sec.get_name(nullptr))
+                if (name == sec.get_name(NULL))
                         return sec;
         return m->invalid_section;
 }
@@ -223,7 +223,7 @@ enums::to_string(shn v)
 struct section::impl
 {
         impl(const elf &f)
-                : f(f), name(nullptr), data(nullptr) { }
+                : f(f), name(NULL), data(NULL) { }
 
         const elf f;
         Shdr<> hdr;
@@ -259,14 +259,14 @@ section::get_name(size_t *len_out) const
 string
 section::get_name() const
 {
-        return get_name(nullptr);
+        return get_name(NULL);
 }
 
 const void *
 section::data() const
 {
         if (m->hdr.type == sht::nobits)
-                return nullptr;
+                return NULL;
         if (!m->data)
                 m->data = m->f.get_loader()->load(m->hdr.offset, m->hdr.size);
         return m->data;
@@ -336,7 +336,7 @@ strtab::get(Elf64::Off offset, size_t *len_out) const
 std::string
 strtab::get(Elf64::Off offset) const
 {
-        return get(offset, nullptr);
+        return get(offset, NULL);
 }
 
 //////////////////////////////////////////////////////////////////

@@ -187,7 +187,7 @@ value::as_reference() const
                 // These seem to be extremely rare in practice (I
                 // haven't been able to get gcc to produce a
                 // ref_addr), so it's not worth caching this lookup.
-                const compilation_unit *base_cu = nullptr;
+                const compilation_unit *base_cu = NULL;
                 for (auto &file_cu : cu->get_dwarf().compilation_units()) {
                         if (file_cu.get_section_offset() > off)
                                 break;

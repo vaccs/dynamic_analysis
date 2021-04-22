@@ -149,7 +149,7 @@ line_table::iterator
 line_table::begin() const
 {
         if (!valid())
-                return iterator(nullptr, 0);
+                return iterator(NULL, 0);
         return iterator(this, m->program_offset);
 }
 
@@ -157,7 +157,7 @@ line_table::iterator
 line_table::end() const
 {
         if (!valid())
-                return iterator(nullptr, 0);
+                return iterator(NULL, 0);
         return iterator(this, m->sec->size());
 }
 
@@ -239,7 +239,7 @@ void
 line_table::entry::reset(bool is_stmt)
 {
         address = op_index = 0;
-        file = nullptr;
+        file = NULL;
         file_index = line = 1;
         column = 0;
         this->is_stmt = is_stmt;

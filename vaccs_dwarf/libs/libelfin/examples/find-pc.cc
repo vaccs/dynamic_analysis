@@ -63,7 +63,7 @@ main(int argc, char **argv)
 
         dwarf::taddr pc;
         try {
-                pc = stoll(argv[2], nullptr, 0);
+                pc = stoll(argv[2], NULL, 0);
         } catch (invalid_argument &e) {
                 usage(argv[0]);
         } catch (out_of_range &e) {

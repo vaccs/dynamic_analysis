@@ -103,7 +103,7 @@ struct cursor
         const char *pos;
 
         cursor()
-                : pos(nullptr) { }
+                : pos(NULL) { }
         cursor(const section * sec, section_offset offset = 0)
                 : sec(sec), pos(sec->begin + offset) { }
 
@@ -119,7 +119,7 @@ struct cursor
         int64_t sleb128();
         section_offset offset();
         void string(std::string &out);
-        const char *cstr(size_t *size_out = nullptr);
+        const char *cstr(size_t *size_out = NULL);
 
         void
         ensure(section_offset bytes)

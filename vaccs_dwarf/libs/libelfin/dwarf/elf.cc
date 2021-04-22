@@ -48,7 +48,7 @@ elf::section_type_to_name(section_type type)
                 if (sec.type == type)
                         return sec.name;
         }
-        return nullptr;
+        return NULL;
 }
 
 DWARFPP_END_NAMESPACE

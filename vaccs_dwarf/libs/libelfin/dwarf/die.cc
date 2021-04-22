@@ -9,7 +9,7 @@ using namespace std;
 DWARFPP_BEGIN_NAMESPACE
 
 die::die(const unit *cu)
-        : cu(cu), abbrev(nullptr)
+        : cu(cu), abbrev(NULL)
 {
 }
 
@@ -34,7 +34,7 @@ die::read(section_offset off)
 
         abbrev_code acode = cur.uleb128();
         if (acode == 0) {
-                abbrev = nullptr;
+                abbrev = NULL;
                 next = cur.get_section_offset();
                 return;
         }

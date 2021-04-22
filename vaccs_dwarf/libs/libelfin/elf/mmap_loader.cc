@@ -30,7 +30,7 @@ public:
                                            "finding file length");
                 lim = end;
 
-                base = mmap(nullptr, lim, PROT_READ, MAP_SHARED, fd, 0);
+                base = mmap(NULL, lim, PROT_READ, MAP_SHARED, fd, 0);
                 if (base == MAP_FAILED)
                         throw system_error(errno, system_category(),
                                            "mmap'ing file");
