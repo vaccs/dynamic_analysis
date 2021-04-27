@@ -933,7 +933,7 @@ public:
          * Construct a range list from a sequence of {low, high}
          * pairs.
          */
-        rangelist(const std::initializer_list<std::pair<taddr, taddr> > &ranges);
+        rangelist(const std::vector<std::pair<taddr, taddr> > &ranges);
 
         /**
          * Construct an empty range list.
@@ -1516,7 +1516,7 @@ namespace elf
 
                 const void *load(section_type section, size_t *size_out)
                 {
-                        auto sec = f.get_section(section_type_to_name(section));
+                        section * sec = f.get_section(section_type_to_name(section));
                         if (!sec.valid())
                                 return NULL;
                         *size_out = sec.size();

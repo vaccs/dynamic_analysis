@@ -10,11 +10,13 @@ using namespace std;
 
 DWARFPP_BEGIN_NAMESPACE
 
-static const struct
+struct Section
 {
         const char *name;
         section_type type;
-} sections[] = {
+};
+
+Section sections[] = {
         {".debug_abbrev",   section_type::abbrev},
         {".debug_aranges",  section_type::aranges},
         {".debug_frame",    section_type::frame},
@@ -32,7 +34,8 @@ static const struct
 bool
 elf::section_name_to_type(const char *name, section_type *out)
 {
-        for (auto &sec : sections) {
+        for (int i = 0; i < sizeof(sections); i++) {
+                const Section &sec = sections[i];
                 if (strcmp(sec.name, name) == 0) {
                         *out = sec.type;
                         return true;
@@ -44,7 +47,8 @@ elf::section_name_to_type(const char *name, section_type *out)
 const char *
 elf::section_type_to_name(section_type type)
 {
-        for (auto &sec : sections) {
+        for (int i = 0; i < sizeof(sections); i++) {
+                const Section &sec = sections[i];
                 if (sec.type == type)
                         return sec.name;
         }

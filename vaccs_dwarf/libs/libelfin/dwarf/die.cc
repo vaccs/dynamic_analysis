@@ -46,7 +46,8 @@ die::read(section_offset off)
         // abbrev_entry.
         attrs.clear();
         attrs.reserve(abbrev->attributes.size());
-        for (auto &attr : abbrev->attributes) {
+        for (int i = 0; i < abbrev->attributes.size(); i++) {
+                attribute_spec &attr = abbrev->attributes[i];
                 attrs.push_back(cur.get_section_offset());
                 cur.skip_form(attr.form);
         }
@@ -59,9 +60,11 @@ die::has(DW_AT attr) const
         if (!abbrev)
                 return false;
         // XXX Totally lame
-        for (auto &a : abbrev->attributes)
+        for (int i = 0; i < abbrev->attributes.size(); i++) {
+                attribute_spec &a = abbrev->attributes[i];
                 if (a.name == attr)
                         return true;
+        }
         return false;
 }
 
@@ -72,7 +75,8 @@ die::operator[](DW_AT attr) const
         // abbrev_entry.
         if (abbrev) {
                 int i = 0;
-                for (auto &a : abbrev->attributes) {
+                for (int i = 0; i < abbrev->attributes.size(); i++) {
+                        attribute_spec &a = abbrev->attributes[i];
                         if (a.name == attr)
                                 return value(cu, a.name, a.form, a.type, attrs[i]);
                         i++;
@@ -173,7 +177,8 @@ die::attributes() const
         // (whereas other vectors get reused).  Might be worth a
         // custom iterator.
         int i = 0;
-        for (auto &a : abbrev->attributes) {
+        for (int i = 0; i < abbrev->attributes.size(); i++) {
+                attribute_spec &a = abbrev->attributes[i];
                 res.push_back(make_pair(a.name, value(cu, a.name, a.form, a.type, attrs[i])));
                 i++;
         }

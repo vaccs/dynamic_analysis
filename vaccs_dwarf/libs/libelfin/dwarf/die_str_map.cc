@@ -43,9 +43,9 @@ struct string_eq
         typedef bool result_type;
         typedef const char *first_argument_type;
         typedef const char *second_argument_type;
-        bool operator()(const char *x, const char *y) const
+        int operator()(const char *x, const char *y) const
         {
-                return strcmp(x, y) == 0;
+                return strcmp(x, y);
         }
 };
 
@@ -56,7 +56,7 @@ struct die_str_map::impl
                 : attr(attr), accept(accept.begin(), accept.end()),
                   pos(parent.begin()), end(parent.end()) { }
 
-        unordered_map<const char*, die, string_hash, string_eq> str_map;
+        map<const char*, die, string_eq> str_map;
         DW_AT attr;
         unordered_set<DW_TAG> accept;
         die::iterator pos, end;
@@ -93,7 +93,8 @@ const die &
 die_str_map::operator[](const char *val) const
 {
         // Do we have this value?
-        auto it = m->str_map.find(val);
+        map<const char*, die>::iterator it 
+          = m->str_map.find(val);
         if (it != m->str_map.end())
                 return it->second;
         // Read more until we find the value or the end

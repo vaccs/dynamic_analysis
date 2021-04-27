@@ -24,10 +24,10 @@ struct dwarf::impl
 
         std::vector<compilation_unit> compilation_units;
 
-        std::unordered_map<uint64_t, type_unit> type_units;
+        std::map<uint64_t, type_unit> type_units;
         bool have_type_units;
 
-        std::map<section_type, section * > sections;
+        std::map<section_type, section>  * sections;
 };
 
 dwarf::dwarf(const loader *l)
@@ -113,7 +113,7 @@ dwarf::get_section(section_type type) const
         if (type == section_type::abbrev)
                 return m->sec_abbrev;
 
-        auto it = m->sections.find(type);
+        std::map<section_type, section>::iterator it = m->sections.find(type);
         if (it != m->sections.end())
                 return it->second;
 
@@ -156,7 +156,7 @@ struct unit::impl
         // in the map.
         bool have_abbrevs;
         std::vector<abbrev_entry> abbrevs_vec;
-        std::unordered_map<abbrev_code, abbrev_entry> abbrevs_map;
+        std::map<abbrev_code, abbrev_entry> abbrevs_map;
 
         impl(const dwarf &file, section_offset offset,
              const section *subsec,
@@ -217,7 +217,7 @@ unit::get_abbrev(abbrev_code acode) const
                         goto unknown;
                 return entry;
         } else {
-                auto it = m->abbrevs_map.find(acode);
+                std::map<abbrev_code, abbrev_entry>::iterator it = m->abbrevs_map.find(acode);
                 if (it == m->abbrevs_map.end())
                         goto unknown;
                 return it->second;
@@ -253,8 +253,8 @@ unit::impl::force_abbrevs()
         if (highest * 10 < abbrevs_map.size() * 15) {
                 // Move the map into the vector
                 abbrevs_vec.resize(highest + 1);
-                for (auto &entry : abbrevs_map)
-                        abbrevs_vec[entry.first] = move(entry.second);
+                for (std::map<abbrev_code, abbrev_entry>::iterator it = abbrevs_map.begin(); it != abbrevs_map.end(); it++)
+                        abbrevs_vec[it->first] = move(it->second);
                 abbrevs_map.clear();
         }
 
@@ -292,14 +292,14 @@ compilation_unit::get_line_table() const
                 if (!d.has(DW_AT::stmt_list) || !d.has(DW_AT::name))
                         goto done;
 
-                section * sec;
+                shared_ptr<section> sec;
                 try {
                         sec = m->file.get_section(section_type::line);
                 } catch (format_error &e) {
                         goto done;
                 }
 
-                auto comp_dir = d.has(DW_AT::comp_dir) ? at_comp_dir(d) : "";
+                std::string comp_dir = d.has(DW_AT::comp_dir) ? at_comp_dir(d) : "";
                 
                 m->lt = line_table(sec, d[DW_AT::stmt_list].as_sec_offset(),
                                    m->subsec->addr_size, comp_dir,

@@ -5,6 +5,7 @@
 #include "internal.hh"
 
 #include <cstring>
+#include <vector>
 
 using namespace std;
 
@@ -153,8 +154,8 @@ value::as_rangelist() const
         // address.
         die cudie = cu->root();
         taddr cu_low_pc = cudie.has(DW_AT::low_pc) ? at_low_pc(cudie) : 0;
-        auto sec = cu->get_dwarf().get_section(section_type::ranges);
-        auto cusec = cu->data();
+        section* sec = cu->get_dwarf().get_section(section_type::ranges);
+        const section* cusec = cu->data();
         return rangelist(sec, off, cusec->addr_size, cu_low_pc);
 }
 
@@ -188,10 +189,10 @@ value::as_reference() const
                 // haven't been able to get gcc to produce a
                 // ref_addr), so it's not worth caching this lookup.
                 const compilation_unit *base_cu = NULL;
-                for (auto &file_cu : cu->get_dwarf().compilation_units()) {
-                        if (file_cu.get_section_offset() > off)
+                for (std::vector<compilation_unit>::const_iterator it = cu->get_dwarf().compilation_units().begin(); it != cu->get_dwarf().compilation_units().end(); ++it) {
+                        if ((*it).get_section_offset() > off)
                                 break;
-                        base_cu = &file_cu;
+                        base_cu = &(*it);
                 }
                 die d(base_cu);
                 d.read(off - base_cu->get_section_offset());
@@ -322,7 +323,7 @@ to_string(const value &v)
                 return "<rangelist 0x" + to_hex(v.as_sec_offset()) + ">";
         case value::type::reference: {
                 die d = v.as_reference();
-                auto tu = dynamic_cast<const type_unit*>(&d.get_unit());
+                const type_unit* tu = dynamic_cast<const type_unit*>(&d.get_unit());
                 if (tu)
                         return "<.debug_types+0x" + to_hex(d.get_section_offset()) + ">";
                 return "<0x" + to_hex(d.get_section_offset()) + ">";

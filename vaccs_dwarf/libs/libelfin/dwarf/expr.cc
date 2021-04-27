@@ -47,7 +47,7 @@ expr::evaluate(expr_context *ctx, const std::initializer_list<taddr> &arguments)
 
         // Create a subsection for just this expression so we can
         // easily detect the end (including premature end).
-        auto cusec = cu->data();
+        const section* cusec = cu->data();
         section * subsec
                 (new section(cusec->type,
                                       cusec->begin + offset, len,

@@ -187,8 +187,9 @@ line_table::get_file(unsigned index) const
                 // super-efficient about this.  Just force our way
                 // through the whole line table program.
                 if (!m->file_names_complete) {
-                        for (auto &ent : *this)
-                                (void)ent;
+                        for (line_table::iterator it = begin(); it != end(); it++) {
+                                (void)(*it);
+                        }
                 }
                 if (index >= m->file_names.size())
                         throw out_of_range
