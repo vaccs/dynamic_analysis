@@ -17,10 +17,8 @@ rangelist::rangelist(const section *sec, section_offset off,
 
 rangelist::rangelist(const std::vector<pair<taddr, taddr> > &ranges)
 {
-        using vtype = std::vector<pair<taddr, taddr> >;
-
         synthetic.reserve(ranges.size() * 2 + 2);
-        for (vtype::const_iterator it = ranges.begin(); it != ranges.end(); ++it) {
+        for (std::vector<pair<taddr, taddr> >::const_iterator it = ranges.begin(); it != ranges.end(); ++it) {
                 synthetic.push_back((*it).first);
                 synthetic.push_back((*it).second);
         }
@@ -58,7 +56,7 @@ rangelist::contains(taddr addr) const
         return false;
 }
 
-rangelist::iterator::iterator(const section *sec, taddr base_addr)
+rangelist::iterator::iterator(section *sec, taddr base_addr)
         : sec(sec), base_addr(base_addr), pos(0)
 {
         // Read in the first entry
@@ -84,7 +82,6 @@ rangelist::iterator::operator++()
 
                 if (entry.low == 0 && entry.high == 0) {
                         // End of list
-                        sec.reset();
                         pos = 0;
                         break;
                 } else if (entry.low == largest_offset) {

@@ -46,8 +46,8 @@ die::read(section_offset off)
         // abbrev_entry.
         attrs.clear();
         attrs.reserve(abbrev->attributes.size());
-        for (int i = 0; i < abbrev->attributes.size(); i++) {
-                attribute_spec &attr = abbrev->attributes[i];
+        for (size_t i = 0; i < abbrev->attributes.size(); i++) {
+                const attribute_spec &attr = abbrev->attributes[i];
                 attrs.push_back(cur.get_section_offset());
                 cur.skip_form(attr.form);
         }
@@ -60,8 +60,8 @@ die::has(DW_AT attr) const
         if (!abbrev)
                 return false;
         // XXX Totally lame
-        for (int i = 0; i < abbrev->attributes.size(); i++) {
-                attribute_spec &a = abbrev->attributes[i];
+        for (size_t i = 0; i < abbrev->attributes.size(); i++) {
+                const attribute_spec &a = abbrev->attributes[i];
                 if (a.name == attr)
                         return true;
         }
@@ -74,12 +74,10 @@ die::operator[](DW_AT attr) const
         // XXX We can pre-compute almost all of this work in the
         // abbrev_entry.
         if (abbrev) {
-                int i = 0;
-                for (int i = 0; i < abbrev->attributes.size(); i++) {
-                        attribute_spec &a = abbrev->attributes[i];
+                for (size_t i = 0; i < abbrev->attributes.size(); i++) {
+                        const attribute_spec &a = abbrev->attributes[i];
                         if (a.name == attr)
                                 return value(cu, a.name, a.form, a.type, attrs[i]);
-                        i++;
                 }
         }
         throw out_of_range("DIE does not have attribute " + to_string(attr));
@@ -176,11 +174,9 @@ die::attributes() const
         // entire DIE tree since each DIE will produce a new vector
         // (whereas other vectors get reused).  Might be worth a
         // custom iterator.
-        int i = 0;
-        for (int i = 0; i < abbrev->attributes.size(); i++) {
-                attribute_spec &a = abbrev->attributes[i];
+        for (size_t i = 0; i < abbrev->attributes.size(); i++) {
+                const attribute_spec &a = abbrev->attributes[i];
                 res.push_back(make_pair(a.name, value(cu, a.name, a.form, a.type, attrs[i])));
-                i++;
         }
         return res;
 }
@@ -198,10 +194,3 @@ die::operator!=(const die &o) const
 }
 
 DWARFPP_END_NAMESPACE
-
-size_t
-std::hash<dwarf::die>::operator()(const dwarf::die &a) const
-{
-        return hash<decltype(a.cu)>()(a.cu) ^
-                hash<decltype(a.get_unit_offset())>()(a.get_unit_offset());
-}

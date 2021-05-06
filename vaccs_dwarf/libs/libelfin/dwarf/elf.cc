@@ -34,7 +34,7 @@ Section sections[] = {
 bool
 elf::section_name_to_type(const char *name, section_type *out)
 {
-        for (int i = 0; i < sizeof(sections); i++) {
+        for (size_t i = 0; i < sizeof(sections); i++) {
                 const Section &sec = sections[i];
                 if (strcmp(sec.name, name) == 0) {
                         *out = sec.type;
@@ -47,7 +47,7 @@ elf::section_name_to_type(const char *name, section_type *out)
 const char *
 elf::section_type_to_name(section_type type)
 {
-        for (int i = 0; i < sizeof(sections); i++) {
+        for (size_t i = 0; i < sizeof(sections); i++) {
                 const Section &sec = sections[i];
                 if (sec.type == type)
                         return sec.name;

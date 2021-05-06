@@ -6,13 +6,13 @@
 #define _ELFPP_TO_HEX_HH_
 
 #include <string>
-#include <type_traits>
+#include "../cpp03/cpp03help.hh"
 
 template<typename T>
 std::string
 to_hex(T v)
 {
-        // c++98 style static assert
+        // c++03 style static assert
         typedef int static_assert_integral[is_integral<T>::value ? 1 : -1];
         if (v == 0)
                 return std::string("0");

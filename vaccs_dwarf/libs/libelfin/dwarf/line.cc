@@ -62,7 +62,7 @@ line_table::line_table(const section *sec, section_offset offset,
         // XXX DWARF2 and 3 give a weird specification for DW_AT_comp_dir
 
         string comp_dir, abs_path;
-        if (cu_comp_dir.empty() || cu_comp_dir.back() == '/')
+        if (cu_comp_dir.empty() || cu_comp_dir[cu_comp_dir.size() - 1] == '/')
                 comp_dir = cu_comp_dir;
         else
                 comp_dir = cu_comp_dir + '/';
@@ -77,9 +77,10 @@ line_table::line_table(const section *sec, section_offset offset,
 
         // Basic header information
         uhalf version = cur.fixed<uhalf>();
-        if (version < 2 || version > 4)
+        if (version < 2 || version > 4) {
                 throw format_error("unknown line number table version " +
-                                   std::to_string(version));
+                                   fakestd::to_string(version));
+        }
         section_length header_length = cur.offset();
         m->program_offset = cur.get_section_offset() + header_length;
         m->minimum_instruction_length = cur.fixed<ubyte>();
@@ -110,10 +111,10 @@ line_table::line_table(const section *sec, section_offset offset,
                         // match the header.  Do the safe thing.
                         throw format_error(
                                 "expected " +
-                                std::to_string(opcode_lengths[i]) +
+                                fakestd::to_string(opcode_lengths[i]) +
                                 " arguments for line number opcode " +
-                                std::to_string(i) + ", got " +
-                                std::to_string(length));
+                                fakestd::to_string(i) + ", got " +
+                                fakestd::to_string(length));
                 m->standard_opcode_lengths[i] = length;
         }
 
@@ -126,10 +127,10 @@ line_table::line_table(const section *sec, section_offset offset,
                 cur.string(incdir);
                 if (incdir.empty())
                         break;
-                if (incdir.back() != '/')
+                if (incdir[incdir.size() - 1] != '/')
                         incdir += '/';
                 if (incdir[0] == '/')
-                        m->include_directories.push_back(move(incdir));
+                        m->include_directories.push_back(incdir);
                 else
                         m->include_directories.push_back(comp_dir + incdir);
         }
@@ -139,9 +140,9 @@ line_table::line_table(const section *sec, section_offset offset,
         // File name 0 is implicitly the compilation unit file name.
         // cu_name can be relative to comp_dir or absolute.
         if (!cu_name.empty() && cu_name[0] == '/')
-                m->file_names.emplace_back(cu_name);
+                m->file_names.push_back(line_table::file(cu_name));
         else
-                m->file_names.emplace_back(comp_dir + cu_name);
+                m->file_names.push_back(line_table::file(comp_dir + cu_name));
         while (m->read_file_entry(&cur, true));
 }
 
@@ -193,9 +194,9 @@ line_table::get_file(unsigned index) const
                 }
                 if (index >= m->file_names.size())
                         throw out_of_range
-                                ("file name index " + std::to_string(index) +
+                                ("file name index " + fakestd::to_string(index) +
                                  " exceeds file table size of " +
-                                 std::to_string(m->file_names.size()));
+                                 fakestd::to_string(m->file_names.size()));
         }
         return &m->file_names[index];
 }
@@ -219,14 +220,14 @@ line_table::impl::read_file_entry(cursor *cur, bool in_header)
         last_file_name_end = cur->get_section_offset();
 
         if (file_name[0] == '/')
-                file_names.emplace_back(move(file_name), mtime, length);
+                file_names.push_back(line_table::file(file_name, mtime, length));
         else if (dir_index < include_directories.size())
-                file_names.emplace_back(
+                file_names.push_back(line_table::file(
                         include_directories[dir_index] + file_name,
-                        mtime, length);
+                        mtime, length));
         else
                 throw format_error("file name directory index out of range: " +
-                                   std::to_string(dir_index));
+                                   fakestd::to_string(dir_index));
 
         return true;
 }
@@ -253,9 +254,9 @@ line_table::entry::get_description() const
 {
         string res = file->path;
         if (line) {
-                res.append(":").append(std::to_string(line));
+                res.append(":").append(fakestd::to_string(line));
                 if (column)
-                        res.append(":").append(std::to_string(column));
+                        res.append(":").append(fakestd::to_string(column));
         }
         return res;
 }
@@ -293,7 +294,7 @@ line_table::iterator::operator++()
                         entry.file = &table->m->file_names[entry.file_index];
                 else
                         throw format_error("bad file index " +
-                                           std::to_string(entry.file_index) +
+                                           fakestd::to_string(entry.file_index) +
                                            " in line table");
         }
 
@@ -304,7 +305,7 @@ line_table::iterator::operator++()
 bool
 line_table::iterator::step(cursor *cur)
 {
-        struct line_table::impl *m = table->m.get();
+        struct line_table::impl *m = table->m;
 
         // Read the opcode (DWARF4 section 6.2.3)
         ubyte opcode = cur->fixed<ubyte>();

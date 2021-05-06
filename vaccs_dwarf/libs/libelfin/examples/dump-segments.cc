@@ -23,6 +23,9 @@ int main(int argc, char **argv)
                 "Type", "Offset", "VirtAddr", "PhysAddr");
         printf("  %-16s  %-16s   %-16s  %6s %5s\n",
                 " ", "FileSiz", "MemSiz", "Flags", "Align");
+        
+        using elf::to_string;
+        
         for (auto &seg : f.segments()) {
                 auto &hdr = seg.get_hdr();
                 printf("   %-16s 0x%016" PRIx64 " 0x%016" PRIx64 " 0x%016" PRIx64 "\n",

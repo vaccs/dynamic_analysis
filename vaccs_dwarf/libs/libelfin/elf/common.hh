@@ -10,14 +10,14 @@
 #define ELFPP_BEGIN_INTERNAL  namespace internal {
 #define ELFPP_END_INTERNAL    }
 
-#include <cstdint>
+#include <inttypes.h>
 
 ELFPP_BEGIN_NAMESPACE
 
 /**
  * A byte ordering.
  */
-enum class byte_order
+enum byte_order
 {
         native,
         lsb,
@@ -66,13 +66,13 @@ swizzle(T v, byte_order from, byte_order to)
         case 1:
                 return v;
         case 2: {
-                std::uint16_t x = (std::uint16_t)v;
+                uint16_t x = (uint16_t)v;
                 return (T)(((x&0xFF) << 8) | (x >> 8));
         }
         case 4:
-                return (T)__builtin_bswap32((std::uint32_t)v);
+                return (T)__builtin_bswap32((uint32_t)v);
         case 8:
-                return (T)__builtin_bswap64((std::uint64_t)v);
+                return (T)__builtin_bswap64((uint64_t)v);
         }
 }
 

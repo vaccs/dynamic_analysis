@@ -3,7 +3,7 @@
 SONAME = 0
 
 CXXFLAGS+=-g -O2 -Werror
-override CXXFLAGS+=-std=c++03 -Wall -fPIC -fabi-version=2
+override CXXFLAGS+=-std=c++03 -Wall -fPIC -Wno-unused-local-typedefs -fabi-version=2
 
 all: libelf++.a libelf++.so libelf++.so.$(SONAME) libelf++.pc
 

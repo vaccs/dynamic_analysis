@@ -165,7 +165,6 @@ abbrev_entry::read(cursor *cur)
                         break;
                 attributes.push_back(attribute_spec(name, form));
         }
-        attributes.shrink_to_fit();
         return true;
 }
 

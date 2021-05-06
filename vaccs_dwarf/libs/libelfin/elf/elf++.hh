@@ -12,6 +12,7 @@
 #include <memory>
 #include <stdexcept>
 #include <vector>
+#include <sys/types.h>
 
 ELFPP_BEGIN_NAMESPACE
 
@@ -57,18 +58,14 @@ public:
          * Construct an ELF file that is backed by data read from the
          * given loader.
          */
-        explicit elf(const std::shared_ptr<loader> &l);
+        explicit elf(loader* l);
 
         /**
          * Construct an ELF file that is initially not valid.  Calling
          * methods other than operator= and valid on this results in
          * undefined behavior.
          */
-        elf() = default;
-        elf(const elf &o) = default;
-        elf(elf &&o) = default;
 
-        elf& operator=(const elf &o) = default;
 
         bool valid() const
         {
@@ -84,7 +81,7 @@ public:
         /**
          * Return the loader used by this file.
          */
-        std::shared_ptr<loader> get_loader() const;
+        loader*  get_loader() const;
 
         /**
          * Return the segments in this file.
@@ -116,7 +113,7 @@ public:
 
 private:
         struct impl;
-        std::shared_ptr<impl> m;
+        impl*  m;
 };
 
 /**
@@ -142,7 +139,7 @@ public:
  * will close fd when done, so the caller should dup the file
  * descriptor if it intends to continue using it.
  */
-std::shared_ptr<loader> create_mmap_loader(int fd);
+loader*  create_mmap_loader(int fd);
 
 /**
  * An exception indicating that a section is not of the requested type.
@@ -173,8 +170,8 @@ public:
        segment() { }
 
        segment(const elf &f, const void *hdr);
-       segment(const segment &o) = default;
-       segment(segment &&o) = default;
+ ;
+ ;
 
        /**
         * Return true if this segment is valid and corresponds to a
@@ -210,7 +207,7 @@ public:
 
 private:
        struct impl;
-       std::shared_ptr<impl> m;
+       impl*  m;
 };
 
 /**
@@ -230,8 +227,8 @@ public:
         section() { }
 
         section(const elf &f, const void *hdr);
-        section(const section &o) = default;
-        section(section &&o) = default;
+ ;
+ ;
 
         /**
          * Return true if this section is valid and corresponds to a
@@ -284,7 +281,7 @@ public:
 
 private:
         struct impl;
-        std::shared_ptr<impl> m;
+        impl*  m;
 };
 
 /**
@@ -301,7 +298,7 @@ public:
          * methods other than operator= and valid on this results in
          * undefined behavior.
          */
-        strtab() = default;
+ ;
         strtab(elf f, const void *data, size_t size);
 
         bool valid() const
@@ -324,7 +321,7 @@ public:
 
 private:
         struct impl;
-        std::shared_ptr<impl> m;
+        impl*  m;
 };
 
 /**
@@ -375,7 +372,7 @@ public:
          * methods other than operator= and valid on this results in
          * undefined behavior.
          */
-        symtab() = default;
+ ;
         symtab(elf f, const void *data, size_t size, strtab strs);
 
         bool valid() const
@@ -446,7 +443,7 @@ public:
 
 private:
         struct impl;
-        std::shared_ptr<impl> m;
+        impl*  m;
 };
 
 ELFPP_END_NAMESPACE

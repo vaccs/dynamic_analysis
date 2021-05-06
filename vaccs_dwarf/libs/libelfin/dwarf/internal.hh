@@ -11,19 +11,20 @@
 #include <stdint.h>
 
 #include <stdexcept>
-#include <type_traits>
 #include <vector>
+#include <string>
+#include <sstream>
 
 DWARFPP_BEGIN_NAMESPACE
 
-enum class format
+enum format
 {
         unknown,
         dwarf32,
         dwarf64
 };
 
-enum class byte_order
+enum byte_order
 {
         lsb,
         msb
@@ -63,11 +64,11 @@ struct section
                 : type(type), begin((char*)begin), end((char*)begin + length),
                   fmt(fmt), ord(ord), addr_size(addr_size) { }
 
-        section(const section &o) = default;
+
 
         section * slice(section_offset start, section_length len,
                                        format fmt = format::unknown,
-                                       unsigned addr_size = 0)
+                                       unsigned addr_size = 0) const
         {
                 if (fmt == format::unknown)
                         fmt = this->fmt;
@@ -98,7 +99,7 @@ struct cursor
         // (directly or indirectly) and that keeps the loader alive,
         // so a cursor just needs a regular section*.
 
-        section * sec;
+        const section * sec;
         const char *pos;
 
         cursor()
@@ -175,7 +176,7 @@ struct cursor
                 case 8:
                         return fixed<uint64_t>();
                 default:
-                        throw std::runtime_error("address size " + std::to_string(sec->addr_size) + " not supported");
+                        throw std::runtime_error("address size " + fakestd::to_string(sec->addr_size) + " not supported");
                 }
         }
 
@@ -246,7 +247,7 @@ struct abbrev_entry
         bool children;
         std::vector<attribute_spec> attributes;
 
-        abbrev_entry() : code(0) { }
+        abbrev_entry() : code(0), tag(DW_TAG::undefined), children(false) {};
 
         bool read(cursor *cur);
 };
@@ -270,8 +271,9 @@ struct name_unit
                 cursor sub(subsec);
                 sub.skip_initial_length();
                 version = sub.fixed<uhalf>();
-                if (version != 2)
-                        throw format_error("unknown name unit version " + std::to_string(version));
+                if (version != 2) {
+                        throw format_error("unknown name unit version " + fakestd::to_string(version));
+                }
                 debug_info_offset = sub.offset();
                 debug_info_length = sub.offset();
                 entries = sub;

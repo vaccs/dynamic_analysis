@@ -14,13 +14,14 @@
 #include "small_vector.hh"
 
 #include "../cpp03/cpp03help.hh"
+#include "../elf/elf++.hh"
 
-#include <initializer_list>
 #include <map>
 #include <memory>
 #include <stdexcept>
 #include <string>
 #include <vector>
+#include <stdint.h>
 
 DWARFPP_BEGIN_NAMESPACE
 
@@ -80,7 +81,7 @@ public:
  * DWARF section types.  These correspond to the names of ELF
  * sections, though DWARF can be embedded in other formats.
  */
-enum class section_type
+enum section_type
 {
         abbrev,
         aranges,
@@ -114,18 +115,18 @@ public:
          * Construct a DWARF file that is backed by sections read from
          * the given loader.
          */
-        explicit dwarf(const loader *l);
+        explicit dwarf(loader *l);
 
         /**
          * Construct a DWARF file that is initially not valid.
          */
-        dwarf() = default;
-        dwarf(const dwarf&) = default;
-        dwarf(dwarf&&) = default;
+
+
+
         ~dwarf();
 
-        dwarf& operator=(const dwarf &o) = default;
-        dwarf& operator=(dwarf &&o) = default;
+
+
 
         bool operator==(const dwarf &o) const
         {
@@ -199,6 +200,7 @@ public:
 class unit
 {
 public:
+        unit() : m(NULL) {};
         virtual ~unit() = 0;
 
         bool operator==(const unit &o) const
@@ -247,10 +249,9 @@ public:
          * \internal Return the abbrev for the specified abbrev
          * code.
          */
-        const abbrev_entry &get_abbrev(std::uint64_t acode) const;
+        const abbrev_entry &get_abbrev(uint64_t acode) const;
 
 protected:
-        friend struct ::std::hash<unit>;
         struct impl;
         impl * m;
 };
@@ -263,12 +264,12 @@ protected:
 class compilation_unit : public unit
 {
 public:
-        compilation_unit() = default;
-        compilation_unit(const compilation_unit &o) = default;
-        compilation_unit(compilation_unit &&o) = default;
 
-        compilation_unit& operator=(const compilation_unit &o) = default;
-        compilation_unit& operator=(compilation_unit &&o) = default;
+
+
+
+
+
 
         /**
          * \internal Construct a compilation unit whose header begins
@@ -291,12 +292,12 @@ public:
 class type_unit : public unit
 {
 public:
-        type_unit() = default;
-        type_unit(const type_unit &o) = default;
-        type_unit(type_unit &&o) = default;
 
-        type_unit &operator=(const type_unit &o) = default;
-        type_unit &operator=(type_unit &&o) = default;
+
+        type_unit() {};
+
+
+
 
         /**
          * \internal Construct a type unit whose header begins offset
@@ -341,12 +342,12 @@ class die
 public:
         DW_TAG tag;
 
-        die() : cu(NULL), abbrev(NULL) { }
-        die(const die &o) = default;
-        die(die &&o) = default;
+        die() : tag(DW_TAG::undefined), cu(NULL), abbrev(NULL), offset(0), next(0) { }
 
-        die& operator=(const die &o) = default;
-        die& operator=(die &&o) = default;
+
+
+
+
 
         /**
          * Return true if this object represents a DIE in a DWARF
@@ -426,7 +427,6 @@ private:
         friend class type_unit;
         friend class value;
         // XXX If we can get the CU, we don't need this
-        friend struct ::std::hash<die>;
 
         const unit *cu;
         // The abbrev of this DIE.  By convention, if this DIE
@@ -457,12 +457,7 @@ private:
 class die::iterator
 {
 public:
-        iterator() = default;
-        iterator(const iterator &o) = default;
-        iterator(iterator &&o) = default;
-
-        iterator& operator=(const iterator &o) = default;
-        iterator& operator=(iterator &&o) = default;
+        iterator() {};
 
         const die &operator*() const
         {
@@ -548,7 +543,7 @@ public:
 class value
 {
 public:
-        enum class type
+        enum type
         {
                 invalid,
                 address,
@@ -569,13 +564,13 @@ public:
         /**
          * Construct a value with type `type::invalid`.
          */
-        value() : cu(NULL), typ(type::invalid) { }
+        value() : cu(NULL), typ(value::invalid) { }
 
-        value(const value &o) = default;
-        value(value &&o) = default;
 
-        value& operator=(const value &o) = default;
-        value& operator=(value &&o) = default;
+
+
+
+
 
         /**
          * Return true if this object represents a valid value.
@@ -583,7 +578,7 @@ public:
          */
         bool valid() const
         {
-                return typ != type::invalid;
+                return typ != value::invalid;
         }
 
         /**
@@ -667,7 +662,7 @@ public:
         /**
          * Return this value as a rangelist.
          */
-        rangelist as_rangelist() const;
+        class rangelist as_rangelist() const;
 
         /**
          * For a reference type value, return the referenced DIE.
@@ -766,7 +761,7 @@ public:
          * expression (such as an unknown operation, stack underflow,
          * bounds error, etc.)
          */
-        expr_result evaluate(expr_context *ctx, const std::initializer_list<taddr> &arguments) const;
+        expr_result evaluate(expr_context *ctx, const std::vector<taddr> &arguments) const;
 
 private:
         // XXX This will need more information for some operations
@@ -849,7 +844,7 @@ extern expr_context no_expr_context;
 class expr_result
 {
 public:
-        enum class type {
+        enum type {
                 /**
                  * value specifies the address in memory of an object.
                  * This is also the result type used for general
@@ -898,7 +893,7 @@ public:
          * representing the value in the memory representation of the
          * target machine.
          */
-        const char *implicit;
+        const char *implicitc;
         size_t implicit_len;
 
         // XXX Composite locations
@@ -938,15 +933,15 @@ public:
         /**
          * Construct an empty range list.
          */
-        rangelist() = default;
+
 
         /** Copy constructor */
-        rangelist(const rangelist &o) = default;
-        /** Move constructor */
-        rangelist(rangelist &&o) = default;
 
-        rangelist& operator=(const rangelist &o) = default;
-        rangelist& operator=(rangelist &&o) = default;
+        /** Move constructor */
+
+
+
+
 
         class entry;
         typedef entry value_type;
@@ -1011,15 +1006,15 @@ public:
          * from the beginning of the given section and starts with the
          * given base address.
          */
-        iterator(const section *sec, taddr base_addr);
+        iterator(section *sec, taddr base_addr);
 
         /** Copy constructor */
-        iterator(const iterator &o) = default;
-        /** Move constructor */
-        iterator(iterator &&o) = default;
 
-        iterator& operator=(const iterator &o) = default;
-        iterator& operator=(iterator &&o) = default;
+        /** Move constructor */
+
+
+
+
 
         /**
          * Return the current range list entry.  This entry is reused
@@ -1056,7 +1051,7 @@ public:
         iterator &operator++();
 
 private:
-        section * sec;
+        const section * sec;
         taddr base_addr;
         section_offset pos;
         rangelist::entry entry;
@@ -1087,6 +1082,7 @@ public:
          * cu_name give the DW_AT::comp_dir and DW_AT::name attributes
          * of the associated compilation unit.
          */
+        line_table() {};
         line_table(const section *sec, section_offset offset,
                    unsigned cu_addr_size, const std::string &cu_comp_dir,
                    const std::string &cu_name);
@@ -1094,15 +1090,15 @@ public:
         /**
          * Construct an invalid, empty line table.
          */
-        line_table() = default;
+
 
         /** Copy constructor */
-        line_table(const line_table &o) = default;
-        /** Move constructor */
-        line_table(line_table &&o) = default;
 
-        line_table &operator=(const line_table &o) = default;
-        line_table &operator=(line_table &&o) = default;
+        /** Move constructor */
+
+
+
+
 
         /**
          * Return true if this object represents an initialized line
@@ -1296,12 +1292,12 @@ public:
         iterator(const line_table *table, section_offset pos);
 
         /** Copy constructor */
-        iterator(const iterator &o) = default;
-        /** Move constructor */
-        iterator(iterator &&o) = default;
 
-        iterator &operator=(const iterator &o) = default;
-        iterator &operator=(iterator &&o) = default;
+        /** Move constructor */
+
+
+
+
 
         /**
          * Return the current line table entry.  This entry is reused
@@ -1451,14 +1447,14 @@ public:
          * children of parent whose tags are in accept.
          */
         die_str_map(const die &parent, DW_AT attr,
-                    const std::initializer_list<DW_TAG> &accept);
+                    const std::vector<DW_TAG> &accept);
 
-        die_str_map() = default;
-        die_str_map(const die_str_map &o) = default;
-        die_str_map(die_str_map &&o) = default;
 
-        die_str_map& operator=(const die_str_map &o) = default;
-        die_str_map& operator=(die_str_map &&o) = default;
+
+
+
+
+
 
         /**
          * Construct a string map for the type names of parent's
@@ -1494,6 +1490,7 @@ private:
 
 namespace elf
 {
+
         /**
          * Translate an ELF section name info a DWARF section type.
          * If the section is a valid DWARF section name, sets *out to
@@ -1514,13 +1511,13 @@ namespace elf
         public:
                 elf_loader(const Elf &file) : f(file) { }
 
-                const void *load(section_type section, size_t *size_out)
+                const void *load(section_type sectionp, size_t *size_out)
                 {
-                        section * sec = f.get_section(section_type_to_name(section));
-                        if (!sec.valid())
+                        const ::elf::section *sec = &f.get_section(section_type_to_name(sectionp));
+                        if (sec == NULL)
                                 return NULL;
-                        *size_out = sec.size();
-                        return sec.data();
+                        *size_out = sec->size();
+                        return sec->data();
                 }
         };
 
@@ -1531,38 +1528,12 @@ namespace elf
          * reasonably be used with elf::elf from libelf++.
          */
         template<typename Elf>
-        elf_loader<Elf *f)
+        elf_loader<Elf>* create_loader(const Elf& f)
         {
-                return new elf_loader<Elf >(f);
+                return new elf_loader<Elf>(f);
         }
 };
 
 DWARFPP_END_NAMESPACE
-
-//////////////////////////////////////////////////////////////////
-// Hash specializations
-//
-
-namespace std
-{
-        template<>
-        struct hash<dwarf::unit>
-        {
-                typedef size_t result_type;
-                typedef const dwarf::unit &argument_type;
-                result_type operator()(argument_type a) const
-                {
-                        return hash<decltype(a.m)>()(a.m);
-                }
-        };
-
-        template<>
-        struct hash<dwarf::die>
-        {
-                typedef size_t result_type;
-                typedef const dwarf::die &argument_type;
-                result_type operator()(argument_type a) const;
-        };
-}
 
 #endif

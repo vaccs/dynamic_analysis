@@ -4,8 +4,6 @@
 
 #include "elf++.hh"
 
-#include <system_error>
-
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/mman.h>
@@ -26,13 +24,13 @@ public:
         {
                 off_t end = lseek(fd, 0, SEEK_END);
                 if (end == (off_t)-1)
-                        throw system_error(errno, system_category(),
+                        throw std::runtime_error(
                                            "finding file length");
                 lim = end;
 
                 base = mmap(NULL, lim, PROT_READ, MAP_SHARED, fd, 0);
                 if (base == MAP_FAILED)
-                        throw system_error(errno, system_category(),
+                        throw std::runtime_error(
                                            "mmap'ing file");
                 close(fd);
         }
@@ -50,10 +48,10 @@ public:
         }
 };
 
-std::shared_ptr<loader>
+loader* 
 create_mmap_loader(int fd)
 {
-        return make_shared<mmap_loader>(fd);
+        return new mmap_loader(fd);
 }
 
 ELFPP_END_NAMESPACE

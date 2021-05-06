@@ -3,7 +3,7 @@
 SONAME = 0
 
 CXXFLAGS+=-g -O2 -Werror
-override CXXFLAGS+=-std=c++03 -Wall -fPIC -fabi-version=2
+override CXXFLAGS+=-std=c++03 -Wall -fPIC -fabi-version=2 -Wno-unused-local-typedefs
 
 all: libdwarf++.a libdwarf++.so.$(SONAME) libdwarf++.so libdwarf++.pc
 

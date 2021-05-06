@@ -253,7 +253,10 @@ die_pc_range(const die &d)
                 return at_ranges(d);
         taddr low = at_low_pc(d);
         taddr high = d.has(DW_AT::high_pc) ? at_high_pc(d) : (low + 1);
-        return rangelist({{low, high}});
+        std::vector<std::pair<taddr, taddr> > construct;
+        std::pair<taddr, taddr> pair(low, high);
+        construct.push_back(pair);
+        return rangelist(construct);
 }
 
 DWARFPP_END_NAMESPACE

@@ -31,29 +31,6 @@ public:
                 *this = o;
         }
 
-        small_vector(small_vector<T, Min> &&o)
-                : base((T*)buf), end(base), cap((T*)&buf[sizeof(T[Min])])
-        {
-                if ((char*)o.base == o.buf) {
-                        // Elements are inline; have to copy them
-                        base = (T*)buf;
-                        end = base;
-                        cap = (T*)&buf[sizeof(T[Min])];
-
-                        *this = o;
-                        o.clear();
-                } else {
-                        // Elements are external; swap pointers
-                        base = o.base;
-                        end = o.end;
-                        cap = o.cap;
-
-                        o.base = (T*)o.buf;
-                        o.end = o.base;
-                        o.cap = (T*)&o.buf[sizeof(T[Min])];
-                }
-        }
-
         ~small_vector()
         {
                 clear();
@@ -164,13 +141,6 @@ public:
         {
                 reserve(size() + 1);
                 new (end) T(x);
-                end++;
-        }
-
-        void push_back(T&& x)
-        {
-                reserve(size() + 1);
-                new (end) T(std::move(x));
                 end++;
         }
 

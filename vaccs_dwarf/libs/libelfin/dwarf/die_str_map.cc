@@ -5,23 +5,9 @@
 #include "internal.hh"
 
 #include <cstring>
-#include <unordered_set>
+#include <set>
 
 using namespace std;
-
-// XXX Make this more readily available?
-namespace std {
-        template<>
-        struct hash<dwarf::DW_TAG>
-        {
-                typedef size_t result_type;
-                typedef dwarf::DW_TAG argument_type;
-                result_type operator()(argument_type a) const
-                {
-                        return (result_type)a;
-                }
-        };
-}
 
 DWARFPP_BEGIN_NAMESPACE
 
@@ -72,10 +58,7 @@ die_str_map::die_str_map(const die &parent, DW_AT attr,
 die_str_map
 die_str_map::from_type_names(const die &parent)
 {
-        return die_str_map
-                (parent, DW_AT::name,
-                 // All DWARF type tags (this is everything that ends
-                 // with _type except thrown_type).
+        static const DW_TAG arr[] = 
                  {DW_TAG::array_type, DW_TAG::class_type,
                   DW_TAG::enumeration_type, DW_TAG::pointer_type,
                   DW_TAG::reference_type, DW_TAG::string_type,
@@ -86,7 +69,11 @@ die_str_map::from_type_names(const die &parent)
                   DW_TAG::file_type, DW_TAG::packed_type,
                   DW_TAG::volatile_type, DW_TAG::restrict_type,
                   DW_TAG::interface_type, DW_TAG::unspecified_type,
-                  DW_TAG::shared_type, DW_TAG::rvalue_reference_type});
+                  DW_TAG::shared_type, DW_TAG::rvalue_reference_type};
+        
+        vector<DW_TAG::DW_TAG> vec (arr, arr + sizeof(arr) / sizeof(arr[0]));
+        
+        return die_str_map(parent, DW_AT::name, vec);
 }
 
 const die &

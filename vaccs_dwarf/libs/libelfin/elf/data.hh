@@ -7,14 +7,13 @@
 
 #include "common.hh"
 
-#include <cstdint>
 #include <cstring>
 #include <string>
 
 ELFPP_BEGIN_NAMESPACE
 
 // Object file classes (ELF64 table 3)
-enum class elfclass : unsigned char
+enum elfclass
 {
         _32 = 1,                // 32-bit objects
         _64 = 2,                // 64-bit objects
@@ -26,9 +25,9 @@ to_string(elfclass v);
 // Common basic data types
 struct ElfTypes
 {
-        typedef std::uint16_t Half;
-        typedef std::uint32_t Word;
-        typedef std::int32_t  Sword;
+        typedef uint16_t Half;
+        typedef uint32_t Word;
+        typedef int32_t  Sword;
 };
 
 struct Elf32 : public ElfTypes
@@ -37,8 +36,8 @@ struct Elf32 : public ElfTypes
         static const elfclass cls = elfclass::_32;
 
         // Basic data types (ELF32 figure 1-2)
-        typedef std::uint32_t Addr;
-        typedef std::uint32_t Off;
+        typedef uint32_t Addr;
+        typedef uint32_t Off;
 
         // Predicated types
         typedef Word Word32_Xword64;
@@ -56,10 +55,10 @@ struct Elf64 : ElfTypes
         static const elfclass cls = elfclass::_64;
 
         // Basic data types (ELF64 table 1)
-        typedef std::uint64_t Addr;
-        typedef std::uint64_t Off;
-        typedef std::uint64_t Xword;
-        typedef std::int64_t  Sxword;
+        typedef uint64_t Addr;
+        typedef uint64_t Off;
+        typedef uint64_t Xword;
+        typedef int64_t  Sxword;
 
         // Predicated types
         typedef Xword Word32_Xword64;
@@ -72,7 +71,7 @@ struct Elf64 : ElfTypes
 };
 
 // Data encodings (ELF64 table 4)
-enum class elfdata : unsigned char
+enum elfdata
 {
         lsb = 1,
         msb = 2,
@@ -82,7 +81,7 @@ std::string
 to_string(elfdata v);
 
 // Operating system and ABI identifiers (ELF64 table 5)
-enum class elfosabi : unsigned char
+enum elfosabi
 {
         sysv = 0,
         hpux = 1,
@@ -92,8 +91,7 @@ enum class elfosabi : unsigned char
 std::string
 to_string(elfosabi v);
 
-// Object file types (ELF64 table 6)
-enum class et : ElfTypes::Half
+enum et
 {
         none   = 0,             // No file type
         rel    = 1,             // Relocatable object file
@@ -172,7 +170,7 @@ struct Ehdr
 // enum, rather than a type-safe enum.  However, this is declared in a
 // namespace and then used to avoid polluting the elf:: namespace.
 namespace enums {
-enum shn : ElfTypes::Half       // This is a Word in Shdr and Half in Sym.
+enum shn      // This is a Word in Shdr and Half in Sym.
 {
         undef = 0,              // Undefined or meaningless
 
@@ -189,10 +187,7 @@ std::string
 to_string(shn v);
 }
 
-using enums::shn;
-
-// Section types (ELF64 table 8)
-enum class sht : ElfTypes::Word
+enum sht
 {
         null     = 0,           // Marks an unseen section header
         progbits = 1,           // Contains information defined by the program
@@ -220,7 +215,7 @@ to_string(sht v);
 // ELF32.  We use the larger ELF64 type for the canonical
 // representation and switch it out for a plain Elf32_Word in the
 // ELF32 format.
-enum class shf : Elf64::Xword
+enum shf
 {
         write     = 0x1,        // Section contains writable data
         alloc     = 0x2,        // Section is allocated in memory image of program
@@ -232,24 +227,24 @@ enum class shf : Elf64::Xword
 std::string
 to_string(shf v);
 
-static inline constexpr shf operator&(shf a, shf b)
+static inline shf operator&(shf a, shf b)
 {
-        return (shf)((std::uint64_t)a & (std::uint64_t)b);
+        return (shf)((uint64_t)a & (uint64_t)b);
 }
 
-static inline constexpr shf operator|(shf a, shf b)
+static inline shf operator|(shf a, shf b)
 {
-        return (shf)((std::uint64_t)a | (std::uint64_t)b);
+        return (shf)((uint64_t)a | (uint64_t)b);
 }
 
-static inline constexpr shf operator^(shf a, shf b)
+static inline shf operator^(shf a, shf b)
 {
-        return (shf)((std::uint64_t)a ^ (std::uint64_t)b);
+        return (shf)((uint64_t)a ^ (uint64_t)b);
 }
 
-static inline constexpr shf operator~(shf a)
+static inline shf operator~(shf a)
 {
-        return (shf)~((std::uint64_t)a);
+        return (shf)~((uint64_t)a);
 }
 
 static inline shf& operator&=(shf &a, shf b)
@@ -270,6 +265,7 @@ static inline shf& operator^=(shf &a, shf b)
         return a;
 }
 
+using enums::shn;
 // Section header (ELF32 figure 1-8, ELF64 figure 3)
 template<typename E = Elf64, byte_order Order = byte_order::native>
 struct Shdr
@@ -288,7 +284,7 @@ struct Shdr
         typename E::Addr           addr; // Virtual address in memory
         typename E::Off            offset; // Offset in file
         typename E::Word32_Xword64 size; // Size of section
-        shn                        link; // Link to other section
+        typename elf::shn          link; // Link to other section
         typename E::Word           info; // Miscellaneous information
         typename E::Word32_Xword64 addralign; // Address alignment boundary
         typename E::Word32_Xword64 entsize; // Size of entries, if section has table
@@ -298,11 +294,11 @@ struct Shdr
         {
                 name      = swizzle(o.name, o.order, order);
                 type      = swizzle(o.type, o.order, order);
-                flags     = (decltype(flags))swizzle(o.flags, o.order, order);
+                flags     = (typename E::template pick<typename E::Word, shf>::t)swizzle(o.flags, o.order, order);
                 addr      = swizzle(o.addr, o.order, order);
                 offset    = swizzle(o.offset, o.order, order);
                 size      = swizzle(o.size, o.order, order);
-                link      = (decltype(link))swizzle((typename E::Word)o.link, o.order, order);
+                link      = (typename elf::shn)swizzle((typename E::Word)o.link, o.order, order);
                 info      = swizzle(o.info, o.order, order);
                 addralign = swizzle(o.addralign, o.order, order);
                 entsize   = swizzle(o.entsize, o.order, order);
@@ -310,7 +306,7 @@ struct Shdr
 };
 
 // Segment types (ELF64 table 16)
-enum class pt : ElfTypes::Word
+enum pt
 {
         null    = 0,            // Unused entry
         load    = 1,            // Loadable segment
@@ -329,7 +325,7 @@ std::string
 to_string(pt v);
 
 // Segment attributes
-enum class pf : ElfTypes::Word
+enum pf
 {
         x        = 0x1,         // Execute permission
         w        = 0x2,         // Write permission
@@ -341,24 +337,24 @@ enum class pf : ElfTypes::Word
 std::string
 to_string(pf v);
 
-static inline constexpr pf operator&(pf a, pf b)
+static inline pf operator&(pf a, pf b)
 {
-        return (pf)((std::uint64_t)a & (std::uint64_t)b);
+        return (pf)((uint64_t)a & (uint64_t)b);
 }
 
-static inline constexpr pf operator|(pf a, pf b)
+static inline pf operator|(pf a, pf b)
 {
-        return (pf)((std::uint64_t)a | (std::uint64_t)b);
+        return (pf)((uint64_t)a | (uint64_t)b);
 }
 
-static inline constexpr pf operator^(pf a, pf b)
+static inline pf operator^(pf a, pf b)
 {
-        return (pf)((std::uint64_t)a ^ (std::uint64_t)b);
+        return (pf)((uint64_t)a ^ (uint64_t)b);
 }
 
-static inline constexpr pf operator~(pf a)
+static inline pf operator~(pf a)
 {
-        return (pf)~((std::uint64_t)a);
+        return (pf)~((uint64_t)a);
 }
 
 static inline pf& operator&=(pf &a, pf b)
@@ -442,7 +438,7 @@ struct Phdr<Elf64, Order>
 };
 
 // Symbol bindings (ELF32 figure 1-16, ELF64 table 14)
-enum class stb : unsigned char
+enum stb
 {
         local  = 0,             // Not visible outside the object file
         global = 1,             // Global symbol
@@ -458,7 +454,7 @@ std::string
 to_string(stb v);
 
 // Symbol types (ELF32 figure 1-17, ELF64 table 15)
-enum class stt : unsigned char
+enum stt
 {
         notype  = 0,            // No type (e.g., absolute symbol)
         object  = 1,            // Data object
@@ -553,7 +549,7 @@ struct Sym<Elf64, Order>
                 return (stb)(info >> 4);
         }
 
-        void set_binding(stb v) const
+        void set_binding(stb v)
         {
                 info = (info & 0xF) | ((unsigned char)v << 4);
         }

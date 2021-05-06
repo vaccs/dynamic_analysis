@@ -3,6 +3,7 @@
 // that can be found in the LICENSE file.
 
 #include "elf++.hh"
+#include "../cpp03/cpp03help.hh"
 
 #include <cstring>
 
@@ -43,10 +44,10 @@ void canon_hdr(Hdr<Elf64, byte_order::native> *out, const void *data,
 
 struct elf::impl
 {
-        impl(const shared_ptr<loader> &l)
+        impl(loader* l)
                 : l(l) { }
 
-        const shared_ptr<loader> l;
+        loader*  l;
         Ehdr<> hdr;
         vector<section> sections;
         vector<segment> segments;
@@ -55,8 +56,8 @@ struct elf::impl
         segment invalid_segment;
 };
 
-elf::elf(const std::shared_ptr<loader> &l)
-        : m(make_shared<impl>(l))
+elf::elf(loader* l)
+        : m(new impl(l))
 {
         // Read the first six bytes to check the magic number, ELF
         // class, and byte order.
@@ -118,7 +119,7 @@ elf::get_hdr() const
         return m->hdr;
 }
 
-shared_ptr<loader>
+loader* 
 elf::get_loader() const
 {
         return m->l;
@@ -139,9 +140,9 @@ elf::segments() const
 const section &
 elf::get_section(const std::string &name) const
 {
-        for (auto &sec : sections())
-                if (name == sec.get_name(NULL))
-                        return sec;
+        for (std::vector<section>::const_iterator it = sections().begin(); it != sections().end(); ++it)
+                if (name == (*it).get_name(NULL))
+                        return (*it);
         return m->invalid_section;
 }
 
@@ -177,7 +178,7 @@ struct segment::impl {
 };
 
 segment::segment(const elf &f, const void *hdr)
-    : m(make_shared<impl>(f)) {
+    : m(new impl(f)) {
         canon_hdr(&m->hdr, hdr, f.get_hdr().ei_class, f.get_hdr().ei_data);
 }
 
@@ -217,7 +218,7 @@ enums::to_string(shn v)
                 return "abs";
         if (v == shn::common)
                 return "common";
-        return std::to_string(v);
+        return fakestd::to_string(v);
 }
 
 struct section::impl
@@ -233,7 +234,7 @@ struct section::impl
 };
 
 section::section(const elf &f, const void *hdr)
-        : m(make_shared<impl>(f))
+        : m(new impl(f))
 {
         canon_hdr(&m->hdr, hdr, f.get_hdr().ei_class, f.get_hdr().ei_data);
 }
@@ -309,7 +310,7 @@ struct strtab::impl
 };
 
 strtab::strtab(elf f, const void *data, size_t size)
-        : m(make_shared<impl>(f, (const char*)data, (const char *)data + size))
+        : m(new impl(f, (const char*)data, (const char *)data + size))
 {
 }
 
@@ -319,7 +320,7 @@ strtab::get(Elf64::Off offset, size_t *len_out) const
         const char *start = m->data + offset;
 
         if (start >= m->end)
-                throw range_error("string offset " + std::to_string(offset) + " exceeds section size");
+                throw range_error("string offset " + fakestd::to_string(offset) + " exceeds section size");
 
         // Find the null terminator
         const char *p = start;
@@ -376,7 +377,7 @@ struct symtab::impl
 };
 
 symtab::symtab(elf f, const void *data, size_t size, strtab strs)
-        : m(make_shared<impl>(f, (const char*)data, (const char *)data + size,
+        : m(new impl(f, (const char*)data, (const char *)data + size,
                               strs))
 {
 }

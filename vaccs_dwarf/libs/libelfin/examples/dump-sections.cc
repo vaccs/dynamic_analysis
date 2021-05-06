@@ -24,6 +24,9 @@ int main(int argc, char **argv)
                "Name", "Type", "Address", "Offset");
         printf("       %-16s %-16s %-15s %5s %4s %5s\n",
                "Size", "EntSize", "Flags", "Link", "Info", "Align");
+
+        using elf::to_string;
+        
         for (auto &sec : f.sections()) {
                 auto &hdr = sec.get_hdr();
                 printf("  [%2d] %-16s %-16s %016" PRIx64 " %08" PRIx64 "\n", i++,
@@ -32,7 +35,7 @@ int main(int argc, char **argv)
                        hdr.addr, hdr.offset);
                 printf("       %016zx %016" PRIx64 " %-15s %5s %4d %5" PRIu64 "\n",
                        sec.size(), hdr.entsize,
-                       to_string(hdr.flags).c_str(), to_string(hdr.link).c_str(),
+                       to_string(hdr.flags).c_str(), elf::enums::to_string(hdr.link).c_str(),
                        (int)hdr.info, hdr.addralign);
         }
 

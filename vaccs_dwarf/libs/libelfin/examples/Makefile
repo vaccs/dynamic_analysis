@@ -1,5 +1,5 @@
 CXXFLAGS+=-g -O2 -Werror -I../elf -I../dwarf
-override CXXFLAGS+=-std=c++0x -Wall -fabi-version=2
+override CXXFLAGS+=-std=c++0x -Wall -fabi-version=2 -Wno-unused-local-typedefs
 
 CLEAN :=
 

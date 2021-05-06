@@ -156,7 +156,8 @@ value::as_rangelist() const
         taddr cu_low_pc = cudie.has(DW_AT::low_pc) ? at_low_pc(cudie) : 0;
         section* sec = cu->get_dwarf().get_section(section_type::ranges);
         const section* cusec = cu->data();
-        return rangelist(sec, off, cusec->addr_size, cu_low_pc);
+        class rangelist r(sec, off, cusec->addr_size, cu_low_pc);
+        return r;
 }
 
 die
@@ -218,12 +219,12 @@ value::as_reference() const
 }
 
 void
-value::as_string(string &buf) const
+value::as_string(std::string &buf) const
 {
         size_t size;
         const char *p = as_cstr(&size);
         buf.resize(size);
-        memmove(&buf.front(), p, size);
+        memmove(&buf[0], p, size);
 }
 
 string
@@ -231,7 +232,7 @@ value::as_string() const
 {
         size_t size;
         const char *s = as_cstr(&size);
-        return string(s, size);
+        return std::string(s, size);
 }
 
 const char *
@@ -288,47 +289,57 @@ string
 to_string(const value &v)
 {
         switch (v.get_type()) {
-        case value::type::invalid:
+        case value::invalid:
                 return "<invalid value type>";
-        case value::type::address:
+        case value::address:
                 return "0x" + to_hex(v.as_address());
-        case value::type::block: {
+        case value::block: {
                 size_t size;
                 const char *b = (const char*)v.as_block(&size);
-                string res = ::to_string(size) + " byte block:";
+                ostringstream ss;
+                ss << size;
+                string res = ss.str() + " byte block:";
                 for (size_t pos = 0; pos < size; ++pos) {
                         res += ' ';
                         res += to_hex(b[pos]);
                 }
                 return res;
         }
-        case value::type::constant:
+        case value::constant:
                 return "0x" + to_hex(v.as_uconstant());
-        case value::type::uconstant:
-                return ::to_string(v.as_uconstant());
-        case value::type::sconstant:
-                return ::to_string(v.as_sconstant());
-        case value::type::exprloc:
+        case value::uconstant:
+                {
+                ostringstream ss;
+                ss << v.as_uconstant();
+                return ss.str();
+                }
+        case value::sconstant:
+                {
+                ostringstream ss;
+                ss << v.as_sconstant();
+                return ss.str();
+                }
+        case value::exprloc:
                 // XXX
                 return "<exprloc>";
-        case value::type::flag:
+        case value::flag:
                 return v.as_flag() ? "true" : "false";
-        case value::type::line:
+        case value::line:
                 return "<line 0x" + to_hex(v.as_sec_offset()) + ">";
-        case value::type::loclist:
+        case value::loclist:
                 return "<loclist 0x" + to_hex(v.as_sec_offset()) + ">";
-        case value::type::mac:
+        case value::mac:
                 return "<mac 0x" + to_hex(v.as_sec_offset()) + ">";
-        case value::type::rangelist:
+        case value::rangelist:
                 return "<rangelist 0x" + to_hex(v.as_sec_offset()) + ">";
-        case value::type::reference: {
+        case value::reference: {
                 die d = v.as_reference();
                 const type_unit* tu = dynamic_cast<const type_unit*>(&d.get_unit());
                 if (tu)
                         return "<.debug_types+0x" + to_hex(d.get_section_offset()) + ">";
                 return "<0x" + to_hex(d.get_section_offset()) + ">";
         }
-        case value::type::string:
+        case value::string:
                 return v.as_string();
         }
         return "<unexpected value type " + to_string(v.get_type()) + ">";

@@ -14,7 +14,7 @@ DWARFPP_BEGIN_NAMESPACE
 
 struct dwarf::impl
 {
-        impl(const loader *l)
+        impl(loader *l)
                 : l(l), have_type_units(false) { }
 
         loader * l;
@@ -27,10 +27,10 @@ struct dwarf::impl
         std::map<uint64_t, type_unit> type_units;
         bool have_type_units;
 
-        std::map<section_type, section>  * sections;
+        std::map<section_type, section *> sections;
 };
 
-dwarf::dwarf(const loader *l)
+dwarf::dwarf(loader *l)
         : m(new impl(l))
 {
         const void *data;
@@ -68,8 +68,8 @@ dwarf::dwarf(const loader *l)
                 // XXX Circular reference.  Given that we now require
                 // the dwarf object to stick around for DIEs, maybe we
                 // might as well require that for units, too.
-                m->compilation_units.emplace_back(
-                        *this, infocur.get_section_offset());
+                m->compilation_units.push_back(compilation_unit(
+                        *this, infocur.get_section_offset()));
                 infocur.subsection();
         }
 }
@@ -113,7 +113,7 @@ dwarf::get_section(section_type type) const
         if (type == section_type::abbrev)
                 return m->sec_abbrev;
 
-        std::map<section_type, section>::iterator it = m->sections.find(type);
+        std::map<section_type, section *>::iterator it = m->sections.find(type);
         if (it != m->sections.end())
                 return it->second;
 
@@ -254,7 +254,7 @@ unit::impl::force_abbrevs()
                 // Move the map into the vector
                 abbrevs_vec.resize(highest + 1);
                 for (std::map<abbrev_code, abbrev_entry>::iterator it = abbrevs_map.begin(); it != abbrevs_map.end(); it++)
-                        abbrevs_vec[it->first] = move(it->second);
+                        abbrevs_vec[it->first] = it->second;
                 abbrevs_map.clear();
         }
 
@@ -273,8 +273,9 @@ compilation_unit::compilation_unit(const dwarf &file, section_offset offset)
         cursor sub(subsec);
         sub.skip_initial_length();
         uhalf version = sub.fixed<uhalf>();
-        if (version < 2 || version > 4)
-                throw format_error("unknown compilation unit version " + std::to_string(version));
+        if (version < 2 || version > 4) {
+                throw format_error("unknown compilation unit version " + fakestd::to_string(version));
+        }
         // .debug_abbrev-relative offset of this unit's abbrevs
         section_offset debug_abbrev_offset = sub.offset();
         ubyte address_size = sub.fixed<ubyte>();
@@ -292,7 +293,7 @@ compilation_unit::get_line_table() const
                 if (!d.has(DW_AT::stmt_list) || !d.has(DW_AT::name))
                         goto done;
 
-                shared_ptr<section> sec;
+                section * sec;
                 try {
                         sec = m->file.get_section(section_type::line);
                 } catch (format_error &e) {
@@ -321,8 +322,9 @@ type_unit::type_unit(const dwarf &file, section_offset offset)
         cursor sub(subsec);
         sub.skip_initial_length();
         uhalf version = sub.fixed<uhalf>();
-        if (version != 4)
-                throw format_error("unknown type unit version " + std::to_string(version));
+        if (version != 4) {
+                throw format_error("unknown type unit version " + fakestd::to_string(version));
+        }
         // .debug_abbrev-relative offset of this unit's abbrevs
         section_offset debug_abbrev_offset = sub.offset();
         ubyte address_size = sub.fixed<ubyte>();

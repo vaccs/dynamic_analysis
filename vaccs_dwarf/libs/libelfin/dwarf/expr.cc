@@ -19,17 +19,19 @@ expr::expr(const unit *cu,
 expr_result
 expr::evaluate(expr_context *ctx) const
 {
-        return evaluate(ctx, {});
+        return evaluate(ctx, std::vector<taddr>());
 }
 
 expr_result
 expr::evaluate(expr_context *ctx, taddr argument) const
 {
-        return evaluate(ctx, {argument});
+        std::vector<taddr> a;
+        a.push_back(argument);
+        return evaluate(ctx, a);
 }
 
 expr_result
-expr::evaluate(expr_context *ctx, const std::initializer_list<taddr> &arguments) const
+expr::evaluate(expr_context *ctx, const std::vector<taddr> &arguments) const
 {
         // The stack machine's stack.  The top of the stack is
         // stack.back().
@@ -41,7 +43,7 @@ expr::evaluate(expr_context *ctx, const std::initializer_list<taddr> &arguments)
         // Create the initial stack.  arguments are in reverse order
         // (that is, element 0 is TOS), so reverse it.
         stack.reserve(arguments.size());
-        for (const taddr *elt = arguments.end() - 1;
+        for (std::vector<taddr>::const_iterator elt = arguments.end() - 1;
              elt >= arguments.begin(); elt--)
                 stack.push_back(*elt);
 
@@ -62,14 +64,14 @@ expr::evaluate(expr_context *ctx, const std::initializer_list<taddr> &arguments)
 
         // 2.6.1.1.4 Empty location descriptions
         if (cur.end()) {
-                result.location_type = expr_result::type::empty;
+                result.location_type = expr_result::empty;
                 result.value = 0;
                 return result;
         }
 
         // Assume the result is an address for now and should be
         // grabbed from the top of stack at the end.
-        result.location_type = expr_result::type::address;
+        result.location_type = expr_result::address;
 
         // Execute!
         while (!cur.end()) {
@@ -368,24 +370,24 @@ expr::evaluate(expr_context *ctx, const std::initializer_list<taddr> &arguments)
 
                         // 2.6.1.1.2 Register location descriptions
                 case DW_OP::reg0...DW_OP::reg31:
-                        result.location_type = expr_result::type::reg;
+                        result.location_type = expr_result::reg;
                         result.value = (unsigned)op - (unsigned)DW_OP::reg0;
                         break;
                 case DW_OP::regx:
-                        result.location_type = expr_result::type::reg;
+                        result.location_type = expr_result::reg;
                         result.value = cur.uleb128();
                         break;
 
                         // 2.6.1.1.3 Implicit location descriptions
                 case DW_OP::implicit_value:
-                        result.location_type = expr_result::type::implicit;
+                        result.location_type = expr_result::implicit;
                         result.implicit_len = cur.uleb128();
                         cur.ensure(result.implicit_len);
-                        result.implicit = cur.pos;
+                        result.implicitc = cur.pos;
                         break;
                 case DW_OP::stack_value:
                         CHECK();
-                        result.location_type = expr_result::type::literal;
+                        result.location_type = expr_result::literal;
                         result.value = stack.back();
                         break;
 
@@ -408,7 +410,7 @@ expr::evaluate(expr_context *ctx, const std::initializer_list<taddr> &arguments)
 #undef CHECKN
         }
 
-        if (result.location_type == expr_result::type::address) {
+        if (result.location_type == expr_result::address) {
                 // The result type is still and address, so we should
                 // fetch it from the top of stack.
                 if (stack.empty())

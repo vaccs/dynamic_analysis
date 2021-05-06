@@ -19,6 +19,9 @@ int main(int argc, char **argv)
         }
 
         elf::elf f(elf::create_mmap_loader(fd));
+
+        using elf::to_string;
+
         for (auto &sec : f.sections()) {
                 if (sec.get_hdr().type != elf::sht::symtab && sec.get_hdr().type != elf::sht::dynsym)
                         continue;
@@ -34,7 +37,7 @@ int main(int argc, char **argv)
                                i++, d.value, d.size,
                                to_string(d.type()).c_str(),
                                to_string(d.binding()).c_str(),
-                               to_string(d.shnxd).c_str(),
+                               elf::enums::to_string(d.shnxd).c_str(),
                                sym.get_name().c_str());
                 }
         }
