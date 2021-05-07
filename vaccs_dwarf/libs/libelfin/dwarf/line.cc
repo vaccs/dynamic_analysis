@@ -305,6 +305,7 @@ line_table::iterator::operator++()
 bool
 line_table::iterator::step(cursor *cur)
 {
+        namespace DW_LNS = DW_LNS_NS;
         struct line_table::impl *m = table->m;
 
         // Read the opcode (DWARF4 section 6.2.3)
@@ -341,7 +342,7 @@ line_table::iterator::step(cursor *cur)
                 uint64_t uarg;
 #pragma GCC diagnostic push
 #pragma GCC diagnostic warning "-Wswitch-enum"
-                switch ((DW_LNS)opcode) {
+                switch ((::dwarf::DW_LNS)opcode) {
                 case DW_LNS::copy:
                         entry = regs;
                         regs.basic_block = regs.prologue_end =
@@ -392,16 +393,17 @@ line_table::iterator::step(cursor *cur)
                 default:
                         // XXX Vendor extensions
                         throw format_error("unknown line number opcode " +
-                                           to_string((DW_LNS)opcode));
+                                           to_string((::dwarf::DW_LNS)opcode));
                 }
-                return ((DW_LNS)opcode == DW_LNS::copy);
+                return ((::dwarf::DW_LNS)opcode == DW_LNS::copy);
         } else { // opcode == 0
                 // Extended opcode (DWARF4 sections 6.2.3 and 6.2.5.3)
                 assert(opcode == 0);
                 uint64_t length = cur->uleb128();
                 section_offset end = cur->get_section_offset() + length;
                 opcode = cur->fixed<ubyte>();
-                switch ((DW_LNE)opcode) {
+                namespace DW_LNE = DW_LNE_NS;
+                switch ((::dwarf::DW_LNE)opcode) {
                 case DW_LNE::end_sequence:
                         regs.end_sequence = true;
                         entry = regs;
@@ -421,19 +423,19 @@ line_table::iterator::step(cursor *cur)
                 case DW_LNE::lo_user...DW_LNE::hi_user:
                         // XXX Vendor extensions
                         throw runtime_error("vendor line number opcode " +
-                                            to_string((DW_LNE)opcode) +
+                                            to_string((::dwarf::DW_LNE)opcode) +
                                             " not implemented");
                 default:
                         // XXX Prior to DWARF4, any opcode number
                         // could be a vendor extension
                         throw format_error("unknown line number opcode " +
-                                           to_string((DW_LNE)opcode));
+                                           to_string((::dwarf::DW_LNE)opcode));
                 }
 #pragma GCC diagnostic pop
                 if (cur->get_section_offset() > end)
                         throw format_error("extended line number opcode exceeded its size");
                 cur += end - cur->get_section_offset();
-                return ((DW_LNE)opcode == DW_LNE::end_sequence);
+                return ((::dwarf::DW_LNE)opcode == DW_LNE::end_sequence);
         }
 }
 

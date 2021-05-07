@@ -17,18 +17,18 @@ struct Section
 };
 
 Section sections[] = {
-        {".debug_abbrev",   section_type::abbrev},
-        {".debug_aranges",  section_type::aranges},
-        {".debug_frame",    section_type::frame},
-        {".debug_info",     section_type::info},
-        {".debug_line",     section_type::line},
-        {".debug_loc",      section_type::loc},
-        {".debug_macinfo",  section_type::macinfo},
-        {".debug_pubnames", section_type::pubnames},
-        {".debug_pubtypes", section_type::pubtypes},
-        {".debug_ranges",   section_type::ranges},
-        {".debug_str",      section_type::str},
-        {".debug_types",    section_type::types},
+        {".debug_abbrev",   section_type_ns::abbrev},
+        {".debug_aranges",  section_type_ns::aranges},
+        {".debug_frame",    section_type_ns::frame},
+        {".debug_info",     section_type_ns::info},
+        {".debug_line",     section_type_ns::line},
+        {".debug_loc",      section_type_ns::loc},
+        {".debug_macinfo",  section_type_ns::macinfo},
+        {".debug_pubnames", section_type_ns::pubnames},
+        {".debug_pubtypes", section_type_ns::pubtypes},
+        {".debug_ranges",   section_type_ns::ranges},
+        {".debug_str",      section_type_ns::str},
+        {".debug_types",    section_type_ns::types},
 };
 
 bool

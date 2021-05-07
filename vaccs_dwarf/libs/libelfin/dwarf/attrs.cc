@@ -11,49 +11,49 @@ DWARFPP_BEGIN_NAMESPACE
 #define AT_ANY(name)                            \
         value at_##name(const die &d)           \
         {                                       \
-                return d[DW_AT::name];          \
+                return d[DW_AT_NS::name];          \
         }                                       
 
 #define AT_ADDRESS(name)                                \
         taddr at_##name(const die &d)                   \
         {                                               \
-                return d[DW_AT::name].as_address();     \
+                return d[DW_AT_NS::name].as_address();     \
         }                                               
 
 #define AT_ENUM(name, type)                                \
         type at_##name(const die &d)                            \
         {                                                       \
-                return (type)d[DW_AT::name].as_uconstant();     \
+                return (type)d[DW_AT_NS::name].as_uconstant();     \
         }                                                       
 
 #define AT_FLAG(name)                                   \
         bool at_##name(const die &d)                    \
         {                                               \
-                return d[DW_AT::name].as_flag();        \
+                return d[DW_AT_NS::name].as_flag();        \
         }                                               
 
 #define AT_FLAG_(name)                                  \
         bool at_##name(const die &d)                    \
         {                                               \
-                return d[DW_AT::name##_].as_flag();     \
+                return d[DW_AT_NS::name##_].as_flag();     \
         }                                               
 
 #define AT_REFERENCE(name)                              \
         die at_##name(const die &d)                     \
         {                                               \
-                return d[DW_AT::name].as_reference();   \
+                return d[DW_AT_NS::name].as_reference();   \
         }                                               
 
 #define AT_STRING(name)                                 \
         string at_##name(const die &d)                  \
         {                                               \
-                return d[DW_AT::name].as_string();      \
+                return d[DW_AT_NS::name].as_string();      \
         }                                               
 
 #define AT_UDYNAMIC(name)                                       \
         uint64_t at_##name(const die &d, expr_context *ctx)     \
         {                                                       \
-                return _at_udynamic(DW_AT::name, d, ctx);       \
+                return _at_udynamic(DW_AT_NS::name, d, ctx);       \
         }                                                       
 
 static uint64_t _at_udynamic(DW_AT attr, const die &d, expr_context *ctx, int depth = 0)
@@ -64,12 +64,12 @@ static uint64_t _at_udynamic(DW_AT attr, const die &d, expr_context *ctx, int de
 
         value v(d[attr]);
         switch (v.get_type()) {
-        case value::type::constant:
-        case value::type::uconstant:
+        case value::constant:
+        case value::uconstant:
                 return v.as_uconstant();
-        case value::type::reference:
+        case value::reference:
                 return _at_udynamic(attr, v.as_reference(), ctx, depth + 1);
-        case value::type::exprloc:
+        case value::exprloc:
                 return v.as_exprloc().evaluate(ctx).value;
         default:
                 throw format_error(to_string(attr) + " has unexpected type " +
@@ -98,15 +98,15 @@ AT_ADDRESS(low_pc);
 taddr
 at_high_pc(const die &d)
 {
-        value v(d[DW_AT::high_pc]);
+        value v(d[DW_AT_NS::high_pc]);
         switch (v.get_type()) {
-        case value::type::address:
+        case value::address:
                 return v.as_address();
-        case value::type::constant:
-        case value::type::uconstant:
+        case value::constant:
+        case value::uconstant:
                 return at_low_pc(d) + v.as_uconstant();
         default:
-                throw format_error(to_string(DW_AT::high_pc) + " has unexpected type " +
+                throw format_error(to_string(DW_AT_NS::high_pc) + " has unexpected type " +
                                    to_string(v.get_type()));
         }
 }
@@ -130,7 +130,7 @@ DW_INL at_inline(const die &d)
 {
         // XXX Missing attribute is equivalent to DW_INL_not_inlined
         // (DWARF4 section 3.3.8)
-        return (DW_INL)d[DW_AT::inline_].as_uconstant();
+        return (DW_INL)d[DW_AT_NS::inline_].as_uconstant();
 }
 AT_FLAG(is_optional);
 AT_UDYNAMIC(lower_bound);       // XXX Language-based default?
@@ -155,14 +155,18 @@ AT_UDYNAMIC(count);
 expr_result
 at_data_member_location(const die &d, expr_context *ctx, taddr base, taddr pc)
 {
-        value v(d[DW_AT::data_member_location]);
+        value v(d[DW_AT_NS::data_member_location]);
         switch (v.get_type()) {
-        case value::type::constant:
-        case value::type::uconstant:
-                return {expr_result::type::address, base + v.as_uconstant()};
-        case value::type::exprloc:
+        case value::constant:
+        case value::uconstant: {
+                expr_result r;
+                r.location_type = expr_result::address;
+                r.value = base + v.as_uconstant();
+                return r;
+        }
+        case value::exprloc:
                 return v.as_exprloc().evaluate(ctx, base);
-        case value::type::loclist:
+        case value::loclist:
                 // XXX
                 throw std::runtime_error("not implemented");
         default:
@@ -183,7 +187,7 @@ AT_FLAG(external);
 // XXX frame_base
 die at_friend(const die &d)
 {
-        return d[DW_AT::friend_].as_reference();
+        return d[DW_AT_NS::friend_].as_reference();
 }
 AT_ENUM(identifier_case, DW_ID);
 // XXX macro_info
@@ -214,7 +218,7 @@ AT_REFERENCE(extension);
 rangelist
 at_ranges(const die &d)
 {
-        return d[DW_AT::ranges].as_rangelist();
+        return d[DW_AT_NS::ranges].as_rangelist();
 }
 // XXX trampoline
 // XXX const call_column, call_file, call_line
@@ -249,10 +253,10 @@ rangelist
 die_pc_range(const die &d)
 {
         // DWARF4 section 2.17
-        if (d.has(DW_AT::ranges))
+        if (d.has(DW_AT_NS::ranges))
                 return at_ranges(d);
         taddr low = at_low_pc(d);
-        taddr high = d.has(DW_AT::high_pc) ? at_high_pc(d) : (low + 1);
+        taddr high = d.has(DW_AT_NS::high_pc) ? at_high_pc(d) : (low + 1);
         std::vector<std::pair<taddr, taddr> > construct;
         std::pair<taddr, taddr> pair(low, high);
         construct.push_back(pair);

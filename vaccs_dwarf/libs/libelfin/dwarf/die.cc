@@ -89,7 +89,7 @@ die::resolve(DW_AT attr) const
         // DWARF4 section 2.13, DWARF4 section 3.3.8
 
         // DWARF4 is unclear about what to do when there's both a
-        // DW_AT::specification and a DW_AT::abstract_origin.
+        // DW_AT_NS::specification and a DW_AT_NS::abstract_origin.
         // Conceptually, though, a concrete inlined instance cannot
         // itself complete an external function that wasn't first
         // completed by its abstract instance, so we first try to
@@ -101,17 +101,17 @@ die::resolve(DW_AT attr) const
         if (has(attr))
                 return (*this)[attr];
 
-        if (has(DW_AT::abstract_origin)) {
-                die ao = (*this)[DW_AT::abstract_origin].as_reference();
+        if (has(DW_AT_NS::abstract_origin)) {
+                die ao = (*this)[DW_AT_NS::abstract_origin].as_reference();
                 if (ao.has(attr))
                         return ao[attr];
-                if (ao.has(DW_AT::specification)) {
-                        die s = ao[DW_AT::specification].as_reference();
+                if (ao.has(DW_AT_NS::specification)) {
+                        die s = ao[DW_AT_NS::specification].as_reference();
                         if (s.has(attr))
                                 return s[attr];
                 }
-        } else if (has(DW_AT::specification)) {
-                die s = (*this)[DW_AT::specification].as_reference();
+        } else if (has(DW_AT_NS::specification)) {
+                die s = (*this)[DW_AT_NS::specification].as_reference();
                 if (s.has(attr))
                         return s[attr];
         }
@@ -143,10 +143,10 @@ die::iterator::operator++()
                 // The DIE has no children, so its successor follows
                 // immediately
                 d.read(d.next);
-        } else if (d.has(DW_AT::sibling)) {
+        } else if (d.has(DW_AT_NS::sibling)) {
                 // They made it easy on us.  Follow the sibling
                 // pointer.  XXX Probably worth optimizing
-                d = d[DW_AT::sibling].as_reference();
+                d = d[DW_AT_NS::sibling].as_reference();
         } else {
                 // It's a hard-knock life.  We have to iterate through
                 // the children to find the next DIE.

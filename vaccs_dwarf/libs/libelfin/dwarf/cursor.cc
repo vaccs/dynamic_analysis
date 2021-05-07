@@ -39,11 +39,11 @@ cursor::subsection()
         section_length length = fixed<uword>();
         format fmt;
         if (length < 0xfffffff0) {
-                fmt = format::dwarf32;
+                fmt = format_ns::dwarf32;
                 length += sizeof(uword);
         } else if (length == 0xffffffff) {
                 length = fixed<uint64_t>();
-                fmt = format::dwarf64;
+                fmt = format_ns::dwarf64;
                 length += sizeof(uword) + sizeof(uint64_t);
         } else {
                 throw format_error("initial length has reserved value");
@@ -56,10 +56,10 @@ void
 cursor::skip_initial_length()
 {
         switch (sec->fmt) {
-        case format::dwarf32:
+        case format_ns::dwarf32:
                 pos += sizeof(uword);
                 break;
-        case format::dwarf64:
+        case format_ns::dwarf64:
                 pos += sizeof(uword) + sizeof(uint64_t);
                 break;
         default:
@@ -71,9 +71,9 @@ section_offset
 cursor::offset()
 {
         switch (sec->fmt) {
-        case format::dwarf32:
+        case format_ns::dwarf32:
                 return fixed<uint32_t>();
-        case format::dwarf64:
+        case format_ns::dwarf64:
                 return fixed<uint64_t>();
         default:
                 throw logic_error("cannot read offset with unknown format");
@@ -108,6 +108,7 @@ void
 cursor::skip_form(DW_FORM form)
 {
         section_offset tmp;
+        namespace DW_FORM = DW_FORM_NS;
 
         // Section 7.5.4
         switch (form) {
@@ -118,13 +119,13 @@ cursor::skip_form(DW_FORM form)
         case DW_FORM::ref_addr:
         case DW_FORM::strp:
                 switch (sec->fmt) {
-                case format::dwarf32:
+                case format_ns::dwarf32:
                         pos += 4;
                         break;
-                case format::dwarf64:
+                case format_ns::dwarf64:
                         pos += 8;
                         break;
-                case format::unknown:
+                case format_ns::unknown:
                         throw logic_error("cannot read form with unknown format");
                 }
                 break;
@@ -184,7 +185,7 @@ cursor::skip_form(DW_FORM form)
                 break;
 
         case DW_FORM::indirect:
-                skip_form((DW_FORM)uleb128());
+                skip_form((::dwarf::DW_FORM)uleb128());
                 break;
 
         default:

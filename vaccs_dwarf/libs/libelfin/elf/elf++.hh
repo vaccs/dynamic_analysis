@@ -227,8 +227,6 @@ public:
         section() { }
 
         section(const elf &f, const void *hdr);
- ;
- ;
 
         /**
          * Return true if this section is valid and corresponds to a

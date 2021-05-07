@@ -10,7 +10,7 @@ DWARFPP_BEGIN_NAMESPACE
 
 rangelist::rangelist(const section *sec, section_offset off,
                      unsigned cu_addr_size, taddr cu_low_pc)
-        : sec(sec->slice(off, ~0, format::unknown, cu_addr_size)),
+        : sec(sec->slice(off, ~0, format_ns::unknown, cu_addr_size)),
           base_addr(cu_low_pc)
 {
 }
@@ -26,9 +26,9 @@ rangelist::rangelist(const std::vector<pair<taddr, taddr> > &ranges)
         synthetic.push_back(0);
 
         sec = new section(
-                section_type::ranges, (const char*)synthetic.data(),
+                section_type_ns::ranges, (const char*)synthetic.data(),
                 synthetic.size() * sizeof(taddr),
-                native_order(), format::unknown, sizeof(taddr));
+                native_order(), format_ns::unknown, sizeof(taddr));
 
         base_addr = 0;
 }

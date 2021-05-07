@@ -38,19 +38,19 @@ struct string_eq
 struct die_str_map::impl
 {
         impl(const die &parent, DW_AT attr,
-             const initializer_list<DW_TAG> &accept)
+             const std::vector<DW_TAG> &accept)
                 : attr(attr), accept(accept.begin(), accept.end()),
                   pos(parent.begin()), end(parent.end()) { }
 
         map<const char*, die, string_eq> str_map;
         DW_AT attr;
-        unordered_set<DW_TAG> accept;
+        set<DW_TAG> accept;
         die::iterator pos, end;
         die invalid;
 };
 
 die_str_map::die_str_map(const die &parent, DW_AT attr,
-                         const initializer_list<DW_TAG> &accept)
+                         const std::vector<DW_TAG> &accept)
         : m(new impl(parent, attr, accept))
 {
 }
@@ -59,21 +59,21 @@ die_str_map
 die_str_map::from_type_names(const die &parent)
 {
         static const DW_TAG arr[] = 
-                 {DW_TAG::array_type, DW_TAG::class_type,
-                  DW_TAG::enumeration_type, DW_TAG::pointer_type,
-                  DW_TAG::reference_type, DW_TAG::string_type,
-                  DW_TAG::structure_type, DW_TAG::subroutine_type,
-                  DW_TAG::union_type, DW_TAG::ptr_to_member_type,
-                  DW_TAG::set_type, DW_TAG::subrange_type,
-                  DW_TAG::base_type, DW_TAG::const_type,
-                  DW_TAG::file_type, DW_TAG::packed_type,
-                  DW_TAG::volatile_type, DW_TAG::restrict_type,
-                  DW_TAG::interface_type, DW_TAG::unspecified_type,
-                  DW_TAG::shared_type, DW_TAG::rvalue_reference_type};
+                 {DW_TAG_NS::array_type, DW_TAG_NS::class_type,
+                  DW_TAG_NS::enumeration_type, DW_TAG_NS::pointer_type,
+                  DW_TAG_NS::reference_type, DW_TAG_NS::string_type,
+                  DW_TAG_NS::structure_type, DW_TAG_NS::subroutine_type,
+                  DW_TAG_NS::union_type, DW_TAG_NS::ptr_to_member_type,
+                  DW_TAG_NS::set_type, DW_TAG_NS::subrange_type,
+                  DW_TAG_NS::base_type, DW_TAG_NS::const_type,
+                  DW_TAG_NS::file_type, DW_TAG_NS::packed_type,
+                  DW_TAG_NS::volatile_type, DW_TAG_NS::restrict_type,
+                  DW_TAG_NS::interface_type, DW_TAG_NS::unspecified_type,
+                  DW_TAG_NS::shared_type, DW_TAG_NS::rvalue_reference_type};
         
-        vector<DW_TAG::DW_TAG> vec (arr, arr + sizeof(arr) / sizeof(arr[0]));
+        vector<DW_TAG_NS::DW_TAG> vec (arr, arr + sizeof(arr) / sizeof(arr[0]));
         
-        return die_str_map(parent, DW_AT::name, vec);
+        return die_str_map(parent, DW_AT_NS::name, vec);
 }
 
 const die &
@@ -92,7 +92,7 @@ die_str_map::operator[](const char *val) const
                 if (!m->accept.count(d.tag) || !d.has(m->attr))
                         continue;
                 value dval(d[m->attr]);
-                if (dval.get_type() != value::type::string)
+                if (dval.get_type() != value::string)
                         continue;
                 const char *dstr = dval.as_cstr();
                 m->str_map[dstr] = d;

@@ -13,10 +13,11 @@
 ELFPP_BEGIN_NAMESPACE
 
 // Object file classes (ELF64 table 3)
-enum elfclass
-{
-        _32 = 1,                // 32-bit objects
-        _64 = 2,                // 64-bit objects
+typedef unsigned char elfclass;
+namespace elfclass_ns {
+        typedef unsigned char elfclass;
+        const elfclass _32 = 1;                // 32-bit objects
+        const elfclass _64 = 2;                // 64-bit objects
 };
 
 std::string
@@ -33,7 +34,7 @@ struct ElfTypes
 struct Elf32 : public ElfTypes
 {
         // ELF class
-        static const elfclass cls = elfclass::_32;
+        static const elfclass cls = elfclass_ns::_32;
 
         // Basic data types (ELF32 figure 1-2)
         typedef uint32_t Addr;
@@ -52,7 +53,7 @@ struct Elf32 : public ElfTypes
 struct Elf64 : ElfTypes
 {
         // ELF class
-        static const elfclass cls = elfclass::_64;
+        static const elfclass cls = elfclass_ns::_64;
 
         // Basic data types (ELF64 table 1)
         typedef uint64_t Addr;
@@ -71,44 +72,47 @@ struct Elf64 : ElfTypes
 };
 
 // Data encodings (ELF64 table 4)
-enum elfdata
-{
-        lsb = 1,
-        msb = 2,
+typedef unsigned char elfdata;
+namespace elfdata_ns {
+        typedef unsigned char elfdata;
+        const elfdata lsb = 1;
+        const elfdata msb = 2;
 };
 
 std::string
 to_string(elfdata v);
 
 // Operating system and ABI identifiers (ELF64 table 5)
-enum elfosabi
-{
-        sysv = 0,
-        hpux = 1,
-        standalone = 255,
+typedef unsigned char elfosabi;
+namespace elfosabi_ns {
+        typedef unsigned char elfosabi;
+        const elfosabi sysv = 0;
+        const elfosabi hpux = 1;
+        const elfosabi standalone = 255;
 };
 
 std::string
 to_string(elfosabi v);
 
-enum et
-{
-        none   = 0,             // No file type
-        rel    = 1,             // Relocatable object file
-        exec   = 2,             // Executable file
-        dyn    = 3,             // Shared object file
-        core   = 4,             // Core file
-        loos   = 0xfe00,        // Environment-specific use
-        hios   = 0xfeff,
-        loproc = 0xff00,        // Processor-specific use
-        hiproc = 0xffff,
+typedef ElfTypes::Half et;
+namespace et_ns {
+        typedef ElfTypes::Half et;
+        const et none   = 0;             // No file type
+        const et rel    = 1;             // Relocatable object file
+        const et exec   = 2;             // Executable file
+        const et dyn    = 3;             // Shared object file
+        const et core   = 4;             // Core file
+        const et loos   = 0xfe00;        // Environment-specific use
+        const et hios   = 0xfeff;
+        const et loproc = 0xff00;        // Processor-specific use
+        const et hiproc = 0xffff;
 };
 
 std::string
 to_string(et v);
 
 // ELF header (ELF32 figure 1-3, ELF64 figure 2)
-template<typename E = Elf64, byte_order Order = byte_order::native>
+template<typename E = Elf64, byte_order Order = byte_order_ns::native>
 struct Ehdr
 {
         typedef E types;
@@ -170,42 +174,44 @@ struct Ehdr
 // enum, rather than a type-safe enum.  However, this is declared in a
 // namespace and then used to avoid polluting the elf:: namespace.
 namespace enums {
-enum shn      // This is a Word in Shdr and Half in Sym.
-{
-        undef = 0,              // Undefined or meaningless
+typedef ElfTypes::Half shn;
+namespace shn_ns {      // This is a Word in Shdr and Half in Sym.
+        typedef ElfTypes::Half shn;
+        const shn undef = 0;              // Undefined or meaningless
 
-        loproc = 0xff00,        // Processor-specific use
-        hiproc = 0xff1f,
-        loos   = 0xff20,        // Environment-specific use
-        hios   = 0xff3f,
+        const shn loproc = 0xff00;        // Processor-specific use
+        const shn hiproc = 0xff1f;
+        const shn loos   = 0xff20;        // Environment-specific use
+        const shn hios   = 0xff3f;
 
-        abs    = 0xfff1,        // Reference is an absolute value
-        common = 0xfff2,        // Symbol declared as a common block
+        const shn abs    = 0xfff1;        // Reference is an absolute value
+        const shn common = 0xfff2;        // Symbol declared as a common block
 };
 
 std::string
 to_string(shn v);
 }
 
-enum sht
-{
-        null     = 0,           // Marks an unseen section header
-        progbits = 1,           // Contains information defined by the program
-        symtab   = 2,           // Contains a linker symbol table
-        strtab   = 3,           // Contains a string table
-        rela     = 4,           // Contains "Rela" type relocation entries
-        hash     = 5,           // Contains a symbol hash table
-        dynamic  = 6,           // Contains dynamic linking tables
-        note     = 7,           // Contains note information
-        nobits   = 8,           // Contains uninitialized space;
+typedef ElfTypes::Word sht;
+namespace sht_ns {
+        typedef ElfTypes::Word sht;
+        const sht null     = 0;           // Marks an unseen section header
+        const sht progbits = 1;           // Contains information defined by the program
+        const sht symtab   = 2;           // Contains a linker symbol table
+        const sht strtab   = 3;           // Contains a string table
+        const sht rela     = 4;           // Contains "Rela" type relocation entries
+        const sht hash     = 5;           // Contains a symbol hash table
+        const sht dynamic  = 6;           // Contains dynamic linking tables
+        const sht note     = 7;           // Contains note information
+        const sht nobits   = 8;           // Contains uninitialized space;
                                 // does not occupy any space in the file
-        rel      = 9,           // Contains "Rel" type relocation entries
-        shlib    = 10,          // Reserved
-        dynsym   = 11,          // Contains a dynamic loader symbol table
-        loos     = 0x60000000,  // Environment-specific use
-        hios     = 0x6FFFFFFF,
-        loproc   = 0x70000000,  // Processor-specific use
-        hiproc   = 0x7FFFFFFF,
+        const sht rel      = 9;           // Contains "Rel" type relocation entries
+        const sht shlib    = 10;          // Reserved
+        const sht dynsym   = 11;          // Contains a dynamic loader symbol table
+        const sht loos     = 0x60000000;  // Environment-specific use
+        const sht hios     = 0x6FFFFFFF;
+        const sht loproc   = 0x70000000;  // Processor-specific use
+        const sht hiproc   = 0x7FFFFFFF;
 };
 
 std::string
@@ -215,59 +221,60 @@ to_string(sht v);
 // ELF32.  We use the larger ELF64 type for the canonical
 // representation and switch it out for a plain Elf32_Word in the
 // ELF32 format.
-enum shf
-{
-        write     = 0x1,        // Section contains writable data
-        alloc     = 0x2,        // Section is allocated in memory image of program
-        execinstr = 0x4,        // Section contains executable instructions
-        maskos    = 0x0F000000, // Environment-specific use
-        maskproc  = 0xF0000000, // Processor-specific use
-};
+typedef Elf64::Xword shf;
+namespace shf_ns {
+        typedef Elf64::Xword shf;
+        const shf write     = 0x1;        // Section contains writable data
+        const shf alloc     = 0x2;        // Section is allocated in memory image of program
+        const shf execinstr = 0x4;        // Section contains executable instructions
+        const shf maskos    = 0x0F000000; // Environment-specific use
+        const shf maskproc  = 0xF0000000; // Processor-specific use
+}
 
 std::string
 to_string(shf v);
 
-static inline shf operator&(shf a, shf b)
+static inline shf shf_operator_and(shf a, shf b)
 {
         return (shf)((uint64_t)a & (uint64_t)b);
 }
 
-static inline shf operator|(shf a, shf b)
+static inline shf shf_operator_or(shf a, shf b)
 {
         return (shf)((uint64_t)a | (uint64_t)b);
 }
 
-static inline shf operator^(shf a, shf b)
+static inline shf shf_operator_xor(shf a, shf b)
 {
         return (shf)((uint64_t)a ^ (uint64_t)b);
 }
 
-static inline shf operator~(shf a)
+static inline shf shf_operator_not(shf a)
 {
         return (shf)~((uint64_t)a);
 }
 
-static inline shf& operator&=(shf &a, shf b)
+static inline shf& shf_operator_andeq(shf &a, shf b)
 {
-        a = a & b;
+        a = shf_operator_and(a, b);
         return a;
 }
 
-static inline shf& operator|=(shf &a, shf b)
+static inline shf& shf_operator_oreq(shf &a, shf b)
 {
-        a = a | b;
+        a = shf_operator_or(a, b);
         return a;
 }
 
-static inline shf& operator^=(shf &a, shf b)
+static inline shf& shf_operator_xoreq(shf &a, shf b)
 {
-        a = a ^ b;
+        a = shf_operator_xor(a, b);
         return a;
 }
 
 using enums::shn;
 // Section header (ELF32 figure 1-8, ELF64 figure 3)
-template<typename E = Elf64, byte_order Order = byte_order::native>
+template<typename E = Elf64, byte_order Order = byte_order_ns::native>
 struct Shdr
 {
         typedef E types;
@@ -306,77 +313,79 @@ struct Shdr
 };
 
 // Segment types (ELF64 table 16)
-enum pt
-{
-        null    = 0,            // Unused entry
-        load    = 1,            // Loadable segment
-        dynamic = 2,            // Dynamic linking tables
-        interp  = 3,            // Program interpreter path name
-        note    = 4,            // Note sections
-        shlib   = 5,            // Reserved
-        phdr    = 6,            // Program header table
-        loos    = 0x60000000,   // Environment-specific use
-        hios    = 0x6FFFFFFF,
-        loproc  = 0x70000000,   // Processor-specific use
-        hiproc  = 0x7FFFFFFF,
+typedef ElfTypes::Word pt;
+namespace pt_ns {
+        typedef ElfTypes::Word pt;
+        const pt null    = 0;            // Unused entry
+        const pt load    = 1;            // Loadable segment
+        const pt dynamic = 2;            // Dynamic linking tables
+        const pt interp  = 3;            // Program interpreter path name
+        const pt note    = 4;            // Note sections
+        const pt shlib   = 5;            // Reserved
+        const pt phdr    = 6;            // Program header table
+        const pt loos    = 0x60000000;   // Environment-specific use
+        const pt hios    = 0x6FFFFFFF;
+        const pt loproc  = 0x70000000;   // Processor-specific use
+        const pt hiproc  = 0x7FFFFFFF;
 };
 
 std::string
 to_string(pt v);
 
 // Segment attributes
-enum pf
-{
-        x        = 0x1,         // Execute permission
-        w        = 0x2,         // Write permission
-        r        = 0x4,         // Read permission
-        maskos   = 0x00FF0000,  // Environment-specific use
-        maskproc = 0xFF000000,  // Processor-specific use
+typedef ElfTypes::Word pf;
+namespace pf_ns {
+        typedef ElfTypes::Word pf;
+        const pf x        = 0x1;         // Execute permission
+        const pf w        = 0x2;         // Write permission
+        const pf r        = 0x4;         // Read permission
+        const pf maskos   = 0x00FF0000;  // Environment-specific use
+        const pf maskproc = 0xFF000000;  // Processor-specific use
 };
 
 std::string
 to_string(pf v);
 
-static inline pf operator&(pf a, pf b)
+static inline pf pf_operator_and(pf a, pf b)
 {
         return (pf)((uint64_t)a & (uint64_t)b);
 }
 
-static inline pf operator|(pf a, pf b)
+static inline pf pf_operator_or(pf a, pf b)
 {
         return (pf)((uint64_t)a | (uint64_t)b);
 }
 
-static inline pf operator^(pf a, pf b)
+static inline pf pf_operator_xor(pf a, pf b)
 {
         return (pf)((uint64_t)a ^ (uint64_t)b);
 }
 
-static inline pf operator~(pf a)
+static inline pf pf_operator_not(pf a)
 {
         return (pf)~((uint64_t)a);
 }
 
-static inline pf& operator&=(pf &a, pf b)
+static inline pf& pf_operator_andeq(pf &a, pf b)
 {
-        a = a & b;
+        a = pf_operator_and(a, b);
         return a;
 }
 
-static inline pf& operator|=(pf &a, pf b)
+static inline pf& pf_operator_oreq(pf &a, pf b)
 {
-        a = a | b;
+        a = pf_operator_or(a, b);
         return a;
 }
 
-static inline pf& operator^=(pf &a, pf b)
+static inline pf& pf_operator_xoreq(pf &a, pf b)
 {
-        a = a ^ b;
+        a = pf_operator_xor(a, b);
         return a;
 }
 
 // Program header (ELF32 figure 2-1, ELF64 figure 6)
-template<typename E = Elf64, byte_order Order = byte_order::native>
+template<typename E = Elf64, byte_order Order = byte_order_ns::native>
 struct Phdr;
 
 template<byte_order Order>
@@ -438,41 +447,43 @@ struct Phdr<Elf64, Order>
 };
 
 // Symbol bindings (ELF32 figure 1-16, ELF64 table 14)
-enum stb
-{
-        local  = 0,             // Not visible outside the object file
-        global = 1,             // Global symbol
-        weak   = 2,             // Global scope, but with lower
+typedef int stb;
+namespace stb_ns {
+        typedef int stb;
+        const stb local  = 0;             // Not visible outside the object file
+        const stb global = 1;             // Global symbol
+        const stb weak   = 2;             // Global scope, but with lower
                                 // precedence than global symbols
-        loos   = 10,            // Environment-specific use
-        hios   = 12,
-        loproc = 13,            // Processor-specific use
-        hiproc = 15,
+        const stb loos   = 10;            // Environment-specific use
+        const stb hios   = 12;
+        const stb loproc = 13;            // Processor-specific use
+        const stb hiproc = 15;
 };
 
 std::string
 to_string(stb v);
 
 // Symbol types (ELF32 figure 1-17, ELF64 table 15)
-enum stt
-{
-        notype  = 0,            // No type (e.g., absolute symbol)
-        object  = 1,            // Data object
-        func    = 2,            // Function entry point
-        section = 3,            // Symbol is associated with a section
-        file    = 4,            // Source file associated with the
+typedef int stt;
+namespace stt_ns {
+        typedef int stt;
+        const stt notype  = 0;            // No type (e.g., absolute symbol)
+        const stt object  = 1;            // Data object
+        const stt func    = 2;            // Function entry point
+        const stt section = 3;            // Symbol is associated with a section
+        const stt file    = 4;            // Source file associated with the
                                 // object file
-        loos    = 10,           // Environment-specific use
-        hios    = 12,
-        loproc  = 13,           // Processor-specific use
-        hiproc  = 15,
+        const stt loos    = 10;           // Environment-specific use
+        const stt hios    = 12;
+        const stt loproc  = 13;           // Processor-specific use
+        const stt hiproc  = 15;
 };
 
 std::string
 to_string(stt v);
 
 // Symbol table (ELF32 figure 1-15, ELF64 figure 4)
-template<typename E = Elf64, byte_order Order = byte_order::native>
+template<typename E = Elf64, byte_order Order = byte_order_ns::native>
 struct Sym;
 
 template<byte_order Order>

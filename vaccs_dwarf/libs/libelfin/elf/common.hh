@@ -17,16 +17,17 @@ ELFPP_BEGIN_NAMESPACE
 /**
  * A byte ordering.
  */
-enum byte_order
-{
-        native,
-        lsb,
-        msb
+typedef int byte_order;
+namespace byte_order_ns {
+        typedef int byte_order;
+        const byte_order native = 0;
+        const byte_order lsb = 1;
+        const byte_order msb = 2;
 };
 
 /**
- * Return either byte_order::lsb or byte_order::msb.  If the argument
- * is byte_order::native, it will be resolved to whatever the native
+ * Return either byte_order_ns::lsb or byte_order_ns::msb.  If the argument
+ * is byte_order_ns::native, it will be resolved to whatever the native
  * byte order is.
  */
 static inline byte_order
@@ -38,8 +39,8 @@ resolve_order(byte_order o)
                 char c[sizeof(int)];
         } test = {1};
 
-        if (o == byte_order::native)
-                return test.c[0] == 1 ? byte_order::lsb : byte_order::msb;
+        if (o == byte_order_ns::native)
+                return test.c[0] == 1 ? byte_order_ns::lsb : byte_order_ns::msb;
         return o;
 }
 
@@ -85,19 +86,19 @@ template<byte_order ord, typename Native, typename LSB, typename MSB>
 struct OrderPick;
 
 template<typename Native, typename LSB, typename MSB>
-struct OrderPick<byte_order::native, Native, LSB, MSB>
+struct OrderPick<byte_order_ns::native, Native, LSB, MSB>
 {
         typedef Native T;
 };
 
 template<typename Native, typename LSB, typename MSB>
-struct OrderPick<byte_order::lsb, Native, LSB, MSB>
+struct OrderPick<byte_order_ns::lsb, Native, LSB, MSB>
 {
         typedef LSB T;
 };
 
 template<typename Native, typename LSB, typename MSB>
-struct OrderPick<byte_order::msb, Native, LSB, MSB>
+struct OrderPick<byte_order_ns::msb, Native, LSB, MSB>
 {
         typedef MSB T;
 };

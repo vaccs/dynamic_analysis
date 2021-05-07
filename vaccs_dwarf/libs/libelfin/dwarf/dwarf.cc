@@ -37,10 +37,10 @@ dwarf::dwarf(loader *l)
         size_t size;
 
         // Get required sections
-        data = l->load(section_type::info, &size);
+        data = l->load(section_type_ns::info, &size);
         if (!data)
                 throw format_error("required .debug_info section missing");
-        m->sec_info = new section(section_type::info, data, size, byte_order::lsb);
+        m->sec_info = new section(section_type_ns::info, data, size, byte_order_ns::lsb);
 
         // Sniff the endianness from the version field of the first
         // CU. This is always a small but non-zero integer.
@@ -53,13 +53,13 @@ dwarf::dwarf(loader *l)
         uhalf version = endcur.fixed<uhalf>();
         uhalf versionbe = (version >> 8) | ((version & 0xFF) << 8);
         if (versionbe < version) {
-                m->sec_info = new section(section_type::info, data, size, byte_order::msb);
+                m->sec_info = new section(section_type_ns::info, data, size, byte_order_ns::msb);
         }
 
-        data = l->load(section_type::abbrev, &size);
+        data = l->load(section_type_ns::abbrev, &size);
         if (!data)
                 throw format_error("required .debug_abbrev section missing");
-        m->sec_abbrev = new section(section_type::abbrev, data, size, m->sec_info->ord);
+        m->sec_abbrev = new section(section_type_ns::abbrev, data, size, m->sec_info->ord);
 
         // Get compilation units.  Everything derives from these, so
         // there's no point in doing it lazily.
@@ -91,7 +91,7 @@ const type_unit &
 dwarf::get_type_unit(uint64_t type_signature) const
 {
         if (!m->have_type_units) {
-                cursor tucur(get_section(section_type::types));
+                cursor tucur(get_section(section_type_ns::types));
                 while (!tucur.end()) {
                         // XXX Circular reference
                         type_unit tu(*this, tucur.get_section_offset());
@@ -108,9 +108,9 @@ dwarf::get_type_unit(uint64_t type_signature) const
 section *
 dwarf::get_section(section_type type) const
 {
-        if (type == section_type::info)
+        if (type == section_type_ns::info)
                 return m->sec_info;
-        if (type == section_type::abbrev)
+        if (type == section_type_ns::abbrev)
                 return m->sec_abbrev;
 
         std::map<section_type, section *>::iterator it = m->sections.find(type);
@@ -122,7 +122,7 @@ dwarf::get_section(section_type type) const
         if (!data)
                 throw format_error(std::string(elf::section_type_to_name(type))
                                    + " section missing");
-        m->sections[type] = new section(section_type::str, data, size, m->sec_info->ord);
+        m->sections[type] = new section(section_type_ns::str, data, size, m->sec_info->ord);
         return m->sections[type];
 }
 
@@ -236,7 +236,7 @@ unit::impl::force_abbrevs()
                 return;
 
         // Section 7.5.3
-        cursor c(file.get_section(section_type::abbrev),
+        cursor c(file.get_section(section_type_ns::abbrev),
                  debug_abbrev_offset);
         abbrev_entry entry;
         abbrev_code highest = 0;
@@ -268,7 +268,7 @@ unit::impl::force_abbrevs()
 compilation_unit::compilation_unit(const dwarf &file, section_offset offset)
 {
         // Read the CU header (DWARF4 section 7.5.1.1)
-        cursor cur(file.get_section(section_type::info), offset);
+        cursor cur(file.get_section(section_type_ns::info), offset);
         section * subsec = cur.subsection();
         cursor sub(subsec);
         sub.skip_initial_length();
@@ -290,19 +290,19 @@ compilation_unit::get_line_table() const
 {
         if (!m->lt.valid()) {
                 const die &d = root();
-                if (!d.has(DW_AT::stmt_list) || !d.has(DW_AT::name))
+                if (!d.has(DW_AT_NS::stmt_list) || !d.has(DW_AT_NS::name))
                         goto done;
 
                 section * sec;
                 try {
-                        sec = m->file.get_section(section_type::line);
+                        sec = m->file.get_section(section_type_ns::line);
                 } catch (format_error &e) {
                         goto done;
                 }
 
-                std::string comp_dir = d.has(DW_AT::comp_dir) ? at_comp_dir(d) : "";
+                std::string comp_dir = d.has(DW_AT_NS::comp_dir) ? at_comp_dir(d) : "";
                 
-                m->lt = line_table(sec, d[DW_AT::stmt_list].as_sec_offset(),
+                m->lt = line_table(sec, d[DW_AT_NS::stmt_list].as_sec_offset(),
                                    m->subsec->addr_size, comp_dir,
                                    at_name(d));
         }
@@ -317,7 +317,7 @@ done:
 type_unit::type_unit(const dwarf &file, section_offset offset)
 {
         // Read the type unit header (DWARF4 section 7.5.1.2)
-        cursor cur(file.get_section(section_type::types), offset);
+        cursor cur(file.get_section(section_type_ns::types), offset);
         section * subsec = cur.subsection();
         cursor sub(subsec);
         sub.skip_initial_length();

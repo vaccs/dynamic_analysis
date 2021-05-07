@@ -81,21 +81,22 @@ public:
  * DWARF section types.  These correspond to the names of ELF
  * sections, though DWARF can be embedded in other formats.
  */
-enum section_type
-{
-        abbrev,
-        aranges,
-        frame,
-        info,
-        line,
-        loc,
-        macinfo,
-        pubnames,
-        pubtypes,
-        ranges,
-        str,
-        types,
-};
+typedef int section_type;
+namespace section_type_ns {
+        typedef int section_type;
+        const section_type abbrev = 0;
+        const section_type aranges = 1;
+        const section_type frame = 2;
+        const section_type info = 3;
+        const section_type line = 4;
+        const section_type loc = 5;
+        const section_type macinfo = 6;
+        const section_type pubnames = 7;
+        const section_type pubtypes = 8;
+        const section_type ranges = 9;
+        const section_type str = 10;
+        const section_type types = 11;
+}; // section_type_ns
 
 std::string
 to_string(section_type v);
@@ -235,8 +236,8 @@ public:
 
         /**
          * Return the root DIE of this unit.  For a compilation unit,
-         * this should be a DW_TAG::compilation_unit or
-         * DW_TAG::partial_unit.
+         * this should be a DW_TAG_NS::compilation_unit or
+         * DW_TAG_NS::partial_unit.
          */
         const die &root() const;
 
@@ -342,7 +343,7 @@ class die
 public:
         DW_TAG tag;
 
-        die() : tag(DW_TAG::undefined), cu(NULL), abbrev(NULL), offset(0), next(0) { }
+        die() : tag(DW_TAG_NS::undefined), cu(NULL), abbrev(NULL), offset(0), next(0) { }
 
 
 
@@ -917,7 +918,7 @@ public:
          * \internal Construct a range list whose data begins at the
          * given offset in sec.  cu_addr_size is the address size of
          * the associated compilation unit.  cu_low_pc is the
-         * DW_AT::low_pc attribute of the compilation unit containing
+         * DW_AT_NS::low_pc attribute of the compilation unit containing
          * the referring DIE or 0 (this is used as the base address of
          * the range list).
          */
@@ -1079,7 +1080,7 @@ public:
          * \internal Construct a line number table whose header begins
          * at the given offset in sec.  cu_addr_size is the address
          * size of the associated compilation unit.  cu_comp_dir and
-         * cu_name give the DW_AT::comp_dir and DW_AT::name attributes
+         * cu_name give the DW_AT_NS::comp_dir and DW_AT_NS::name attributes
          * of the associated compilation unit.
          */
         line_table() {};
@@ -1426,8 +1427,8 @@ DW_VIS at_visibility(const die &d);
 
 /**
  * Return the PC range spanned by the code of a DIE.  The DIE must
- * either have DW_AT::ranges or DW_AT::low_pc.  It may optionally have
- * DW_AT::high_pc.
+ * either have DW_AT_NS::ranges or DW_AT_NS::low_pc.  It may optionally have
+ * DW_AT_NS::high_pc.
  */
 rangelist die_pc_range(const die &d);
 

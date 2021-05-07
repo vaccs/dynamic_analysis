@@ -14,6 +14,7 @@ DWARFPP_BEGIN_NAMESPACE
 value::value(const unit *cu,
              DW_AT name, DW_FORM form, type typ, section_offset offset)
         : cu(cu), form(form), typ(typ), offset(offset) {
+        namespace DW_FORM = DW_FORM_NS;
         if (form == DW_FORM::indirect)
                 resolve_indirect(name);
 }
@@ -27,6 +28,7 @@ value::get_section_offset() const
 taddr
 value::as_address() const
 {
+        namespace DW_FORM = DW_FORM_NS;
         if (form != DW_FORM::addr)
                 throw value_type_mismatch("cannot read " + to_string(typ) + " as address");
 
@@ -37,6 +39,7 @@ value::as_address() const
 const void *
 value::as_block(size_t *size_out) const
 {
+        namespace DW_FORM = DW_FORM_NS;
         // XXX Blocks can contain all sorts of things, including
         // references, which couldn't be resolved by callers in the
         // current minimal API.
@@ -65,6 +68,7 @@ value::as_block(size_t *size_out) const
 uint64_t
 value::as_uconstant() const
 {
+        namespace DW_FORM = DW_FORM_NS;
         cursor cur(cu->data(), offset);
         switch (form) {
         case DW_FORM::data1:
@@ -85,6 +89,7 @@ value::as_uconstant() const
 int64_t
 value::as_sconstant() const
 {
+        namespace DW_FORM = DW_FORM_NS;
         cursor cur(cu->data(), offset);
         switch (form) {
         case DW_FORM::data1:
@@ -105,6 +110,7 @@ value::as_sconstant() const
 expr
 value::as_exprloc() const
 {
+        namespace DW_FORM = DW_FORM_NS;
         cursor cur(cu->data(), offset);
         size_t size;
         // Prior to DWARF 4, exprlocs were encoded as blocks.
@@ -131,6 +137,7 @@ value::as_exprloc() const
 bool
 value::as_flag() const
 {
+        namespace DW_FORM = DW_FORM_NS;
         switch (form) {
         case DW_FORM::flag: {
                 cursor cur(cu->data(), offset);
@@ -153,8 +160,8 @@ value::as_rangelist() const
         // address entry, but we'll just assume 0 for the initial base
         // address.
         die cudie = cu->root();
-        taddr cu_low_pc = cudie.has(DW_AT::low_pc) ? at_low_pc(cudie) : 0;
-        section* sec = cu->get_dwarf().get_section(section_type::ranges);
+        taddr cu_low_pc = cudie.has(DW_AT_NS::low_pc) ? at_low_pc(cudie) : 0;
+        section* sec = cu->get_dwarf().get_section(section_type_ns::ranges);
         const section* cusec = cu->data();
         class rangelist r(sec, off, cusec->addr_size, cu_low_pc);
         return r;
@@ -163,6 +170,7 @@ value::as_rangelist() const
 die
 value::as_reference() const
 {
+        namespace DW_FORM = DW_FORM_NS;
         section_offset off;
         // XXX Would be nice if we could avoid this.  The cursor is
         // all overhead here.
@@ -238,13 +246,14 @@ value::as_string() const
 const char *
 value::as_cstr(size_t *size_out) const
 {
+        namespace DW_FORM = DW_FORM_NS;
         cursor cur(cu->data(), offset);
         switch (form) {
         case DW_FORM::string:
                 return cur.cstr(size_out);
         case DW_FORM::strp: {
                 section_offset off = cur.offset();
-                cursor scur(cu->get_dwarf().get_section(section_type::str), off);
+                cursor scur(cu->get_dwarf().get_section(section_type_ns::str), off);
                 return scur.cstr(size_out);
         }
         default:
@@ -255,6 +264,7 @@ value::as_cstr(size_t *size_out) const
 section_offset
 value::as_sec_offset() const
 {
+        namespace DW_FORM = DW_FORM_NS;
         // Prior to DWARF 4, sec_offsets were encoded as data4 or
         // data8.
         cursor cur(cu->data(), offset);
@@ -273,13 +283,14 @@ value::as_sec_offset() const
 void
 value::resolve_indirect(DW_AT name)
 {
+        namespace DW_FORM = DW_FORM_NS;
         if (form != DW_FORM::indirect)
                 return;
 
         cursor c(cu->data(), offset);
-        DW_FORM form;
+        ::dwarf::DW_FORM form;
         do {
-                form = (DW_FORM)c.uleb128();
+                form = (::dwarf::DW_FORM)c.uleb128();
         } while (form == DW_FORM::indirect);
         typ = attribute_spec(name, form).type;
         offset = c.get_section_offset();

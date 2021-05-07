@@ -12,27 +12,30 @@ using namespace std;
 ELFPP_BEGIN_NAMESPACE
 
 template<template<typename E, byte_order Order> class Hdr>
-void canon_hdr(Hdr<Elf64, byte_order::native> *out, const void *data,
+void canon_hdr(Hdr<Elf64, byte_order_ns::native> *out, const void *data,
                elfclass ei_class, elfdata ei_data)
 {
+        namespace elfdata = elfdata_ns;
+        namespace elfclass = elfclass_ns;
+
         switch (ei_class) {
         case elfclass::_32:
                 switch (ei_data) {
                 case elfdata::lsb:
-                        out->from(*(Hdr<Elf32, byte_order::lsb>*)data);
+                        out->from(*(Hdr<Elf32, byte_order_ns::lsb>*)data);
                         break;
                 case elfdata::msb:
-                        out->from(*(Hdr<Elf32, byte_order::msb>*)data);
+                        out->from(*(Hdr<Elf32, byte_order_ns::msb>*)data);
                         break;
                 }
                 break;
         case elfclass::_64:
                 switch (ei_data) {
                 case elfdata::lsb:
-                        out->from(*(Hdr<Elf64, byte_order::lsb>*)data);
+                        out->from(*(Hdr<Elf64, byte_order_ns::lsb>*)data);
                         break;
                 case elfdata::msb:
-                        out->from(*(Hdr<Elf64, byte_order::msb>*)data);
+                        out->from(*(Hdr<Elf64, byte_order_ns::msb>*)data);
                         return;
                 }
         }
@@ -74,15 +77,15 @@ elf::elf(loader* l)
                 throw format_error("bad ELF magic number");
         if (core_hdr->ei_version != 1)
                 throw format_error("unknown ELF version");
-        if (core_hdr->ei_class != elfclass::_32 &&
-            core_hdr->ei_class != elfclass::_64)
+        if (core_hdr->ei_class != elfclass_ns::_32 &&
+            core_hdr->ei_class != elfclass_ns::_64)
                 throw format_error("bad ELF class");
-        if (core_hdr->ei_data != elfdata::lsb &&
-            core_hdr->ei_data != elfdata::msb)
+        if (core_hdr->ei_data != elfdata_ns::lsb &&
+            core_hdr->ei_data != elfdata_ns::msb)
                 throw format_error("bad ELF data order");
 
         // Read in the real header and canonicalize it
-        size_t hdr_size = (core_hdr->ei_class == elfclass::_32 ?
+        size_t hdr_size = (core_hdr->ei_class == elfclass_ns::_32 ?
                            sizeof(Ehdr<Elf32>) : sizeof(Ehdr<Elf64>));
         const void *hdr = l->load(0, hdr_size);
         canon_hdr(&m->hdr, hdr, core_hdr->ei_class, core_hdr->ei_data);
@@ -168,7 +171,7 @@ elf::get_segment(unsigned index) const
 
 struct segment::impl {
         impl(const elf &f)
-                : f(f) { }
+                : f(f) { };
 
         const elf f;
         Phdr<> hdr;
@@ -212,11 +215,11 @@ segment::mem_size() const {
 std::string
 enums::to_string(shn v)
 {
-        if (v == shn::undef)
+        if (v == shn_ns::undef)
                 return "undef";
-        if (v == shn::abs)
+        if (v == shn_ns::abs)
                 return "abs";
-        if (v == shn::common)
+        if (v == shn_ns::common)
                 return "common";
         return fakestd::to_string(v);
 }
@@ -266,7 +269,7 @@ section::get_name() const
 const void *
 section::data() const
 {
-        if (m->hdr.type == sht::nobits)
+        if (m->hdr.type == sht_ns::nobits)
                 return NULL;
         if (!m->data)
                 m->data = m->f.get_loader()->load(m->hdr.offset, m->hdr.size);
@@ -282,7 +285,7 @@ section::size() const
 strtab
 section::as_strtab() const
 {
-        if (m->hdr.type != sht::strtab)
+        if (m->hdr.type != sht_ns::strtab)
                 throw section_type_mismatch("cannot use section as strtab");
         return strtab(m->f, data(), size());
 }
@@ -290,7 +293,7 @@ section::as_strtab() const
 symtab
 section::as_symtab() const
 {
-        if (m->hdr.type != sht::symtab && m->hdr.type != sht::dynsym)
+        if (m->hdr.type != sht_ns::symtab && m->hdr.type != sht_ns::dynsym)
                 throw section_type_mismatch("cannot use section as symtab");
         return symtab(m->f, data(), size(),
                       m->f.get_section(get_hdr().link).as_strtab());
@@ -385,7 +388,7 @@ symtab::symtab(elf f, const void *data, size_t size, strtab strs)
 symtab::iterator::iterator(const symtab &tab, const char *pos)
         : f(tab.m->f), strs(tab.m->strs), pos(pos)
 {
-        if (f.get_hdr().ei_class == elfclass::_32)
+        if (f.get_hdr().ei_class == elfclass_ns::_32)
                 stride = sizeof(Sym<Elf32>);
         else
                 stride = sizeof(Sym<Elf64>);

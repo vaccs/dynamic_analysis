@@ -17,17 +17,19 @@
 
 DWARFPP_BEGIN_NAMESPACE
 
-enum format
-{
-        unknown,
-        dwarf32,
-        dwarf64
+typedef int format;
+namespace format_ns {
+        typedef int format;
+        const format unknown = 0;
+        const format dwarf32 = 1;
+        const format dwarf64 = 2;
 };
 
-enum byte_order
-{
-        lsb,
-        msb
+typedef int byte_order;
+namespace byte_order_ns {
+        typedef int byte_order;
+        const byte_order lsb = 0;
+        const byte_order msb = 1;
 };
 
 /**
@@ -42,7 +44,7 @@ native_order()
                 char c[sizeof(int)];
         } test = {1};
 
-        return test.c[0] == 1 ? byte_order::lsb : byte_order::msb;
+        return test.c[0] == 1 ? byte_order_ns::lsb : byte_order_ns::msb;
 }
 
 /**
@@ -59,7 +61,7 @@ struct section
 
         section(section_type type, const void *begin,
                 section_length length,
-                byte_order ord, format fmt = format::unknown,
+                byte_order ord, format fmt = format_ns::unknown,
                 unsigned addr_size = 0)
                 : type(type), begin((char*)begin), end((char*)begin + length),
                   fmt(fmt), ord(ord), addr_size(addr_size) { }
@@ -67,10 +69,10 @@ struct section
 
 
         section * slice(section_offset start, section_length len,
-                                       format fmt = format::unknown,
+                                       format fmt = format_ns::unknown,
                                        unsigned addr_size = 0) const
         {
-                if (fmt == format::unknown)
+                if (fmt == format_ns::unknown)
                         fmt = this->fmt;
                 if (addr_size == 0)
                         addr_size = this->addr_size;
@@ -136,7 +138,7 @@ struct cursor
                 typedef int static_assert_toobig[sizeof(T) <= 8 ? 1 : -1];
                 uint64_t val = 0;
                 const unsigned char *p = (const unsigned char*)pos;
-                if (sec->ord == byte_order::lsb) {
+                if (sec->ord == byte_order_ns::lsb) {
                         for (unsigned i = 0; i < sizeof(T); i++)
                                 val |= ((uint64_t)p[i]) << (i * 8);
                 } else {
@@ -247,7 +249,7 @@ struct abbrev_entry
         bool children;
         std::vector<attribute_spec> attributes;
 
-        abbrev_entry() : code(0), tag(DW_TAG::undefined), children(false) {};
+        abbrev_entry() : code(0), tag(DW_TAG_NS::undefined), children(false) {};
 
         bool read(cursor *cur);
 };

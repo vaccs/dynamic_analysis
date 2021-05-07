@@ -33,6 +33,7 @@ expr::evaluate(expr_context *ctx, taddr argument) const
 expr_result
 expr::evaluate(expr_context *ctx, const std::vector<taddr> &arguments) const
 {
+        namespace DW_OP = DW_OP_NS;
         // The stack machine's stack.  The top of the stack is
         // stack.back().
         // XXX This stack must be in target machine representation,
@@ -89,7 +90,7 @@ expr::evaluate(expr_context *ctx, const std::vector<taddr> &arguments) const
                 // even though we have a default case.
 #pragma GCC diagnostic push
 #pragma GCC diagnostic warning "-Wswitch-enum"
-                DW_OP op = (DW_OP)cur.fixed<ubyte>();
+                ::dwarf::DW_OP op = (::dwarf::DW_OP)cur.fixed<ubyte>();
                 switch (op) {
                         // 2.5.1.1 Literal encodings
                 case DW_OP::lit0...DW_OP::lit31:
