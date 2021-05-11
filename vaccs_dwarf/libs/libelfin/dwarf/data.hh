@@ -98,7 +98,7 @@ namespace DW_TAG_NS {
         const DW_TAG template_alias           = 0x43;
         const DW_TAG lo_user                  = 0x4080;
         const DW_TAG hi_user                  = 0xffff;
-} // DW_TAG_NS
+}; // DW_TAG_NS
 
 std::string
 to_string(DW_TAG v);

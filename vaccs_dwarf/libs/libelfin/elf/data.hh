@@ -229,7 +229,7 @@ namespace shf_ns {
         const shf execinstr = 0x4;        // Section contains executable instructions
         const shf maskos    = 0x0F000000; // Environment-specific use
         const shf maskproc  = 0xF0000000; // Processor-specific use
-}
+};
 
 std::string
 to_string(shf v);

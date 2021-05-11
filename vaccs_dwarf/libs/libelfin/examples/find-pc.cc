@@ -18,6 +18,7 @@ bool
 find_pc(const dwarf::die &d, dwarf::taddr pc, vector<dwarf::die> *stack)
 {
         using namespace dwarf;
+        namespace DW_TAG = DW_TAG_NS;
 
         // Scan children first to find most specific DIE
         bool found = false;

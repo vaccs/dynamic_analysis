@@ -21,9 +21,10 @@ int main(int argc, char **argv)
         elf::elf f(elf::create_mmap_loader(fd));
 
         using elf::to_string;
+        namespace sht = elf::sht_ns;
 
         for (auto &sec : f.sections()) {
-                if (sec.get_hdr().type != elf::sht::symtab && sec.get_hdr().type != elf::sht::dynsym)
+                if (sec.get_hdr().type != sht::symtab && sec.get_hdr().type != sht::dynsym)
                         continue;
 
                 printf("Symbol table '%s':\n", sec.get_name().c_str());

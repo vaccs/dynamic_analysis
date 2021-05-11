@@ -1,3 +1,5 @@
+#!/bin/python3
+
 # Copyright (c) 2013 Austin T. Clements. All rights reserved.
 # Use of this source code is governed by an MIT license
 # that can be found in the LICENSE file.
@@ -28,15 +30,24 @@ enums = {}
 def do_top_level(toks, ns=[]):
     while toks:
         tok = toks.pop(0)
-        if tok == "enum" and toks[0] == "class":
-            toks.pop(0)
+        # print(tok, file=sys.stderr)
+        if tok == "namespace" or tok == "enum":
+            is_enum = tok == "enum"
             name = toks.pop(0)
+            # print(f"NAMESPACE {name}", file=sys.stderr)
             # Get to the first token in the body
             while toks.pop(0) != "{":
                 pass
             # Consume body and close brace
-            do_enum_body("::".join(ns + [name]), toks)
+            # hack for elf/data.hh:176
+            if name != "enums" and name != "elf":
+                do_enum_body("::".join(ns + [name]), toks, is_enum)
+            elif name == "enums":
+                do_top_level(toks, ns + ["enums"])
+            else:
+                do_top_level(toks, ns + ["elf"])
         elif tok == "class":
+            # print("CLASS", file=sys.stderr)
             name = do_qname(toks)
             # Find the class body, if there is one
             while toks[0] != "{" and toks[0] != ";":
@@ -46,9 +57,11 @@ def do_top_level(toks, ns=[]):
                 toks.pop(0)
                 do_top_level(toks, ns + [name])
         elif tok == "{":
+            # print("OPENBR", file=sys.stderr)
             # Enter an unknown namespace
             do_top_level(toks, ns + [None])
         elif tok == "}":
+            # print("CLOSEBR", file=sys.stderr)
             # Exit the namespace
             assert len(ns)
             return
@@ -57,7 +70,10 @@ def do_top_level(toks, ns=[]):
             toks.pop(0)
             toks.pop(0)
             typ = do_qname(toks)
+            # print(f"TOSTRING {typ}", file=sys.stderr)
             if typ not in enums:
+                # print(f"{typ} not in enums", file=sys.stderr)
+                # print(enums, file=sys.stderr)
                 continue
             arg = toks.pop(0)
             assert toks[0] == ")"
@@ -80,12 +96,19 @@ def expr_remainder(typ, arg):
     if options.hex:
         return "\"(%s)0x\" + to_hex((int)%s)" % (typ, arg)
     else:
-        return "\"(%s)\" + std::to_string((int)%s)" % (typ, arg)
+        return "\"(%s)\" + fakestd::to_string((int)%s)" % (typ, arg)
 
 def make_to_string(typ, arg):
     print("std::string")
     print("to_string(%s %s)" % (typ, arg))
     print("{")
+
+    if (typ[0].isupper()):
+        print(f"        namespace {typ} = {typ}_NS;")
+    else:
+        print(f"        namespace {typ} = {typ}_ns;")
+
+
     print("        switch (%s) {" % arg)
     for key in enums[typ]:
         if key in options.exclude:
@@ -107,29 +130,46 @@ def make_to_string_mask(typ, arg):
         if key in options.exclude:
             continue
         print("        if ((%s & %s::%s) == %s::%s) { res += \"%s|\"; %s &= ~%s::%s; }" % \
-            (arg, typ, key, typ, key, fmt_value(typ, key), arg, typ, key))
+            (arg, typ + "_ns", key, typ + "_ns", key, fmt_value(typ, key), arg, typ + "_ns", key))
     print("        if (res.empty() || %s != (%s)0) res += %s;" % \
         (arg, typ, expr_remainder(typ, arg)))
-    print("        else res.pop_back();")
+    print("        else res.erase(res.size() - 1);")
     print("        return res;")
     print("}")
     print()
 
-def do_enum_body(name, toks):
+def do_enum_body(name, toks, enum=False):
     keys = []
+
+    if not enum:
+        shortname = name[:-3]
+    else:
+        shortname = name
+
+    # print(f"do_enum_body: name: {name}", file=sys.stderr)
+    if not enum:
+        while toks[0] != "const":
+            toks.pop(0)
+    
     while True:
         key = toks.pop(0)
+        # print(f"do_enum_body: key: {key}", file=sys.stderr)
+        if key == "const":
+            toks.pop(0)
+            continue
         if key == "}":
             assert toks.pop(0) == ";"
-            enums[name] = keys
+            enums[shortname] = keys
             return
+        # print(f"do_enum_body: appending {key}", file=sys.stderr)
         keys.append(key)
         if toks[0] == "=":
             toks.pop(0)
             toks.pop(0)
-        if toks[0] == ",":
+        if toks[0] == ";" or toks[0] == ",":
             toks.pop(0)
         else:
+            # print(f"do_enum_body: else: \"{toks[0]}\"", file=sys.stderr)
             assert toks[0] == "}"
 
 def do_qname(toks):

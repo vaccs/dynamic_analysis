@@ -7,6 +7,7 @@
 
 #include "dwarf++.hh"
 #include "../elf/to_hex.hh"
+#include "../cpp03/cpp03help.hh"
 
 #include <stdint.h>
 
