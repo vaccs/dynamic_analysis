@@ -14,8 +14,8 @@ The command line syntax is
 - `-u` - analyze user code only
 - `-r` - monitor register update
 - `-m` - monitor calls to malloc and free
-- '-s' - monitor secure data
-- '-f' - monitor file operations
+- `-s` - monitor secure data
+- `-f` - monitor file operations
 
 The file `dyanmic_analysis/bashrc` has all of environment variables that are needed. Make sure `VACCS` is defined to be the
 directory containing `dynamic_analysis`.
