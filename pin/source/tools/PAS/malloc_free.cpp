@@ -10,6 +10,8 @@
 #include "global.h"
 #include <util/general.h>
 #include <util/vaccs_config.h>
+#include <util/vaccs_error_message.h>
+#include <util/vaccs_source_location.h>
 #include <tables/frame.h>
 #include <tables/heap.h>
 
@@ -23,6 +25,7 @@ heap_map *heap_m = NULL;
 extern vaccs_config *vcfg;
 extern list<ADDRINT> call_inst_ip;
 extern runtime_stack *stack_model;
+extern vaccs_source_location last_known_user_location;
 
 static list<malloc_record*> last_malloc;
 /* ===================================================================== */
@@ -57,6 +60,31 @@ VOID free_before(CHAR * name, ADDRINT addr)
 		if (hb != NULL) {
 			stack_model->remove_block(hb);
 			heap_m->delete_block(addr);
+		}
+		else {
+			hb = heap_m->find_freed_block(addr);
+			if (hb != NULL) {
+
+  				vaccs_error_message *emsg = (new vaccs_error_message())
+					->add_file_name(last_known_user_location.get_file_name())
+					->add_line(last_known_user_location.get_line_num())
+					->add_id(DOUBLE_FREE_ID)
+					->add_message("Analysis detected " + (string)DOUBLE_FREE_MSG 
+                        " for address " + hexstr(addr));
+				emsg->emit_vaccs_formatted_error_message();
+				delete emsg;
+			} else {
+  				vaccs_error_message *emsg = (new vaccs_error_message())
+					->add_file_name(last_known_user_location.get_file_name())
+					->add_line(last_known_user_location.get_line_num())
+					->add_id(INV_FREE_ID)
+					->add_message("Analysis detected " + (string)INV_FREE_MSG 
+                        " for address " + hexstr(addr));
+				emsg->emit_vaccs_formatted_error_message();
+				delete emsg;
+
+			}
+
 		}
 	}
 

@@ -54,6 +54,14 @@ using namespace std;
 #define FUNK_MSG "floating-point unknown error"
 #define UNK_FAULT_ID "unkFault"
 #define UNK_MSG "unknow error"
+#define DOUBLE_FREE_ID "doubleFree"
+#define DOUBLE_FREE_MSG "attempt to free a block multiple times"
+#define INV_FREE_ID "invalidFree"
+#define INV_FREE_MSG "attempt to free an invalid block"
+#define GARBAGE_BLOCK_ID "garbageBlock"
+#define GARBAGE_BLOCK_MSG "allocated block never freed"
+#define DANGLING_REF_ID "danglingPointer"
+#define DANGLING_REF_MSG "pointer to freed block"
 
 class vaccs_error_message
 {

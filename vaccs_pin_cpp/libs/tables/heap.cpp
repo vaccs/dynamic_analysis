@@ -27,6 +27,11 @@
 
 #include <pin.H>
 
+#include <util/vaccs_error_message.h>
+#include <util/vaccs_source_location.h>
+
+extern vaccs_source_location last_known_user_location;
+
 heap_block::heap_block()
 {
 	start_address = 0;
@@ -94,5 +99,37 @@ heap_block *heap_map::delete_block(Generic address)
 			break;
 	}
 
+	if (block != NULL) {
+		freed_list.push_front(block);
+	}
 	return block;
+}
+
+heap_block *heap_map::find_freed_block(Generic address) {
+	heap_block *freed_block = NULL;
+	for (list<heap_block*>::iterator it = freed_list.begin(); it != freed_list.end(); it++) {
+		heap_block *hb = *it;
+		if (hb->contains_address(address)) {
+			freed_block = hb;
+			break;
+		}
+	}
+
+	return freed_block;
+}
+
+void heap_map::find_garbage_blocks() {
+	for (map<Generic, heap_block*>::iterator it = begin(); it != end(); it++) {
+
+		heap_block *hb = it->second;
+
+		vaccs_error_message *emsg = (new vaccs_error_message())
+					->add_file_name(last_known_user_location.get_file_name())
+					->add_line(last_known_user_location.get_line_num())
+					->add_id(INV_FREE_ID)
+					->add_message("Analysis detected " + (string)GARBAGE_BLOCK_MSG 
+                        " for block starting at " + hexstr(hb->get_start_address()));
+		emsg->emit_vaccs_formatted_error_message();
+		delete emsg;
+	}
 }

@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "vaccs_pin_cpp/libs"
+		},
+		{
+			"path": "pin/source/tools/PAS"
+		}
+	],
+	"settings": {}
+}

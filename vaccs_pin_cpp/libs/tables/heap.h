@@ -20,8 +20,9 @@
 #ifndef heap_h
 #define heap_h
 
-#include    <map>
-#include  <string>
+#include <map>
+#include <string>
+#include <list>
 
 #include <util/general.h>
 #include <io/vaccs_record.h>
@@ -138,6 +139,9 @@ private:
  */
 class heap_map: public map < Generic, heap_block * >
 {
+private:
+	list<heap_block*> freed_list;
+
 public:
 	/* ====================  LIFECYCLE     ======================================= */
 	heap_map(string map_file_name);                                /* constructor */
@@ -168,7 +172,9 @@ public:
 	/* ====================  OPERATORS     ======================================= */
 
 	heap_block *find_block(Generic address);
+	heap_block *find_freed_block(Generic address);
 	heap_block *delete_block(Generic address);
+	void find_garbage_blocks();
 
 
 	/* ====================  DATA MEMBERS  ======================================= */
